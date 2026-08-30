@@ -1,0 +1,68 @@
+{
+  "slug": "de-stijl",
+  "name": "De Stijl / Neoplasticism",
+  "aka": ["Neoplasticism", "Nieuwe Beelding", "Mondrianism", "Elementarism"],
+  "family": "Modernist Schools",
+  "era": "1917-1931, influence continuing to today",
+  "origin": "Theo van Doesburg founded the journal 'De Stijl' in Leiden in 1917 and with it the movement of the same name; its core included Piet Mondrian, Vilmos Huszár, the architect J.J.P. Oud and the furniture maker Gerrit Rietveld. After the experience of the First World War they sought a universal harmony freed from any individual hand – Mondrian called the program 'Nieuwe Beelding', neoplasticisme. The means was radical reduction: horizontals and verticals only, the three primary colors plus black, white and gray only, no curve, no diagonal, no representation. The movement effectively ended with van Doesburg's death in 1931; its grammar traveled through the Bauhaus into modern design as a whole.",
+  "idea": "The layout itself is the picture: rectangles of unequal size, separated by black bars of varying weight, balanced without symmetry.",
+  "markers": [
+    "Horizontals and verticals only – 0 diagonals, 0 curves, radius 0px",
+    "Black separating bars in graduated weights: 4px / 6px / 10px / 18px within one composition",
+    "Red #D22B1F, blue #1F3D99 and yellow #F2C40B only, as fills on off-white #F5F3EE",
+    "Color under 25% of the surface, white remains the dominant field",
+    "Asymmetric balance: nothing centered, no field the same size as another",
+    "Color fields sit at edges and corners, never in the middle",
+    "No shadows, no gradients, no transparency – flat fills only",
+    "Blocky grotesque, set in caps, weights 700-900",
+    "Buttons and fields are not objects on a surface but cells of the composition"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "very high",
+    "density": "medium",
+    "depth": "none; order comes exclusively from the weight of the black bars",
+    "color": "Off-white as the ground field, plus exactly three primary colors as solid rectangles and black as structure.",
+    "type": "Blocky grotesque in caps, heavy weights, negative tracking – the type is one surface among others.",
+    "motion": "Strictly orthogonal: color changes in 120ms linear, translation along X or Y only, never scaling or rotation.",
+    "texture": "none"
+  },
+  "palette": ["#F5F3EE", "#14110F", "#D22B1F", "#1F3D99", "#F2C40B", "#55514C"],
+  "examples": [
+    {"name": "Piet Mondrian, 'Composition with Red, Blue and Yellow' (1930)", "what": "One dominant red field at the top right, tiny blue and yellow fields below, black bars in clearly different weights – the canonical study in balance"},
+    {"name": "Gerrit Rietveld, Rood-blauwe stoel (1918/1923)", "what": "The style in three dimensions: interpenetrating black slats, seat and back in red and blue, every component staying visible as its own plane"},
+    {"name": "Theo van Doesburg, covers of the journal 'De Stijl' (from 1917)", "what": "Purely rectilinear letter construction, the title set as a grid of bars – typography as architecture"},
+    {"name": "Rietveld Schröder House, Utrecht (1924)", "what": "A facade of freely shifted planes with colored lines; proof that the composition itself is the ordering principle, not the decoration"},
+    {"name": "Bento grid layouts (2023-2026, including Apple product pages)", "what": "The structural descendant: tiles of unequal size, clearly separated, individual ones accented in color – De Stijl with radius and shadow"}
+  ],
+  "strengths": [
+    "The layout is the brand – recognition without a logo, an illustration or a font license",
+    "Bento grids are the direct modern heir and are excellent for feature overviews, dashboards and home screens",
+    "Purely flat and therefore pixel-exact on every platform, with no GPU cost",
+    "Forces a real hierarchy decision: which cell is large, which one is colored – arbitrariness is structurally ruled out"
+  ],
+  "risks": [
+    "Decorative and functionally thin as a full style: the composition has to be rebuilt per screen and survives no dynamic content",
+    "Too few hierarchy levels for dense applications – the system breaks at the fourth level",
+    "Uneven bar weights quickly turn it into a Mondrian quotation rather than a language of your own; the association is overpowering",
+    "Yellow is unusable as a text field; colored cells may carry only black or white",
+    "Responsive work is expensive: an asymmetric composition cannot simply reflow, it has to be recomposed per breakpoint"
+  ],
+  "a11y": "The color fields themselves are uncritical as long as the text on them is controlled: off-white on red #D22B1F lands at 4.6:1, on blue #1F3D99 at 8.7:1, black on yellow #F2C40B at 11.4:1 – white on yellow, by contrast, at 1.5:1, which is forbidden. The red is therefore only just compliant and carries body text only, no 10px labels. Thick black bars are accessibility-neutral and even help delineate blocks. The real risk is structural: once buttons are nothing but colored cells of the composition, the affordance is missing – so focus rings have to be set 4px thick and inset in a contrasting color, and the DOM order has to follow the visual reading order, because grid areas easily pull the two apart.",
+  "longevity": "The grammar is over a hundred years old and still works unchanged, but it is so tightly linked to Mondrian that every application reads as a quotation. In the bento variant it visibly carries the 2023-2025 timestamp.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Very good – CSS Grid with named areas is the exact technical equivalent, including bars of different weight via border plus gap.",
+    "mobile": "Weak – the asymmetric composition collapses into a stack on narrow displays and loses exactly the distinguishing feature.",
+    "desktop": "Good for overview and home screens in Tauri, unsuitable for dense lists, tables and settings dialogs."
+  },
+  "verdict": "As a continuous product language no, as a signature layout a yes worth considering. The temptation is strong for a solo developer, because De Stijl looks instantly unmistakable with pure CSS Grid and not a single asset – but that unmistakability belongs to Mondrian rather than to your own brand, and across 27 apps it quickly feels like a costume. On top of that comes the practical break: a hand-composed asymmetric surface tolerates no dynamic lists, no settings dialogs and no Android screen. The style makes sense as a recurring special surface – home screen, launcher, app overview, marketing hero – over a quiet Swiss grid for the actual UI.",
+  "combinesWith": ["swiss", "bauhaus", "neo-brutalism", "flat"],
+  "tip": "Grade the black bars deliberately in at least three different weights and let no two fields end up the same size. A bento grid with an even gap and equally sized tiles is not De Stijl, it is a grid – the whole style lives on the eye resolving the inequality into equilibrium. And keep color under a quarter of the surface: white is the main color, not the leftover.",
+  "googleFonts": ["Archivo"]
+}

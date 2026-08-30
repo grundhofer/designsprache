@@ -1,0 +1,68 @@
+{
+  "slug": "neumorphism",
+  "name": "Neumorphismus / Soft UI",
+  "aka": ["Soft UI", "Neo-Skeuomorphismus", "New Skeuomorphism", "Neumorphism"],
+  "family": "Weiche Materialität",
+  "era": "2019-2021 (Peak Anfang 2020), seither Zitat-Stil",
+  "origin": "Auslöser war ein Dribbble-Shot von Alexander Plyuto Ende 2019: ein Banking-App-Konzept, in dem Bedienelemente nicht mehr auf der Fläche liegen, sondern aus ihr herausgedrückt wirken. Den Namen prägten kurz darauf Jason Kelly und Michal Malewicz als Portmanteau aus 'neo' und 'Skeuomorphismus'. Der Stil war die Gegenreaktion auf sechs Jahre Flat Design und dessen Affordanz-Problem: Nach iOS 7 wusste niemand mehr, was klickbar ist, und Neumorphismus gab Buttons wieder eine physische Form -- ohne die Leder- und Holztexturen des alten Skeuomorphismus. Technisch war er trivial möglich, weil zwei box-shadow-Werte auf identischer Grundfarbe genügen; genau diese Billigkeit hat ihn viral gemacht.",
+  "idea": "Element und Hintergrund haben exakt dieselbe Farbe; Form entsteht ausschließlich aus einem hellen Schatten oben links und einem dunklen unten rechts, so als sei die Oberfläche aus weichem Kunststoff ausgestellt oder eingedrückt.",
+  "markers": [
+    "Element-Fill == Hintergrundfarbe, kanonisch #E0E5EC -- kein eigener Flächenwert",
+    "Doppelschatten: 9px 9px 18px #A3B1C6 und -9px -9px 18px #FFFFFF, Lichtquelle fix oben links",
+    "Kantenkontrast Element/Hintergrund nur 1,3-1,7:1 -- messbar unter der WCAG-Schwelle von 3:1",
+    "Radius 20-34px an Flächen und Karten, 999px an Feldern und Pills",
+    "Kein einziger border-Wert im gesamten UI",
+    "Gedrückter Zustand als reine Umkehr in inset-Schatten, keine Farbänderung",
+    "Eingelassene Elemente (Suchfeld, Slots, Rillen) via inset statt Füllfarbe",
+    "Letterpress-Typo: text-shadow 1px 1px 1px #FFF, -1px -1px 1px rgba(163,177,198,.55)",
+    "Exakt eine Elevationsebene -- über- oder untereinanderliegende Ebenen sind nicht darstellbar"
+  ],
+  "params": {
+    "radius": "20-34px an Flächen und Karten, 999px an Pills und Eingabefeldern",
+    "contrast": "niedrig",
+    "density": "luftig",
+    "depth": "Pseudo-Relief aus zwei gegenläufigen Schatten auf gleicher Grundfarbe; extrudiert (outset) vs. eingedrückt (inset), dazwischen nichts",
+    "color": "Monochrom: eine einzige helle Blaugrau-Basis, alles andere sind Schattenabstufungen derselben Farbe; maximal ein entsättigter Akzent für Zahlen und Primäraktion",
+    "type": "Weiche, rundliche Grotesk in 600-800, mittelgrau statt schwarz, mit Letterpress-Textschatten",
+    "motion": "Nur der Schattenwechsel: box-shadow 200-220ms ease von outset auf inset beim Drücken, keine Bewegung der Geometrie",
+    "texture": "keine -- die Oberfläche ist bewusst makellos und glatt"
+  },
+  "palette": ["#E0E5EC", "#FFFFFF", "#A3B1C6", "#4C5C73", "#8494AB", "#6D83B5"],
+  "examples": [
+    {"name": "Alexander Plyuto, 'Skeuomorph Mobile Banking' (Dribbble, Dez. 2019)", "what": "Der Ursprungs-Shot: Kreditkarte, Kreis-Buttons und Slider alle in #E0E5EC, Form nur über Doppelschatten; Icons als dünne Linien, kein einziger Rahmen"},
+    {"name": "neumorphism.io (Adrian Bece)", "what": "Generator, der genau die vier Parameter des Stils bedienbar macht: Distanz, Blur, Intensität, inset/outset -- de-facto die Spezifikation des Looks"},
+    {"name": "macOS Big Sur (2020)", "what": "Weich extrudierte, leicht plastische Icon-Formen auf hellgrauem Chrome -- die massentauglichste Ausprägung der weichen Extrusion, allerdings nur an Icons, nie an Flächen und ohne die Doppelschatten-Formel"},
+    {"name": "Michal Malewicz, 'Neumorphism in user interfaces' (2019/2020)", "what": "Der Artikel, in dessen Kommentaren der Name entstand -- und der zugleich das Kontrastproblem als erster benannte"},
+    {"name": "Samsung One UI (ab 2019)", "what": "Runde, sehr kontrastarm abgesetzte Container auf hellgrauem Grund -- eine stark abgemilderte Produktvariante, die die weiche Anmutung übernimmt, ohne sich auf die Doppelschatten festzulegen"}
+  ],
+  "strengths": [
+    "Auf 200 ms unverwechselbar -- kein anderer Stil sieht so aus",
+    "Sehr ruhig und taktil; wirkt wie ein Gerät, nicht wie ein Dokument",
+    "Technisch trivial: zwei box-shadow-Werte, keine Assets, keine Bilder, keine Fonts-Lizenz",
+    "Der gedrückte Zustand ist visuell so eindeutig wie bei einer echten Taste"
+  ],
+  "risks": [
+    "Nur eine Elevationsebene möglich -- Modals, Popover, Dropdowns oder Toasts haben keinen darstellbaren Platz im System",
+    "Kein Light/Dark-Wechsel ohne kompletten Neuentwurf: die Doppelschatten-Logik kippt auf dunklem Grund und braucht andere Kurven",
+    "Auf kleinen Displays, bei niedriger Helligkeit oder in komprimierten Screenshots verschwindet das Relief vollständig",
+    "Deaktivierter, gedrückter und normaler Zustand sind bei drei Formen kaum noch unterscheidbar",
+    "Kippt in 'billiges Plastik-Spielzeug', sobald Blur zu groß oder die Basisfarbe zu gesättigt wird"
+  ],
+  "a11y": "Der Stil ist per Konstruktion nicht WCAG-konform: die tragende Kante zwischen Bedienelement und Hintergrund erreicht in dieser Demo 1,27:1 (helle Kante) bis 1,72:1 (dunkle Kante), gefordert sind nach WCAG 2.2 SC 1.4.11 mindestens 3:1 für Bedienelement-Begrenzungen. Fließtext lässt sich retten (#4C5C73 auf #E0E5EC = 5,38:1, AA bestanden), sekundäre Angaben wie Zeitstempel liegen mit 2,44:1 darunter, der Akzentton mit 2,98:1 knapp unter der Schwelle. Ein Fokus-Ring muss zwingend als harte, stilfremde Outline nachgerüstet werden, weil ein neumorpher Ring den Kontrastanforderungen nie genügt -- diese Demo tut das bei :focus-visible.",
+  "longevity": "Hart auf 2020 datiert: Wer den Look heute sieht, liest sofort 'Dribbble-Trend aus der Pandemiezeit'. Er hat keine institutionelle Verankerung, die ihn wie Skeuomorphismus im Pro-Audio-Bereich als Nische überleben ließe.",
+  "scores": {
+    "longevity": 1,
+    "recognition": 5,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "In CSS trivial, aber die Doppelschatten kosten auf großen Listen echte Paint-Zeit und der Stil skaliert nicht über eine Elevationsebene hinaus.",
+    "mobile": "Auf Android und iOS praktisch unbrauchbar: bei hoher Umgebungshelligkeit und auf OLED-Panels mit aggressivem Kontrastmanagement verschwindet das Relief, und beide Plattformen erzwingen einen Dark Mode, den der Stil nicht kennt.",
+    "desktop": "In Tauri technisch problemlos, aber Desktop-UIs brauchen Menüs, Popover und Dialoge -- also genau die Ebenen, die Neumorphismus nicht darstellen kann."
+  },
+  "verdict": "Als Basis der Eigenmarke: klares Nein. Nicht weil er hässlich wäre, sondern weil er drei Anforderungen des Auftraggebers strukturell verletzt: er kennt kein Dark Theme, kein zweites Elevationslevel und keine WCAG-konforme Bedienelement-Kante -- letzteres ist seit dem European Accessibility Act kein Geschmacksthema mehr. Für eine Marke über Web, Tauri und Compose hinweg bedeutet das drei getrennte Neuentwürfe statt eines Token-Satzes. Was sich hingegen mitnehmen lässt, ist genau ein Detail: der inset-Umkehr als Aktiv-Zustand an einer einzigen Komponente (Toggle, Segmented Control) -- ein billiger, taktiler Wiedererkennungsträger, der ohne den Rest des Stils funktioniert.",
+  "combinesWith": ["claymorphism", "skeuomorphism", "minimalism", "organic-blob"],
+  "tip": "Blur nie größer als die Distanz wählen (9px/18px, nicht 9px/40px) und die Basisfarbe bei ca. 88-92% Helligkeit mit einem leichten Blaustich halten -- reines Grau wirkt tot, gesättigtes Grau wirkt nach Spielzeug. Und: Der einzige Weg, den Stil benutzbar zu machen, ist ein zweiter, stilfremder Signalkanal pro Zustand (Farbe, Icon oder Text), weil das Relief allein den Zustand nicht transportiert.",
+  "googleFonts": ["Nunito"]
+}

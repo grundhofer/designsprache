@@ -1,0 +1,107 @@
+{
+  "slug": "warm-editorial",
+  "name": "Warm Editorial",
+  "aka": [
+    "Paper UI",
+    "Reading-First Interface",
+    "Warm Minimal",
+    "Notion-Substack look",
+    "Quiet Software"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "2012-today, dominant since ~2020",
+  "origin": "The style transfers magazine and book typesetting onto software and begins on the web with Medium (2012) and the big longform formats of the newsrooms. From 2018 it migrates from publications into tools: Notion, Substack, Craft, Readwise and Are.na build interfaces meant to behave like paper, because their actual product is text. The problem it solves is fatigue - pure white #FFFFFF at high luminance strains the eye over hours of reading, while slightly yellowed paper tones cut the blue component and carry longer sessions. Execution became possible through affordable high-quality web fonts, variable serifs with optical size axes (Fraunces, Source Serif 4) and displays with enough resolution that fine serifs do not fall apart at 16-21px.",
+  "idea": "The interface passes itself off as a printed sheet: warm paper instead of pure white, a serif carries the content layer, and structure comes from white space, rules and typographic hierarchy rather than from boxes and color.",
+  "markers": [
+    "Base surface #FAF7F2 / #F5F1EA instead of #FFFFFF - warm-tinted, never neutral gray",
+    "Ink never pure black: #2B2622 to #37352F with a visible red/yellow component",
+    "Serif headline at 40-60px, line height 0.95-1.05, letter-spacing -0.015em",
+    "Reading text 16-21px with line-height 1.6-1.75 and a measure of 60-72 characters",
+    "Generous outer margins: 40-56px of padding on the sheet, considerably more than is usual in app UIs",
+    "Hairlines in warm beige (#E4DACA), not gray - separation via rules rather than cards",
+    "Shadows soft and diffuse with a large negative spread, opacity below 20%, always warmly tinted",
+    "Radius 8-14px on surfaces, 0px on rules and fields (underline instead of box)",
+    "Micro labels as letterspaced caps in a grotesque, 9-11px, letter-spacing 0.14-0.18em",
+    "Exactly one warm accent (terracotta, brick, ochre) for numerals, brand marks and focus states"
+  ],
+  "params": {
+    "radius": "8-14px on surfaces, 0px on fields and dividers",
+    "contrast": "high",
+    "density": "airy",
+    "depth": "barely present: one soft warm drop shadow lifts the sheet off the ground, inside it only rules separate",
+    "color": "Warm neutrals with a yellow/red component plus exactly one earthy accent; semantic colors muted rather than saturated",
+    "type": "Display serif for headlines, reading serif for content, grotesque only for letterspaced micro labels",
+    "motion": "Restrained, 200-260ms ease; color and background changes instead of movement, 1px of lift at most",
+    "texture": "Paper grain as SVG noise at 20-25% opacity plus a very wide warm vignette gradient"
+  },
+  "palette": [
+    "#FAF7F2",
+    "#F3EEE4",
+    "#E4DACA",
+    "#2B2622",
+    "#A8432A",
+    "#8A7E6F"
+  ],
+  "examples": [
+    {
+      "name": "Notion",
+      "what": "Warm gray ink #37352F on a near-white, slightly warm ground; serif mode for documents, separation via thin rules and white space rather than cards"
+    },
+    {
+      "name": "Substack",
+      "what": "Serif reading column with a large line height and a narrow measure, warm off-white, a single saturated accent (#FF6719) for action and brand mark"
+    },
+    {
+      "name": "Stripe Press",
+      "what": "Book typography in the browser: paper tones, serif headlines at display size, very wide outer margins, marginalia and running heads"
+    },
+    {
+      "name": "Readwise Reader",
+      "what": "Selectable paper themes with a yellowed ground, serif reading setting and highlights in muted chromatic colors rather than neon"
+    },
+    {
+      "name": "Craft / Are.na",
+      "what": "Text-first interfaces without chrome: content sits directly on the paper, tools appear only on demand"
+    }
+  ],
+  "strengths": [
+    "Practically does not age - the rules come from 500 years of book typesetting, not from a trend cycle",
+    "Warm paper tones and generous leading are measurably less fatiguing than pure white for long text",
+    "Reads calm, valuable and grown-up immediately, without needing illustration or photography",
+    "Serif headline plus letterspaced grotesque labels is a rare pairing in the tool space and therefore recognizable",
+    "Blog, docs, changelog and landing page benefit directly - marketing and product can speak the same language"
+  ],
+  "risks": [
+    "Wrong density for application UI: tables, dashboards and settings screens cannot take the airiness and must either break or dilute the style",
+    "Serif web fonts cost payload and need real italics and old-style figures, or the setting looks cheap",
+    "A fine line separates it from the wellness look: too much beige, too much rounding and too little contrast make a developer tool look like a meditation app",
+    "Dark mode is not trivial - paper tones cannot simply be inverted, it takes a warm dark palette of its own",
+    "Without a strict grid the generosity tips into arbitrariness; white space without a system reads as indecision"
+  ],
+  "a11y": "The style is accessible by default: #2B2622 on #FAF7F2 reaches about 13:1, and the generous leading and limited measure match the recommendations for reading difficulties and dyslexia exactly. The risks sit at the edges - letterspaced caps below 10px and italic serifs as placeholders are hard to parse, and secondary text in #8A7E6F sits at about 3.9:1 and may therefore only be used for incidental metadata such as running heads and numerals - form labels and placeholders deliberately run one step darker here in #5C5348 (around 7.4:1). The muted ochre of the paused state is pulled to #8A6A1E (around 5:1) for the same reason, because it is set in 9.5px caps. Status labels here are additionally coded by wording and position, so the muted green and ochre do not carry the information alone.",
+  "longevity": "The most durable style in this family: the fundamentals are typesetting craft, not a trend, and layouts from 2012 still read as current today. Only the fashionable typefaces of each year are datable - an Instrument Serif headline gives away the 2023-2026 vintage more clearly than the layout itself.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 3,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Ideal - especially in Astro for blog, docs and marketing, where content collections and reading typography carry the lead role anyway.",
+    "mobile": "Good for reading and note views, but Compose default components and Material density have to be largely overridden for it.",
+    "desktop": "Only conditionally - coherent for writing- and reading-centered Tauri apps, too airy for dense tool windows with sidebar, table and status bar."
+  },
+  "verdict": "As the sole base for a portfolio of many small apps, Warm Editorial is the wrong density - as soon as one of the apps needs a table, a settings screen or a dashboard, you are fighting your own style. As a brand and outer skin it is excellent, on the other hand: website, docs, changelog, onboarding and reading views in warm paper with a serif headline give the solo developer a grown-up voice that has not been worn out and sets itself clearly apart from the violet dev-tool monoculture. The pragmatic recommendation is therefore a split with shared tokens: warm neutrals and accent color stay the same everywhere, but the application surfaces run in a denser expression. Anyone building only writing- and reading-centered apps can carry the style through without hesitation.",
+  "combinesWith": [
+    "editorial-print",
+    "swiss",
+    "dev-noir",
+    "neo-brutalism"
+  ],
+  "tip": "Being warm does not mean being beige: the trick is to fix the hue once (say hue 34-40) and then carry it consistently through the entire scale - paper, ink, rules, shadows and even the status colors get the same slight red-yellow cast. A single neutral gray or a pure #000 in a shadow tears the illusion open at once and makes the result look like a botched default theme.",
+  "googleFonts": [
+    "Instrument Serif",
+    "Newsreader",
+    "Inter"
+  ]
+}

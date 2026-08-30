@@ -1,0 +1,107 @@
+{
+  "slug": "warm-editorial",
+  "name": "Warm Editorial",
+  "aka": [
+    "Paper UI",
+    "Reading-First Interface",
+    "Warm Minimal",
+    "Notion-Substack-Look",
+    "Quiet Software"
+  ],
+  "family": "Produkt-Ästhetik heute",
+  "era": "2012-heute, dominant seit ~2020",
+  "origin": "Der Stil ist die Übertragung des Zeitschriften- und Buchsatzes auf Software und beginnt im Web mit Medium (2012) und den großen Longform-Formaten der Redaktionen. Ab 2018 wandert er von Publikationen in Werkzeuge: Notion, Substack, Craft, Readwise und Are.na bauen Oberflächen, die sich wie Papier verhalten sollen, weil ihr eigentliches Produkt Text ist. Das gelöste Problem ist Ermüdung - Reinweiß #FFFFFF bei hoher Leuchtdichte strengt bei stundenlangem Lesen an, während leicht gelbstichige Papiertöne den Blaulichtanteil senken und längere Sitzungen tragen. Möglich wurde die Umsetzung durch bezahlbare hochwertige Webfonts, variable Serifen mit optischen Größenachsen (Fraunces, Source Serif 4) und Displays mit genug Auflösung, damit feine Serifen bei 16-21px nicht zerfallen.",
+  "idea": "Die Oberfläche gibt sich als bedrucktes Blatt aus: warmes Papier statt Reinweiß, eine Serifenschrift trägt die Inhaltsebene, und Struktur entsteht aus Weißraum, Linealen und typografischer Hierarchie statt aus Kästen und Farbe.",
+  "markers": [
+    "Grundfläche #FAF7F2 / #F5F1EA statt #FFFFFF - warm getönt, nie neutralgrau",
+    "Tinte nie reines Schwarz: #2B2622 bis #37352F mit sichtbarem Rot-/Gelbanteil",
+    "Serifen-Headline in 40-60px, Zeilenhöhe 0.95-1.05, letter-spacing -0.015em",
+    "Lesetext 16-21px mit line-height 1.6-1.75 und Messweite 60-72 Zeichen",
+    "Großzügige Außenränder: 40-56px Innenabstand am Blatt, deutlich mehr als in App-UIs üblich",
+    "Hairlines in warmem Beige (#E4DACA), nicht in Grau - Trennung über Lineale statt über Karten",
+    "Schatten weich und diffus mit großem negativem Spread, Deckkraft unter 20%, immer warm eingefärbt",
+    "Radius 8-14px an Flächen, 0px an Linealen und Feldern (Unterstrich statt Kasten)",
+    "Micro-Labels als gesperrte Versalien in einer Grotesk, 9-11px, letter-spacing 0.14-0.18em",
+    "Genau ein warmer Akzent (Terracotta, Brick, Ochre) für Zahlen, Marken und Fokuszustände"
+  ],
+  "params": {
+    "radius": "8-14px an Flächen, 0px an Feldern und Trennlinien",
+    "contrast": "hoch",
+    "density": "luftig",
+    "depth": "kaum vorhanden: ein weicher warmer Schlagschatten hebt das Blatt vom Grund ab, im Inneren trennen nur Lineale",
+    "color": "Warme Neutrals mit Gelb-/Rotanteil plus genau ein erdiger Akzent; semantische Farben gedämpft statt gesättigt",
+    "type": "Serifen-Display für Überschriften, Leseserife für Inhalt, Grotesk nur für gesperrte Mikro-Labels",
+    "motion": "Zurückhaltend, 200-260ms ease; Farb- und Hintergrundwechsel statt Bewegung, maximal 1px Anhebung",
+    "texture": "Papierkorn als SVG-Noise bei 20-25% Deckkraft plus ein sehr weiter warmer Vignetten-Gradient"
+  },
+  "palette": [
+    "#FAF7F2",
+    "#F3EEE4",
+    "#E4DACA",
+    "#2B2622",
+    "#A8432A",
+    "#8A7E6F"
+  ],
+  "examples": [
+    {
+      "name": "Notion",
+      "what": "Warmgraue Tinte #37352F auf nahezu weißem, leicht warmem Grund; Serifen-Modus für Dokumente, Trennung über dünne Lineale und Weißraum statt über Karten"
+    },
+    {
+      "name": "Substack",
+      "what": "Serifen-Lesekolumne mit großer Zeilenhöhe und schmaler Messweite, warmes Off-White, ein einziger gesättigter Akzent (#FF6719) für Aktion und Markenzeichen"
+    },
+    {
+      "name": "Stripe Press",
+      "what": "Buchtypografie im Browser: Papiertöne, Serifen-Headlines in Displaygröße, sehr breite Außenränder, Marginalien und Kolumnentitel"
+    },
+    {
+      "name": "Readwise Reader",
+      "what": "Wählbare Papierthemen mit gelbstichigem Grund, Serifen-Lesesatz und Hervorhebungen in gedämpften Buntfarben statt Neon"
+    },
+    {
+      "name": "Craft / Are.na",
+      "what": "Text-First-Oberflächen ohne Chrome: Inhalt sitzt direkt auf dem Papier, Werkzeuge erscheinen erst bei Bedarf"
+    }
+  ],
+  "strengths": [
+    "Altert praktisch nicht - die Regeln stammen aus 500 Jahren Buchsatz und nicht aus einem Trendzyklus",
+    "Warme Papiertöne und hohe Zeilenabstände sind messbar ermüdungsärmer als Reinweiß bei Langtext",
+    "Wirkt sofort ruhig, wertig und erwachsen, ohne dass Illustrationen oder Fotografie nötig wären",
+    "Serifen-Headline plus gesperrte Grotesk-Labels ist eine seltene Kombination im Tool-Umfeld und dadurch wiedererkennbar",
+    "Blog, Doku, Changelog und Landingpage profitieren direkt - Marketing und Produkt können dieselbe Sprache sprechen"
+  ],
+  "risks": [
+    "Falsche Dichte für Applikations-UI: Tabellen, Dashboards und Einstellungsmasken vertragen die Luftigkeit nicht und müssen entweder brechen oder den Stil verwässern",
+    "Serifen-Webfonts kosten Payload und brauchen echte Kursive und Mediävalziffern, sonst wirkt der Satz billig",
+    "Der schmale Grat zum Wellness-Look: zu viel Beige, zu viel Rundung und zu wenig Kontrast lassen ein Entwicklerwerkzeug wie eine Meditations-App aussehen",
+    "Dark-Mode ist nicht trivial - Papiertöne lassen sich nicht einfach invertieren, es braucht eine eigene warme Dunkelpalette",
+    "Ohne strenges Raster kippt die Großzügigkeit in Beliebigkeit; Weißraum ohne System sieht nach Unentschlossenheit aus"
+  ],
+  "a11y": "Der Stil ist von Haus aus barrierearm: #2B2622 auf #FAF7F2 erreicht etwa 13:1, und die großen Zeilenabstände sowie die begrenzte Messweite entsprechen genau den Empfehlungen für Leseschwäche und Dyslexie. Die Risiken liegen an den Rändern - gesperrte Versalien unter 10px und kursive Serifen als Platzhalter sind schlecht erfassbar, und Sekundärtext in #8A7E6F liegt bei etwa 3,9:1 und darf deshalb nur für beiläufige Metadaten wie Kolumnentitel und Ziffern verwendet werden - Formularlabel und Platzhalter laufen hier bewusst eine Stufe dunkler in #5C5348 (rund 7,4:1). Die gedämpfte Ockerfarbe des Pausiert-Zustands ist aus demselben Grund auf #8A6A1E gezogen (rund 5:1), weil sie in 9,5px-Versalien gesetzt ist. Statuslabels sind hier zusätzlich durch Wortlaut und Position codiert, sodass die gedämpften Farben Grün und Ocker nicht allein die Information tragen.",
+  "longevity": "Der langlebigste Stil dieser Familie: die Grundlagen sind Satztechnik, kein Trend, und Layouts aus 2012 wirken heute noch aktuell. Datierbar sind nur die Modeschriften der jeweiligen Jahre - eine Instrument-Serif-Headline verrät den Jahrgang 2023-2026 deutlicher als das Layout selbst.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 3,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Ideal - besonders in Astro für Blog, Doku und Marketing, wo Content-Collections und Lesetypografie ohnehin die Hauptrolle spielen.",
+    "mobile": "Gut für Lese- und Notizansichten, aber Compose-Standardkomponenten und Material-Dichte müssen dafür weitgehend überschrieben werden.",
+    "desktop": "Nur bedingt - für schreib- und lesezentrierte Tauri-Apps stimmig, für dichte Werkzeugfenster mit Sidebar, Tabelle und Statusleiste zu luftig."
+  },
+  "verdict": "Als alleinige Basis für ein Portfolio vieler kleiner Apps ist Warm Editorial die falsche Dichte - sobald eine der Apps eine Tabelle, eine Einstellungsmaske oder ein Dashboard braucht, kämpft man gegen den eigenen Stil. Als Marken- und Außenhaut ist er dagegen ausgezeichnet: Website, Doku, Changelog, Onboarding und Leseansichten in warmem Papier mit Serifen-Headline geben dem Solo-Entwickler eine erwachsene, unverbrauchte Stimme, die sich klar von der violetten Dev-Tool-Monokultur absetzt. Die pragmatische Empfehlung ist deshalb eine Zweiteilung mit gemeinsamen Tokens: warme Neutrals und Akzentfarbe bleiben überall gleich, aber die Anwendungsflächen laufen in dichterer Ausformung. Wer nur schreib- und lesezentrierte Apps baut, kann den Stil dagegen bedenkenlos durchziehen.",
+  "combinesWith": [
+    "editorial-print",
+    "swiss",
+    "dev-noir",
+    "neo-brutalism"
+  ],
+  "tip": "Warm sein heißt nicht beige sein: der Trick ist, den Farbton einmal festzulegen (etwa Hue 34-40) und ihn dann konsequent durch die gesamte Skala zu ziehen - Papier, Tinte, Lineale, Schatten und sogar die Statusfarben bekommen denselben leichten Rot-Gelb-Einschlag. Ein einziges neutrales Grau oder ein reines #000 im Schatten reißt die Illusion sofort auf und lässt das Ergebnis nach einem verunglückten Standard-Theme aussehen.",
+  "googleFonts": [
+    "Instrument Serif",
+    "Newsreader",
+    "Inter"
+  ]
+}

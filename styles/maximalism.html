@@ -1,0 +1,432 @@
+<style>
+.style-maximalism {
+  color-scheme: light;
+  --mx-ink: #16101A;
+  --mx-cream: #FFF6E8;
+  --mx-acid: #F4E63F;
+  --mx-pink: #FF3D81;
+  --mx-blue: #2B36D6;
+  --mx-orange: #FF6B1A;
+  --mx-mint: #4FD6A8;
+  background:
+    repeating-linear-gradient(45deg, rgba(22,16,26,.055) 0 3px, transparent 3px 9px),
+    radial-gradient(circle at 50% 50%, rgba(22,16,26,.16) 1.4px, transparent 1.6px) 0 0 / 11px 11px,
+    var(--mx-acid);
+  color: var(--mx-ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.35;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.style-maximalism,
+.style-maximalism * { box-sizing: border-box; }
+
+.style-maximalism .demo {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 30px 26px 34px;
+  border: 4px solid var(--mx-ink);
+}
+
+/* --- Deko-Ebene: Tapes, Sterne, Barcode ------------------------------- */
+.style-maximalism .deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.style-maximalism .tape {
+  position: absolute;
+  border: 2px solid var(--mx-ink);
+  opacity: .95;
+}
+.style-maximalism .tape-1 {
+  width: 190px; height: 26px;
+  top: 14px; left: -34px;
+  background: repeating-linear-gradient(90deg, var(--mx-pink) 0 9px, var(--mx-cream) 9px 18px);
+  transform: rotate(-19deg);
+}
+.style-maximalism .tape-2 {
+  width: 150px; height: 22px;
+  bottom: 78px; right: -40px;
+  background: repeating-linear-gradient(90deg, var(--mx-blue) 0 7px, var(--mx-mint) 7px 14px);
+  transform: rotate(24deg);
+}
+.style-maximalism .tape-3 {
+  width: 96px; height: 96px;
+  right: 12px; top: 122px;
+  border-radius: 50%;
+  border-width: 3px;
+  background: var(--mx-orange);
+  box-shadow: inset 0 0 0 5px var(--mx-cream), inset 0 0 0 8px var(--mx-ink);
+  opacity: .9;
+}
+.style-maximalism .barcode {
+  position: absolute;
+  left: 18px; bottom: 10px;
+  width: 116px; height: 26px;
+  background: repeating-linear-gradient(90deg, var(--mx-ink) 0 2px, transparent 2px 4px, var(--mx-ink) 4px 5px, transparent 5px 9px);
+  opacity: .55;
+  transform: rotate(-1.5deg);
+}
+.style-maximalism .star {
+  position: absolute;
+  color: var(--mx-ink);
+}
+.style-maximalism .star svg { display: block; }
+.style-maximalism .star-1 { top: 96px; left: 6px; transform: rotate(-12deg); }
+.style-maximalism .star-2 { bottom: 118px; left: 44%; color: var(--mx-pink); transform: rotate(18deg); }
+
+/* --- Rahmen im Rahmen ------------------------------------------------- */
+.style-maximalism .frame {
+  position: relative;
+  z-index: 1;
+  background: var(--mx-cream);
+  border: 3px solid var(--mx-ink);
+  box-shadow: 11px 11px 0 var(--mx-ink), 20px 20px 0 var(--mx-pink);
+  transform: rotate(-0.8deg);
+  padding: 7px;
+}
+.style-maximalism .inner {
+  border: 2px dashed var(--mx-ink);
+  padding: 20px 18px 22px;
+}
+
+/* --- Kopf ------------------------------------------------------------- */
+.style-maximalism .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.style-maximalism .title {
+  margin: 0;
+  font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: .86;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--mx-cream);
+  -webkit-text-stroke: 2.5px var(--mx-ink);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--mx-pink), 10px 10px 0 var(--mx-blue);
+  transform: rotate(-2deg) skewX(-4deg);
+  transform-origin: left bottom;
+}
+.style-maximalism .counter {
+  position: relative;
+  flex: none;
+  width: 84px; height: 84px;
+  display: grid;
+  place-items: center;
+  transform: rotate(11deg);
+  animation: maximalism-wiggle 6s ease-in-out infinite;
+}
+.style-maximalism .counter .burst {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  color: var(--mx-blue);
+}
+.style-maximalism .counter .num {
+  position: relative;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--mx-cream);
+  text-shadow: 2px 2px 0 var(--mx-ink);
+  padding-bottom: 3px;
+}
+@keyframes maximalism-wiggle {
+  0%, 100% { transform: rotate(11deg) scale(1); }
+  50%      { transform: rotate(4deg) scale(1.045); }
+}
+
+/* --- Zierbalken ------------------------------------------------------- */
+.style-maximalism .rule {
+  height: 16px;
+  margin: 14px 0 16px;
+  border: 2px solid var(--mx-ink);
+  background:
+    repeating-linear-gradient(90deg, var(--mx-ink) 0 12px, var(--mx-acid) 12px 24px);
+  transform: rotate(.5deg);
+}
+
+/* --- Liste ------------------------------------------------------------ */
+.style-maximalism .list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.style-maximalism .row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border: 2.5px solid var(--mx-ink);
+  margin-bottom: -6px;
+}
+.style-maximalism .row-1 {
+  background:
+    repeating-linear-gradient(-45deg, rgba(43,54,214,.14) 0 6px, transparent 6px 13px),
+    var(--mx-cream);
+  box-shadow: 6px 6px 0 var(--mx-blue);
+  transform: rotate(-1.2deg);
+  z-index: 1;
+}
+.style-maximalism .row-2 {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(22,16,26,.22) 1.5px, transparent 1.7px) 0 0 / 9px 9px,
+    var(--mx-pink);
+  box-shadow: 6px 6px 0 var(--mx-ink);
+  transform: rotate(0.9deg);
+  margin-left: 14px;
+  z-index: 2;
+}
+.style-maximalism .row-3 {
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, var(--mx-blue) 0deg 90deg, #1F2AB0 90deg 180deg) 0 0 / 14px 14px;
+  color: var(--mx-cream);
+  box-shadow: 6px 6px 0 var(--mx-orange);
+  transform: rotate(-1.6deg);
+  margin-right: 10px;
+  z-index: 3;
+}
+.style-maximalism .idx {
+  flex: none;
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--mx-acid);
+  color: var(--mx-ink);
+  border: 2px solid var(--mx-ink);
+  border-radius: 50%;
+}
+.style-maximalism .name {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.style-maximalism .row-1 .name {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.style-maximalism .row-2 .name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-style: italic;
+  font-size: 21px;
+}
+.style-maximalism .row-3 .name {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -.01em;
+}
+.style-maximalism .when {
+  flex: none;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  padding: 2px 6px;
+  border: 1.5px solid currentColor;
+}
+.style-maximalism .status {
+  flex: none;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 5px 10px;
+  border: 2px solid var(--mx-ink);
+  color: var(--mx-ink);
+  white-space: nowrap;
+}
+.style-maximalism .status-on {
+  background: var(--mx-acid);
+  box-shadow: 3px 3px 0 var(--mx-ink);
+  transform: rotate(4deg);
+}
+.style-maximalism .status-off {
+  background: var(--mx-orange);
+  box-shadow: 3px 3px 0 var(--mx-ink);
+  transform: rotate(-5deg);
+}
+
+/* --- Suchfeld --------------------------------------------------------- */
+.style-maximalism .seek {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  margin: 26px 0 20px;
+  border: 2.5px solid var(--mx-ink);
+  background: var(--mx-cream);
+  box-shadow: 6px 6px 0 var(--mx-mint);
+  transform: rotate(.6deg);
+}
+.style-maximalism .seek-tag {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  background: var(--mx-ink);
+  color: var(--mx-acid);
+  font-size: 18px;
+}
+.style-maximalism .seek input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 12px 14px;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 14px;
+  letter-spacing: .04em;
+  color: var(--mx-ink);
+}
+.style-maximalism .seek input::placeholder {
+  color: var(--mx-ink);
+  opacity: .62;
+  text-transform: uppercase;
+}
+
+/* --- Aktionen --------------------------------------------------------- */
+.style-maximalism .actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.style-maximalism .btn {
+  border: 2.5px solid var(--mx-ink);
+  cursor: pointer;
+  padding: 13px 22px;
+  transition: transform 90ms linear, box-shadow 90ms linear;
+}
+.style-maximalism .btn-primary {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 19px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  background: var(--mx-ink);
+  color: var(--mx-acid);
+  box-shadow: 7px 7px 0 var(--mx-pink), 7px 7px 0 2.5px var(--mx-ink);
+  transform: rotate(-1.6deg);
+}
+.style-maximalism .btn-primary:hover {
+  transform: rotate(-1.6deg) translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--mx-pink), 3px 3px 0 2.5px var(--mx-ink);
+}
+.style-maximalism .btn-ghost {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: var(--mx-cream);
+  color: var(--mx-ink);
+  border-style: dashed;
+  transform: rotate(1.8deg);
+}
+.style-maximalism .btn-ghost:hover { background: var(--mx-mint); }
+.style-maximalism .btn:focus-visible {
+  outline: 3px solid var(--mx-blue);
+  outline-offset: 3px;
+}
+.style-maximalism .arrow {
+  margin-left: auto;
+  color: var(--mx-ink);
+  transform: rotate(-8deg);
+}
+.style-maximalism .arrow svg { display: block; width: 62px; height: 30px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-maximalism .counter { animation: none; }
+}
+@media (max-width: 560px) {
+  .style-maximalism .demo { padding: 20px 14px 26px; }
+  .style-maximalism .title { font-size: 38px; text-shadow: 3px 3px 0 var(--mx-pink), 6px 6px 0 var(--mx-blue); }
+  .style-maximalism .counter { width: 64px; height: 64px; }
+  .style-maximalism .counter .num { font-size: 26px; }
+  .style-maximalism .frame { box-shadow: 7px 7px 0 var(--mx-ink), 13px 13px 0 var(--mx-pink); }
+  .style-maximalism .row { flex-wrap: wrap; gap: 8px 10px; }
+  .style-maximalism .row-2 { margin-left: 0; }
+  .style-maximalism .row-3 { margin-right: 0; }
+  .style-maximalism .arrow { display: none; }
+}
+</style>
+<div class="style-maximalism">
+  <div class="demo">
+    <div class="deco" aria-hidden="true">
+      <span class="tape tape-1"></span>
+      <span class="tape tape-2"></span>
+      <span class="tape tape-3"></span>
+      <span class="barcode"></span>
+      <span class="star star-1">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 0l3.2 11.4L31 6.6l-6.6 9.2 9.6 5.4-11.8 1 3.4 11.4L17 25.8 7.4 33.6l3.4-11.4L-1 21.2l9.6-5.4L2 6.6l10.8 4.8L17 0Z" fill="currentColor"/></svg>
+      </span>
+      <span class="star star-2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 0v24M0 12h24M3.5 3.5l17 17M20.5 3.5l-17 17" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>
+      </span>
+    </div>
+
+    <div class="frame">
+      <div class="inner">
+        <div class="head">
+          <h2 class="title">Projekte</h2>
+          <div class="counter">
+            <svg class="burst" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <path d="M50 2l7.6 12.2L71.4 8l1.4 14.4 14.4 1.4-6.2 13.4L93.2 45l-12.2 7.6 6.2 13.4-14.4 1.4-1.4 14.4-13.8-6.2L50 88l-7.6-12.4-13.8 6.2-1.4-14.4-14.4-1.4 6.2-13.4L6.8 45l12.2-7.6-6.2-13.4 14.4-1.4L28.6 8l13.8 6.2L50 2Z" fill="currentColor" stroke="#16101A" stroke-width="3"/>
+            </svg>
+            <span class="num">12</span>
+          </div>
+        </div>
+
+        <div class="rule" aria-hidden="true"></div>
+
+        <ul class="list">
+          <li class="row row-1">
+            <span class="idx" aria-hidden="true">01</span>
+            <span class="name">Nexus</span>
+            <span class="when">vor 2 Std.</span>
+            <span class="status status-on">Aktiv</span>
+          </li>
+          <li class="row row-2">
+            <span class="idx" aria-hidden="true">02</span>
+            <span class="name">Autowrite Studio</span>
+            <span class="when">gestern</span>
+            <span class="status status-on">Aktiv</span>
+          </li>
+          <li class="row row-3">
+            <span class="idx" aria-hidden="true">03</span>
+            <span class="name">Balance Ally</span>
+            <span class="when">vor 4 Tagen</span>
+            <span class="status status-off">Pausiert</span>
+          </li>
+        </ul>
+
+        <div class="seek">
+          <span class="seek-tag" aria-hidden="true">&#9906;</span>
+          <input type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="button">Neues Projekt</button>
+          <button class="btn btn-ghost" type="button">Importieren</button>
+          <span class="arrow" aria-hidden="true">
+            <svg viewBox="0 0 62 30" fill="none"><path d="M2 22c14-18 32-22 56-15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 2l13 5.4-9 9.6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

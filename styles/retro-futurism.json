@@ -1,0 +1,105 @@
+{
+  "slug": "retro-futurism",
+  "name": "Retro-Futurismus / 70er-Sci-Fi",
+  "aka": [
+    "Cassette Futurism",
+    "Used Future",
+    "Lo-Fi Sci-Fi",
+    "Sci-Fi-HUD",
+    "Nostromo-Look"
+  ],
+  "family": "Nostalgie & Subkultur",
+  "era": "1968-1982 (Vorbilder), Wiederaufnahme als Designsprache seit ca. 2012",
+  "origin": "Der Look stammt aus drei Filmen und einer Schriftfamilie. Aldo Novarese zeichnete 1962 für Nebiolo die Eurostile -- die Ausbaustufe der 1952 von Alessandro Butti und ihm entworfenen Microgramma -- mit ihren quadratischen, an den Ecken gerundeten Buchstaben, die exakt der Form eines Fernsehbildschirms nachempfunden waren. Kubricks '2001' (1968), Ridley Scotts 'Alien' (1979, Produktionsdesign u.a. Ron Cobb und Moebius) und 'Blade Runner' (1982, Syd Mead) machten sie zur Standardschrift der Zukunft. Weil echte Computergrafik damals unbezahlbar war, wurden die Bildschirme aus Filmschleifen, Bernstein- und Phosphorgrün-CRTs und beschrifteten Kunststoffplatten gebaut -- die technische Beschränkung erzeugte den Stil. Genau diese Materialität, später 'Cassette Futurism' getauft, ist heute das Zitat: eine Zukunft, die noch Kippschalter, Kassetten und Zeilenraster hat.",
+  "idea": "Die Zukunft als benutztes Industriegerät: Ein Interface ist eine beschriftete Maschine mit Gehäuse, Kanalnummer und Warnstreifen -- keine schwebende Fläche, sondern ein Ding, an dem jemand arbeitet.",
+  "markers": [
+    "Abgeschrägte Ecken statt Radius: clip-path-Fase von 20px, immer diagonal gegenüberliegend (oben links / unten rechts)",
+    "Bernstein #FFB000 und Phosphorgrün #57E06A als einzige Signalfarben auf Gehäusebraun-Schwarz #14120C",
+    "Breite quadratische Grotesk in Versalien mit 0,06-0,16em Tracking (Eurostile/Michroma-Linie), nie für Fließtext",
+    "Technische Beschriftung als Pflichtelement: Kanal-, System- und Zählerlabels in 10-11px Monospace",
+    "Kachelraster 26px, sichtbar als 4,5%-Amber-Linien auf dem Bildschirmgrund",
+    "Corner-Brackets (2px stark, 16px lang) als Rahmenersatz -- der Bildschirm hat keine durchgezogene Kante, nur zwei diagonal gegenüberliegende Klammern",
+    "Warnstreifen 45 Grad, 9px Teilung, Gelb #E8B400 auf Schwarz, als Abschlusskante des Gehäuses",
+    "Scanlines 1px/3px bei 30% Schwarz plus radiale CRT-Vignette ab 52% Radius",
+    "Tasten mit hartem 4px-Sockelschatten ohne Blur (0 4px 0), der beim Drücken auf 0 fällt"
+  ],
+  "params": {
+    "radius": "0-3px an Flächen, 12px nur an Tasten; Ecken werden stattdessen um 20px angefast",
+    "contrast": "hoch",
+    "density": "dicht",
+    "depth": "keine weichen Schatten: Tiefe entsteht über Gehäuse-in-Gehäuse-Staffelung, 1px-Fasenkanten, inset-Schwarz auf dem Bildschirm und harte Sockelschatten an Tasten",
+    "color": "Zwei Phosphorfarben (Bernstein, Grün) als vollständiges Vokabular auf warmem Schwarz -- Bernstein trägt Struktur und Aktion, Grün ausschließlich Betriebszustände; Gelb nur im Warnstreifen",
+    "type": "Breite quadratische Grotesk versal für Titel, Namen und Tasten, Monospace für alles Messbare -- Zeiten, Zähler, Kanäle; keine dritte Familie",
+    "motion": "Mechanisch statt weich: steps(1)-Blinken bei 1,1s (Cursor) und 2,4s (LED), linearer Scanline-Sweep 6,5s; Zustandswechsel 120-180ms linear",
+    "texture": "CRT: Scanlines 30%, Vignette, 4,5% Kachelraster, dazu ein wandernder Helligkeits-Sweep bei 5,5% Deckkraft"
+  },
+  "palette": [
+    "#0E0C08",
+    "#14120C",
+    "#6B5A34",
+    "#FFB000",
+    "#57E06A",
+    "#E8B400"
+  ],
+  "examples": [
+    {
+      "name": "Alien (1979) -- Nostromo-Brücke und MU/TH/UR",
+      "what": "Bernstein-CRTs mit Zeilenraster, Microgramma-Beschriftungen auf jedem Schalterfeld, Warnstreifen an Kanten, Bildschirme in massive Kunststoffgehäuse eingelassen"
+    },
+    {
+      "name": "2001: A Space Odyssey (1968)",
+      "what": "Eurostile Bold Extended als durchgängige Beschriftungsschrift, Kachelraster aus rechteckigen Readouts, in Wandflächen bündig eingelassene Displays"
+    },
+    {
+      "name": "Blade Runner (1982), Syd Mead",
+      "what": "Esper-Maschine und Spinner-Cockpit: grün-bernsteinfarbene Zeilendisplays mit Fadenkreuz-Overlays, Art-deco-Kanten, sichtbare Gebrauchsspuren am Gehäuse"
+    },
+    {
+      "name": "Alien: Isolation (2014, Creative Assembly)",
+      "what": "Vollständig diegetische UI: flackernde CRT-Terminals, klobige Tastaturen, Bernstein-Menüs -- die konsequenteste moderne Umsetzung, bewusst als technische Beschränkung gespielt"
+    },
+    {
+      "name": "Signalis (2022) und Teenage Engineering OP-1",
+      "what": "Phosphorgrüne Low-Res-Readouts mit Monospace-Labels bzw. Hardware mit Kanalnummern, Fasenkanten und Warnfarbe -- der Beleg, dass die Sprache auch außerhalb von Film als Produkt trägt"
+    }
+  ],
+  "strengths": [
+    "Der einzige der drei Nostalgie-Stile mit hohem Kontrast von Haus aus: Bernstein #FFB000 auf #0E0C08 liegt bei rund 11:1",
+    "Sehr informationsdicht -- technische Labels, Zähler und Kanalnummern sind Teil des Stils, nicht Ballast, was Dashboards und Monitoring-Tools entgegenkommt",
+    "Vollständig tokenisierbar: Fasenwinkel, zwei Signalfarben, ein Trackingwert, zwei Schriftfamilien -- lässt sich nach Compose und SwiftUI spiegeln, ohne dass etwas verloren geht",
+    "Corner-Brackets funktionieren als Fokus- und Auswahlmarker, statt nur Dekoration zu sein",
+    "Altert langsamer als Y2K oder Vaporwave, weil er nicht auf einen Konsumtrend, sondern auf eine geschlossene Filmikonografie verweist"
+  ],
+  "risks": [
+    "Kippt schnell ins Kostüm: Sobald die technischen Labels erfunden statt echt sind (Kanalnummern, die nichts nummerieren), wirkt alles wie ein Game-Menü",
+    "Bernstein auf Schwarz ist über Stunden anstrengend -- die Farbe leuchtet stark und ermüdet bei Langtext deutlich früher als Weiß auf Dunkelgrau",
+    "Es gibt keinen glaubwürdigen Light Mode: Phosphor braucht Dunkelheit, eine helle Variante ist eine komplette Neuentwicklung",
+    "Breite Versalschrift frisst horizontalen Platz und bricht bei deutschen Komposita (und auf Mobil) sofort um",
+    "Scanlines und Vignette sind auf niedrig auflösenden oder hell abgestimmten Displays entweder unsichtbar oder ein Moire-Problem"
+  ],
+  "a11y": "Der Stil ist entgegen dem Klischee der barrierefreundlichste der drei: Bernstein auf warmem Schwarz erreicht rund 11:1, Phosphorgrün rund 10:1, alle Fließtexte liegen deutlich über 4,5:1 und die 1px-Scanline-Ebene kostet nur etwa 10% davon. Die realen Probleme liegen woanders -- die breite Versalgrotesk senkt die Lesegeschwindigkeit messbar und ist deshalb hier auf Titel, Namen und Tastenbeschriftung begrenzt, während Zeiten und Zähler in Monospace stehen; Amber und Grün sind für Deuteranopie schwer zu trennen, weshalb der Status zusätzlich über Punktform (rund = aktiv, quadratisch = pausiert) und Rahmenstil (durchgezogen/gestrichelt) kodiert ist. Blinkende LED, Cursor und Scanline-Sweep sind unter prefers-reduced-motion abgeschaltet, und keine Animation liegt zwischen 3 und 50 Hz.",
+  "longevity": "Weil der Stil aus einer abgeschlossenen, kanonisierten Filmikonografie stammt und nicht aus einem Konsumtrend, altert er eher wie ein Genre als wie eine Mode -- 'Alien' sah 1999 nicht datierter aus als 1979. Was datiert, ist die Umsetzungstiefe: übertriebene Scanlines und Flicker lesen als 2015er-Shader-Spielerei, die nüchterne Variante (Fase, Bernstein, Labels) hält.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 4,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Sehr gut umsetzbar: clip-path-Fasen, repeating-linear-gradients und Corner-Brackets sind billig und tokenisierbar -- nur der Sweep-Layer sollte auf schwachen Geräten entfallen.",
+    "mobile": "Die Fase lässt sich in Compose als CutCornerShape exakt nachbauen (ein seltener Fall echter Cross-Platform-Deckung), aber die breite Versalschrift und die dichten Labels müssen auf kleinen Screens deutlich reduziert werden.",
+    "desktop": "Der natürliche Ort -- Tauri-Fenster mit Gehäuse-Metapher, dichte Werkzeug- und Monitoring-Oberflächen, viel horizontaler Platz für die breite Typo."
+  },
+  "verdict": "Von den drei Stilen dieser Familie der einzige ernsthafte Kandidat -- aber nicht als Vollausbau. Was hier wirklich trägt, sind vier tokenisierbare Entscheidungen: die angefaste Ecke statt Radius (in Compose als CutCornerShape identisch reproduzierbar), Corner-Brackets als Fokusmarker, Monospace für alles Messbare und eine einzige warme Signalfarbe. Diese vier laufen über Tailwind, Tauri und Compose ohne Verlust und ergeben eine Signatur, die niemand sonst hat. Das komplette Bernstein-CRT-Gehäuse dagegen ist für viele kleine Alltags-Apps zu laut, zu ermüdend und ohne Light Mode nicht tragfähig -- es passt für ein Dev- oder Monitoring-Werkzeug, nicht für eine Balance- oder Schreib-App. Empfehlung: den Stil ausschlachten, nicht übernehmen.",
+  "combinesWith": [
+    "dev-noir",
+    "terminal-mono",
+    "swiss",
+    "neo-brutalism"
+  ],
+  "tip": "Lass die technischen Beschriftungen etwas Echtes anzeigen. Sobald 'CH-7' tatsächlich eine Kanalnummer, 'REC 0032' ein realer Zähler und '01/02/03' der Listenindex ist, liest der Nutzer die Oberfläche als Instrument -- sind es Fantasiecodes, liest er sie als Deko und der ganze Stil kippt ins Cosplay. Zweiter Punkt: die Fase nie an allen vier Ecken anbringen, sondern nur an zwei diagonal gegenüberliegenden. Vier gefaste Ecken ergeben ein Achteck und wirken dekorativ; zwei ergeben ein gerichtetes Bauteil.",
+  "googleFonts": [
+    "Michroma",
+    "Share Tech Mono"
+  ]
+}

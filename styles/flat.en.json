@@ -1,0 +1,105 @@
+{
+  "slug": "flat",
+  "name": "Flat Design & Flat 2.0",
+  "aka": [
+    "Metro",
+    "Modern UI",
+    "Authentically Digital",
+    "Almost Flat",
+    "Semi-Flat",
+    "iOS 7 Look"
+  ],
+  "family": "Digital Eras",
+  "era": "2010-today (Flat 1.0 2010-2015, Flat 2.0 from c. 2015)",
+  "origin": "The style originated at Microsoft: out of the Windows Media Center interface and the Zune HD (2009) came Metro, the design language shipped in 2010 with Windows Phone 7 - explicitly derived from Swiss typography and from public-transit wayfinding systems, with the maxims 'content before chrome' and 'authentically digital'. The screen was to stop pretending it was paper or glass. In 2012 a trademark conflict forced Microsoft to rename it 'Modern UI'; Windows 8 arrived the same year. The global breakthrough came in 2013 with iOS 7 under Jony Ive, which removed skeuomorphism in a single step - driven technically by Retina, responsive design, and the wish to ship UI as vectors and tokens again rather than bitmaps. From around 2015, minimal shadows and layering returned under the name Flat 2.0, because pure flatness had measurably degraded usability.",
+  "idea": "The screen admits that it is a screen: no simulated depth, only color, typography and white space as the sole carriers of structure and meaning. Flat 2.0 takes back exactly as much depth as usability needs to stay recognizable - one shadow step, not a millimeter more.",
+  "markers": [
+    "Radius 0px in Flat 1.0, 4-8px in Flat 2.0 - nothing in between",
+    "Zero gradients: every surface is exactly one solid color",
+    "Flat 1.0: box-shadow: none everywhere; Flat 2.0: exactly ONE step, 0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.10)",
+    "Separation via 1px hairlines (#E2E2E2) or via 4px tile gaps, never via depth",
+    "Thin grotesque: titles at weight 200-300, 48-56px, tracking -0.035em",
+    "Micro text in all caps with 0.14-0.16em tracking as the only means of emphasis",
+    "Geometric icons, outline style, 1.5px stroke, stroke-linecap: square, no fill",
+    "Color is meaning, not decoration: status is encoded in the full fill of the row",
+    "State change as a pure color jump, 100-150ms linear, no bounce"
+  ],
+  "params": {
+    "radius": "0px (1.0) or 4-6px (2.0)",
+    "contrast": "high",
+    "density": "medium to airy - large type, large color fields, few elements per screen",
+    "depth": "none; separation via color fill, 4px gaps and 1px rules. Flat 2.0 adds exactly one shadow step plus a 1px border as the container marker",
+    "color": "Few, strongly saturated solid accents on white or black; every color has a fixed semantic role",
+    "type": "One grotesque across an extreme weight range - very thin and very large for titles, regular for content, caps for labels",
+    "motion": "matter-of-fact and fast: 100-200ms linear or ease-out, opacity and position, no spring",
+    "texture": "none - explicitly 'authentically digital'"
+  },
+  "palette": [
+    "#1BA1E2",
+    "#00ABA9",
+    "#E51400",
+    "#A4C400",
+    "#007AFF",
+    "#FFFFFF"
+  ],
+  "examples": [
+    {
+      "name": "Windows Phone 7 / Metro (2010)",
+      "what": "Live Tiles as borderless color squares with 4px gaps, huge thin Segoe UI titles deliberately cropped at the screen edge, panorama navigation without any frame"
+    },
+    {
+      "name": "iOS 7 (2013)",
+      "what": "Helvetica Neue Light, hairline dividers instead of cell frames, buttons with no outline as pure blue text (#007AFF), icons in 1.5px outline"
+    },
+    {
+      "name": "Windows 8 Start screen (2012)",
+      "what": "a full-screen tile grid as the only entry point - the most commercially expensive example of how far a style can overturn conventions"
+    },
+    {
+      "name": "Google Material Design (2014)",
+      "what": "the first systematic correction: flat surfaces, but with defined elevation in dp - de facto the starting point of Flat 2.0"
+    },
+    {
+      "name": "Stripe Dashboard, GitHub Primer, Notion (today)",
+      "what": "the mature Flat 2.0 consensus: 6-8px radius, one shadow step, 1px border as the primary container marker, hover as a 4-8% brightness shift"
+    }
+  ],
+  "strengths": [
+    "Fully tokenizable: color, radius, spacing - no assets, no images, no rendering tricks",
+    "Reproducible at close to zero cost in any environment, from Tailwind through Compose to SwiftUI, and cheap to mirror in light/dark",
+    "Very performant: no filters, no blur layers, no shadow stacks - relevant for lists and for WebView targets such as Tauri",
+    "Scales losslessly across any pixel density, because everything is vector and color",
+    "Flat 2.0 is the safest default there is: it is almost impossible to get wrong"
+  ],
+  "risks": [
+    "The famous affordance collapse of Flat 1.0: button and label are no longer visually distinguishable - the 'flat text button' is still considered a UX antipattern",
+    "When color is the only carrier of meaning, the meaning drops out entirely for color-blind users and in grayscale",
+    "Weights below 300 break down at small sizes and on poor displays",
+    "High-brightness solid colors (#1BA1E2, #A4C400, #007AFF) carry white text at only 2.5-4:1 - the authentic Metro values are not compliant",
+    "Flat 2.0 has zero recognizability: it is exactly the default look of every framework and every generated UI - interchangeable by construction"
+  ],
+  "a11y": "The structural problem is not contrast but affordance: without border, shadow or fill there is no visual signal for clickability, which is why interactive elements need at least a second marker (border, fill, icon) and a visible focus ring is non-negotiable. The second trap is color as the only channel - status must always also be present as text or shape, not just as tile color. The demo deliberately uses darkened variants of the historical Metro accents (#0A6CA8 instead of #1BA1E2, #0E7A5F instead of #00ABA9), because the original values carry white text at roughly 2.6:1 and thus fall below every standard.",
+  "longevity": "Flat 1.0 in pure form is dated and reads as 2013 immediately; Flat 2.0 barely ages in substance, because it is the technical consensus - but for exactly that reason it stops being distinctive the moment it ships. A product that is only Flat 2.0 looks, in any given year, like everyone else that year.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 2,
+    "effort": 1,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Its home turf: Tailwind and shadcn/ui hit Flat 2.0 without a line of configuration, and Astro content sites benefit from the performance.",
+    "mobile": "No problem on either system - iOS has been flat since 2013 anyway, and Compose maps Flat 2.0 directly with Surface and a single elevation step.",
+    "desktop": "Ideal for Tauri: no GPU filters, no repaint problems in the WebView, and dense data views stay legible."
+  },
+  "verdict": "As a technical substrate: yes, with essentially no alternative. Flat 2.0 is the only model here that reproduces with identical tokens across Tailwind, Tauri and Compose, works in light and dark without a second material set, and can be kept consistent by a solo developer across ten small apps. As a brand, by contrast: no - it is the factory default of every framework and therefore exactly the generic look a brand of your own has to break away from. The right conclusion is to set Flat 2.0 as the foundation and lay exactly two distinctive layers on top (a fully defined gray scale of your own and a strong accent or a deliberate use of monospace). Flat 1.0 in pure form belongs nowhere any more - except as a deliberate quote on a marketing page.",
+  "combinesWith": [
+    "swiss",
+    "dev-noir",
+    "neo-brutalism",
+    "editorial-print"
+  ],
+  "tip": "Set exactly one shadow step and exactly one radius value for the whole product and stick to it - the difference between clean Flat 2.0 and cheap flat is almost always that someone introduced a second and a third shadow step. And give every interactive element a second marker besides color (fill, 1px border or icon), or you run straight into the affordance collapse of 2013.",
+  "googleFonts": [
+    "Work Sans"
+  ]
+}

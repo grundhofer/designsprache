@@ -1,0 +1,462 @@
+<style>
+.style-skeuomorph,
+.style-skeuomorph *,
+.style-skeuomorph *::before,
+.style-skeuomorph *::after { box-sizing: border-box; }
+
+.style-skeuomorph {
+  --skeuo-leather: #6b4728;
+  --skeuo-leather-dark: #3f2915;
+  --skeuo-stitch: #e6d3a8;
+  --skeuo-linen: #d9d4c6;
+  --skeuo-ink: #2b2016;
+  --skeuo-ink-soft: #5a4c3c;
+  --skeuo-aqua: #2f7fd4;
+  --skeuo-aqua-dark: #1c4f8f;
+  --skeuo-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  width: 100%;
+  padding: 22px;
+  color: var(--skeuo-ink);
+  font-family: "Lato", "Lucida Grande", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  background-color: #8f9299;
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, rgba(255,255,255,.45), rgba(255,255,255,0) 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.30) 0 1px, rgba(0,0,0,.10) 1px 2px, rgba(255,255,255,.10) 2px 3px, rgba(0,0,0,.04) 3px 4px),
+    linear-gradient(180deg, #b9bcc3 0%, #93969d 46%, #7e8189 54%, #a4a7ae 100%);
+}
+
+.style-skeuomorph .demo {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------- Aqua window ---------- */
+.style-skeuomorph .window {
+  border: 1px solid #4a4d54;
+  border-radius: 8px 8px 6px 6px;
+  overflow: hidden;
+  background: #e8e5dc;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.55) inset,
+    0 22px 46px rgba(0,0,0,.45),
+    0 3px 10px rgba(0,0,0,.30);
+}
+
+.style-skeuomorph .titlebar {
+  position: relative;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-bottom: 1px solid #5c5f66;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 1px, rgba(0,0,0,.07) 1px 2px),
+    linear-gradient(180deg, #f0f1f3 0%, #d7d9dd 48%, #c6c9cf 52%, #dfe1e5 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 -1px 0 rgba(0,0,0,.10) inset;
+}
+
+.style-skeuomorph .light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,.35);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7),
+    inset 0 4px 4px -2px rgba(255,255,255,.9),
+    inset 0 -3px 4px -2px rgba(0,0,0,.45);
+}
+.style-skeuomorph .light-red    { background: radial-gradient(circle at 35% 25%, #ff9b93, #e8483b 65%, #a52a20); }
+.style-skeuomorph .light-yellow { background: radial-gradient(circle at 35% 25%, #ffe08a, #f0b428 65%, #a97a10); }
+.style-skeuomorph .light-green  { background: radial-gradient(circle at 35% 25%, #b6f08a, #52b02c 65%, #2c7314); }
+
+.style-skeuomorph .grip {
+  flex: 1;
+  height: 9px;
+  margin: 0 6px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(180deg,
+    rgba(255,255,255,.65) 0 1px,
+    rgba(0,0,0,.14) 1px 2px,
+    rgba(255,255,255,0) 2px 3px);
+  opacity: .7;
+}
+
+/* ---------- Leather header ---------- */
+.style-skeuomorph .header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px 18px;
+  background-color: var(--skeuo-leather);
+  background-image:
+    var(--skeuo-noise),
+    radial-gradient(140% 120% at 50% 0%, rgba(255,225,180,.28), rgba(0,0,0,0) 58%),
+    linear-gradient(180deg, #8a6038 0%, #6b4728 45%, #56361d 100%);
+  background-blend-mode: soft-light, normal, normal;
+  border-bottom: 1px solid #2a1a0c;
+  box-shadow:
+    0 1px 0 rgba(255,214,160,.28) inset,
+    0 -14px 24px -14px rgba(0,0,0,.75) inset;
+}
+
+.style-skeuomorph .header::after {
+  content: "";
+  position: absolute;
+  left: 9px; right: 9px; top: 7px; bottom: 8px;
+  border: 2px dashed rgba(230,211,168,.55);
+  border-radius: 5px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.6));
+}
+
+.style-skeuomorph .title {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "Bitter", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: .01em;
+  color: #f7ead2;
+  text-shadow:
+    0 -1px 0 rgba(0,0,0,.75),
+    0 1px 0 rgba(255,230,190,.30),
+    0 2px 6px rgba(0,0,0,.55);
+}
+
+.style-skeuomorph .badge {
+  position: relative;
+  z-index: 1;
+  min-width: 42px;
+  padding: 4px 12px 5px;
+  border-radius: 999px;
+  border: 1px solid #7a1109;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(180deg, #ff8074 0%, #e63a26 48%, #c22715 52%, #f06a55 100%);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.45);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.55) inset,
+    0 -2px 4px rgba(0,0,0,.28) inset,
+    0 2px 3px rgba(0,0,0,.45),
+    0 0 0 2px rgba(255,255,255,.22);
+}
+
+/* ---------- Linen list ---------- */
+.style-skeuomorph .list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--skeuo-linen);
+  background-image:
+    var(--skeuo-noise),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 1px, rgba(0,0,0,.045) 1px 3px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.30) 0 1px, rgba(0,0,0,.045) 1px 3px),
+    linear-gradient(180deg, #e5e1d5 0%, #cfc9ba 100%);
+  background-blend-mode: soft-light, normal, normal, normal;
+  box-shadow: 0 6px 12px -8px rgba(0,0,0,.55) inset;
+}
+
+.style-skeuomorph .row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-top: 1px solid rgba(255,255,255,.55);
+  border-bottom: 1px solid rgba(90,70,45,.28);
+}
+.style-skeuomorph .row:first-child { border-top: none; }
+.style-skeuomorph .row:last-child  { border-bottom: none; }
+
+.style-skeuomorph .tile {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid rgba(0,0,0,.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.45);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.75) inset,
+    0 -6px 10px -4px rgba(0,0,0,.45) inset,
+    0 2px 3px rgba(0,0,0,.35);
+  position: relative;
+  overflow: hidden;
+}
+.style-skeuomorph .tile::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 48%;
+  border-radius: 8px 8px 60% 60% / 8px 8px 22% 22%;
+  background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.10));
+  pointer-events: none;
+}
+.style-skeuomorph .tile-1 { background: linear-gradient(180deg, #6fb5f2 0%, #2f7fd4 52%, #1c4f8f 100%); }
+.style-skeuomorph .tile-2 { background: linear-gradient(180deg, #7ed46f 0%, #40a12f 52%, #24631b 100%); }
+.style-skeuomorph .tile-3 { background: linear-gradient(180deg, #f2b96f 0%, #d4842f 52%, #8f5119 100%); }
+
+.style-skeuomorph .meta { flex: 1; min-width: 0; }
+
+.style-skeuomorph .name {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  color: #2b2016;
+  text-shadow: 0 1px 0 rgba(255,255,255,.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-skeuomorph .time {
+  display: block;
+  font-size: 12px;
+  color: var(--skeuo-ink-soft);
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+
+.style-skeuomorph .status {
+  flex: none;
+  padding: 3px 11px 4px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.45);
+  border: 1px solid rgba(0,0,0,.42);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.55) inset,
+    0 -3px 5px -2px rgba(0,0,0,.35) inset,
+    0 1px 2px rgba(0,0,0,.30);
+}
+.style-skeuomorph .status-on  { background: linear-gradient(180deg, #86d96f 0%, #46a032 50%, #2c6d1e 100%); }
+.style-skeuomorph .status-off { background: linear-gradient(180deg, #b6aa96 0%, #857a67 50%, #5b5242 100%); }
+
+.style-skeuomorph .chevron {
+  flex: none;
+  color: #9a8f7c;
+  font-size: 18px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* ---------- Bottom bar: search + actions ---------- */
+.style-skeuomorph .bar {
+  padding: 14px 16px 16px;
+  border-top: 1px solid #6f7178;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.75) 0 1px, rgba(255,255,255,0) 1px),
+    linear-gradient(180deg, #eceef1 0%, #d5d8dd 50%, #c8cbd1 51%, #e2e4e8 100%);
+  box-shadow: 0 -6px 12px -10px rgba(0,0,0,.5) inset;
+}
+
+.style-skeuomorph .search {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.style-skeuomorph .search .glass {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin-top: -6.5px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.95));
+}
+.style-skeuomorph .search .glass circle,
+.style-skeuomorph .search .glass line {
+  fill: none;
+  stroke: #7d828a;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.style-skeuomorph input {
+  width: 100%;
+  height: 30px;
+  padding: 0 12px 0 30px;
+  border-radius: 15px;
+  border: 1px solid #9aa0a8;
+  border-top-color: #7c828a;
+  font: inherit;
+  font-size: 13px;
+  color: #2b2016;
+  background: linear-gradient(180deg, #e2e4e8 0%, #f8f9fa 42%, #ffffff 100%);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.28) inset,
+    0 1px 0 rgba(255,255,255,.85);
+  outline: none;
+}
+.style-skeuomorph input::placeholder { color: #8b8f96; }
+.style-skeuomorph input:focus {
+  border-color: #4a86c8;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25) inset,
+    0 0 0 3px rgba(74,134,200,.45);
+}
+
+.style-skeuomorph .actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.style-skeuomorph button {
+  position: relative;
+  min-height: 30px;
+  padding: 5px 18px 6px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow .08s ease, transform .08s ease;
+}
+.style-skeuomorph button::before {
+  content: "";
+  position: absolute;
+  left: 1px; right: 1px; top: 1px;
+  height: 46%;
+  border-radius: 5px 5px 50% 50% / 5px 5px 16% 16%;
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.10));
+  pointer-events: none;
+}
+
+.style-skeuomorph .btn-primary {
+  color: #fff;
+  border: 1px solid var(--skeuo-aqua-dark);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.45);
+  background: linear-gradient(180deg, #8cc3f4 0%, #3f8fdd 48%, #2a72c4 52%, #7fbaf0 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.5) inset,
+    0 -6px 10px -6px rgba(0,0,0,.5) inset,
+    0 2px 3px rgba(0,0,0,.32),
+    0 0 10px rgba(47,127,212,.45);
+  animation: skeuomorph-pulse 2.6s ease-in-out infinite;
+}
+.style-skeuomorph .btn-primary:active {
+  transform: translateY(1px);
+  animation: none;
+  background: linear-gradient(180deg, #2a6cb8 0%, #2f7ccb 48%, #3f8fdd 52%, #6aa9e6 100%);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,.45) inset,
+    0 1px 0 rgba(255,255,255,.35);
+}
+
+.style-skeuomorph .btn-secondary {
+  color: #33373d;
+  border: 1px solid #8f949c;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  background: linear-gradient(180deg, #ffffff 0%, #eceef1 48%, #dcdfe4 52%, #f6f7f9 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 -5px 8px -6px rgba(0,0,0,.35) inset,
+    0 2px 3px rgba(0,0,0,.25);
+}
+.style-skeuomorph .btn-secondary:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #cfd3d9 0%, #e0e3e7 50%, #f1f2f5 100%);
+  box-shadow: 0 3px 5px rgba(0,0,0,.32) inset;
+}
+
+/* Der Bevel selbst zeigt keinen Fokus - Ring deshalb explizit */
+.style-skeuomorph button:focus-visible,
+.style-skeuomorph input:focus-visible {
+  outline: 3px solid var(--skeuo-aqua-dark);
+  outline-offset: 2px;
+}
+
+@keyframes skeuomorph-pulse {
+  0%, 100% { box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 -6px 10px -6px rgba(0,0,0,.5) inset, 0 2px 3px rgba(0,0,0,.32), 0 0 8px rgba(47,127,212,.35); }
+  50%      { box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 -6px 10px -6px rgba(0,0,0,.5) inset, 0 2px 3px rgba(0,0,0,.32), 0 0 16px rgba(47,127,212,.75); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-skeuomorph .btn-primary { animation: none; }
+}
+</style>
+<div class="style-skeuomorph">
+  <div class="demo">
+    <div class="window">
+
+      <div class="titlebar">
+        <span class="light light-red"></span>
+        <span class="light light-yellow"></span>
+        <span class="light light-green"></span>
+        <span class="grip"></span>
+      </div>
+
+      <div class="header">
+        <h2 class="title">Projekte</h2>
+        <span class="badge">12</span>
+      </div>
+
+      <ul class="list">
+        <li class="row">
+          <span class="tile tile-1">◆</span>
+          <span class="meta">
+            <span class="name">Nexus</span>
+            <span class="time">vor 2 Std.</span>
+          </span>
+          <span class="status status-on">Aktiv</span>
+          <span class="chevron">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span class="tile tile-2">✎</span>
+          <span class="meta">
+            <span class="name">Autowrite Studio</span>
+            <span class="time">gestern</span>
+          </span>
+          <span class="status status-on">Aktiv</span>
+          <span class="chevron">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span class="tile tile-3">◑</span>
+          <span class="meta">
+            <span class="name">Balance Ally</span>
+            <span class="time">vor 4 Tagen</span>
+          </span>
+          <span class="status status-off">Pausiert</span>
+          <span class="chevron">&rsaquo;</span>
+        </li>
+      </ul>
+
+      <div class="bar">
+        <div class="search">
+          <svg class="glass" viewBox="0 0 13 13" aria-hidden="true">
+            <circle cx="5.4" cy="5.4" r="4"></circle>
+            <line x1="8.4" y1="8.4" x2="12" y2="12"></line>
+          </svg>
+          <input type="text" readonly placeholder="Suchen...">
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-primary">Neues Projekt</button>
+          <button type="button" class="btn-secondary">Importieren</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

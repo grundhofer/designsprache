@@ -1,0 +1,103 @@
+{
+  "slug": "memphis",
+  "name": "Memphis / Postmodern",
+  "aka": [
+    "Memphis Milano",
+    "Memphis Group",
+    "Postmodern Design",
+    "New Design (1980s)"
+  ],
+  "family": "Postmodernism & Revolt",
+  "era": "1981-1988, revival from c. 2016 to today",
+  "origin": "The Memphis Group formed in Milan in December 1980 around Ettore Sottsass and showed its first collection at the Salone del Mobile in September 1981. It was an open declaration of war on the functionalist Bauhaus legacy and on Sottsass' own past at Olivetti: form was no longer to follow function but to carry language, wit and disposability. What made the style technically possible were cheap plastic laminates (Abet Laminati) that could be printed with any pattern at all - Sottsass' 'Bacterio' pattern (1978) and the terrazzo imitations turned cheap material into an expensive sign. After the group dissolved in 1988 the visual language migrated into the digital world by way of MTV graphics, Saved-by-the-Bell patterns and later the illustration systems of Mailchimp and Slack.",
+  "idea": "Colors and shapes are combined for tension rather than harmony; decoration is allowed to mean nothing and has to justify nothing. The object speaks instead of serving.",
+  "markers": [
+    "Terrazzo speckles and 'Bacterio' squiggles as surface patterns, dot size 3-9px",
+    "Black outlines 2-4px around practically every element, never a blurred shadow",
+    "Hard offset shadow 5-12px with zero blur, often in a contrast color rather than black",
+    "Radii deliberately inconsistent: 0px, 50% and hybrids such as '50% 4px 50% 4px' inside the same layout",
+    "Rotations between -3deg and +7deg on cards, buttons and headings",
+    "Pastels (#B9F2E4, #C9B6FF) placed straight against loud colors (#FF3B7F, #FFD635) with no mediating middle tone",
+    "Meaningless extra shapes: circle, triangle, zigzag band, striped panel, dot grid",
+    "Display type in caps, very heavy, with an offset colored text shadow (3-5px, 0 blur)",
+    "Zigzag trim bar built from 45deg gradients, tile size 16px"
+  ],
+  "params": {
+    "radius": "deliberately mixed: 0px, 999px and asymmetric combinations side by side",
+    "contrast": "high",
+    "density": "medium",
+    "depth": "no real depth; layers come from hard offset shadows (0 blur) and rotation, not from light",
+    "color": "Four to six equally weighted solid colors plus two pastels, deliberately without a harmonic bridge - black is the only mediator",
+    "type": "Heavy geometric display grotesque for titles, friendly geometric sans for text; metadata in caps with wide letterspacing",
+    "motion": "Sparing but springy: 120ms cubic-bezier(.34,1.56,.64,1) on press, a slow 5s wobble loop on decorative shapes",
+    "texture": "Terrazzo dot field at roughly 55% opacity, stripe and check grids as surfaces"
+  },
+  "palette": [
+    "#FF3B7F",
+    "#16D2C6",
+    "#FFD635",
+    "#2B33E0",
+    "#C9B6FF",
+    "#14110F"
+  ],
+  "examples": [
+    {
+      "name": "Ettore Sottsass, 'Carlton' bookcase (1981)",
+      "what": "Brightly laminated diagonal struts that make a bookcase deliberately unusable - fields of red, yellow, blue, green and black with no harmonic bridge"
+    },
+    {
+      "name": "Abet Laminati 'Bacterio' (Sottsass, 1978)",
+      "what": "A black scribble pattern on white, printed edge to edge onto laminate - the ancestor of today's Memphis squiggle"
+    },
+    {
+      "name": "Mailchimp Rebrand (2018)",
+      "what": "Cavendish yellow with hand-drawn, meaningless shapes, skewed illustrations and black outlines in onboarding and empty states"
+    },
+    {
+      "name": "Slack Rebrand (2019)",
+      "what": "Diluted Memphis borrowings: colorful shape fragments, aubergine plus loud accents, decorative squiggles in marketing illustration"
+    },
+    {
+      "name": "Saved by the Bell / MTV graphics (1989-1993)",
+      "what": "Zigzags, confetti speckles and pastel-neon collisions as television visual language - the channel through which Memphis reached pop culture"
+    }
+  ],
+  "strengths": [
+    "Extremely high likability and approachability - it lowers the felt barrier in onboarding, empty states and error dialogs",
+    "Recognizable in 200ms without photos or rendered assets: everything can be built from CSS gradients, borders and rotations",
+    "Plenty of room for illustration and mascots without needing an illustrator on hand",
+    "Clearly distinct from every generic framework default - the style is the opposite of a Bootstrap look"
+  ],
+  "risks": [
+    "It dates twice over: it reads either as 1985 or as 'startup illustration 2019' - both are a timestamp, not timelessness",
+    "Patterned surfaces under text make contrast locally unpredictable; every terrazzo area beneath a line of type is a potential failure",
+    "Turns cheap-looking fast when rotations are set at random rather than systematically, or when more than six colors are in play",
+    "Tiring over long working sessions; practically unusable for dense data screens and tables",
+    "Hard to tokenize: 'deliberately inconsistent radii' contradict every design token system and have to be maintained by hand"
+  ],
+  "a11y": "The core problem is patterned backgrounds: terrazzo speckles and stripes under text destroy any predictable contrast, which is why body text here always sits on pure white. Rotated elements shift the visual order away from the DOM order - beyond two degrees that becomes noticeably inconsistent for screen reader users and keyboard navigation. Status color must never be the only channel: 'Paused' needs the hatch pattern and the label as well, because pastel on white falls below 3:1.",
+  "longevity": "The style ages fast and visibly - Memphis illustrations from 2019 already look like time capsules in 2026. As a complete UI language it is a statement with an expiry date; as an illustration layer over a neutral base structure it holds up considerably longer.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Very easy to build - terrazzo, zigzag and offset shadows are pure CSS gradients and borders, not a single image needed.",
+    "mobile": "Doable but expensive: rotations and outlines eat space, and in Compose the patterns have to be rebuilt by hand through drawBehind.",
+    "desktop": "Weak - desktop tools live on information density and long sessions, exactly the two things Memphis cannot do."
+  },
+  "verdict": "As a base for your own brand: no. The style has the highest recognizability in the entire catalog, but it buys that with precisely the properties a solo developer with many small apps cannot pay for - it is not tokenizable (inconsistent radii are the principle, not the bug), it is expensive to rebuild in Compose and SwiftUI, and it ages visibly within a few years. On top of that, Memphis signals 'playful', which fits a tool like Balance Ally but works against expectation for a developer tool like Nexus. It makes sense as a bounded layer - empty states, onboarding, 404 pages, marketing illustration - over a quiet base system. That is exactly the route Mailchimp and Slack took, and neither of them ever touched the chrome.",
+  "combinesWith": [
+    "neo-brutalism",
+    "bauhaus",
+    "maximalism",
+    "swiss"
+  ],
+  "tip": "Set the rotations systematically instead of at random: define exactly three angles (say -1.5deg, +0.7deg, +7deg) and assign them by role, not by feel. Random tilts read as a bug, a recurring set of angles reads as intent - that is the whole difference between Sottsass and a kid's birthday party.",
+  "googleFonts": [
+    "Archivo Black",
+    "Poppins"
+  ]
+}

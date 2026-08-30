@@ -1,0 +1,68 @@
+{
+  "slug": "organic-blob",
+  "name": "Organic / Blob / Soft Nature",
+  "aka": ["Blob Design", "Organic Shapes", "Soft Nature", "Wellness-Look", "Biomorphes UI"],
+  "family": "Ausdruck & Natur",
+  "era": "2017-heute (Peak 2019-2021), Vorläufer ab 1930er",
+  "origin": "Die Formensprache stammt aus dem Biomorphismus der Moderne - Jean Arps amöbenhafte Reliefs, Isamu Noguchis Tische, Alvar Aaltos Savoy-Vase - und wurde 1995 von Greg Lynn als 'Blob Architecture' (aus 'binary large object') in die digitale Entwurfswelt übertragen. Ins Web kam der Blob ab 2017/2018, technisch ermöglicht durch die Acht-Wert-Schreibweise von border-radius (Ellipsen-Syntax mit Slash) und billige SVG-Pfade, mit denen sich unregelmäßige Formen ohne Bilddatei erzeugen und animieren lassen. Getrieben wurde die Welle von Illustrations-Systemen wie Humaaans/undraw und von Wellness- und Achtsamkeits-Apps, die dem harten Flat-Raster der 2010er eine weiche, körperliche Gegenwelt entgegensetzen wollten. Das gelöste Problem war Emotion: rechtwinklige Flat-UIs wirkten klinisch, der Blob machte digitale Produkte anfassbar und beruhigend.",
+  "idea": "Nichts im Layout ist rechtwinklig oder symmetrisch: jede Fläche bekommt einen leicht anderen, unregelmäßigen Radius, damit die Oberfläche gewachsen statt konstruiert wirkt. Farbe und Form simulieren Natur - Erde, Blatt, Stein - um digitale Strenge in Ruhe zu übersetzen.",
+  "markers": [
+    "border-radius in Acht-Wert-Syntax, z.B. 62% 38% 46% 54% / 55% 62% 38% 45% - nie ein einheitlicher px-Wert",
+    "Jedes Element hat einen ANDEREN Radius; Wiederholung identischer Rundungen bricht den Stil",
+    "1-3 große unscharfe Hintergrund-Blobs, 200-320px, Deckkraft 40-60%",
+    "Morph-Animation über border-radius, 20-35s Dauer, ease-in-out, infinite",
+    "Erd- und Botanikpalette: Salbei, Moos, Terrakotta, Apricot auf Cremeweiß (#FAF6EF statt #FFFFFF)",
+    "Wave-Divider bzw. handgezeichnete SVG-Linien mit stroke-linecap: round, 2-2.6px",
+    "Asymmetrische Listenversätze (margin-left/right 12-26px pro Zeile statt bündiger Spalte)",
+    "Schatten sehr weich und farbig getönt, z.B. 0 14px 26px -16px rgba(79,115,85,.9) - nie neutrales Schwarz",
+    "Serif mit weichen Terminalen (Fraunces) für Überschriften, gerundete Sans (Nunito) für UI"
+  ],
+  "params": {
+    "radius": "unregelmäßig, prozentual: 34-66% je Ecke, pro Element neu gewürfelt",
+    "contrast": "mittel",
+    "density": "luftig",
+    "depth": "sehr weiche, farbig getönte Schatten plus überlappende Blob-Ebenen; keine harten Kanten",
+    "color": "Gedämpfte Erd- und Pflanzentöne auf Cremeweiß, Akzent nur über Salbeigrün und Terrakotta - keine gesättigten Digitalfarben.",
+    "type": "Weiche High-Contrast-Serif für Titel gegen gerundete humanistische Sans für alles Funktionale.",
+    "motion": "Langsames Atmen und Morphen, 9-35s ease-in-out infinite; Interaktion federnd mit cubic-bezier(.34,1.3,.64,1) über 380-420ms",
+    "texture": "keine Bildtextur; Oberfläche entsteht aus weichen Gradients und Blob-Überlagerung"
+  },
+  "palette": ["#FAF6EF", "#2C3A31", "#A8C4A0", "#4F7355", "#E8A87C", "#C9705B"],
+  "examples": [
+    {"name": "Headspace (App und Marke)", "what": "Orange-dominierte Blob-Illustrationen mit Gesichtern, fließende Formen als Szenenrahmen und Flächenteiler - das bekannteste Beispiel dafür, dass der Blob hier Markenkern ist und nicht Dekoration."},
+    {"name": "Calm", "what": "Verlaufsflächen aus Nachtblau und Rose, weiche Rundungen an allen Karten, Naturfotografie als Hintergrund - der Blob ist hier auf Radius und Verlauf reduziert statt als Illustrationsform ausgestellt."},
+    {"name": "Mailchimp (Rebrand ab 2018, Collins)", "what": "Handgezeichnete, absichtlich krumme Formen und Cavendish-Yellow als Fläche; zeigt die 'gezeichnete' Variante der organischen Sprache ohne Wellness-Pastell."},
+    {"name": "Isamu Noguchi, Coffee Table (1947)", "what": "Die dreieckig-amöbenhafte Glasplatte auf zwei ineinandergreifenden Holzteilen - das historische Referenzobjekt für 'organisch heißt asymmetrisch, nicht rund'."},
+    {"name": "unDraw / Humaaans Illustrationssysteme (ab 2019)", "what": "Figuren ohne Gesichter vor einfarbigen Blob-Flächen; der Grund, warum SaaS-Landingpages 2019-2021 alle gleich aussahen."}
+  ],
+  "strengths": [
+    "Erzeugt sofort Wärme und Ruhe - richtig für Gesundheit, Achtsamkeit, Nachhaltigkeit, Journaling",
+    "Vollständig ohne Bilddateien umsetzbar: border-radius, Gradients und Inline-SVG reichen",
+    "Die Unregelmäßigkeit verzeiht kleine Layout-Ungenauigkeiten, statt sie auszustellen",
+    "Setzt sich in einem Feld aus rechtwinkligen Dashboards visuell klar ab"
+  ],
+  "risks": [
+    "Der klarste Template-Marker der 2020er: Blob-Divider und Pastellverlauf lesen sich sofort als 'Landingpage von 2020'",
+    "Kippt schnell ins Infantile - ab drei Blobs pro Screen wirkt es nach Kinder-App, nicht nach Werkzeug",
+    "Unregelmäßige Radien sind in Design-Tokens kaum abbildbar: jeder Wert ist ein Einzelfall, das Komponentensystem franst aus",
+    "Auf Android und iOS gibt es kein Äquivalent zur Acht-Wert-Syntax - dort braucht es handgebaute Shapes oder Vektor-Assets",
+    "Bei Datendichte bricht der Stil zusammen: unregelmäßige Kanten neben ausgerichteten Tabellenspalten wirken schlicht falsch"
+  ],
+  "a11y": "Das Hauptproblem ist Kontrast: die typische Pastellpalette landet ohne Gegensteuern bei 2,5-3,5:1, deshalb muss der Text-Ink deutlich dunkler gezogen werden als die Palette suggeriert (hier #2C3A31 auf #FAF6EF, rund 12:1). Zweites Problem ist der Fokus-Ring, der an unregelmäßigen Radien optisch zerfällt - besser ein sichtbarer outline-offset von 3px als ein anliegender Ring. Die Morph-Animationen laufen dauerhaft und müssen unter prefers-reduced-motion vollständig abgeschaltet werden, was hier geschieht.",
+  "longevity": "Klar datierend: der Blob hat 2019-2021 seinen Peak gehabt und ist heute vor allem als Zeitmarke lesbar. Die abgemilderte Variante - Erdpalette, weiche Serif, ein einziger organischer Akzent - altert dagegen gut, weil sie auf Farbe und Schrift setzt statt auf die Form.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Natives Terrain - border-radius mit Slash-Syntax und CSS-Animation machen den Stil in Tailwind mit wenigen arbitrary values erreichbar.",
+    "mobile": "In Compose über eigene Shape-Implementierungen und in SwiftUI über Path/AnimatableData machbar, aber jede Form ist Handarbeit statt Token.",
+    "desktop": "In Tauri technisch identisch zum Web, wirkt aber in dichten Werkzeugfenstern schnell unpassend weich."
+  },
+  "verdict": "Als Basis für eine plattformübergreifende Eigenmarke ist das die falsche Wahl. Der Stil trägt keine Informationsdichte, ist in Compose und SwiftUI nur mit erheblichem Zusatzaufwand reproduzierbar - genau das, was ein Solo-Entwickler mit vielen kleinen Apps nicht leisten kann - und er ist zeitlich klar auf 2019-2021 verortet. Sinnvoll ist er als thematischer Sub-Brand für genau eine App: ein Journaling-, Achtsamkeits- oder Habit-Tool wie 'Balance Ally' darf so aussehen, das Projektwerkzeug daneben nicht. Wenn davon etwas in die Dachmarke soll, dann die Farbstrategie (Cremeweiß statt Reinweiß, Erdtöne statt Digitalblau) und die weiche Serif - nicht die Blob-Form.",
+  "combinesWith": ["claymorphism", "warm-editorial", "aurora-mesh", "flat"],
+  "tip": "Ein einziger Blob pro Screen, alles andere bleibt ausgerichtet. Der Stil überzeugt genau dann, wenn die organische Form die Ausnahme ist, die ein strenges Raster kommentiert - nicht wenn sie das Raster ersetzt. Und den Text-Ink zwei Stufen dunkler wählen, als die Pastellpalette 'will': fast jede billige Blob-Seite scheitert am Kontrast, nicht an der Form.",
+  "googleFonts": ["Fraunces", "Nunito"]
+}

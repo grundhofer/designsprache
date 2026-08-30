@@ -1,0 +1,104 @@
+{
+  "slug": "data-dense",
+  "name": "Data-Dense / Terminal-Cockpit",
+  "aka": [
+    "Bloomberg-Ästhetik",
+    "Trading-Terminal",
+    "Observability-Dashboard",
+    "Information-Dense UI",
+    "Cockpit-UI"
+  ],
+  "family": "Produkt-Ästhetik heute",
+  "era": "1982-heute",
+  "origin": "Der Urtyp ist das Bloomberg-Terminal: Michael Bloomberg gründete 1981 Innovative Market Systems, das erste Gerät ging im Dezember 1982 an Merrill Lynch. Die Optik war zunächst reine Notwendigkeit - Amber und Grün, weil es Phosphor-CRTs waren, Monospace, weil proportionales Rendering zu teuer war, extreme Dichte, weil ein Händler alle Werte gleichzeitig sehen muss und Scrollen Zeit kostet. Aus dem Zwang wurde ein Statussymbol und später eine bewusst gewählte Sprache: Grafana (2014), Datadog, Sentry und TradingView übersetzen dasselbe Prinzip auf Observability und Charting. Der Stil löst ein reales Problem - Sakkaden statt Klicks: Wer nicht navigieren muss, um zu vergleichen, entscheidet schneller.",
+  "idea": "Bildschirmfläche ist die knappste Ressource, also arbeitet jede Pixelzeile: Werte stehen nebeneinander statt hintereinander, und Farbe bedeutet ausschließlich Richtung oder Zustand.",
+  "markers": [
+    "Basisschriftgrad 10-12px, Labels bei 9px in Versalien mit 0.1em Laufweite",
+    "Zeilenhöhe im Datengitter 22px, Kopfzeile 18px, Statusleiste 18px",
+    "font-variant-numeric: tabular-nums auf jeder Zahl; Zahlenspalten rechtsbündig",
+    "Trennung über 1px-Hairlines (#1B222B) zwischen JEDER Zelle, nicht nur zwischen Zeilen",
+    "Radius 0-1px; Buttons 18px hoch",
+    "Farbe strikt funktional: grün #2BD97C aufwärts, rot #FF5364 abwärts, amber #FFB020 Warnung, cyan #4FA8FF Aktion - sonst Graustufen",
+    "Kein Schatten, kein Gradient außer als Rasterlinie im Diagramm",
+    "Mehrere Panes gleichzeitig sichtbar: Ticker, KPI-Zeile, Gitter, Chart, Statusleiste - kein Element bekommt eine eigene Seite",
+    "Sparklines inline in der Tabellenzeile, 56x14px, 1px Strichstärke"
+  ],
+  "params": {
+    "radius": "0-1px",
+    "contrast": "hoch",
+    "density": "sehr dicht",
+    "depth": "keine z-Tiefe; Ebenen entstehen über Hintergrundtöne mit 2-4% Unterschied und über Hairline-Raster",
+    "color": "Graustufen tragen die Struktur, gesättigte Farbe ausschließlich Semantik - rot/grün für Richtung, amber für Warnung, ein Blau als einzige Aktionsfarbe",
+    "type": "Kondensierte Grotesk für Labels, Monospace mit Tabellenziffern für alle Zahlen - die Trennung der beiden Rollen ist der halbe Stil",
+    "motion": "Fast keine; nur Zustandswechsel bei 90ms linear und ein 2.4s-Pulsieren am Verbindungsindikator - alles andere wäre in einer Live-Ansicht störend",
+    "texture": "keine; die einzige Flächenstruktur sind Zebra-Zeilen bei 1.4% Weiß und die Rasterlinien im Balkendiagramm"
+  },
+  "palette": [
+    "#0D1116",
+    "#1B222B",
+    "#C9D2DC",
+    "#2BD97C",
+    "#FF5364",
+    "#FFB020"
+  ],
+  "examples": [
+    {
+      "name": "Bloomberg Terminal (seit 1982)",
+      "what": "Vier bis acht gleichzeitig sichtbare Panels auf schwarzem Grund, amberfarbene Basisschrift, Funktionscodes statt Navigation, Kurse in tabularen Ziffern mit rot/grüner Richtungsfärbung"
+    },
+    {
+      "name": "Grafana",
+      "what": "Panel-Raster mit Zeitachse; Legenden als dichte Tabellen unter dem Graphen, Schwellwertfarben (grün/gelb/rot) direkt auf den Werten, alles auf dunkelblauem Grund mit Hairline-Rastern"
+    },
+    {
+      "name": "Datadog",
+      "what": "Hostmap und Log-Explorer: hunderte Zeilen pro Viewport, Facetten-Rail links, farbige Statusdots und Latenz-Heatmaps in derselben Zeilenhöhe wie der Text"
+    },
+    {
+      "name": "TradingView",
+      "what": "Chart plus Watchlist plus Orderbuch nebeneinander; Kursspalten rechtsbündig mit Tabellenziffern, Deltas grün/rot, Werkzeugleisten in 18-22px Höhe"
+    },
+    {
+      "name": "Sentry (Issue-Stream)",
+      "what": "Fehlerliste mit Sparkline pro Zeile, Ereigniszahl und betroffenen Nutzern in eigenen schmalen Spalten - genau das Muster aus Name, Zeit, Status, Trend, Delta"
+    }
+  ],
+  "strengths": [
+    "Höchste Informationsausbeute pro Viewport - Vergleiche geschehen im Blickwechsel statt im Klickpfad",
+    "Wirkt sofort professionell und kompetent; vermittelt, dass hinter der Oberfläche echte Daten stehen",
+    "Farbsemantik ist selbsterklärend und über alle Plattformen identisch übertragbar",
+    "Tabellenziffern und feste Zeilenhöhen machen das Layout auch bei wechselnden Werten absolut ruhig",
+    "Sehr günstig in der Wartung: kaum Schatten, keine Radien, keine Animationen, die kaputtgehen können"
+  ],
+  "risks": [
+    "Ohne echte Datenmenge wirkt der Stil wie ein Kostüm - drei Zeilen in einem Cockpit sind lächerlich",
+    "12px Basisschrift ist auf Mobile und bei älteren Nutzern schlicht zu klein; der Stil ist im Kern desktopgebunden",
+    "Rot/Grün als Hauptcodierung trifft rund 8% der männlichen Nutzer; ohne zweiten Kanal ist das ein harter A11y-Fehler",
+    "Die Dichte erzeugt kognitive Last: für gelegentlich genutzte Apps ist sie eine Zumutung, nicht ein Feature",
+    "Kippt ins Billige, sobald Hairlines zu hell, Zeilenhöhen ungleich oder Zahlen nicht tabular gesetzt sind - dann sieht es nach Excel-Export aus"
+  ],
+  "a11y": "Der Haupttext liegt bei 12,7:1 gegen den Panelgrund, aber die Labels bei 9px sind unter WCAG 1.4.3 kritisch: 9px in Versalien bleibt kleiner Text und braucht die vollen 4.5:1 - der hier verwendete Dim-Ton #7B8794 erreicht 5,2:1 und ist damit zulässig, das Faint-Grau #505B68 liegt bei 2,7:1 und ist deshalb bewusst nur für Zeilennummern, Trennstriche und Achsenbeschriftungen eingesetzt, nie für Information, die man lesen können muss. Rot/Grün darf nie allein stehen: in dieser Demo tragen das Wort 'Aktiv'/'Pausiert' und die Richtung des Sparkline-Verlaufs die Information redundant zur Farbe. Die 18px hohen Buttons unterschreiten Target Size 2.5.8 (24x24px) und sind nur zulässig, wenn die 24px-Umkreise sich nicht schneiden - in Produktion ist der 4px-Abstand zwischen den Aktionen deshalb Pflicht, keine Kosmetik.",
+  "longevity": "Der Stil hat seit 1982 überlebt, weil er aus einer Aufgabe folgt und nicht aus einer Mode - solange Menschen viele Werte gleichzeitig vergleichen müssen, bleibt er richtig. Datierbar ist nur die Farbtemperatur des Grunds: das blauschwarze Grafana-Grau ist ein 2020er-Marker, das reine Schwarz mit Amber ist zeitlos.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 4,
+    "density": 5
+  },
+  "platforms": {
+    "web": "Sehr gut für Dashboards und Admin-Oberflächen, ungeeignet für Marketing- oder Onboarding-Seiten.",
+    "mobile": "Kaum tragfähig - 12px Basis und 22px-Zeilen verletzen jede Touch-Richtlinie; auf Compose braucht es einen eigenen, deutlich luftigeren Density-Modus.",
+    "desktop": "Die Heimat des Stils; ein Tauri-Fenster mit eigener Statusleiste ist genau die Bühne, für die er gebaut wurde."
+  },
+  "verdict": "Als durchgängige Markenbasis über alle Apps hinweg: nein. Der Stil verlangt Daten, die viele kleine Apps schlicht nicht haben, und er bricht auf Android-Compose an den Touch-Zielgrößen. Als zweiter Density-Modus derselben Marke ist er dagegen extrem wertvoll: dieselben Tokens, dieselbe Farbsemantik, nur mit halbierter Zeilenhöhe und 12px Basis - Web und Tauri fahren dicht, Mobile fährt komfortabel. Wer diesen Stil wählt, sollte ihn deshalb nicht als Look verstehen, sondern als Compact-Variante eines luftigeren Grundsystems, sonst baut er sich eine Marke, die auf dem Telefon nicht existieren kann.",
+  "combinesWith": [
+    "terminal-mono",
+    "dev-noir",
+    "swiss"
+  ],
+  "tip": "Setze font-variant-numeric: tabular-nums global auf jede Zahl und richte alle numerischen Spalten rechtsbündig aus - das ist der eine Eingriff, der aus einer engen Tabelle ein Terminal macht. Zahlen, die beim Aktualisieren um einen halben Buchstaben springen, zerstören die Ruhe des Rasters sofort, und genau diese Ruhe ist der Unterschied zwischen 'professionelles Werkzeug' und 'zu klein geratenes Webformular'.",
+  "googleFonts": [
+    "IBM Plex Sans Condensed",
+    "IBM Plex Mono"
+  ]
+}

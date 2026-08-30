@@ -1,0 +1,108 @@
+{
+  "slug": "editorial-print",
+  "name": "Editorial / Print Magazine on the Web",
+  "aka": [
+    "Magazine Layout",
+    "Editorial Web Design",
+    "Book Typography in the Interface",
+    "Print-to-Screen"
+  ],
+  "family": "Further Poles",
+  "era": "1920s (print) - web adaptation from c. 2010, current",
+  "origin": "The style carries centuries of book and magazine typography -- type area, running heads, marginalia, drop caps, small caps -- into the interface. Formative were magazines like The New Yorker (Irvin display plus Caslon body text) and the NZZ, whose web relaunch held classical order without a card grid, together with the compositional theory of Jan Tschichold and Robert Bringhurst as the theoretical base; Richard Rutter's web adaptation 'The Elements of Typographic Style Applied to the Web' (webtypography.net, from 2005) was the way in for many web designers. It only became technically possible through webfonts (@font-face from 2009/2010), OpenType features in the browser (font-feature-settings, ligatures, oldstyle figures) and CSS Grid for real type areas. It solved the problem that text products on the web looked like databases instead of publications.",
+  "idea": "Hierarchy comes out of typeface, tracking and white space -- not out of boxes, shadows or color fields. The screen is treated as a paper page with a type area.",
+  "markers": [
+    "Radius 0px throughout -- no rounded cards",
+    "Separation exclusively through hairlines: 1px, opacity c. 15-25 % of the text color",
+    "Shadows: none; depth does not exist, there is only the page",
+    "Serif display 44-58px against serif body text 15-16px: size jump >3:1",
+    "Drop cap across 2-3 lines, float:left, in the accent color",
+    "Small caps with 0.14-0.24em tracking for labels, status and running heads",
+    "Timestamps and captions consistently italic, 13-14px",
+    "Paper tone instead of white: #FBF8F1 instead of #FFFFFF, ink #17140F instead of #000000",
+    "Margin column 70-80px with a vertical hairline as the edge of the type area"
+  ],
+  "params": {
+    "radius": "0px, without exception",
+    "contrast": "very high",
+    "density": "medium to dense",
+    "depth": "none; order through rules, indents and column edges",
+    "color": "paper tone plus ink plus exactly one broken accent color (newsprint red #8C2F1F) for the drop cap, the counter and hover",
+    "type": "two serif cuts: a display face with high stroke contrast for titles, a reading face for body text; small caps and italics carry all secondary information",
+    "motion": "almost none; 120-160ms color change on hover, no transform, no bounce -- paper does not move",
+    "texture": "none to minimal: a soft light gradient at the top (5 % white) simulates the sheen of paper"
+  },
+  "palette": [
+    "#FBF8F1",
+    "#F4EFE3",
+    "#17140F",
+    "#857C6C",
+    "#D6CDB9",
+    "#8C2F1F"
+  ],
+  "examples": [
+    {
+      "name": "The New Yorker (newyorker.com)",
+      "what": "Section line in small caps above the title, byline in italics, hairline dividers instead of cards, illustration instead of photo"
+    },
+    {
+      "name": "NZZ (nzz.ch)",
+      "what": "Multi-column grid with real column rules, kickers in letterspaced capitals, captions in italics below a hairline"
+    },
+    {
+      "name": "Are.na (are.na/editorial)",
+      "what": "Very wide outer margins, ragged-right text, footnotes and sources in the margin column, zero rounding"
+    },
+    {
+      "name": "kottke.org",
+      "what": "Twenty years of the same blog body setting: serif running text with a generous line height, date line small and letterspaced, no cards"
+    },
+    {
+      "name": "read.cv (discontinued)",
+      "what": "A CV as a typeset document -- small-caps labels, tabular figures, hairline rules; the team joined Perplexity in 2024, the service was shut down in 2025"
+    },
+    {
+      "name": "Robert Bringhurst, 'The Elements of Typographic Style'",
+      "what": "The rulebook behind the style: type-area proportions, marginalia, the use of small caps, oldstyle figures in running text"
+    }
+  ],
+  "strengths": [
+    "Practically does not age -- the rules are older than any UI framework",
+    "Reads as serious and editorial at once; ideal for text, documentation and note products",
+    "Very cheap to build: no icon set, no illustrations, no shadow scale",
+    "High recognizability with minimal color -- one accent color is enough",
+    "Scales up well in information density without becoming restless"
+  ],
+  "risks": [
+    "Interactive density is the enemy: toolbars, dropdowns, tables with 12 actions blow apart the type area",
+    "Without real typographic discipline (consistent tracking, a maintained vertical rhythm) it immediately looks like an unfinished Word document",
+    "Serifs below 15px go mushy on Android and older Windows renderers",
+    "Small caps are not real in many Google Fonts but synthesized by the browser -- optically too light unless corrected via font-weight",
+    "Touch targets: hairline rows invite 32px rows, which is below the 44px minimum"
+  ],
+  "a11y": "Contrast is the great strength: ink on paper tone sits at roughly 15:1, far above AAA. Critical instead are the small letterspaced small caps (10-12px) used for status and labels -- they sit at the limit of legibility and have to carry color values of at least 4.5:1; status must never be encoded by italics or gray value alone, which is why a filled or empty square stands here as an additional shape cue. Hairline dividers at 1px and low contrast vanish completely in Windows high-contrast mode, so the structure has to stand without them.",
+  "longevity": "The most durable style in the whole catalog: it references a formal language that has worked for 500 years and contains not a single effect that would read as a vintage. Anyone who built it in 2019 has to change nothing in 2030.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 3,
+    "density": 3
+  },
+  "platforms": {
+    "web": "The style's natural habitat -- Astro content pages, blogs, documentation and marketing benefit immediately, and OpenType features are fully available in the browser.",
+    "mobile": "Doable in Compose/SwiftUI, but expensive: margin columns fall away, small caps have to be rebuilt as their own text style, and serifs need at least 16sp there.",
+    "desktop": "In Tauri identical to the web; fits document-centric tools superbly, but collides with dense toolbars and panel layouts."
+  },
+  "verdict": "As a brand base for many small apps the style only half works -- and precisely that half is valuable. For landing pages, changelogs, documentation and content routes (Astro) it delivers a grown-up, unmistakable voice at once, one that costs nothing and does not age; as a continuous language for tool interfaces with lists, filters, dialogs and settings it collapses, because it is built for reading and not for operating. Recommendation: use it as the content layer of the brand (serif display, small-caps labels, hairlines, paper tone) and run the app surfaces with a more functional pole that picks up the color and the typographic accents. The paper tone and the accent color are the transferable brand markers here, not the type area.",
+  "combinesWith": [
+    "swiss",
+    "warm-editorial",
+    "dev-noir",
+    "data-dense"
+  ],
+  "tip": "Vertical rhythm before ornament. Set a baseline (e.g. 24px) and tie every line height, every spacing and every hairline to a multiple of it -- only that makes the page look typeset rather than decorated. Drop cap, fleuron and small caps are extras; arriving without rhythm, they look like a wedding invitation.",
+  "googleFonts": [
+    "Instrument Serif",
+    "Newsreader"
+  ]
+}

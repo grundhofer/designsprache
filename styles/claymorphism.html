@@ -1,0 +1,338 @@
+<style>
+.style-claymorphism {
+  --cl-bg: #efe9ff;
+  --cl-slab: #f8f5ff;
+  --cl-card: #ffffff;
+  --cl-lav: #b9a6ff;
+  --cl-lav-deep: #5b34cf;
+  --cl-mint: #a8ecd0;
+  --cl-peach: #ffcdae;
+  --cl-sky: #aadcff;
+  --cl-ink: #40316f;
+  --cl-ink-soft: #6b5f92;
+
+  /* Clay = zwei weiche Aussenschatten + inset-Highlight oben + inset-Schatten unten */
+  --cl-clay: 0 26px 44px -18px rgba(84, 56, 172, .40), 0 10px 18px -10px rgba(84, 56, 172, .26), inset 0 12px 22px -8px rgba(255, 255, 255, .95), inset -7px -9px 16px -6px rgba(122, 92, 240, .22);
+  --cl-clay-sm: 0 14px 26px -12px rgba(84, 56, 172, .34), 0 5px 10px -6px rgba(84, 56, 172, .20), inset 0 8px 16px -6px rgba(255, 255, 255, .92), inset -5px -6px 12px -5px rgba(122, 92, 240, .20);
+  --cl-clay-in: inset 7px 9px 18px -6px rgba(84, 56, 172, .30), inset -4px -5px 12px -4px rgba(255, 255, 255, .95);
+
+  width: 100%;
+  box-sizing: border-box;
+  /* pastellige Volltoene haben kein dunkles Pendant -- Viewer-Theme wird ignoriert */
+  color-scheme: light;
+  background: radial-gradient(70% 60% at 18% 4%, #fde6f2 0%, rgba(253, 230, 242, 0) 62%), radial-gradient(60% 55% at 96% 92%, #dff1ff 0%, rgba(223, 241, 255, 0) 60%), var(--cl-bg);
+  color: var(--cl-ink);
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  padding: 34px;
+}
+
+.style-claymorphism * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+.style-claymorphism .demo {
+  position: relative;
+  min-height: 460px;
+  border-radius: 46px;
+  padding: 36px 34px 34px;
+  background: var(--cl-slab);
+  box-shadow: var(--cl-clay);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* --- Knet-Kugeln: der 3D-Illustrations-Begleiter des Stils, hier rein in CSS --- */
+.style-claymorphism .blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+}
+.style-claymorphism .blob-a {
+  width: 66px; height: 66px;
+  right: -14px; top: -26px;
+  background: radial-gradient(circle at 32% 26%, #ffe4d0 0%, var(--cl-peach) 42%, #f2a678 100%);
+  box-shadow: 0 16px 24px -10px rgba(84, 56, 172, .38), inset -6px -8px 12px -4px rgba(210, 122, 70, .45), inset 5px 6px 10px -2px rgba(255, 255, 255, .85);
+  animation: claymorphism-bob 6s ease-in-out infinite;
+}
+.style-claymorphism .blob-b {
+  width: 42px; height: 42px;
+  left: -16px; bottom: 96px;
+  background: radial-gradient(circle at 34% 28%, #d9fff0 0%, var(--cl-mint) 44%, #6fd6ab 100%);
+  box-shadow: 0 12px 20px -9px rgba(84, 56, 172, .36), inset -4px -6px 10px -3px rgba(78, 178, 141, .45), inset 4px 5px 8px -2px rgba(255, 255, 255, .85);
+  animation: claymorphism-bob 7.6s ease-in-out infinite reverse;
+}
+@keyframes claymorphism-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-9px) rotate(8deg); }
+}
+
+/* --- Header --- */
+.style-claymorphism .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.style-claymorphism .head h2 {
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--cl-ink);
+}
+.style-claymorphism .count {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 26px;
+  display: grid;
+  place-items: center;
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #2e1d63;
+  background: linear-gradient(160deg, #d3c6ff 0%, var(--cl-lav) 100%);
+  box-shadow: var(--cl-clay-sm);
+}
+
+/* --- Liste --- */
+.style-claymorphism .list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.style-claymorphism .row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 30px;
+  background: var(--cl-card);
+  box-shadow: var(--cl-clay-sm);
+  transition: transform 260ms cubic-bezier(.34, 1.56, .64, 1), box-shadow 260ms ease;
+}
+.style-claymorphism .row:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--cl-clay);
+}
+.style-claymorphism .row:active {
+  transform: translateY(1px) scale(.988);
+}
+
+.style-claymorphism .avatar {
+  flex: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #2e1d63;
+  box-shadow: inset 0 8px 14px -6px rgba(255, 255, 255, .95), inset -5px -6px 12px -5px rgba(84, 56, 172, .30), 0 8px 14px -8px rgba(84, 56, 172, .40);
+}
+.style-claymorphism .av-1 { background: linear-gradient(158deg, #cfe9ff, var(--cl-sky)); }
+.style-claymorphism .av-2 { background: linear-gradient(158deg, #d7fff0, var(--cl-mint)); }
+.style-claymorphism .av-3 { background: linear-gradient(158deg, #ffe6d3, var(--cl-peach)); }
+
+.style-claymorphism .meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.style-claymorphism .name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.005em;
+  color: var(--cl-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.style-claymorphism .time {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cl-ink-soft);
+}
+
+.style-claymorphism .status {
+  flex: none;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 9px 16px;
+  border-radius: 999px;
+  color: #14503a;
+  background: linear-gradient(160deg, #cdf7e6, var(--cl-mint));
+  box-shadow: inset 0 6px 10px -4px rgba(255, 255, 255, .95), inset -3px -4px 9px -3px rgba(44, 138, 106, .35), 0 6px 12px -7px rgba(84, 56, 172, .45);
+}
+.style-claymorphism .row.paused .status {
+  color: #6b3410;
+  background: linear-gradient(160deg, #ffe2cd, var(--cl-peach));
+  box-shadow: inset 0 6px 10px -4px rgba(255, 255, 255, .95), inset -3px -4px 9px -3px rgba(190, 106, 56, .35), 0 6px 12px -7px rgba(84, 56, 172, .45);
+}
+
+/* --- Feld: in die Knetmasse eingedrueckte Rinne --- */
+.style-claymorphism .field {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #ece5ff;
+  box-shadow: var(--cl-clay-in);
+}
+.style-claymorphism .field svg {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: var(--cl-ink-soft);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.style-claymorphism .field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 19px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cl-ink);
+}
+.style-claymorphism .field input::placeholder {
+  color: var(--cl-ink-soft);
+  opacity: 1;
+}
+
+/* --- Aktionen --- */
+.style-claymorphism .actions {
+  display: flex;
+  gap: 16px;
+}
+.style-claymorphism button {
+  flex: 1 1 0;
+  border: 0;
+  cursor: pointer;
+  padding: 20px 22px;
+  border-radius: 28px;
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .002em;
+  transition: transform 240ms cubic-bezier(.34, 1.56, .64, 1), box-shadow 240ms ease;
+}
+.style-claymorphism .btn-primary {
+  color: #ffffff;
+  background: linear-gradient(160deg, #7c5df0 0%, var(--cl-lav-deep) 100%);
+  box-shadow: 0 20px 32px -14px rgba(84, 56, 172, .62), inset 0 10px 18px -8px rgba(255, 255, 255, .58), inset -6px -8px 14px -6px rgba(52, 28, 130, .55);
+  text-shadow: 0 1px 2px rgba(48, 24, 122, .35);
+}
+.style-claymorphism .btn-secondary {
+  color: var(--cl-ink);
+  background: var(--cl-card);
+  box-shadow: var(--cl-clay-sm);
+}
+.style-claymorphism button:hover {
+  transform: translateY(-3px);
+}
+.style-claymorphism button:active {
+  transform: translateY(2px) scale(.975);
+  box-shadow: var(--cl-clay-in);
+}
+.style-claymorphism button:focus-visible,
+.style-claymorphism .field input:focus-visible {
+  outline: 3px solid var(--cl-lav-deep);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-claymorphism .blob {
+    animation: none;
+  }
+}
+@media (max-width: 560px) {
+  .style-claymorphism {
+    padding: 16px;
+  }
+  .style-claymorphism .demo {
+    padding: 24px 20px 22px;
+    border-radius: 36px;
+  }
+  .style-claymorphism .head h2 {
+    font-size: 28px;
+  }
+  .style-claymorphism .actions {
+    flex-direction: column;
+  }
+  .style-claymorphism .row {
+    flex-wrap: wrap;
+  }
+  .style-claymorphism .meta {
+    flex-basis: 45%;
+  }
+}
+</style>
+<div class="style-claymorphism">
+  <div class="demo">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+
+    <div class="head">
+      <h2>Projekte</h2>
+      <div class="count">12</div>
+    </div>
+
+    <ul class="list">
+      <li class="row">
+        <div class="avatar av-1">N</div>
+        <div class="meta">
+          <div class="name">Nexus</div>
+          <div class="time">vor 2 Std.</div>
+        </div>
+        <div class="status">Aktiv</div>
+      </li>
+      <li class="row">
+        <div class="avatar av-2">A</div>
+        <div class="meta">
+          <div class="name">Autowrite Studio</div>
+          <div class="time">gestern</div>
+        </div>
+        <div class="status">Aktiv</div>
+      </li>
+      <li class="row paused">
+        <div class="avatar av-3">B</div>
+        <div class="meta">
+          <div class="name">Balance Ally</div>
+          <div class="time">vor 4 Tagen</div>
+        </div>
+        <div class="status">Pausiert</div>
+      </li>
+    </ul>
+
+    <div class="field">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+      <input type="text" readonly placeholder="Suchen...">
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-primary">Neues Projekt</button>
+      <button type="button" class="btn-secondary">Importieren</button>
+    </div>
+  </div>
+</div>

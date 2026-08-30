@@ -1,0 +1,106 @@
+{
+  "slug": "web-brutalism",
+  "name": "Web-Brutalismus (rohes HTML)",
+  "aka": [
+    "Brutalist Web Design",
+    "Raw HTML",
+    "Anti-Design",
+    "Default-Style",
+    "Undesign"
+  ],
+  "family": "Postmoderne & Rebellion",
+  "era": "1993-1998 als technische Notwendigkeit, ab 2014 als bewusste Haltung",
+  "origin": "Der Look ist zuerst kein Stil, sondern der Zustand einer HTML-Seite ohne Stylesheet: Times New Roman, blaue unterstrichene Links, graue Systembuttons, Tabellenraster - so sah das Web zwischen 1993 und 1998 aus, weil CSS entweder fehlte oder nicht funktionierte. Zum Stil wurde er, als Pascal Deville 2014 brutalistwebsites.com startete und den Begriff aus der Architektur (beton brut, Le Corbusier) auf Websites übertrug: Rohheit als Ehrlichkeit, sichtbare Struktur statt polierter Oberfläche. Die Bewegung war eine Reaktion auf die Gleichförmigkeit der Bootstrap- und Flat-Design-Jahre - und sie hatte ein Alibi in Seiten, die nie aufgehört hatten so auszusehen: Craigslist und die Investor-Relations-Seite von Berkshire Hathaway funktionieren seit Jahrzehnten unverändert, weil ihre Nutzer genau das brauchen. Wichtig ist die Abgrenzung zu Neo-Brutalismus: der arbeitet mit Neonflächen, 4px-Konturen und harten Offset-Schatten und ist ein gestalteter Stil. Web-Brutalismus ist das Gegenteil - er gestaltet nicht.",
+  "idea": "Nichts hinzufügen, was die Aufgabe nicht braucht. Die Struktur des Dokuments ist die Gestaltung, und der Werkszustand des Browsers ist ein legitimes Ergebnis.",
+  "markers": [
+    "Times New Roman als Fließtext, 16px, line-height normal - kein eingebundener Font, kein Web-Font-Request",
+    "Links #0000EE unterstrichen, besucht #551A8B, aktiv #EE0000 - die UA-Werte, unverändert",
+    "Radius 0px überall, weil nirgends einer gesetzt wird",
+    "Formularelemente im Werkszustand: input mit 2px inset #767676, button mit 2px outset #767676 auf #EFEFEF, beide in 13.33px Arial",
+    "Serifen-Text neben Arial-Widgets neben Courier-Maschinendaten - der Bruch zwischen Dokumentschrift, Systemschrift und Monospace bleibt sichtbar stehen",
+    "Tabellenlayout mit border 2px outset / Zellen 1px inset #808080 und border-spacing 2px",
+    "Kein Schatten, kein Verlauf, keine Transparenz, keine Animation, keine Transition",
+    "Kein Container und keine max-width: der Satzspiegel ist die Fensterbreite minus 8px Rand",
+    "hr als 1px oben #A9A9A9 / 1px unten #EFEFEF - die gefälschte Gravur des UA-Stylesheets"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "sehr hoch (Schwarz auf Weiß, 21:1) - außer bei den Systemgrautönen der Widgets",
+    "density": "dicht",
+    "depth": "keine; Trennung ausschließlich über 1px-Linien, Tabellenraster und Leerzeilen",
+    "color": "Keine Farbstrategie - es gibt nur die vom Browser vergebenen Farben: Schwarz, Weiß, Linkblau, Besuchtviolett, Widgetgrau. Bewusst unharmonisch",
+    "type": "Drei Stimmen, alle drei unfreiwillig: Times für den Text, Arial für alles, was ein Bedienelement ist, Courier für Maschinendaten - keine davon ist gewählt, alle drei kommen vom Browser",
+    "motion": "Keine. Kein transition, kein transform, kein Hover-Effekt außer dem :active-Umschalten der Button-Border",
+    "texture": "keine"
+  },
+  "palette": [
+    "#FFFFFF",
+    "#000000",
+    "#0000EE",
+    "#551A8B",
+    "#EFEFEF",
+    "#808080"
+  ],
+  "examples": [
+    {
+      "name": "Craigslist (seit 1996, unverändert)",
+      "what": "Dreispaltige Textlinkliste ohne Bilder, blaue Links auf Weiß, Kategorien in Kleinbuchstaben - hunderte Millionen Sitzungen pro Monat ohne Layoutwechsel"
+    },
+    {
+      "name": "Berkshire Hathaway, berkshirehathaway.com",
+      "what": "Eine Handvoll blauer Links auf weißem Grund in Times, Aktionärsbriefe als reine Textdateien - kein Bild, kein Menü, kein Cookie-Banner"
+    },
+    {
+      "name": "brutalistwebsites.com (Pascal Deville, seit 2014)",
+      "what": "Der Katalog, der den Begriff geprägt hat: Galerie von Seiten mit Systemschrift, Default-Widgets und absichtlich fehlender Politur"
+    },
+    {
+      "name": "Bloomberg Businessweek (Richard Turley, 2010-2014)",
+      "what": "Roher Systemschrift-Look, gestapelte unformatierte Blöcke und provozierende Typo-Größen als redaktionelle Haltung im Massenmedium - print-getrieben, aber der direkte Stichwortgeber für die Anti-Design-Welle im Web"
+    },
+    {
+      "name": "Yale School of Art (art.yale.edu)",
+      "what": "Ein von Studierenden bearbeitetes Wiki mit gekacheltem Hintergrundmuster, Default-Formularelementen und wechselndem Layout - Anti-Design als institutionelle Aussage"
+    },
+    {
+      "name": "motherfuckingwebsite.com (2013)",
+      "what": "Manifest-Seite aus reinem HTML, die argumentiert, dass der Werkszustand des Browsers bereits responsiv, schnell und barrierefrei ist"
+    }
+  ],
+  "strengths": [
+    "Kompromisslos schnell: kein Font-Request, kein Bild, kein Framework - die Seite ist in einem Paket da und rendert ohne Layoutsprung",
+    "Von Haus aus barrierefrei in den Grundlagen: 21:1 Kontrast, native Widgets mit korrekten Rollen, funktionierendes Tastatur- und Zoomverhalten",
+    "Altert nicht, weil der Stil außerhalb der Trendlogik steht - eine Craigslist-Seite von 1998 sieht 2026 exakt gleich aus",
+    "Signalisiert Substanz und Selbstsicherheit: 'Ich muss nichts verkaufen' ist eine Botschaft, die kein Gradient hinbekommt",
+    "Praktisch aufwandsfrei zu bauen und zu warten - die einzige Disziplin ist, nichts hinzuzufügen"
+  ],
+  "risks": [
+    "Vertrauensverlust bei zahlenden Kunden: Was für Berkshire Hathaway Souveränität ist, liest sich bei einer unbekannten Indie-App als 'unfertig' oder 'verlassen'",
+    "Die Haltung ist nur echt, wenn der Inhalt sie trägt - ohne substanziellen Inhalt wird der Stil zur Pose und wirkt sofort kokett",
+    "Kein Hierarchie-Werkzeug außer Schriftgröße und Leerzeile; ab mittlerer Komplexität ist die Seite nicht mehr scannbar",
+    "Fehlende max-width erzeugt auf breiten Monitoren Zeilenlängen von 200 Zeichen und mehr - Lesbarkeit bricht dort ein, wo der Stil sie eigentlich verspricht",
+    "Nicht auf Mobile oder Desktop-Apps übertragbar: Es gibt kein Compose- und kein SwiftUI-Äquivalent zu 'Werkszustand des Browsers', der Look muss dort teuer imitiert werden"
+  ],
+  "a11y": "In den Grundlagen ist dieser Stil der beste im Katalog: Schwarz auf Weiß ergibt 21:1, native input- und button-Elemente bringen Rolle, Zustand und Tastaturbedienung mit, und ohne CSS-Layout funktioniert Zoom auf 400 Prozent problemlos. Die Schwächen liegen woanders: unbegrenzte Zeilenlänge auf breiten Bildschirmen erschwert das Lesen bei Legasthenie und Sehschwäche massiv, und Farbe als einziger Träger der Link-Bedeutung wäre ein Fehler - deshalb bleibt die Unterstreichung zwingend. Der Default-Fokusring ist funktional, aber schwach sichtbar; hier ist er auf 2px solid gesetzt, weil das die einzige Stelle ist, an der Nicht-Gestalten schadet.",
+  "longevity": "Altert praktisch nicht, weil er auf keinem Trend aufsetzt, sondern auf einer Spezifikation - das UA-Stylesheet hat sich seit 1998 kaum bewegt. Was altert, ist die Glaubwürdigkeit der Geste: 'roh' als Aussage nutzt sich ab, wenn viele es gleichzeitig tun.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 1,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Der einzige natürliche Ort - Astro liefert das praktisch ohne Build, und die Seite ist ohne Optimierung schneller als jede optimierte Alternative.",
+    "mobile": "Untauglich - Touch-Ziele unter 24px, Systemwidgets im Desktop-Look und keine Plattformkonventionen; in Compose müsste man den Stil aufwendig fälschen.",
+    "desktop": "Nur für Werkzeuge mit Selbstironie; eine Tauri-App im Werkszustand liest sich beim Endnutzer als kaputt, nicht als Haltung."
+  },
+  "verdict": "Als Basis für die Eigenmarke: nein - aber als Korrektiv wertvoll. Der Stil hat keine übertragbare Substanz: Es gibt in Jetpack Compose und SwiftUI kein 'Werkszustand', den man teilen könnte, und damit fällt genau die Anforderung weg, um die es hier geht - eine Marke über Web, Tauri und Compose hinweg. Dazu kommt das Vertrauensproblem: Berkshire Hathaway kann sich rohes HTML leisten, weil jeder weiß, wer dahintersteht; eine unbekannte Einzelentwickler-App kann es nicht, dort liest sich dasselbe Bild als verlassen. Was der Stil dagegen leisten kann, ist Disziplin: Baue jede App zuerst ohne CSS und prüfe, ob sie so bedienbar ist. Was danach an Gestaltung dazukommt, muss sich rechtfertigen - das ist der beste Filter gegen die generische Framework-Optik, und er kostet nichts.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "dev-noir",
+    "terminal-mono"
+  ],
+  "tip": "Setze genau eine Regel, die der Werkszustand nicht liefert, und sonst keine: eine max-width um den Textblock (etwa 70 Zeichen). Der Stil scheitert in der Praxis fast immer an Zeilen mit 200 Zeichen auf einem 32-Zoll-Monitor, nicht an fehlender Schönheit. Wer stattdessen anfängt, Abstände, Grautöne und Hover-Zustände nachzubessern, landet in zwei Stunden bei einem schlecht gestalteten normalen Layout - und hat die einzige Stärke des Stils, seine Kompromisslosigkeit, unterwegs verloren.",
+  "googleFonts": []
+}

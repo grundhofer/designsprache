@@ -1,0 +1,282 @@
+<style>
+.style-de-stijl {
+  --weiss: #f5f3ee;
+  --schwarz: #14110f;
+  --rot: #d22b1f;
+  --blau: #1f3d99;
+  --gelb: #f2c40b;
+  --grau: #55514c;
+  width: 100%;
+  background: var(--schwarz);
+  color: var(--schwarz);
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.28;
+  font-size: 15px;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+.style-de-stijl,
+.style-de-stijl * { box-sizing: border-box; }
+
+/* Die schwarzen Balken sind eigene Grid-Spuren in gestaffelten Staerken
+   (18 / 10 / 6 / 4 px), durch die der schwarze Grund der Komposition
+   durchscheint. Ein gleichmaessiges gap waere ein Raster, kein De Stijl. */
+.style-de-stijl .demo {
+  min-height: 460px;
+  padding: 14px;
+  background: var(--schwarz);
+  display: grid;
+  gap: 0;
+  grid-template-columns:
+    96px 18px minmax(0, 5fr) 6px minmax(0, 3fr) 10px 128px;
+  grid-template-rows:
+    auto 10px 1fr 18px auto 4px 58px;
+  grid-template-areas:
+    "kopf kopf  kopf  kopf  kopf  .     zahl"
+    ".    .     .     .     .     .     .   "
+    "blau .     liste liste liste liste liste"
+    ".    .     .     .     .     .     .   "
+    "gelb .     feld  feld  feld  feld  feld"
+    "gelb .     .     .     .     .     .   "
+    "gelb .     prim  .     sek   .     rest";
+}
+
+.style-de-stijl .kopf {
+  grid-area: kopf;
+  background: var(--weiss);
+  display: flex;
+  align-items: flex-end;
+  padding: 26px 20px 18px;
+}
+.style-de-stijl .kopf h2 {
+  margin: 0;
+  font-size: clamp(38px, 8vw, 74px);
+  font-weight: 900;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.style-de-stijl .zahl {
+  grid-area: zahl;
+  background: var(--rot);
+  color: var(--weiss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(38px, 7vw, 60px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.style-de-stijl .blau {
+  grid-area: blau;
+  background: var(--blau);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 0 18px;
+}
+.style-de-stijl .blau span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--weiss);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.style-de-stijl .gelb {
+  grid-area: gelb;
+  background: var(--gelb);
+}
+
+.style-de-stijl .rest {
+  grid-area: rest;
+  background: var(--schwarz);
+}
+
+.style-de-stijl .liste {
+  grid-area: liste;
+  background: var(--weiss);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.style-de-stijl .liste li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 18px;
+  padding: 16px 20px;
+}
+.style-de-stijl .liste li:nth-child(1) { border-bottom: 10px solid var(--schwarz); }
+.style-de-stijl .liste li:nth-child(2) { border-bottom: 4px solid var(--schwarz); }
+
+.style-de-stijl .name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+.style-de-stijl .zeit {
+  grid-column: 1;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--grau);
+  font-variant-numeric: tabular-nums;
+}
+.style-de-stijl .status {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.style-de-stijl .status i {
+  display: block;
+  width: 18px;
+  height: 9px;
+  font-style: normal;
+  flex: none;
+}
+.style-de-stijl .status.aktiv i { background: var(--rot); }
+.style-de-stijl .status.pausiert { color: var(--grau); }
+.style-de-stijl .status.pausiert i { background: var(--schwarz); width: 9px; }
+
+.style-de-stijl .feld {
+  grid-area: feld;
+  background: var(--weiss);
+  display: flex;
+  align-items: stretch;
+}
+.style-de-stijl .feld .takt {
+  flex: none;
+  width: 14px;
+  background: var(--rot);
+}
+.style-de-stijl .feld input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 15px 18px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--schwarz);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+}
+.style-de-stijl .feld input::placeholder {
+  color: var(--grau);
+  opacity: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 700;
+}
+.style-de-stijl .feld:focus-within { outline: 4px solid var(--blau); outline-offset: -4px; }
+
+.style-de-stijl .prim,
+.style-de-stijl .sek {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 12px;
+  transition: background-color 120ms linear, color 120ms linear;
+}
+.style-de-stijl .prim {
+  grid-area: prim;
+  background: var(--blau);
+  color: var(--weiss);
+}
+.style-de-stijl .prim:hover { background: var(--rot); }
+.style-de-stijl .sek {
+  grid-area: sek;
+  background: var(--weiss);
+  color: var(--schwarz);
+}
+.style-de-stijl .sek:hover { background: var(--gelb); }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-de-stijl .prim,
+  .style-de-stijl .sek { transition: none; }
+}
+
+@media (max-width: 660px) {
+  .style-de-stijl .demo {
+    padding: 10px;
+    grid-template-columns: 56px 10px minmax(0, 1fr) 6px 92px;
+    grid-template-rows: auto 6px 1fr 14px auto 4px 54px;
+    grid-template-areas:
+      "kopf kopf  kopf  .     zahl"
+      ".    .     .     .     .   "
+      "blau .     liste liste liste"
+      ".    .     .     .     .   "
+      "gelb .     feld  feld  feld"
+      "gelb .     .     .     .   "
+      "gelb .     prim  .     sek ";
+  }
+  .style-de-stijl .kopf { padding: 18px 14px 14px; }
+  .style-de-stijl .liste li { padding: 13px 14px; }
+  .style-de-stijl .rest { display: none; }
+  .style-de-stijl .prim,
+  .style-de-stijl .sek { font-size: 10px; letter-spacing: 0.1em; padding: 0 6px; }
+}
+</style>
+<div class="style-de-stijl">
+  <div class="demo">
+    <div class="kopf">
+      <h2>Projects</h2>
+    </div>
+    <div class="zahl">12</div>
+    <div class="blau" aria-hidden="true"><span>De Stijl · 1917</span></div>
+    <ul class="liste">
+      <li>
+        <span class="name">Nexus</span>
+        <span class="zeit">2 hrs ago</span>
+        <span class="status aktiv"><i></i>Active</span>
+      </li>
+      <li>
+        <span class="name">Autowrite Studio</span>
+        <span class="zeit">yesterday</span>
+        <span class="status aktiv"><i></i>Active</span>
+      </li>
+      <li>
+        <span class="name">Balance Ally</span>
+        <span class="zeit">4 days ago</span>
+        <span class="status pausiert"><i></i>Paused</span>
+      </li>
+    </ul>
+    <div class="gelb" aria-hidden="true"></div>
+    <div class="feld">
+      <span class="takt" aria-hidden="true"></span>
+      <input type="text" readonly placeholder="Search...">
+    </div>
+    <button type="button" class="prim">New project</button>
+    <button type="button" class="sek">Import</button>
+    <div class="rest" aria-hidden="true"></div>
+  </div>
+</div>

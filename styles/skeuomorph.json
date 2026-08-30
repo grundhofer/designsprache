@@ -1,0 +1,104 @@
+{
+  "slug": "skeuomorph",
+  "name": "Skeuomorphismus",
+  "aka": [
+    "Rich Design",
+    "Aqua",
+    "Realismus-UI",
+    "iOS-6-Look",
+    "Faux-Real"
+  ],
+  "family": "Digitale Epochen",
+  "era": "1984-2013 (Hochphase 2000-2012), Nische bis heute",
+  "origin": "Die Wurzeln liegen im Desktop-Metapher-Denken des originalen Macintosh (1984): digitale Objekte sehen aus wie ihre physischen Vorbilder, damit niemand ihre Bedienung lernen muss. Zum Vollstil wurde daraus Aqua, die von Cordell Ratzlaff und Bas Ording gestaltete Oberfläche von Mac OS X (Vorstellung Januar 2000) - Steve Jobs' Verkaufssatz war, man wolle die Buttons ablecken. Auf dem iPhone trieb Apple das Prinzip bis iOS 6 auf die Spitze: gebürstetes Metall in iTunes, grüner Filz und lackiertes Holz im Game Center, Naht-gestepptes Leder im Kalender und in Find My Friends. Möglich wurde das erst durch schnelle GPU-Komposition, Retina-Displays und die Bereitschaft, UI als Pixelgrafik statt als Vektor-Token auszuliefern - genau das brachte den Stil 2013 mit iOS 7 auch zu Fall.",
+  "idea": "Jedes Bedienelement behauptet, ein physisches Objekt zu sein: Licht fällt von oben, Kanten haben Volumen, Oberflächen haben Material. Affordanz wird nicht signalisiert, sondern simuliert.",
+  "markers": [
+    "Radius 6-12px als Grundmaß, nie 0 - Pillenform ausschließlich für Suchfeld, Zählerplakette und Statusplaketten",
+    "Jede Fläche trägt einen vertikalen Verlauf mit Lichtquelle oben (linear-gradient 180deg)",
+    "Doppelschatten-Pflicht: inset 0 1px 0 rgba(255,255,255,.6) als Glanzkante PLUS 0 2px 3px rgba(0,0,0,.35) als Schlagschatten",
+    "Gloss-Overlay auf den oberen 45-50% jedes Buttons, mit elliptisch abgerundeter Unterkante",
+    "Materialimitate als Fläche: Leder, Leinen, gebürstetes Metall, Filz, lackiertes Holz",
+    "Gebürstetes Metall als repeating-linear-gradient mit 1px-Streifen, überlagert von einem 180deg-Verlauf",
+    "Ziernaht: 2px dashed in Fadenfarbe, 7-9px vom Rand eingerückt",
+    "Text auf hellem Grund mit text-shadow 0 1px 0 #fff (Letterpress), auf dunklem Grund mit 0 -1px 0 rgba(0,0,0,.75)",
+    "Druckzustand invertiert die Beleuchtung: außen -> inset, plus translateY(1px)"
+  ],
+  "params": {
+    "radius": "6-12px (Buttons 5-6px, Icon-Kacheln 9-10px, Suchfeld als 15px-Pille)",
+    "contrast": "mittel",
+    "density": "dicht",
+    "depth": "maximal simuliert: Bevel + Emboss, inset- und drop-shadow gleichzeitig, 3-5 box-shadow-Ebenen pro Element",
+    "color": "Materialfarben statt Markenfarben - Braun/Beige/Grau als Träger, gesättigtes Aqua-Blau und Signalrot nur für Aktion und Zähler",
+    "type": "Zwei Stimmen: ornamentale Slab/Serif für Titel (geprägt), humanistische Sans für Inhalt - beide immer mit Schattenkante",
+    "motion": "kurz und mechanisch, 80-120ms ease-out; der Zustandswechsel ist ein Einsinken, kein Fade",
+    "texture": "hoch: prozeduraler feTurbulence-Noise als soft-light-Ebene (Leder-Korn), gekreuzte 1px-Gitter für Leinen, 1px-Streifen für Metall"
+  },
+  "palette": [
+    "#6B4728",
+    "#D9D4C6",
+    "#2F7FD4",
+    "#E63A26",
+    "#46A032",
+    "#93969D"
+  ],
+  "examples": [
+    {
+      "name": "Mac OS X Aqua (2000-2007)",
+      "what": "Pinstripe-Hintergrund, gelierte Ampel-Buttons mit Innenglanz, pulsierender blauer Default-Button, gebürstetes Metall in iTunes und QuickTime"
+    },
+    {
+      "name": "iOS 6 Game Center",
+      "what": "grüner Filz-Hintergrund mit lackiertem Holzrahmen und Casino-Anmutung - das meistzitierte Beispiel für den Kipppunkt des Stils"
+    },
+    {
+      "name": "iOS 6 Kalender / Find My Friends",
+      "what": "genähtes Leder in der Titelleiste mit sichtbarer Doppelnaht; laut ehemaligen Apple-Designern auf Steve Jobs' Lederinterieur zurückgehend"
+    },
+    {
+      "name": "FabFilter Pro-Q, u-he Diva (bis heute)",
+      "what": "Audio-Plugins mit gerasteten Metallreglern, Drucktastern und Kontroll-LEDs - hier ist der Stil kein Retro-Zitat, sondern die korrekte Übersetzung eines physischen Geräts"
+    },
+    {
+      "name": "Michael Flarup, 'Bring Skeuomorphism Back' (2018 ff.)",
+      "what": "Icon-Arbeiten mit realistischer Materialtiefe als bewusster Gegenentwurf zum Flat-Konsens"
+    }
+  ],
+  "strengths": [
+    "Maximale Affordanz: Klickbares ist ohne Erklärung als klickbar erkennbar, Druckzustand ist eindeutig",
+    "Sehr hohe Wiedererkennung - keine zweite Web-App sieht 2026 so aus",
+    "Für Werkzeuge mit echtem physischen Vorbild (Audio, DAW, CAD, Synth, Messtechnik) bis heute die sachlich richtige Lösung",
+    "Emotional warm: Material erzeugt Zuneigung, wo Flat nur Effizienz erzeugt"
+  ],
+  "risks": [
+    "Kippt sofort ins Kitschige, sobald die Lichtquelle inkonsistent wird - Verlauf und Schatten müssen über alle Elemente dieselbe Richtung haben",
+    "Nicht theme-fähig: Ein Dark Mode ist keine Token-Umschaltung, sondern ein zweites komplettes Materialset",
+    "Klassisch asset- statt tokenbasiert; jede neue Komponente ist Handarbeit statt Konfiguration",
+    "Kontrastarme Grautöne auf texturiertem Grund reißen die Lesbarkeit ein, wenn man Textschatten weglässt",
+    "Als Vollstil ohne Sachbezug wirkt er als Karikatur der Jahre 2010-2012 statt als Haltung"
+  ],
+  "a11y": "Die Affordanz ist ausgezeichnet - Buttons sind ohne Farbcodierung als Buttons erkennbar, und Zustände werden über Form statt nur über Farbe kommuniziert. Problematisch sind Text auf texturiertem Grund (der Noise senkt den effektiven Kontrast) und die dünnen Letterpress-Schatten, die bei Vergrößerung oder Windows-Kontrastmodus verschwinden. Regel: Kontrast immer gegen den dunkelsten Punkt der Textur messen, nicht gegen den Mittelwert, und Fokusringe explizit setzen, da der Bevel selbst keinen Fokus zeigt.",
+  "longevity": "Als allgemeiner UI-Stil hart datiert - er ist untrennbar mit 2007-2012 verknüpft und wird sofort als Retro gelesen. In der Nische der Pro-Audio- und Instrumenten-Software altert er dagegen praktisch nicht, weil dort das physische Vorbild real existiert.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 5,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Technisch problemlos mit reinem CSS machbar, aber teuer in Pflege und Dark Mode; als Landingpage-Statement stark, als Produkt-UI aufwendig.",
+    "mobile": "Auf iOS wie Android ein Fremdkörper gegenüber den Systemkonventionen - und die vielen Schattenebenen kosten auf Listen echte Scroll-Performance.",
+    "desktop": "Die einzige Plattform, auf der der Stil noch produktiv lebt: Tauri-Fenster für Audio-, Mess- oder Instrumenten-Tools profitieren real davon."
+  },
+  "verdict": "Als Basis für die Eigenmarke: nein. Der Stil braucht pro Komponente Handarbeit statt Tokens, ist in Compose und SwiftUI nur mit erheblichem Aufwand nachzubauen, und ein zweites Theme bedeutet ein zweites komplettes Materialset - genau die Kosten, die ein Solo-Entwickler mit vielen kleinen Apps nicht tragen kann. Hinzu kommt, dass er auf Mobile als Zeitreise gelesen wird, nicht als Marke. Sinnvoll ist er dagegen als bewusst dosiertes Zitat: eine einzige Materialfläche pro App - etwa eine geprägte Kopfzeile oder ein physisch anmutender Primär-Button - kann als Signatur funktionieren. Und wenn eine der Apps je ein echtes Gerät abbildet (Audio, Timer, Messwerte), ist Skeuomorphismus dort nicht Nostalgie, sondern die korrekte Antwort.",
+  "combinesWith": [
+    "y2k-aero",
+    "spatial-depth",
+    "warm-editorial",
+    "dev-noir"
+  ],
+  "tip": "Halte die Lichtquelle über die gesamte UI bei exakt 12 Uhr und leite jeden Schatten daraus ab: heller 1px-Glanz oben innen, dunkler Verlauf unten innen, weicher Schlagschatten unten außen. Der Unterschied zwischen überzeugendem Skeuomorphismus und Plastik-Karikatur ist fast nie die Textur, sondern die Konsistenz dieser einen Richtung - und ein Druckzustand, der die Richtung sauber invertiert.",
+  "googleFonts": [
+    "Bitter",
+    "Lato"
+  ]
+}

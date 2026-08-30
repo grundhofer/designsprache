@@ -1,0 +1,70 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # build.py prueft dabei das CSS-Scoping aller 27 Demos und bricht bei
+      # einem ungescopten Selektor ab. It also fails if an L10N pair no longer
+      # matches, which catches German copy edited without the English one.
+      - name: Build
+        run: python3 build.py
+
+      - name: Sanity check
+        run: |
+          set -e
+          for f in docs/index.html docs/de/index.html docs/en/index.html; do
+            test -s "$f" || { echo "fehlt oder leer: $f"; exit 1; }
+          done
+          for lang in de en; do
+            n=$(grep -o 'class="k-plate"' "docs/$lang/index.html" | wc -l)
+            test "$n" -eq 27 || { echo "$lang: $n statt 27 Eintraege"; exit 1; }
+            # 1 Reset im <head> + 1 Seiten-CSS + 27 Demos
+            s=$(grep -c '<style>' "docs/$lang/index.html")
+            test "$s" -eq 29 || { echo "$lang: $s statt 29 style-Bloecke"; exit 1; }
+          done
+          # Kein Restdeutsch in der englischen Fassung (Eigennamen ausgenommen).
+          if grep -qE '>[^<]*\b(und|nicht|Oberfläche|Einträge|Haltbarkeit)\b' docs/en/index.html; then
+            echo "deutsche Textreste in docs/en/index.html"; exit 1
+          fi
+          echo "27 Eintraege in beiden Sprachen, alle Stylesheets vorhanden."
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    # Pull Requests werden gebaut und geprueft, aber nicht veroeffentlicht.
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

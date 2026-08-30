@@ -1,0 +1,103 @@
+{
+  "slug": "dev-noir",
+  "name": "Dev-Noir",
+  "aka": [
+    "Linear-Look",
+    "Vercel-Look",
+    "Developer-Dark",
+    "Dark-first Product UI",
+    "Command-Palette-Ästhetik"
+  ],
+  "family": "Produkt-Ästhetik heute",
+  "era": "2019-heute",
+  "origin": "Entstanden ab 2019 im Umfeld der Developer-Tool-Startups: Linear (2019, Karri Saarinen, zuvor Airbnb Design Systems) etablierte die Kombination aus fast-schwarzem Canvas #08090A, Hairline-Borders und Command-Palette; Vercel formalisierte die Sprache 2024 im Geist-Design-System mit der Hausschrift Geist Sans/Mono; Raycast übertrug sie auf den nativen Mac-Launcher. Der Stil löste ein reales Problem: extrem dichte, den ganzen Tag geöffnete Werkzeuge, deren Bedienung über Tastatur statt Maus läuft und die auf OLED-Displays und in dunklen Bürozeiten nicht blenden dürfen. Möglich wurde er durch verbreitete Wide-Gamut-Displays, variable Webfonts mit echten Zwischengewichten (Inter 450/510) und CSS-Fähigkeiten wie mehrfach überlagerte radiale Gradients, backdrop-filter und Border-Gradients via mask-composite.",
+  "idea": "Tiefe entsteht nicht durch Schatten, sondern durch minimal aufgehellte Layer und 1px-Hairlines; Farbe ist bis auf einen einzigen Akzent verboten, damit Zustand und Hierarchie allein aus Helligkeitsstufen und Monospace-Metadaten lesbar bleiben.",
+  "markers": [
+    "Grundfläche #08080B-#0F1015, Layer-Ladder Base -> Surface (+3-5% Helligkeit) -> Raised (+7-9%)",
+    "Trenner ausschließlich 1px solid rgba(255,255,255,.06-.11) - keine Schlagschatten zwischen Flächen",
+    "Bedienbare Ränder liegen eine eigene, deutlich hellere Stufe höher (rgba(255,255,255,.30-.40)) als die dekorativen Hairlines",
+    "Radius genau eine Stufe: 6-8px für Controls, 10-12px für Container",
+    "Typo Inter/Geist in schmalem Gewichtsband 400-550, letter-spacing -0.02em ab 16px aufwärts",
+    "Monospace (Geist Mono/JetBrains Mono) für Zeit, IDs, Zähler, Shortcuts, mit font-variant-numeric: tabular-nums",
+    "Genau ein Akzent (Linear #5E6AD2, Raycast #FF6363, Vercel: gar keiner) auf sonst reiner Grauskala",
+    "Glow statt Schatten: box-shadow mit Akzentfarbe bei 20-40% Deckkraft und großem negativem Spread",
+    "Radiale Hintergrund-Gradients bei 6-25% Deckkraft, meist oben links/rechts außerhalb des Viewports verankert",
+    "Motion 120-180ms mit cubic-bezier(.2,0,0,1), keine Bounces, keine Skalierung über 1.02",
+    "Keyboard-Shortcut-Badges (kbd) als sichtbare Signatur in Titelleiste, Feld und Buttons"
+  ],
+  "params": {
+    "radius": "6-8px Controls, 10-12px Container",
+    "contrast": "hoch",
+    "density": "dicht",
+    "depth": "Layer-Ladder aus minimal helleren Flächen plus 1px-Hairlines; Glow nur an Primäraktionen",
+    "color": "Neutrale Grauskala mit 8-12 bewussten Stufen plus genau ein Akzent und zwei semantische Statusfarben (Grün/Amber)",
+    "type": "Eine Grotesk im Gewichtsband 400-550 mit negativem Tracking, dazu Monospace für alles Maschinelle",
+    "motion": "120-180ms, cubic-bezier(.2,0,0,1), ausschließlich Opazitäts-, Farb- und 1-2px-Translationen",
+    "texture": "Film-Noise 2-4% über dem gesamten Canvas plus optionales 56px-Grid bei 3% unter einer radialen Maske"
+  },
+  "palette": [
+    "#08080B",
+    "#0D0E12",
+    "#14151A",
+    "#5E6AD2",
+    "#EDEDEF",
+    "#71717F"
+  ],
+  "examples": [
+    {
+      "name": "Linear",
+      "what": "Canvas #08090A, Text #D0D6E0, Hairline #23252A, Akzent #5E6AD2; Inter Variable mit cv01/ss03 und Gewicht 510; Issue-Zeilen mit Status-Dot, Mono-ID und rechtsbündiger Zeitangabe"
+    },
+    {
+      "name": "Vercel Geist",
+      "what": "Radikal farbloses System: Ink #171717 auf #FAFAFA bzw. invertiert, ~200 Graustufen, Radius 6/12/16px, Geist Mono in 11-13px für Labels, Deploy-Metadaten und Logs"
+    },
+    {
+      "name": "Raycast",
+      "what": "Dunkles #151515/#070A0B-Chrome, Radius 8px auf Feldern und Badges, Akzent #FF6363; Keycap-Glyphen auf eigener Flächenstufe als zentrales UI-Element"
+    },
+    {
+      "name": "Resend / Supabase / Railway",
+      "what": "Dieselbe Grammatik in der Breite: Hairline-Tabellen, Mono-Zeitstempel, ein Akzent, radialer Glow hinter der Hero-Sektion"
+    }
+  ],
+  "strengths": [
+    "Trifft die Zielgruppe eines Entwickler-Werkzeugs punktgenau und signalisiert sofort technische Ernsthaftigkeit",
+    "Grauskala plus ein Akzent ist trivial zu tokenisieren und über Tailwind, Compose und SwiftUI identisch reproduzierbar",
+    "Hohe Informationsdichte ohne visuelles Rauschen, weil Trennung über Linien statt über Schatten und Karten läuft",
+    "Dark-first löst OLED-Stromverbrauch, Nachtnutzung und Screenshot-Ästhetik in einem Zug",
+    "Sehr schnell zu bauen: keine Illustrationen, keine Fotografie, keine Icon-Sonderanfertigungen nötig"
+  ],
+  "risks": [
+    "Extrem verbreitet - ohne eigene Akzentfarbe, eigene Typo-Details und eigene Motion-Signatur ist das Ergebnis austauschbar",
+    "Hairlines bei 6-8% Deckkraft sind auf schlechten Displays, im Sonnenlicht und bei älteren Augen faktisch unsichtbar",
+    "Der radiale Glow ist der datierbare Teil: er wird die Grauskala und die Hairlines um Jahre nicht überleben",
+    "Dark-only schließt Nutzer mit Astigmatismus aus, für die heller Text auf dunklem Grund messbar schlechter lesbar ist",
+    "Kippt ins Billige, sobald Neon-Akzente, mehrere Glows und übertriebene Gradients zusammenkommen - dann wird daraus Cyberpunk-Kitsch"
+  ],
+  "a11y": "Die Hairlines bei 7-11% Weiß erreichen nur etwa 1,15-1,3:1 und sind damit ausschließlich als dekorative Trenner zulässig - der Rahmen eines Eingabefeldes muss dagegen 3:1 erreichen, hier über eine eigene Stufe rgba(255,255,255,.36) (rund 3,2:1 gegen den Feldgrund) plus einen 3px-Focus-Ring in nahezu deckender Akzentfarbe (rund 4,2:1). Reinweißer Text auf reinem Schwarz erzeugt Halation, deshalb #EDEDEF auf #08080B statt #FFF auf #000; die Mono-Metadaten in #71717F liegen bei rund 4,1:1 und sind deshalb bewusst nur als Sekundärinformation gesetzt. Status wird nie allein über Farbe kommuniziert: der farbige Dot ist immer von einem Textlabel begleitet, und der pulsierende Aktiv-Indikator wird unter prefers-reduced-motion abgeschaltet.",
+  "longevity": "Das Grundgerüst aus Grauskala, Hairlines, Mono-Metadaten und knapper Motion ist strukturell und wird die nächsten fünf bis zehn Jahre überstehen; die radialen Glow-Gradients und der violette Standard-Akzent sind der zeitgebundene Teil und werden zuerst datiert wirken.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Ideal - Tailwind bringt die Graustufen, Hairlines und Radien praktisch out of the box mit.",
+    "mobile": "Eingeschränkt - die Dichte und die 1px-Hairlines vertragen sich schlecht mit Touch-Zielen und Material-3-Erwartungen auf Android.",
+    "desktop": "Optimal - Tauri mit randlosem Fenster, eigener Titelleiste und Command-Palette ist der natürliche Lebensraum dieses Stils."
+  },
+  "verdict": "Als Basis der Eigenmarke ist Dev-Noir die naheliegendste und technisch billigste Wahl: die Tokens sind über Tailwind, Tauri und Compose identisch reproduzierbar, die Zielgruppe eines Solo-Entwicklers erwartet genau diese Sprache, und der Stil trägt hohe Informationsdichte ohne Zusatzaufwand. Der Preis ist Austauschbarkeit - dieselbe Grammatik benutzen aktuell einige hundert Developer-Tools, und ein Portfolio kleiner Apps wird darin nicht als eigene Marke erkennbar. Empfehlung: als strukturelle Grundlage ja, aber nur mit drei bewusst eigenen Entscheidungen - einer nicht-violetten Akzentfarbe, einer eigenen Typo-Kombination und einer wiedererkennbaren Signaturkomponente wie den Shortcut-Badges. Und zwingend mit einem gleichwertig gepflegten Light-Theme, sonst verliert man auf Mobile die Hälfte der Nutzungssituationen.",
+  "combinesWith": [
+    "swiss",
+    "terminal-mono",
+    "data-dense",
+    "warm-editorial"
+  ],
+  "tip": "Baue die Grauskala als echte Leiter mit acht bis zwölf benannten Stufen und weise jeder Stufe genau eine Aufgabe zu (Canvas, Surface, Raised, Border, Border-Strong, Text-3, Text-2, Text). Sobald Flächen und Borders aus derselben durchdachten Leiter kommen statt aus ad hoc gewürfelten rgba-Werten, wirkt der Stil teuer - und der häufigste Fehler, nämlich Glow und Gradient als Ersatz für eine fehlende Struktur einzusetzen, erledigt sich von selbst.",
+  "googleFonts": [
+    "Inter",
+    "Geist Mono"
+  ]
+}

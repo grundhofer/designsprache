@@ -1,0 +1,104 @@
+{
+  "slug": "spatial-depth",
+  "name": "Spatial / visionOS Depth",
+  "aka": [
+    "Spatial UI",
+    "visionOS aesthetic",
+    "Glass Material",
+    "Spatial layers",
+    "Depth-First UI"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "2023-today (precursors from 2007)",
+  "origin": "Apple introduced visionOS at WWDC in June 2023, and with it an interface that no longer has a screen edge: windows float in the user's real space. The rules follow almost inevitably - a panel needs a material that adapts to the real surroundings rather than a set color, it needs a soft ambient shadow so the eye can anchor it in space, and it needs very large radii, because hard corners without a screen bezel read as a mistake. Emphasis does not run through color but through the gaze-hover effect and through movement along the z-axis - Apple states explicitly that important elements should come forward and secondary ones recede. The prehistory runs from Windows Aero (2007) through macOS Yosemite (2014) and Fluent Acrylic (2017) to Liquid Glass (2025), which brings the same material logic back onto flat screens.",
+  "idea": "Hierarchy is not colored but stacked: what matters comes closer, what does not recedes, and every surface is a light-transmitting material instead of a color.",
+  "markers": [
+    "Window radius 34-46px, card radius 22px, pills and input fields 999px - nothing in between",
+    "Panels are translucent: rgba(18,23,34,0.44) plus backdrop-filter: blur(34px) saturate(180%)",
+    "Specular edge: inset 0 1px 0 rgba(255,255,255,0.26) along the top plus a continuous 1px rim at 0.14 alpha",
+    "Three-stage ambient shadow (2px/24px/56px radius) - never a single hard shadow",
+    "Emphasis by coming closer: hover scales to 1.022 and lifts by 2px, 280ms cubic-bezier(.2,.7,.2,1)",
+    "Ornament: a floating action bar overlapping the bottom window edge by 22px (Apple: 20pt)",
+    "Interactive surfaces at least 40px tall; visionOS natively asks for 60x60pt for gaze control",
+    "The background is a space, not a surface: several stacked radial gradients plus two blurred light orbs",
+    "Status colors heavily desaturated (#86E7B8 / #F6CB88) and only as a 7px dot, never as a fill"
+  ],
+  "params": {
+    "radius": "22px cards, 44px windows, 999px pills",
+    "contrast": "medium",
+    "density": "airy",
+    "depth": "Real z-order: backplate, window layer, cards, ornament in front - carried by blur, rim light and a three-stage ambient shadow",
+    "color": "Materials instead of colors - every surface is white or black with alpha over a colored spatial background; saturated color only as a 7px status dot",
+    "type": "Geometric grotesque (Inter standing in for SF Pro), titles 27px/600 at -0.022em, body text 15px - generous and calm",
+    "motion": "Soft and spatial: 200-280ms cubic-bezier(.2,.7,.2,1), always scale plus shadow growth, never a color change",
+    "texture": "no grain; the surface comes from blur, a saturation boost (180%) and the light gradient along the top edge"
+  },
+  "palette": [
+    "#0A0C12",
+    "#1C2231",
+    "#F3F6FA",
+    "#86E7B8",
+    "#F6CB88",
+    "#7E9CFF"
+  ],
+  "examples": [
+    {
+      "name": "Apple visionOS (2023)",
+      "what": "Windows of glass material standing free in space; toolbars sit as an ornament below the window edge, elements brighten when looked at instead of taking on a selection color"
+    },
+    {
+      "name": "Apple Liquid Glass (WWDC 2025, iOS/macOS 26)",
+      "what": "The same material logic on flat displays: tab bars that shrink while scrolling, refraction instead of plain blur, specular highlights along the edges"
+    },
+    {
+      "name": "macOS sidebar / Sonoma vibrancy",
+      "what": "Sidebars whose fill lets the window content show through; selection as a lighter material with a radius, not as a blue fill"
+    },
+    {
+      "name": "Windows 11 Mica and Acrylic",
+      "what": "Two graded materials for window background and overlays; Microsoft documents explicitly which material may sit on which z-layer"
+    },
+    {
+      "name": "Arc Browser (2022-2024)",
+      "what": "Translucent sidebar over a colored spatial gradient, very large radii, hover as brighten plus lift - the most rigorous web implementation of the principle"
+    }
+  ],
+  "strengths": [
+    "Hierarchy without color: the brand stays chromatically free, because importance is communicated through layer and proximity",
+    "Reads as premium and calm; a very good carrier for products that sell trust rather than efficiency",
+    "Large radii and large hit areas are touch-friendly - the style is correctly sized for mobile out of the box",
+    "The material logic is exactly what iOS 26 and Android already provide - you work with the platforms instead of against them",
+    "The hover-as-coming-closer mechanism is a good motion signature: one rule, the same everywhere, instantly recognizable"
+  ],
+  "risks": [
+    "backdrop-filter is expensive: Android WebViews and Tauri/WebView2 show scroll jank and occasional repaint artifacts; on Compose real blur is only available from API 31",
+    "Without a restless background the material is pointless - over a flat surface glass looks like a badly chosen gray",
+    "The style needs room; in dense data views 44px radii and 8px gaps cost more area than they return in clarity",
+    "Contrast is the structural weakness: text on a translucent ground changes its legibility with whatever lies behind it - that is not a detail but the core of the style",
+    "Tightly bound to the Apple brand: build it this way and you look like Apple rather than like yourself - and you have to follow every change of course Apple makes"
+  ],
+  "a11y": "The real problem is not measured contrast but fluctuating contrast: text on translucent material has different ratios depending on the background, and a value that reaches 16:1 over the dark region can drop to 3:1 over a bright light orb. Measured against the opaque fallback #141926, body text sits at 16.2:1, secondary text (0.62 alpha) at 6.9:1 and placeholder text at 0.52 alpha just barely at 5.2:1 - below 0.47 alpha it falls under 4.5:1, and that is the hard floor of this style. This is why a minimum opacity of 0.44 is set on the panel fill: the fill value is the seatbelt, not the blur radius. After the legibility criticism of macOS 26 Tahoe, Apple itself had to make navigation bars more opaque and retrofit a transparency slider, which is why prefers-reduced-transparency with a fully opaque fallback is mandatory here and has been implemented in this demo; likewise prefers-reduced-motion, because the coming-closer effect is a movement and not a color.",
+  "longevity": "The principle - depth as hierarchy - is old and stable, the specific glass look is not: Aero 2007 and Yosemite 2014 both look distinctly dated today, even though they had the same idea. Adopt the z-logic and the motion rule but use the translucency sparingly and it ages well; build maximum glass and you have a recognizable 2025 vintage.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 5,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Good for marketing, onboarding and lightweight apps; in lists with many rows backdrop-filter becomes a performance problem.",
+    "mobile": "Very good - radii, hit areas and material logic match what iOS 26 and Material 3 Expressive prescribe anyway.",
+    "desktop": "Doable, but risky in Tauri: backdrop-filter over large areas costs noticeable performance in WebView2 and WebKitGTK; native window blur is the better route."
+  },
+  "verdict": "As the basis for a solo developer's own brand this is the most expensive of the three options and probably the wrong one. The style is strong exactly where this client has the least: on large, calm, marketing-adjacent surfaces with little content - and weak exactly where he has the most: on small tools, dense lists and three very different renderers. On top of that comes the brand question: a surface that consistently looks like this is read as an Apple quotation, not as a signature of its own, and has to follow every Apple change of course. What can sensibly be adopted, though, is the mechanics: z-order as the hierarchy rule, coming closer as the single hover signature, and the desaturated status colors - that trio works on opaque surfaces too and costs nothing.",
+  "combinesWith": [
+    "glassmorphism",
+    "aurora-mesh",
+    "material-expressive",
+    "dev-noir"
+  ],
+  "tip": "Make the opacity of the fill, not the blur radius, your legibility guarantee - and check every text value against the BRIGHTEST point of the background, not against the average. Glass turns cheap the moment it sits over a flat surface: the style absolutely needs a background with a real brightness gradient (here three stacked radial gradients plus two blurred light orbs), otherwise all the material work is invisible and a gray would have done just as well.",
+  "googleFonts": [
+    "Inter"
+  ]
+}

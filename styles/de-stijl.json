@@ -1,0 +1,68 @@
+{
+  "slug": "de-stijl",
+  "name": "De Stijl / Neoplastizismus",
+  "aka": ["Neoplastizismus", "Nieuwe Beelding", "Mondrianismus", "Elementarismus"],
+  "family": "Modernistische Schulen",
+  "era": "1917-1931, Nachwirkung bis heute",
+  "origin": "Theo van Doesburg gründete 1917 in Leiden die Zeitschrift 'De Stijl' und mit ihr die gleichnamige Bewegung; zum Kern gehörten Piet Mondrian, Vilmos Huszár, der Architekt J.J.P. Oud und der Möbelbauer Gerrit Rietveld. Nach der Erfahrung des Ersten Weltkriegs suchten sie eine universale, von jeder individuellen Handschrift befreite Harmonie – Mondrian nannte das Programm 'Nieuwe Beelding', neoplasticisme. Das Mittel war radikale Reduktion: nur Horizontale und Vertikale, nur die drei Primärfarben plus Schwarz, Weiß und Grau, keine Kurve, keine Diagonale, keine Darstellung. Die Bewegung endete faktisch mit van Doesburgs Tod 1931; ihre Grammatik wanderte über das Bauhaus in die gesamte moderne Gestaltung.",
+  "idea": "Das Layout selbst ist das Bild: ungleich große Rechtecke, getrennt durch schwarze Balken unterschiedlicher Stärke, balanciert ohne Symmetrie.",
+  "markers": [
+    "Ausschließlich Horizontale und Vertikale – 0 Diagonalen, 0 Kurven, Radius 0px",
+    "Schwarze Trennbalken in gestaffelten Stärken: 4px / 6px / 10px / 18px in einer Komposition",
+    "Nur Rot #D22B1F, Blau #1F3D99, Gelb #F2C40B als Flächen auf gebrochenem Weiß #F5F3EE",
+    "Farbanteil unter 25% der Fläche, Weiß bleibt die dominante Fläche",
+    "Asymmetrische Balance: kein Element zentriert, kein Feld gleich groß wie ein anderes",
+    "Farbfelder sitzen an Rändern und Ecken, nie in der Mitte",
+    "Keine Schatten, keine Verläufe, keine Transparenz – reine Flächen",
+    "Blockhafte Grotesk, versal gesetzt, Gewichte 700-900",
+    "Buttons und Felder sind keine Objekte auf einer Fläche, sondern Zellen der Komposition"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "sehr hoch",
+    "density": "mittel",
+    "depth": "keine; Ordnung entsteht ausschließlich über die Stärke der schwarzen Balken",
+    "color": "Gebrochenes Weiß als Grundfläche, dazu genau drei Primärfarben als vollflächige Rechtecke plus Schwarz als Struktur.",
+    "type": "Blockhafte Grotesk in Versalien, schwere Gewichte, negatives Tracking – die Schrift ist eine Fläche unter anderen.",
+    "motion": "Streng orthogonal: Farbwechsel in 120ms linear, Translation nur entlang X oder Y, niemals Skalierung oder Rotation.",
+    "texture": "keine"
+  },
+  "palette": ["#F5F3EE", "#14110F", "#D22B1F", "#1F3D99", "#F2C40B", "#55514C"],
+  "examples": [
+    {"name": "Piet Mondrian, 'Composition with Red, Blue and Yellow' (1930)", "what": "Ein dominierendes rotes Feld oben rechts, winzige Blau- und Gelbfelder unten, schwarze Balken in klar unterschiedlichen Stärken – die kanonische Balance-Studie"},
+    {"name": "Gerrit Rietveld, Rood-blauwe stoel (1918/1923)", "what": "Der Stil in drei Dimensionen: sich durchdringende Latten in Schwarz, Sitz- und Lehnfläche in Rot und Blau, jedes Bauteil bleibt als eigene Ebene sichtbar"},
+    {"name": "Theo van Doesburg, Titelblätter der Zeitschrift 'De Stijl' (ab 1917)", "what": "Rein rechtwinklige Buchstabenkonstruktion, Titel als Balkenraster gesetzt – Typografie als Architektur"},
+    {"name": "Rietveld-Schröder-Haus, Utrecht (1924)", "what": "Fassade als frei verschobene Ebenen mit farbigen Linien; zeigt, dass die Komposition selbst das Ordnungsprinzip ist, nicht die Dekoration"},
+    {"name": "Bento-Grid-Layouts (2023-2026, u.a. Apple-Produktseiten)", "what": "Der strukturelle Nachfahre: ungleich große Kacheln, klar getrennt, einzelne farbig akzentuiert – De Stijl mit Radius und Schatten"}
+  ],
+  "strengths": [
+    "Das Layout ist die Marke – Wiedererkennung entsteht ohne Logo, Illustration oder Font-Lizenz",
+    "Bento-Grids sind der direkte moderne Erbe und für Feature-Übersichten, Dashboards und Startseiten exzellent",
+    "Rein flächig und damit auf jeder Plattform pixelgenau reproduzierbar, ohne GPU-Kosten",
+    "Zwingt zu echter Hierarchie-Entscheidung: welche Zelle ist groß, welche ist farbig – Beliebigkeit ist strukturell ausgeschlossen"
+  ],
+  "risks": [
+    "Als Vollstil dekorativ und funktionsarm: die Komposition muss pro Screen neu gebaut werden und überlebt keinen dynamischen Inhalt",
+    "Zu wenige Hierarchiestufen für dichte Anwendungen – ab der vierten Ebene bricht das System",
+    "Wird bei ungleichen Balkenstärken schnell zum Mondrian-Zitat statt zur eigenen Sprache; die Assoziation ist übermächtig",
+    "Gelb ist als Textfläche unbrauchbar; farbige Zellen dürfen nur Schwarz oder Weiß tragen",
+    "Responsive ist teuer: eine asymmetrische Komposition lässt sich nicht einfach umbrechen, sie muss pro Breakpoint neu komponiert werden"
+  ],
+  "a11y": "Die Farbflächen selbst sind unkritisch, solange Text auf ihnen kontrolliert wird: Gebrochenes Weiß auf Rot #D22B1F liegt bei 4,6:1, auf Blau #1F3D99 bei 8,7:1, Schwarz auf Gelb #F2C40B bei 11,4:1 – Weiß auf Gelb dagegen bei 1,5:1 und ist verboten. Das Rot ist damit knapp konform und trägt nur normalen Text, keine 10px-Labels. Dicke schwarze Balken sind barrierefreiheitsneutral und helfen sogar bei der Blockabgrenzung. Das eigentliche Risiko ist strukturell: Wenn Buttons nur noch farbige Zellen der Komposition sind, fehlt die Affordanz – Fokusringe müssen deshalb 4px stark und in einer Kontrastfarbe innen gesetzt werden, und die Reihenfolge im DOM muss der optischen Lesereihenfolge folgen, weil Grid-Areas sie leicht auseinanderlaufen lassen.",
+  "longevity": "Die Grammatik ist über hundert Jahre alt und funktioniert unverändert, aber sie ist so eng mit Mondrian verknüpft, dass jede Anwendung als Zitat gelesen wird. In der Bento-Variante trägt sie sichtbar den Zeitstempel 2023-2025.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Sehr gut – CSS Grid mit benannten Areas ist die exakte technische Entsprechung, inklusive unterschiedlich starker Balken über Border plus Gap.",
+    "mobile": "Schwach – die asymmetrische Komposition kollabiert auf schmalen Displays zu einem Stapel und verliert damit genau das Merkmal.",
+    "desktop": "Gut für Übersichts- und Startbildschirme in Tauri, ungeeignet für dichte Listen, Tabellen und Einstellungsdialoge."
+  },
+  "verdict": "Als durchgehende Produktsprache nein, als Signatur-Layout ein überlegenswertes Ja. Für einen Solo-Entwickler ist die Versuchung groß, weil De Stijl mit reinem CSS Grid und ohne einen einzigen Asset sofort unverwechselbar aussieht – aber genau diese Unverwechselbarkeit gehört Mondrian und nicht der eigenen Marke, und über 27 Apps hinweg wirkt sie schnell wie ein Kostüm. Dazu kommt der praktische Bruch: Eine handkomponierte asymmetrische Fläche verträgt keine dynamischen Listen, keine Einstellungsdialoge und keinen Android-Screen. Sinnvoll ist der Stil als eine wiederkehrende Sonderfläche – Startbildschirm, Launcher, App-Übersicht, Marketing-Hero – über einem ruhigen Swiss-Raster fürs eigentliche UI.",
+  "combinesWith": ["swiss", "bauhaus", "neo-brutalism", "flat"],
+  "tip": "Staffele die schwarzen Balken bewusst in mindestens drei verschiedenen Stärken und lass keine zwei Felder gleich groß werden. Ein Bento-Grid mit gleichmäßigem Gap und gleich großen Kacheln ist kein De Stijl, sondern ein Raster – der ganze Stil lebt davon, dass das Auge die Ungleichheit als Gleichgewicht auflöst. Und halte den Farbanteil unter einem Viertel der Fläche: Weiß ist die Hauptfarbe, nicht der Rest.",
+  "googleFonts": ["Archivo"]
+}

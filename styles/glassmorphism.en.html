@@ -1,0 +1,432 @@
+<style>
+.style-glassmorphism {
+  --gl-ink: #ffffff;
+  --gl-ink-2: rgba(255, 255, 255, .74);
+  --gl-ink-3: rgba(255, 255, 255, .52);
+  --gl-fill: rgba(255, 255, 255, .10);
+  --gl-fill-2: rgba(255, 255, 255, .16);
+  --gl-edge: rgba(255, 255, 255, .22);
+  --gl-lens: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -1px 0 rgba(255, 255, 255, .10), inset 1px 0 0 rgba(255, 255, 255, .14), inset -1px 0 0 rgba(255, 255, 255, .14);
+  --gl-drop: 0 18px 44px rgba(4, 6, 24, .46), 0 3px 10px rgba(4, 6, 24, .30);
+  --gl-blur: saturate(180%) blur(22px);
+
+  width: 100%;
+  box-sizing: border-box;
+  /* die Demo bringt ihren eigenen dunklen Grund mit -- Viewer-Theme wird ignoriert */
+  color-scheme: dark;
+  background: #080a1c;
+  color: var(--gl-ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  padding: 26px;
+}
+
+.style-glassmorphism * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+/* --- Untergrund: ohne farbige Unruhe hat Glas nichts zu brechen --- */
+.style-glassmorphism .demo {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(58% 46% at 14% 6%, #7b3bff 0%, rgba(123, 59, 255, 0) 62%),
+    radial-gradient(48% 42% at 92% 14%, #00c8ff 0%, rgba(0, 200, 255, 0) 60%),
+    radial-gradient(52% 48% at 78% 98%, #ff4d97 0%, rgba(255, 77, 151, 0) 62%),
+    radial-gradient(40% 36% at 20% 96%, #ffb03a 0%, rgba(255, 176, 58, 0) 58%),
+    linear-gradient(158deg, #131a44 0%, #0a0d26 100%);
+}
+.style-glassmorphism .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(34px);
+  opacity: .62;
+  pointer-events: none;
+}
+.style-glassmorphism .orb-a {
+  width: 240px; height: 240px;
+  left: -50px; top: 130px;
+  background: #00e0c6;
+  animation: glassmorphism-drift 17s ease-in-out infinite alternate;
+}
+.style-glassmorphism .orb-b {
+  width: 190px; height: 190px;
+  right: 6%; top: 46%;
+  background: #ff7a3d;
+  animation: glassmorphism-drift 23s ease-in-out infinite alternate-reverse;
+}
+@keyframes glassmorphism-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(46px, -34px, 0) scale(1.14); }
+}
+/* feines Korn -- bricht die Verlaufsbaender */
+.style-glassmorphism .demo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+
+/* --- Glas-Panel --- */
+.style-glassmorphism .panel {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 26px;
+  border: 1px solid var(--gl-edge);
+  /* Weisser Film plus dunkler Tint -- ohne den Tint faellt der Textkontrast
+     ueber den hellen Stellen des Untergrunds unter 2:1 */
+  background: linear-gradient(0deg, rgba(9, 11, 32, .34), rgba(9, 11, 32, .34)), var(--gl-fill);
+  -webkit-backdrop-filter: var(--gl-blur);
+  backdrop-filter: var(--gl-blur);
+  box-shadow: var(--gl-lens), var(--gl-drop);
+}
+/* Lensing: helle Lichtsammlung an der oberen Kante, wie an einer Glasfase */
+.style-glassmorphism .panel::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 25px;
+  pointer-events: none;
+  background: linear-gradient(168deg, rgba(255, 255, 255, .20) 0%, rgba(255, 255, 255, .03) 26%, rgba(255, 255, 255, 0) 58%);
+}
+
+/* --- Header --- */
+.style-glassmorphism .head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.style-glassmorphism .head h2 {
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  color: var(--gl-ink);
+  text-shadow: 0 1px 12px rgba(6, 8, 30, .45);
+}
+.style-glassmorphism .count {
+  flex: none;
+  min-width: 46px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid rgba(255, 255, 255, .30);
+  background: rgba(255, 255, 255, .18);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 6px 16px rgba(4, 6, 24, .35);
+}
+
+/* --- Liste: zweite Glasebene ueber der ersten --- */
+.style-glassmorphism .list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.style-glassmorphism .row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .09);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .34), 0 6px 18px rgba(4, 6, 24, .26);
+  transition: background 180ms cubic-bezier(.2, 0, 0, 1), transform 180ms cubic-bezier(.2, 0, 0, 1);
+}
+.style-glassmorphism .row:hover {
+  background: rgba(255, 255, 255, .15);
+  transform: translateY(-1px);
+}
+.style-glassmorphism .glyph {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .34), rgba(255, 255, 255, .08));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+.style-glassmorphism .meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.style-glassmorphism .name {
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.style-glassmorphism .time {
+  font-size: 12px;
+  font-weight: 450;
+  color: var(--gl-ink-2);
+}
+.style-glassmorphism .status {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 550;
+  letter-spacing: .01em;
+  padding: 6px 12px 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .26);
+  background: rgba(255, 255, 255, .13);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+.style-glassmorphism .status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5cf2c0;
+  box-shadow: 0 0 8px rgba(92, 242, 192, .9);
+}
+.style-glassmorphism .row.paused .status {
+  color: var(--gl-ink-2);
+}
+.style-glassmorphism .row.paused .status i {
+  background: #ffd166;
+  box-shadow: 0 0 8px rgba(255, 209, 102, .8);
+}
+
+/* --- Feld --- */
+.style-glassmorphism .field {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: auto;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  background: rgba(255, 255, 255, .08);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .38), inset 0 -6px 14px rgba(6, 8, 30, .16);
+}
+.style-glassmorphism .field svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--gl-ink-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.style-glassmorphism .field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 14px 0;
+  font-size: 14.5px;
+  font-weight: 450;
+  color: var(--gl-ink);
+}
+.style-glassmorphism .field input::placeholder {
+  color: var(--gl-ink-3);
+  opacity: 1;
+}
+
+/* --- Aktionen: schwebende Glas-Leiste --- */
+.style-glassmorphism .actions {
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .08);
+  -webkit-backdrop-filter: saturate(170%) blur(18px);
+  backdrop-filter: saturate(170%) blur(18px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .40), 0 10px 26px rgba(4, 6, 24, .34);
+}
+.style-glassmorphism button {
+  flex: 1 1 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 13px 18px;
+  font-size: 14.5px;
+  font-weight: 550;
+  letter-spacing: -.005em;
+  cursor: pointer;
+  color: var(--gl-ink);
+  background: transparent;
+  transition: background 160ms cubic-bezier(.2, 0, 0, 1), transform 160ms cubic-bezier(.2, 0, 0, 1);
+}
+.style-glassmorphism .btn-primary {
+  border-color: rgba(255, 255, 255, .42);
+  background: linear-gradient(150deg, rgba(255, 255, 255, .58), rgba(255, 255, 255, .24));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 6px 18px rgba(4, 6, 24, .3);
+  text-shadow: 0 1px 6px rgba(6, 8, 30, .35);
+}
+/* spekulares Highlight, das ueber die Flaeche wandert -- Liquid-Glass-Zitat */
+.style-glassmorphism .btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 46%;
+  left: -60%;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .55), rgba(255, 255, 255, 0));
+  animation: glassmorphism-sheen 4.6s cubic-bezier(.4, 0, .2, 1) infinite;
+  pointer-events: none;
+}
+@keyframes glassmorphism-sheen {
+  0%   { left: -60%; }
+  55%  { left: 120%; }
+  100% { left: 120%; }
+}
+.style-glassmorphism .btn-secondary {
+  border-color: rgba(255, 255, 255, .20);
+  background: rgba(255, 255, 255, .06);
+  color: var(--gl-ink-2);
+}
+.style-glassmorphism button:hover {
+  transform: translateY(-1px);
+}
+.style-glassmorphism .btn-secondary:hover {
+  background: rgba(255, 255, 255, .14);
+  color: var(--gl-ink);
+}
+.style-glassmorphism button:active {
+  transform: translateY(0) scale(.985);
+}
+.style-glassmorphism button:focus-visible,
+.style-glassmorphism .field input:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* --- Pflichtprogramm: opaker Fallback --- */
+@media (prefers-reduced-transparency: reduce) {
+  .style-glassmorphism .panel,
+  .style-glassmorphism .row,
+  .style-glassmorphism .field,
+  .style-glassmorphism .actions {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #171b3d;
+  }
+  .style-glassmorphism .row {
+    background: #1e2350;
+  }
+  .style-glassmorphism .orb {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .style-glassmorphism .orb,
+  .style-glassmorphism .btn-primary::after {
+    animation: none;
+  }
+}
+@media (max-width: 540px) {
+  .style-glassmorphism {
+    padding: 14px;
+  }
+  .style-glassmorphism .demo {
+    padding: 18px;
+  }
+  .style-glassmorphism .panel {
+    padding: 18px;
+  }
+  .style-glassmorphism .actions {
+    flex-direction: column;
+    border-radius: 26px;
+  }
+  .style-glassmorphism .head h2 {
+    font-size: 23px;
+  }
+}
+</style>
+<div class="style-glassmorphism">
+  <div class="demo">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <div class="panel">
+      <div class="head">
+        <h2>Projects</h2>
+        <div class="count">12</div>
+      </div>
+
+      <ul class="list">
+        <li class="row">
+          <div class="glyph">N</div>
+          <div class="meta">
+            <div class="name">Nexus</div>
+            <div class="time">2 hrs ago</div>
+          </div>
+          <div class="status"><i></i>Active</div>
+        </li>
+        <li class="row">
+          <div class="glyph">A</div>
+          <div class="meta">
+            <div class="name">Autowrite Studio</div>
+            <div class="time">yesterday</div>
+          </div>
+          <div class="status"><i></i>Active</div>
+        </li>
+        <li class="row paused">
+          <div class="glyph">B</div>
+          <div class="meta">
+            <div class="name">Balance Ally</div>
+            <div class="time">4 days ago</div>
+          </div>
+          <div class="status"><i></i>Paused</div>
+        </li>
+      </ul>
+
+      <div class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+        <input type="text" readonly placeholder="Search...">
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-primary">New project</button>
+        <button type="button" class="btn-secondary">Import</button>
+      </div>
+    </div>
+  </div>
+</div>

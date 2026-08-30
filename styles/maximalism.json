@@ -1,0 +1,68 @@
+{
+  "slug": "maximalism",
+  "name": "Maximalismus / Collage",
+  "aka": ["More is more", "Collage-Design", "Sticker-Ästhetik", "Neo-Memphis", "Cluttercore"],
+  "family": "Ausdruck & Natur",
+  "era": "Wurzeln 1954-1996, digitale Welle 2020-heute",
+  "origin": "Der Maximalismus ist keine Erfindung der 2020er, sondern die Wiederkehr einer Linie, die von Push Pin Studios (Milton Glaser, Seymour Chwast, ab 1954) über die psychedelischen Plakate der Sechziger, die Cut-and-paste-Fanzines des Punk (Jamie Reid für die Sex Pistols, 1977) und Memphis (Ettore Sottsass, 1981) bis zu David Carsons Ray Gun (1992-1996) und Richard Turleys Bloomberg Businessweek (2011-2014) reicht. Digital zurück kam er ab etwa 2020 als direkte Gegenbewegung zum Corporate-Flat-Minimalismus, dessen Ergebnis - austauschbare Sans-Serif-Logos und weiße Karten - selbst zum Problem geworden war. Möglich machten die Rückkehr variable Schriften, CSS transform und mix-blend-mode sowie GPU-beschleunigte Scroll-Animation: was früher ein Bitmap-Layout war, ist heute live gerendertes DOM. Kulturell trug ihn die Mode (Gucci unter Alessandro Michele ab 2015) und die Musikvermarktung, wo Wiedererkennbarkeit mehr zählt als Effizienz.",
+  "idea": "Überfüllung als Haltung: Statt Elemente wegzunehmen, werden sie geschichtet, gedreht, gerahmt und miteinander kollidieren gelassen, bis die Fläche eine Persönlichkeit hat. Ordnung entsteht nicht durch Weißraum, sondern durch Kontrastführung innerhalb des Chaos.",
+  "markers": [
+    "3-6 Schriftfamilien gleichzeitig, hier vier: Anton, DM Serif Display, Space Mono, Bricolage Grotesque",
+    "Rahmen im Rahmen: außen 3px solid, innen 2px dashed, dazu harter Versatzschatten 11px/20px in zwei Farben",
+    "Rotationen zwischen -2,2deg und +1,8deg auf nahezu jedem Element, nie 0deg",
+    "Überlappende Ebenen über negative Margins (-6px) und explizite z-index-Staffelung - jede Zeile überdeckt die darüberliegende",
+    "Muster auf Muster: Diagonalstreifen, Halbtonpunkte und Karo-Conic-Gradient gleichzeitig im Bild",
+    "Harte Schlagschatten ohne Blur (box-shadow 6px 6px 0), nie weiche Elevation",
+    "Gesättigte Farbkollision: Acid-Gelb, Hot Pink, Ultramarin und Orange in einem Screen",
+    "Sticker-Sekundärelemente: Klebeband-Streifen, Starburst, Barcode, Kreis-Siegel als reine Deko",
+    "Weißraum praktisch null; Padding 11-22px, Zeilen berühren sich"
+  ],
+  "params": {
+    "radius": "0px an Flächen; nur Sticker und Zähler rund (50%)",
+    "contrast": "sehr hoch",
+    "density": "sehr dicht",
+    "depth": "harte Offset-Schatten ohne Blur plus echte Überlappung mit z-index - Tiefe als Collage, nicht als Licht",
+    "color": "Vier bis sechs gesättigte Farben, die sich absichtlich beißen, zusammengehalten von einem fast schwarzen Ink und einem Cremeweiß als Klebstoff.",
+    "type": "Bewusster Familienmix: fette Kondensierte als Schrei, Serif-Kursiv als Ironie, Mono als Beleg, Grotesk als Stimme.",
+    "motion": "Ruckartig statt weich: 90ms linear beim Drücken (Schatten schrumpft, Element rutscht), dazu ein langsames Wackeln 6s ease-in-out auf Stickern",
+    "texture": "Halbton-Punktraster 11px und 45deg-Streifen auf dem Grund; auf Papier oft zusätzlich Film-Grain 4-8%"
+  },
+  "palette": ["#16101A", "#FFF6E8", "#F4E63F", "#FF3D81", "#2B36D6", "#FF6B1A"],
+  "examples": [
+    {"name": "David Carson, Ray Gun (1992-1996)", "what": "Überlagerte Spalten, zerschossene Schriftgrößen, ein komplettes Interview in Zapf Dingbats gesetzt - der Beleg dafür, dass Lesbarkeit hier eine Verhandlungsmasse ist."},
+    {"name": "Bloomberg Businessweek unter Richard Turley (2011-2014)", "what": "Wirtschaftsjournalismus mit Neonfarben, Stock-Foto-Collage und Formularästhetik; zeigt, dass Maximalismus auch mit hartem Informationsauftrag funktioniert, wenn ein Raster darunter liegt."},
+    {"name": "Gucci unter Alessandro Michele (2015-2022)", "what": "Muster auf Muster, Vintage-Serif neben Blockletter, Sticker-Applikationen - der modische Auslöser der aktuellen Welle."},
+    {"name": "Ettore Sottsass / Memphis Group (1981)", "what": "Terrazzo-Muster, Grafik-Bakterien und beißende Primärfarben auf Möbeln - die Formen-Bibliothek, aus der sich das heutige Web bedient."},
+    {"name": "Meow Wolf und vergleichbare Awwwards-Sieger", "what": "Scroll-getriebene Ebenenverschiebung, Sticker-Cursor, mehrere gleichzeitig laufende Animationsspuren - die Web-Version des Prinzips, jeweils als Einzelanfertigung gebaut."}
+  ],
+  "strengths": [
+    "Wiedererkennung auf 200ms - keine andere Familie in diesem Katalog ist so schwer zu verwechseln",
+    "Trägt Persönlichkeit und Haltung ohne Text; ideal für Kampagne, Launch, Merch, Release-Seiten",
+    "Verträgt hohe Elementdichte, weil Dichte das Gestaltungsmittel selbst ist",
+    "Vollständig mit CSS erzeugbar: transform, box-shadow, repeating-gradients - keine Bilddateien nötig"
+  ],
+  "risks": [
+    "Nicht in ein Komponentensystem überführbar: jede Rotation, jeder Schatten, jede Überlappung ist eine Einzelentscheidung",
+    "Der Unterschied zwischen 'kuratiertes Chaos' und 'Word-Art' liegt in Millimetern - ohne sicheres typografisches Auge wird es billig",
+    "Bei jeder Wiederholung ermüdend: was auf einer Landingpage begeistert, ist im vierten Arbeitsschritt einer App unerträglich",
+    "Skaliert schlecht auf kleine Viewports - rotierte, überlappende Elemente brauchen Breite oder sie stapeln zu Matsch",
+    "Wartungskosten: jede neue Funktion muss von Hand in die Collage eingepasst werden statt aus Tokens zu fallen"
+  ],
+  "a11y": "Das größte Risiko ist Text auf Muster: Halbtonpunkte und Streifen unter Fließtext senken den effektiven Kontrast weit unter den gemessenen Wert, deshalb liegt hier unter jedem Text eine deckende Fläche und der Ink bleibt bei #16101A (>13:1 auf Creme und Acid, ~6:1 auf Pink). Rotationen entkoppeln die visuelle von der DOM-Reihenfolge - Tab-Fokus springt für Sehende scheinbar wild, was nur durch konsequente Quellreihenfolge und einen dicken, versetzten Fokusring beherrschbar bleibt. Dauerbewegung, Blink- und Marquee-Effekte müssen unter prefers-reduced-motion abgeschaltet werden; scharfe Farbkollisionen wie Pink auf Ultramarin sind für Menschen mit Rot-Grün-Schwäche zusätzlich anstrengend.",
+  "longevity": "Als Haltung ist der Maximalismus zyklisch stabil - er kommt alle zwanzig Jahre wieder - aber die konkrete Ausprägung ist immer scharf datiert: die aktuelle Sticker-Variante wird ab etwa 2027 genauso als '2020er' lesbar sein, wie Carson heute als '90er' lesbar ist. Wer ihn wählt, wählt bewusst eine Zeitmarke.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 5,
+    "density": 5
+  },
+  "platforms": {
+    "web": "Das eigentliche Zuhause: transform, mehrfache box-shadows und repeating-gradients machen alles ohne Assets möglich - in Tailwind allerdings fast nur über arbitrary values.",
+    "mobile": "In Compose und SwiftUI teuer und fremd; Rotation, Überlappung und Mustergrund verlangen Custom-Drawing und kollidieren mit den Plattform-Konventionen.",
+    "desktop": "In Tauri technisch machbar, inhaltlich fast immer falsch - Werkzeugfenster mit langer Verweildauer vertragen diese Reizdichte nicht."
+  },
+  "verdict": "Als durchgängige Basis für die Eigenmarke ein klares Nein. Der Stil widerspricht genau der Anforderung, die hier zählt: ein Solo-Entwickler mit vielen kleinen Apps braucht ein System, das aus Tokens neue Screens ausspuckt, und Maximalismus ist per Definition das Gegenteil davon - jede Ansicht ist Handarbeit, und Compose sowie SwiftUI zahlen den Aufwand doppelt. Sinnvoll ist er als klar abgegrenzte Marketing-Ebene: Landingpage, Release-Ankündigung, Changelog-Header, Merch - dort, wo Wiedererkennung mehr wert ist als Effizienz, und wo die Seite nach dreißig Sekunden wieder verlassen wird. Wenn davon etwas in die Produkt-UI wandern soll, dann genau ein Element: der harte Offset-Schatten oder der Sticker-Status - eine Signatur, kein Stil.",
+  "combinesWith": ["neo-brutalism", "memphis", "swiss-punk", "y2k-aero"],
+  "tip": "Unter das Chaos gehört ein unsichtbares, strenges Raster - genau das ist der Unterschied zwischen Businessweek und Word-Art. Praktisch: Layout zuerst komplett in Schwarzweiß und ohne Rotation bauen, bis die Hierarchie stimmt, dann erst Rotationen (maximal +/-2,5deg), Muster und Sticker als letzte Schicht auflegen. Und die Rotationswerte krumm halten - 1,4deg und 2,2deg lesen sich handgemacht, 5deg und 10deg lesen sich nach Vorlage.",
+  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"]
+}

@@ -1,0 +1,424 @@
+<style>
+.style-editorial-print {
+  --ep-paper: #FBF8F1;
+  --ep-paper-2: #F4EFE3;
+  --ep-ink: #17140F;
+  --ep-ink-soft: #4A443A;
+  --ep-muted: #857C6C;
+  --ep-rule: #D6CDB9;
+  --ep-rule-strong: #A99E86;
+  --ep-red: #8C2F1F;
+  background: var(--ep-paper);
+  color: var(--ep-ink);
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  font-size: 16px;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  color-scheme: light;
+  font-feature-settings: "liga" 1, "dlig" 1, "onum" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.style-editorial-print * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.style-editorial-print .demo {
+  min-height: 460px;
+  width: 100%;
+  padding: 26px 30px 24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0) 220px),
+    var(--ep-paper);
+  border-top: 3px double var(--ep-ink);
+  border-bottom: 3px double var(--ep-ink);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Kolumnentitel / laufender Kopf ---- */
+.style-editorial-print .runhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-variant: small-caps;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--ep-muted);
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--ep-rule);
+}
+
+.style-editorial-print .runhead .rh-mid {
+  flex: 1;
+  border-bottom: 1px solid var(--ep-rule);
+  transform: translateY(-4px);
+  min-width: 20px;
+}
+
+.style-editorial-print .runhead em {
+  font-style: italic;
+  font-variant: normal;
+  letter-spacing: 0.02em;
+  color: var(--ep-red);
+}
+
+/* ---- Titelzeile ---- */
+.style-editorial-print .masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 18px;
+  padding: 16px 0 12px;
+  border-bottom: 1px solid var(--ep-ink);
+}
+
+.style-editorial-print .masthead h2 {
+  font-family: "Instrument Serif", "Newsreader", Georgia, serif;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  color: var(--ep-ink);
+}
+
+.style-editorial-print .folio {
+  text-align: right;
+  border-left: 1px solid var(--ep-rule);
+  padding-left: 14px;
+}
+
+.style-editorial-print .folio .folio-label {
+  display: block;
+  font-variant: small-caps;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--ep-muted);
+  margin-bottom: -2px;
+}
+
+.style-editorial-print .folio .folio-num {
+  font-family: "Instrument Serif", "Newsreader", Georgia, serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--ep-red);
+  font-feature-settings: "lnum" 1;
+}
+
+/* ---- Satzspiegel: Marginalspalte + Textspalte ---- */
+.style-editorial-print .sheet {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  column-gap: 18px;
+  flex: 1;
+  padding-top: 14px;
+}
+
+.style-editorial-print .margin {
+  border-right: 1px solid var(--ep-rule);
+  padding-right: 12px;
+  text-align: right;
+}
+
+.style-editorial-print .margin .note {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--ep-muted);
+  padding-bottom: 20px;
+}
+
+.style-editorial-print .margin .sig {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-style: normal;
+  font-size: 10px;
+  display: block;
+  color: var(--ep-rule-strong);
+}
+
+/* ---- Liste als Verzeichnis ---- */
+.style-editorial-print .entries {
+  list-style: none;
+  border-top: 1px solid var(--ep-rule);
+}
+
+.style-editorial-print .entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 14px;
+  padding: 11px 0 10px;
+  border-bottom: 1px solid var(--ep-rule);
+}
+
+.style-editorial-print .entry:hover {
+  background: linear-gradient(90deg, var(--ep-paper-2), rgba(244,239,227,0));
+}
+
+.style-editorial-print .entry .rank {
+  font-variant: small-caps;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--ep-muted);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.style-editorial-print .entry .name {
+  display: block;
+  font-family: "Instrument Serif", "Newsreader", Georgia, serif;
+  font-size: 25px;
+  line-height: 1.1;
+  letter-spacing: 0.002em;
+}
+
+.style-editorial-print .entry .caption {
+  display: block;
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--ep-ink-soft);
+  margin-top: 2px;
+}
+
+/* ---- Vorspann: Werksatz mit Initiale ueber drei Zeilen ---- */
+.style-editorial-print .lede {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ep-ink-soft);
+  text-align: left;
+  padding-bottom: 16px;
+}
+
+.style-editorial-print .lede::first-line {
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ep-ink);
+}
+
+.style-editorial-print .lede::first-letter {
+  float: left;
+  font-family: "Instrument Serif", "Newsreader", Georgia, serif;
+  font-size: 70px;
+  line-height: 1;
+  padding: 4px 9px 0 0;
+  color: var(--ep-red);
+  font-variant: normal;
+  letter-spacing: 0;
+}
+
+.style-editorial-print .status {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  white-space: nowrap;
+  color: var(--ep-ink);
+  border-bottom: 1px solid var(--ep-ink);
+  padding-bottom: 1px;
+}
+
+.style-editorial-print .status.paused {
+  color: var(--ep-muted);
+  border-bottom: 1px dotted var(--ep-rule-strong);
+  font-style: italic;
+}
+
+.style-editorial-print .status .mark {
+  font-size: 9px;
+  vertical-align: 2px;
+  margin-right: 5px;
+  letter-spacing: 0;
+}
+
+/* ---- Suchfeld auf der Linie ---- */
+.style-editorial-print .searchline {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--ep-ink);
+  padding-bottom: 5px;
+}
+
+.style-editorial-print .searchline .caps {
+  font-variant: small-caps;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--ep-muted);
+}
+
+.style-editorial-print .searchline input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ep-ink);
+  outline: none;
+  padding: 0;
+}
+
+.style-editorial-print .searchline input::placeholder {
+  color: var(--ep-muted);
+  opacity: 1;
+  font-style: italic;
+}
+
+.style-editorial-print .searchline input:focus-visible {
+  outline: 1px dotted var(--ep-red);
+  outline-offset: 3px;
+}
+
+/* ---- Aktionen ---- */
+.style-editorial-print .actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.style-editorial-print button {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 0;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.style-editorial-print .btn-primary {
+  background: var(--ep-ink);
+  color: var(--ep-paper);
+  border: 1px solid var(--ep-ink);
+  padding: 9px 20px 8px;
+}
+
+.style-editorial-print .btn-primary:hover {
+  background: var(--ep-red);
+  border-color: var(--ep-red);
+}
+
+.style-editorial-print .btn-secondary {
+  background: transparent;
+  color: var(--ep-ink);
+  border: 0;
+  border-bottom: 1px solid var(--ep-ink);
+  padding: 9px 2px 3px;
+}
+
+.style-editorial-print .btn-secondary:hover {
+  color: var(--ep-red);
+  border-bottom-color: var(--ep-red);
+}
+
+.style-editorial-print button:focus-visible {
+  outline: 1px dotted var(--ep-red);
+  outline-offset: 3px;
+}
+
+/* ---- Schlussvignette ---- */
+.style-editorial-print .colophon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  color: var(--ep-rule-strong);
+}
+
+.style-editorial-print .colophon .hr {
+  flex: 1;
+  height: 0;
+  border-top: 1px solid var(--ep-rule);
+}
+
+.style-editorial-print .colophon .fleuron {
+  font-size: 15px;
+  color: var(--ep-red);
+}
+
+@media (max-width: 520px) {
+  .style-editorial-print .sheet { grid-template-columns: 1fr; }
+  .style-editorial-print .margin { display: none; }
+  .style-editorial-print .masthead h2 { font-size: 40px; }
+}
+</style>
+<div class="style-editorial-print">
+  <div class="demo">
+
+    <div class="runhead">
+      <span>Werkverzeichnis</span>
+      <span class="rh-mid"></span>
+      <span><em>Folge&nbsp;II</em> &nbsp;·&nbsp; Seite 1</span>
+    </div>
+
+    <div class="masthead">
+      <h2>Projekte</h2>
+      <div class="folio">
+        <span class="folio-label">Eintr&auml;ge</span>
+        <span class="folio-num">12</span>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <aside class="margin">
+        <p class="note"><span class="sig">Notiz</span>drei Titel im Register</p>
+        <p class="note"><span class="sig">Satz</span>Zweispalter, Hairlines</p>
+      </aside>
+
+      <div>
+        <p class="lede">Drei Arbeiten stehen derzeit im Satz. Zwei laufen, eine ruht &mdash; das Verzeichnis f&uuml;hrt sie in der Reihenfolge ihrer letzten Bearbeitung und h&auml;lt den Stand der Woche fest.</p>
+
+        <ul class="entries">
+          <li class="entry">
+            <div>
+              <span class="rank">I</span>
+              <span class="name">Nexus</span>
+              <span class="caption">vor 2 Std.</span>
+            </div>
+            <span class="status"><span class="mark">&#9632;</span>Aktiv</span>
+          </li>
+          <li class="entry">
+            <div>
+              <span class="rank">II</span>
+              <span class="name">Autowrite Studio</span>
+              <span class="caption">gestern</span>
+            </div>
+            <span class="status"><span class="mark">&#9632;</span>Aktiv</span>
+          </li>
+          <li class="entry">
+            <div>
+              <span class="rank">III</span>
+              <span class="name">Balance Ally</span>
+              <span class="caption">vor 4 Tagen</span>
+            </div>
+            <span class="status paused"><span class="mark">&#9633;</span>Pausiert</span>
+          </li>
+        </ul>
+
+        <div class="searchline">
+          <span class="caps">Register</span>
+          <input type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="button">Neues Projekt</button>
+          <button class="btn-secondary" type="button">Importieren</button>
+        </div>
+
+        <div class="colophon">
+          <span class="hr"></span>
+          <span class="fleuron">&#10087;</span>
+          <span class="hr"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

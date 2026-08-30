@@ -1,0 +1,434 @@
+<style>
+.style-playful-chunky {
+  --pc-bg: #FFFFFF;
+  --pc-panel: #F7F9FC;
+  --pc-line: #E3E7EE;
+  --pc-line-dark: #C9D0DC;
+  --pc-ink: #3B3B47;
+  --pc-ink-soft: #6B6E82;
+  --pc-green: #4CC93F;
+  --pc-green-dark: #37A02C;
+  --pc-blue: #22ABF5;
+  --pc-blue-dark: #1687C6;
+  --pc-yellow: #FFC93C;
+  --pc-yellow-dark: #D9A312;
+  --pc-red: #FF5D5D;
+  --pc-purple: #A468F0;
+  background: var(--pc-bg);
+  color: var(--pc-ink);
+  font-family: "Nunito", system-ui, "Segoe UI", sans-serif;
+  line-height: 1.45;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  color-scheme: light;
+}
+
+.style-playful-chunky * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.style-playful-chunky .demo {
+  min-height: 460px;
+  width: 100%;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 88% 6%, rgba(255,201,60,0.18), rgba(255,201,60,0) 34%),
+    radial-gradient(circle at 4% 96%, rgba(34,171,245,0.14), rgba(34,171,245,0) 38%),
+    var(--pc-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Header mit Zaehler-Badge ---------- */
+.style-playful-chunky .top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.style-playful-chunky .top h2 {
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--pc-ink);
+}
+
+.style-playful-chunky .top .grow { flex: 1; }
+
+.style-playful-chunky .counter {
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  color: #5A3F00;
+  background: var(--pc-yellow);
+  border-radius: 999px;
+  padding: 13px 20px 15px;
+  box-shadow: 0 5px 0 var(--pc-yellow-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.style-playful-chunky .counter .spark {
+  font-size: 16px;
+  animation: playful-chunky-pop 2.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+/* ---------- Maskottchen + Fortschritt ---------- */
+.style-playful-chunky .hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--pc-panel);
+  border: 2px solid var(--pc-line);
+  border-radius: 24px;
+  padding: 14px 18px;
+  box-shadow: 0 6px 0 var(--pc-line-dark);
+}
+
+.style-playful-chunky .mascot {
+  width: 62px;
+  height: 62px;
+  flex: none;
+  animation: playful-chunky-bob 2.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+.style-playful-chunky .progress-wrap { flex: 1; min-width: 0; }
+
+.style-playful-chunky .progress-label {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--pc-ink-soft);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.style-playful-chunky .progress-label b { color: var(--pc-green-dark); }
+
+.style-playful-chunky .bar {
+  height: 18px;
+  border-radius: 999px;
+  background: #E7EBF1;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.style-playful-chunky .bar span {
+  display: block;
+  height: 100%;
+  width: 68%;
+  border-radius: 999px;
+  background: var(--pc-green);
+  box-shadow: inset 0 -4px 0 var(--pc-green-dark);
+  position: relative;
+  animation: playful-chunky-fill 900ms cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+}
+
+.style-playful-chunky .bar span::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 12px;
+  top: 3px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.5);
+}
+
+/* ---------- Liste ---------- */
+.style-playful-chunky .list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.style-playful-chunky .card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: var(--pc-bg);
+  border: 2px solid var(--pc-line);
+  border-radius: 20px;
+  padding: 12px 14px;
+  box-shadow: 0 5px 0 var(--pc-line-dark);
+  transition: transform 130ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 130ms ease;
+  cursor: pointer;
+}
+
+.style-playful-chunky .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 var(--pc-line-dark);
+}
+
+.style-playful-chunky .card:active {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 var(--pc-line-dark);
+}
+
+.style-playful-chunky .tile {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: #FFFFFF;
+}
+
+.style-playful-chunky .tile.t-blue { background: var(--pc-blue); box-shadow: inset 0 -4px 0 var(--pc-blue-dark); }
+.style-playful-chunky .tile.t-purple { background: var(--pc-purple); box-shadow: inset 0 -4px 0 #7C41C9; }
+.style-playful-chunky .tile.t-yellow { background: var(--pc-yellow); box-shadow: inset 0 -4px 0 var(--pc-yellow-dark); }
+
+.style-playful-chunky .meta { flex: 1; min-width: 0; }
+
+.style-playful-chunky .name {
+  display: block;
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--pc-ink);
+}
+
+.style-playful-chunky .time {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--pc-ink-soft);
+  margin-top: 1px;
+}
+
+.style-playful-chunky .pill {
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 7px 13px 8px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.style-playful-chunky .pill.on {
+  background: var(--pc-green);
+  color: #FFFFFF;
+  box-shadow: 0 4px 0 var(--pc-green-dark);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+}
+
+.style-playful-chunky .pill.off {
+  background: #FFFFFF;
+  color: #9A7208;
+  border: 2px solid var(--pc-yellow);
+  box-shadow: 0 4px 0 var(--pc-yellow-dark);
+  padding: 5px 11px 6px;
+}
+
+/* ---------- Eingabefeld ---------- */
+.style-playful-chunky .search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--pc-panel);
+  border: 2px solid var(--pc-line);
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: inset 0 3px 0 rgba(0,0,0,0.045);
+}
+
+.style-playful-chunky .search svg { flex: none; }
+
+.style-playful-chunky .search input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-family: "Nunito", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--pc-ink);
+  padding: 0;
+}
+
+.style-playful-chunky .search input::placeholder {
+  color: #9AA0B0;
+  opacity: 1;
+}
+
+.style-playful-chunky .search input:focus-visible {
+  outline: 3px solid var(--pc-blue);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+/* ---------- Aktionen ---------- */
+.style-playful-chunky .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.style-playful-chunky button {
+  font-family: "Fredoka", "Nunito", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 18px;
+  padding: 15px 24px 16px;
+  cursor: pointer;
+  transition: transform 120ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 120ms ease, filter 120ms ease;
+}
+
+.style-playful-chunky .btn-primary {
+  flex: 1;
+  min-width: 190px;
+  background: var(--pc-green);
+  color: #FFFFFF;
+  box-shadow: 0 6px 0 var(--pc-green-dark);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.14);
+}
+
+.style-playful-chunky .btn-primary:hover { filter: brightness(1.06); }
+
+.style-playful-chunky .btn-secondary {
+  background: #FFFFFF;
+  color: var(--pc-blue-dark);
+  box-shadow: 0 6px 0 var(--pc-line-dark), inset 0 0 0 2px var(--pc-line-dark);
+}
+
+.style-playful-chunky .btn-secondary:hover { background: #F3FAFF; }
+
+.style-playful-chunky button:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.style-playful-chunky .btn-secondary:active {
+  box-shadow: inset 0 0 0 2px var(--pc-line-dark);
+}
+
+.style-playful-chunky button:focus-visible {
+  outline: 3px solid var(--pc-blue);
+  outline-offset: 3px;
+}
+
+@keyframes playful-chunky-bob {
+  from { transform: translateY(0) rotate(-2deg); }
+  to   { transform: translateY(-6px) rotate(2deg); }
+}
+
+@keyframes playful-chunky-pop {
+  0%, 70%, 100% { transform: scale(1); }
+  80% { transform: scale(1.28); }
+  90% { transform: scale(0.94); }
+}
+
+@keyframes playful-chunky-fill {
+  from { width: 0%; }
+  to   { width: 68%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-playful-chunky .mascot,
+  .style-playful-chunky .counter .spark,
+  .style-playful-chunky .bar span {
+    animation: none;
+  }
+  .style-playful-chunky .card,
+  .style-playful-chunky button {
+    transition: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .style-playful-chunky .top h2 { font-size: 28px; }
+  .style-playful-chunky .btn-primary { min-width: 100%; }
+}
+</style>
+<div class="style-playful-chunky">
+  <div class="demo">
+
+    <div class="top">
+      <h2>Projects</h2>
+      <span class="grow"></span>
+      <span class="counter"><span class="spark">&#9733;</span>12</span>
+    </div>
+
+    <div class="hero">
+      <svg class="mascot" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="32" cy="58" rx="18" ry="4" fill="#000000" opacity="0.08"/>
+        <path d="M32 6c13 0 22 9 22 22v9c0 12-9 19-22 19s-22-7-22-19v-9C10 15 19 6 32 6z" fill="#4CC93F"/>
+        <path d="M32 34c13 0 22 0 22 3v9c0 12-9 19-22 19s-22-7-22-19v-9c0-3 9-3 22-3z" fill="#37A02C" opacity="0.28"/>
+        <circle cx="23" cy="27" r="9" fill="#FFFFFF"/>
+        <circle cx="41" cy="27" r="9" fill="#FFFFFF"/>
+        <circle cx="24.5" cy="28" r="4.2" fill="#3B3B47"/>
+        <circle cx="39.5" cy="28" r="4.2" fill="#3B3B47"/>
+        <circle cx="26" cy="26.4" r="1.5" fill="#FFFFFF"/>
+        <circle cx="41" cy="26.4" r="1.5" fill="#FFFFFF"/>
+        <path d="M32 36l-6 5h12l-6-5z" fill="#FFC93C"/>
+        <path d="M18 10c3-3 7-4 9-2-3 2-5 5-6 8-2-2-4-4-3-6z" fill="#37A02C"/>
+        <path d="M46 10c-3-3-7-4-9-2 3 2 5 5 6 8 2-2 4-4 3-6z" fill="#37A02C"/>
+      </svg>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Weekly goal</span><b>8 / 12</b></div>
+        <div class="bar"><span></span></div>
+      </div>
+    </div>
+
+    <ul class="list">
+      <li class="card">
+        <span class="tile t-blue">&#9679;</span>
+        <span class="meta">
+          <span class="name">Nexus</span>
+          <span class="time">2 hrs ago</span>
+        </span>
+        <span class="pill on">Active</span>
+      </li>
+      <li class="card">
+        <span class="tile t-purple">&#9998;</span>
+        <span class="meta">
+          <span class="name">Autowrite Studio</span>
+          <span class="time">yesterday</span>
+        </span>
+        <span class="pill on">Active</span>
+      </li>
+      <li class="card">
+        <span class="tile t-yellow">&#9776;</span>
+        <span class="meta">
+          <span class="name">Balance Ally</span>
+          <span class="time">4 days ago</span>
+        </span>
+        <span class="pill off">Paused</span>
+      </li>
+    </ul>
+
+    <div class="search">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" stroke="#9AA0B0" stroke-width="3.4"/>
+        <path d="M15.5 15.5L21 21" stroke="#9AA0B0" stroke-width="3.4" stroke-linecap="round"/>
+      </svg>
+      <input type="text" readonly placeholder="Search..." aria-label="Search">
+    </div>
+
+    <div class="actions">
+      <button class="btn-primary" type="button">New project</button>
+      <button class="btn-secondary" type="button">Import</button>
+    </div>
+
+  </div>
+</div>

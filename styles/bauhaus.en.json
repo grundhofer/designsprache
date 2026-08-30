@@ -1,0 +1,69 @@
+{
+  "slug": "bauhaus",
+  "name": "Bauhaus / Constructivism",
+  "aka": ["Staatliches Bauhaus", "New Typography", "Russian Constructivism", "Elemental Design"],
+  "family": "Modernist Schools",
+  "era": "1919-1933, revived from c. 1960 to today",
+  "origin": "The Staatliches Bauhaus was founded in April 1919 in Weimar by Walter Gropius, moved to Dessau in 1925 and to Berlin in 1932, where it was dissolved in 1933 under pressure from the Nazis. It solved the problem of industrial mass production in design terms: a formal language derived from function and manufacturability rather than from ornament and craft tradition. Herbert Bayer's lowercase-only 'Universal' typeface (1925), Kandinsky's assignment of primary colors to primary shapes (questionnaire, 1923) and Moholy-Nagy's typophoto supplied the visual vocabulary. In parallel, and influencing it in both directions, Russian Constructivism around Alexander Rodchenko and El Lissitzky developed the same means for political agitation – El Lissitzky's 'Beat the Whites with the Red Wedge' (1919) is the prototype of the diagonal, form-carried message.",
+  "idea": "Meaning is carried by primary shape and primary color, not by ornament – circle, square and triangle are vocabulary, not decoration.",
+  "markers": [
+    "Primary colors only, #E1140A / #F5C518 / #0B4EA2 plus black and a paper tone, no intermediate hues",
+    "Radius exactly 0px or 50% – nothing in between",
+    "Outlines and separators 3-4px black, solid rather than hairline",
+    "Primary shapes as semantic markers: square/red, circle/blue, triangle/yellow (after Kandinsky 1923)",
+    "Geometric grotesque with a perfectly round 'o' (the Futura lineage), headlines consistently lowercase",
+    "At least one compositional diagonal (wedge, tilted bar, 45° stripe band) as a Constructivist citation",
+    "Flat fills instead of gradients: 0 gradients, 0 soft shadows, offset shadows only hard and colored",
+    "Asymmetric weighting: one element dominates the surface with more than 25% of it",
+    "Mechanical motion: steps() timing instead of soft easings"
+  ],
+  "params": {
+    "radius": "0px or 50%",
+    "contrast": "very high",
+    "density": "medium",
+    "depth": "no real depth; layering through overlapping fills and hard offset shadows (5px, 0 blur)",
+    "color": "Three primary colors plus black on a warm paper tone, each color firmly bound to one shape and one meaning.",
+    "type": "Geometric grotesque constructed from circle and straight line, headlines lowercase, microtypography tracked out to 0.24em.",
+    "motion": "Mechanical and metered: 140-180ms with steps(2-4) or cubic-bezier(0.2,0,0,1), rotation by 45 or 90 degrees instead of scaling.",
+    "texture": "none; the only pattern is 45° diagonal stripes as a surface marker"
+  },
+  "palette": ["#F4F1E8", "#111111", "#E1140A", "#F5C518", "#0B4EA2"],
+  "examples": [
+    {"name": "Herbert Bayer, Universal alphabet (1925)", "what": "Lowercase only, constructed from circle and straight line, no serifs, no capitals – the typeface as proof of the construction logic"},
+    {"name": "El Lissitzky, 'Beat the Whites with the Red Wedge' (1919)", "what": "A red triangular wedge drives diagonally into a white circle, the text follows the diagonal axis – form carries the message completely"},
+    {"name": "Joost Schmidt, poster for the Bauhaus exhibition in Weimar (1923)", "what": "Bars interlocking at right angles in red and black, type set as a structural part of the construction"},
+    {"name": "Bauhaus-Archiv Berlin, visual identity", "what": "Contemporary application: primary shapes as navigation markers, a strict primary-color triad, lowercase as a stance"},
+    {"name": "Alexander Rodchenko, Lengiz poster 'Books' (1924)", "what": "Photomontage plus black-and-red speech wedges on a strict diagonal, typography gridded into the surface"}
+  ],
+  "strengths": [
+    "Extreme recognizability with minimal asset effort – three colors and three shapes are a complete system",
+    "The shapes carry real semantics: status, category and priority can be encoded without an icon set",
+    "Works superbly as an illustration and empty-state language, even without adopting the UI chrome",
+    "Purely flat, therefore cheap to render and reproducible identically on every platform",
+    "Historically deep-rooted – it does not read as a trend but as a citation with provenance"
+  ],
+  "risks": [
+    "Too loud as complete UI chrome: three primary colors plus 4px outlines wear you down over longer sessions",
+    "The primary-color triad is heavily occupied (IKEA, Google, children's toys) and tips quickly into pastiche or the infantile",
+    "Yellow is unusable as a text color and works as a fill only with black type on it",
+    "Without real compositional work you get 'colored boxes with fat borders' instead of Bauhaus – the asymmetry has to be built, not decorated",
+    "Lowercase setting is a strong stance that can read as sloppiness in business contexts"
+  ],
+  "a11y": "Black on the paper tone delivers 16.7:1, black on yellow #F5C518 about 11.6:1 – both unproblematic. The critical one is Bauhaus red: pure white on #E1140A reaches 4.9:1 and is therefore just compliant for 14px text, while the warmer paper tone on the same red fails at 4.3:1 – so only #FFFFFF may sit on red, never the paper tone and never a light weight. Yellow on white lands at 1.6:1 and is completely unusable for text and thin lines. Since the style encodes meaning through color and shape, every status must additionally carry a word; the primary shapes are a good second channel for color-blind users but do not replace text labels.",
+  "longevity": "As a brand and illustration layer it is practically imperishable – the formal language has been legible for over a hundred years. As a complete product UI it ages faster, because after a few years the volume of the primary colors is perceived as a costume rather than a system.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 4,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Good – fills, outlines and shapes are pure CSS, but the amount of color has to be turned down on content pages.",
+    "mobile": "Limited – thick outlines eat space on small displays, and the shape markers compete with the platform icons.",
+    "desktop": "Difficult as a full style for dense Tauri tools; strong as a splash, onboarding and icon system."
+  },
+  "verdict": "As a full style no, as a brand and illustration layer a clear yes. For a solo developer with many small apps, Bauhaus is the cheapest available carrier of recognition: three colors, three shapes, one geometric grotesque – that is a complete logo, icon and empty-state system without a single drawn asset, and it reproduces identically across Tailwind, Compose and SwiftUI. A dashboard that runs eight hours a day in red-yellow-blue with 4px borders, by contrast, is exhausting and feels like a costume by the third project. The workable construction is therefore: Bauhaus for app icons, splash, empty states and marketing – with a quiet Swiss grid underneath for the actual UI.",
+  "combinesWith": ["swiss", "de-stijl", "neo-brutalism", "memphis"],
+  "tip": "Bind every primary shape firmly to one meaning and hold that binding across all apps – circle always state, square always object, triangle always warning. The moment the shapes are merely scattered as decoration, Bauhaus turns into a nursery. And: exactly one diagonal per screen, not three.",
+  "googleFonts": ["Jost"]
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "editorial-print",
+  "name": "Editorial / Print-Magazin im Web",
+  "aka": [
+    "Magazine Layout",
+    "Editorial Web Design",
+    "Buchtypografie im Interface",
+    "Print-to-Screen"
+  ],
+  "family": "Weitere Pole",
+  "era": "1920er (Print) - Web-Adaption ab ca. 2010, aktuell",
+  "origin": "Der Stil überführt die über Jahrhunderte gewachsene Buch- und Zeitschriftentypografie -- Satzspiegel, Kolumnentitel, Marginalien, Initialen, Kapitälchen -- ins Interface. Prägend waren Magazine wie The New Yorker (Irvin-Display plus Caslon-Werksatz) und die NZZ, deren Web-Relaunch klassische Ordnung ohne Kartenraster durchhielt, sowie Jan Tschicholds und Robert Bringhursts Satzlehre als theoretische Grundlage; Richard Rutters Web-Adaption 'The Elements of Typographic Style Applied to the Web' (webtypography.net, ab 2005) war für viele Webdesigner der Einstieg. Technisch möglich wurde er erst durch Webfonts (@font-face ab 2009/2010), OpenType-Features im Browser (font-feature-settings, Ligaturen, Mediävalziffern) und CSS Grid für echte Satzspiegel. Er löste das Problem, dass Textprodukte im Web wie Datenbanken aussahen statt wie Publikationen.",
+  "idea": "Hierarchie entsteht aus Schriftschnitt, Laufweite und Weißraum -- nicht aus Boxen, Schatten oder Farbflächen. Der Bildschirm wird als Papierseite mit Satzspiegel behandelt.",
+  "markers": [
+    "Radius 0px durchgehend -- keine abgerundeten Karten",
+    "Trennung ausschließlich über Hairlines: 1px, Deckkraft ca. 15-25 % der Textfarbe",
+    "Schatten: keine; Tiefe existiert nicht, es gibt nur die Seite",
+    "Serif-Display 44-58px gegen Serif-Werksatz 15-16px: Größensprung >3:1",
+    "Initiale über 2-3 Zeilen, float:left, in Akzentfarbe",
+    "Kapitälchen mit Laufweite 0.14-0.24em für Labels, Status und Kolumnentitel",
+    "Zeitangaben und Bildunterschriften konsequent kursiv, 13-14px",
+    "Papierton statt Weiß: #FBF8F1 statt #FFFFFF, Tinte #17140F statt #000000",
+    "Marginalspalte 70-80px mit vertikaler Hairline als Satzspiegel-Kante"
+  ],
+  "params": {
+    "radius": "0px, ausnahmslos",
+    "contrast": "sehr hoch",
+    "density": "mittel bis dicht",
+    "depth": "keine; Ordnung über Linien, Einzüge und Spaltenkanten",
+    "color": "Papier-Ton plus Tinte plus genau eine gebrochene Akzentfarbe (Zeitungsrot #8C2F1F) für Initiale, Zähler und Hover",
+    "type": "zwei Serifen-Schnitte: Display mit hohem Strichkontrast für Titel, Lesetyp für Werksatz; Kapitälchen und Kursiv tragen die gesamte Sekundärinformation",
+    "motion": "fast keine; 120-160ms Farbwechsel auf Hover, kein Transform, kein Bounce -- Papier bewegt sich nicht",
+    "texture": "keine bis minimal: ein weicher Lichtverlauf oben (5 % Weiß) simuliert Papierschlag"
+  },
+  "palette": [
+    "#FBF8F1",
+    "#F4EFE3",
+    "#17140F",
+    "#857C6C",
+    "#D6CDB9",
+    "#8C2F1F"
+  ],
+  "examples": [
+    {
+      "name": "The New Yorker (newyorker.com)",
+      "what": "Rubrikzeile in Kapitälchen über dem Titel, Autorenzeile kursiv, Hairline-Trenner statt Karten, Illustration statt Foto"
+    },
+    {
+      "name": "NZZ (nzz.ch)",
+      "what": "Mehrspaltiges Raster mit echten Spaltenlinien, Dachzeilen in gesperrten Versalien, Bildunterschriften kursiv unter Haarlinie"
+    },
+    {
+      "name": "Are.na (are.na/editorial)",
+      "what": "Sehr breite Außenstege, linksbündiger Flattersatz, Fußnoten und Quellenangaben in der Marginalspalte, null Rundungen"
+    },
+    {
+      "name": "kottke.org",
+      "what": "Zwanzig Jahre durchgehaltener Blog-Werksatz: Serif-Fließtext mit großer Zeilenhöhe, Datumszeile klein und gesperrt, keine Karten"
+    },
+    {
+      "name": "read.cv (eingestellt)",
+      "what": "Lebenslauf als gesetztes Dokument -- Kapitälchen-Labels, tabellarische Ziffern, Hairline-Register; das Team ging 2024 zu Perplexity, der Dienst wurde 2025 abgeschaltet"
+    },
+    {
+      "name": "Robert Bringhurst, 'The Elements of Typographic Style'",
+      "what": "Das Regelwerk hinter dem Stil: Satzspiegel-Proportionen, Marginalien, Kapitälchen-Einsatz, Mediävalziffern im Fließtext"
+    }
+  ],
+  "strengths": [
+    "Altert praktisch nicht -- die Regeln sind älter als jedes UI-Framework",
+    "Wirkt sofort seriös und redaktionell; ideal für Text-, Doku- und Notizprodukte",
+    "Sehr günstig in der Umsetzung: kein Icon-Set, keine Illustrationen, keine Schattenskala",
+    "Hoher Wiedererkennungswert bei minimalem Farbeinsatz -- eine Akzentfarbe genügt",
+    "Skaliert gut nach oben in der Informationsdichte, ohne unruhig zu werden"
+  ],
+  "risks": [
+    "Interaktive Dichte ist der Feind: Toolbars, Dropdowns, Tabellen mit 12 Aktionen sprengen den Satzspiegel",
+    "Ohne echte Typo-Disziplin (konsistente Laufweiten, gepflegte Vertikalrhythmen) wirkt es sofort wie ein unfertiges Word-Dokument",
+    "Serifen unter 15px werden auf Android und älteren Windows-Renderern matschig",
+    "Kapitälchen sind in vielen Google-Fonts nicht echt, sondern browserseitig synthetisiert -- optisch zu leicht, wenn man es nicht per font-weight korrigiert",
+    "Touch-Ziele: Hairline-Zeilen verleiten zu 32px-Reihen, das ist unter dem 44px-Minimum"
+  ],
+  "a11y": "Kontrast ist die große Stärke: Tinte auf Papierton liegt bei etwa 15:1, weit über AAA. Kritisch sind dagegen die kleinen gesperrten Kapitälchen (10-12px) für Status und Labels -- sie liegen an der Grenze der Lesbarkeit und müssen Farbwerte mit mindestens 4.5:1 tragen; Status darf nie allein über Kursivierung oder Grauwert codiert sein, deshalb steht hier zusätzlich ein gefülltes bzw. leeres Quadrat als Formmerkmal. Hairline-Trenner mit 1px und niedrigem Kontrast verschwinden bei Windows-Hochkontrastmodus vollständig, die Struktur muss also auch ohne sie stehen.",
+  "longevity": "Der langlebigste Stil im ganzen Katalog: Er referenziert eine Formensprache, die seit 500 Jahren funktioniert, und enthält keinen einzigen Effekt, der als Jahrgang lesbar wäre. Wer ihn 2019 gebaut hat, muss 2030 nichts ändern.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 3,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Naturraum des Stils -- Astro-Content-Seiten, Blogs, Doku und Marketing profitieren unmittelbar, OpenType-Features sind im Browser voll verfügbar.",
+    "mobile": "Auf Compose/SwiftUI machbar, aber teuer: Marginalspalten fallen weg, Kapitälchen müssen als eigener Textstyle nachgebaut werden, und Serifen brauchen dort mindestens 16sp.",
+    "desktop": "In Tauri identisch zum Web; passt hervorragend zu dokumentzentrierten Werkzeugen, kollidiert aber mit dichten Werkzeugleisten und Panel-Layouts."
+  },
+  "verdict": "Als Marken-Basis für viele kleine Apps taugt der Stil nur halb -- und genau diese Hälfte ist wertvoll. Für Landing Pages, Changelogs, Doku und Content-Routen (Astro) liefert er sofort eine erwachsene, unverwechselbare Stimme, die nichts kostet und nicht altert; als durchgängige Sprache für Werkzeug-Oberflächen mit Listen, Filtern, Dialogen und Einstellungen bricht er dagegen zusammen, weil er für Lesen gebaut ist und nicht für Bedienen. Empfehlung: als Content-Layer der Marke einsetzen (Serif-Display, Kapitälchen-Labels, Hairlines, Papierton) und die App-Oberflächen mit einem funktionaleren Pol fahren, der Farbe und Typo-Akzente übernimmt. Der Papierton und die Akzentfarbe sind dabei die übertragbaren Markenmerkmale, nicht der Satzspiegel.",
+  "combinesWith": [
+    "swiss",
+    "warm-editorial",
+    "dev-noir",
+    "data-dense"
+  ],
+  "tip": "Vertikalrhythmus vor Ornament. Leg eine Basiszeile fest (z.B. 24px) und binde jede Zeilenhöhe, jeden Abstand und jede Hairline an ihr Vielfaches -- erst dadurch wirkt die Seite gesetzt statt dekoriert. Initiale, Fleuron und Kapitälchen sind Zugaben; kommen sie ohne Rhythmus, sieht es nach Hochzeitseinladung aus.",
+  "googleFonts": [
+    "Instrument Serif",
+    "Newsreader"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "slug": "terminal-mono",
+  "name": "Terminal / Monospace Minimalism",
+  "aka": [
+    "Monospace minimalism",
+    "TUI aesthetic",
+    "CLI look",
+    "Text-mode design"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "1970-today (as a deliberate design style: c. 2019-today)",
+  "origin": "The style is a re-enactment of a technical constraint: VT100 terminals and line printers could only render a fixed character grid, so rules had to be built from the box-drawing characters of code page 437 and later Unicode U+2500-257F. From about 2019 on this turns into a voluntary design decision: Charm (Bubble Tea, Lip Gloss, from 2020) makes TUIs presentable again, the U.S. Graphics Company turns the monospace grid into a trademark with Berkeley Mono (2021), and Terminal.shop starts selling coffee over SSH in 2024. The problem being solved today is not a technical one but a positioning one: the style says 'built by developers for developers' in 200 milliseconds and sets itself apart from generic SaaS layouts. What made the web version possible were good screen monospaces and ch units, which let you compute a real character grid in the browser.",
+  "idea": "The character grid is the layout system: everything sits on whole-number column and row positions, and every separation is built out of text instead of graphics.",
+  "markers": [
+    "Radius 0px without exception, inputs and buttons included",
+    "A single type family, monospace, for 100% of all characters including headings",
+    "Line height as a fixed grid cell (20px here), every height a multiple of it - row and status bar 1 cell, input field and buttons exactly 2 cells (40px)",
+    "Rules as box-drawing characters (U+250C ┌, U+2500 ─, U+2524 ┤) or 1px hairlines, never as shadow",
+    "Dot leaders (······) fill the space between label and value the way a table of contents does",
+    "Palette: ground + foreground + exactly 2 accents (here #00C08B ok, #E8A33D warning), no third color, box-shadow nowhere",
+    "Block cursor 8x15px blinking with steps(1,end) on a 1.06s period",
+    "Status bar along the bottom edge carrying mode, counter and key bindings (a vim/tmux quotation)",
+    "Buttons as a bracket form [text] or ▸ text, not as a filled pill"
+  ],
+  "params": {
+    "radius": "0px, without exception",
+    "contrast": "very high",
+    "density": "dense",
+    "depth": "none; separation exclusively through 1px hairlines and box-drawing characters",
+    "color": "One ground tone, one foreground tone, two semantic accents (ok/warning) - color is state, never decoration",
+    "type": "One monospace for everything; hierarchy comes from caps, letter-spacing 0.22em and brightness, not from size",
+    "motion": "Practically none; the only movement is the cursor blink with steps(1,end); hover switches colors hard, with no transition",
+    "texture": "Line grid as a repeating-linear-gradient at 1.8% white - one visible line per 20px cell"
+  },
+  "palette": [
+    "#0C0C0C",
+    "#101010",
+    "#D9D9D4",
+    "#7C7C74",
+    "#00C08B",
+    "#E8A33D"
+  ],
+  "examples": [
+    {
+      "name": "Terminal.shop",
+      "what": "Coffee shop whose main ordering path is an SSH call; the website mirrors the TUI exactly: monospace, hard edges, product list as text rows with dot leaders"
+    },
+    {
+      "name": "Charm (Bubble Tea, Lip Gloss, Glow)",
+      "what": "Go libraries for TUIs; the docs pages and READMEs use rendered terminal frames with box-drawing borders, colored badges and a block cursor as marketing material"
+    },
+    {
+      "name": "U.S. Graphics Company / Berkeley Mono (2021)",
+      "what": "Foundry site that makes the character grid its brand core: tables with ASCII borders, technical data-sheet look, all-caps labels, no rounding whatsoever"
+    },
+    {
+      "name": "Ampcode",
+      "what": "Coding-agent product page set entirely in monospace; feature lists typeset as terminal output, the prompt character used as a recurring ornament"
+    },
+    {
+      "name": "Vercel Ship (conference sites from 2023)",
+      "what": "Geist Mono as display face, schedule as a grid list, counters and IDs in tabular figures, hard 1px rules instead of cards"
+    }
+  ],
+  "strengths": [
+    "Extremely high recognizability for minimal CSS effort - the look is carried by type and grid, not by components",
+    "Hits its audience: unmistakably signals a tool for technical users",
+    "The character grid enforces discipline - arbitrary spacing is instantly visible, layout drift is all but impossible",
+    "Contrast is structurally high, because a palette of dark ground plus light foreground only knows two values anyway",
+    "Trivially reproducible cross-platform: one typeface, one cell height, four colors - the same numbers run in Tailwind, Compose and SwiftUI"
+  ],
+  "risks": [
+    "Monospace measurably slows reading of running text - past roughly three sentences in a row it gets tiring",
+    "Box-drawing characters break the moment a fallback font steps in or the layout is not exactly monospaced; full-width character borders are never quite clean on the responsive web",
+    "The style tips into costume fast: Matrix green, glow and scanlines turn a tool into a hacker cliché",
+    "To non-developers it reads as unfinished or unwelcoming - with clients outside the tech bubble that is a real sales risk",
+    "Without a proportional second face, marketing copy is close to unsellable; a pure mono stack severely limits the landing page"
+  ],
+  "a11y": "Contrast is not a problem: #D9D9D4 on #0C0C0C sits at 13.8:1, the accents at 8.3:1 (#00C08B) and 9.1:1 (#E8A33D). Two real problems remain: the blinking cursor falls under WCAG 2.2.2 (pause/stop) and therefore has to either stay under five seconds or be switchable via prefers-reduced-motion - the latter is what is implemented here. Second, status is encoded through color plus dot alone; the word 'Active'/'Paused' stands next to it and carries the information, the dot is pure redundancy - it has to stay exactly that way, otherwise the style violates 1.4.1.",
+  "longevity": "The underlying frame is structural, not fashionable: character grid and zero radius do not age, because they have a genuine technical ancestry. Only the color choice is datable - neon green and glow mark a vintage, a muted green or a plain white on black does not.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 2,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Very good for tools, docs and dev marketing; for longer running text the page needs a proportional second face.",
+    "mobile": "Weak: monospace eats horizontal space, dot leaders and border characters break at 360dp, and the look feels alien under touch.",
+    "desktop": "Ideal - Tauri windows, window chrome and status bars are exactly the vocabulary this style quotes anyway."
+  },
+  "verdict": "As a brand core for all apps this is too narrow, but as a brand signature it is excellent. A solo developer with many small tools gets the cheapest recognizability imaginable here: one monospace, a 20px grid, four colors - that is set up three times identically in Tailwind, Compose and SwiftUI in an afternoon. The problem is Compose: on Android a pure mono surface feels alien and costs legibility, and nobody wants to use Balance Ally or a writing tool in Courier. Recommendation: mono as a signature layer (numbers, IDs, timestamps, status bars, CLI blocks, logo wordmark) on top of a proportional base style, rather than as the base style itself.",
+  "combinesWith": [
+    "dev-noir",
+    "swiss",
+    "neo-brutalism",
+    "data-dense"
+  ],
+  "tip": "Force yourself onto a single cell height and compute every height as a multiple of it - buttons, inputs, rows, status bar. The style does not convince through the typeface but through baselines that line up exactly across the whole page; the moment one element is 34px tall instead of 40px, it looks like costume rather than terminal.",
+  "googleFonts": [
+    "Geist Mono"
+  ]
+}

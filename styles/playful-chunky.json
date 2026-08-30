@@ -1,0 +1,105 @@
+{
+  "slug": "playful-chunky",
+  "name": "Playful / Chunky 3D (Duolingo-Look)",
+  "aka": [
+    "Gamification-UI",
+    "Chunky Buttons",
+    "Soft Toy UI",
+    "Duolingo-Stil",
+    "Candy UI"
+  ],
+  "family": "Weitere Pole",
+  "era": "ca. 2015-heute, Hochphase ab 2019",
+  "origin": "Der Stil entstand aus der Lernspiel- und Habit-App-Welle, die Flat Design als zu kühl und zu wenig belohnend empfand. Prägend wurde Duolingos Rebranding 2019 durch die Agentur Johnson Banks mit der Hausschrift Feather Bold, deren Rundungen aus den Formen des Maskottchens Duo abgeleitet sind -- im Produkt ergänzt durch eine gerundete Grotesk (DIN Next Rounded). Er löst ein Motivationsproblem, kein Ordnungsproblem: Buttons sollen anfassbar wirken, Fortschritt sichtbar sein, jede Aktion eine kleine Belohnung auslösen. Technisch braucht er fast nichts -- ein box-shadow ohne Blur als Sockel, große Radien, Overshoot-Easing -- was ihn nach 2019 in kurzer Zeit über Headway, Sololearn, Blinkist und hunderte Habit-Tracker verbreitete.",
+  "idea": "Jedes Bedienelement ist ein physisches Objekt mit Dicke: es hat eine sichtbare Unterkante, lässt sich hineindrücken und federt zurück. Farbe und Rundung sagen 'ungefährlich, mach weiter'.",
+  "markers": [
+    "Sockel statt Schatten: box-shadow 0 4-6px 0 in der dunkleren Variante derselben Farbe, Blur 0",
+    "Klick druckt das Element exakt um die Sockelhöhe nach unten (translateY 6px, Schatten auf 0)",
+    "Radius 15-24px an Karten und Buttons, 999px an Pills und Fortschrittsbalken",
+    "Rahmen durchgehend 2px -- nie 1px; die Kontur ist Teil der Spielzeug-Anmutung",
+    "Sehr fette gerundete Grotesk: Fredoka 600-700 für Titel und Buttons, Nunito 700-800 für Text",
+    "Button-Beschriftung in Versalien mit 0.05em Laufweite",
+    "Gesättigte Signalfarben in Paaren aus Fläche und 15-20 % dunklerem Sockel (#4CC93F / #37A02C)",
+    "Fortschrittsbalken mit Innenschatten oben und weißem Glanzstreifen bei 50 % Deckkraft",
+    "Motion mit Overshoot: cubic-bezier(0.34, 1.56, 0.64, 1) bei 120-900ms, plus Maskottchen-Idle"
+  ],
+  "params": {
+    "radius": "15-24px an Flächen, 999px an Pills und Balken",
+    "contrast": "mittel",
+    "density": "luftig",
+    "depth": "harter Farbsockel unter jedem Objekt (0 4-6px 0, Blur 0) plus Innenschatten in gefüllten Kacheln -- Tiefe als Materialdicke, nicht als Lichtquelle",
+    "color": "vier bis fünf gesättigte Signalfarben auf Weiß, jede als Paar aus Fläche und dunklerem Sockelton; Farbe trägt Bedeutung (Grün = läuft, Gelb = wartet) und Belohnung zugleich",
+    "type": "gerundete Grotesk in hohen Gewichten: Fredoka für Titel, Zahlen und Buttons, Nunito 700-800 für Fließ- und Metatext -- keine Schnitte unter 600",
+    "motion": "kurz und federnd: 120-140ms Overshoot-Easing bei Hover und Klick, 900ms Balkenfüllung, 2.2s Maskottchen-Idle im Wechsel",
+    "texture": "keine; nur sehr weiche Farbwolken im Hintergrund (14-18 % Deckkraft) als Stimmungsträger"
+  },
+  "palette": [
+    "#FFFFFF",
+    "#3B3B47",
+    "#4CC93F",
+    "#22ABF5",
+    "#FFC93C",
+    "#A468F0"
+  ],
+  "examples": [
+    {
+      "name": "Duolingo (App und Web)",
+      "what": "Der Referenzfall: grüner Primärbutton mit dunkelgrüner Unterkante, Lektionspfad als Kreis-Knöpfe mit Sockel, Streak-Flamme, XP-Balken, Duo als Maskottchen mit Idle-Animation"
+    },
+    {
+      "name": "Sololearn",
+      "what": "Dieselbe Button-Mechanik in Blau, Fortschritts-Ringe und Abzeichen nach jeder Lektion, Karten mit 2px-Kontur"
+    },
+    {
+      "name": "Headway",
+      "what": "Chunky Pills, Wochenziel-Balken mit runden Kappen, kräftige Illustrationen statt Fotos"
+    },
+    {
+      "name": "Johnson Banks: Duolingo-Rebrand 2019",
+      "what": "Feather Bold -- eine Schrift, deren Rundungen und Strichenden aus dem Maskottchen abgeleitet wurden; das Vorbild für den Typo-Charakter des ganzen Stils"
+    },
+    {
+      "name": "Habitica, Finch und die Habit-Tracker-Welle",
+      "what": "Belohnungslogik als Oberfläche: Abzeichen, Level-Anzeigen, Konfetti-Momente, Maskottchen als emotionaler Anker"
+    }
+  ],
+  "strengths": [
+    "Sehr hohe Affordanz: niemand muss raten, was klickbar ist -- der Sockel sagt es",
+    "Große Touch-Ziele und viel Weißraum entstehen fast zwangsläufig aus dem Stil",
+    "Emotional warm und einladend; senkt die Einstiegshürde bei Erst-Nutzern deutlich",
+    "Billig umzusetzen: der ganze Effekt hängt an zwei Zeilen box-shadow und einem Easing",
+    "Bietet einen fertigen Platz für ein Maskottchen -- der günstigste Wiedererkennungsanker überhaupt"
+  ],
+  "risks": [
+    "Weißer Text auf gesättigtem Grün oder Gelb erreicht oft nur 2:1 bis 2.5:1 -- der Stil erzeugt Kontrastprobleme systematisch, nicht versehentlich",
+    "Wirkt schnell kindlich; für Werkzeuge, Finanzen oder professionelle Zielgruppen ein Glaubwürdigkeitsrisiko",
+    "Skaliert schlecht in die Dichte: eine Tabelle mit 40 Zeilen im Chunky-Look ist unbenutzbar, weil jede Zeile 70px braucht",
+    "Ohne echte Illustration oder Maskottchen bleibt nur 'bunte Karten mit dickem Rand' -- generisch und austauschbar",
+    "Die Belohnungselemente (Streak, XP, Abzeichen) sind nur glaubwürdig, wenn dahinter wirklich Logik steht; als Dekoration wirken sie manipulativ"
+  ],
+  "a11y": "Der Stil erzeugt sein Kontrastproblem strukturell: Die Signalfarben leben von hoher Sättigung, und weißer Text darauf landet bei 2:1 bis 2.5:1 -- also klar unter den 4.5:1 der WCAG. In dieser Demo ist das ehrlich sichtbar: der gelbe Zähler wurde auf dunkelbraunen Text umgestellt (ca. 6:1), der grüne Primärbutton behält bewusst weißen Text (ca. 2.2:1) und zeigt damit den echten Schwachpunkt des Vorbilds. Wer den Stil produktiv einsetzt, muss entweder die Flächenfarben um 15-20 % abdunkeln oder auf dunklen Text wechseln. Zweiter Punkt: Overshoot-Animationen und die Maskottchen-Idle sind für vestibulär empfindliche Menschen unangenehm und werden hier unter prefers-reduced-motion vollständig abgeschaltet; Status wird zusätzlich zur Farbe immer als Wort ausgegeben.",
+  "longevity": "Deutlich an seine Zeit gebunden: Der Sockel-Button ist als 'nach Duolingo' datierbar und wird in einigen Jahren so gelesen wie der Glanz-Button von 2008. Die Grundprinzipien -- große Ziele, sichtbare Affordanz, klare Belohnung -- überleben, die konkrete Formensprache nicht.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Trivial in Tailwind: ein shadow-Token pro Farbe, ein Easing-Token, zwei Radius-Stufen -- der Stil ist praktisch als Utility-Set beschreibbar.",
+    "mobile": "Sein natürlicher Lebensraum: große Touch-Ziele, Compose-Spring-Animationen und SwiftUI-Federn liefern den Overshoot ohne Zusatzarbeit.",
+    "desktop": "Der schwächste Ort: Tauri-Werkzeuge mit Seitenleisten, Menüs und Listen brauchen Dichte, und 70px hohe Sockel-Reihen verschwenden sie."
+  },
+  "verdict": "Als durchgängige Markenbasis für viele kleine Apps ist der Stil riskant, aber nicht falsch -- entscheidend ist das Portfolio. Sobald ein Produkt Werkzeugcharakter hat (Autowrite Studio, ein Tauri-Desktop-Tool, alles mit Tabellen), kippt der Look ins Kindliche und kostet Glaubwürdigkeit; für Habit-, Lern- oder Selbstorganisations-Apps wie 'Balance Ally' dagegen ist er genau richtig und sofort verstanden. Für einen Solo-Entwickler ist er außerdem einer der billigsten Stile im Katalog: zwei Schatten-Token und ein Easing reichen. Empfehlung: nicht als Dach der Eigenmarke, sondern als klar abgegrenzte 'Consumer-Stimme' der Marke -- gleiche Farbfamilie und gleiches Maskottchen wie die Werkzeug-Apps, aber dickere Kanten, größere Radien und Belohnungselemente. Das Maskottchen ist dabei der Teil, den man über alle Plattformen mitnehmen sollte, der Sockel-Button nicht.",
+  "combinesWith": [
+    "claymorphism",
+    "memphis",
+    "flat",
+    "material-expressive"
+  ],
+  "tip": "Der Sockel muss dieselbe Farbe sein wie die Fläche, nur dunkler -- bei weißen Karten also ein kühles Hellgrau, unter gesättigten Flächen aber nie Grau und nie halbtransparentes Schwarz. Ein Grau-Sockel liest sich als Schlagschatten und wirkt sofort billig; ein Sockel in HSL derselben Farbe mit 15-20 % weniger Helligkeit liest sich als Materialdicke. Und der Klick muss exakt um die Sockelhöhe nach unten fahren und den Schatten auf 0 setzen, sonst schwebt der Button beim Drücken statt sich zu senken.",
+  "googleFonts": [
+    "Fredoka",
+    "Nunito"
+  ]
+}

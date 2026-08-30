@@ -1,0 +1,103 @@
+{
+  "slug": "neo-brutalism",
+  "name": "Neo-Brutalism",
+  "aka": [
+    "Neubrutalism",
+    "Gumroad look",
+    "Brutalist Web (commercial variant)",
+    "Hard-Shadow UI",
+    "Sticker UI"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "2014-today, commercial breakthrough from 2022",
+  "origin": "The root lies in the brutalist web movement that Pascal Deville collected on brutalistwebsites.com from 2014 and that peaked around 2016/17 - as a reaction to the uniformity of Bootstrap and Material Design it deliberately celebrated raw, unmade-up pages. The tamed commercial variant that is common today emerged with the 2022 Gumroad redesign under Sahil Lavingia: thick black outlines, saturated solid fills (the Gumroad pink #FF90E8), hard offset shadows with no blur. The problem it solved was attention - a platform with no advertising budget had to be identifiable within 200 milliseconds in a sea of identical SaaS landing pages. Technically the style was always trivial: it needs nothing but border, box-shadow without blur and solid colors, which made it the darling of Tailwind utilities, Figma community kits and neobrutalism.dev. Since 2025 it has gained further momentum as a deliberate signal of handmade work against generic AI-generated layouts.",
+  "idea": "Every element declares itself a physical object: thick black outline, solid fill, one hard drop shadow with no blur - and when pressed it drops audibly into its own shadow.",
+  "markers": [
+    "Radius 0-4px, never in between and never soft - rounding only on circles (50%) and pills (9999px)",
+    "Outline 2-4px solid #000 on literally every element, icons, badges and fields included",
+    "Offset shadow with no blur and no spread: box-shadow: 4px 4px 0 #000 up to 10px 10px 0 #000",
+    "Saturated solid fills instead of gradients: pink #FF90E8, yellow #FFDE00, cyan #23D2E2, lime #B4F461",
+    "No transparency, no gradients, no backdrop-filter - every surface is a flat color",
+    "Display type bold to black (Archivo Black, 800-900), caps, letter-spacing -0.02em",
+    "Monospace for metadata and micro labels as a counterweight to the heavy grotesque",
+    "Hover moves the element by exactly the shadow offset: transform: translate(4px,4px) plus box-shadow: 0 0 0",
+    "Motion hard and short: 80-120ms linear, no easings with a tail",
+    "Visible structure: diagonal hatching, rotated decorative shapes (-9deg to +8deg), window bar with block chips"
+  ],
+  "params": {
+    "radius": "0-4px, exceptions only 50% and 9999px",
+    "contrast": "very high",
+    "density": "medium",
+    "depth": "Exclusively hard offset shadows with no blur; depth is asserted as distance, not simulated as light",
+    "color": "Four to five saturated solid colors plus black and a slightly broken white; color is surface, never text",
+    "type": "Black display grotesque in caps for headlines and buttons, mono for metadata, medium-weight grotesque otherwise",
+    "motion": "80-120ms linear, exclusively translation along the shadow axis - no fade, no scale",
+    "texture": "Visible diagonal hatching or dot grid at 4-6% black; no noise, no photography"
+  },
+  "palette": [
+    "#000000",
+    "#F4F4F0",
+    "#FF90E8",
+    "#FFDE00",
+    "#23D2E2",
+    "#B4F461"
+  ],
+  "examples": [
+    {
+      "name": "Gumroad (2022 redesign)",
+      "what": "Pink #FF90E8 as the brand surface, black outlines on cards, fields and buttons, hard drop shadows and oversized heavy headlines on broken white"
+    },
+    {
+      "name": "neobrutalism.dev",
+      "what": "The style as a ready-made Tailwind/shadcn kit: documented tokens for border 2px, shadow 4px 4px 0 and the hover shift into the shadow"
+    },
+    {
+      "name": "Figma Community / campaign pages",
+      "what": "Rotated sticker shapes, block chips, exaggerated contrasts and solid fills as the marketing language around collaborative tools"
+    },
+    {
+      "name": "Bloomberg Businessweek (web)",
+      "what": "Editorial forerunner of the same attitude: hard edges, aggressive solid areas and deliberately ugly type collisions as a signal of authorship"
+    }
+  ],
+  "strengths": [
+    "Highest recognizability per line of CSS - identifiable within 200 milliseconds, which a solo brand rarely achieves",
+    "Contrast is strong by construction: black outlines and solid fills produce clear element boundaries by default",
+    "Extremely cheap and robust to build, across every platform: border, solid color and offset shadow exist alike in Tailwind, Compose and SwiftUI",
+    "Affordance is unambiguous - whatever has a shadow is clickable, and the hover shift explains itself without words",
+    "Forgiving: the style needs no fine gray steps, no photography and no illustration"
+  ],
+  "risks": [
+    "Fatigues over long sessions - the constant high-contrast stimulation is exhausting in a tool used daily",
+    "Scales badly into density: a table of 40 rows in which every row carries a 3px outline and a shadow becomes unreadable",
+    "Quickly reads as unserious or toy-like to paying business customers - risky for finance, health or B2B contexts",
+    "Tips into the cheap at once when too many colors, too many rotations and too many shadow directions appear together - then it looks like a Figma template rather than a brand",
+    "The expressive power sits almost entirely in the chrome; as soon as real content arrives the style has to withdraw, and that is exactly where most implementations fail"
+  ],
+  "a11y": "Text contrast is unproblematic, because text practically always sits black on a saturated fill - #000 on #FFDE00 reaches about 15.7:1, on #FF90E8 about 10.4:1. Two other points are critical: the fill colors themselves must never carry meaning alone, because #B4F461 against #FFFFFF reaches only around 1.3:1 - the active/paused state is therefore additionally coded here by wording and by a filled versus hollow ring. Beyond that, the signature interaction moves elements by several pixels on hover and focus; that requires a mandatory prefers-reduced-motion switch-off and must never be strong enough for an element to wander out from under the pointer.",
+  "longevity": "As a commercial fashion the style peaked in 2022-2024 and, built out in full, will clearly look its vintage within a few years; its core - hard edges, solid colors, visible structure - is older than the web and returns cyclically. As an accent language it ages considerably better than as a whole system.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 2,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Trivial and ideal - shadow-[4px_4px_0_#000] and border-[3px] cover the entire style; especially strong on landing pages.",
+    "mobile": "Feasible in Compose via custom modifiers for outline and offset shadow, but against every Material 3 expectation and space-hungry on small displays.",
+    "desktop": "Good for small, focused Tauri tools; too loud for dense windows with sidebar, table and status bar."
+  },
+  "verdict": "As a whole system for a portfolio of many small apps: no. The style fatigues in daily use, cannot take dense data screens and carries a clear expiration date - a brand that looks like 2023 three years from now is bad business for a solo developer. As an accent system it is the strongest of the three, on the other hand: a black outline plus a 4px offset shadow, reserved for exactly one component - the primary button, the status badge or the app icon - delivers the recognizability that Dev-Noir structurally lacks, without costing usability. The realistic recommendation is therefore: Neo-Brutalism as a 5 percent ingredient in an otherwise quiet base, plus as a full expression on marketing pages, where loudness is the point.",
+  "combinesWith": [
+    "web-brutalism",
+    "swiss-punk",
+    "memphis",
+    "playful-chunky"
+  ],
+  "tip": "One shadow angle, one offset, one outline weight - and then uncompromisingly everywhere. You spot the cheap implementations by the way they mix 2px and 3px outlines, throw shadows to the bottom right sometimes and to the bottom left other times, and show five colors at once. Set three tokens instead (--border: 3px, --shadow: 4px 4px 0 #000, one signature color), give every fill color a fixed meaning, and keep the hover offset exactly as large as the shadow, so that the element visibly lands on the base surface when pressed.",
+  "googleFonts": [
+    "Archivo Black",
+    "Space Grotesk",
+    "Space Mono"
+  ]
+}

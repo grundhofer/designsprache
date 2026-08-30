@@ -1,0 +1,69 @@
+{
+  "slug": "aurora-mesh",
+  "name": "Aurora / Mesh Gradient",
+  "aka": ["Aurora UI", "Mesh Gradient", "AI-Startup-Look", "Glow-Gradient", "Stripe-Gradient"],
+  "family": "Ausdruck & Natur",
+  "era": "2018-heute (Peak ab 2023)",
+  "origin": "Der Ursprung liegt bei Stripe, das ab etwa 2018 auf seinen Startseiten animierte, mehrfarbige Verlaufsflächen einsetzte - technisch aufwendig per WebGL-Mesh und maskgenau in die Marke integriert. Apple normalisierte die Bildsprache 2020 mit den Big-Sur- und M1-Keynote-Verläufen, und Michal Malewicz gab dem Ganzen im März 2021 mit dem Artikel 'Aurora UI - new visual trend for 2021' einen Namen, woraufhin das Muster über Dribbble und Behance in den Mainstream kippte. Die entscheidende Vereinfachung kam aus dem CSS: mehrere gestapelte radial-gradients plus ein großer blur() liefern denselben Eindruck ohne Shader, in fünfzehn Zeilen. Das gelöste Problem war Leere - minimalistische dunkle Landingpages ohne Bildmaterial wirkten tot, das Aurora-Feld gab ihnen Tiefe und Stimmung, ohne dass jemand fotografieren musste.",
+  "idea": "Ein dunkler, fast schwarzer Grund trägt zwei bis fünf große, weit ausgeblurte Farbfelder, die wie Licht hinter Milchglas wirken; darauf liegt bewusst minimale Typografie und ein feines Liniensystem. Die Stimmung kommt komplett aus dem Hintergrund, nicht aus den Komponenten.",
+  "markers": [
+    "2-5 gestapelte radial-gradient-Flecken mit 30-46% Ausdehnung, jeweils Alpha 0.3-0.9 auf 0 auslaufend",
+    "blur(50-90px) auf der gesamten Verlaufsebene, oft mit saturate(120-140%)",
+    "Grund fast schwarz, aber nie #000000 - typisch #07080C bis #0B0D14",
+    "Sehr langsame Drift: 30-50s ease-in-out infinite, Bewegung unter 6% Translation",
+    "Inter oder eine vergleichbare Neo-Grotesk mit negativem Tracking (-0.01 bis -0.035em)",
+    "Überschrift mit background-clip: text und Weiß-nach-Weiß-72%-Verlauf",
+    "Glas-Elemente: 1px Rand aus rgba(255,255,255,.10), Füllung rgba(255,255,255,.045), backdrop-filter: blur(12-14px)",
+    "Trennung ausschließlich über 1px-Linien mit 8-12% Weiß, keine Karten, keine Schatten",
+    "Primärbutton weiß auf dunkel, Radius 10-12px, mit farbigem Glow-Schatten in Akzentfarbe",
+    "Kornschicht 3-6% gegen Banding in den Verläufen"
+  ],
+  "params": {
+    "radius": "10-12px an Flächen, 999px an Pills",
+    "contrast": "hoch beim Text, sehr niedrig bei allem Strukturellen",
+    "density": "sehr luftig",
+    "depth": "keine Schlagschatten; Tiefe entsteht durch Unschärfe-Ebenen, Glasfüllungen und farbige Glows",
+    "color": "Ein fast schwarzer Grund plus drei bis fünf leuchtende Akzente (Violett, Cyan, Magenta, Mint) ausschließlich als weiche Lichtfelder - nie als Flächenfarbe eines Bedienelements.",
+    "type": "Neo-Grotesk, mittlere Stärken (450-500), stark negatives Tracking, kaum Größenhierarchie - die Zurückhaltung ist Teil des Stils.",
+    "motion": "Sehr langsame Hintergrunddrift 34-46s ease-in-out infinite; Interaktion knapp und ruhig mit 180-220ms cubic-bezier(.2,0,0,1)",
+    "texture": "Feines fractalNoise-Korn bei 5% als Data-URI-SVG, sonst glatt"
+  },
+  "palette": ["#07080C", "#F7F8FA", "#7C5CFF", "#35D6E8", "#E849A8", "#2DD4A7"],
+  "examples": [
+    {"name": "Stripe (Startseite ab 2018)", "what": "Der animierte Mesh-Verlauf im Header, gebaut als WebGL-Gitter mit interpolierten Farbknoten - das Original, an dem sich alle späteren CSS-Nachbauten messen."},
+    {"name": "Apple, macOS Big Sur / M1-Keynotes (2020)", "what": "Schwebende Verlaufsbänder hinter Produktrendern; hat die Ästhetik aus der SaaS-Nische in den Massengeschmack gebracht."},
+    {"name": "Linear", "what": "Dunkler Grund, ein violetter Glow hinter dem Fold, Trennung nur über 1px-Linien und Glas-Panels - das Vorbild für die Produkt-UI-Variante statt der Marketing-Variante."},
+    {"name": "OpenAI und Anthropic Marketing-Seiten (2023-2026)", "what": "Weiche Farbfelder hinter großer, ruhiger Typo; genau die Kombination, die den Stil zum Erkennungszeichen der gesamten KI-Branche gemacht hat."},
+    {"name": "Michal Malewicz, 'Aurora UI - new visual trend for 2021'", "what": "Der Artikel vom März 2021, der dem Muster den Namen gab und die Bauanleitung - unscharfe Formen, verwandte Farben, weiche Übergänge - in Umlauf brachte."}
+  ],
+  "strengths": [
+    "Sehr hoher Wirkungsgrad: fünfzehn Zeilen CSS erzeugen eine Stimmung, für die es sonst Fotografie oder Illustration bräuchte",
+    "Kostet nichts an Assets und ist beliebig auflösungsunabhängig",
+    "Die reduzierte Typo darunter altert gut und lässt sich sauber in Tokens fassen",
+    "Funktioniert hervorragend für Landing-, Login- und Empty-States, wo ohnehin wenig Inhalt liegt"
+  ],
+  "risks": [
+    "Der derzeit generischste Stil überhaupt - dutzende KI-Startups sind visuell nicht auseinanderzuhalten; Wiedererkennung nahe null",
+    "Verläufe auf 8-Bit-Displays zeigen sichtbares Banding, wenn kein Korn darüberliegt",
+    "backdrop-filter und große blur-Flächen kosten spürbar GPU-Zeit, besonders auf älteren Android-Geräten",
+    "Text über hellen Verlaufszonen verliert Kontrast, sobald jemand die Blob-Positionen ändert - die Lesbarkeit hängt an einer Abdunkelungsebene, die leicht vergessen wird",
+    "Trägt keine Informationsdichte: sobald echte Tabellen, Filter und Formulare dazukommen, wird der Hintergrund zum Störfaktor"
+  ],
+  "a11y": "Der Text selbst ist unkritisch - #F7F8FA auf #07080C liegt bei rund 17:1 - aber die gedämpften Sekundärstufen sind es: rgba(247,248,250,.40) fällt über einem hellen Verlaufsfleck schnell unter 4,5:1, weshalb hier eine Abdunkelungsebene (linear-gradient von 22% oben auf 78% unten) zwischen Aurora und Inhalt liegt. Die 1px-Linien mit 10% Weiß sind als Strukturhinweis für Menschen mit geringer Kontrastempfindlichkeit praktisch unsichtbar, deshalb dürfen sie nie die einzige Trägerin einer Information sein. Die Dauerdrift des Hintergrunds muss unter prefers-reduced-motion abgeschaltet werden, und Status darf nicht allein am farbigen Punkt hängen - hier steht deshalb zusätzlich das Wort daneben.",
+  "longevity": "Technisch altert der Stil gut, weil er auf Farbe und Weißraum beruht und nicht auf einer Formmode; kulturell altert er sehr schnell, weil er 2023-2026 als Uniform der KI-Branche verbraucht wurde. In fünf Jahren wird der violett-cyan-Glow so eindeutig auf 2024 datieren wie der Farbverlauf-Button auf 2008.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 1,
+    "effort": 2,
+    "density": 1
+  },
+  "platforms": {
+    "web": "Trivial in CSS und Tailwind; einzige Vorsicht gilt der Performance großer blur-Flächen und dem Banding auf schwachen Displays.",
+    "mobile": "In Compose über Brush.radialGradient und in SwiftUI über MeshGradient (ab iOS 18) direkt nachbaubar - von allen Stilen dieser Familie der am leichtesten portierbare.",
+    "desktop": "In Tauri gut, aber großflächiges backdrop-filter in einem dauerhaft offenen Fenster kostet unnötig Akku; besser statisch rendern."
+  },
+  "verdict": "Als Basis für eine Eigenmarke ist das die bequemste und zugleich schwächste Wahl im ganzen Katalog: technisch billig, plattformübergreifend problemlos, in Compose und SwiftUI mit Bordmitteln machbar - und vollkommen austauschbar. Genau dieser Look ist 2023 bis 2026 die Standarduniform jedes KI- und SaaS-Startups geworden; wer ihn wählt, bekommt eine professionell wirkende Oberfläche und exakt null Wiedererkennung, was für jemanden mit vielen kleinen Apps das eigentliche Ziel verfehlt. Brauchbar ist er als dünne Marketing-Schicht über einer anderen, stärkeren Produkt-Basis: Aurora auf der Landingpage, nüchterne Struktur in der App. Als Marke braucht es dann trotzdem ein eigenes, nicht-generisches Signal - eine eigenwillige Schrift, eine unerwartete Akzentfarbe oder ein Formdetail, das nicht aus dem Verlaufsgenerator kommt.",
+  "combinesWith": ["dev-noir", "glassmorphism", "swiss", "terminal-mono"],
+  "tip": "Zwei Dinge trennen die teure Variante von der Generator-Variante: erstens eine Kornschicht von 3-6% über den Verläufen, sonst ist auf jedem 8-Bit-Panel Banding sichtbar; zweitens eine Abdunkelungsebene zwischen Aurora und Inhalt, damit die Typo nicht von der Blob-Position abhängt. Und die Farbwahl bewusst gegen die Norm setzen - Violett-Cyan ist der Standard, Bernstein-Rost oder Mint-Indigo lesen sich sofort als eigene Marke statt als Vorlage.",
+  "googleFonts": ["Inter"]
+}

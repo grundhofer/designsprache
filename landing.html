@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designsprache — Stil-Katalog</title>
+<meta name="description" content="Ein Referenzkatalog: 27 UI-Stilrichtungen, jede als gerendertes Beispiel derselben Oberfläche. Deutsch und English.">
+<meta name="author" content="Sebastian Grundhöfer">
+<link rel="canonical" href="__SITE__/">
+<link rel="alternate" hreflang="de" href="__SITE__/de/">
+<link rel="alternate" hreflang="en" href="__SITE__/en/">
+<link rel="alternate" hreflang="x-default" href="__SITE__/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Designsprache — Stil-Katalog">
+<meta property="og:description" content="27 UI-Stilrichtungen, jede als gerendertes Beispiel derselben Oberfläche.">
+<meta property="og:url" content="__SITE__/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="__ICON__">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground:#E9EBE6; --surface:#F5F7F2; --ink:#171A17; --ink-2:#565D58; --ink-3:#838A84;
+  --rule:#C6CBC2; --rule-soft:#DCE0D8; --accent:#1E4A45; --accent-ink:#FCFDFA; --brass:#8A6A2F;
+  --f-disp:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:#141614; --surface:#1B1E1B; --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#6F766F;
+    --rule:#333833; --rule-soft:#252A25; --accent:#77BFB1; --accent-ink:#101413; --brass:#C7A55F;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body);
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column; min-height:100vh;
+}
+.wrap { width:100%; max-width:960px; margin:0 auto; padding:0 clamp(20px,5vw,40px); }
+main { flex:1 0 auto; display:flex; align-items:center; padding:clamp(40px,8vh,104px) 0; }
+h1 {
+  font-family:var(--f-disp); font-weight:700; letter-spacing:-.025em;
+  font-size:clamp(38px,7vw,68px); line-height:.98; margin:12px 0 0; text-wrap:balance;
+}
+h1 em {
+  font-family:var(--f-body); font-style:italic; font-weight:400; color:var(--ink-2);
+  letter-spacing:-.01em; display:block; font-size:.62em; line-height:1.06; margin-top:6px;
+}
+.eyebrow {
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--brass);
+}
+.lede { max-width:62ch; color:var(--ink-2); margin:24px 0 0; font-size:clamp(15.5px,1.5vw,17.5px); }
+.lede strong { color:var(--ink); font-weight:500; }
+.lede + .lede { margin-top:12px; }
+.doors {
+  display:grid; gap:14px; margin:36px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));
+}
+.door {
+  display:block; text-decoration:none; color:inherit; background:var(--surface);
+  border:1px solid var(--rule); padding:18px 20px;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.door:hover { border-color:var(--accent); transform:translateY(-2px); }
+.door i {
+  display:block; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--brass); font-style:normal; margin-bottom:7px;
+}
+.door b { display:block; font-family:var(--f-disp); font-size:21px; font-weight:600; }
+.door span { display:block; font-size:14px; color:var(--ink-2); margin-top:4px; }
+.meta {
+  display:flex; flex-wrap:wrap; gap:10px 28px; margin:34px 0 0;
+  font-family:var(--f-mono); font-size:11.5px; color:var(--ink-3);
+}
+.meta b { color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums; }
+footer {
+  flex:0 0 auto; border-top:1px solid var(--rule-soft); padding:16px 0 26px;
+  font-family:var(--f-mono); font-size:11.5px; color:var(--ink-3);
+}
+.fl { display:flex; flex-wrap:wrap; gap:8px 22px; }
+footer a { color:var(--ink-3); text-underline-offset:3px; }
+footer a:hover { color:var(--accent); }
+a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+@media (prefers-reduced-motion: reduce) {
+  .door { transition:none; }
+  .door:hover { transform:none; }
+}
+</style>
+</head>
+<body>
+<main><div class="wrap">
+  <span class="eyebrow">Referenzkatalog · Reference catalog</span>
+  <h1>Stil&#8209;Katalog<em>27 ways to build the same interface</em></h1>
+
+  <p class="lede" lang="de">27 UI&#8209;Stilrichtungen, jede als <strong>gerendertes Beispiel
+    derselben Oberfläche</strong> — von Swiss und Bauhaus über Skeuomorphismus und
+    Glassmorphism bis Dev&#8209;Noir und Neo&#8209;Brutalismus. Mit Faktenblatt, Kennzahlen
+    und Entscheidungsraster.</p>
+  <p class="lede" lang="en">27 UI style directions, each rendered as <strong>the very same
+    reference interface</strong> — from Swiss and Bauhaus through skeuomorphism and
+    glassmorphism to dev&#8209;noir and neo&#8209;brutalism. With fact sheets, scores and a
+    decision grid.</p>
+
+  <div class="doors">
+    <a class="door" href="de/" hreflang="de" lang="de">
+      <i>Deutsch</i>
+      <b>Zum Katalog</b>
+      <span>27 Einträge, 8 Familien, eine Referenz&#8209;UI</span>
+    </a>
+    <a class="door" href="en/" hreflang="en" lang="en">
+      <i>English</i>
+      <b>Open the catalog</b>
+      <span>27 entries, 8 families, one reference UI</span>
+    </a>
+  </div>
+
+  <p class="meta">
+    <span><b>27</b> Stile / styles</span>
+    <span><b>8</b> Familien / families</span>
+    <span><b>0</b> Bilder, Skripte, Bibliotheken / images, scripts, libraries</span>
+  </p>
+</div></main>
+
+<footer><div class="wrap fl">
+  <span>© Sebastian Grundhöfer</span>
+  <span>Code MIT · Texte / texts CC&nbsp;BY&nbsp;4.0</span>
+  <a href="__REPO__" rel="noopener">GitHub</a>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "slug": "playful-chunky",
+  "name": "Playful / Chunky 3D (Duolingo Look)",
+  "aka": [
+    "Gamification UI",
+    "Chunky Buttons",
+    "Soft Toy UI",
+    "Duolingo Style",
+    "Candy UI"
+  ],
+  "family": "Further Poles",
+  "era": "c. 2015-today, peak from 2019",
+  "origin": "The style grew out of the learning-game and habit-app wave, which found flat design too cool and too unrewarding. Formative was Duolingo's 2019 rebrand by the agency Johnson Banks with the house typeface Feather Bold, whose curves are derived from the shapes of the mascot Duo -- complemented in the product by a rounded grotesque (DIN Next Rounded). It solves a motivation problem, not an ordering problem: buttons should look touchable, progress should be visible, every action should trigger a small reward. Technically it needs almost nothing -- one blur-free box-shadow as a base, large radii, overshoot easing -- which spread it after 2019, within a short time, across Headway, Sololearn, Blinkist and hundreds of habit trackers.",
+  "idea": "Every control is a physical object with thickness: it has a visible bottom edge, can be pressed in and springs back. Color and rounding say 'harmless, keep going'.",
+  "markers": [
+    "Base instead of shadow: box-shadow 0 4-6px 0 in the darker variant of the same color, blur 0",
+    "A click pushes the element down by exactly the base height (translateY 6px, shadow to 0)",
+    "Radius 15-24px on cards and buttons, 999px on pills and progress bars",
+    "Borders 2px throughout -- never 1px; the outline is part of the toy feel",
+    "Very heavy rounded grotesque: Fredoka 600-700 for titles and buttons, Nunito 700-800 for text",
+    "Button labels in capitals with 0.05em tracking",
+    "Saturated signal colors in pairs of surface and a 15-20 % darker base (#4CC93F / #37A02C)",
+    "Progress bar with an inner shadow at the top and a white gloss stripe at 50 % opacity",
+    "Motion with overshoot: cubic-bezier(0.34, 1.56, 0.64, 1) at 120-900ms, plus a mascot idle"
+  ],
+  "params": {
+    "radius": "15-24px on surfaces, 999px on pills and bars",
+    "contrast": "medium",
+    "density": "airy",
+    "depth": "a hard color base under every object (0 4-6px 0, blur 0) plus inner shadows in filled tiles -- depth as material thickness, not as a light source",
+    "color": "four to five saturated signal colors on white, each as a pair of surface and darker base tone; color carries meaning (green = running, yellow = waiting) and reward at the same time",
+    "type": "rounded grotesque in heavy weights: Fredoka for titles, numbers and buttons, Nunito 700-800 for running and meta text -- no cuts below 600",
+    "motion": "short and springy: 120-140ms overshoot easing on hover and click, 900ms bar fill, a 2.2s alternating mascot idle",
+    "texture": "none; only very soft color clouds in the background (14-18 % opacity) to carry mood"
+  },
+  "palette": [
+    "#FFFFFF",
+    "#3B3B47",
+    "#4CC93F",
+    "#22ABF5",
+    "#FFC93C",
+    "#A468F0"
+  ],
+  "examples": [
+    {
+      "name": "Duolingo (app and web)",
+      "what": "The reference case: a green primary button with a dark green bottom edge, the lesson path as circular buttons with bases, the streak flame, the XP bar, Duo as a mascot with an idle animation"
+    },
+    {
+      "name": "Sololearn",
+      "what": "The same button mechanic in blue, progress rings and badges after every lesson, cards with a 2px outline"
+    },
+    {
+      "name": "Headway",
+      "what": "Chunky pills, weekly-goal bars with round caps, bold illustrations instead of photos"
+    },
+    {
+      "name": "Johnson Banks: Duolingo rebrand 2019",
+      "what": "Feather Bold -- a typeface whose curves and stroke endings were derived from the mascot; the model for the typographic character of the whole style"
+    },
+    {
+      "name": "Habitica, Finch and the habit-tracker wave",
+      "what": "Reward logic as an interface: badges, level meters, confetti moments, a mascot as the emotional anchor"
+    }
+  ],
+  "strengths": [
+    "Very high affordance: nobody has to guess what is clickable -- the base says so",
+    "Large touch targets and plenty of white space follow almost inevitably from the style",
+    "Emotionally warm and inviting; noticeably lowers the entry barrier for first-time users",
+    "Cheap to build: the entire effect hangs on two lines of box-shadow and one easing",
+    "Offers a ready-made place for a mascot -- the cheapest recognition anchor there is"
+  ],
+  "risks": [
+    "White text on saturated green or yellow often reaches only 2:1 to 2.5:1 -- the style produces contrast problems systematically, not by accident",
+    "Reads as childish fast; for tools, finance or professional audiences a credibility risk",
+    "Scales badly into density: a 40-row table in the chunky look is unusable, because every row needs 70px",
+    "Without real illustration or a mascot all that remains is 'colorful cards with thick borders' -- generic and interchangeable",
+    "The reward elements (streak, XP, badges) are only credible when real logic sits behind them; as decoration they feel manipulative"
+  ],
+  "a11y": "The style creates its contrast problem structurally: the signal colors live on high saturation, and white text on them lands at 2:1 to 2.5:1 -- clearly below the 4.5:1 of WCAG. This demo shows that honestly: the yellow counter was switched to dark brown text (c. 6:1), while the green primary button deliberately keeps white text (c. 2.2:1) and so exposes the real weak point of the model. Anyone putting the style into production has to either darken the surface colors by 15-20 % or switch to dark text. Second point: overshoot animations and the mascot idle are unpleasant for people with vestibular sensitivity and are switched off completely here under prefers-reduced-motion; status is always spelled out as a word in addition to color.",
+  "longevity": "Clearly tied to its moment: the base button is datable as 'after Duolingo' and will be read in a few years the way the glossy button of 2008 is read now. The underlying principles -- large targets, visible affordance, clear reward -- survive; the concrete formal language does not.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Trivial in Tailwind: one shadow token per color, one easing token, two radius steps -- the style is practically describable as a utility set.",
+    "mobile": "Its natural habitat: large touch targets, Compose spring animations and SwiftUI springs deliver the overshoot with no extra work.",
+    "desktop": "The weakest place: Tauri tools with sidebars, menus and lists need density, and 70px base rows waste it."
+  },
+  "verdict": "As a continuous brand base for many small apps the style is risky, but not wrong -- the portfolio decides. As soon as a product has tool character (Autowrite Studio, a Tauri desktop tool, anything with tables), the look tips into the childish and costs credibility; for habit, learning or self-organization apps like 'Balance Ally', on the other hand, it is exactly right and understood at once. For a solo developer it is also one of the cheapest styles in the catalog: two shadow tokens and one easing are enough. Recommendation: not as the roof of the personal brand, but as a clearly fenced-off 'consumer voice' of the brand -- the same color family and the same mascot as the tool apps, but thicker edges, larger radii and reward elements. The mascot is the part to carry across every platform, the base button is not.",
+  "combinesWith": [
+    "claymorphism",
+    "memphis",
+    "flat",
+    "material-expressive"
+  ],
+  "tip": "The base has to be the same color as the surface, only darker -- under white cards a cool light gray, but under saturated surfaces never gray and never semi-transparent black. A gray base reads as a drop shadow and looks cheap immediately; a base in the same HSL hue with 15-20 % less lightness reads as material thickness. And the click has to travel down by exactly the base height and set the shadow to 0, otherwise the button floats while pressed instead of sinking.",
+  "googleFonts": [
+    "Fredoka",
+    "Nunito"
+  ]
+}

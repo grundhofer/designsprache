@@ -1,0 +1,405 @@
+<style>
+.style-material-expressive,
+.style-material-expressive *,
+.style-material-expressive *::before,
+.style-material-expressive *::after { box-sizing: border-box; }
+
+.style-material-expressive {
+  /* --- Tonal Palettes (HCT), Seed #6750A4 -- alle Fuellfarben unten sind
+         ausschliesslich aus diesen Tonwerten abgeleitet --- */
+  --m3e-p10: #21005D;  --m3e-p20: #381E72;  --m3e-p30: #4F378B;
+  --m3e-p40: #6750A4;  --m3e-p80: #D0BCFF;  --m3e-p90: #EADDFF;  --m3e-p95: #F6EDFF;
+  --m3e-s10: #1D192B;  --m3e-s40: #625B71;  --m3e-s90: #E8DEF8;
+  --m3e-t10: #31111D;  --m3e-t40: #7D5260;  --m3e-t90: #FFD8E4;
+  --m3e-n10: #1D1B20;  --m3e-n98: #FEF7FF;  --m3e-n100: #FFFFFF;
+  --m3e-nv30: #49454F; --m3e-nv50: #79747E; --m3e-nv80: #CAC4D0;
+
+  /* --- Farbrollen --- */
+  --m3e-primary: var(--m3e-p40);
+  --m3e-on-primary: var(--m3e-n100);
+  --m3e-primary-container: var(--m3e-p90);
+  --m3e-on-primary-container: var(--m3e-p10);
+  --m3e-secondary-container: var(--m3e-s90);
+  --m3e-on-secondary-container: var(--m3e-s10);
+  --m3e-tertiary-container: var(--m3e-t90);
+  --m3e-on-tertiary-container: var(--m3e-t10);
+  --m3e-surface: var(--m3e-n98);
+  --m3e-surface-container-low: #F7F2FA;
+  --m3e-surface-container: #F3EDF7;
+  --m3e-surface-container-high: #ECE6F0;
+  --m3e-surface-container-highest: #E6E0E9;
+  --m3e-on-surface: var(--m3e-n10);
+  --m3e-on-surface-variant: var(--m3e-nv30);
+  --m3e-outline-variant: var(--m3e-nv80);
+
+  /* --- Shape Scale --- */
+  --m3e-corner-xs: 4px;
+  --m3e-corner-s: 8px;
+  --m3e-corner-m: 12px;
+  --m3e-corner-l: 16px;
+  --m3e-corner-xl: 28px;
+  --m3e-corner-full: 999px;
+
+  /* --- Spring-Motion (angenaeherte Federkurven, kein klassisches Bezier-Easing) --- */
+  --m3e-spring-fast: 320ms cubic-bezier(.2, 1.5, .35, 1);
+  --m3e-spring-slow: 520ms cubic-bezier(.16, 1.24, .3, 1);
+
+  width: 100%;
+  padding: 20px;
+  background: var(--m3e-surface);
+  color: var(--m3e-on-surface);
+  font-family: "Roboto Flex", "Roboto", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color-scheme: light;
+}
+
+.style-material-expressive .demo {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Header ---------- */
+.style-material-expressive .head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 8px 0;
+}
+
+.style-material-expressive .morph {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  background: var(--m3e-primary);
+  border-radius: 42% 58% 62% 38% / 55% 40% 60% 45%;
+  animation: material-expressive-morph 3.6s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+
+.style-material-expressive .title {
+  margin: 0;
+  flex: 1;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--m3e-on-surface);
+}
+
+.style-material-expressive .count {
+  flex: none;
+  min-width: 52px;
+  padding: 7px 16px 8px;
+  border-radius: var(--m3e-corner-full);
+  background: var(--m3e-primary-container);
+  color: var(--m3e-on-primary-container);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  transition: border-radius var(--m3e-spring-fast), background-color 180ms ease;
+}
+.style-material-expressive .count:hover {
+  border-radius: var(--m3e-corner-m);
+  background: var(--m3e-p80);
+}
+
+/* ---------- Tonal-Palette-Band: die Tonleiter, aus der alles kommt ---------- */
+.style-material-expressive .tones {
+  display: flex;
+  gap: 4px;
+  padding: 0 8px;
+}
+.style-material-expressive .tones span {
+  height: 10px;
+  flex: 1;
+  border-radius: var(--m3e-corner-xs);
+}
+.style-material-expressive .tones span:first-child { border-radius: var(--m3e-corner-s) var(--m3e-corner-xs) var(--m3e-corner-xs) var(--m3e-corner-s); }
+.style-material-expressive .tones span:last-child  { border-radius: var(--m3e-corner-xs) var(--m3e-corner-s) var(--m3e-corner-s) var(--m3e-corner-xs); }
+.style-material-expressive .tone-10 { background: var(--m3e-p10); }
+.style-material-expressive .tone-20 { background: var(--m3e-p20); }
+.style-material-expressive .tone-30 { background: var(--m3e-p30); }
+.style-material-expressive .tone-40 { background: var(--m3e-p40); }
+.style-material-expressive .tone-80 { background: var(--m3e-p80); }
+.style-material-expressive .tone-90 { background: var(--m3e-p90); }
+.style-material-expressive .tone-95 { background: var(--m3e-p95); }
+
+/* ---------- Gruppierte Liste: Aussenecken XL, Innenecken XS ---------- */
+.style-material-expressive .list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.style-material-expressive .row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--m3e-surface-container-high);
+  border-radius: var(--m3e-corner-xs);
+  overflow: hidden;
+  transition: border-radius var(--m3e-spring-slow), background-color 160ms ease;
+}
+.style-material-expressive .row:first-child { border-radius: var(--m3e-corner-xl) var(--m3e-corner-xl) var(--m3e-corner-xs) var(--m3e-corner-xs); }
+.style-material-expressive .row:last-child  { border-radius: var(--m3e-corner-xs) var(--m3e-corner-xs) var(--m3e-corner-xl) var(--m3e-corner-xl); }
+
+/* State Layer: 8% on-surface bei Hover, 10% bei Aktiv */
+.style-material-expressive .row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--m3e-on-surface);
+  opacity: 0;
+  transition: opacity 140ms linear;
+  pointer-events: none;
+}
+.style-material-expressive .row:hover::before  { opacity: .08; }
+.style-material-expressive .row:active::before { opacity: .10; }
+.style-material-expressive .row:hover { border-radius: var(--m3e-corner-xl); }
+
+.style-material-expressive .avatar {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+  transition: border-radius var(--m3e-spring-fast);
+}
+.style-material-expressive .row:hover .avatar { border-radius: var(--m3e-corner-full); }
+.style-material-expressive .avatar svg { width: 24px; height: 24px; display: block; }
+
+.style-material-expressive .avatar-1 { background: var(--m3e-primary-container); }
+.style-material-expressive .avatar-1 svg { fill: var(--m3e-on-primary-container); }
+.style-material-expressive .avatar-2 { background: var(--m3e-secondary-container); }
+.style-material-expressive .avatar-2 svg { fill: var(--m3e-on-secondary-container); }
+.style-material-expressive .avatar-3 { background: var(--m3e-tertiary-container); }
+.style-material-expressive .avatar-3 svg { fill: var(--m3e-on-tertiary-container); }
+
+.style-material-expressive .meta {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+}
+
+.style-material-expressive .name {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--m3e-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-material-expressive .time {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--m3e-on-surface-variant);
+}
+
+.style-material-expressive .chip {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  padding: 6px 14px 7px;
+  border-radius: var(--m3e-corner-s);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  transition: border-radius var(--m3e-spring-fast);
+}
+.style-material-expressive .row:hover .chip { border-radius: var(--m3e-corner-full); }
+.style-material-expressive .chip-on {
+  background: var(--m3e-primary-container);
+  color: var(--m3e-on-primary-container);
+}
+.style-material-expressive .chip-off {
+  background: var(--m3e-surface-container-highest);
+  color: var(--m3e-on-surface-variant);
+  box-shadow: 0 0 0 1px var(--m3e-outline-variant) inset;
+}
+
+/* ---------- Suchleiste: Pille auf tonaler Flaeche, kein Rahmen ---------- */
+.style-material-expressive .search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 22px;
+  border-radius: var(--m3e-corner-full);
+  background: var(--m3e-surface-container-high);
+  transition: border-radius var(--m3e-spring-slow), background-color 160ms ease;
+}
+.style-material-expressive .search:hover {
+  border-radius: var(--m3e-corner-l);
+  background: var(--m3e-surface-container-highest);
+}
+.style-material-expressive .search svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: var(--m3e-on-surface-variant);
+  display: block;
+}
+.style-material-expressive input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--m3e-on-surface);
+  outline: none;
+}
+.style-material-expressive input::placeholder { color: var(--m3e-on-surface-variant); }
+
+/* ---------- Button Group: benachbarte Pillen, Breite reagiert federnd ---------- */
+.style-material-expressive .actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.style-material-expressive button {
+  position: relative;
+  flex: 1;
+  height: 56px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--m3e-corner-full);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    flex-grow var(--m3e-spring-slow),
+    border-radius var(--m3e-spring-fast);
+}
+.style-material-expressive button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 140ms linear;
+  pointer-events: none;
+}
+.style-material-expressive button:hover::before  { opacity: .08; }
+.style-material-expressive button:active::before { opacity: .12; }
+.style-material-expressive button:hover  { flex-grow: 1.6; }
+.style-material-expressive button:active { border-radius: var(--m3e-corner-m); }
+.style-material-expressive button:focus-visible {
+  outline: 3px solid var(--m3e-primary);
+  outline-offset: 2px;
+}
+
+.style-material-expressive .btn-primary {
+  background: var(--m3e-primary);
+  color: var(--m3e-on-primary);
+}
+.style-material-expressive .btn-secondary {
+  background: var(--m3e-secondary-container);
+  color: var(--m3e-on-secondary-container);
+}
+
+@keyframes material-expressive-morph {
+  0%   { border-radius: 42% 58% 62% 38% / 55% 40% 60% 45%; transform: rotate(0deg); }
+  33%  { border-radius: 62% 38% 40% 60% / 40% 62% 38% 60%; transform: rotate(120deg); }
+  66%  { border-radius: 38% 62% 55% 45% / 62% 38% 62% 38%; transform: rotate(240deg); }
+  100% { border-radius: 42% 58% 62% 38% / 55% 40% 60% 45%; transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-material-expressive .morph { animation: none; }
+  .style-material-expressive .row,
+  .style-material-expressive .avatar,
+  .style-material-expressive .chip,
+  .style-material-expressive .search,
+  .style-material-expressive .count,
+  .style-material-expressive button { transition-duration: 1ms; }
+  .style-material-expressive button:hover { flex-grow: 1; }
+}
+</style>
+<div class="style-material-expressive">
+  <div class="demo">
+
+    <div class="head">
+      <span class="morph"></span>
+      <h2 class="title">Projects</h2>
+      <span class="count">12</span>
+    </div>
+
+    <div class="tones">
+      <span class="tone-10"></span>
+      <span class="tone-20"></span>
+      <span class="tone-30"></span>
+      <span class="tone-40"></span>
+      <span class="tone-80"></span>
+      <span class="tone-90"></span>
+      <span class="tone-95"></span>
+    </div>
+
+    <ul class="list">
+      <li class="row">
+        <span class="avatar avatar-1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 4.6L17 9.4v5.2L12 17.4 7 14.6V9.4l5-2.8Z"></path></svg>
+        </span>
+        <span class="meta">
+          <span class="name">Nexus</span>
+          <span class="time">2 hrs ago</span>
+        </span>
+        <span class="chip chip-on">Active</span>
+      </li>
+      <li class="row">
+        <span class="avatar avatar-2">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25ZM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"></path></svg>
+        </span>
+        <span class="meta">
+          <span class="name">Autowrite Studio</span>
+          <span class="time">yesterday</span>
+        </span>
+        <span class="chip chip-on">Active</span>
+      </li>
+      <li class="row">
+        <span class="avatar avatar-3">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM10.5 8h1.6v8h-1.6V8Zm3.4 0h1.6v8h-1.6V8Z"></path></svg>
+        </span>
+        <span class="meta">
+          <span class="name">Balance Ally</span>
+          <span class="time">4 days ago</span>
+        </span>
+        <span class="chip chip-off">Paused</span>
+      </li>
+    </ul>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z"></path></svg>
+      <input type="text" readonly placeholder="Search...">
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-primary">New project</button>
+      <button type="button" class="btn-secondary">Import</button>
+    </div>
+
+  </div>
+</div>

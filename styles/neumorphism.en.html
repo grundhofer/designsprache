@@ -1,0 +1,330 @@
+<style>
+.style-neumorphism {
+  --nm-bg: #e0e5ec;
+  --nm-light: #ffffff;
+  --nm-dark: #a3b1c6;
+  --nm-ink: #4c5c73;
+  --nm-ink-soft: #8494ab;
+  --nm-accent: #6d83b5;
+
+  --nm-out: 9px 9px 18px var(--nm-dark), -9px -9px 18px var(--nm-light);
+  --nm-out-sm: 5px 5px 10px var(--nm-dark), -5px -5px 10px var(--nm-light);
+  --nm-out-xs: 3px 3px 6px var(--nm-dark), -3px -3px 6px var(--nm-light);
+  --nm-in: inset 5px 5px 10px var(--nm-dark), inset -5px -5px 10px var(--nm-light);
+  --nm-in-sm: inset 3px 3px 6px var(--nm-dark), inset -3px -3px 6px var(--nm-light);
+  --nm-emboss: 1px 1px 1px var(--nm-light), -1px -1px 1px rgba(163, 177, 198, .55);
+
+  width: 100%;
+  box-sizing: border-box;
+  /* der Stil kennt kein dunkles Pendant -- Viewer-Theme wird bewusst ignoriert */
+  color-scheme: light;
+  background: var(--nm-bg);
+  color: var(--nm-ink);
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  padding: 34px;
+  border-radius: 0;
+}
+
+.style-neumorphism * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+.style-neumorphism .demo {
+  min-height: 460px;
+  background: var(--nm-bg);
+  border-radius: 34px;
+  box-shadow: var(--nm-out);
+  padding: 30px 30px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- Zierleiste: eingelassene Rille mit drei Punkten (Gehäuse-Anmutung) --- */
+.style-neumorphism .groove {
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: var(--nm-in-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: -6px auto 0;
+  width: 118px;
+}
+.style-neumorphism .groove i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--nm-dark);
+  opacity: .55;
+}
+
+/* --- Header --- */
+.style-neumorphism .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.style-neumorphism .head h2 {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -.015em;
+  color: var(--nm-ink);
+  text-shadow: var(--nm-emboss);
+}
+.style-neumorphism .count {
+  flex: none;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  box-shadow: var(--nm-out-sm);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--nm-accent);
+  text-shadow: var(--nm-emboss);
+  position: relative;
+}
+.style-neumorphism .count::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  box-shadow: var(--nm-in-sm);
+}
+.style-neumorphism .count span {
+  position: relative;
+}
+
+/* --- Liste --- */
+.style-neumorphism .list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.style-neumorphism .row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 18px;
+  border-radius: 22px;
+  box-shadow: var(--nm-out-sm);
+  transition: box-shadow 220ms ease;
+}
+.style-neumorphism .row:hover {
+  box-shadow: var(--nm-out);
+}
+.style-neumorphism .row:active {
+  box-shadow: var(--nm-in-sm);
+}
+
+.style-neumorphism .slot {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: var(--nm-in-sm);
+  display: grid;
+  place-items: center;
+}
+.style-neumorphism .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--nm-accent);
+  box-shadow: 0 0 0 3px rgba(109, 131, 181, .16);
+}
+.style-neumorphism .row.paused .dot {
+  background: var(--nm-dark);
+  box-shadow: 0 0 0 3px rgba(163, 177, 198, .22);
+}
+
+.style-neumorphism .meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.style-neumorphism .name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--nm-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: var(--nm-emboss);
+}
+.style-neumorphism .time {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--nm-ink-soft);
+  letter-spacing: .01em;
+}
+
+.style-neumorphism .status {
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--nm-accent);
+  padding: 8px 15px;
+  border-radius: 999px;
+  box-shadow: var(--nm-out-xs);
+  text-shadow: var(--nm-emboss);
+}
+/* gedrueckter Zustand als inset-Umkehr -- das Kern-Idiom des Stils */
+.style-neumorphism .row.paused .status {
+  color: var(--nm-ink-soft);
+  box-shadow: var(--nm-in-sm);
+  text-shadow: none;
+}
+
+/* --- Feld --- */
+.style-neumorphism .field {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 4px 22px;
+  border-radius: 999px;
+  box-shadow: var(--nm-in);
+  margin-top: auto;
+}
+.style-neumorphism .field svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  stroke: var(--nm-ink-soft);
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.style-neumorphism .field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 17px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--nm-ink);
+}
+.style-neumorphism .field input::placeholder {
+  color: var(--nm-ink-soft);
+  opacity: 1;
+}
+
+/* --- Aktionen --- */
+.style-neumorphism .actions {
+  display: flex;
+  gap: 16px;
+}
+.style-neumorphism button {
+  flex: 1 1 0;
+  border: 0;
+  background: var(--nm-bg);
+  padding: 18px 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  cursor: pointer;
+  box-shadow: var(--nm-out-sm);
+  text-shadow: var(--nm-emboss);
+  transition: box-shadow 200ms ease, color 200ms ease;
+}
+.style-neumorphism .btn-primary {
+  color: var(--nm-accent);
+  background: linear-gradient(145deg, #e8edf5, #d3d9e2);
+}
+.style-neumorphism .btn-secondary {
+  color: var(--nm-ink-soft);
+}
+.style-neumorphism button:hover {
+  box-shadow: var(--nm-out);
+}
+.style-neumorphism button:active {
+  box-shadow: var(--nm-in-sm);
+  text-shadow: none;
+}
+.style-neumorphism button:focus-visible,
+.style-neumorphism .field input:focus-visible {
+  outline: 2px solid var(--nm-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .style-neumorphism {
+    padding: 18px;
+  }
+  .style-neumorphism .demo {
+    padding: 22px 18px 24px;
+  }
+  .style-neumorphism .actions {
+    flex-direction: column;
+  }
+  .style-neumorphism .head h2 {
+    font-size: 25px;
+  }
+}
+</style>
+<div class="style-neumorphism">
+  <div class="demo">
+    <div class="groove"><i></i><i></i><i></i></div>
+
+    <div class="head">
+      <h2>Projects</h2>
+      <div class="count"><span>12</span></div>
+    </div>
+
+    <ul class="list">
+      <li class="row">
+        <div class="slot"><div class="dot"></div></div>
+        <div class="meta">
+          <div class="name">Nexus</div>
+          <div class="time">2 hrs ago</div>
+        </div>
+        <div class="status">Active</div>
+      </li>
+      <li class="row">
+        <div class="slot"><div class="dot"></div></div>
+        <div class="meta">
+          <div class="name">Autowrite Studio</div>
+          <div class="time">yesterday</div>
+        </div>
+        <div class="status">Active</div>
+      </li>
+      <li class="row paused">
+        <div class="slot"><div class="dot"></div></div>
+        <div class="meta">
+          <div class="name">Balance Ally</div>
+          <div class="time">4 days ago</div>
+        </div>
+        <div class="status">Paused</div>
+      </li>
+    </ul>
+
+    <div class="field">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+      <input type="text" readonly placeholder="Search...">
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-primary">New project</button>
+      <button type="button" class="btn-secondary">Import</button>
+    </div>
+  </div>
+</div>

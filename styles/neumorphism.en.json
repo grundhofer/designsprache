@@ -1,0 +1,68 @@
+{
+  "slug": "neumorphism",
+  "name": "Neumorphism / Soft UI",
+  "aka": ["Soft UI", "Neo-Skeuomorphism", "New Skeuomorphism", "Neumorphism"],
+  "family": "Soft Materiality",
+  "era": "2019-2021 (peak in early 2020), a quotation style ever since",
+  "origin": "The trigger was a Dribbble shot by Alexander Plyuto in late 2019: a banking app concept in which controls no longer sit on the surface but appear pressed out of it. Jason Kelly and Michal Malewicz coined the name shortly after, a portmanteau of 'neo' and 'skeuomorphism'. The style was the backlash against six years of flat design and its affordance problem: after iOS 7 nobody knew what was clickable any more, and neumorphism gave buttons a physical shape again -- without the leather and wood textures of old skeuomorphism. Technically it was trivial, because two box-shadow values on an identical base color are enough; that cheapness is exactly what made it go viral.",
+  "idea": "Element and background carry exactly the same color; shape comes solely from a light shadow at the top left and a dark one at the bottom right, as if the surface were extruded out of soft plastic or pressed into it.",
+  "markers": [
+    "Element fill == background color, canonically #E0E5EC -- no surface value of its own",
+    "Double shadow: 9px 9px 18px #A3B1C6 and -9px -9px 18px #FFFFFF, light source fixed at the top left",
+    "Edge contrast element/background only 1.3-1.7:1 -- measurably below the WCAG threshold of 3:1",
+    "Radius 20-34px on surfaces and cards, 999px on fields and pills",
+    "Not a single border value in the entire UI",
+    "Pressed state as a pure inversion into inset shadows, no color change",
+    "Recessed elements (search field, slots, grooves) via inset instead of a fill color",
+    "Letterpress type: text-shadow 1px 1px 1px #FFF, -1px -1px 1px rgba(163,177,198,.55)",
+    "Exactly one elevation level -- layers stacked above or below one another cannot be rendered"
+  ],
+  "params": {
+    "radius": "20-34px on surfaces and cards, 999px on pills and input fields",
+    "contrast": "low",
+    "density": "airy",
+    "depth": "Pseudo-relief from two opposing shadows on the same base color; extruded (outset) vs. pressed in (inset), nothing in between",
+    "color": "Monochrome: a single light blue-gray base, everything else is shadow gradations of the same color; at most one desaturated accent for numbers and the primary action",
+    "type": "Soft, rounded grotesque at 600-800, mid-gray instead of black, with a letterpress text shadow",
+    "motion": "Only the shadow switch: box-shadow 200-220ms ease from outset to inset on press, no movement of the geometry",
+    "texture": "none -- the surface is deliberately flawless and smooth"
+  },
+  "palette": ["#E0E5EC", "#FFFFFF", "#A3B1C6", "#4C5C73", "#8494AB", "#6D83B5"],
+  "examples": [
+    {"name": "Alexander Plyuto, 'Skeuomorph Mobile Banking' (Dribbble, Dec. 2019)", "what": "The originating shot: credit card, circular buttons and sliders all in #E0E5EC, shape coming only from the double shadow; icons as thin lines, not a single border"},
+    {"name": "neumorphism.io (Adrian Bece)", "what": "A generator that exposes exactly the four parameters of the style: distance, blur, intensity, inset/outset -- effectively the specification of the look"},
+    {"name": "macOS Big Sur (2020)", "what": "Softly extruded, slightly plastic icon shapes on light gray chrome -- the most mass-market form of soft extrusion, though only on icons, never on surfaces, and without the double-shadow formula"},
+    {"name": "Michal Malewicz, 'Neumorphism in user interfaces' (2019/2020)", "what": "The article in whose comments the name was born -- and which was also the first to name the contrast problem"},
+    {"name": "Samsung One UI (from 2019)", "what": "Rounded, very low-contrast containers on a light gray ground -- a heavily toned-down product variant that adopts the soft feel without committing to the double shadow"}
+  ],
+  "strengths": [
+    "Unmistakable within 200 ms -- no other style looks like this",
+    "Very calm and tactile; reads like a device, not like a document",
+    "Technically trivial: two box-shadow values, no assets, no images, no font license",
+    "The pressed state is as visually unambiguous as on a real key"
+  ],
+  "risks": [
+    "Only one elevation level is possible -- modals, popovers, dropdowns or toasts have no representable place in the system",
+    "No light/dark switch without a complete redesign: the double-shadow logic breaks down on a dark ground and needs different curves",
+    "On small displays, at low brightness or in compressed screenshots the relief disappears entirely",
+    "Disabled, pressed and normal states are barely distinguishable once there are three forms",
+    "Tips over into 'cheap plastic toy' as soon as the blur gets too large or the base color too saturated"
+  ],
+  "a11y": "The style is by construction not WCAG-compliant: the load-bearing edge between control and background reaches 1.27:1 (light edge) to 1.72:1 (dark edge) in this demo, where WCAG 2.2 SC 1.4.11 requires at least 3:1 for control boundaries. Body text can be salvaged (#4C5C73 on #E0E5EC = 5.38:1, AA passed), secondary information such as timestamps falls below at 2.44:1, and the accent tone sits just under the threshold at 2.98:1. A focus ring has to be retrofitted as a hard, style-breaking outline, because a neumorphic ring will never meet the contrast requirements -- this demo does exactly that on :focus-visible.",
+  "longevity": "Hard-dated to 2020: anyone who sees the look today immediately reads 'Dribbble trend from the pandemic years'. It has no institutional foothold that would let it survive as a niche the way skeuomorphism does in pro audio.",
+  "scores": {
+    "longevity": 1,
+    "recognition": 5,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Trivial in CSS, but the double shadows cost real paint time on long lists and the style does not scale beyond a single elevation level.",
+    "mobile": "Practically unusable on Android and iOS: in bright ambient light and on OLED panels with aggressive contrast management the relief disappears, and both platforms mandate a dark mode the style does not have.",
+    "desktop": "Technically unproblematic in Tauri, but desktop UIs need menus, popovers and dialogs -- exactly the layers neumorphism cannot render."
+  },
+  "verdict": "As the basis of a brand of your own: a clear no. Not because it is ugly, but because it structurally violates three of the client's requirements: it has no dark theme, no second elevation level and no WCAG-compliant control edge -- and since the European Accessibility Act the last of those is no longer a matter of taste. For a brand spanning web, Tauri and Compose that means three separate redesigns instead of one token set. What can be carried over is exactly one detail: the inset inversion as an active state on a single component (toggle, segmented control) -- a cheap, tactile carrier of recognizability that works without the rest of the style.",
+  "combinesWith": ["claymorphism", "skeuomorphism", "minimalism", "organic-blob"],
+  "tip": "Never pick a blur larger than the distance (9px/18px, not 9px/40px) and keep the base color at roughly 88-92% lightness with a slight blue cast -- pure gray looks dead, saturated gray looks like a toy. And: the only way to make the style usable is a second, style-breaking signal channel per state (color, icon or text), because the relief alone does not carry the state.",
+  "googleFonts": ["Nunito"]
+}

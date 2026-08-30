@@ -1,0 +1,68 @@
+{
+  "slug": "maximalism",
+  "name": "Maximalism / Collage",
+  "aka": ["More is more", "Collage Design", "Sticker Aesthetic", "Neo-Memphis", "Cluttercore"],
+  "family": "Expression & Nature",
+  "era": "Roots 1954-1996, digital wave 2020-today",
+  "origin": "Maximalism is not an invention of the 2020s but the return of a line running from Push Pin Studios (Milton Glaser, Seymour Chwast, from 1954) through the psychedelic posters of the sixties, the cut-and-paste fanzines of punk (Jamie Reid for the Sex Pistols, 1977) and Memphis (Ettore Sottsass, 1981) to David Carson's Ray Gun (1992-1996) and Richard Turley's Bloomberg Businessweek (2011-2014). It came back digitally around 2020 as a direct counter-movement to corporate flat minimalism, whose result - interchangeable sans-serif logos and white cards - had itself become the problem. The return was made possible by variable fonts, CSS transform and mix-blend-mode, plus GPU-accelerated scroll animation: what used to be a bitmap layout is now live-rendered DOM. Culturally it was carried by fashion (Gucci under Alessandro Michele from 2015) and by music marketing, where recognizability counts for more than efficiency.",
+  "idea": "Overload as a stance: instead of taking elements away, they are layered, rotated, framed and allowed to collide until the surface has a personality. Order does not come from white space but from managing contrast inside the chaos.",
+  "markers": [
+    "3-6 type families at once, here four: Anton, DM Serif Display, Space Mono, Bricolage Grotesque",
+    "Frame within a frame: 3px solid outside, 2px dashed inside, plus a hard offset shadow of 11px/20px in two colors",
+    "Rotations between -2.2deg and +1.8deg on nearly every element, never 0deg",
+    "Overlapping layers via negative margins (-6px) and explicit z-index stacking - each row covers the one above it",
+    "Pattern on pattern: diagonal stripes, halftone dots and a checkered conic gradient all in one frame",
+    "Hard drop shadows with no blur (box-shadow 6px 6px 0), never soft elevation",
+    "Saturated color collision: acid yellow, hot pink, ultramarine and orange in a single screen",
+    "Sticker-style secondary elements: tape strips, starbursts, barcodes, circular seals as pure decoration",
+    "White space practically zero; padding 11-22px, rows touch each other"
+  ],
+  "params": {
+    "radius": "0px on surfaces; only stickers and the counter are round (50%)",
+    "contrast": "very high",
+    "density": "very dense",
+    "depth": "hard offset shadows without blur plus real overlap via z-index - depth as collage, not as light",
+    "color": "Four to six saturated colors that deliberately clash, held together by a near-black ink and a cream white acting as glue.",
+    "type": "Deliberate family mix: bold condensed as the shout, serif italic as the irony, mono as the receipt, grotesque as the speaking voice.",
+    "motion": "Jerky rather than smooth: 90ms linear on press (the shadow shrinks, the element slides), plus a slow 6s ease-in-out wobble on stickers",
+    "texture": "11px halftone dot grid and 45deg stripes on the ground; in print often 4-8% film grain on top"
+  },
+  "palette": ["#16101A", "#FFF6E8", "#F4E63F", "#FF3D81", "#2B36D6", "#FF6B1A"],
+  "examples": [
+    {"name": "David Carson, Ray Gun (1992-1996)", "what": "Overlaid columns, shattered type sizes, an entire interview set in Zapf Dingbats - the proof that legibility here is a bargaining chip."},
+    {"name": "Bloomberg Businessweek under Richard Turley (2011-2014)", "what": "Business journalism with neon colors, stock-photo collage and form-sheet aesthetics; shows that maximalism also works under a hard information brief, as long as a grid sits underneath."},
+    {"name": "Gucci under Alessandro Michele (2015-2022)", "what": "Pattern on pattern, vintage serif next to block letter, sticker appliques - the fashion trigger of the current wave."},
+    {"name": "Ettore Sottsass / Memphis Group (1981)", "what": "Terrazzo patterns, graphic bacteria and biting primaries on furniture - the shape library today's web borrows from."},
+    {"name": "Meow Wolf and comparable Awwwards winners", "what": "Scroll-driven layer displacement, sticker cursors, several animation tracks running at once - the web version of the principle, each one built as a one-off."}
+  ],
+  "strengths": [
+    "Recognition within 200ms - no other family in this catalog is this hard to confuse",
+    "Carries personality and attitude without text; ideal for campaigns, launches, merch, release pages",
+    "Tolerates high element density, because density is the design device itself",
+    "Fully producible in CSS: transform, box-shadow, repeating gradients - no image files needed"
+  ],
+  "risks": [
+    "Not translatable into a component system: every rotation, every shadow, every overlap is an individual decision",
+    "The difference between 'curated chaos' and 'word art' is measured in millimeters - without a sure typographic eye it turns cheap",
+    "Exhausting on repeat: what delights on a landing page is unbearable at the fourth step of a workflow",
+    "Scales badly to small viewports - rotated, overlapping elements need width or they stack into mush",
+    "Maintenance cost: every new feature has to be fitted into the collage by hand instead of falling out of tokens"
+  ],
+  "a11y": "The biggest risk is text on pattern: halftone dots and stripes under body copy push the effective contrast far below the measured value, which is why an opaque surface sits under every text here and the ink stays at #16101A (>13:1 on cream and acid, ~6:1 on pink). Rotations decouple the visual order from the DOM order - to a sighted user the tab focus appears to jump around wildly, which stays manageable only through a disciplined source order and a thick, offset focus ring. Continuous motion, blink and marquee effects must be switched off under prefers-reduced-motion; sharp color collisions such as pink on ultramarine are additionally taxing for people with red-green deficiency.",
+  "longevity": "As a stance, maximalism is cyclically stable - it returns every twenty years - but each concrete expression is sharply dated: the current sticker variant will read as '2020s' from about 2027 onward exactly the way Carson reads as '90s' today. Choosing it means deliberately choosing a time stamp.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 5,
+    "density": 5
+  },
+  "platforms": {
+    "web": "The actual home: transform, multiple box-shadows and repeating gradients make everything possible without assets - though in Tailwind almost only through arbitrary values.",
+    "mobile": "Expensive and alien in Compose and SwiftUI; rotation, overlap and patterned grounds demand custom drawing and collide with platform conventions.",
+    "desktop": "Technically feasible in Tauri, almost always wrong in substance - tool windows with long dwell times cannot take this much stimulus."
+  },
+  "verdict": "As a consistent base for the house brand, a clear no. The style contradicts exactly the requirement that matters here: a solo developer with many small apps needs a system that spits out new screens from tokens, and maximalism is by definition the opposite - every view is handwork, and Compose and SwiftUI charge for that effort twice. It makes sense as a clearly separated marketing layer: landing page, release announcement, changelog header, merch - wherever recognition is worth more than efficiency and the page is left again after thirty seconds. If something is to migrate into the product UI, then exactly one element: the hard offset shadow or the sticker status - a signature, not a style.",
+  "combinesWith": ["neo-brutalism", "memphis", "swiss-punk", "y2k-aero"],
+  "tip": "An invisible, strict grid belongs underneath the chaos - that is precisely the difference between Businessweek and word art. In practice: build the layout completely in black and white and without rotation first, until the hierarchy holds, then lay on rotations (at most +/-2.5deg), patterns and stickers as the last coat. And keep the rotation values odd - 1.4deg and 2.2deg read as handmade, 5deg and 10deg read as a template.",
+  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"]
+}

@@ -1,0 +1,503 @@
+<style>
+.style-swiss-punk {
+  --sp-paper: #E9E5DC;
+  --sp-ink: #100E0C;
+  --sp-red: #E4271B;
+  --sp-cyan: #009FB7;
+  --sp-grid: rgba(16,14,12,.13);
+
+  color-scheme: light;
+  width: 100%;
+  background: var(--sp-paper);
+  color: var(--sp-ink);
+  font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+  padding: 18px;
+}
+
+.style-swiss-punk,
+.style-swiss-punk *,
+.style-swiss-punk *::before,
+.style-swiss-punk *::after {
+  box-sizing: border-box;
+}
+
+.style-swiss-punk .demo {
+  position: relative;
+  min-height: 460px;
+  padding: 30px 26px 26px;
+  background: var(--sp-paper);
+  border: 1px solid var(--sp-ink);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* --- Das Raster wird gezeigt, damit man den Bruch sieht --- */
+.style-swiss-punk .raster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(90deg, var(--sp-grid) 0 1px, transparent 1px 8.3333%),
+    repeating-linear-gradient(0deg, var(--sp-grid) 0 1px, transparent 1px 28px);
+}
+
+.style-swiss-punk .raster-skew {
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-7deg);
+  opacity: .5;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0,159,183,.35) 0 1px, transparent 1px 46px);
+}
+
+/* --- Toner-Rauschen einer schlechten Fotokopie --- */
+.style-swiss-punk .noise {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: .1;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(16,14,12,.9) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(16,14,12,.6) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+}
+
+/* --- Passermarken --- */
+.style-swiss-punk .mark {
+  position: absolute;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 1px solid var(--sp-ink);
+  background:
+    linear-gradient(var(--sp-ink), var(--sp-ink)) center/1px 100% no-repeat,
+    linear-gradient(var(--sp-ink), var(--sp-ink)) center/100% 1px no-repeat;
+}
+
+.style-swiss-punk .mark-a { top: 8px; right: 10px; }
+.style-swiss-punk .mark-b { bottom: 8px; left: 10px; }
+
+.style-swiss-punk .edge-code {
+  position: absolute;
+  z-index: 1;
+  left: 6px;
+  top: 96px;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  color: var(--sp-ink);
+  opacity: .7;
+  white-space: nowrap;
+}
+
+/* --- Kopf: Ueberschrift und Zaehler laufen ineinander --- */
+.style-swiss-punk .head {
+  position: relative;
+  z-index: 3;
+  min-height: 130px;
+  margin: 0 0 6px;
+  padding-left: 26px;
+}
+
+.style-swiss-punk .kicker {
+  position: absolute;
+  top: -6px;
+  left: 30px;
+  z-index: 4;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--sp-red);
+  background: var(--sp-paper);
+  padding: 2px 4px;
+}
+
+.style-swiss-punk .title {
+  position: relative;
+  z-index: 3;
+  margin: 14px 0 0;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(56px, 14vw, 116px);
+  line-height: .78;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  color: var(--sp-ink);
+}
+
+.style-swiss-punk .title-echo {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  left: 20px;
+  margin: 0;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(56px, 14vw, 116px);
+  line-height: .78;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  color: var(--sp-red);
+  opacity: .34;
+  transform: scaleY(1.35) skewX(-6deg);
+  transform-origin: 0 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.style-swiss-punk .count {
+  position: absolute;
+  z-index: 4;
+  top: -18px;
+  right: -6px;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(90px, 22vw, 172px);
+  line-height: .72;
+  letter-spacing: -.09em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--sp-ink);
+  transform: rotate(9deg);
+}
+
+.style-swiss-punk .count-shadow {
+  position: absolute;
+  z-index: 2;
+  top: -12px;
+  right: 2px;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(90px, 22vw, 172px);
+  line-height: .72;
+  letter-spacing: -.09em;
+  color: var(--sp-cyan);
+  opacity: .5;
+  transform: rotate(9deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+.style-swiss-punk .bar {
+  position: relative;
+  z-index: 3;
+  height: 9px;
+  margin: 4px 0 0 -26px;
+  width: calc(100% + 52px);
+  background: var(--sp-ink);
+}
+
+/* --- Liste: gleiche Daten, gebrochene Stufen --- */
+.style-swiss-punk .list {
+  position: relative;
+  z-index: 3;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.style-swiss-punk .row {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 10px 0 9px;
+  border-bottom: 1px solid var(--sp-ink);
+}
+
+.style-swiss-punk .idx {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--sp-red);
+  flex: 0 0 auto;
+}
+
+.style-swiss-punk .name {
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--sp-ink);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.style-swiss-punk .time {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: #34302B;
+  flex: 0 0 auto;
+}
+
+.style-swiss-punk .status {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.style-swiss-punk .status-on {
+  background: var(--sp-ink);
+  color: var(--sp-paper);
+}
+
+.style-swiss-punk .status-off {
+  background: transparent;
+  color: var(--sp-ink);
+  border: 1px solid var(--sp-ink);
+}
+
+/* Zeile 1: gross, ueber die Kante hinaus, negative Laufweite.
+   Die Zeile verlaesst den Satzspiegel auf beiden Seiten und wird vom
+   Rahmen beschnitten - der Text bleibt ueber die Innenabstaende drin. */
+.style-swiss-punk .row-1 {
+  margin-left: -26px;
+  margin-right: -44px;
+  padding-left: 8px;
+  padding-right: 52px;
+  border-bottom-width: 6px;
+}
+
+.style-swiss-punk .row-1 .name {
+  font-size: clamp(30px, 7vw, 46px);
+  line-height: .9;
+  letter-spacing: -.05em;
+}
+
+.style-swiss-punk .row-1 .time {
+  transform: rotate(-4deg);
+}
+
+/* Zeile 2: eingerueckt, mittlere Stufe, durchgestrichenes Raster */
+.style-swiss-punk .row-2 {
+  margin-left: 54px;
+  align-items: center;
+}
+
+.style-swiss-punk .row-2 .name {
+  font-family: "Archivo", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(17px, 3.4vw, 22px);
+  letter-spacing: -.03em;
+  text-transform: none;
+}
+
+.style-swiss-punk .row-2::after {
+  content: "";
+  position: absolute;
+  left: -70px;
+  right: -30px;
+  top: 62%;
+  height: 1px;
+  background: var(--sp-red);
+  pointer-events: none;
+}
+
+/* Zeile 3: klein, gesperrt, um 1.5 Grad gekippt */
+.style-swiss-punk .row-3 {
+  margin-left: 16px;
+  transform: rotate(-1.4deg);
+  border-bottom: 1px dashed var(--sp-ink);
+}
+
+.style-swiss-punk .row-3 .name {
+  font-family: "Archivo", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .3em;
+}
+
+/* --- Feld --- */
+.style-swiss-punk .field {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0 0 22px;
+  transform: rotate(.6deg);
+}
+
+.style-swiss-punk .field-label {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--sp-paper);
+  background: var(--sp-red);
+  padding: 9px 8px;
+  flex: 0 0 auto;
+}
+
+.style-swiss-punk .search {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: 22px;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  color: var(--sp-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 4px solid var(--sp-ink);
+  border-radius: 0;
+  padding: 5px 0 3px 10px;
+  outline: none;
+}
+
+.style-swiss-punk .search::placeholder {
+  color: #6A635B;
+}
+
+.style-swiss-punk .search:focus-visible {
+  border-bottom-color: var(--sp-red);
+  outline: 2px solid var(--sp-red);
+  outline-offset: 3px;
+}
+
+/* --- Aktionen --- */
+.style-swiss-punk .actions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.style-swiss-punk .btn {
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 90ms linear;
+}
+
+.style-swiss-punk .btn-primary {
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(22px, 4.6vw, 30px);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+  color: var(--sp-paper);
+  background: var(--sp-ink);
+  border: 0;
+  padding: 8px 18px 10px;
+  transform: rotate(-1.6deg);
+}
+
+.style-swiss-punk .btn-primary:hover {
+  transform: rotate(-1.6deg) translateY(-2px);
+}
+
+.style-swiss-punk .btn-secondary {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--sp-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--sp-red);
+  padding: 6px 2px 4px;
+  transform: rotate(1.2deg);
+}
+
+.style-swiss-punk .btn-secondary:hover {
+  transform: rotate(1.2deg) translateY(-2px);
+}
+
+.style-swiss-punk .btn:focus-visible {
+  outline: 2px solid var(--sp-red);
+  outline-offset: 3px;
+}
+
+.style-swiss-punk .footnote {
+  margin-left: auto;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--sp-cyan);
+  transform: rotate(-2deg);
+  align-self: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-swiss-punk .btn { transition: none; }
+}
+
+@media (max-width: 560px) {
+  .style-swiss-punk .demo { padding: 26px 16px 20px; }
+  .style-swiss-punk .head { padding-left: 0; }
+  .style-swiss-punk .row-2 { margin-left: 20px; }
+  .style-swiss-punk .row-1 {
+    margin-left: -16px;
+    margin-right: -24px;
+    padding-left: 6px;
+    padding-right: 30px;
+  }
+  .style-swiss-punk .edge-code { display: none; }
+  .style-swiss-punk .footnote { display: none; }
+}
+</style>
+<div class="style-swiss-punk">
+  <div class="demo">
+    <div class="raster"></div>
+    <div class="raster-skew"></div>
+    <span class="mark mark-a" aria-hidden="true"></span>
+    <span class="mark mark-b" aria-hidden="true"></span>
+    <span class="edge-code" aria-hidden="true">Grid 12 / broken</span>
+
+    <div class="head">
+      <span class="kicker">Basel &rarr; San Diego</span>
+      <span class="title-echo" aria-hidden="true">Projects</span>
+      <h2 class="title">Projects</h2>
+      <span class="count-shadow" aria-hidden="true">12</span>
+      <span class="count">12</span>
+    </div>
+    <div class="bar"></div>
+
+    <ul class="list">
+      <li class="row row-1">
+        <span class="idx">01</span>
+        <span class="name">Nexus</span>
+        <span class="time">2 hrs ago</span>
+        <span class="status status-on">Active</span>
+      </li>
+      <li class="row row-2">
+        <span class="idx">02</span>
+        <span class="name">Autowrite Studio</span>
+        <span class="time">yesterday</span>
+        <span class="status status-on">Active</span>
+      </li>
+      <li class="row row-3">
+        <span class="idx">03</span>
+        <span class="name">Balance Ally</span>
+        <span class="time">4 days ago</span>
+        <span class="status status-off">Paused</span>
+      </li>
+    </ul>
+
+    <div class="field">
+      <span class="field-label" aria-hidden="true">Field</span>
+      <input class="search" type="text" readonly placeholder="Search..." aria-label="Search">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="button">New project</button>
+      <button class="btn btn-secondary" type="button">Import</button>
+      <span class="footnote" aria-hidden="true">Type as noise</span>
+    </div>
+
+    <div class="noise"></div>
+  </div>
+</div>

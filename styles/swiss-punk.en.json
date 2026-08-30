@@ -1,0 +1,105 @@
+{
+  "slug": "swiss-punk",
+  "name": "Swiss Punk / Deconstructed Typography",
+  "aka": [
+    "New Wave",
+    "Basel New Wave",
+    "Deconstructivist Typography",
+    "Grunge Typography",
+    "Post-Swiss"
+  ],
+  "family": "Postmodernism & Revolt",
+  "era": "1968-1998, quotations and revivals to this day",
+  "origin": "Wolfgang Weingart began teaching at the Schule für Gestaltung Basel in 1968 - in exactly the place where Emil Ruder and Armin Hofmann had perfected the International Typographic Style - and set about breaking its rules from the inside: letterspaced and negatively tracked type, tilted lines, overprinted layers, visible film montage. This was made possible by the freedom of hand-set metal type and later by phototypesetting and the photocopier, which made distorting, overlaying and coarsening cheap for the first time. His students April Greiman and Dan Friedman carried the approach to the United States, Rudy VanderLans and Zuzana Licko spread it from 1984 through the magazine Emigre into desktop publishing, and David Carson pushed it from 1992 at Ray Gun to the point of deliberate illegibility - famously a Bryan Ferry interview set entirely in Zapf Dingbats. The style solved a problem of stance: the Swiss grid had hardened into convention and could no longer represent subculture.",
+  "idea": "The grid is not abolished but visibly broken - you have to be able to recognize the order for the violation to mean anything. Typography carries tone and volume, not only content.",
+  "markers": [
+    "A visible modular grid (12 columns, 28px baseline) as 1px lines in the background, plus a second grid rotated by 7deg",
+    "Extreme jumps in size: a counter up to 172px next to metadata at 9-11px, a ratio of up to 1:19",
+    "Negative tracking of -0.03em to -0.09em, until the capitals touch",
+    "Overlay: the same text a second time as a 34% echo, distorted (scaleY 1.35, skewX -6deg) underneath",
+    "Rotations from -1.4deg to +9deg on rows, field and buttons - never more than one element per layer",
+    "Outline type instead of fill: -webkit-text-stroke 2px, the interior transparent",
+    "Elements run past the type area and are cropped by the frame",
+    "Photocopy texture: a toner stripe grid at 10% opacity in multiply mode",
+    "Registration marks and edge codes as a prepress quotation, mono at 9px with 0.42em letterspacing"
+  ],
+  "params": {
+    "radius": "0px, without exception",
+    "contrast": "very high",
+    "density": "dense",
+    "depth": "no shadows; depth comes from overlay, transparent echoes and cropping at the edge",
+    "color": "Paper tone plus black as the base pair, and exactly two press colors - a signal red and a photocopy cyan, always used as a layer, never as surface decoration",
+    "type": "Three families with clearly separated roles: ultra-condensed display for volume, neutral grotesque for text, monospace for marginalia and codes",
+    "motion": "Almost none: 90ms linear, just a 2px shift on hover. The style is print, not motion",
+    "texture": "Toner noise 10%, grid lines 13% black"
+  },
+  "palette": [
+    "#E9E5DC",
+    "#100E0C",
+    "#E4271B",
+    "#009FB7",
+    "#34302B",
+    "#6A635B"
+  ],
+  "examples": [
+    {
+      "name": "Wolfgang Weingart, Typografische Monatsblätter (1972-1976)",
+      "what": "Overprinted screen areas, letterspaced lines of capitals and diagonal film montages in which the letters tip into the image plane"
+    },
+    {
+      "name": "David Carson, Ray Gun Magazine (1992-1996)",
+      "what": "Columns that overlap, headlines running past the gutter, body text on scanned photographic noise; one interview set entirely in Zapf Dingbats"
+    },
+    {
+      "name": "Emigre Magazine (VanderLans/Licko, 1984-2005)",
+      "what": "Bitmap faces such as Oakland and Emperor on a deliberately coarse grid, layouts with no continuous typographic axis - desktop publishing as an argument"
+    },
+    {
+      "name": "April Greiman, 'Does It Make Sense?' (Design Quarterly 133, 1986)",
+      "what": "A 2 x 6 foot poster as a fold-out: digitally collaged video stills and type in layers, built on a Macintosh"
+    },
+    {
+      "name": "The Designers Republic (1986-2009)",
+      "what": "Techno and video game graphics for Warp Records and WipEout: a proliferation of pictograms, stacked miniature capitals, calculated information overload"
+    }
+  ],
+  "strengths": [
+    "The highest distinctiveness of any typographic style - it cannot come about by accident",
+    "Needs zero graphic assets: the effect comes entirely from type size, position, rotation and two colors",
+    "Carries stance and tone where neutral systems carry only information - strong for marketing, launch pages, manifestos",
+    "The visible grid substructure holds the chaos together structurally and makes the style surprisingly plannable"
+  ],
+  "risks": [
+    "Without real typographic skill it turns into 'crooked and busted' instead of 'broken' - the style forgives no approximations",
+    "Overlays and rotations collide with text lengths you do not control - translations and long user data blow up every layout",
+    "Product UI suffers: dense tables, forms and repeating workflows cannot take a different type size on every row",
+    "The grunge share (photocopy noise, the Zapf Dingbats gesture) is the part that dates as '90s nostalgia and quickly looks like a costume",
+    "Does not scale across components: every view has to be composed by hand, and a solo developer pays for that in time per screen"
+  ],
+  "a11y": "Overlapping text layers are the main risk: the echo behind the headline and the counter rotated by 9 degrees must never carry the actual text, which is why they are aria-hidden here and the readable content always sits solid on top. Rotations of up to 9 degrees and strongly displaced row positions decouple the visual order from the DOM order - the tab order has to be checked by hand, or focus jumps across the surface. Micro typography under 11px with 0.3em letterspacing is barely legible with low vision and may only carry decoration, never status or time stamps anyone actually needs.",
+  "longevity": "The structural core - a visible grid that gets broken - is timeless and has worked for over 50 years. The surface, by contrast, ages very visibly: photocopy noise and grunge distortion are a 1994 timestamp, while Weingart's stricter early phase hardly looks dated today.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 5,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Very strong - CSS does overlay, negative tracking, rotation and cropping natively; ideal for landing pages and portfolios.",
+    "mobile": "Poor - below 400px width the jumps in size collapse, and overlaps turn into hit-target problems on touch.",
+    "desktop": "Only as a splash, an about dialog or a start screen; a Tauri workspace in this style would be exhausting after twenty minutes."
+  },
+  "verdict": "As a full style for your own brand: no - as a brand layer above the product: yes, and the most interesting candidate in the whole catalog. The style costs handwork per screen and is therefore not economically viable for someone maintaining many small apps in parallel; in Compose or SwiftUI, overlay and negative tracking are painful on top of that. What is transferable is the typographic stance: extreme jumps in size, a visible grid, mono as the marginal-note voice, two press colors. A sensible cut would be web presence and release notes in Swiss Punk, the actual product chrome in a quiet Swiss grid system that uses the same fonts and the same two colors - that keeps the brand recognizable without making the apps unusable.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "neo-brutalism",
+    "dev-noir"
+  ],
+  "tip": "Show the grid before you break it. Lay the 12 columns and the baseline grid into the background as visible 1px lines, then violate them in exactly three places - not everywhere. Chaos without a visible frame of reference reads as an accident; only the recognizable order behind it turns the break into a statement. Weingart never threw the grid away, he put it on display.",
+  "googleFonts": [
+    "Anton",
+    "Archivo",
+    "Space Mono"
+  ]
+}

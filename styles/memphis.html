@@ -1,0 +1,468 @@
+<style>
+.style-memphis {
+  --mem-ink: #14110F;
+  --mem-paper: #F6F1E4;
+  --mem-pink: #FF3B7F;
+  --mem-cyan: #16D2C6;
+  --mem-yellow: #FFD635;
+  --mem-blue: #2B33E0;
+  --mem-lilac: #C9B6FF;
+  --mem-mint: #B9F2E4;
+  --mem-line: 3px;
+
+  color-scheme: light;
+  width: 100%;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255,59,127,.16) 0 22%, transparent 23%),
+    radial-gradient(circle at 88% 92%, rgba(43,51,224,.14) 0 24%, transparent 25%),
+    var(--mem-paper);
+  color: var(--mem-ink);
+  font-family: "Poppins", "Trebuchet MS", system-ui, sans-serif;
+  line-height: 1.45;
+  padding: 22px;
+  overflow: hidden;
+}
+
+.style-memphis,
+.style-memphis *,
+.style-memphis *::before,
+.style-memphis *::after {
+  box-sizing: border-box;
+}
+
+.style-memphis .demo {
+  position: relative;
+  min-height: 460px;
+  padding: 26px 24px 28px;
+  background: #FFFFFF;
+  border: var(--mem-line) solid var(--mem-ink);
+  box-shadow: 12px 12px 0 var(--mem-cyan), 12px 12px 0 3px var(--mem-ink);
+  overflow: hidden;
+}
+
+/* --- Terrazzo-Sprenkel: Sottsass' "Bacterio"-Prinzip als CSS-Punktfeld --- */
+.style-memphis .terrazzo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  background-image:
+    radial-gradient(ellipse 7px 4px at 18% 22%, var(--mem-pink) 99%, transparent 100%),
+    radial-gradient(ellipse 4px 7px at 62% 12%, var(--mem-blue) 99%, transparent 100%),
+    radial-gradient(ellipse 9px 3px at 84% 40%, var(--mem-yellow) 99%, transparent 100%),
+    radial-gradient(ellipse 3px 6px at 34% 68%, var(--mem-cyan) 99%, transparent 100%),
+    radial-gradient(ellipse 6px 5px at 8% 86%, var(--mem-ink) 99%, transparent 100%),
+    radial-gradient(ellipse 5px 8px at 74% 78%, var(--mem-lilac) 99%, transparent 100%),
+    radial-gradient(ellipse 4px 4px at 48% 44%, var(--mem-pink) 99%, transparent 100%);
+  background-size: 190px 170px;
+  background-position: 0 0;
+}
+
+/* --- Formen, die nichts bedeuten --- */
+.style-memphis .shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.style-memphis .shape-circle {
+  top: -34px;
+  right: 78px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--mem-yellow);
+  border: var(--mem-line) solid var(--mem-ink);
+}
+
+.style-memphis .shape-tri {
+  bottom: 96px;
+  right: -18px;
+  width: 0;
+  height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 58px solid var(--mem-blue);
+  transform: rotate(18deg);
+}
+
+.style-memphis .shape-grid {
+  left: -12px;
+  bottom: -14px;
+  width: 108px;
+  height: 84px;
+  transform: rotate(-8deg);
+  background-image:
+    linear-gradient(var(--mem-ink) 2px, transparent 2px),
+    linear-gradient(90deg, var(--mem-ink) 2px, transparent 2px);
+  background-size: 18px 18px;
+  opacity: .35;
+}
+
+.style-memphis .squiggle {
+  position: absolute;
+  bottom: 8px;
+  left: 45%;
+  width: 210px;
+  height: 62px;
+  transform: rotate(4deg);
+  pointer-events: none;
+  animation: memphis-wobble 5s ease-in-out infinite;
+}
+
+.style-memphis .squiggle path {
+  fill: none;
+  stroke: var(--mem-pink);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+@keyframes memphis-wobble {
+  0%, 100% { transform: rotate(4deg) translateY(0); }
+  50%      { transform: rotate(7deg) translateY(-6px); }
+}
+
+/* --- Zickzack-Zierbalken --- */
+.style-memphis .zigzag {
+  position: relative;
+  height: 16px;
+  margin: 0 0 20px;
+  background:
+    linear-gradient(135deg, var(--mem-cyan) 25%, transparent 25%) 0 0/16px 16px,
+    linear-gradient(225deg, var(--mem-cyan) 25%, transparent 25%) 0 0/16px 16px,
+    linear-gradient(315deg, var(--mem-cyan) 25%, transparent 25%) 8px 0/16px 16px,
+    linear-gradient(45deg,  var(--mem-cyan) 25%, transparent 25%) 8px 0/16px 16px;
+  border-bottom: var(--mem-line) solid var(--mem-ink);
+}
+
+/* --- Header --- */
+.style-memphis .head {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 22px;
+}
+
+.style-memphis .head-main {
+  min-width: 0;
+  transform: rotate(-2deg);
+}
+
+.style-memphis .title {
+  margin: 0;
+  font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
+  font-size: clamp(38px, 8vw, 58px);
+  line-height: .88;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: var(--mem-ink);
+  text-shadow: 4px 4px 0 var(--mem-pink);
+}
+
+.style-memphis .kicker {
+  display: block;
+  font-family: "Poppins", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--mem-blue);
+  margin-top: 10px;
+}
+
+.style-memphis .count {
+  flex: 0 0 auto;
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mem-yellow);
+  border: var(--mem-line) solid var(--mem-ink);
+  box-shadow: 5px 5px 0 var(--mem-ink);
+  transform: rotate(7deg);
+  font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--mem-ink);
+}
+
+/* --- Liste --- */
+.style-memphis .list {
+  position: relative;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.style-memphis .row {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 14px;
+  background: #FFFFFF;
+  border: var(--mem-line) solid var(--mem-ink);
+}
+
+.style-memphis .row:nth-child(1) {
+  transform: rotate(-.9deg);
+  box-shadow: 6px 6px 0 var(--mem-mint);
+}
+
+.style-memphis .row:nth-child(2) {
+  transform: rotate(.7deg);
+  box-shadow: 6px 6px 0 var(--mem-lilac);
+}
+
+.style-memphis .row:nth-child(3) {
+  transform: rotate(-.4deg);
+  box-shadow: 6px 6px 0 var(--mem-yellow);
+}
+
+.style-memphis .glyph {
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--mem-ink);
+}
+
+.style-memphis .row:nth-child(1) .glyph {
+  background: var(--mem-pink);
+  border-radius: 50%;
+}
+
+.style-memphis .row:nth-child(2) .glyph {
+  background: var(--mem-cyan);
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.style-memphis .row:nth-child(3) .glyph {
+  background: var(--mem-blue);
+  border-radius: 50% 4px 50% 4px;
+}
+
+.style-memphis .name {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -.01em;
+}
+
+.style-memphis .time {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #5B5560;
+  margin-top: 2px;
+}
+
+.style-memphis .status {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border: 2px solid var(--mem-ink);
+  white-space: nowrap;
+}
+
+.style-memphis .status-on {
+  background: var(--mem-cyan);
+  color: var(--mem-ink);
+  border-radius: 999px;
+}
+
+.style-memphis .status-off {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--mem-lilac) 0 5px,
+    #FFFFFF 5px 10px
+  );
+  color: var(--mem-ink);
+  border-radius: 0;
+}
+
+/* --- Feld --- */
+.style-memphis .field {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  margin: 0 0 20px;
+  transform: rotate(.5deg);
+}
+
+.style-memphis .field-tag {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  background: var(--mem-pink);
+  border: var(--mem-line) solid var(--mem-ink);
+  border-right: 0;
+  font-size: 19px;
+  color: #FFFFFF;
+}
+
+.style-memphis .search {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--mem-ink);
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: var(--mem-line) solid var(--mem-ink);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--mem-blue);
+  outline: none;
+}
+
+.style-memphis .search::placeholder {
+  color: #6E6875;
+  font-weight: 500;
+}
+
+.style-memphis .search:focus-visible {
+  box-shadow: 6px 6px 0 var(--mem-pink);
+}
+
+/* --- Aktionen --- */
+.style-memphis .actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.style-memphis .btn {
+  font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
+  font-size: 14px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 15px 24px;
+  border: var(--mem-line) solid var(--mem-ink);
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 120ms cubic-bezier(.34,1.56,.64,1), box-shadow 120ms ease;
+}
+
+.style-memphis .btn-primary {
+  background: var(--mem-pink);
+  color: #FFFFFF;
+  box-shadow: 7px 7px 0 var(--mem-ink);
+  transform: rotate(-1.5deg);
+}
+
+.style-memphis .btn-primary:hover {
+  transform: rotate(-1.5deg) translate(3px, 3px);
+  box-shadow: 4px 4px 0 var(--mem-ink);
+}
+
+.style-memphis .btn-secondary {
+  background: #FFFFFF;
+  color: var(--mem-ink);
+  border-style: dashed;
+  box-shadow: 5px 5px 0 var(--mem-cyan);
+  transform: rotate(1deg);
+}
+
+.style-memphis .btn-secondary:hover {
+  transform: rotate(1deg) translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--mem-cyan);
+}
+
+.style-memphis .btn:focus-visible {
+  outline: 3px solid var(--mem-blue);
+  outline-offset: 3px;
+}
+
+.style-memphis .stripes {
+  margin-left: auto;
+  width: 76px;
+  height: 34px;
+  border: 2px solid var(--mem-ink);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mem-yellow) 0 8px,
+    #FFFFFF 8px 16px
+  );
+  transform: rotate(-3deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-memphis .squiggle { animation: none; }
+  .style-memphis .btn { transition: none; }
+}
+
+@media (max-width: 520px) {
+  .style-memphis .demo { padding: 20px 16px 22px; }
+  .style-memphis .count { width: 58px; height: 58px; font-size: 23px; }
+  .style-memphis .squiggle { display: none; }
+  .style-memphis .stripes { display: none; }
+}
+</style>
+<div class="style-memphis">
+  <div class="demo">
+    <div class="terrazzo"></div>
+    <div class="shape shape-circle"></div>
+    <div class="shape shape-tri"></div>
+    <div class="shape shape-grid"></div>
+    <svg class="squiggle" viewBox="0 0 190 58" aria-hidden="true">
+      <path d="M6 40 C 26 4, 44 4, 60 30 S 96 56, 116 26 S 156 6, 184 34" />
+    </svg>
+
+    <div class="zigzag"></div>
+
+    <div class="head">
+      <div class="head-main">
+        <h2 class="title">Projekte</h2>
+        <span class="kicker">Katalog / Memphis</span>
+      </div>
+      <div class="count">12</div>
+    </div>
+
+    <ul class="list">
+      <li class="row">
+        <span class="glyph"></span>
+        <span>
+          <span class="name">Nexus</span>
+          <span class="time">vor 2 Std.</span>
+        </span>
+        <span class="status status-on">Aktiv</span>
+      </li>
+      <li class="row">
+        <span class="glyph"></span>
+        <span>
+          <span class="name">Autowrite Studio</span>
+          <span class="time">gestern</span>
+        </span>
+        <span class="status status-on">Aktiv</span>
+      </li>
+      <li class="row">
+        <span class="glyph"></span>
+        <span>
+          <span class="name">Balance Ally</span>
+          <span class="time">vor 4 Tagen</span>
+        </span>
+        <span class="status status-off">Pausiert</span>
+      </li>
+    </ul>
+
+    <div class="field">
+      <span class="field-tag" aria-hidden="true">◎</span>
+      <input class="search" type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="button">Neues Projekt</button>
+      <button class="btn btn-secondary" type="button">Importieren</button>
+      <span class="stripes" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,276 @@
+<style>
+.style-web-brutalism {
+  color-scheme: light;
+  width: 100%;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: normal;
+  padding: 0;
+}
+
+.style-web-brutalism,
+.style-web-brutalism *,
+.style-web-brutalism *::before,
+.style-web-brutalism *::after {
+  box-sizing: border-box;
+}
+
+/* Der Satzspiegel ist die Fensterbreite. Kein Container, keine max-width,
+   nur der 8px-Rand, den ein Browser ohne Stylesheet setzt. */
+.style-web-brutalism .demo {
+  min-height: 460px;
+  padding: 8px;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* --- Links: die Werkseinstellung, unangetastet --- */
+.style-web-brutalism a {
+  color: #0000EE;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.style-web-brutalism a.besucht {
+  color: #551A8B;
+}
+
+.style-web-brutalism a:hover {
+  color: #0000EE;
+}
+
+.style-web-brutalism a:active {
+  color: #EE0000;
+}
+
+.style-web-brutalism a:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 1px;
+}
+
+/* --- Navigation: Textlinks mit Pipe-Trennern, wie 1996 --- */
+.style-web-brutalism .nav {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.style-web-brutalism hr {
+  height: 0;
+  margin: 8px 0;
+  border: 0;
+  border-top: 1px solid #A9A9A9;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+/* --- Kopf: Tabellenlayout, weil es damals nichts anderes gab --- */
+.style-web-brutalism .kopf {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  margin: 0 0 4px;
+}
+
+.style-web-brutalism .kopf td {
+  padding: 0;
+  vertical-align: bottom;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.style-web-brutalism h2 {
+  margin: 0.83em 0 0.4em;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: normal;
+  color: #000000;
+}
+
+.style-web-brutalism .zaehler {
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-bottom: 0.4em;
+  font-variant-numeric: normal;
+}
+
+/* --- Liste: eine echte Tabelle mit border=1, inset/outset wie im UA-Default --- */
+.style-web-brutalism .liste {
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: 2px outset #808080;
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.style-web-brutalism .liste td {
+  border: 1px inset #808080;
+  padding: 1px 4px;
+  vertical-align: top;
+  color: #000000;
+}
+
+.style-web-brutalism .liste td.zeit {
+  white-space: nowrap;
+}
+
+.style-web-brutalism .liste td.status {
+  white-space: nowrap;
+}
+
+.style-web-brutalism b {
+  font-weight: bold;
+}
+
+/* --- Feld: exakt der Chrome-Default, hier nur explizit hingeschrieben,
+       damit ein umgebendes Reset ihn nicht wegraeumt --- */
+.style-web-brutalism .feld {
+  margin: 0 0 12px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.style-web-brutalism input[type="text"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 177px;
+  font: 400 13.3333px Arial, "Helvetica Neue", sans-serif;
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 2px inset #767676;
+  border-radius: 0;
+  padding: 1px 2px;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.style-web-brutalism input[type="text"]::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.style-web-brutalism input[type="text"]:focus-visible {
+  outline: 2px solid #005FCC;
+  outline-offset: 0;
+}
+
+/* --- Buttons: ebenfalls der Default, ausgeschrieben --- */
+.style-web-brutalism .aktionen {
+  margin: 0 0 14px;
+}
+
+.style-web-brutalism button {
+  appearance: none;
+  -webkit-appearance: none;
+  font: 400 13.3333px Arial, "Helvetica Neue", sans-serif;
+  color: #000000;
+  background-color: #EFEFEF;
+  border: 2px outset #767676;
+  border-radius: 0;
+  padding: 1px 6px;
+  margin: 0 4px 0 0;
+  cursor: default;
+}
+
+.style-web-brutalism button:active {
+  border-style: inset;
+  background-color: #E5E5E5;
+}
+
+.style-web-brutalism button:focus-visible {
+  outline: 2px solid #005FCC;
+  outline-offset: 0;
+}
+
+/* --- Fusszeile --- */
+.style-web-brutalism .fuss {
+  font-size: 13px;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.style-web-brutalism .maschine {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #000000;
+}
+
+.style-web-brutalism p {
+  margin: 1em 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.style-web-brutalism small {
+  font-size: 13px;
+}
+
+.style-web-brutalism address {
+  font-style: italic;
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+</style>
+<div class="style-web-brutalism">
+  <div class="demo">
+
+    <div class="nav">
+      <a href="#">Home</a> |
+      <a href="#">Projects</a> |
+      <a href="#">Archive</a> |
+      <a class="besucht" href="#">Help</a>
+    </div>
+    <hr>
+
+    <table class="kopf">
+      <tbody>
+        <tr>
+          <td><h2>Projects</h2></td>
+          <td class="zaehler">12</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="liste">
+      <tbody>
+        <tr>
+          <td><a href="#">Nexus</a></td>
+          <td class="zeit">2 hrs ago</td>
+          <td class="status"><b>Active</b></td>
+        </tr>
+        <tr>
+          <td><a href="#">Autowrite Studio</a></td>
+          <td class="zeit">yesterday</td>
+          <td class="status"><b>Active</b></td>
+        </tr>
+        <tr>
+          <td><a class="besucht" href="#">Balance Ally</a></td>
+          <td class="zeit">4 days ago</td>
+          <td class="status"><b>Paused</b></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="feld">
+      <input type="text" readonly placeholder="Search..." aria-label="Search">
+    </div>
+
+    <div class="aktionen">
+      <button type="button">New project</button>
+      <button type="button">Import</button>
+    </div>
+
+    <hr>
+
+    <p class="fuss">
+      <small>
+        This page uses no font file, no framework, and no image.
+        All information provided as is.
+      </small>
+    </p>
+    <p class="maschine">last modified: 2026-08-30 &nbsp; 4 KB &nbsp; text/html; charset=utf-8</p>
+    <address>Catalog of visual styles &mdash; entry 06</address>
+
+  </div>
+</div>

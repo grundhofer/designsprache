@@ -1,0 +1,109 @@
+{
+  "slug": "pixel-8bit",
+  "name": "Pixel / 8-Bit",
+  "aka": [
+    "Bitmap-UI",
+    "Retro-Gaming-Look",
+    "Low-Res / Lo-Fi Pixel Art",
+    "Chiptune-Ästhetik"
+  ],
+  "family": "Weitere Pole",
+  "era": "1983-1995 (Ursprung) - Revival ab ca. 2008, aktuell",
+  "origin": "Der Stil ist die direkte Erbschaft der Hardware-Grenzen der 8-Bit-Ära: NES (1983) konnte pro Kachel vier Farben aus einer 54-Farben-Palette zeigen, Zeichensätze lagen als Bitmaps im ROM, Antialiasing existierte schlicht nicht. Parallel prägte die Windows-3.1/95-Oberfläche (1992/1995) den zweiten Zweig: 2px-Bevel aus Weiß oben-links und Schwarz unten-rechts, dithered Titelleisten, Statusleisten mit eingesenkten Segmenten. Als Stil -- nicht als Notlösung -- kehrte er ab etwa 2008 mit dem Indie-Game-Boom, itch.io (2013) und Chiptune zurück; Jason Kottkes Bitmap-Schrift Silkscreen (1999) wurde dabei zur Brücke zwischen Web und Pixelkultur. Er löst heute kein technisches Problem mehr, sondern ein kulturelles: sofortige Zugehörigkeit zur Indie- und Gamer-Szene.",
+  "idea": "Alles rastet auf ein sichtbares Pixelgitter: harte Kanten, ganzzahlige Größen, begrenzte Palette. Weichheit jeder Art -- Verlauf, Blur, Antialiasing, Zwischenwerte -- ist Stilbruch.",
+  "markers": [
+    "Radius 0px; jede Kante 1-2px hart, kein einziger Blur-Radius im gesamten Layout",
+    "Bevel statt Schatten: box-shadow inset 2px 2px 0 hell / inset -2px -2px 0 dunkel, Blur immer 0",
+    "Schlagschatten als versetzter Vollton-Block: 4-6px Offset, 0 Blur, 0 Spread",
+    "Palette auf 8-10 Farbwerte begrenzt, keine Zwischentöne, keine Alpha-Verläufe",
+    "Bitmap-Schriften in ganzzahligen Größen: Press Start 2P bei 10-12px, Silkscreen bei 8-16px, VT323 bei 19-21px",
+    "image-rendering: pixelated und shape-rendering=crispEdges auf allen Grafiken",
+    "Dither statt Farbverlauf: 2px-Schachbrett als Hintergrund, 45-Grad-Streifen im 2px-Raster als Füllfläche",
+    "Animationen ausschließlich in steps(): Blink 1s steps(1), kein ease, kein Fade",
+    "Fensterrahmen mit Titelleiste, Minimieren/Maximieren/Schließen und Statusleiste unten"
+  ],
+  "params": {
+    "radius": "0px, ausnahmslos",
+    "contrast": "hoch",
+    "density": "dicht",
+    "depth": "harte Bevel-Kanten (2px hell/dunkel) plus versetzter Vollton-Schlagschatten -- Tiefe als Zeichnung, nicht als Licht",
+    "color": "künstlich begrenzte Palette von 8-10 Werten: dunkler Grund, ein Chrome-Ton, ein Signalrot, ein Signalgrün, ein Amber -- Farbe codiert Zustand, nie Stimmung",
+    "type": "Bitmap-Schriften in drei Rollen: Press Start 2P für Chrome und Buttons (breit, laut), Silkscreen für Namen und Labels, VT323 für Fließ- und Metatext",
+    "motion": "nur steps()-Animationen: blinkender Block-Cursor, blinkende Status-LED, Buttons springen beim Klick um exakt 2px -- niemals Easing",
+    "texture": "2px-Dither-Raster und feine 1px/3px-Zeilenstruktur bei ca. 3 % Deckkraft"
+  },
+  "palette": [
+    "#0B0A12",
+    "#2A2C46",
+    "#EDEBF2",
+    "#FF4D6D",
+    "#3BE081",
+    "#FFC53D"
+  ],
+  "examples": [
+    {
+      "name": "itch.io",
+      "what": "Schwarzer Grund, Pixel-Logo, harte 2px-Rahmen um Spielkacheln, Signalrot als einzige Akzentfarbe, keine Rundungen"
+    },
+    {
+      "name": "Dwarf Fortress (Steam-Version 2022, Kitfox Games)",
+      "what": "Handgezeichnetes 16x16-Tileset statt ASCII; ein Interface, das komplette Simulationsdaten in Bitmap-Kacheln und Rahmenzeichnung ausgibt"
+    },
+    {
+      "name": "Windows 95 / Chicago-UI (Microsoft, 1995)",
+      "what": "Die Quelle des 2px-Bevels: #C0C0C0-Panel, Titelleiste #000080, eingesenkte Eingabefelder, segmentierte Statusleiste"
+    },
+    {
+      "name": "Silkscreen (Jason Kottke, 1999, heute auf Google Fonts)",
+      "what": "Bitmap-Schrift für Web-Grafiken; quadratische Pixel mit großen Zwischenräumen, entworfen für exakt 8px-Rendering"
+    },
+    {
+      "name": "Press Start 2P (CodeMan38)",
+      "what": "Nachbau der Namco-Arcade-Schriften der 80er; funktioniert nur in Vielfachen von 8px sauber"
+    },
+    {
+      "name": "Stardew Valley / Celeste (Indie-Games)",
+      "what": "Zeigen den heutigen Standard: Pixel-Art-Sprites plus lesbare UI-Schicht, Palette pro Szene auf wenige Werte begrenzt"
+    }
+  ],
+  "strengths": [
+    "Auf 200ms unverwechselbar -- kein anderer Stil im Katalog ist so schnell identifiziert",
+    "Extrem billig in Assets: Sprites sind 8x8-SVG-Rechtecke, kein Icon-Set, keine Illustration nötig",
+    "Zwingt zu echter Farbdisziplin; die begrenzte Palette macht Token-Systeme trivial",
+    "Trägt Persönlichkeit ohne Copy: der Rahmen allein erzählt schon die Haltung",
+    "Performance-freundlich: keine Blurs, keine Schattenschichten, keine großen Bitmaps"
+  ],
+  "risks": [
+    "Kippt sofort ins Billige, sobald ein einziges Element weich ist -- ein abgerundeter Button oder ein Systemfont zerstört den ganzen Rahmen",
+    "Press Start 2P ist extrem breit: deutsche Wörter wie 'Benachrichtigungseinstellungen' sprengen jede Zeile",
+    "Bitmap-Schriften unter 10px sind auf HiDPI-Displays mit nicht-ganzzahligem Scaling unscharf -- genau das Gegenteil des Ziels",
+    "Signalisiert 'Spiel' oder 'Spielerei'; für Finanz-, Gesundheits- oder B2B-Kontexte ein Vertrauensverlust",
+    "Als Sprache für eine ganze Produktfamilie erdrückend: der Stil hat keine leise Stufe"
+  ],
+  "a11y": "Der Stil erlaubt hohe Kontraste (hier Text auf Grund weit über 10:1), sabotiert sich aber über die Schriftgrößen: Bitmap-Fonts sind an ganzzahlige Pixelgrößen gebunden, verkraften also weder Browser-Zoom noch Nutzer-Schriftvergrößerung sauber und werden bei 10px unter den WCAG-Empfehlungen für Fließtext betrieben. Bitmap-Schriften mit sehr kleinen Zwischenräumen sind zudem für Menschen mit Legasthenie deutlich schwerer -- längere Texte gehören in VT323 bei 19-21px oder ganz in eine normale Schrift. Die blinkenden LED- und Cursor-Elemente müssen unter prefers-reduced-motion abgeschaltet werden, und Status darf nie nur über Grün/Amber codiert sein, deshalb steht hier zusätzlich das Wort.",
+  "longevity": "Doppeltes Verhalten: als Zitat einer abgeschlossenen Hardware-Ära altert er nicht weiter, weil er schon historisch ist -- er kann nicht 'aus der Mode' kommen wie ein Trend von 2021. Er bindet die Marke aber dauerhaft an die Indie-Game-Kultur, und aus dieser Zuordnung kommt man nicht mehr heraus.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Problemlos: image-rendering: pixelated, box-shadow ohne Blur und steps()-Animationen decken alles ab; nur die Webfont-Größe muss ganzzahlig bleiben.",
+    "mobile": "Schwierig -- Compose und SwiftUI skalieren mit dp/pt und Nutzer-Schriftgröße, wodurch Bitmap-Schriften zwischen Pixeln landen; außerdem kollidiert der Fensterrahmen mit den Plattform-Navigationsmustern.",
+    "desktop": "Der natürlichste Ort außerhalb von Spielen: ein Tauri-Fenster mit eigener Titelleiste und Statusleiste kann den Win95-Zweig des Stils vollständig ausspielen."
+  },
+  "verdict": "Als Basis für die gesamte Eigenmarke ein klares Nein: Der Stil hat nur eine Lautstärke, verlangt bei jeder neuen App volle Konsequenz und stempelt jedes Produkt -- auch ein Finanz- oder Gesundheitstool wie 'Balance Ally' -- als Spielzeug ab. Für einen Solo-Entwickler mit vielen kleinen Apps ist er außerdem der falsche Kompromiss: er ist billig in den Assets, aber teuer in der Disziplin, weil ein einziges unpixeliges Detail den Eindruck zerstört. Sinnvoll ist er als abgegrenzter Nebenschauplatz -- ein 404, ein Easter Egg, ein Changelog-Header, ein Icon-Set aus 8x8-Sprites, ein Ladebildschirm. Wer die Indie-Zugehörigkeit wirklich als Markenkern will, sollte sie auf genau ein Produkt beschränken und nicht auf das Portfolio.",
+  "combinesWith": [
+    "terminal-mono",
+    "neo-brutalism",
+    "y2k-aero",
+    "web-brutalism"
+  ],
+  "tip": "Alles auf ein einziges Pixelmaß festnageln. Wähle eine Einheit (hier 2px) und leite Rahmen, Bevel, Schlagschatten, Abstände und Sprite-Skalierung ausschließlich als ganzzahlige Vielfache davon ab -- keine 3px, keine 0.5, keine Prozentwerte. Der Unterschied zwischen 'authentisch' und 'Retro-Filter drübergelegt' liegt fast vollständig darin, ob dieses Raster überall hält, besonders in den Zwischenräumen und beim Klick-Versatz der Buttons.",
+  "googleFonts": [
+    "Press Start 2P",
+    "Silkscreen",
+    "VT323"
+  ]
+}

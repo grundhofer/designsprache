@@ -1,0 +1,343 @@
+<style>
+.style-aurora-mesh {
+  color-scheme: dark;
+  --am-void: #07080C;
+  --am-ink: #F7F8FA;
+  --am-dim: rgba(247,248,250,.62);
+  --am-faint: rgba(247,248,250,.40);
+  --am-line: rgba(247,248,250,.10);
+  --am-glass: rgba(255,255,255,.045);
+  --am-violet: #7C5CFF;
+  --am-cyan: #35D6E8;
+  --am-magenta: #E849A8;
+  --am-mint: #2DD4A7;
+  background: var(--am-void);
+  color: var(--am-ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.style-aurora-mesh,
+.style-aurora-mesh * { box-sizing: border-box; }
+
+.style-aurora-mesh .demo {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 44px 40px 40px;
+  background: var(--am-void);
+  isolation: isolate;
+}
+
+/* --- Aurora-Ebene: gestapelte radiale Verlaufsflecken ----------------- */
+.style-aurora-mesh .aurora {
+  position: absolute;
+  inset: -22%;
+  z-index: 0;
+  filter: blur(66px) saturate(135%);
+  pointer-events: none;
+  opacity: 1;
+}
+.style-aurora-mesh .aurora-a {
+  background:
+    radial-gradient(38% 46% at 18% 14%, rgba(124,92,255,.92) 0%, rgba(124,92,255,0) 68%),
+    radial-gradient(34% 40% at 82% 20%, rgba(53,214,232,.72) 0%, rgba(53,214,232,0) 70%);
+  animation: aurora-mesh-drift-a 34s ease-in-out infinite;
+}
+.style-aurora-mesh .aurora-b {
+  background:
+    radial-gradient(44% 44% at 72% 86%, rgba(232,73,168,.88) 0%, rgba(232,73,168,0) 70%),
+    radial-gradient(38% 42% at 8% 88%, rgba(45,212,167,.72) 0%, rgba(45,212,167,0) 72%),
+    radial-gradient(30% 34% at 50% 52%, rgba(255,138,76,.38) 0%, rgba(255,138,76,0) 74%);
+  animation: aurora-mesh-drift-b 46s ease-in-out infinite;
+}
+@keyframes aurora-mesh-drift-a {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50%      { transform: translate3d(5%,-4%,0) scale(1.12); }
+}
+@keyframes aurora-mesh-drift-b {
+  0%, 100% { transform: translate3d(0,0,0) scale(1.06); }
+  50%      { transform: translate3d(-6%,3%,0) scale(1); }
+}
+
+/* Abdunkelung unter dem Inhalt: haelt die Typo lesbar */
+.style-aurora-mesh .veil {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7,8,12,.22) 0%, rgba(7,8,12,.58) 42%, rgba(7,8,12,.78) 100%);
+}
+/* Feines Korn gegen Verlaufsbanding */
+.style-aurora-mesh .grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Haarlinie oben: der Glas-Marker */
+.style-aurora-mesh .edge {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(247,248,250,0) 0%, rgba(247,248,250,.42) 48%, rgba(247,248,250,0) 100%);
+}
+
+.style-aurora-mesh .content { position: relative; z-index: 2; }
+
+/* --- Kopf ------------------------------------------------------------- */
+.style-aurora-mesh .head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 26px;
+}
+.style-aurora-mesh .title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  background: linear-gradient(96deg, #FFFFFF 8%, rgba(255,255,255,.72) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.style-aurora-mesh .count {
+  flex: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--am-dim);
+  padding: 5px 12px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--am-line);
+  background: var(--am-glass);
+  backdrop-filter: blur(12px);
+}
+
+/* --- Liste: Trennung nur ueber 1px-Linien ---------------------------- */
+.style-aurora-mesh .list {
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+  border-top: 1px solid var(--am-line);
+}
+.style-aurora-mesh .row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 12px 16px 4px;
+  border-radius: 10px;
+  transition: background 220ms cubic-bezier(.2,0,0,1);
+}
+/* Trenner als Pseudoelement: bleibt eine gerade 1px-Linie,
+   waehrend der Radius nur die Hover-Flaeche rundet */
+.style-aurora-mesh .row::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--am-line);
+  pointer-events: none;
+}
+.style-aurora-mesh .row:hover { background: rgba(255,255,255,.035); }
+.style-aurora-mesh .dot {
+  flex: none;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--am-cyan);
+  box-shadow: 0 0 0 3px rgba(53,214,232,.13), 0 0 14px rgba(53,214,232,.65);
+}
+.style-aurora-mesh .row-3 .dot {
+  background: rgba(247,248,250,.34);
+  box-shadow: 0 0 0 3px rgba(247,248,250,.06);
+}
+.style-aurora-mesh .name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: -0.012em;
+  color: var(--am-ink);
+}
+.style-aurora-mesh .when {
+  flex: none;
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  color: var(--am-faint);
+  font-variant-numeric: tabular-nums;
+}
+.style-aurora-mesh .status {
+  flex: none;
+  min-width: 74px;
+  text-align: right;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--am-dim);
+}
+.style-aurora-mesh .row-3 .status { color: var(--am-faint); }
+
+/* --- Suchfeld: Glas ---------------------------------------------------- */
+.style-aurora-mesh .seek {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px;
+  margin-bottom: 22px;
+  border-radius: 11px;
+  border: 1px solid var(--am-line);
+  background: var(--am-glass);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+}
+.style-aurora-mesh .seek svg { width: 15px; height: 15px; flex: none; color: var(--am-faint); }
+.style-aurora-mesh .seek input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: -0.008em;
+  color: var(--am-ink);
+}
+.style-aurora-mesh .seek input::placeholder { color: var(--am-faint); opacity: 1; }
+
+/* --- Aktionen --------------------------------------------------------- */
+.style-aurora-mesh .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.style-aurora-mesh .btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 180ms cubic-bezier(.2,0,0,1), background 180ms cubic-bezier(.2,0,0,1), box-shadow 180ms cubic-bezier(.2,0,0,1);
+}
+.style-aurora-mesh .btn-primary {
+  border: 0;
+  color: #08090D;
+  background: #FFFFFF;
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 8px 30px -12px rgba(124,92,255,.9);
+}
+.style-aurora-mesh .btn-primary:hover { transform: translateY(-1px); background: #FFFFFF; box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 14px 36px -12px rgba(124,92,255,1); }
+.style-aurora-mesh .btn-ghost {
+  color: var(--am-ink);
+  border: 1px solid var(--am-line);
+  background: var(--am-glass);
+  backdrop-filter: blur(12px);
+}
+.style-aurora-mesh .btn-ghost:hover { background: rgba(255,255,255,.09); }
+.style-aurora-mesh .btn:focus-visible {
+  outline: 2px solid var(--am-cyan);
+  outline-offset: 2px;
+}
+
+/* --- Zierlinie: feines Mesh-Gitter ------------------------------------ */
+.style-aurora-mesh .mesh {
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  z-index: 1;
+  width: 260px;
+  height: 150px;
+  color: rgba(247,248,250,.13);
+  pointer-events: none;
+}
+.style-aurora-mesh .mesh svg { display: block; width: 100%; height: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-aurora-mesh .aurora-a,
+  .style-aurora-mesh .aurora-b { animation: none; }
+}
+@media (max-width: 520px) {
+  .style-aurora-mesh .demo { padding: 30px 20px 32px; }
+  .style-aurora-mesh .title { font-size: 28px; }
+  .style-aurora-mesh .row { flex-wrap: wrap; gap: 6px 12px; }
+  .style-aurora-mesh .status { min-width: 0; }
+  .style-aurora-mesh .mesh { display: none; }
+}
+</style>
+<div class="style-aurora-mesh">
+  <div class="demo">
+    <div class="aurora aurora-a" aria-hidden="true"></div>
+    <div class="aurora aurora-b" aria-hidden="true"></div>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="edge" aria-hidden="true"></div>
+
+    <div class="mesh" aria-hidden="true">
+      <svg viewBox="0 0 260 150" fill="none">
+        <path d="M0 20C60 20 60 130 130 130s70-110 130-110" stroke="currentColor" stroke-width="1"/>
+        <path d="M0 44C60 44 60 150 130 150s70-106 130-106" stroke="currentColor" stroke-width="1"/>
+        <path d="M0 68C60 68 60 150 130 150" stroke="currentColor" stroke-width="1"/>
+        <path d="M20 0v150M70 0v150M130 0v150M190 0v150M240 0v150" stroke="currentColor" stroke-width="1" opacity=".55"/>
+      </svg>
+    </div>
+
+    <div class="content">
+      <div class="head">
+        <h2 class="title">Projects</h2>
+        <span class="count">12</span>
+      </div>
+
+      <ul class="list">
+        <li class="row row-1">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="name">Nexus</span>
+          <span class="when">2 hrs ago</span>
+          <span class="status">Active</span>
+        </li>
+        <li class="row row-2">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="name">Autowrite Studio</span>
+          <span class="when">yesterday</span>
+          <span class="status">Active</span>
+        </li>
+        <li class="row row-3">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="name">Balance Ally</span>
+          <span class="when">4 days ago</span>
+          <span class="status">Paused</span>
+        </li>
+      </ul>
+
+      <div class="seek">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.8 10.8 14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" readonly placeholder="Search..." aria-label="Search">
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" type="button">New project</button>
+        <button class="btn btn-ghost" type="button">Import</button>
+      </div>
+    </div>
+  </div>
+</div>

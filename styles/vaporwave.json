@@ -1,0 +1,107 @@
+{
+  "slug": "vaporwave",
+  "name": "Vaporwave / Synthwave / Outrun",
+  "aka": [
+    "Synthwave",
+    "Outrun",
+    "Retrowave",
+    "Aesthetic",
+    "Neon Noir",
+    "New Retro Wave"
+  ],
+  "family": "Nostalgie & Subkultur",
+  "era": "2010-heute (Kernphase 2011-2018), Vorbilder 1982-1989",
+  "origin": "Ein Internet-Genre, das sich seine Optik aus Fundstücken zusammengesetzt hat. Musikalisch begann es 2010 mit Daniel Lopatins 'Chuck Person's Eccojams Vol. 1' und wurde mit Vektroids 'Floral Shoppe' als Macintosh Plus (9. Dezember 2011, Beer on the Rug) ikonografisch fixiert: eine griechisch-römische Büste auf pastellfarbenem Computergrafik-Hintergrund, alle Titel in japanischen Schriftzeichen. Die visuelle Sprache verschmilzt drei Quellen -- die Mall-Fotografie und Corporate-CI der späten 80er, die früh-3D-Grafik von Sega OutRun (1986) und Tron (1982) und die Verfallsartefakte des VHS-Bandes. Synthwave/Outrun ist der ältere, ernstere Zwilling: eine ab ca. 2005 aus französischem Electro (Kavinsky, College) gewachsene Retro-Verklärung der 80er-Actionfilm-Ästhetik. Vaporwave meint sie ironisch, Synthwave meint sie ernst -- die Bildmittel sind fast identisch.",
+  "idea": "Nostalgie für eine Zukunft, die nie eingetroffen ist: ein Neonhorizont mit Fluchtpunkt, auf den man ewig zufährt, plus die sichtbaren Fehler des Mediums, das ihn transportiert.",
+  "markers": [
+    "Perspektivgitter mit Fluchtpunkt: perspective(300px) rotateX(74deg), Linien 1,5px, Raster 50-58px",
+    "Magenta #FF71CE + Cyan #01CDFE als Gegensatzpaar, Violett #B967FF als Brücke -- immer auf Schwarzviolett unter #1B0140",
+    "Sonnen-Halbkreis mit horizontalen Schnitten, die nach unten breiter werden",
+    "Chromatic Aberration: identischer Text um +/-2px in Cyan und Magenta versetzt",
+    "Scanlines: repeating-linear-gradient 1px schwarz / 2px transparent, Deckkraft 25-30%",
+    "Chrome-Type: Silber-Verlauf mit harter Horizontkante bei 50% via background-clip: text",
+    "Radius 0-4px -- die Neonkante darf nicht rund werden, sonst wird aus Outrun ein Casino",
+    "Glow als Elevation: box-shadow ohne Offset (0 0 20px), nie ein Schlagschatten nach unten",
+    "Katakana als reine Grafik, vertikal gesetzt (writing-mode: vertical-rl), letter-spacing 0.22em"
+  ],
+  "params": {
+    "radius": "0-4px an Panels und Buttons, 50% nur an der Sonne",
+    "contrast": "hoch bei Neon auf Schwarz (Cyan #01CDFE auf #0B0121 ca. 11:1), niedrig bei allem, was durch Aberration oder Scanlines läuft",
+    "density": "mittel",
+    "depth": "keine Schatten, sondern Leuchten: offsetlose box-shadows und inset-Glows; Tiefe entsteht zusätzlich perspektivisch über das Bodengitter",
+    "color": "Zwei komplementäre Neons (Magenta/Cyan) auf tiefem Violettschwarz, dazwischen Violett als Übergang und ein warmer Sonnenverlauf Gelb-Orange-Magenta als einzige Wärmequelle",
+    "type": "Geometrisch-quadratische Display-Grotesk in Versalien mit weitem Tracking (Orbitron), technische Meta-Angaben in Monospace, Katakana ausschließlich dekorativ",
+    "motion": "Endlos und gleichförmig: Gitter-Scroll 3,6s linear infinite, VHS-Tracking-Band 7s linear infinite; UI-Reaktionen 160-200ms ease-out",
+    "texture": "Scanlines (1px/3px, 26% schwarz, multiply) plus RGB-Versatz; kein Filmkorn, sondern Videofehler"
+  },
+  "palette": [
+    "#0B0121",
+    "#B967FF",
+    "#FF71CE",
+    "#01CDFE",
+    "#FFB14E",
+    "#05FFA1"
+  ],
+  "examples": [
+    {
+      "name": "Macintosh Plus -- Floral Shoppe (2011)",
+      "what": "Das Cover: Helios-Büste, Magenta-Grund, schwarzweiße Skyline, japanische Titelsetzung -- die vollständige Ikonografie in einem Bild"
+    },
+    {
+      "name": "Sega OutRun (1986) / Tron (1982)",
+      "what": "Die Herkunft des Fluchtpunkt-Gitters und des Neonhorizonts: perspektivisch scrollende Bodenlinien als billigste Art, 3D-Geschwindigkeit zu erzeugen"
+    },
+    {
+      "name": "SynthWave '84 (VS Code Theme, Robb Owen, 2019)",
+      "what": "Neon-Glow auf Syntax-Token, umgesetzt über injiziertes CSS mit text-shadow -- der bekannteste Beleg, dass der Stil als Arbeitsoberfläche tatsächlich benutzt wird"
+    },
+    {
+      "name": "Far Cry 3: Blood Dragon (2013) und Hotline Miami (2012)",
+      "what": "Menüs und HUDs in Magenta/Cyan mit Scanline-Overlay und VHS-Bandfehlern als bewusstes Interface-Material"
+    },
+    {
+      "name": "Kavinsky -- OutRun (2013), Kung Fury (2015)",
+      "what": "Chrome-Type mit Horizontkante, Palmen-Silhouetten und geschnittene Sonne als Bildmarke -- die Synthwave-Ausspielung derselben Sprache, ohne Ironie"
+    }
+  ],
+  "strengths": [
+    "Wiedererkennung auf 200 ms -- kein anderer Stil im Katalog ist auf einen Blick eindeutiger",
+    "Auf Schwarz erreichen die Neonfarben paradoxerweise sehr hohe Kontraste (Cyan ca. 11:1), die Basis-Lesbarkeit ist besser als der Ruf",
+    "Der Glow ersetzt das gesamte Elevationsmodell: eine box-shadow-Regel statt einer Schattenskala",
+    "Emotional stark aufgeladen -- ideal für Musik-, Gaming- oder Community-Produkte mit klarer Zielgruppe"
+  ],
+  "risks": [
+    "Ohne die drei Signaturelemente (Gitter, geschnittene Sonne, Aberration) bleibt nur 'Neon auf Schwarz' -- austauschbar und billig",
+    "Katakana als reine Dekoration ist die Stelle, an der der Stil in kulturelle Aneignung kippt; ohne Bedeutung gesetzt wirkt es schnell peinlich",
+    "Glow addiert sich: mehr als drei leuchtende Elemente pro Screen und die Hierarchie ist tot",
+    "Datiert doppelt -- auf die 80er, die zitiert werden, und auf 2015-2018, als zitiert wurde",
+    "Für Datenmasken, Formulare und Langtext strukturell ungeeignet: Scanlines und Aberration greifen genau die Textkanten an"
+  ],
+  "a11y": "Der Stil produziert seine Barrieren absichtlich. Chromatic Aberration verdoppelt jede Buchstabenkante in zwei Farben -- für Menschen mit Legasthenie oder Astigmatismus ist das messbar anstrengender, und die Überschrift dieser Demo läuft zusätzlich als Chrome-Verlauf mit einer dunklen Horizontkante bei 50%, deren lokaler Kontrast auf etwa 3:1 fällt. Die Scanline-Ebene senkt jeden Text-Kontrast pauschal um ca. 25%, weshalb hier alle Fließtexte mit deutlich mehr Reserve gesetzt sind, als nötig wäre. Umgesetzt ist der ehrliche Kompromiss: Aberration und Chrome nur auf der Überschrift, alle funktionalen Texte (Namen, Zeiten, Status, Placeholder) sauber und unverzerrt bei mindestens 4,5:1, Status zusätzlich über Rahmenfarbe links kodiert, und Gitter-Scroll sowie Tracking-Band vollständig unter prefers-reduced-motion abgeschaltet.",
+  "longevity": "Der Stil ist an zwei Nostalgiewellen gebunden, von denen die zweite (2015-2018) bereits vorbei ist -- als Produktoberfläche wirkt er heute so datiert wie die 80er, die er zitiert. Als Genre-Signatur in Musik, Gaming und Demoszene ist er dagegen stabil geworden und altert dort kaum noch, weil er nicht mehr als Trend, sondern als feste Bildsprache gelesen wird.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 4,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Der natürliche Ort -- Perspektivgitter, Masken, mix-blend-mode und Glow sind reines CSS, aber die vielen großflächigen box-shadows kosten beim Scrollen spürbar Compositing-Zeit.",
+    "mobile": "In Compose sind Glow (nur über Blur-Layer oder RenderEffect) und Scanlines teuer und unnatürlich; auf OLED sind gesättigte Neonflächen außerdem eine Akku- und Blendungsfrage.",
+    "desktop": "In Tauri gut machbar und als Fullscreen-Tool-Oberfläche (Player, Monitor, Visualizer) sogar passend, für längere Arbeitssitzungen aber ermüdend."
+  },
+  "verdict": "Als Basis für die Eigenmarke: klares Nein. Der Stil trägt eine Genre-Aussage, die stärker ist als jede Marke -- eine Buchhaltungs-App und ein Notiz-Tool in Outrun sagen beide zuerst '80er-Nostalgie' und erst danach den Namen des Entwicklers, und über viele kleine Apps hinweg wird daraus keine Wiedererkennung, sondern ein Kostüm. Dazu passt er zu keinem der drei Ziel-Stacks gleichzeitig: was im Web zwei CSS-Zeilen sind, ist in Compose ein RenderEffect-Problem. Sinnvoll ist er als abgegrenzter Sonderfall -- ein Editor-Theme, ein Splash-Screen, ein Release-Trailer -- oder reduziert auf sein einziges wirklich übertragbares Element: Glow statt Schatten als Elevationsmodell auf dunklem Grund.",
+  "combinesWith": [
+    "terminal-mono",
+    "retro-futurism",
+    "dev-noir",
+    "y2k-aero"
+  ],
+  "tip": "Nimm genau eine Fläche als Bühne und lass den Rest ruhig. Das Gitter und die geschnittene Sonne gehören in den Hintergrund, das Panel darüber bleibt fast schwarz mit einem einzigen 1,5px-Neonrahmen. Der Fehler, der jede Vaporwave-UI billig macht, ist Glow auf allem -- sobald Liste, Buttons und Rahmen gleichzeitig leuchten, ist die Tiefenstaffelung weg. Faustregel für den Produkteinsatz: höchstens drei leuchtende Objekte pro Screen, und Fließtext leuchtet nie -- diese Demo zeigt bewusst das vollständige Vokabular auf einmal und liegt damit selbst über der Regel; sie hält aber die eine Hälfte davon strikt ein, Namen und Zeiten in der Liste leuchten nirgends.",
+  "googleFonts": [
+    "Orbitron",
+    "Chakra Petch",
+    "Share Tech Mono",
+    "Noto Sans JP"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "slug": "data-dense",
+  "name": "Data-Dense / Terminal Cockpit",
+  "aka": [
+    "Bloomberg aesthetic",
+    "Trading terminal",
+    "Observability dashboard",
+    "Information-dense UI",
+    "Cockpit UI"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "1982-today",
+  "origin": "The archetype is the Bloomberg Terminal: Michael Bloomberg founded Innovative Market Systems in 1981, and the first unit shipped to Merrill Lynch in December 1982. The look was pure necessity at first - amber and green because these were phosphor CRTs, monospace because proportional rendering was too expensive, extreme density because a trader has to see every value at once and scrolling costs time. Necessity turned into a status symbol and later into a deliberately chosen language: Grafana (2014), Datadog, Sentry and TradingView carry the same principle over to observability and charting. The style solves a real problem - saccades instead of clicks: anyone who does not have to navigate in order to compare decides faster.",
+  "idea": "Screen area is the scarcest resource, so every row of pixels has to work: values sit side by side instead of one after another, and color means direction or state and nothing else.",
+  "markers": [
+    "Base type size 10-12px, labels at 9px in caps with 0.1em tracking",
+    "Row height in the data grid 22px, column header 18px, status bar 18px",
+    "font-variant-numeric: tabular-nums on every number; numeric columns right-aligned",
+    "Separation through 1px hairlines (#1B222B) between EVERY cell, not just between rows",
+    "Radius 0-1px; buttons 18px tall",
+    "Color strictly functional: green #2BD97C up, red #FF5364 down, amber #FFB020 warning, cyan #4FA8FF action - grays otherwise",
+    "No shadow, no gradient except as a grid line inside a chart",
+    "Several panes visible at once: ticker, KPI row, grid, chart, status bar - no element gets a page of its own",
+    "Sparklines inline in the table row, 56x14px, 1px stroke weight"
+  ],
+  "params": {
+    "radius": "0-1px",
+    "contrast": "high",
+    "density": "very dense",
+    "depth": "no z-depth; layers come from background tones 2-4% apart and from hairline grids",
+    "color": "Grays carry the structure, saturated color is purely semantic - red/green for direction, amber for warning, one blue as the single action color",
+    "type": "Condensed grotesque for labels, monospace with tabular figures for every number - splitting those two roles is half the style",
+    "motion": "Almost none; only state changes at 90ms linear and a 2.4s pulse on the connection indicator - anything else would be a nuisance in a live view",
+    "texture": "none; the only surface structure is zebra rows at 1.4% white and the grid lines in the bar chart"
+  },
+  "palette": [
+    "#0D1116",
+    "#1B222B",
+    "#C9D2DC",
+    "#2BD97C",
+    "#FF5364",
+    "#FFB020"
+  ],
+  "examples": [
+    {
+      "name": "Bloomberg Terminal (since 1982)",
+      "what": "Four to eight panels visible at once on a black ground, amber base type, function codes instead of navigation, quotes in tabular figures colored red/green by direction"
+    },
+    {
+      "name": "Grafana",
+      "what": "Panel grid on a time axis; legends as dense tables under the graph, threshold colors (green/yellow/red) directly on the values, all on a dark blue ground with hairline grids"
+    },
+    {
+      "name": "Datadog",
+      "what": "Hostmap and log explorer: hundreds of rows per viewport, facet rail on the left, colored status dots and latency heatmaps at the same row height as the text"
+    },
+    {
+      "name": "TradingView",
+      "what": "Chart plus watchlist plus order book side by side; price columns right-aligned in tabular figures, deltas green/red, toolbars 18-22px tall"
+    },
+    {
+      "name": "Sentry (issue stream)",
+      "what": "Error list with a sparkline per row, event count and affected users in their own narrow columns - exactly the pattern of name, time, status, trend, delta"
+    }
+  ],
+  "strengths": [
+    "Highest information yield per viewport - comparisons happen at a glance rather than along a click path",
+    "Reads as professional and competent immediately; conveys that real data sits behind the surface",
+    "The color semantics are self-explanatory and transfer identically across every platform",
+    "Tabular figures and fixed row heights keep the layout absolutely calm even as values change",
+    "Very cheap to maintain: barely any shadows, no radii, no animations that can break"
+  ],
+  "risks": [
+    "Without a real volume of data the style looks like costume - three rows in a cockpit are ridiculous",
+    "12px base type is simply too small on mobile and for older users; at its core the style is tied to the desktop",
+    "Red/green as the primary encoding fails roughly 8% of male users; without a second channel that is a hard accessibility bug",
+    "The density creates cognitive load: for occasionally used apps it is an imposition, not a feature",
+    "It turns cheap the moment hairlines are too light, row heights uneven or numbers not set in tabular figures - then it looks like an Excel export"
+  ],
+  "a11y": "Body text sits at 12.7:1 against the panel ground, but the 9px labels are critical under WCAG 1.4.3: 9px in caps is still small text and needs the full 4.5:1 - the dim tone used here, #7B8794, reaches 5.2:1 and is therefore permissible, while the faint gray #505B68 sits at 2.7:1 and is deliberately used only for row numbers, dividers and axis labels, never for information anyone has to read. Red/green must never stand alone: in this demo the words 'Active'/'Paused' and the direction of the sparkline carry the information redundantly to the color. The 18px buttons fall short of Target Size 2.5.8 (24x24px) and are only permissible if the 24px circles do not intersect - in production the 4px gap between the actions is therefore mandatory, not cosmetic.",
+  "longevity": "The style has survived since 1982 because it follows from a task rather than from a fashion - as long as people have to compare many values at once, it stays right. Only the color temperature of the ground is datable: the blue-black Grafana gray is a 2020s marker, plain black with amber is timeless.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 4,
+    "density": 5
+  },
+  "platforms": {
+    "web": "Very good for dashboards and admin surfaces, unsuitable for marketing or onboarding pages.",
+    "mobile": "Barely viable - a 12px base and 22px rows violate every touch guideline; on Compose it needs its own, markedly airier density mode.",
+    "desktop": "The style's home ground; a Tauri window with its own status bar is exactly the stage it was built for."
+  },
+  "verdict": "As a consistent brand base across all apps: no. The style demands data that many small apps simply do not have, and it breaks on Android Compose at the touch target sizes. As a second density mode of the same brand it is extremely valuable, though: the same tokens, the same color semantics, only with half the row height and a 12px base - web and Tauri run dense, mobile runs comfortable. Anyone choosing this style should therefore treat it not as a look but as the compact variant of an airier base system, otherwise they build a brand that cannot exist on the phone.",
+  "combinesWith": [
+    "terminal-mono",
+    "dev-noir",
+    "swiss"
+  ],
+  "tip": "Set font-variant-numeric: tabular-nums globally on every number and right-align every numeric column - that is the one intervention that turns a tight table into a terminal. Numbers that jump half a character on refresh destroy the calm of the grid instantly, and that calm is exactly the difference between 'professional tool' and 'undersized web form'.",
+  "googleFonts": [
+    "IBM Plex Sans Condensed",
+    "IBM Plex Mono"
+  ]
+}

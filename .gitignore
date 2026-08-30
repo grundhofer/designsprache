@@ -1,0 +1,10 @@
+# Generierte Seite - wird von GitHub Actions gebaut
+/docs/
+
+# Arbeitsmaterial, nicht Teil der Veröffentlichung
+/research/
+/stil-katalog.html
+
+.DS_Store
+__pycache__/
+*.pyc

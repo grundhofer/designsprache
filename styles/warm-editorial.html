@@ -1,0 +1,428 @@
+<style>
+.style-warm-editorial {
+  color-scheme: light;
+  --we-paper: #FAF7F2;
+  --we-sheet: #FFFDFA;
+  --we-tint: #F3EEE4;
+  --we-ink: #2B2622;
+  --we-ink-2: #5C5348;
+  --we-ink-3: #8A7E6F;
+  --we-rule: #E4DACA;
+  --we-rule-soft: #EFE7D9;
+  --we-accent: #A8432A;
+  --we-green: #4F6B4E;
+  --we-ochre: #8A6A1E;
+  width: 100%;
+  background: var(--we-paper);
+  color: var(--we-ink);
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.style-warm-editorial,
+.style-warm-editorial *,
+.style-warm-editorial *::before,
+.style-warm-editorial *::after { box-sizing: border-box; }
+
+.style-warm-editorial .demo {
+  position: relative;
+  min-height: 460px;
+  padding: 44px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 520px at 20% -20%, rgba(255, 252, 246, .95), transparent 70%),
+    radial-gradient(700px 460px at 100% 120%, rgba(232, 219, 199, .55), transparent 72%),
+    linear-gradient(180deg, #FBF8F3 0%, #F6F1E8 100%);
+}
+
+.style-warm-editorial .demo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/></filter><rect width='160' height='160' filter='url(%23p)' opacity='.28'/></svg>");
+}
+
+.style-warm-editorial .sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  padding: 40px 44px 36px;
+  border: 1px solid var(--we-rule-soft);
+  border-radius: 14px;
+  background: var(--we-sheet);
+  box-shadow:
+    0 1px 2px rgba(76, 58, 36, .05),
+    0 10px 24px -12px rgba(96, 74, 46, .16),
+    0 34px 70px -34px rgba(84, 64, 38, .30);
+}
+
+.style-warm-editorial .kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--we-ink-3);
+}
+
+.style-warm-editorial .kicker span.rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--we-rule);
+}
+
+.style-warm-editorial .kicker span.mark {
+  color: var(--we-accent);
+  letter-spacing: .1em;
+}
+
+.style-warm-editorial .masthead {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--we-ink);
+}
+
+.style-warm-editorial .masthead h2 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 58px;
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: -.015em;
+  color: var(--we-ink);
+}
+
+.style-warm-editorial .masthead .spacer { flex: 1 1 auto; }
+
+.style-warm-editorial .tally {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  padding-bottom: 9px;
+}
+
+.style-warm-editorial .tally .num {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 30px;
+  line-height: 1;
+  font-feature-settings: "onum" 1;
+  color: var(--we-accent);
+}
+
+.style-warm-editorial .tally .lab {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--we-ink-3);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.style-warm-editorial .deck {
+  max-width: 64ch;
+  margin: 22px 0 4px;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: .002em;
+  color: var(--we-ink-2);
+}
+
+.style-warm-editorial .deck em {
+  font-style: italic;
+  color: var(--we-ink);
+}
+
+.style-warm-editorial .index {
+  margin: 0;
+  padding: 4px 0 0;
+  list-style: none;
+}
+
+.style-warm-editorial .index li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 17px 0 15px;
+  border-bottom: 1px solid var(--we-rule-soft);
+  transition: background 220ms ease, padding 220ms ease;
+}
+
+.style-warm-editorial .index li:hover {
+  background: linear-gradient(90deg, rgba(243, 238, 228, .85), rgba(243, 238, 228, 0));
+}
+
+.style-warm-editorial .folio {
+  flex: none;
+  width: 22px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--we-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.style-warm-editorial .title {
+  font-size: 21px;
+  line-height: 1.25;
+  color: var(--we-ink);
+  letter-spacing: -.008em;
+}
+
+.style-warm-editorial .leader {
+  flex: 1 1 auto;
+  min-width: 18px;
+  height: 1px;
+  margin-bottom: 5px;
+  background-image: radial-gradient(circle, var(--we-rule) 1px, transparent 1.2px);
+  background-size: 5px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+}
+
+.style-warm-editorial .when {
+  flex: none;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--we-ink-2);
+  white-space: nowrap;
+}
+
+.style-warm-editorial .state {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 92px;
+  justify-content: flex-end;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--we-green);
+}
+
+.style-warm-editorial .state::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  opacity: .55;
+}
+
+.style-warm-editorial .index li.paused .state { color: var(--we-ochre); }
+
+.style-warm-editorial .find {
+  position: relative;
+  margin: 30px 0 0;
+}
+
+.style-warm-editorial .find label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--we-ink-2);
+}
+
+.style-warm-editorial .find input {
+  width: 100%;
+  padding: 10px 40px 11px 2px;
+  border: 0;
+  border-bottom: 1px solid var(--we-ink);
+  border-radius: 0;
+  background: transparent;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  color: var(--we-ink);
+  outline: none;
+  transition: border-color 220ms ease, background 220ms ease;
+}
+
+.style-warm-editorial .find input::placeholder {
+  color: var(--we-ink-2);
+  font-style: italic;
+  opacity: 1;
+}
+
+.style-warm-editorial .find input:hover { background: rgba(243, 238, 228, .55); }
+
+.style-warm-editorial .find input:focus {
+  border-bottom-color: var(--we-accent);
+  background: rgba(243, 238, 228, .7);
+  box-shadow: 0 2px 0 0 var(--we-accent);
+}
+
+.style-warm-editorial .find svg {
+  position: absolute;
+  right: 4px;
+  bottom: 12px;
+  width: 17px;
+  height: 17px;
+  color: var(--we-ink-3);
+  pointer-events: none;
+}
+
+.style-warm-editorial .colophon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--we-rule);
+  flex-wrap: wrap;
+}
+
+.style-warm-editorial .btn {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  cursor: pointer;
+  transition: transform 200ms cubic-bezier(.2, .7, .3, 1), box-shadow 200ms ease, background 200ms ease, color 200ms ease;
+}
+
+.style-warm-editorial .btn-primary {
+  padding: 12px 22px;
+  border: 1px solid #241F1B;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #35302A 0%, #241F1B 100%);
+  color: #FBF8F3;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .12) inset,
+    0 8px 20px -10px rgba(52, 40, 26, .55);
+}
+
+.style-warm-editorial .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .14) inset,
+    0 14px 28px -12px rgba(52, 40, 26, .6);
+}
+
+.style-warm-editorial .btn-quiet {
+  padding: 12px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--we-ink-2);
+  box-shadow: 0 1px 0 0 var(--we-rule);
+}
+
+.style-warm-editorial .btn-quiet:hover {
+  color: var(--we-accent);
+  box-shadow: 0 1px 0 0 var(--we-accent);
+}
+
+.style-warm-editorial .colophon .spacer { flex: 1 1 auto; }
+
+.style-warm-editorial .note {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--we-ink-3);
+  text-align: right;
+  max-width: 190px;
+  line-height: 1.45;
+}
+
+@media (max-width: 620px) {
+  .style-warm-editorial .demo { padding: 24px 14px; }
+  .style-warm-editorial .sheet { padding: 28px 22px 26px; }
+  .style-warm-editorial .masthead h2 { font-size: 42px; }
+  .style-warm-editorial .index li { flex-wrap: wrap; row-gap: 4px; }
+  .style-warm-editorial .leader { display: none; }
+  .style-warm-editorial .state { min-width: 0; margin-left: auto; }
+  .style-warm-editorial .note { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-warm-editorial .btn,
+  .style-warm-editorial .index li,
+  .style-warm-editorial .find input { transition-duration: 1ms; }
+  .style-warm-editorial .btn-primary:hover { transform: none; }
+}
+</style>
+<div class="style-warm-editorial">
+  <div class="demo">
+    <div class="sheet">
+      <div class="kicker">
+        <span class="mark">Arbeitsmappe</span>
+        <span class="rule"></span>
+        <span>August 2026</span>
+      </div>
+
+      <div class="masthead">
+        <h2>Projekte</h2>
+        <span class="spacer"></span>
+        <span class="tally">
+          <span class="num">12</span>
+          <span class="lab">im Bestand</span>
+        </span>
+      </div>
+
+      <p class="deck">Drei Arbeiten liegen offen auf dem Tisch, neun ruhen im Archiv. Der Bestand wird jeden Morgen gesichert; Notizen, Verlauf und Entwürfe bleiben beim jeweiligen <em>Eintrag</em>.</p>
+
+      <ul class="index">
+        <li>
+          <span class="folio">01</span>
+          <span class="title">Nexus</span>
+          <span class="leader"></span>
+          <span class="when">vor 2 Std.</span>
+          <span class="state">Aktiv</span>
+        </li>
+        <li>
+          <span class="folio">02</span>
+          <span class="title">Autowrite Studio</span>
+          <span class="leader"></span>
+          <span class="when">gestern</span>
+          <span class="state">Aktiv</span>
+        </li>
+        <li class="paused">
+          <span class="folio">03</span>
+          <span class="title">Balance Ally</span>
+          <span class="leader"></span>
+          <span class="when">vor 4 Tagen</span>
+          <span class="state">Pausiert</span>
+        </li>
+      </ul>
+
+      <div class="find">
+        <label for="we-q">Im Bestand suchen</label>
+        <input id="we-q" type="text" readonly placeholder="Suchen...">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="8.6" cy="8.6" r="5.4" stroke="currentColor" stroke-width="1.3"/>
+          <path d="m12.8 12.8 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="colophon">
+        <button class="btn btn-primary" type="button">Neues Projekt</button>
+        <button class="btn btn-quiet" type="button">Importieren</button>
+        <span class="spacer"></span>
+        <span class="note">Zuletzt gesichert um 14:02 Uhr</span>
+      </div>
+    </div>
+  </div>
+</div>

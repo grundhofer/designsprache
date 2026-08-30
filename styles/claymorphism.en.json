@@ -1,0 +1,69 @@
+{
+  "slug": "claymorphism",
+  "name": "Claymorphism",
+  "aka": ["Clay UI", "Modeling-clay look", "Soft 3D", "Playdough UI"],
+  "family": "Soft Materiality",
+  "era": "2021-2023 (peak 2022), a niche style for onboarding and consumer since then",
+  "origin": "Michal Malewicz coined the term in late 2021 -- a portmanteau of 'clay' and 'skeuomorphism' and explicitly a repair of neumorphism, whose contrast problem he fixed with surface colors of their own and real, floating layers. The wave was made possible by the simultaneous spread of Blender and Spline: 3D renderings with soft, matte modeling-clay surfaces were suddenly producible without a studio budget, and the UI followed to match the illustrations. It was carried by fintech and consumer onboarding flows that wanted to feel friendly rather than technical.",
+  "idea": "Interface elements are thick, soft lumps of clay: very large radii, pastel solid colors, a light highlight inside at the top and a shadow inside at the bottom give them volume, and a second soft shadow lifts them off the surface.",
+  "markers": [
+    "Radius 26-46px on surfaces, 20px already on avatars just 50px across -- the rounding is always out of proportion",
+    "Double outer shadow, wide and strongly negative in spread: 0 26px 44px -18px and 0 10px 18px -10px",
+    "Inset highlight at the top (inset 0 12px 22px -8px rgba(255,255,255,.95)) plus an inset shadow at the bottom right -- without that pair it is just a rounded card",
+    "Pastel solid colors with a surface color of their own, unlike neumorphism never identical to the background",
+    "Very generous padding: 16-20px in list rows, 20px in buttons",
+    "The shadow color is never black but a dark variant of the base tone (here rgba(84,56,172,...))",
+    "Surface edges have 0 borders; card against ground measures only 1.1:1",
+    "Squish motion: :active with scale(.975) and a flip to inset shadows, easing with overshoot cubic-bezier(.34,1.56,.64,1)",
+    "Accompanying 3D objects (spheres, blobs) with radial gradients and inner shadows as a decorative layer"
+  ],
+  "params": {
+    "radius": "26-46px on surfaces, 999px on pills and fields, 20px on small tiles",
+    "contrast": "medium",
+    "density": "very airy",
+    "depth": "Volume from an inset highlight at the top plus an inset shadow at the bottom; lift from two soft, colored outer shadows -- unlike neumorphism, real stackable layers",
+    "color": "Pastel, slightly desaturated solid colors in separate roles (lavender, mint, peach, sky blue) on a light lavender ground; shadows always tinted, never neutral",
+    "type": "Rounded geometric display sans for headings and buttons, sturdy rounded sans at 700-800 for text; no thin weights",
+    "motion": "Springy: 240-260ms with cubic-bezier(.34,1.56,.64,1); hover lifts by 3px, :active visibly presses in with scale(.975)",
+    "texture": "Matte, slightly waxy -- the surface is simulated through gradient direction (158-160deg), not through noise"
+  },
+  "palette": ["#EFE9FF", "#B9A6FF", "#5B34CF", "#A8ECD0", "#FFCDAE", "#40316F"],
+  "examples": [
+    {"name": "Michal Malewicz, 'Claymorphism in user interfaces' (hype4.academy, Dec. 2021)", "what": "The founding text with the recipe: large radius, two inset shadows for volume, one large outer shadow for the layer"},
+    {"name": "Spline / Blender clay render templates", "what": "The matte, soft 3D objects this UI was designed to accompany in the first place -- spheres, rounded cubes, chunky icons under soft studio light"},
+    {"name": "Duolingo (onboarding and buttons)", "what": "Thick, rounded buttons with a visible bottom edge that sinks on press; friendly pastel surfaces and 3D mascots -- clay logic in a product where it works"},
+    {"name": "Fintech onboarding 2022 (Revolut and Monzo campaign pages and their imitators)", "what": "Cards with 32px radii, pastel fills and a soft purple drop shadow, combined with rendered 3D coins and cards"},
+    {"name": "Clay UI kits on Figma Community / UI8 (2022)", "what": "The style's distribution machine: ready-made component sets that ship exactly the double-shadow formula as a style token"}
+  ],
+  "strengths": [
+    "Friendly and inviting immediately -- the best style in this family for onboarding, consumer apps and anything meant to take fear away",
+    "Genuinely solves neumorphism's core problem: surface colors of its own, real layers, usable text contrast",
+    "Very high recognition value at extremely low technical cost -- box-shadow and border-radius, nothing else",
+    "The squish state is one of the most satisfying microinteractions there is and costs four lines of CSS",
+    "Works even without the expensive 3D assets if you build the objects from radial gradients, as here"
+  ],
+  "risks": [
+    "Very space-hungry: large radii force large padding, and information density drops by roughly half against a matter-of-fact list UI",
+    "No dark mode without a redesign -- pastel solid colors and white inset highlights have no equivalent on a dark ground",
+    "The accompanying 3D illustrations are expensive, cannot be tokenized and are hard to keep stylistically consistent once somebody else picks up the pen",
+    "Tips instantly into the childish: for developer tools, financial data or anything serious the look reads as unprofessional",
+    "Looks cheap the moment the shadows go neutral black or the inset highlight is missing -- then all that remains is a rounded card with a drop shadow"
+  ],
+  "a11y": "Clearly better than neumorphism, but not unproblematic: text reaches 10.3:1 here (headings and names), secondary text 5.7:1 and the status pills 6.9:1 -- clean AA values, because the surfaces have colors of their own. The edges remain the problem: a white card on the slab measures 1.1:1 and is thus far below the 3:1 of WCAG 2.2 SC 1.4.11; the separation is carried by the shadow alone, which drops out in high-contrast mode or on poor displays. Because of the 26-46px radii the focus ring needs an offset of its own of 3-4px, otherwise it disappears into the rounding -- and the mint/peach color difference must never be the sole carrier of the status information.",
+  "longevity": "Clearly datable to 2021/22 and tightly coupled to the 3D render wave of the time; as a full style it ages badly. It is likely to survive where friendliness is functional -- children's apps, learning apps, onboarding flows -- that is, as a genre convention rather than a zeitgeist.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 2,
+    "density": 1
+  },
+  "platforms": {
+    "web": "Trivial and robust in CSS; suits marketing pages and onboarding, not data-dense application surfaces.",
+    "mobile": "Easy to implement on Android -- Compose shapes with large radii and spring animations hit the style almost by themselves; on iOS it runs against the system material.",
+    "desktop": "Practically unusable: desktop UIs live on information density, tables and menus, and the style's proportions rule out exactly those."
+  },
+  "verdict": "As a brand basis: no, but the most interesting candidate in this family. It is the only one of the three that can be implemented accessibly and whose depth logic pours cleanly into tokens -- two shadow values, one radius, six surface colors, done, and identical in Tailwind, Compose and SwiftUI. What disqualifies it is the tone and the density: a solo developer's collection of tools that looks like a learning app for eight-year-olds loses precisely the audience it wants to reach, and a Tauri window with 46px radii and 20px padding shows half of what it needs to. What stays usable is the squish -- a single springy :active state on the primary button, without the rest of the style.",
+  "combinesWith": ["organic-blob", "memphis", "neumorphism", "material-expressive"],
+  "tip": "The shadow color decides everything: never rgba(0,0,0,x), always a dark, saturated variant of the base tone (here rgba(84,56,172,.4) on lavender). Set the two inset values as a pair -- light highlight at the top, tinted shadow at the bottom right -- and push the outer shadow far down with a negative spread (-18px). Without that negative spread the clay turns into a Bootstrap card shadow.",
+  "googleFonts": ["Fredoka", "Nunito"]
+}

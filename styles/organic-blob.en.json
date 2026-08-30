@@ -1,0 +1,68 @@
+{
+  "slug": "organic-blob",
+  "name": "Organic / Blob / Soft Nature",
+  "aka": ["Blob Design", "Organic Shapes", "Soft Nature", "Wellness Look", "Biomorphic UI"],
+  "family": "Expression & Nature",
+  "era": "2017-today (peak 2019-2021), precursors from the 1930s",
+  "origin": "The formal language comes out of modernist biomorphism - Jean Arp's amoeba-like reliefs, Isamu Noguchi's tables, Alvar Aalto's Savoy vase - and was carried into digital design in 1995 by Greg Lynn as 'blob architecture' (from 'binary large object'). The blob reached the web around 2017/2018, made practical by the eight-value form of border-radius (the ellipse syntax with a slash) and by cheap SVG paths, which let you generate and animate irregular shapes without an image file. The wave was driven by illustration systems such as Humaaans and unDraw and by wellness and mindfulness apps that wanted a soft, bodily counterworld to the hard flat grid of the 2010s. The problem it solved was emotion: right-angled flat UIs read as clinical, and the blob made digital products touchable and calming.",
+  "idea": "Nothing in the layout is right-angled or symmetrical: every surface gets a slightly different, irregular radius so the interface reads as grown rather than constructed. Color and form simulate nature - earth, leaf, stone - to translate digital rigor into calm.",
+  "markers": [
+    "border-radius in eight-value syntax, e.g. 62% 38% 46% 54% / 55% 62% 38% 45% - never one uniform px value",
+    "Every element gets a DIFFERENT radius; repeating identical roundings breaks the style",
+    "1-3 large blurred background blobs, 200-320px, opacity 40-60%",
+    "Morph animation on border-radius, 20-35s duration, ease-in-out, infinite",
+    "Earth and botanical palette: sage, moss, terracotta, apricot on cream white (#FAF6EF instead of #FFFFFF)",
+    "Wave dividers or hand-drawn SVG lines with stroke-linecap: round, 2-2.6px",
+    "Asymmetric row offsets (margin-left/right 12-26px per row instead of a flush column)",
+    "Very soft, color-tinted shadows, e.g. 0 14px 26px -16px rgba(79,115,85,.9) - never neutral black",
+    "Serif with soft terminals (Fraunces) for headings, rounded sans (Nunito) for UI"
+  ],
+  "params": {
+    "radius": "irregular, in percent: 34-66% per corner, re-rolled for every element",
+    "contrast": "medium",
+    "density": "airy",
+    "depth": "very soft, color-tinted shadows plus overlapping blob layers; no hard edges",
+    "color": "Muted earth and plant tones on cream white, accents only through sage green and terracotta - no saturated digital colors.",
+    "type": "Soft high-contrast serif for titles against a rounded humanist sans for everything functional.",
+    "motion": "Slow breathing and morphing, 9-35s ease-in-out infinite; interaction springy with cubic-bezier(.34,1.3,.64,1) over 380-420ms",
+    "texture": "no image texture; the surface comes from soft gradients and blob overlap"
+  },
+  "palette": ["#FAF6EF", "#2C3A31", "#A8C4A0", "#4F7355", "#E8A87C", "#C9705B"],
+  "examples": [
+    {"name": "Headspace (app and brand)", "what": "Orange-dominated blob illustrations with faces, flowing shapes as scene frames and area dividers - the best-known case of the blob being the brand core rather than decoration."},
+    {"name": "Calm", "what": "Gradient fields of night blue and rose, soft roundings on every card, nature photography as backdrop - here the blob is reduced to radius and gradient instead of being displayed as an illustration shape."},
+    {"name": "Mailchimp (rebrand from 2018, Collins)", "what": "Hand-drawn, deliberately crooked shapes and Cavendish Yellow as a surface; shows the 'drawn' variant of the organic language without wellness pastel."},
+    {"name": "Isamu Noguchi, Coffee Table (1947)", "what": "The triangular, amoeba-like glass top on two interlocking wooden pieces - the historical reference object for 'organic means asymmetrical, not round'."},
+    {"name": "unDraw / Humaaans illustration systems (from 2019)", "what": "Faceless figures in front of single-color blob fields; the reason every SaaS landing page looked alike from 2019 to 2021."}
+  ],
+  "strengths": [
+    "Produces warmth and calm immediately - right for health, mindfulness, sustainability, journaling",
+    "Fully buildable without image files: border-radius, gradients and inline SVG are enough",
+    "The irregularity forgives small layout inaccuracies instead of exposing them",
+    "Stands out clearly in a field of right-angled dashboards"
+  ],
+  "risks": [
+    "The clearest template marker of the 2020s: blob dividers and pastel gradients read instantly as 'landing page from 2020'",
+    "Tips into the infantile fast - past three blobs per screen it reads as a kids' app, not a tool",
+    "Irregular radii barely fit into design tokens: every value is a one-off and the component system frays",
+    "Android and iOS have no equivalent to the eight-value syntax - there you need hand-built shapes or vector assets",
+    "It collapses under data density: irregular edges next to aligned table columns simply look wrong"
+  ],
+  "a11y": "The main problem is contrast: the typical pastel palette lands at 2.5-3.5:1 unless you push back, so the text ink has to be pulled far darker than the palette suggests (here #2C3A31 on #FAF6EF, roughly 12:1). The second problem is the focus ring, which visually falls apart on irregular radii - a visible outline-offset of 3px works better than a ring that hugs the shape. The morph animations run permanently and must be switched off entirely under prefers-reduced-motion, which is what happens here.",
+  "longevity": "Clearly dating: the blob peaked in 2019-2021 and today reads mainly as a time stamp. The toned-down variant - earth palette, soft serif, a single organic accent - ages well by contrast, because it rests on color and type instead of on the shape.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Native terrain - border-radius with slash syntax and CSS animation put the style within reach in Tailwind with a handful of arbitrary values.",
+    "mobile": "Doable in Compose through custom shape implementations and in SwiftUI through Path/AnimatableData, but every shape is handwork instead of a token.",
+    "desktop": "Technically identical to the web in Tauri, but it quickly feels inappropriately soft in dense tool windows."
+  },
+  "verdict": "As the base for a cross-platform house brand this is the wrong choice. The style carries no information density, is reproducible in Compose and SwiftUI only with considerable extra effort - exactly what a solo developer with many small apps cannot afford - and it is firmly placed in 2019-2021. It makes sense as a thematic sub-brand for exactly one app: a journaling, mindfulness or habit tool like 'Balance Ally' may look like this, the project tool next to it may not. If anything is to move up into the parent brand, let it be the color strategy (cream white instead of pure white, earth tones instead of digital blue) and the soft serif - not the blob shape.",
+  "combinesWith": ["claymorphism", "warm-editorial", "aurora-mesh", "flat"],
+  "tip": "One single blob per screen, everything else stays aligned. The style convinces precisely when the organic shape is the exception that comments on a strict grid - not when it replaces the grid. And pick the text ink two steps darker than the pastel palette 'wants': almost every cheap blob page fails on contrast, not on shape.",
+  "googleFonts": ["Fraunces", "Nunito"]
+}

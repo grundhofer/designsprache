@@ -1,0 +1,104 @@
+{
+  "slug": "skeuomorph",
+  "name": "Skeuomorphism",
+  "aka": [
+    "Rich Design",
+    "Aqua",
+    "Realism UI",
+    "iOS 6 Look",
+    "Faux-Real"
+  ],
+  "family": "Digital Eras",
+  "era": "1984-2013 (peak 2000-2012), a niche to this day",
+  "origin": "The roots lie in the desktop-metaphor thinking of the original Macintosh (1984): digital objects look like their physical models so that nobody has to learn how to operate them. It grew into a complete style with Aqua, the Mac OS X interface designed by Cordell Ratzlaff and Bas Ording (unveiled January 2000) - Steve Jobs' sales line was that they made the buttons look so good you'd want to lick them. On the iPhone, Apple pushed the principle to its limit up to iOS 6: brushed metal in iTunes, green felt and lacquered wood in Game Center, stitched leather in Calendar and Find My Friends. It only became possible through fast GPU compositing, Retina displays, and a willingness to ship UI as pixel graphics rather than vector tokens - exactly what brought the style down in 2013 with iOS 7.",
+  "idea": "Every control claims to be a physical object: light falls from above, edges have volume, surfaces have material. Affordance is not signaled, it is simulated.",
+  "markers": [
+    "Radius 6-12px as the base measure, never 0 - pill shape reserved for the search field, the counter badge and the status badges",
+    "Every surface carries a vertical gradient with the light source at the top (linear-gradient 180deg)",
+    "Mandatory double shadow: inset 0 1px 0 rgba(255,255,255,.6) as the highlight edge PLUS 0 2px 3px rgba(0,0,0,.35) as the drop shadow",
+    "Gloss overlay on the top 45-50% of every button, with an elliptically rounded lower edge",
+    "Material imitations as surface: leather, linen, brushed metal, felt, lacquered wood",
+    "Brushed metal as a repeating-linear-gradient of 1px stripes, overlaid with a 180deg gradient",
+    "Decorative stitching: 2px dashed in thread color, inset 7-9px from the edge",
+    "Text on light ground with text-shadow 0 1px 0 #fff (letterpress), on dark ground with 0 -1px 0 rgba(0,0,0,.75)",
+    "The pressed state inverts the lighting: outside -> inset, plus translateY(1px)"
+  ],
+  "params": {
+    "radius": "6-12px (buttons 5-6px, icon tiles 9-10px, search field as a 15px pill)",
+    "contrast": "medium",
+    "density": "dense",
+    "depth": "simulated to the maximum: bevel + emboss, inset and drop shadow at once, 3-5 box-shadow layers per element",
+    "color": "material colors instead of brand colors - brown/beige/gray as the carrier, saturated aqua blue and signal red only for action and counter",
+    "type": "Two voices: ornamental slab/serif for titles (embossed), humanist sans for content - both always with a shadow edge",
+    "motion": "short and mechanical, 80-120ms ease-out; the state change is a sinking-in, not a fade",
+    "texture": "high: procedural feTurbulence noise as a soft-light layer (leather grain), crossed 1px grids for linen, 1px stripes for metal"
+  },
+  "palette": [
+    "#6B4728",
+    "#D9D4C6",
+    "#2F7FD4",
+    "#E63A26",
+    "#46A032",
+    "#93969D"
+  ],
+  "examples": [
+    {
+      "name": "Mac OS X Aqua (2000-2007)",
+      "what": "pinstripe background, gel-like traffic-light buttons with inner gloss, pulsing blue default button, brushed metal in iTunes and QuickTime"
+    },
+    {
+      "name": "iOS 6 Game Center",
+      "what": "green felt background with a lacquered wood frame and a casino feel - the most cited example of the style's tipping point"
+    },
+    {
+      "name": "iOS 6 Calendar / Find My Friends",
+      "what": "stitched leather in the title bar with a visible double seam; according to former Apple designers it goes back to Steve Jobs' leather interiors"
+    },
+    {
+      "name": "FabFilter Pro-Q, u-he Diva (still today)",
+      "what": "audio plugins with detented metal knobs, push buttons and control LEDs - here the style is not a retro quote but the correct translation of a physical device"
+    },
+    {
+      "name": "Michael Flarup, 'Bring Skeuomorphism Back' (2018 onward)",
+      "what": "icon work with realistic material depth as a deliberate counterproposal to the flat consensus"
+    }
+  ],
+  "strengths": [
+    "Maximum affordance: what is clickable reads as clickable without explanation, and the pressed state is unambiguous",
+    "Very high recognizability - no other web app looks like this in 2026",
+    "For tools with a real physical model (audio, DAW, CAD, synth, measurement gear) still the objectively right solution",
+    "Emotionally warm: material creates affection where flat creates only efficiency"
+  ],
+  "risks": [
+    "Tips into kitsch the moment the light source becomes inconsistent - gradient and shadow must run in the same direction across every element",
+    "Not theme-capable: a dark mode is not a token switch but a second complete material set",
+    "Classically asset-based rather than token-based; every new component is handwork instead of configuration",
+    "Low-contrast grays on textured ground destroy legibility once you drop the text shadows",
+    "As a full style with no subject-matter grounding it reads as a caricature of 2010-2012 rather than a stance"
+  ],
+  "a11y": "The affordance is excellent - buttons are recognizable as buttons without color coding, and states are communicated through shape rather than color alone. The problems are text on textured ground (the noise lowers effective contrast) and the thin letterpress shadows, which vanish under magnification or Windows high-contrast mode. Rule: always measure contrast against the darkest point of the texture, not against its average, and set focus rings explicitly, since the bevel itself shows no focus.",
+  "longevity": "As a general UI style, hard-dated - it is inseparable from 2007-2012 and is read as retro immediately. In the niche of pro-audio and instrument software, by contrast, it barely ages at all, because there the physical model really exists.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 5,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Technically no problem in pure CSS, but expensive in maintenance and dark mode; strong as a landing-page statement, laborious as a product UI.",
+    "mobile": "On iOS as on Android a foreign body against the system conventions - and the many shadow layers cost real scroll performance in lists.",
+    "desktop": "The only platform where the style still lives productively: Tauri windows for audio, measurement or instrument tools genuinely benefit from it."
+  },
+  "verdict": "As the base for your own brand: no. The style needs handwork per component instead of tokens, is only reproducible in Compose and SwiftUI with considerable effort, and a second theme means a second complete material set - exactly the cost a solo developer with many small apps cannot carry. On top of that, on mobile it reads as time travel, not as a brand. It does make sense as a deliberately measured quote: a single material surface per app - an embossed header, say, or a physical-feeling primary button - can work as a signature. And if one of the apps ever depicts a real device (audio, timer, measured values), skeuomorphism there is not nostalgia but the correct answer.",
+  "combinesWith": [
+    "y2k-aero",
+    "spatial-depth",
+    "warm-editorial",
+    "dev-noir"
+  ],
+  "tip": "Keep the light source at exactly 12 o'clock across the entire UI and derive every shadow from it: light 1px gloss at the top inside, dark gradient at the bottom inside, soft drop shadow at the bottom outside. The difference between convincing skeuomorphism and plastic caricature is almost never the texture, but the consistency of that one direction - and a pressed state that inverts the direction cleanly.",
+  "googleFonts": [
+    "Bitter",
+    "Lato"
+  ]
+}

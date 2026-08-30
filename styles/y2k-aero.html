@@ -1,0 +1,566 @@
+<style>
+.style-y2k-aero {
+  color-scheme: light;
+  --aero-ink: #0b3550;
+  --aero-ink-soft: #3a6b8c;
+  --aero-glass: rgba(255, 255, 255, 0.58);
+  --aero-edge: rgba(255, 255, 255, 0.92);
+  --aero-blue: #0e6cb0;
+  --aero-blue-deep: #07456f;
+  --aero-radius: 14px;
+
+  width: 100%;
+  box-sizing: border-box;
+  container-type: inline-size;
+  color: var(--aero-ink);
+  font-family: "Istok Web", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.45;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(42% 30% at 84% 8%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 68%),
+    radial-gradient(120% 70% at 50% 122%, #8ede45 0%, #4da627 40%, rgba(77, 166, 39, 0) 72%),
+    linear-gradient(180deg, #06508f 0%, #1785cd 22%, #58bdee 46%, #a8e6fb 64%, #ddf7ff 76%, #c3edd4 88%, #8fd35c 100%);
+}
+
+.style-y2k-aero * {
+  box-sizing: border-box;
+}
+
+.style-y2k-aero .demo {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 34px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+/* ---------- Wallpaper-Ebene: Bokeh, Sonne, Lens Flare, Blasen ---------- */
+
+.style-y2k-aero .scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 84% 9%, rgba(255, 255, 255, 0.85) 0 2.4%, rgba(255, 255, 255, 0) 22%),
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.30) 0 3.2%, rgba(255, 255, 255, 0) 3.6%),
+    radial-gradient(circle at 26% 12%, rgba(255, 255, 255, 0.22) 0 2.1%, rgba(255, 255, 255, 0) 2.5%),
+    radial-gradient(circle at 68% 30%, rgba(255, 255, 255, 0.18) 0 4.4%, rgba(255, 255, 255, 0) 4.8%),
+    radial-gradient(circle at 92% 46%, rgba(255, 255, 255, 0.20) 0 2.6%, rgba(255, 255, 255, 0) 3%),
+    radial-gradient(circle at 6% 66%, rgba(255, 255, 255, 0.16) 0 3.6%, rgba(255, 255, 255, 0) 4%);
+}
+
+/* Lens Flare: Kette kleiner Ringe auf der Diagonalen von der Sonne weg */
+.style-y2k-aero .flare {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 84% 9%, rgba(255, 246, 214, 0.85) 0 1.4%, rgba(255, 246, 214, 0) 2.6%),
+    radial-gradient(circle at 70% 26%, rgba(140, 255, 210, 0.42) 0 1.1%, rgba(140, 255, 210, 0) 1.9%),
+    radial-gradient(circle at 60% 38%, rgba(255, 190, 120, 0.34) 0 0.7%, rgba(255, 190, 120, 0) 1.4%),
+    radial-gradient(circle at 44% 56%, rgba(150, 210, 255, 0.34) 0 1.8%, rgba(150, 210, 255, 0) 2.6%),
+    radial-gradient(circle at 30% 72%, rgba(255, 255, 255, 0.26) 0 1%, rgba(255, 255, 255, 0) 1.8%);
+}
+
+/* Sonnenstrahl quer ueber die Szene */
+.style-y2k-aero .ray {
+  position: absolute;
+  top: -30%;
+  right: -6%;
+  width: 58%;
+  height: 170%;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(24deg);
+  transform-origin: top right;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.17) 46%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+.style-y2k-aero .bubble {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.95) 0 6%, rgba(255, 255, 255, 0.28) 18%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(circle at 70% 76%, rgba(180, 255, 240, 0.42) 0 12%, rgba(180, 255, 240, 0) 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.34) 88%, rgba(255, 255, 255, 0.08) 100%);
+  box-shadow: inset 0 -6px 14px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(10, 70, 120, 0.14);
+  animation: y2k-aero-float 14s ease-in-out infinite;
+}
+
+.style-y2k-aero .bubble.b1 { width: 74px; height: 74px; left: 4%;  top: 62%; animation-duration: 17s; }
+.style-y2k-aero .bubble.b2 { width: 38px; height: 38px; left: 15%; top: 28%; animation-duration: 12s; animation-delay: -4s; }
+.style-y2k-aero .bubble.b3 { width: 116px; height: 116px; right: 3%; top: 52%; animation-duration: 21s; animation-delay: -8s; }
+.style-y2k-aero .bubble.b4 { width: 26px; height: 26px; right: 18%; top: 18%; animation-duration: 15s; animation-delay: -2s; }
+.style-y2k-aero .bubble.b5 { width: 54px; height: 54px; left: 79%; top: 84%; animation-duration: 19s; animation-delay: -11s; }
+
+@keyframes y2k-aero-float {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(10px, -26px, 0) scale(1.04); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* ---------- Aero-Fenster ---------- */
+
+.style-y2k-aero .window {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 40%, rgba(120, 190, 235, 0.55) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 44px -12px rgba(5, 45, 85, 0.55),
+    0 2px 6px rgba(5, 45, 85, 0.28);
+}
+
+.style-y2k-aero .frame {
+  border-radius: 17px;
+  overflow: hidden;
+  background: rgba(226, 244, 255, 0.42);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+
+.style-y2k-aero .titlebar {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.34) 48%, rgba(255, 255, 255, 0.10) 50%, rgba(190, 226, 248, 0.42) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+.style-y2k-aero .caption {
+  display: flex;
+  gap: 7px;
+}
+
+.style-y2k-aero .cap {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 5px 6px -3px rgba(255, 255, 255, 0.95), 0 1px 2px rgba(6, 50, 90, 0.35);
+}
+
+.style-y2k-aero .cap.min { background: radial-gradient(circle at 50% 22%, #ffe89a 0%, #f4b52c 55%, #b97c05 100%); }
+.style-y2k-aero .cap.max { background: radial-gradient(circle at 50% 22%, #b8f7a8 0%, #4cbb3a 55%, #22701a 100%); }
+.style-y2k-aero .cap.close { background: radial-gradient(circle at 50% 22%, #ffc0b2 0%, #e8503a 55%, #97200f 100%); }
+
+.style-y2k-aero .body {
+  padding: 18px 18px 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.10) 40%, rgba(210, 238, 252, 0.22) 100%);
+}
+
+/* Wassertropfen auf dem Glas */
+.style-y2k-aero .drop {
+  position: absolute;
+  z-index: 3;
+  border-radius: 52% 48% 46% 54% / 58% 56% 44% 42%;
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 -3px 5px rgba(255, 255, 255, 0.85),
+    inset 0 3px 4px rgba(30, 90, 140, 0.30),
+    0 1px 3px rgba(10, 60, 110, 0.30);
+}
+
+.style-y2k-aero .drop.d1 { width: 15px; height: 13px; top: 56px; right: 26px; }
+.style-y2k-aero .drop.d2 { width: 9px;  height: 8px;  top: 78px; right: 44px; }
+.style-y2k-aero .drop.d3 { width: 20px; height: 17px; bottom: 34px; left: 22px; }
+.style-y2k-aero .drop.d4 { width: 7px;  height: 6px;  bottom: 58px; left: 44px; }
+
+/* ---------- Header + Zaehler ---------- */
+
+.style-y2k-aero .head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.style-y2k-aero .head h2 {
+  margin: 0;
+  flex: 1;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 5px rgba(6, 48, 88, 0.85),
+    0 0 22px rgba(120, 210, 255, 0.75);
+}
+
+.style-y2k-aero .count {
+  font-family: Audiowide, "Istok Web", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(3, 38, 70, 0.9);
+  min-width: 46px;
+  height: 34px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.16) 34%, rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, #2e9ce0 0%, #0e6cb0 42%, #07456f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -6px 10px -6px rgba(150, 225, 255, 0.9),
+    0 3px 8px -2px rgba(5, 50, 90, 0.6);
+}
+
+/* ---------- Liste ---------- */
+
+.style-y2k-aero .list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.style-y2k-aero .row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--aero-radius);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.52) 46%, rgba(255, 255, 255, 0.30) 47%, rgba(232, 248, 255, 0.62) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 6px rgba(8, 58, 100, 0.20);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+}
+
+.style-y2k-aero .row:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 6px 14px rgba(8, 58, 100, 0.28);
+}
+
+.style-y2k-aero .orb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 4px 4px -2px rgba(255, 255, 255, 0.95), 0 1px 2px rgba(8, 58, 100, 0.35);
+  background: radial-gradient(circle at 50% 24%, #d8f6ff 0%, #4fb6ec 48%, #0b5f9d 100%);
+}
+
+.style-y2k-aero .row.paused .orb {
+  background: radial-gradient(circle at 50% 24%, #fff0c6 0%, #f0b431 48%, #9a6b04 100%);
+}
+
+.style-y2k-aero .name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #0b3550;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-y2k-aero .time {
+  font-size: 12.5px;
+  color: #3a6b8c;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+.style-y2k-aero .status {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 1px 2px rgba(8, 58, 100, 0.28);
+}
+
+.style-y2k-aero .status.on {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(4, 46, 20, 0.75);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.12) 40%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(180deg, #2f8f3c 0%, #1b7028 55%, #12551d 100%);
+}
+
+.style-y2k-aero .status.off {
+  color: #5a3a00;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(180deg, #ffdf8a 0%, #f2bc3f 100%);
+}
+
+/* ---------- Suchfeld ---------- */
+
+.style-y2k-aero .search {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.style-y2k-aero .search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: #46769a;
+  pointer-events: none;
+}
+
+.style-y2k-aero .search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px 0 34px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #0b3550;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 175, 210, 0.85);
+  background:
+    linear-gradient(180deg, rgba(190, 220, 240, 0.55) 0%, rgba(255, 255, 255, 0.9) 45%, rgba(255, 255, 255, 0.98) 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(30, 90, 140, 0.30),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.95),
+    0 1px 0 rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.style-y2k-aero .search input::placeholder {
+  color: #5a86a4;
+  opacity: 1;
+}
+
+.style-y2k-aero .search input:focus-visible {
+  border-color: #0e6cb0;
+  box-shadow:
+    inset 0 2px 4px rgba(30, 90, 140, 0.25),
+    0 0 0 3px rgba(80, 185, 245, 0.75);
+}
+
+/* ---------- Aktionen: Aqua-Gel-Buttons ---------- */
+
+.style-y2k-aero .actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.style-y2k-aero button {
+  position: relative;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 140ms ease-out, filter 140ms ease-out;
+}
+
+/* schmales Specular-Band statt 50/50-Gloss: haelt den Text im dunklen Bereich */
+.style-y2k-aero button::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 2px;
+  height: 42%;
+  border-radius: 999px 999px 60% 60% / 999px 999px 100% 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.58) 62%, rgba(255, 255, 255, 0.40) 100%);
+  pointer-events: none;
+}
+
+.style-y2k-aero .primary {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(3, 36, 64, 0.9);
+  border: 1px solid #06375a;
+  background: linear-gradient(180deg, #1a7fc0 0%, #0d63a4 38%, #07456f 100%);
+  box-shadow:
+    inset 0 -8px 12px -8px rgba(150, 225, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 14px -4px rgba(5, 48, 88, 0.65);
+}
+
+.style-y2k-aero .primary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background: radial-gradient(120% 100% at 50% 130%, rgba(140, 220, 255, 0.55) 0%, rgba(140, 220, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.style-y2k-aero .secondary {
+  color: #0b3550;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(120, 172, 205, 0.95);
+  background: linear-gradient(180deg, #f4fbff 0%, #dcecf7 40%, #c3dcee 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -6px 10px -8px rgba(120, 180, 220, 0.9),
+    0 4px 10px -4px rgba(5, 48, 88, 0.4);
+}
+
+.style-y2k-aero button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.style-y2k-aero button:active {
+  transform: translateY(1px);
+  filter: brightness(0.94);
+  box-shadow: inset 0 3px 6px rgba(3, 36, 64, 0.4);
+}
+
+.style-y2k-aero button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 2px;
+}
+
+/* Spiegelung unter dem Fenster */
+.style-y2k-aero .reflection {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 8px;
+  width: min(520px, calc(100% - 52px));
+  height: 46px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 72%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-y2k-aero .bubble { animation: none; }
+  .style-y2k-aero .row,
+  .style-y2k-aero button { transition: none; }
+}
+
+/* Container-Query statt Media-Query: die Demo reagiert auf ihre eigene
+   Spaltenbreite, nicht auf das Browserfenster. */
+@container (max-width: 540px) {
+  .style-y2k-aero .demo { padding: 20px 12px; }
+  .style-y2k-aero .head h2 { font-size: 23px; }
+  .style-y2k-aero .row {
+    grid-template-columns: 15px 1fr auto;
+    grid-template-areas: "orb name status" "orb time time";
+    row-gap: 2px;
+  }
+  .style-y2k-aero .orb { grid-area: orb; align-self: start; margin-top: 3px; }
+  .style-y2k-aero .name { grid-area: name; }
+  .style-y2k-aero .time { grid-area: time; }
+  .style-y2k-aero .status { grid-area: status; }
+  .style-y2k-aero .actions { flex-direction: column; align-items: stretch; }
+  .style-y2k-aero button { width: 100%; }
+}
+</style>
+<div class="style-y2k-aero">
+  <div class="demo">
+    <div class="scene"></div>
+    <div class="ray"></div>
+    <div class="flare"></div>
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+    <span class="bubble b4"></span>
+    <span class="bubble b5"></span>
+    <div class="reflection"></div>
+
+    <div class="window">
+      <div class="frame">
+        <div class="titlebar">
+          <div class="caption">
+            <span class="cap min"></span>
+            <span class="cap max"></span>
+            <span class="cap close"></span>
+          </div>
+        </div>
+        <div class="body">
+          <div class="head">
+            <h2>Projekte</h2>
+            <span class="count">12</span>
+          </div>
+
+          <ul class="list">
+            <li class="row">
+              <span class="orb"></span>
+              <span class="name">Nexus</span>
+              <span class="time">vor 2 Std.</span>
+              <span class="status on">Aktiv</span>
+            </li>
+            <li class="row">
+              <span class="orb"></span>
+              <span class="name">Autowrite Studio</span>
+              <span class="time">gestern</span>
+              <span class="status on">Aktiv</span>
+            </li>
+            <li class="row paused">
+              <span class="orb"></span>
+              <span class="name">Balance Ally</span>
+              <span class="time">vor 4 Tagen</span>
+              <span class="status off">Pausiert</span>
+            </li>
+          </ul>
+
+          <div class="search">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M10.5 10.5 L14.4 14.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input type="text" readonly placeholder="Suchen...">
+          </div>
+
+          <div class="actions">
+            <button class="primary" type="button">Neues Projekt</button>
+            <button class="secondary" type="button">Importieren</button>
+          </div>
+        </div>
+      </div>
+      <span class="drop d1"></span>
+      <span class="drop d2"></span>
+      <span class="drop d3"></span>
+      <span class="drop d4"></span>
+    </div>
+  </div>
+</div>

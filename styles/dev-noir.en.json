@@ -1,0 +1,103 @@
+{
+  "slug": "dev-noir",
+  "name": "Dev-Noir",
+  "aka": [
+    "Linear look",
+    "Vercel look",
+    "Developer dark",
+    "Dark-first product UI",
+    "Command-palette aesthetic"
+  ],
+  "family": "Product Aesthetics Today",
+  "era": "2019-today",
+  "origin": "Emerged from 2019 onward among developer-tool startups: Linear (2019, Karri Saarinen, previously Airbnb Design Systems) established the combination of a near-black canvas #08090A, hairline borders and a command palette; Vercel formalized the language in 2024 in the Geist design system with its in-house typeface Geist Sans/Mono; Raycast carried it over to the native Mac launcher. The style solved a real problem: extremely dense tools that stay open all day, are driven by keyboard rather than mouse, and must not glare on OLED displays or during dark office hours. It became possible through widespread wide-gamut displays, variable web fonts with genuine intermediate weights (Inter 450/510) and CSS capabilities such as multiple layered radial gradients, backdrop-filter and border gradients via mask-composite.",
+  "idea": "Depth comes not from shadow but from minimally lightened layers and 1px hairlines; color is forbidden apart from a single accent, so that state and hierarchy stay readable from brightness steps and monospace metadata alone.",
+  "markers": [
+    "Base surface #08080B-#0F1015, layer ladder Base -> Surface (+3-5% brightness) -> Raised (+7-9%)",
+    "Dividers exclusively 1px solid rgba(255,255,255,.06-.11) - no drop shadows between surfaces",
+    "Interactive borders sit a distinct, markedly brighter step above (rgba(255,255,255,.30-.40)) the decorative hairlines",
+    "Radius in exactly one step: 6-8px for controls, 10-12px for containers",
+    "Type Inter/Geist in a narrow weight range 400-550, letter-spacing -0.02em from 16px upward",
+    "Monospace (Geist Mono/JetBrains Mono) for time, IDs, counters, shortcuts, with font-variant-numeric: tabular-nums",
+    "Exactly one accent (Linear #5E6AD2, Raycast #FF6363, Vercel: none at all) on an otherwise pure grayscale",
+    "Glow instead of shadow: box-shadow in the accent color at 20-40% opacity with a large negative spread",
+    "Radial background gradients at 6-25% opacity, usually anchored top left/right outside the viewport",
+    "Motion 120-180ms with cubic-bezier(.2,0,0,1), no bounces, no scaling beyond 1.02",
+    "Keyboard-shortcut badges (kbd) as a visible signature in the title bar, the field and the buttons"
+  ],
+  "params": {
+    "radius": "6-8px controls, 10-12px containers",
+    "contrast": "high",
+    "density": "dense",
+    "depth": "Layer ladder of minimally lighter surfaces plus 1px hairlines; glow only on primary actions",
+    "color": "Neutral grayscale with 8-12 deliberate steps plus exactly one accent and two semantic status colors (green/amber)",
+    "type": "One grotesque in the weight range 400-550 with negative tracking, plus monospace for everything machine-generated",
+    "motion": "120-180ms, cubic-bezier(.2,0,0,1), exclusively opacity, color and 1-2px translations",
+    "texture": "Film noise at 2-4% across the whole canvas plus an optional 56px grid at 3% under a radial mask"
+  },
+  "palette": [
+    "#08080B",
+    "#0D0E12",
+    "#14151A",
+    "#5E6AD2",
+    "#EDEDEF",
+    "#71717F"
+  ],
+  "examples": [
+    {
+      "name": "Linear",
+      "what": "Canvas #08090A, text #D0D6E0, hairline #23252A, accent #5E6AD2; Inter Variable with cv01/ss03 and weight 510; issue rows with status dot, mono ID and right-aligned timestamp"
+    },
+    {
+      "name": "Vercel Geist",
+      "what": "Radically colorless system: ink #171717 on #FAFAFA and inverted, ~200 gray steps, radius 6/12/16px, Geist Mono at 11-13px for labels, deploy metadata and logs"
+    },
+    {
+      "name": "Raycast",
+      "what": "Dark #151515/#070A0B chrome, radius 8px on fields and badges, accent #FF6363; keycap glyphs on their own surface step as the central UI element"
+    },
+    {
+      "name": "Resend / Supabase / Railway",
+      "what": "The same grammar across the board: hairline tables, mono timestamps, one accent, radial glow behind the hero section"
+    }
+  ],
+  "strengths": [
+    "Hits the audience of a developer tool precisely and signals technical seriousness immediately",
+    "Grayscale plus one accent is trivial to tokenize and reproduces identically across Tailwind, Compose and SwiftUI",
+    "High information density without visual noise, because separation runs through lines rather than shadows and cards",
+    "Dark-first solves OLED power draw, night use and screenshot aesthetics in one move",
+    "Very fast to build: no illustration, no photography, no custom icon work required"
+  ],
+  "risks": [
+    "Extremely widespread - without your own accent color, your own type details and your own motion signature the result is interchangeable",
+    "Hairlines at 6-8% opacity are effectively invisible on poor displays, in sunlight and to older eyes",
+    "The radial glow is the datable part: it will not outlive the grayscale and the hairlines by years",
+    "Dark-only excludes users with astigmatism, for whom light text on a dark ground is measurably harder to read",
+    "Tips into the cheap as soon as neon accents, several glows and overdone gradients come together - at that point it turns into cyberpunk kitsch"
+  ],
+  "a11y": "The hairlines at 7-11% white reach only about 1.15-1.3:1 and are therefore admissible solely as decorative dividers - the border of an input field, by contrast, must reach 3:1, here via its own step rgba(255,255,255,.36) (around 3.2:1 against the field ground) plus a 3px focus ring in an almost opaque accent color (around 4.2:1). Pure white text on pure black produces halation, hence #EDEDEF on #08080B instead of #FFF on #000; the mono metadata in #71717F sits at around 4.1:1 and is therefore deliberately set as secondary information only. Status is never communicated by color alone: the colored dot is always accompanied by a text label, and the pulsing active indicator is switched off under prefers-reduced-motion.",
+  "longevity": "The underlying frame of grayscale, hairlines, mono metadata and terse motion is structural and will survive the next five to ten years; the radial glow gradients and the default violet accent are the time-bound part and will look dated first.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Ideal - Tailwind ships the gray steps, hairlines and radii practically out of the box.",
+    "mobile": "Limited - the density and the 1px hairlines sit badly with touch targets and Material 3 expectations on Android.",
+    "desktop": "Optimal - Tauri with a borderless window, a custom title bar and a command palette is this style's natural habitat."
+  },
+  "verdict": "As the base of your own brand, Dev-Noir is the most obvious and technically cheapest choice: the tokens reproduce identically across Tailwind, Tauri and Compose, the audience of a solo developer expects exactly this language, and the style carries high information density at no extra cost. The price is interchangeability - a few hundred developer tools currently use the same grammar, and a portfolio of small apps will not read as a brand of its own inside it. Recommendation: yes as a structural foundation, but only with three deliberately distinct decisions - a non-violet accent color, a typographic pairing of your own and a recognizable signature component such as the shortcut badges. And necessarily with an equally well-maintained light theme, or you lose half of all usage situations on mobile.",
+  "combinesWith": [
+    "swiss",
+    "terminal-mono",
+    "data-dense",
+    "warm-editorial"
+  ],
+  "tip": "Build the grayscale as a real ladder with eight to twelve named steps and assign each step exactly one job (canvas, surface, raised, border, border-strong, text-3, text-2, text). Once surfaces and borders come from the same considered ladder instead of ad hoc rgba values, the style looks expensive - and the most common mistake, using glow and gradient as a substitute for missing structure, takes care of itself.",
+  "googleFonts": [
+    "Inter",
+    "Geist Mono"
+  ]
+}

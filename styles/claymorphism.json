@@ -1,0 +1,69 @@
+{
+  "slug": "claymorphism",
+  "name": "Claymorphism",
+  "aka": ["Clay UI", "Knetmasse-Look", "Soft 3D", "Playdough UI"],
+  "family": "Weiche Materialität",
+  "era": "2021-2023 (Peak 2022), seither Nischenstil für Onboarding und Consumer",
+  "origin": "Michal Malewicz prägte den Begriff Ende 2021 -- als Portmanteau aus 'clay' und 'Skeuomorphismus' und ausdrücklich als Reparatur des Neumorphismus, dessen Kontrastproblem er durch eigenständige Flächenfarben und echte, schwebende Ebenen behob. Möglich wurde die Welle durch die gleichzeitige Verbreitung von Blender und Spline: 3D-Renderings mit weichen, matten Knetmasse-Oberflächen waren plötzlich ohne Studio-Budget herstellbar, und das UI zog nach, um zu den Illustrationen zu passen. Getragen wurde er von Fintech- und Consumer-Onboardings, die freundlich statt technisch wirken wollten.",
+  "idea": "Interface-Elemente sind dicke, weiche Knetmasse-Objekte: sehr große Radien, pastellige Volltöne, ein Lichthighlight innen oben und ein Schatten innen unten geben ihnen Volumen, ein zweiter weicher Schatten hebt sie von der Fläche ab.",
+  "markers": [
+    "Radius 26-46px an Flächen, 20px schon an 50px kleinen Avataren -- die Rundung ist immer überproportional",
+    "Doppelter Außenschatten, weit und stark negativ gespreizt: 0 26px 44px -18px und 0 10px 18px -10px",
+    "Inset-Highlight oben (inset 0 12px 22px -8px rgba(255,255,255,.95)) plus Inset-Schatten unten rechts -- ohne dieses Paar ist es nur eine runde Karte",
+    "Pastellige Volltöne mit eigener Flächenfarbe, anders als bei Neumorphismus nie identisch mit dem Hintergrund",
+    "Sehr großzügige Paddings: 16-20px in Listenzeilen, 20px in Buttons",
+    "Schattenfarbe ist nie Schwarz, sondern eine dunkle Variante des Grundtons (hier rgba(84,56,172,...))",
+    "Flächenkanten haben 0 Rahmen; Karte gegen Untergrund messbar nur 1,1:1",
+    "Squish-Motion: :active mit scale(.975) und Umschlag auf inset-Schatten, Easing mit Overshoot cubic-bezier(.34,1.56,.64,1)",
+    "Begleitende 3D-Objekte (Kugeln, Blobs) mit Radialverlauf und Innenschatten als Deko-Ebene"
+  ],
+  "params": {
+    "radius": "26-46px an Flächen, 999px an Pills und Feldern, 20px an kleinen Kacheln",
+    "contrast": "mittel",
+    "density": "sehr luftig",
+    "depth": "Volumen aus inset-Highlight oben plus inset-Schatten unten; Abhebung aus zwei weichen, farbigen Außenschatten -- anders als Neumorphismus echte, stapelbare Ebenen",
+    "color": "Pastellige, leicht entsättigte Volltöne in getrennten Rollen (Lavendel, Mint, Pfirsich, Himmelblau) auf hellem Lavendelgrund; Schatten immer eingefärbt, nie neutral",
+    "type": "Runde geometrische Display-Sans für Ueberschriften und Buttons, kräftige Rundsans in 700-800 für Text; keine dünnen Schnitte",
+    "motion": "Federnd: 240-260ms mit cubic-bezier(.34,1.56,.64,1); Hover hebt um 3px, :active drückt mit scale(.975) sichtbar ein",
+    "texture": "Matt, leicht wachsartig -- die Oberfläche wird über Verlaufsrichtung (158-160deg) simuliert, nicht über Noise"
+  },
+  "palette": ["#EFE9FF", "#B9A6FF", "#5B34CF", "#A8ECD0", "#FFCDAE", "#40316F"],
+  "examples": [
+    {"name": "Michal Malewicz, 'Claymorphism in user interfaces' (hype4.academy, Dez. 2021)", "what": "Der Grundtext samt Rezept: großer Radius, zwei inset-Schatten für Volumen, ein großer Außenschatten für die Ebene"},
+    {"name": "Spline / Blender Clay-Render-Templates", "what": "Die matten, weichen 3D-Objekte, zu denen dieses UI überhaupt erst entworfen wurde -- Kugeln, abgerundete Würfel, dicke Icons mit weichem Studio-Licht"},
+    {"name": "Duolingo (Onboarding und Buttons)", "what": "Dicke, gerundete Buttons mit sichtbarer Unterkante, die beim Drücken einsinken; freundliche Pastellflächen und 3D-Maskottchen -- Clay-Logik in einem Produkt, das damit funktioniert"},
+    {"name": "Fintech-Onboardings 2022 (Revolut-, Monzo-Kampagnenseiten und ihre Nachahmer)", "what": "Karten mit 32px-Radien, Pastellfüllung und weichem lila Schlagschatten, kombiniert mit gerenderten 3D-Münzen und -Karten"},
+    {"name": "Clay UI Kits auf Figma Community / UI8 (2022)", "what": "Die Verbreitungsmaschine des Stils: fertige Komponentensets, die genau die Doppelschatten-Formel als Style-Token liefern"}
+  ],
+  "strengths": [
+    "Sofort freundlich und einladend -- der beste Stil dieser Familie für Onboarding, Consumer-Apps und alles, was Angst nehmen soll",
+    "Löst das Kernproblem des Neumorphismus wirklich: eigene Flächenfarben, echte Ebenen, brauchbare Textkontraste",
+    "Sehr hoher Wiedererkennungswert bei extrem kleinem technischem Aufwand -- box-shadow und border-radius, sonst nichts",
+    "Der Squish-Zustand ist eine der befriedigendsten Mikrointeraktionen überhaupt und kostet vier Zeilen CSS",
+    "Funktioniert auch ohne die teuren 3D-Assets, wenn man die Objekte wie hier aus Radialverläufen baut"
+  ],
+  "risks": [
+    "Sehr platzhungrig: große Radien erzwingen große Paddings, die Informationsdichte bricht gegenüber einem sachlichen Listen-UI um etwa die Hälfte ein",
+    "Kein Dark Mode ohne Neuentwurf -- pastellige Volltöne und weiße inset-Highlights haben auf dunklem Grund keine Entsprechung",
+    "Die begleitenden 3D-Illustrationen sind teuer, nicht tokenisierbar und stilistisch schwer konsistent zu halten, sobald jemand anderes weiterzeichnet",
+    "Kippt sofort ins Kindliche: für Entwicklerwerkzeuge, Finanzdaten oder alles Ernsthafte wirkt der Look unseriös",
+    "Wirkt billig, sobald die Schatten neutral-schwarz sind oder das inset-Highlight fehlt -- dann bleibt nur eine runde Karte mit Schlagschatten"
+  ],
+  "a11y": "Deutlich besser als Neumorphismus, aber nicht unproblematisch: Text erreicht hier 10,3:1 (Ueberschriften und Namen), sekundärer Text 5,7:1 und die Status-Pills 6,9:1 -- das sind saubere AA-Werte, weil die Flächen eigene Farben haben. Die Kanten bleiben das Problem: eine weiße Karte auf dem Slab misst 1,1:1 und ist damit weit unter den 3:1 aus WCAG 2.2 SC 1.4.11; die Abgrenzung trägt allein der Schatten, der bei erhöhtem Kontrastmodus oder auf schlechten Displays wegfällt. Der Fokus-Ring braucht wegen der 26-46px-Radien einen eigenen offset von 3-4px, sonst verschwindet er in der Rundung -- und der Farbunterschied Mint/Pfirsich darf nie der einzige Träger der Statusinformation sein.",
+  "longevity": "Klar auf 2021/22 datierbar und eng an die damalige 3D-Render-Welle gekoppelt; als Vollstil altert er schlecht. Ueberleben dürfte er dort, wo Freundlichkeit funktional ist -- Kinder-Apps, Lern-Apps, Onboarding-Strecken -- also als Genre-Konvention, nicht als Zeitgeist.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 4,
+    "effort": 2,
+    "density": 1
+  },
+  "platforms": {
+    "web": "In CSS trivial und robust; taugt für Marketing-Seiten und Onboarding, nicht für datendichte Anwendungsoberflächen.",
+    "mobile": "Auf Android gut umsetzbar -- Compose-Shapes mit großen Radien und Spring-Animationen treffen den Stil fast von selbst; auf iOS steht er quer zum Systemmaterial.",
+    "desktop": "Praktisch unbrauchbar: Desktop-UIs leben von Informationsdichte, Tabellen und Menüs, und genau die verbietet der Stil durch seine Proportionen."
+  },
+  "verdict": "Als Marken-Basis: nein, aber der interessanteste Kandidat dieser Familie. Er ist der einzige der drei, der barrierefrei umsetzbar ist und dessen Tiefenlogik sich sauber in Tokens gießen lässt -- zwei Schattenwerte, ein Radius, sechs Flächenfarben, fertig, und das identisch in Tailwind, Compose und SwiftUI. Was ihn disqualifiziert, ist die Tonlage und die Dichte: eine Werkzeugsammlung eines Solo-Entwicklers, die aussieht wie eine Lern-App für Achtjährige, verliert genau die Zielgruppe, die sie erreichen will, und ein Tauri-Fenster mit 46px-Radien und 20px-Paddings zeigt halb so viel wie nötig. Brauchbar bleibt der Squish -- ein einziger federnder :active-Zustand am Primärbutton, ohne den restlichen Stil.",
+  "combinesWith": ["organic-blob", "memphis", "neumorphism", "material-expressive"],
+  "tip": "Die Schattenfarbe entscheidet alles: nie rgba(0,0,0,x), sondern immer eine dunkle, gesättigte Variante des Grundtons (hier rgba(84,56,172,.4) auf Lavendel). Dazu die zwei inset-Werte als Paar setzen -- helles Highlight oben, farbiger Schatten unten rechts -- und den Außenschatten mit negativem spread (-18px) weit nach unten versetzen. Ohne das negative Spread wird aus Knetmasse ein Bootstrap-Card-Shadow.",
+  "googleFonts": ["Fredoka", "Nunito"]
+}

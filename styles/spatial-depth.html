@@ -1,0 +1,513 @@
+<style>
+.style-spatial-depth {
+  color-scheme: dark;
+  --sd-ink: #F3F6FA;
+  --sd-ink-2: rgba(243, 246, 250, 0.62);
+  --sd-ink-3: rgba(243, 246, 250, 0.52);
+  --sd-glass: rgba(18, 23, 34, 0.44);
+  --sd-glass-2: rgba(255, 255, 255, 0.07);
+  --sd-glass-3: rgba(255, 255, 255, 0.11);
+  --sd-rim: rgba(255, 255, 255, 0.14);
+  --sd-rim-strong: rgba(255, 255, 255, 0.26);
+  --sd-ok: #86E7B8;
+  --sd-hold: #F6CB88;
+  --sd-r-window: 44px;
+  --sd-r-card: 22px;
+  --sd-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  width: 100%;
+  color: var(--sd-ink);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.006em;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  background: #0B0E15;
+}
+
+.style-spatial-depth,
+.style-spatial-depth *,
+.style-spatial-depth *::before,
+.style-spatial-depth *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Umgebung: der Raum hinter den Ebenen ---------- */
+
+.style-spatial-depth .demo {
+  position: relative;
+  min-height: 460px;
+  padding: 44px 30px 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 85% at 16% 4%, rgba(126, 156, 255, 0.26), transparent 58%),
+    radial-gradient(95% 80% at 90% 18%, rgba(255, 164, 118, 0.18), transparent 60%),
+    radial-gradient(110% 95% at 52% 118%, rgba(88, 206, 194, 0.16), transparent 62%),
+    linear-gradient(163deg, #1C2231 0%, #12161F 52%, #0A0C12 100%);
+}
+
+.style-spatial-depth .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(38px);
+  pointer-events: none;
+}
+
+.style-spatial-depth .orb-a {
+  width: 210px;
+  height: 210px;
+  top: -56px;
+  left: 6%;
+  background: rgba(140, 168, 255, 0.30);
+}
+
+.style-spatial-depth .orb-b {
+  width: 160px;
+  height: 160px;
+  bottom: -48px;
+  right: 8%;
+  background: rgba(255, 176, 128, 0.24);
+}
+
+/* ---------- Ebenenstapel ---------- */
+
+.style-spatial-depth .stack {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  perspective: 1400px;
+}
+
+.style-spatial-depth .plate {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: -26px;
+  height: 92px;
+  border-radius: 40px 40px 26px 26px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+.style-spatial-depth .panel {
+  position: relative;
+  border-radius: var(--sd-r-window);
+  padding: 26px 24px 34px;
+  background: var(--sd-glass);
+  backdrop-filter: blur(34px) saturate(180%);
+  -webkit-backdrop-filter: blur(34px) saturate(180%);
+  box-shadow:
+    inset 0 0 0 1px var(--sd-rim),
+    inset 0 1px 0 0 var(--sd-rim-strong),
+    0 2px 6px rgba(0, 0, 0, 0.24),
+    0 24px 48px -12px rgba(0, 0, 0, 0.46),
+    0 56px 96px -28px rgba(0, 0, 0, 0.58);
+}
+
+.style-spatial-depth .panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0) 26%);
+  pointer-events: none;
+}
+
+/* ---------- Kopf ---------- */
+
+.style-spatial-depth .head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 18px;
+}
+
+.style-spatial-depth .head h2 {
+  margin: 0;
+  font-size: 27px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  color: var(--sd-ink);
+}
+
+.style-spatial-depth .count {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--sd-ink-2);
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--sd-glass-2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+}
+
+.style-spatial-depth .head .grow { flex: 1; }
+
+.style-spatial-depth .head .dots {
+  display: flex;
+  gap: 5px;
+}
+
+.style-spatial-depth .head .dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.style-spatial-depth .head .dots i:first-child {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- Liste: schwebende Unterebenen ---------- */
+
+.style-spatial-depth .list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.style-spatial-depth .card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 16px 11px 12px;
+  border-radius: var(--sd-r-card);
+  background: var(--sd-glass-2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: translateZ(0) scale(1);
+  transition:
+    transform 280ms var(--sd-ease),
+    background 280ms var(--sd-ease),
+    box-shadow 280ms var(--sd-ease);
+  cursor: default;
+}
+
+.style-spatial-depth .card:hover,
+.style-spatial-depth .card:focus-within {
+  background: var(--sd-glass-3);
+  transform: scale(1.022) translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+    0 14px 30px -8px rgba(0, 0, 0, 0.52);
+}
+
+.style-spatial-depth .tile {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.20);
+}
+
+.style-spatial-depth .tile svg { display: block; }
+
+.style-spatial-depth .tile-1 { background: linear-gradient(150deg, rgba(146, 176, 255, 0.55), rgba(112, 130, 220, 0.22)); }
+.style-spatial-depth .tile-2 { background: linear-gradient(150deg, rgba(255, 190, 146, 0.52), rgba(214, 130, 108, 0.20)); }
+.style-spatial-depth .tile-3 { background: linear-gradient(150deg, rgba(150, 224, 210, 0.48), rgba(104, 168, 172, 0.20)); }
+
+.style-spatial-depth .meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.style-spatial-depth .meta .pname {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--sd-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-spatial-depth .meta .time {
+  display: block;
+  font-size: 13px;
+  color: var(--sd-ink-2);
+}
+
+.style-spatial-depth .status {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: var(--sd-ink);
+  padding: 4px 11px 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.style-spatial-depth .status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.style-spatial-depth .is-active .status::before { background: var(--sd-ok); box-shadow: 0 0 8px rgba(134, 231, 184, 0.55); }
+.style-spatial-depth .is-paused .status::before { background: var(--sd-hold); box-shadow: 0 0 8px rgba(246, 203, 136, 0.45); }
+
+/* ---------- Suchfeld: eingelassene Ebene ---------- */
+
+.style-spatial-depth .search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 0 16px;
+  height: 46px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+
+.style-spatial-depth .search svg { flex: none; opacity: 0.55; }
+
+.style-spatial-depth .search input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 15px;
+  color: var(--sd-ink);
+}
+
+.style-spatial-depth .search input::placeholder {
+  color: var(--sd-ink-3);
+  opacity: 1;
+}
+
+.style-spatial-depth .search:focus-within {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 0 0 4px rgba(255, 255, 255, 0.10);
+}
+
+/* ---------- Ornament: schwebende Aktionsleiste vor dem Fenster ---------- */
+
+.style-spatial-depth .ornament {
+  position: relative;
+  z-index: 2;
+  margin: -22px auto 0;
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(24, 30, 42, 0.52);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+    0 18px 34px -10px rgba(0, 0, 0, 0.60);
+}
+
+.style-spatial-depth button {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 200ms var(--sd-ease),
+    background 200ms var(--sd-ease),
+    box-shadow 200ms var(--sd-ease);
+}
+
+.style-spatial-depth .btn-primary {
+  background: rgba(255, 255, 255, 0.92);
+  color: #161A22;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.42);
+}
+
+.style-spatial-depth .btn-primary:hover {
+  background: #FFFFFF;
+  transform: scale(1.04);
+  box-shadow: 0 10px 22px -4px rgba(0, 0, 0, 0.52);
+}
+
+.style-spatial-depth .btn-secondary {
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--sd-ink);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.style-spatial-depth .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.20);
+  transform: scale(1.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.30);
+}
+
+.style-spatial-depth button:active { transform: scale(0.985); }
+
+.style-spatial-depth button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
+}
+
+/* ---------- Fallbacks ---------- */
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .style-spatial-depth .panel { background: rgba(19, 24, 35, 0.94); }
+  .style-spatial-depth .ornament { background: rgba(26, 32, 45, 0.96); }
+  .style-spatial-depth .plate { background: rgba(255, 255, 255, 0.09); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .style-spatial-depth .panel {
+    background: #141926;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .style-spatial-depth .ornament {
+    background: #1B2130;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .style-spatial-depth .card { background: #1D2331; }
+  .style-spatial-depth .card:hover,
+  .style-spatial-depth .card:focus-within { background: #262E3F; }
+  .style-spatial-depth .search { background: #0E121B; }
+  .style-spatial-depth .orb { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-spatial-depth .card,
+  .style-spatial-depth button {
+    transition: none;
+  }
+  .style-spatial-depth .card:hover,
+  .style-spatial-depth .card:focus-within,
+  .style-spatial-depth .btn-primary:hover,
+  .style-spatial-depth .btn-secondary:hover,
+  .style-spatial-depth button:active {
+    transform: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .style-spatial-depth .demo { padding: 30px 16px 40px; }
+  .style-spatial-depth .panel { border-radius: 34px; padding: 22px 16px 30px; }
+  .style-spatial-depth .plate { left: 22px; right: 22px; }
+  .style-spatial-depth .ornament { width: 100%; justify-content: center; }
+  .style-spatial-depth .status { padding: 4px 9px 4px 8px; font-size: 11px; }
+}
+</style>
+<div class="style-spatial-depth">
+  <div class="demo">
+
+    <div class="orb orb-a" aria-hidden="true"></div>
+    <div class="orb orb-b" aria-hidden="true"></div>
+
+    <div class="stack">
+      <div class="plate" aria-hidden="true"></div>
+
+      <div class="panel">
+
+        <div class="head">
+          <h2>Projekte</h2>
+          <span class="count">12</span>
+          <span class="grow"></span>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+
+        <div class="list">
+
+          <div class="card is-active" tabindex="0">
+            <span class="tile tile-1">
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+                <path d="M9.5 1.6 17 5.9v7.2L9.5 17.4 2 13.1V5.9z" stroke="rgba(255,255,255,.92)" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M2 5.9 9.5 10.2 17 5.9M9.5 10.2v7.2" stroke="rgba(255,255,255,.6)" stroke-width="1.1" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="meta">
+              <span class="pname">Nexus</span>
+              <span class="time">vor 2 Std.</span>
+            </span>
+            <span class="status">Aktiv</span>
+          </div>
+
+          <div class="card is-active" tabindex="0">
+            <span class="tile tile-2">
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+                <path d="M3.4 15.6 5 11.2 12.8 3.4a2.1 2.1 0 0 1 2.9 2.9L7.9 14z" stroke="rgba(255,255,255,.92)" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M11.4 4.8 14.3 7.7" stroke="rgba(255,255,255,.6)" stroke-width="1.1" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="meta">
+              <span class="pname">Autowrite Studio</span>
+              <span class="time">gestern</span>
+            </span>
+            <span class="status">Aktiv</span>
+          </div>
+
+          <div class="card is-paused" tabindex="0">
+            <span class="tile tile-3">
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+                <path d="M9.5 2.4v14.2M3.2 6.6h12.6" stroke="rgba(255,255,255,.92)" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M3.2 6.6 1.4 11.1a3.1 3.1 0 0 0 3.6 0zM15.8 6.6 14 11.1a3.1 3.1 0 0 0 3.6 0z" stroke="rgba(255,255,255,.6)" stroke-width="1.1" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="meta">
+              <span class="pname">Balance Ally</span>
+              <span class="time">vor 4 Tagen</span>
+            </span>
+            <span class="status">Pausiert</span>
+          </div>
+
+        </div>
+
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.7" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10.6 10.6 14.4 14.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <input type="text" placeholder="Suchen..." readonly>
+        </div>
+
+      </div>
+
+      <div class="ornament">
+        <button type="button" class="btn-primary">Neues Projekt</button>
+        <button type="button" class="btn-secondary">Importieren</button>
+      </div>
+    </div>
+
+  </div>
+</div>

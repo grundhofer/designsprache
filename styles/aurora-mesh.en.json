@@ -1,0 +1,69 @@
+{
+  "slug": "aurora-mesh",
+  "name": "Aurora / Mesh Gradient",
+  "aka": ["Aurora UI", "Mesh Gradient", "AI Startup Look", "Glow Gradient", "Stripe Gradient"],
+  "family": "Expression & Nature",
+  "era": "2018-today (peak from 2023)",
+  "origin": "The origin lies with Stripe, which from about 2018 put animated, multicolored gradient fields on its home pages - technically demanding, built as a WebGL mesh and masked precisely into the brand. Apple normalized the imagery in 2020 with the Big Sur and M1 keynote gradients, and in March 2021 Michal Malewicz gave the whole thing a name with the article 'Aurora UI - new visual trend for 2021', after which the pattern tipped into the mainstream through Dribbble and Behance. The decisive simplification came out of CSS: several stacked radial gradients plus one large blur() deliver the same impression without shaders, in fifteen lines. The problem it solved was emptiness - minimal dark landing pages with no imagery looked dead, and the aurora field gave them depth and mood without anyone having to shoot a photograph.",
+  "idea": "A dark, near-black ground carries two to five large, heavily blurred color fields that read like light behind frosted glass; on top sits deliberately minimal typography and a fine system of hairline rules. The mood comes entirely from the background, not from the components.",
+  "markers": [
+    "2-5 stacked radial-gradient blobs at 30-46% extent, each with alpha 0.3-0.9 falling off to 0",
+    "blur(50-90px) across the whole gradient layer, often with saturate(120-140%)",
+    "Ground near-black, but never #000000 - typically #07080C to #0B0D14",
+    "Very slow drift: 30-50s ease-in-out infinite, movement under 6% translation",
+    "Inter or a comparable neo-grotesque with negative tracking (-0.01 to -0.035em)",
+    "Heading with background-clip: text and a white-to-white-72% gradient",
+    "Glass elements: 1px border of rgba(255,255,255,.10), fill rgba(255,255,255,.045), backdrop-filter: blur(12-14px)",
+    "Separation exclusively through 1px rules at 8-12% white, no cards, no shadows",
+    "Primary button white on dark, radius 10-12px, with a colored glow shadow in an accent hue",
+    "Grain layer at 3-6% against banding in the gradients"
+  ],
+  "params": {
+    "radius": "10-12px on surfaces, 999px on pills",
+    "contrast": "high on text, very low on anything structural",
+    "density": "very airy",
+    "depth": "no drop shadows; depth comes from blur layers, glass fills and colored glows",
+    "color": "A near-black ground plus three to five luminous accents (violet, cyan, magenta, mint) used exclusively as soft light fields - never as the fill color of a control.",
+    "type": "Neo-grotesque, medium weights (450-500), strongly negative tracking, barely any size hierarchy - the restraint is part of the style.",
+    "motion": "Very slow background drift, 34-46s ease-in-out infinite; interaction terse and calm at 180-220ms cubic-bezier(.2,0,0,1)",
+    "texture": "Fine fractalNoise grain at 5% as a data-URI SVG, otherwise smooth"
+  },
+  "palette": ["#07080C", "#F7F8FA", "#7C5CFF", "#35D6E8", "#E849A8", "#2DD4A7"],
+  "examples": [
+    {"name": "Stripe (home page from 2018)", "what": "The animated mesh gradient in the header, built as a WebGL grid with interpolated color nodes - the original every later CSS rebuild is measured against."},
+    {"name": "Apple, macOS Big Sur / M1 keynotes (2020)", "what": "Floating gradient ribbons behind product renders; took the aesthetic out of the SaaS niche and into mass taste."},
+    {"name": "Linear", "what": "Dark ground, one violet glow behind the fold, separation only through 1px rules and glass panels - the model for the product-UI variant rather than the marketing variant."},
+    {"name": "OpenAI and Anthropic marketing pages (2023-2026)", "what": "Soft color fields behind large, quiet type; exactly the combination that made this style the badge of the entire AI industry."},
+    {"name": "Michal Malewicz, 'Aurora UI - new visual trend for 2021'", "what": "The March 2021 article that gave the pattern its name and put the build instructions - blurred shapes, related colors, soft transitions - into circulation."}
+  ],
+  "strengths": [
+    "Very high leverage: fifteen lines of CSS create a mood that would otherwise take photography or illustration",
+    "Costs nothing in assets and is arbitrarily resolution-independent",
+    "The reduced typography underneath ages well and fits cleanly into tokens",
+    "Works excellently for landing, login and empty states, where there is little content anyway"
+  ],
+  "risks": [
+    "Currently the most generic style there is - dozens of AI startups are visually indistinguishable; recognition close to zero",
+    "Gradients show visible banding on 8-bit displays unless grain sits on top",
+    "backdrop-filter and large blurred areas cost noticeable GPU time, especially on older Android devices",
+    "Text over bright gradient zones loses contrast the moment anyone moves the blob positions - legibility hangs on a darkening layer that is easily forgotten",
+    "Carries no information density: as soon as real tables, filters and forms arrive, the background becomes noise"
+  ],
+  "a11y": "The text itself is uncritical - #F7F8FA on #07080C sits at roughly 17:1 - but the muted secondary levels are not: rgba(247,248,250,.40) drops below 4.5:1 fast over a bright gradient blob, which is why a darkening layer (linear gradient from 22% at the top to 78% at the bottom) sits between the aurora and the content. The 1px rules at 10% white are practically invisible as a structural cue for people with low contrast sensitivity, so they must never be the sole carrier of information. The permanent background drift has to be switched off under prefers-reduced-motion, and status must not hang on the colored dot alone - which is why the word stands next to it here.",
+  "longevity": "Technically the style ages well, because it rests on color and white space rather than on a fashion in shapes; culturally it ages very fast, because it was used up from 2023 to 2026 as the uniform of the AI industry. In five years the violet-cyan glow will date to 2024 as unmistakably as the gradient button dates to 2008.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 1,
+    "effort": 2,
+    "density": 1
+  },
+  "platforms": {
+    "web": "Trivial in CSS and Tailwind; the only caution is the performance of large blurred areas and banding on weak displays.",
+    "mobile": "Directly rebuildable in Compose via Brush.radialGradient and in SwiftUI via MeshGradient (from iOS 18) - the most easily portable of all the styles in this family.",
+    "desktop": "Good in Tauri, but large-area backdrop-filter in a permanently open window wastes battery; better to render it statically."
+  },
+  "verdict": "As the base for a house brand this is the most comfortable and at the same time the weakest choice in the whole catalog: technically cheap, unproblematic across platforms, buildable in Compose and SwiftUI with stock components - and completely interchangeable. This exact look became the standard uniform of every AI and SaaS startup from 2023 to 2026; whoever picks it gets a professional-looking surface and precisely zero recognition, which misses the actual goal for someone with many small apps. It is usable as a thin marketing layer over a different, stronger product base: aurora on the landing page, sober structure in the app. As a brand it then still needs its own non-generic signal - an idiosyncratic typeface, an unexpected accent color, or a shape detail that did not come out of a gradient generator.",
+  "combinesWith": ["dev-noir", "glassmorphism", "swiss", "terminal-mono"],
+  "tip": "Two things separate the expensive variant from the generator variant: first a grain layer of 3-6% over the gradients, otherwise banding shows on any 8-bit panel; second a darkening layer between the aurora and the content, so the typography does not depend on blob position. And set the color choice deliberately against the norm - violet-cyan is the default, whereas amber-rust or mint-indigo read immediately as a brand of your own rather than a template.",
+  "googleFonts": ["Inter"]
+}

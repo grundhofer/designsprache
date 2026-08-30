@@ -1,0 +1,103 @@
+{
+  "slug": "terminal-mono",
+  "name": "Terminal / Monospace-Minimalismus",
+  "aka": [
+    "Monospace-Minimalismus",
+    "TUI-Ästhetik",
+    "CLI-Look",
+    "Text-Mode-Design"
+  ],
+  "family": "Produkt-Ästhetik heute",
+  "era": "1970-heute (als bewusster Designstil: ca. 2019-heute)",
+  "origin": "Der Stil ist die Nachbildung einer technischen Zwangslage: VT100-Terminals und Zeilendrucker konnten nur ein festes Zeichenraster darstellen, Trennlinien mussten aus den Box-Drawing-Zeichen von Codepage 437 und später Unicode U+2500-257F gebaut werden. Ab etwa 2019 wird daraus eine freiwillige Designentscheidung: Charm (Bubble Tea, Lip Gloss, ab 2020) macht TUIs wieder salonfähig, die U.S. Graphics Company vermarktet mit Berkeley Mono (2021) das Monospace-Raster als Markenzeichen, und Terminal.shop verkauft ab 2024 Kaffee über SSH. Das gelöste Problem ist heute kein technisches, sondern ein Positionierungsproblem: der Stil signalisiert in 200 Millisekunden 'gebaut von Entwicklern für Entwickler' und grenzt sich von generischen SaaS-Layouts ab. Möglich wurde die Web-Umsetzung durch gute Screen-Monospaces und durch ch-Einheiten, mit denen sich ein echtes Zeichenraster im Browser rechnen lässt.",
+  "idea": "Das Zeichenraster ist das Layoutsystem: alles sitzt auf ganzzahligen Spalten- und Zeilenpositionen, und jede Trennung wird aus Text gebaut statt aus Grafik.",
+  "markers": [
+    "Radius 0px ausnahmslos, auch bei Inputs und Buttons",
+    "Eine einzige Schriftfamilie, monospace, für 100% aller Zeichen inklusive Überschriften",
+    "Zeilenhöhe als feste Rasterzelle (hier 20px), alle Höhen sind Vielfache davon - Zeile und Statusleiste 1 Zelle, Eingabefeld und Buttons genau 2 Zellen (40px)",
+    "Trennlinien als Box-Drawing-Zeichen (U+250C ┌, U+2500 ─, U+2524 ┤) oder 1px-Hairlines, nie als Schatten",
+    "Punkt-Leader (······) füllen den Raum zwischen Label und Wert wie in einem Inhaltsverzeichnis",
+    "Palette: Grund + Vordergrund + genau 2 Akzente (hier #00C08B Ok, #E8A33D Warnung), keine dritte Farbe, box-shadow nirgends",
+    "Blockcursor 8x15px mit steps(1,end)-Blink bei 1.06s Periode",
+    "Statuszeile am unteren Rand mit Modus, Zähler und Tastenkürzeln (vim/tmux-Zitat)",
+    "Buttons als Klammerform [Text] bzw. ▸ Text, nicht als gefüllte Pille"
+  ],
+  "params": {
+    "radius": "0px, ohne Ausnahme",
+    "contrast": "sehr hoch",
+    "density": "dicht",
+    "depth": "keine; Trennung ausschließlich über 1px-Hairlines und Box-Drawing-Zeichen",
+    "color": "Ein Grundton, ein Vordergrundton, zwei semantische Akzente (Ok/Warnung) - Farbe ist Zustand, nie Dekoration",
+    "type": "Eine Monospace für alles; Hierarchie entsteht über Versalien, letter-spacing 0.22em und Helligkeit, nicht über Größe",
+    "motion": "Praktisch keine; einzige Bewegung ist der Cursor-Blink mit steps(1,end); Hover schaltet Farben hart um, ohne transition",
+    "texture": "Zeilenraster als repeating-linear-gradient bei 1.8% Weiß - eine sichtbare Zeile pro 20px-Zelle"
+  },
+  "palette": [
+    "#0C0C0C",
+    "#101010",
+    "#D9D9D4",
+    "#7C7C74",
+    "#00C08B",
+    "#E8A33D"
+  ],
+  "examples": [
+    {
+      "name": "Terminal.shop",
+      "what": "Kaffee-Shop, dessen Hauptbestellweg ein SSH-Aufruf ist; die Website spiegelt exakt das TUI: Monospace, harte Kanten, Produktliste als Textzeilen mit Punkt-Leadern"
+    },
+    {
+      "name": "Charm (Bubble Tea, Lip Gloss, Glow)",
+      "what": "Go-Bibliotheken für TUIs; die Doku-Seiten und READMEs zeigen gerenderte Terminal-Frames mit Box-Drawing-Rahmen, farbigen Badges und Blockcursor als Marketing-Material"
+    },
+    {
+      "name": "U.S. Graphics Company / Berkeley Mono (2021)",
+      "what": "Foundry-Website, die das Zeichenraster zum Markenkern macht: Tabellen mit ASCII-Rahmen, technische Datenblatt-Optik, Versalien-Labels, keinerlei Rundung"
+    },
+    {
+      "name": "Ampcode",
+      "what": "Coding-Agent-Produktseite in durchgehendem Monospace; Feature-Listen als Terminal-Ausgabe gesetzt, Prompt-Zeichen als wiederkehrendes Ornament"
+    },
+    {
+      "name": "Vercel Ship (Konferenz-Sites ab 2023)",
+      "what": "Geist Mono als Display-Schrift, Zeitplan als Rasterliste, Zähler und IDs in tabularen Ziffern, harte 1px-Trennlinien statt Karten"
+    }
+  ],
+  "strengths": [
+    "Extrem hohe Wiedererkennung bei minimalem CSS-Aufwand - der Look trägt sich über Schrift und Raster, nicht über Komponenten",
+    "Zielgruppen-Treffer: signalisiert unmissverständlich Werkzeug für technische Nutzer",
+    "Das Zeichenraster erzwingt Disziplin - willkürliche Abstände fallen sofort auf, Layout-Drift ist quasi ausgeschlossen",
+    "Kontrast ist strukturell hoch, weil die Palette dunkler Grund plus heller Vordergrund ohnehin nur zwei Werte kennt",
+    "Cross-Platform trivial reproduzierbar: eine Schrift, eine Zellhöhe, vier Farben - dieselben Zahlen laufen in Tailwind, Compose und SwiftUI"
+  ],
+  "risks": [
+    "Monospace senkt die Lesegeschwindigkeit bei Fließtext messbar - ab etwa drei Sätzen am Stück wird es anstrengend",
+    "Box-Drawing-Zeichen brechen, sobald der Fallback-Font einspringt oder das Layout nicht exakt monospaced ist; Zeichen-Rahmen über die volle Breite sind im responsiven Web nie ganz sauber",
+    "Der Stil kippt schnell ins Kostüm: Matrix-Grün, Glow und Scanlines machen aus einem Werkzeug ein Hacker-Klischee",
+    "Für Nicht-Entwickler wirkt er unfertig oder abweisend - bei Kunden außerhalb der Tech-Blase ein echtes Verkaufsrisiko",
+    "Ohne proportionale Zweitschrift ist Marketing-Copy kaum verkaufbar; ein reiner Mono-Stack limitiert die Landingpage stark"
+  ],
+  "a11y": "Der Kontrast ist unkritisch: #D9D9D4 auf #0C0C0C liegt bei 13,8:1, die Akzente bei 8,3:1 (#00C08B) und 9,1:1 (#E8A33D). Zwei echte Probleme bleiben: der blinkende Cursor fällt unter WCAG 2.2.2 (Pausieren/Stoppen) und muss deshalb entweder unter fünf Sekunden bleiben oder per prefers-reduced-motion abschaltbar sein - hier ist Letzteres umgesetzt. Zweitens ist der Status ausschließlich über Farbe plus Punkt codiert; das Wort 'Aktiv'/'Pausiert' steht daneben und trägt die Information, der Punkt ist reine Redundanz - genau so muss es bleiben, sonst verstößt der Stil gegen 1.4.1.",
+  "longevity": "Das Grundgerüst ist strukturell und nicht modisch: Zeichenraster und Nullradius altern nicht, weil sie eine echte technische Herkunft haben. Datierbar ist nur die Farbwahl - Neongrün und Glow markieren einen Jahrgang, ein gedecktes Grün oder ein reines Weiß auf Schwarz nicht.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 2,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Sehr gut für Tools, Doku und Dev-Marketing; für längeren Fließtext braucht die Seite eine proportionale Zweitschrift.",
+    "mobile": "Schwach: Monospace frisst horizontal Platz, Punkt-Leader und Rahmenzeichen brechen bei 360dp, und der Look wirkt auf Touch fremd.",
+    "desktop": "Ideal - Tauri-Fenster, Fensterrahmen und Statusleiste sind genau das Vokabular, das dieser Stil ohnehin zitiert."
+  },
+  "verdict": "Als Marken-Kern für alle Apps ist das zu eng, als Marken-Signatur aber ausgezeichnet. Ein Solo-Entwickler mit vielen kleinen Werkzeugen bekommt hier die billigste denkbare Wiedererkennung: eine Monospace, ein 20px-Raster, vier Farben - das ist in Tailwind, Compose und SwiftUI in einem Nachmittag dreimal identisch aufgesetzt. Das Problem ist Compose: auf Android wirkt eine reine Mono-Oberfläche fremd und teuer in der Lesbarkeit, und Balance Ally oder ein Schreibwerkzeug will niemand in Courier bedienen. Empfehlung: Mono als Signatur-Ebene (Zahlen, IDs, Zeitangaben, Statusleisten, CLI-Blöcke, Logo-Wortmarke) über einem proportionalen Grundstil, statt als Grundstil selbst.",
+  "combinesWith": [
+    "dev-noir",
+    "swiss",
+    "neo-brutalism",
+    "data-dense"
+  ],
+  "tip": "Zwinge dich auf eine einzige Zellhöhe und rechne jede Höhe als Vielfaches davon - Buttons, Inputs, Zeilen, Statusleiste. Der Stil wirkt nicht durch die Schrift überzeugend, sondern dadurch, dass die Grundlinien über die ganze Seite hinweg exakt aufeinander liegen; sobald ein Element 34px statt 40px hoch ist, sieht es nach Kostüm aus statt nach Terminal.",
+  "googleFonts": [
+    "Geist Mono"
+  ]
+}

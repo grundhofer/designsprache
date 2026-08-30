@@ -1,0 +1,69 @@
+{
+  "slug": "swiss",
+  "name": "Swiss / International Typographic Style",
+  "aka": ["Swiss Style", "International Typographic Style", "Neue Grafik", "Zurich School", "Basel School"],
+  "family": "Modernist Schools",
+  "era": "1950-today",
+  "origin": "Emerged in Zurich and Basel in the 1950s around Josef Müller-Brockmann, Armin Hofmann, Emil Ruder and Max Bill, gathered editorially in the journal 'Neue Grafik' (from 1958). The style pursued objective communication, stripped of the designer's ego, for a multilingual country and an international market – information instead of expression. It was made possible by the grotesques of the period (Akzidenz-Grotesk from 1896, Helvetica and Univers from 1957) and by industrial offset printing with precise registration, which is what made a millimeter-exact grid reproducible in the first place. Müller-Brockmann's Tonhalle posters (from 1951, more than 70 designs up to 1972) and his book 'Grid Systems in Graphic Design' (1981) are the canonical references.",
+  "idea": "A modular grid carries the entire hierarchy; order comes from position, size and white space instead of decoration.",
+  "markers": [
+    "Radius 0px, without exception",
+    "Modular 12-column grid + 24px baseline grid, edges flush to the column axis",
+    "Exactly one signal color (classically red #E30613) on black and white, color under 5% of the surface",
+    "No shadows, no gradients, no textures – separation through 1px hairlines and spacing",
+    "Grotesque in no more than 3 weights (400/500/700), headline tracking -0.045em",
+    "Asymmetric type axis: content flush left, a large empty margin column at the right or left",
+    "White-space budget: outer margins ≥ 40px, block spacing in multiples of 24px",
+    "Text/ground contrast > 15:1 (#0B0B0B on #FFFFFF)",
+    "No centered setting, no justification – everything flush left, ragged right"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "very high",
+    "density": "airy",
+    "depth": "none; separation exclusively through 1px rules, spacing and alignment",
+    "color": "Black and white as the system, a single signal color (red) used purely functionally for status, brand and focus.",
+    "type": "Neutral grotesque, strictly hierarchical through size and weight, negative tracking in headlines, caps only in microtypography.",
+    "motion": "Minimal and functional: 100-150ms linear or ease-out, color and position only, never scale or bounce.",
+    "texture": "none"
+  },
+  "palette": ["#FFFFFF", "#0B0B0B", "#E30613", "#6E6E6E", "#D4D4D4"],
+  "examples": [
+    {"name": "Josef Müller-Brockmann, Tonhalle posters, Zurich (1951-1972)", "what": "Concentric circles and bars on a strict column grid, Akzidenz-Grotesk, text flush to the grid axis, red as the only chromatic color"},
+    {"name": "SBB / Swiss Federal Railways corporate design", "what": "Station signage and timetables: a Helvetica derivative, tabular grid, red #EB0000 for brand and warning only, zero decoration at extreme information density"},
+    {"name": "Studio Feixen (Lucerne)", "what": "Contemporary proof that grid discipline and bold color can coexist: exact column logic, but loud fills – Swiss without the museum dust"},
+    {"name": "Swissted (Mike Joyce)", "what": "Punk concert posters rebuilt in Berthold Akzidenz-Grotesk on a grid; shows how forcefully the style formats arbitrary content"},
+    {"name": "Vercel / Linear marketing sites", "what": "Today's web translation: hairline dividers instead of cards, tabular figures, one accent, generous margin columns"}
+  ],
+  "strengths": [
+    "70 years of proven longevity – the only style on this list that practically never dates",
+    "Scales without loss from poster to dashboard to mobile list, because the rule (the grid) carries it, not the image",
+    "Translates 1:1 into tokens: Tailwind spacing, Compose dimens, SwiftUI padding – an 8pt grid looks identical everywhere",
+    "Zero rendering cost: no filters, no shadows, no assets – ideal for a Tauri WebView and low-end Android",
+    "Very high information density at the best possible legibility"
+  ],
+  "risks": [
+    "Without excellent typography and real grid discipline it does not read as 'Swiss', just as unfinished",
+    "Interchangeable when font and grid stay at their defaults – Inter plus 12 columns is half the startup world today",
+    "Little emotional warmth; too cool for consumer apps that want to be fun",
+    "White space is the first thing to collapse on mobile – skimp there and you lose exactly the distinguishing feature",
+    "Hairlines below 1px get scaled away on some displays; the separation then disappears entirely"
+  ],
+  "a11y": "In accessibility terms this is the most favorable style there is: #0B0B0B on white delivers 19.7:1, there is no transparency and no texture under text. Watch the secondary gray – the classic light gray #8C8C8C reaches only 3.4:1 on white and fails; secondary text is compliant only from about #6E6E6E (5.1:1) onward, which is exactly the value set in the demo. The other real risks are type sizes that are too small in the microtypography (legends below 11px, tracking above 0.2em lowers word recognition) and encoding status through the red signal color alone – every status must additionally carry a word or a shape. Hairline dividers as the only structural signal can vanish for users with low vision; set focus rings in 2px red rather than 1px gray.",
+  "longevity": "The reference case for not aging: the Tonhalle posters from 1955 still work unchanged, and every digital wave since Flat 2.0 has borrowed from this grammar. Only the choice of typeface can date it, never the system.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Ideal – CSS Grid is the direct technical equivalent of the modular grid, and hairlines and white space cost nothing.",
+    "mobile": "Good, but only with discipline: the grid has to collapse to 4 columns and the white-space budget has to shrink without the margin column disappearing altogether.",
+    "desktop": "Ideal for Tauri: dense lists and tables are its home turf, and no GPU-expensive effects run in the WebView."
+  },
+  "verdict": "Yes – but as a structural layer, not as a complete brand. Swiss delivers exactly what a solo developer with many small apps needs: a rule set for grid, spacing scale and type hierarchy that reproduces identically in Tailwind, Compose and SwiftUI and will not be embarrassing in five years. The weakness is recognizability: pure Swiss is the default aesthetic of good software today and carries no brand of its own. It therefore needs exactly one idiosyncratic carrier on top – an unusual signal color instead of red, a grotesque with more character, or a consistently visible grid element – otherwise you build 27 clean but faceless apps.",
+  "combinesWith": ["de-stijl", "bauhaus", "dev-noir", "neo-brutalism"],
+  "tip": "Make the grid visible once instead of merely obeying it: a hairline on a column axis, a legend row above the list, an empty margin column that stays consistently empty. The difference between 'Swiss' and 'a white page' is that the viewer can feel the construction – and that takes the nerve to leave 25% of the surface unused.",
+  "googleFonts": ["Inter"]
+}

@@ -1,0 +1,664 @@
+<style>
+.style-data-dense {
+  color-scheme: dark;
+  --dd-bg: #080A0D;
+  --dd-panel: #0D1116;
+  --dd-panel-2: #11161D;
+  --dd-line: #1B222B;
+  --dd-line-2: #2A3440;
+  --dd-fg: #C9D2DC;
+  --dd-dim: #7B8794;
+  --dd-faint: #505B68;
+  --dd-up: #2BD97C;
+  --dd-down: #FF5364;
+  --dd-amber: #FFB020;
+  --dd-cyan: #4FA8FF;
+  --dd-sel: #132434;
+
+  width: 100%;
+  background: var(--dd-bg);
+  color: var(--dd-fg);
+  font-family: "IBM Plex Sans Condensed", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+.style-data-dense,
+.style-data-dense *,
+.style-data-dense *::before,
+.style-data-dense *::after {
+  box-sizing: border-box;
+}
+
+.style-data-dense .demo {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  background: var(--dd-panel);
+  border: 1px solid var(--dd-line);
+}
+
+.style-data-dense .num {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.style-data-dense .lbl {
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dd-dim);
+  font-weight: 600;
+}
+
+/* ---------- Ticker ---------- */
+
+.style-data-dense .ticker {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  gap: 0;
+  border-bottom: 1px solid var(--dd-line);
+  background: var(--dd-bg);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.style-data-dense .ticker .tag {
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #120C00;
+  background: var(--dd-amber);
+  padding: 0 4px;
+  margin-right: 10px;
+}
+
+.style-data-dense .ticker .tick {
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: var(--dd-dim);
+  padding: 0 10px;
+  border-right: 1px solid var(--dd-line);
+  flex: none;
+}
+
+.style-data-dense .ticker .tag + .tick { padding-left: 0; }
+
+.style-data-dense .ticker .tick b {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--dd-fg);
+  margin-left: 5px;
+}
+
+.style-data-dense .ticker .tick b.up { color: var(--dd-up); }
+.style-data-dense .ticker .tick b.down { color: var(--dd-down); }
+.style-data-dense .ticker .spacer { flex: 1; }
+
+.style-data-dense .pulse {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--dd-up);
+  margin-left: 5px;
+  animation: data-dense-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes data-dense-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.28; }
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.style-data-dense .head {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--dd-line-2);
+  background: var(--dd-panel-2);
+}
+
+.style-data-dense .head .title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border-right: 1px solid var(--dd-line);
+  min-width: 0;
+}
+
+.style-data-dense .head h2 {
+  margin: 0;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E6ECF2;
+  white-space: nowrap;
+}
+
+.style-data-dense .head .count {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--dd-amber);
+  letter-spacing: -0.02em;
+}
+
+.style-data-dense .kpis {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.style-data-dense .kpi {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 5px 10px;
+  border-right: 1px solid var(--dd-line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.style-data-dense .kpi:last-child { border-right: 0; }
+
+.style-data-dense .kpi .v {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--dd-fg);
+}
+
+.style-data-dense .kpi .v .d {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.style-data-dense .up { color: var(--dd-up); }
+.style-data-dense .down { color: var(--dd-down); }
+.style-data-dense .flat { color: var(--dd-dim); }
+
+/* ---------- Werkzeugleiste ---------- */
+
+.style-data-dense .toolbar {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  height: 26px;
+  border-bottom: 1px solid var(--dd-line);
+  background: var(--dd-panel);
+}
+
+.style-data-dense .filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px;
+  border-right: 1px solid var(--dd-line);
+}
+
+.style-data-dense .filter .glyph {
+  color: var(--dd-faint);
+  font-size: 11px;
+  flex: none;
+}
+
+.style-data-dense .filter input {
+  flex: 1;
+  min-width: 0;
+  height: 18px;
+  padding: 0 6px;
+  background: var(--dd-bg);
+  border: 1px solid var(--dd-line-2);
+  border-radius: 1px;
+  color: var(--dd-fg);
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 16px;
+  outline: 0;
+}
+
+.style-data-dense .filter input::placeholder {
+  color: var(--dd-faint);
+  opacity: 1;
+}
+
+.style-data-dense .filter input:focus {
+  border-color: var(--dd-cyan);
+}
+
+.style-data-dense .actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  flex: none;
+}
+
+.style-data-dense button {
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  height: 18px;
+  padding: 0 8px;
+  border-radius: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 90ms linear, border-color 90ms linear;
+}
+
+.style-data-dense .btn-primary {
+  background: var(--dd-cyan);
+  border: 1px solid var(--dd-cyan);
+  color: #04121F;
+}
+
+.style-data-dense .btn-primary:hover { background: #78BEFF; border-color: #78BEFF; }
+
+.style-data-dense .btn-secondary {
+  background: var(--dd-panel-2);
+  border: 1px solid var(--dd-line-2);
+  color: var(--dd-fg);
+}
+
+.style-data-dense .btn-secondary:hover { border-color: var(--dd-dim); background: #18202A; }
+
+.style-data-dense button:focus-visible {
+  outline: 1px solid var(--dd-amber);
+  outline-offset: 1px;
+}
+
+/* ---------- Datengitter ---------- */
+
+.style-data-dense .gridwrap { overflow-x: auto; }
+
+.style-data-dense .colhead,
+.style-data-dense .row {
+  display: grid;
+  grid-template-columns: 26px minmax(130px, 1.6fr) 84px 78px 66px 56px;
+  align-items: center;
+  min-width: 440px;
+}
+
+.style-data-dense .colhead {
+  height: 18px;
+  border-bottom: 1px solid var(--dd-line-2);
+  background: var(--dd-panel-2);
+}
+
+.style-data-dense .colhead > span {
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dd-dim);
+  font-weight: 600;
+  padding: 0 6px;
+  border-right: 1px solid var(--dd-line);
+  height: 18px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.style-data-dense .colhead > span:last-child { border-right: 0; }
+
+.style-data-dense .r { justify-content: flex-end; }
+
+.style-data-dense .row {
+  height: 22px;
+  border-bottom: 1px solid var(--dd-line);
+  border-left: 2px solid transparent;
+}
+
+.style-data-dense .row:nth-child(even) { background: rgba(255, 255, 255, 0.014); }
+
+.style-data-dense .row:hover {
+  background: var(--dd-sel);
+  border-left-color: var(--dd-cyan);
+}
+
+.style-data-dense .row > span {
+  padding: 0 6px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--dd-line);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.style-data-dense .row > span:last-child { border-right: 0; }
+
+.style-data-dense .row .idx {
+  color: var(--dd-faint);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  justify-content: flex-end;
+}
+
+.style-data-dense .row .pname {
+  color: #E6ECF2;
+  font-weight: 500;
+  text-overflow: ellipsis;
+}
+
+.style-data-dense .row .time {
+  color: var(--dd-dim);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+}
+
+.style-data-dense .row .status {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.style-data-dense .row .status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  flex: none;
+  background: currentColor;
+}
+
+.style-data-dense .row.is-active .status { color: var(--dd-up); }
+.style-data-dense .row.is-paused .status { color: var(--dd-amber); }
+
+.style-data-dense .row .trend { padding: 0 4px; }
+.style-data-dense .row .trend svg { display: block; }
+
+.style-data-dense .row .delta {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  justify-content: flex-end;
+}
+
+/* ---------- Untere Panels ---------- */
+
+.style-data-dense .lower {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 168px;
+  border-top: 1px solid var(--dd-line-2);
+  min-height: 118px;
+}
+
+.style-data-dense .pane {
+  padding: 6px 8px 8px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.style-data-dense .pane + .pane { border-left: 1px solid var(--dd-line); }
+
+.style-data-dense .pane .lbl {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 7px;
+}
+
+.style-data-dense .pane .lbl em {
+  font-style: normal;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--dd-faint);
+  letter-spacing: 0;
+}
+
+.style-data-dense .bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  min-height: 54px;
+  border-bottom: 1px solid var(--dd-line-2);
+  padding-bottom: 1px;
+  background: repeating-linear-gradient(
+    to top,
+    var(--dd-line) 0px,
+    var(--dd-line) 1px,
+    transparent 1px,
+    transparent 25%
+  );
+}
+
+.style-data-dense .bars i {
+  flex: 1 1 0;
+  min-width: 2px;
+  background: var(--dd-cyan);
+  opacity: 0.72;
+}
+
+.style-data-dense .bars i.hi { background: var(--dd-amber); opacity: 1; }
+
+.style-data-dense .axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 12px;
+  color: var(--dd-faint);
+}
+
+.style-data-dense .metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.style-data-dense .metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  height: 19px;
+  border-bottom: 1px dotted var(--dd-line);
+  font-size: 11px;
+}
+
+.style-data-dense .metric span {
+  color: var(--dd-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-data-dense .metric b {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--dd-fg);
+  flex: none;
+}
+
+/* ---------- Statusleiste ---------- */
+
+.style-data-dense .status-strip {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 8px;
+  gap: 8px;
+  border-top: 1px solid var(--dd-line-2);
+  background: var(--dd-bg);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--dd-dim);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.style-data-dense .status-strip .sep { color: var(--dd-line-2); }
+.style-data-dense .status-strip .grow { flex: 1; }
+.style-data-dense .status-strip .ok { color: var(--dd-up); }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-data-dense .pulse { animation: none; }
+}
+
+@media (max-width: 620px) {
+  .style-data-dense .lower { grid-template-columns: 1fr; }
+  .style-data-dense .pane + .pane { border-left: 0; border-top: 1px solid var(--dd-line); }
+  .style-data-dense .kpis .kpi:nth-child(3) { display: none; }
+}
+</style>
+<div class="style-data-dense">
+  <div class="demo">
+
+    <div class="ticker">
+      <span class="tag">LIVE</span>
+      <span class="tick">BUILDS<b class="up">14</b></span>
+      <span class="tick">ERRORS<b class="down">2</b></span>
+      <span class="tick">P95<b>118ms</b></span>
+      <span class="tick">QUEUE<b>0</b></span>
+      <span class="tick">UPTIME<b class="up">99.96%</b></span>
+      <span class="spacer"></span>
+      <span class="tick" style="border-right:0">SYNC<span class="pulse"></span></span>
+    </div>
+
+    <div class="head">
+      <div class="title">
+        <h2>Projects</h2>
+        <span class="count">12</span>
+      </div>
+      <div class="kpis">
+        <div class="kpi">
+          <div class="lbl">Active</div>
+          <div class="v">8<span class="d up">+2</span></div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">Paused</div>
+          <div class="v">3<span class="d flat">±0</span></div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">Archived</div>
+          <div class="v">1<span class="d down">−1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="filter">
+        <span class="glyph">⌕</span>
+        <input type="text" placeholder="Search..." readonly>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn-primary">New project</button>
+        <button type="button" class="btn-secondary">Import</button>
+      </div>
+    </div>
+
+    <div class="gridwrap">
+      <div class="colhead">
+        <span class="r">#</span>
+        <span>Name</span>
+        <span>Last</span>
+        <span>Status</span>
+        <span>Trend 7d</span>
+        <span class="r">Δ</span>
+      </div>
+
+      <div class="row is-active">
+        <span class="idx">01</span>
+        <span class="pname">Nexus</span>
+        <span class="time">2 hrs ago</span>
+        <span class="status">Active</span>
+        <span class="trend"><svg width="56" height="14" viewBox="0 0 56 14" fill="none" aria-hidden="true"><polyline points="0,11 8,9 16,10 24,6 32,7 40,4 48,3 56,1" stroke="#2BD97C" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+        <span class="delta up">+12%</span>
+      </div>
+
+      <div class="row is-active">
+        <span class="idx">02</span>
+        <span class="pname">Autowrite Studio</span>
+        <span class="time">yesterday</span>
+        <span class="status">Active</span>
+        <span class="trend"><svg width="56" height="14" viewBox="0 0 56 14" fill="none" aria-hidden="true"><polyline points="0,8 8,7 16,9 24,6 32,8 40,5 48,6 56,4" stroke="#2BD97C" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+        <span class="delta up">+3%</span>
+      </div>
+
+      <div class="row is-paused">
+        <span class="idx">03</span>
+        <span class="pname">Balance Ally</span>
+        <span class="time">4 days ago</span>
+        <span class="status">Paused</span>
+        <span class="trend"><svg width="56" height="14" viewBox="0 0 56 14" fill="none" aria-hidden="true"><polyline points="0,4 8,5 16,4 24,7 32,8 40,7 48,10 56,12" stroke="#FF5364" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>
+        <span class="delta down">−8%</span>
+      </div>
+    </div>
+
+    <div class="lower">
+      <div class="pane">
+        <div class="lbl">Commits / 24 h <em>max 41</em></div>
+        <div class="bars">
+          <i style="height:22%"></i><i style="height:14%"></i><i style="height:9%"></i><i style="height:6%"></i>
+          <i style="height:11%"></i><i style="height:28%"></i><i style="height:44%"></i><i style="height:52%"></i>
+          <i style="height:61%"></i><i style="height:73%"></i><i style="height:58%"></i><i style="height:66%"></i>
+          <i style="height:84%"></i><i class="hi" style="height:100%"></i><i style="height:79%"></i><i style="height:63%"></i>
+          <i style="height:71%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:37%"></i>
+          <i style="height:42%"></i><i style="height:26%"></i><i style="height:18%"></i><i style="height:12%"></i>
+        </div>
+        <div class="axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+      </div>
+
+      <div class="pane">
+        <div class="lbl">Runtime</div>
+        <div class="metrics">
+          <div class="metric"><span>Build avg</span><b>4.2 s</b></div>
+          <div class="metric"><span>Bundle</span><b>218 kB</b></div>
+          <div class="metric"><span>Tests</span><b class="up">312/312</b></div>
+          <div class="metric"><span>Deploys</span><b>27</b></div>
+          <div class="metric"><span>Open</span><b class="down">2</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-strip">
+      <span>12 ROWS</span>
+      <span class="sep">│</span>
+      <span>3 VISIBLE</span>
+      <span class="sep">│</span>
+      <span>SORT: LAST ↓</span>
+      <span class="sep">│</span>
+      <span class="ok">CONNECTED</span>
+      <span class="grow"></span>
+      <span>REFRESH 5 s</span>
+      <span class="sep">│</span>
+      <span>14:02:37 CET</span>
+    </div>
+
+  </div>
+</div>

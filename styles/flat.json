@@ -1,0 +1,105 @@
+{
+  "slug": "flat",
+  "name": "Flat Design & Flat 2.0",
+  "aka": [
+    "Metro",
+    "Modern UI",
+    "Authentically Digital",
+    "Almost Flat",
+    "Semi-Flat",
+    "iOS-7-Look"
+  ],
+  "family": "Digitale Epochen",
+  "era": "2010-heute (Flat 1.0 2010-2015, Flat 2.0 ab ca. 2015)",
+  "origin": "Der Stil entstand bei Microsoft: aus der Oberfläche von Windows Media Center und dem Zune HD (2009) wurde 2010 mit Windows Phone 7 die Designsprache Metro - explizit aus der Schweizer Typografie und aus Leitsystemen des öffentlichen Nahverkehrs abgeleitet, mit den Leitsätzen 'content before chrome' und 'authentically digital'. Der Bildschirm sollte nicht mehr so tun, als sei er Papier oder Glas. 2012 zwang ein Markenkonflikt Microsoft zur Umbenennung in 'Modern UI'; im selben Jahr kam Windows 8. Den globalen Durchbruch brachte 2013 iOS 7 unter Jony Ive, das den Skeuomorphismus in einem Schritt entfernte - technisch getrieben durch Retina, Responsive Design und den Wunsch, UI wieder in Vektoren und Tokens statt in Bitmaps auszuliefern. Ab etwa 2015 kehrten unter dem Namen Flat 2.0 minimale Schatten und Layering zurück, weil die reine Form die Bedienbarkeit messbar verschlechtert hatte.",
+  "idea": "Der Bildschirm gibt zu, dass er ein Bildschirm ist: keine simulierte Tiefe, sondern Farbe, Typografie und Weißraum als einzige Träger von Struktur und Bedeutung. Flat 2.0 nimmt genau so viel Tiefe zurück, wie für erkennbare Bedienbarkeit nötig ist - eine Schattenstufe, kein Millimeter mehr.",
+  "markers": [
+    "Radius 0px in Flat 1.0, 4-8px in Flat 2.0 - dazwischen gibt es nichts",
+    "Null Verläufe: jede Fläche ist genau eine Volltonfarbe",
+    "Flat 1.0: box-shadow: none überall; Flat 2.0: genau EINE Stufe, 0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.10)",
+    "Trennung über 1px-Hairlines (#E2E2E2) oder über 4px-Kachelabstände, nie über Tiefe",
+    "Dünne Grotesk: Titel in Weight 200-300, 48-56px, Tracking -0.035em",
+    "Mikrotext in Versalien mit 0.14-0.16em Laufweite als einziges Auszeichnungsmittel",
+    "Geometrische Icons, Konturstil, Strichstärke 1,5px, stroke-linecap: square, kein Fill",
+    "Farbe ist Bedeutung, nicht Dekoration: Status wird über die Vollfläche der Zeile codiert",
+    "Zustandswechsel als reiner Farbsprung, 100-150ms linear, kein Bounce"
+  ],
+  "params": {
+    "radius": "0px (1.0) bzw. 4-6px (2.0)",
+    "contrast": "hoch",
+    "density": "mittel bis luftig - große Typo, große Farbflächen, wenig Elemente pro Bildschirm",
+    "depth": "keine; Trennung über Farbfläche, 4px-Fugen und 1px-Linien. Flat 2.0 fügt genau eine Schattenstufe plus 1px-Border als Container-Marker hinzu",
+    "color": "Wenige, stark gesättigte Vollton-Akzente auf Weiß oder Schwarz; jede Farbe hat eine feste semantische Rolle",
+    "type": "Eine Grotesk in extremer Gewichtsspreizung - sehr dünn und sehr groß für Titel, normal für Inhalt, Versalien für Labels",
+    "motion": "sachlich und schnell: 100-200ms linear oder ease-out, Deckkraft und Position, kein Federn",
+    "texture": "keine - explizit 'authentically digital'"
+  },
+  "palette": [
+    "#1BA1E2",
+    "#00ABA9",
+    "#E51400",
+    "#A4C400",
+    "#007AFF",
+    "#FFFFFF"
+  ],
+  "examples": [
+    {
+      "name": "Windows Phone 7 / Metro (2010)",
+      "what": "Live Tiles als randlose Farbquadrate mit 4px-Fugen, riesige dünne Segoe-UI-Titel, die absichtlich am Bildschirmrand angeschnitten werden, Panorama-Navigation ohne jeden Rahmen"
+    },
+    {
+      "name": "iOS 7 (2013)",
+      "what": "Helvetica Neue Light, Hairline-Trenner statt Zellrahmen, Buttons ohne Umriss als reiner blauer Text (#007AFF), Icons in 1,5px-Kontur"
+    },
+    {
+      "name": "Windows 8 Startbildschirm (2012)",
+      "what": "Vollbild-Kachelraster als einziger Einstiegspunkt - das kommerziell teuerste Beispiel dafür, wie weit ein Stil Konventionen kippen kann"
+    },
+    {
+      "name": "Google Material Design (2014)",
+      "what": "Die erste systematische Korrektur: flache Flächen, aber mit definierter Elevation in dp - de facto der Startpunkt von Flat 2.0"
+    },
+    {
+      "name": "Stripe Dashboard, GitHub Primer, Notion (heute)",
+      "what": "Der ausgereifte Flat-2.0-Konsens: 6-8px Radius, eine Schattenstufe, 1px-Border als primärer Containermarker, Hover als 4-8% Helligkeitsverschiebung"
+    }
+  ],
+  "strengths": [
+    "Vollständig tokenisierbar: Farbe, Radius, Abstand - keine Assets, kein Bild, kein Rendering-Trick",
+    "Nahezu kostenlos in jeder Umgebung reproduzierbar, von Tailwind über Compose bis SwiftUI, und billig in Light/Dark zu spiegeln",
+    "Sehr performant: keine Filter, keine Blur-Ebenen, keine Schattenketten - relevant für Listen und für WebView-Ziele wie Tauri",
+    "Skaliert verlustfrei über jede Pixeldichte, weil alles Vektor und Farbe ist",
+    "Flat 2.0 ist der sicherste Default überhaupt: falsch machen kann man damit fast nichts"
+  ],
+  "risks": [
+    "Der berühmte Affordanz-Kollaps von Flat 1.0: Button und Beschriftung sind visuell nicht mehr unterscheidbar - der 'flat text button' gilt bis heute als UX-Antipattern",
+    "Wenn Farbe der einzige Bedeutungsträger ist, fällt die Bedeutung für farbfehlsichtige Nutzer und in Graustufen komplett aus",
+    "Dünne Weights unter 300 brechen bei kleinen Größen und auf schlechten Displays weg",
+    "Volltonfarben mit hoher Helligkeit (#1BA1E2, #A4C400, #007AFF) tragen weißen Text nur bei 2,5-4:1 - die authentischen Metro-Werte sind nicht konform",
+    "Flat 2.0 hat null Wiedererkennung: es ist exakt der Default-Look jedes Frameworks und jedes generierten UI - austauschbar per Konstruktion"
+  ],
+  "a11y": "Das strukturelle Problem ist nicht der Kontrast, sondern die Affordanz: ohne Rahmen, Schatten oder Füllung gibt es kein visuelles Signal für Klickbarkeit, weshalb interaktive Elemente mindestens einen zweiten Marker (Rahmen, Fläche, Icon) brauchen und ein sichtbarer Fokusring nicht verhandelbar ist. Der zweite Fallstrick ist Farbe als einziger Kanal - der Status muss immer auch als Text oder Form vorhanden sein, nicht nur als Kachelfarbe. Die Demo verwendet bewusst abgedunkelte Varianten der historischen Metro-Akzente (#0A6CA8 statt #1BA1E2, #0E7A5F statt #00ABA9), weil die Originalwerte weißen Text nur mit rund 2,6:1 tragen und damit unter jeder Norm liegen.",
+  "longevity": "Flat 1.0 in Reinform ist datiert und wird sofort als 2013 gelesen; Flat 2.0 altert in der Substanz praktisch nicht, weil es der technische Konsens ist - aber genau deshalb altert es in der Distinktion sofort. Ein Produkt, das nur Flat 2.0 ist, sieht in jedem Jahr aus wie alle anderen dieses Jahres.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 2,
+    "effort": 1,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Der Heimatplatz: Tailwind und shadcn/ui treffen Flat 2.0 ohne eine Zeile Konfiguration, und Astro-Content-Seiten profitieren von der Performance.",
+    "mobile": "Auf beiden Systemen problemlos - iOS ist seit 2013 ohnehin flach, Compose bildet Flat 2.0 mit Surface und einer Elevation-Stufe direkt ab.",
+    "desktop": "Ideal für Tauri: keine GPU-Filter, keine Repaint-Probleme im WebView, und dichte Datenansichten bleiben lesbar."
+  },
+  "verdict": "Als technisches Substrat: ja, praktisch alternativlos. Flat 2.0 ist das einzige Modell hier, das sich mit identischen Tokens über Tailwind, Tauri und Compose reproduzieren lässt, das in Light und Dark ohne zweites Materialset funktioniert und das ein Solo-Entwickler über zehn kleine Apps hinweg konsistent halten kann. Als Marke dagegen: nein - es ist der Werksdefault jedes Frameworks und damit exakt der generische Look, von dem eine Eigenmarke sich absetzen muss. Die richtige Konsequenz ist, Flat 2.0 als Fundament zu setzen und darauf genau zwei distinktive Schichten zu legen (eine eigene, durchdefinierte Grauskala und ein charakterstarker Akzent oder Monospace-Einsatz). Flat 1.0 in Reinform gehört nirgendwo mehr hin - außer als bewusstes Zitat auf einer Marketingseite.",
+  "combinesWith": [
+    "swiss",
+    "dev-noir",
+    "neo-brutalism",
+    "editorial-print"
+  ],
+  "tip": "Setze genau eine Schattenstufe und genau einen Radiuswert für das ganze Produkt und halte dich daran - der Unterschied zwischen sauberem Flat 2.0 und billigem Flat ist fast immer, dass jemand eine zweite und dritte Schattenstufe eingeführt hat. Und gib jedem interaktiven Element neben der Farbe einen zweiten Marker (Fläche, 1px-Border oder Icon), sonst läuft man exakt in den Affordanz-Kollaps von 2013.",
+  "googleFonts": [
+    "Work Sans"
+  ]
+}

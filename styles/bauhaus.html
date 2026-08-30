@@ -1,0 +1,385 @@
+<style>
+.style-bauhaus {
+  --papier: #f4f1e8;
+  --schwarz: #111111;
+  --rot: #e1140a;
+  --gelb: #f5c518;
+  --blau: #0b4ea2;
+  --pad: clamp(20px, 4vw, 40px);
+  width: 100%;
+  background: var(--papier);
+  color: var(--schwarz);
+  font-family: "Jost", "Century Gothic", "Futura", system-ui, sans-serif;
+  line-height: 1.3;
+  font-size: 15px;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+.style-bauhaus,
+.style-bauhaus * { box-sizing: border-box; }
+
+/* Kandinsky-Kopplung 1923: Quadrat/Rot, Kreis/Blau, Dreieck/Gelb.
+   Gelb braucht auf Papierton eine schwarze Kontur - harte Versatz-Schatten
+   ohne Blur, kein weicher Schein. */
+.style-bauhaus .dreieck {
+  background: var(--gelb);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  border: 0;
+  filter:
+    drop-shadow(2px 0 0 var(--schwarz)) drop-shadow(-2px 0 0 var(--schwarz))
+    drop-shadow(0 2px 0 var(--schwarz)) drop-shadow(0 -2px 0 var(--schwarz));
+}
+
+.style-bauhaus .demo {
+  position: relative;
+  min-height: 460px;
+  padding: var(--pad);
+  padding-left: calc(var(--pad) + 46px);
+  background: var(--papier);
+  border: 4px solid var(--schwarz);
+  overflow: hidden;
+}
+
+.style-bauhaus .rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  border-right: 4px solid var(--schwarz);
+  background: var(--papier);
+}
+.style-bauhaus .rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  background: var(--rot);
+  border-bottom: 4px solid var(--schwarz);
+}
+.style-bauhaus .rail::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  bottom: 10px;
+  width: 24px;
+  height: 22px;
+  background: var(--gelb);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  filter:
+    drop-shadow(2px 0 0 var(--schwarz)) drop-shadow(-2px 0 0 var(--schwarz))
+    drop-shadow(0 2px 0 var(--schwarz)) drop-shadow(0 -2px 0 var(--schwarz));
+}
+.style-bauhaus .rail span {
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+  transform: translateX(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.style-bauhaus .dreieck-eck {
+  position: absolute;
+  right: -46px;
+  bottom: -44px;
+  width: 192px;
+  height: 150px;
+  background: var(--gelb);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform: rotate(18deg);
+  filter:
+    drop-shadow(4px 0 0 var(--schwarz)) drop-shadow(-4px 0 0 var(--schwarz))
+    drop-shadow(0 4px 0 var(--schwarz)) drop-shadow(0 -4px 0 var(--schwarz));
+  pointer-events: none;
+}
+.style-bauhaus .diagonale {
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 240px;
+  height: 4px;
+  background: var(--schwarz);
+  transform: rotate(45deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.style-bauhaus .blatt { position: relative; }
+
+.style-bauhaus .kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.style-bauhaus .kopf h2 {
+  margin: 0;
+  font-size: clamp(40px, 8.4vw, 78px);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+.style-bauhaus .zaehler {
+  flex: none;
+  width: clamp(72px, 14vw, 104px);
+  height: clamp(72px, 14vw, 104px);
+  border-radius: 50%;
+  background: var(--blau);
+  color: var(--papier);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(30px, 5.6vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.style-bauhaus .farbleiste {
+  display: flex;
+  height: 14px;
+  margin: 18px 0 0;
+  border: 3px solid var(--schwarz);
+}
+.style-bauhaus .farbleiste i { display: block; height: 100%; }
+.style-bauhaus .farbleiste i:nth-child(1) { flex: 6; background: var(--rot); }
+.style-bauhaus .farbleiste i:nth-child(2) { flex: 3; background: var(--gelb); }
+.style-bauhaus .farbleiste i:nth-child(3) { flex: 2; background: var(--blau); }
+.style-bauhaus .farbleiste i:nth-child(4) { flex: 1; background: var(--papier); }
+
+.style-bauhaus ul.liste {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  border: 3px solid var(--schwarz);
+}
+.style-bauhaus ul.liste li {
+  display: grid;
+  grid-template-columns: 34px 1fr auto auto;
+  align-items: center;
+  gap: 0 16px;
+  padding: 13px 14px;
+  border-bottom: 3px solid var(--schwarz);
+  transition: background-color 160ms steps(2, end);
+}
+.style-bauhaus ul.liste li:last-child { border-bottom: 0; }
+.style-bauhaus ul.liste li:hover { background: var(--schwarz); color: var(--papier); }
+.style-bauhaus ul.liste li:hover .zeit { color: var(--papier); }
+
+.style-bauhaus .form { width: 22px; height: 22px; display: block; }
+.style-bauhaus .form.quadrat { background: var(--rot); }
+.style-bauhaus .form.dreieck {
+  width: 24px;
+  height: 21px;
+}
+.style-bauhaus ul.liste li:hover .form.quadrat { transform: rotate(45deg); }
+.style-bauhaus .form.quadrat { transition: transform 180ms cubic-bezier(0.2, 0, 0, 1); }
+
+.style-bauhaus .name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.style-bauhaus .zeit {
+  font-size: 12px;
+  font-weight: 400;
+  color: #4a4a44;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.style-bauhaus .status {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 3px solid currentColor;
+  padding: 3px 8px 2px;
+}
+
+.style-bauhaus .feld {
+  display: flex;
+  align-items: stretch;
+  margin-top: 22px;
+  border: 3px solid var(--schwarz);
+  background: var(--papier);
+}
+.style-bauhaus .feld .lupe {
+  flex: none;
+  width: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 3px solid var(--schwarz);
+  background: var(--rot);
+}
+.style-bauhaus .feld input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--schwarz);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+}
+.style-bauhaus .feld input::placeholder { color: #6b6b63; opacity: 1; }
+.style-bauhaus .feld:focus-within { box-shadow: 5px 5px 0 0 var(--blau); }
+
+.style-bauhaus .aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+.style-bauhaus .aktionen button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 0;
+  border: 3px solid var(--schwarz);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 140ms steps(2, end), color 140ms steps(2, end);
+}
+/* Primaeraktion traegt den Kreis, also Blau (Kandinsky) - und Weiss auf
+   #0B4EA2 liefert 8,3:1 statt der 4,9:1 von Weiss auf Bauhaus-Rot. */
+.style-bauhaus .aktionen .primaer { background: var(--blau); color: #ffffff; }
+.style-bauhaus .aktionen .primaer:hover { background: var(--schwarz); }
+.style-bauhaus .aktionen .sekundaer { background: transparent; color: var(--schwarz); }
+.style-bauhaus .aktionen .sekundaer:hover { background: var(--gelb); }
+.style-bauhaus .aktionen .marke { width: 14px; height: 14px; flex: none; }
+.style-bauhaus .aktionen .primaer .marke { background: #ffffff; border-radius: 50%; }
+.style-bauhaus .aktionen .sekundaer .marke {
+  width: 16px;
+  height: 14px;
+}
+
+.style-bauhaus .fuss {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  position: relative;
+}
+.style-bauhaus .fuss .streifen {
+  flex: 1;
+  height: 12px;
+  background-image: repeating-linear-gradient(45deg,
+    var(--schwarz) 0 6px, transparent 6px 12px);
+}
+.style-bauhaus .fuss .takt {
+  flex: none;
+  position: relative;
+  width: 48px;
+  height: 12px;
+}
+.style-bauhaus .fuss .takt::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--rot);
+  animation: bauhaus-takt 3.2s steps(4, end) infinite;
+}
+.style-bauhaus .fuss .wort {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+@keyframes bauhaus-takt {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(36px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-bauhaus .fuss .takt::before { animation: none; }
+  .style-bauhaus ul.liste li,
+  .style-bauhaus .aktionen button,
+  .style-bauhaus .form.quadrat { transition: none; }
+}
+
+@media (max-width: 620px) {
+  .style-bauhaus ul.liste li {
+    grid-template-columns: 28px 1fr auto;
+    row-gap: 6px;
+  }
+  .style-bauhaus ul.liste li .zeit { grid-column: 2; }
+  .style-bauhaus ul.liste li .status { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+  .style-bauhaus .fuss .wort { display: none; }
+}
+</style>
+<div class="style-bauhaus">
+  <div class="demo">
+    <div class="rail" aria-hidden="true"><span>form folgt funktion</span></div>
+    <div class="dreieck-eck" aria-hidden="true"></div>
+    <div class="diagonale" aria-hidden="true"></div>
+    <div class="blatt">
+      <div class="kopf">
+        <h2>Projekte</h2>
+        <div class="zaehler">12</div>
+      </div>
+      <div class="farbleiste" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <ul class="liste">
+        <li>
+          <span class="form quadrat" aria-hidden="true"></span>
+          <span class="name">Nexus</span>
+          <span class="zeit">vor 2 Std.</span>
+          <span class="status">Aktiv</span>
+        </li>
+        <li>
+          <span class="form quadrat" aria-hidden="true"></span>
+          <span class="name">Autowrite Studio</span>
+          <span class="zeit">gestern</span>
+          <span class="status">Aktiv</span>
+        </li>
+        <li>
+          <span class="form dreieck" aria-hidden="true"></span>
+          <span class="name">Balance Ally</span>
+          <span class="zeit">vor 4 Tagen</span>
+          <span class="status">Pausiert</span>
+        </li>
+      </ul>
+      <div class="feld">
+        <span class="lupe" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="#ffffff" stroke-width="3"/>
+            <path d="M13 13 L18 18" stroke="#ffffff" stroke-width="3"/>
+          </svg>
+        </span>
+        <input type="text" readonly placeholder="Suchen...">
+      </div>
+      <div class="aktionen">
+        <button type="button" class="primaer"><span class="marke" aria-hidden="true"></span>Neues Projekt</button>
+        <button type="button" class="sekundaer"><span class="marke dreieck" aria-hidden="true"></span>Importieren</button>
+      </div>
+      <div class="fuss">
+        <span class="takt" aria-hidden="true"></span>
+        <span class="wort">quadrat · kreis · dreieck</span>
+        <span class="streifen" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</div>

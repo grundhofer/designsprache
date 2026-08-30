@@ -1,0 +1,69 @@
+{
+  "slug": "glassmorphism",
+  "name": "Glassmorphism",
+  "aka": ["Frosted Glass", "Liquid Glass (Apple, 2025)", "Acrylic / Mica (Microsoft)", "Aero (Microsoft, 2007)", "Frosted-glass look"],
+  "family": "Soft Materiality",
+  "era": "2007 (Windows Aero) - today; web wave 2020/21, platform renaissance from 2025",
+  "origin": "The line starts with Windows Vista Aero (2007) and macOS Yosemite (2014), where window chrome first became translucent in order to show hierarchy without hard edges; Microsoft systematized this as Fluent Acrylic in 2017. Michal Malewicz coined the name 'glassmorphism' in late 2020, when backdrop-filter finally ran in every browser and the look exploded as a Dribbble trend. The biggest leap so far came from Apple with 'Liquid Glass', announced on June 9, 2025 at WWDC and shipped with iOS/iPadOS/macOS Tahoe/watchOS/tvOS/visionOS 26: instead of a static blur, Apple renders real-time refraction, specular highlights that react to device motion, and a coloring that takes its cue from the content behind. The style solves a real problem -- making layers visible without hiding the context underneath.",
+  "idea": "Control surfaces are not paper but glass: they sit above the content, let it show through blurred and oversaturated, and mark their edge with nothing but a one-pixel refraction.",
+  "markers": [
+    "backdrop-filter: blur(14-24px) saturate(160-180%) on every layer",
+    "Fill rgba(255,255,255,.08-.18) on a dark ground, .55-.70 on a light one",
+    "1px inner edge at the top (inset 0 1px 0 rgba(255,255,255,.4-.6)) as a light-catching edge",
+    "Radius 18-30px on panels, 999px on fields and floating bars",
+    "A busy ground is mandatory: gradient, photo or blurred color bodies -- on a flat surface the effect disappears entirely",
+    "At least two stacked glass layers (panel > row); depth comes from the stack, not from shadow",
+    "Drop shadow deep and wide: 0 18px 44px rgba(4,6,24,.45)",
+    "Apple's expanded version: lensing instead of blur, gyroscope-driven specular highlight, two material variants (regular / clear)",
+    "Text contrast varies measurably with the ground -- here 3.1:1 to around 16:1 within the same surface"
+  ],
+  "params": {
+    "radius": "18-30px on surfaces, 999px on pills, fields and action bars",
+    "contrast": "low to medium, and above all: not constant",
+    "density": "airy",
+    "depth": "Real layering: every layer blurs the one below; plus a wide, deep drop shadow and a light inner edge as a bevel",
+    "color": "Color comes from the ground, not from the surface; the glass itself is colorless and merely oversaturates what shows through",
+    "type": "Neutral, tightly set grotesque at 450-600, almost always white with a slight text shadow as a safeguard",
+    "motion": "Soft and unhurried: 160-220ms cubic-bezier(.2,0,0,1) for hover and layer changes; on Apple additionally the traveling specular and the tab bar resizing on scroll",
+    "texture": "Fine grain (10-18% opacity) against gradient banding; otherwise optically smooth"
+  },
+  "palette": ["#0A0D26", "#7B3BFF", "#00C8FF", "#FF4D97", "#FFB03A", "#FFFFFF"],
+  "examples": [
+    {"name": "Apple iOS 26 / macOS Tahoe 26 (Liquid Glass, 2025)", "what": "Tab bars and sidebars that refract the content behind them instead of merely blurring it, with gloss edges that travel as the device tilts, and controls that shrink on scroll"},
+    {"name": "Microsoft Fluent Acrylic / Mica (Windows 11)", "what": "Command bars and flyouts with a noise layer inside the material; Mica only picks up the wallpaper color without blurring live -- the performance-minded counter-proposal"},
+    {"name": "Apple visionOS", "what": "The style in its most consistent form: windows really are panes of glass in space, casting shadows onto the actual surroundings"},
+    {"name": "Arc Browser / Dia (The Browser Company)", "what": "Sidebar and command bar as glass surfaces over a colored space gradient -- the best-known web-native example"},
+    {"name": "Michal Malewicz, 'Glassmorphism in user interfaces' (hype4.academy, Dec. 2020)", "what": "The text that set the term and codified the recipe (blur + transparency + 1px edge + colorful ground)"}
+  ],
+  "strengths": [
+    "Shows layer hierarchy without hiding the context beneath -- neither flat nor neumorphism can do that",
+    "For overlays, modals, sticky navs and command palettes objectively the best available solution",
+    "Reads as high-end and current straight away, without a single graphic having to load",
+    "On Apple platforms from 2025 it is not merely allowed but the native system material -- free and correct there",
+    "Scales chromatically with the content: the same code looks different over every background image"
+  ],
+  "risks": [
+    "backdrop-filter is expensive: several stacked glass surfaces cause scroll jank on mobile and occasional repaint artifacts in WebView2/Tauri",
+    "Without a busy ground the style has no effect -- it forces gradients you may not want at all",
+    "Text contrast depends on whatever happens to be behind it; it cannot be guaranteed by token",
+    "The look visibly belongs to Apple right now: a web app of your own in Liquid Glass costume reads as a badly copied system app",
+    "Tips over into 'Bootstrap template 2021' as soon as the blur is too small, the transparency too high and the gradient too colorful"
+  ],
+  "a11y": "Contrast is a function of the ground, not of the design: white text in this demo sits between roughly 16:1 (over the dark base) and 3.1:1 (where a light color body stands behind the glass) depending on the spot -- so 4.5:1 per WCAG 2.2 AA is not met throughout, and secondary text drops locally to 2.4:1. That is why a dark tint of 34% sits beneath the white film here; without it the same text falls to 1.7:1. An opaque fallback under @media (prefers-reduced-transparency: reduce) is mandatory as well -- Apple had to retrofit exactly that after the legibility criticism of macOS Tahoe, and to add a transparency slider to system settings -- and so is a style-breaking, opaque focus ring, because a 1px glass edge will never reach the 3:1 requirement of SC 1.4.11.",
+  "longevity": "As a web trend the look is a distinct 2020s marker and ages middlingly; as a platform material on Apple devices it is set until the end of the decade at least. Using it on the web therefore means betting on someone else's platform brand -- and their next course correction (Apple has already lowered the default transparency once) hits your own product with it.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Technically available everywhere, but expensive and defensible only as a sparing decorative layer with an opaque fallback -- not as the base surface of the app.",
+    "mobile": "On iOS from 26 the native and therefore correct route; on Android a foreign body, because Material 3 uses a completely different depth logic with tonal elevation.",
+    "desktop": "Workable in Tauri, but WebView2 and WebKitGTK pay the GPU price differently; native window vibrancy via the Tauri effects API is the cleaner route than CSS blur."
+  },
+  "verdict": "As a brand basis: no -- as a component: yes, in exactly two places. The style is a platform material, not a trademark; make it the base surface and you look like a mediocre system copy on iOS and a foreign body on Android, and the recognition value belongs to Apple, not to you. For a solo developer it is also the only style in this family with real runtime cost, and it renders differently in Tauri depending on the WebView -- three platforms, three behaviors. It stays sensible where it solves a problem instead of setting a mood: command palette and modal overlay, each with an opaque fallback.",
+  "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
+  "tip": "Credibility comes not from the blur but from the edge and the tint. First: always set a light 1px inner edge at the top and a weaker one at the bottom (inset 0 1px 0 rgba(255,255,255,.55)) -- without it glass looks like a milky film. Second: a dark tint of 25-35% belongs beneath the white film, because only that makes text contrast independent of the ground. And never drop saturate(180%): the oversaturation is what separates blur from glass.",
+  "googleFonts": ["Inter"]
+}

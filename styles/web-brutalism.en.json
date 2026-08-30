@@ -1,0 +1,106 @@
+{
+  "slug": "web-brutalism",
+  "name": "Web Brutalism (raw HTML)",
+  "aka": [
+    "Brutalist Web Design",
+    "Raw HTML",
+    "Anti-Design",
+    "Default-Style",
+    "Undesign"
+  ],
+  "family": "Postmodernism & Revolt",
+  "era": "1993-1998 as a technical necessity, from 2014 as a deliberate stance",
+  "origin": "The look is not a style to begin with but the condition of an HTML page without a stylesheet: Times New Roman, blue underlined links, gray system buttons, table grids - that is how the web looked between 1993 and 1998, because CSS was either missing or broken. It became a style when Pascal Deville launched brutalistwebsites.com in 2014 and carried the term over from architecture (béton brut, Le Corbusier) to websites: rawness as honesty, visible structure instead of a polished surface. The movement was a reaction to the uniformity of the Bootstrap and flat design years - and it had an alibi in sites that had never stopped looking that way: Craigslist and Berkshire Hathaway's investor relations page have worked unchanged for decades because that is exactly what their users need. The line against Neo-Brutalism matters: that one works with neon fills, 4px outlines and hard offset shadows, and it is a designed style. Web brutalism is the opposite - it does not design.",
+  "idea": "Add nothing the task does not need. The structure of the document is the design, and the browser's factory state is a legitimate result.",
+  "markers": [
+    "Times New Roman as body text, 16px, line-height normal - no embedded font, no web font request",
+    "Links #0000EE underlined, visited #551A8B, active #EE0000 - the UA values, untouched",
+    "Radius 0px everywhere, because none is ever set",
+    "Form elements in factory state: input with 2px inset #767676, button with 2px outset #767676 on #EFEFEF, both in 13.33px Arial",
+    "Serif text next to Arial widgets next to Courier machine data - the break between document face, system face and monospace is left standing in plain sight",
+    "Table layout with a 2px outset border, 1px inset cells in #808080 and border-spacing 2px",
+    "No shadow, no gradient, no transparency, no animation, no transition",
+    "No container and no max-width: the type area is the window width minus an 8px margin",
+    "hr as 1px #A9A9A9 on top and 1px #EFEFEF below - the faked engraving of the UA stylesheet"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "very high (black on white, 21:1) - apart from the system grays of the widgets",
+    "density": "dense",
+    "depth": "none; separation comes solely from 1px rules, table grids and blank lines",
+    "color": "No color strategy - there are only the colors the browser hands out: black, white, link blue, visited purple, widget gray. Deliberately inharmonious",
+    "type": "Three voices, all three involuntary: Times for the text, Arial for anything that is a control, Courier for machine data - none of them chosen, all three from the browser",
+    "motion": "None. No transition, no transform, no hover effect beyond the :active switch of the button border",
+    "texture": "none"
+  },
+  "palette": [
+    "#FFFFFF",
+    "#000000",
+    "#0000EE",
+    "#551A8B",
+    "#EFEFEF",
+    "#808080"
+  ],
+  "examples": [
+    {
+      "name": "Craigslist (since 1996, unchanged)",
+      "what": "A three-column list of text links with no images, blue links on white, categories in lowercase - hundreds of millions of sessions a month with no change of layout"
+    },
+    {
+      "name": "Berkshire Hathaway, berkshirehathaway.com",
+      "what": "A handful of blue links on a white ground in Times, shareholder letters as plain text files - no image, no menu, no cookie banner"
+    },
+    {
+      "name": "brutalistwebsites.com (Pascal Deville, since 2014)",
+      "what": "The catalog that coined the term: a gallery of pages with system type, default widgets and deliberately absent polish"
+    },
+    {
+      "name": "Bloomberg Businessweek (Richard Turley, 2010-2014)",
+      "what": "A raw system-type look, stacked unformatted blocks and provocative type sizes as an editorial stance in a mass medium - print-driven, but the direct cue for the anti-design wave on the web"
+    },
+    {
+      "name": "Yale School of Art (art.yale.edu)",
+      "what": "A wiki edited by students, with a tiled background pattern, default form elements and a layout that keeps changing - anti-design as an institutional statement"
+    },
+    {
+      "name": "motherfuckingwebsite.com (2013)",
+      "what": "A manifesto page of pure HTML arguing that the browser's factory state is already responsive, fast and accessible"
+    }
+  ],
+  "strengths": [
+    "Uncompromisingly fast: no font request, no image, no framework - the page arrives in one packet and renders without layout shift",
+    "Accessible out of the box in the fundamentals: 21:1 contrast, native widgets with correct roles, working keyboard and zoom behavior",
+    "Does not age, because the style sits outside trend logic - a Craigslist page from 1998 looks exactly the same in 2026",
+    "Signals substance and self-assurance: 'I have nothing to sell you' is a message no gradient can pull off",
+    "Practically effort-free to build and maintain - the only discipline is adding nothing"
+  ],
+  "risks": [
+    "Loss of trust with paying customers: what reads as poise for Berkshire Hathaway reads as 'unfinished' or 'abandoned' on an unknown indie app",
+    "The stance is only genuine when the content carries it - without substantial content the style becomes a pose and immediately reads as affectation",
+    "No tool for hierarchy beyond type size and blank lines; past medium complexity the page stops being scannable",
+    "The missing max-width produces line lengths of 200 characters and more on wide monitors - readability collapses exactly where the style promises it",
+    "Not transferable to mobile or desktop apps: there is no Compose and no SwiftUI equivalent of 'the browser's factory state', and the look has to be imitated there at cost"
+  ],
+  "a11y": "In the fundamentals this is the best style in the catalog: black on white gives 21:1, native input and button elements bring role, state and keyboard operation with them, and without a CSS layout, zooming to 400 percent works without trouble. The weaknesses lie elsewhere: unlimited line length on wide screens makes reading massively harder with dyslexia and low vision, and color as the sole carrier of link meaning would be a mistake - which is why the underline stays mandatory. The default focus ring is functional but weakly visible; here it is set to 2px solid, because that is the one place where not designing does harm.",
+  "longevity": "Practically does not age, because it rests on no trend but on a specification - the UA stylesheet has barely moved since 1998. What does age is the credibility of the gesture: 'raw' as a statement wears out when many people do it at once.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 1,
+    "density": 4
+  },
+  "platforms": {
+    "web": "The only natural home - Astro delivers this with practically no build, and the page is faster unoptimized than any optimized alternative.",
+    "mobile": "Unusable - touch targets under 24px, system widgets in a desktop look and no platform conventions; in Compose you would have to fake the style at considerable cost.",
+    "desktop": "Only for tools with a sense of self-irony; a Tauri app in factory state reads to the end user as broken, not as a stance."
+  },
+  "verdict": "As a base for your own brand: no - but valuable as a corrective. The style has no transferable substance: there is no 'factory state' in Jetpack Compose and SwiftUI that could be shared, and that removes exactly the requirement at issue here - one brand across web, Tauri and Compose. On top of that comes the trust problem: Berkshire Hathaway can afford raw HTML because everyone knows who is behind it; an unknown solo-developer app cannot, and there the same picture reads as abandoned. What the style can deliver instead is discipline: build every app without CSS first and check whether it is operable that way. Whatever design gets added afterwards has to justify itself - that is the best filter against the generic framework look, and it costs nothing.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "dev-noir",
+    "terminal-mono"
+  ],
+  "tip": "Set exactly one rule the factory state does not provide, and no others: a max-width around the text block (about 70 characters). In practice the style almost always fails on 200-character lines on a 32-inch monitor, not on a lack of beauty. Anyone who instead starts patching up spacing, grays and hover states ends up two hours later with a badly designed ordinary layout - and has lost the style's one strength, its refusal to compromise, along the way.",
+  "googleFonts": []
+}

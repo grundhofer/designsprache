@@ -1,0 +1,103 @@
+{
+  "slug": "neo-brutalism",
+  "name": "Neo-Brutalismus",
+  "aka": [
+    "Neubrutalism",
+    "Gumroad-Look",
+    "Brutalist Web (kommerzielle Variante)",
+    "Hard-Shadow-UI",
+    "Sticker-UI"
+  ],
+  "family": "Produkt-Ästhetik heute",
+  "era": "2014-heute, kommerzieller Durchbruch ab 2022",
+  "origin": "Die Wurzel liegt im Brutalist-Web-Movement, das Pascal Deville ab 2014 auf brutalistwebsites.com sammelte und das um 2016/17 seinen Höhepunkt hatte - als Reaktion auf die Gleichförmigkeit von Bootstrap und Material Design feierte es bewusst rohe, ungeschminkte Seiten. Die heute verbreitete, kommerziell gezähmte Variante entstand mit dem Gumroad-Redesign von 2022 unter Sahil Lavingia: dicke schwarze Outlines, gesättigte Flächenfarben (das Gumroad-Pink #FF90E8), harte versetzte Schatten ohne Weichzeichnung. Das gelöste Problem war Aufmerksamkeit - eine Plattform ohne Werbebudget musste in einem Meer identischer SaaS-Landingpages auf 200 Millisekunden erkennbar sein. Technisch war der Stil immer trivial: er braucht nichts außer border, box-shadow ohne Blur und Volltonfarben, was ihn zum Liebling von Tailwind-Utilities, Figma-Community-Kits und neobrutalism.dev machte. Seit 2025 bekommt er zusätzlichen Schub als bewusstes Signal von Handgemachtheit gegen generische KI-generierte Layouts.",
+  "idea": "Jedes Element bekennt sich als physisches Objekt: dicke schwarze Kontur, Volltonfarbe, ein harter Schlagschatten ohne Unschärfe - und beim Drücken fällt es hörbar in seinen eigenen Schatten hinein.",
+  "markers": [
+    "Radius 0-4px, nie dazwischen und nie weich - Rundung nur an Kreisen (50%) und Pillen (9999px)",
+    "Outline 2-4px solid #000 auf wirklich jedem Element, auch auf Icons, Badges und Feldern",
+    "Offset-Schatten ohne Blur und ohne Spread: box-shadow: 4px 4px 0 #000 bis 10px 10px 0 #000",
+    "Gesättigte Flächenfarben statt Verläufen: Pink #FF90E8, Gelb #FFDE00, Cyan #23D2E2, Limette #B4F461",
+    "Keine Transparenz, keine Verläufe, kein backdrop-filter - jede Fläche ist ein Vollton",
+    "Display-Typo fett bis schwarz (Archivo Black, 800-900), Großbuchstaben, letter-spacing -0.02em",
+    "Monospace für Metadaten und Mikro-Labels als Kontrastmittel zur fetten Grotesk",
+    "Hover verschiebt das Element um genau den Schattenversatz: transform: translate(4px,4px) plus box-shadow: 0 0 0",
+    "Motion hart und kurz: 80-120ms linear, keine Easings mit Ausschwingen",
+    "Sichtbare Struktur: Diagonalraster, rotierte Deko-Formen (-9deg bis +8deg), Fensterleiste mit Blockchips"
+  ],
+  "params": {
+    "radius": "0-4px, Ausnahmen nur 50% und 9999px",
+    "contrast": "sehr hoch",
+    "density": "mittel",
+    "depth": "Ausschließlich harte Offset-Schatten ohne Blur; Tiefe wird als Distanz behauptet, nicht als Licht simuliert",
+    "color": "Vier bis fünf gesättigte Volltonfarben plus Schwarz und ein leicht gebrochenes Weiß; Farbe ist Fläche, nie Text",
+    "type": "Schwarze Display-Grotesk in Versalien für Überschriften und Buttons, Mono für Metadaten, sonst mittelfette Grotesk",
+    "motion": "80-120ms linear, ausschließlich Translation entlang der Schattenachse - kein Fade, kein Scale",
+    "texture": "Sichtbares Diagonalraster oder Punktgitter bei 4-6% Schwarz; kein Noise, keine Fotografie"
+  },
+  "palette": [
+    "#000000",
+    "#F4F4F0",
+    "#FF90E8",
+    "#FFDE00",
+    "#23D2E2",
+    "#B4F461"
+  ],
+  "examples": [
+    {
+      "name": "Gumroad (Redesign 2022)",
+      "what": "Pink #FF90E8 als Markenfläche, schwarze Outlines auf Karten, Feldern und Buttons, harte Schlagschatten und übergroße fette Headlines auf gebrochenem Weiß"
+    },
+    {
+      "name": "neobrutalism.dev",
+      "what": "Der Stil als fertiges Tailwind-/shadcn-Kit: dokumentierte Tokens für border 2px, shadow 4px 4px 0 und die Hover-Verschiebung in den Schatten"
+    },
+    {
+      "name": "Figma Community / Kampagnenseiten",
+      "what": "Rotierte Sticker-Formen, Blockchips, übertriebene Kontraste und Volltonfarben als Marketing-Sprache um kollaborative Werkzeuge"
+    },
+    {
+      "name": "Bloomberg Businessweek (Web)",
+      "what": "Redaktioneller Vorläufer derselben Haltung: harte Kanten, aggressive Volltonflächen und bewusst unschöne Typo-Kollisionen als Autorschaftssignal"
+    }
+  ],
+  "strengths": [
+    "Höchste Wiedererkennung pro Zeile CSS - auf 200 Millisekunden identifizierbar, was für eine Solo-Marke selten erreichbar ist",
+    "Kontraste sind konstruktionsbedingt stark: schwarze Konturen und Volltonflächen erzeugen von Haus aus klare Elementgrenzen",
+    "Extrem billig und robust zu bauen, über alle Plattformen hinweg: border, Volltonfarbe und Offset-Schatten gibt es in Tailwind, Compose und SwiftUI gleichermaßen",
+    "Affordanz ist eindeutig - was einen Schatten hat, ist klickbar, und die Hover-Verschiebung erklärt sich ohne Worte",
+    "Fehlerverzeihend: der Stil braucht keine feinen Graustufen, keine Fotografie und keine Illustrationen"
+  ],
+  "risks": [
+    "Ermüdet bei langen Sitzungen - die Dauer-Hochkontrast-Reizung ist für ein täglich genutztes Werkzeug anstrengend",
+    "Skaliert schlecht in die Dichte: eine Tabelle mit 40 Zeilen, in der jede Zeile 3px Kontur und einen Schatten trägt, wird unlesbar",
+    "Wirkt bei zahlenden Geschäftskunden schnell unseriös oder wie ein Spielzeug - für Finanz-, Gesundheits- oder B2B-Kontexte riskant",
+    "Kippt sofort ins Billige, wenn zu viele Farben, zu viele Rotationen und zu viele Schattenrichtungen gleichzeitig auftreten - dann sieht es nach Figma-Template statt nach Marke aus",
+    "Die Ausdruckskraft steckt fast vollständig im Chrome; sobald echte Inhalte dazukommen, muss der Stil sich zurückziehen, und genau darin scheitern die meisten Umsetzungen"
+  ],
+  "a11y": "Textkontrast ist unproblematisch, weil Text praktisch immer schwarz auf gesättigter Fläche steht - #000 auf #FFDE00 erreicht etwa 15,7:1, auf #FF90E8 etwa 10,4:1. Kritisch sind zwei andere Punkte: Die Flächenfarben selbst dürfen nie allein Bedeutung tragen, weil #B4F461 gegen #FFFFFF nur rund 1,3:1 erreicht - der Aktiv-/Pausiert-Zustand ist hier deshalb zusätzlich durch Wortlaut und durch einen gefüllten beziehungsweise hohlen Ring codiert. Außerdem verschiebt die Signatur-Interaktion Elemente bei Hover und Fokus um mehrere Pixel; das braucht zwingend eine prefers-reduced-motion-Abschaltung und darf nie so stark ausfallen, dass ein Element unter dem Zeiger wegwandert.",
+  "longevity": "Der Stil hat als kommerzielle Mode 2022-2024 seinen Höhepunkt gehabt und wird als Vollausbau in wenigen Jahren klar nach seinem Jahrgang aussehen; sein Kern - harte Kanten, Volltonfarben, sichtbare Struktur - ist dagegen älter als das Web und kehrt zyklisch wieder. Als Akzentsprache altert er deutlich besser denn als Gesamtsystem.",
+  "scores": {
+    "longevity": 2,
+    "recognition": 5,
+    "effort": 2,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Trivial und ideal - shadow-[4px_4px_0_#000] und border-[3px] decken den ganzen Stil ab; besonders stark auf Landingpages.",
+    "mobile": "Machbar in Compose über eigene Modifier für Kontur und Offset-Schatten, aber gegen jede Material-3-Erwartung und auf kleinen Displays platzhungrig.",
+    "desktop": "Gut für kleine, fokussierte Tauri-Werkzeuge; für dichte Fenster mit Sidebar, Tabelle und Statusleiste zu laut."
+  },
+  "verdict": "Als Gesamtsystem für ein Portfolio vieler kleiner Apps: nein. Der Stil ermüdet im täglichen Gebrauch, verträgt keine dichten Datenmasken und trägt ein deutliches Verfallsdatum - eine Marke, die in drei Jahren nach 2023 aussieht, ist für einen Solo-Entwickler ein schlechtes Geschäft. Als Akzentsystem ist er dagegen die stärkste Option der drei: eine schwarze Kontur plus 4px-Offset-Schatten, reserviert für genau eine Komponente - den Primärbutton, das Statusabzeichen oder das App-Icon - liefert die Wiedererkennung, die Dev-Noir strukturell fehlt, ohne die Nutzbarkeit zu kosten. Die realistische Empfehlung lautet deshalb: Neo-Brutalismus als 5-Prozent-Zutat in einer ansonsten ruhigen Basis, plus als volle Ausformung auf Marketingseiten, wo Lautstärke der Zweck ist.",
+  "combinesWith": [
+    "web-brutalism",
+    "swiss-punk",
+    "memphis",
+    "playful-chunky"
+  ],
+  "tip": "Ein einziger Schattenwinkel, ein einziger Versatz, eine einzige Konturstärke - und dann kompromisslos überall. Die billigen Umsetzungen erkennt man daran, dass sie 2px- und 3px-Konturen mischen, Schatten mal nach rechts unten und mal nach links unten werfen und fünf Farben gleichzeitig zeigen. Setze stattdessen drei Tokens (--border: 3px, --shadow: 4px 4px 0 #000, eine Signaturfarbe), gib jeder Flächenfarbe eine feste Bedeutung und halte den Hover-Versatz exakt gleich groß wie den Schatten, damit das Element beim Drücken sichtbar auf der Grundfläche aufsetzt.",
+  "googleFonts": [
+    "Archivo Black",
+    "Space Grotesk",
+    "Space Mono"
+  ]
+}

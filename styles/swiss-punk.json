@@ -1,0 +1,105 @@
+{
+  "slug": "swiss-punk",
+  "name": "Swiss Punk / Deconstructed Typography",
+  "aka": [
+    "New Wave",
+    "Basel New Wave",
+    "Deconstructivist Typography",
+    "Grunge Typography",
+    "Post-Swiss"
+  ],
+  "family": "Postmoderne & Rebellion",
+  "era": "1968-1998, Zitate und Revivals bis heute",
+  "origin": "Wolfgang Weingart unterrichtete ab 1968 an der Schule für Gestaltung Basel - genau dort, wo Emil Ruder und Armin Hofmann das Internationale Typografische System perfektioniert hatten - und begann, dessen Regeln von innen aufzubrechen: gesperrte und negativ gelaufene Satzbilder, gekippte Zeilen, übereinandergedruckte Ebenen, sichtbare Filmmontage. Möglich wurde das durch die Bleisatz-Freiheit im Handsatz und später durch Fotosatz und Fotokopierer, die Verzerren, Überlagern und Vergröbern erstmals billig machten. Seine Schüler April Greiman und Dan Friedman trugen den Ansatz in die USA, Rudy VanderLans und Zuzana Licko verbreiteten ihn ab 1984 über die Zeitschrift Emigre im Desktop-Publishing, und David Carson trieb ihn ab 1992 bei Ray Gun bis zur bewussten Unlesbarkeit - berühmt der in Zapf Dingbats gesetzte Bryan-Ferry-Text. Der Stil löste ein Haltungsproblem: das Schweizer Raster war zur Konvention erstarrt und konnte Subkultur nicht mehr abbilden.",
+  "idea": "Das Raster wird nicht abgeschafft, sondern sichtbar gebrochen - man muss die Ordnung erkennen können, damit die Verletzung Bedeutung hat. Typografie transportiert Ton und Lautstärke, nicht nur Inhalt.",
+  "markers": [
+    "Sichtbares modulares Raster (12 Spalten, 28px Baseline) als 1px-Linien im Hintergrund, dazu ein zweites, um 7deg gedrehtes Raster",
+    "Extreme Größensprünge: Zähler bis 172px neben Metadaten bei 9-11px, Verhältnis bis 1:19",
+    "Negative Laufweite -0.03em bis -0.09em, bis Versalien einander berühren",
+    "Überlagerung: derselbe Text ein zweites Mal als 34%-Echo, verzerrt (scaleY 1.35, skewX -6deg) darunter",
+    "Rotationen von -1.4deg bis +9deg auf Zeilen, Feld und Buttons - nie mehr als ein Element pro Ebene",
+    "Kontur-Typo statt Füllung: -webkit-text-stroke 2px, Innenfläche transparent",
+    "Elemente laufen über den Satzspiegel hinaus und werden vom Rahmen beschnitten",
+    "Fotokopie-Textur: Toner-Streifenraster bei 10% Deckkraft im Multiply-Modus",
+    "Passermarken und Randcodes als Druckvorstufen-Zitat, Mono bei 9px mit 0.42em Sperrung"
+  ],
+  "params": {
+    "radius": "0px, ausnahmslos",
+    "contrast": "sehr hoch",
+    "density": "dicht",
+    "depth": "keine Schatten; Tiefe entsteht durch Überlagerung, Transparenz-Echos und Beschnitt an der Kante",
+    "color": "Papierton plus Schwarz als Grundpaar, dazu genau zwei Druckfarben - ein Signalrot und ein Fotokopie-Cyan, immer als Ebene, nie als Flächendekor",
+    "type": "Drei Familien mit klarer Rollentrennung: ultrakondensierte Display für Lautstärke, neutrale Grotesk für Text, Monospace für Randnotizen und Codes",
+    "motion": "Fast keine: 90ms linear, nur ein 2px-Versatz beim Hover. Der Stil ist Druck, nicht Bewegung",
+    "texture": "Toner-Rauschen 10%, Rasterlinien 13% Schwarz"
+  },
+  "palette": [
+    "#E9E5DC",
+    "#100E0C",
+    "#E4271B",
+    "#009FB7",
+    "#34302B",
+    "#6A635B"
+  ],
+  "examples": [
+    {
+      "name": "Wolfgang Weingart, Typografische Monatsblätter (1972-1976)",
+      "what": "Übereinandergedruckte Rasterflächen, gesperrte Versalzeilen und diagonale Filmmontagen, bei denen die Buchstaben in die Bildfläche kippen"
+    },
+    {
+      "name": "David Carson, Ray Gun Magazine (1992-1996)",
+      "what": "Spalten, die sich überlappen, Überschriften jenseits des Bundstegs, Fließtext auf gescanntem Fotorauschen; ein Interview vollständig in Zapf Dingbats gesetzt"
+    },
+    {
+      "name": "Emigre Magazine (VanderLans/Licko, 1984-2005)",
+      "what": "Bitmap-Schriften wie Oakland und Emperor in absichtlich grobem Raster, Layouts ohne durchgehende Satzachse - Desktop-Publishing als Argument"
+    },
+    {
+      "name": "April Greiman, 'Does It Make Sense?' (Design Quarterly 133, 1986)",
+      "what": "Ein 2 x 6 Fuß großes Poster als Ausklapper: digital collagierte Videostills und Typo in Ebenen, am Macintosh gebaut"
+    },
+    {
+      "name": "The Designers Republic (1986-2009)",
+      "what": "Techno- und Videospiel-Grafik für Warp Records und WipEout: Piktogramm-Wildwuchs, gestapelte Miniversalien, kalkulierte Informationsüberladung"
+    }
+  ],
+  "strengths": [
+    "Höchste Unverwechselbarkeit unter allen typografischen Stilen - er kann nicht versehentlich entstehen",
+    "Braucht null Grafik-Assets: Wirkung entsteht ausschließlich aus Schriftgröße, Position, Rotation und zwei Farben",
+    "Transportiert Haltung und Ton, wo neutrale Systeme nur Information transportieren - stark für Marketing, Launch-Seiten, Manifeste",
+    "Der sichtbare Raster-Unterbau hält das Chaos strukturell zusammen und macht den Stil überraschend gut planbar"
+  ],
+  "risks": [
+    "Ohne echtes typografisches Können wird daraus sofort 'schief und kaputt' statt 'gebrochen' - der Stil verzeiht keine Näherungen",
+    "Überlagerungen und Rotationen kollidieren bei Textlängen, die man nicht kontrolliert - Übersetzungen und lange Nutzerdaten sprengen jedes Layout",
+    "Produkt-UI leidet: dichte Tabellen, Formulare und wiederkehrende Arbeitsabläufe vertragen keine wechselnden Schriftgrößen pro Zeile",
+    "Der Grunge-Anteil (Fotokopie-Noise, Zapf-Dingbats-Geste) ist der Teil, der als '90er-Nostalgie' datiert und schnell kostümhaft wirkt",
+    "Skaliert nicht über Komponenten: jede Ansicht muss von Hand komponiert werden, ein Solo-Entwickler bezahlt das mit Zeit pro Screen"
+  ],
+  "a11y": "Überlappende Textebenen sind das Hauptrisiko: das Echo hinter der Überschrift und der um 9 Grad gedrehte Zähler dürfen nie den eigentlichen Text tragen, deshalb sind sie hier aria-hidden und der lesbare Inhalt liegt immer solid oben. Rotationen bis 9 Grad und stark abweichende Zeilenpositionen entkoppeln die visuelle von der DOM-Reihenfolge - die Tab-Reihenfolge muss von Hand geprüft werden, sonst springt der Fokus quer über die Fläche. Micro-Typografie unter 11px mit 0.3em Sperrung ist bei Sehschwäche kaum lesbar und darf nur Dekoratives tragen, niemals Status oder Zeitangaben, die man wirklich braucht.",
+  "longevity": "Der strukturelle Kern - sichtbares Raster, das gebrochen wird - ist zeitlos und funktioniert seit über 50 Jahren. Die Oberfläche altert dagegen sehr sichtbar: Fotokopie-Noise und Grunge-Verzerrung sind ein 1994er Zeitstempel, während Weingarts strengere Frühphase heute kaum datiert wirkt.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 5,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Sehr stark - CSS kann Überlagerung, negative Laufweite, Rotation und Beschnitt nativ; ideal für Landing-Pages und Portfolio.",
+    "mobile": "Schlecht - unter 400px Breite kollabieren die Größensprünge, und Überlappungen werden zu Treffer-Problemen bei Touch-Zielen.",
+    "desktop": "Nur als Splash, Über-Dialog oder Startbildschirm; eine Tauri-Arbeitsoberfläche in diesem Stil wäre nach zwanzig Minuten anstrengend."
+  },
+  "verdict": "Als Vollstil für die Eigenmarke: nein - als Marken-Layer oberhalb des Produkts: ja, und zwar der interessanteste Kandidat im ganzen Katalog. Der Stil kostet pro Screen Handarbeit und ist damit für jemanden, der viele kleine Apps parallel pflegt, ökonomisch nicht tragbar; in Compose oder SwiftUI sind Überlagerung und negative Laufweite zusätzlich mühsam. Was übertragbar ist, ist die typografische Haltung: extreme Größensprünge, ein sichtbares Raster, Mono als Randnotiz-Stimme, zwei Druckfarben. Sinnvoller Zuschnitt wäre: Web-Präsenz und Release-Notes in Swiss Punk, das eigentliche Produkt-Chrome in einem ruhigen Swiss-Grid-System, das dieselben Schriften und dieselben zwei Farben benutzt - so bleibt die Marke erkennbar, ohne dass die Apps unbenutzbar werden.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "neo-brutalism",
+    "dev-noir"
+  ],
+  "tip": "Zeige das Raster, bevor du es brichst. Lege die 12 Spalten und das Baseline-Raster sichtbar als 1px-Linien in den Hintergrund und verletze sie dann an genau drei Stellen - nicht überall. Chaos ohne sichtbaren Bezugsrahmen liest sich als Unfall; erst die erkennbare Ordnung dahinter macht den Bruch zur Aussage. Weingart hat das Raster nie weggeworfen, er hat es vorgeführt.",
+  "googleFonts": [
+    "Anton",
+    "Archivo",
+    "Space Mono"
+  ]
+}

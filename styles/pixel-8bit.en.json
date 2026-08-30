@@ -1,0 +1,109 @@
+{
+  "slug": "pixel-8bit",
+  "name": "Pixel / 8-Bit",
+  "aka": [
+    "Bitmap UI",
+    "Retro Gaming Look",
+    "Low-Res / Lo-Fi Pixel Art",
+    "Chiptune Aesthetic"
+  ],
+  "family": "Further Poles",
+  "era": "1983-1995 (origin) - revival from c. 2008, current",
+  "origin": "The style is the direct inheritance of the hardware limits of the 8-bit era: the NES (1983) could show four colors per tile out of a 54-color palette, character sets sat in ROM as bitmaps, antialiasing simply did not exist. In parallel, the Windows 3.1/95 interface (1992/1995) shaped the second branch: a 2px bevel of white top-left and black bottom-right, dithered title bars, status bars with inset segments. As a style -- not as a workaround -- it returned around 2008 with the indie game boom, itch.io (2013) and chiptune; Jason Kottke's bitmap typeface Silkscreen (1999) became the bridge between the web and pixel culture. Today it no longer solves a technical problem but a cultural one: instant belonging to the indie and gamer scene.",
+  "idea": "Everything snaps to a visible pixel grid: hard edges, integer sizes, a limited palette. Softness of any kind -- gradient, blur, antialiasing, in-between values -- breaks the style.",
+  "markers": [
+    "Radius 0px; every edge 1-2px hard, not a single blur radius in the entire layout",
+    "Bevel instead of shadow: box-shadow inset 2px 2px 0 light / inset -2px -2px 0 dark, blur always 0",
+    "Drop shadow as an offset solid block: 4-6px offset, 0 blur, 0 spread",
+    "Palette limited to 8-10 color values, no intermediate tones, no alpha gradients",
+    "Bitmap fonts at integer sizes: Press Start 2P at 10-12px, Silkscreen at 8-16px, VT323 at 19-21px",
+    "image-rendering: pixelated and shape-rendering=crispEdges on every graphic",
+    "Dither instead of gradient: a 2px checkerboard as background, 45-degree stripes on a 2px grid as fill",
+    "Animations exclusively in steps(): blink 1s steps(1), no ease, no fade",
+    "Window frame with a title bar, minimize/maximize/close and a status bar at the bottom"
+  ],
+  "params": {
+    "radius": "0px, without exception",
+    "contrast": "high",
+    "density": "dense",
+    "depth": "hard bevel edges (2px light/dark) plus an offset solid drop shadow -- depth as drawing, not as light",
+    "color": "an artificially limited palette of 8-10 values: dark ground, one chrome tone, one signal red, one signal green, one amber -- color encodes state, never mood",
+    "type": "bitmap fonts in three roles: Press Start 2P for chrome and buttons (wide, loud), Silkscreen for names and labels, VT323 for running and meta text",
+    "motion": "steps() animations only: a blinking block cursor, a blinking status LED, buttons that jump exactly 2px on click -- never easing",
+    "texture": "a 2px dither grid and a fine 1px/3px scanline structure at about 3 % opacity"
+  },
+  "palette": [
+    "#0B0A12",
+    "#2A2C46",
+    "#EDEBF2",
+    "#FF4D6D",
+    "#3BE081",
+    "#FFC53D"
+  ],
+  "examples": [
+    {
+      "name": "itch.io",
+      "what": "Black ground, pixel logo, hard 2px frames around game tiles, signal red as the only accent color, no rounding"
+    },
+    {
+      "name": "Dwarf Fortress (Steam version 2022, Kitfox Games)",
+      "what": "A hand-drawn 16x16 tileset instead of ASCII; an interface that outputs complete simulation data in bitmap tiles and frame drawing"
+    },
+    {
+      "name": "Windows 95 / Chicago UI (Microsoft, 1995)",
+      "what": "The source of the 2px bevel: #C0C0C0 panel, title bar #000080, inset input fields, segmented status bar"
+    },
+    {
+      "name": "Silkscreen (Jason Kottke, 1999, today on Google Fonts)",
+      "what": "A bitmap typeface for web graphics; square pixels with wide gaps, designed for exactly 8px rendering"
+    },
+    {
+      "name": "Press Start 2P (CodeMan38)",
+      "what": "A rebuild of the Namco arcade faces of the 80s; renders cleanly only in multiples of 8px"
+    },
+    {
+      "name": "Stardew Valley / Celeste (indie games)",
+      "what": "They show today's standard: pixel-art sprites plus a legible UI layer, the palette held to a few values per scene"
+    }
+  ],
+  "strengths": [
+    "Unmistakable within 200ms -- no other style in the catalog is identified this fast",
+    "Extremely cheap in assets: sprites are 8x8 SVG rectangles, no icon set, no illustration needed",
+    "Forces real color discipline; the limited palette makes token systems trivial",
+    "Carries personality without copy: the frame alone already tells the attitude",
+    "Performance-friendly: no blurs, no shadow layers, no large bitmaps"
+  ],
+  "risks": [
+    "Tips into cheap the moment a single element is soft -- one rounded button or one system font destroys the whole frame",
+    "Press Start 2P is extremely wide: long compounds such as the German 'Benachrichtigungseinstellungen' blow out every line",
+    "Bitmap fonts below 10px go blurry on HiDPI displays with non-integer scaling -- exactly the opposite of the goal",
+    "Signals 'game' or 'gimmick'; in finance, health or B2B contexts a loss of trust",
+    "Overwhelming as a language for a whole product family: the style has no quiet setting"
+  ],
+  "a11y": "The style allows high contrast (text on ground here well above 10:1) but sabotages itself through its font sizes: bitmap fonts are bound to integer pixel sizes, so they survive neither browser zoom nor user font enlargement cleanly, and at 10px they run below the WCAG recommendations for body text. Bitmap fonts with very tight spacing are also markedly harder for people with dyslexia -- longer texts belong in VT323 at 19-21px or in a normal typeface altogether. The blinking LED and cursor elements have to be switched off under prefers-reduced-motion, and status must never be encoded by green/amber alone, which is why the word stands here as well.",
+  "longevity": "Two-sided behavior: as a quotation of a closed hardware era it ages no further, because it is already historical -- it cannot go 'out of fashion' the way a 2021 trend can. But it ties the brand permanently to indie game culture, and there is no getting back out of that association.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 5,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "No trouble: image-rendering: pixelated, box-shadow without blur and steps() animations cover everything; only the webfont size has to stay integer.",
+    "mobile": "Difficult -- Compose and SwiftUI scale with dp/pt and the user's font size, which lands bitmap fonts between pixels; the window frame also collides with the platform navigation patterns.",
+    "desktop": "The most natural place outside of games: a Tauri window with its own title bar and status bar can play out the Win95 branch of the style in full."
+  },
+  "verdict": "As a base for the whole personal brand a clear no: the style has only one volume, demands full consistency in every new app, and stamps every product -- including a finance or health tool like 'Balance Ally' -- as a toy. For a solo developer with many small apps it is also the wrong trade-off: cheap in assets, but expensive in discipline, because one un-pixelated detail destroys the impression. It makes sense as a fenced-off side stage -- a 404, an easter egg, a changelog header, an icon set of 8x8 sprites, a loading screen. Anyone who really wants indie belonging as a brand core should limit it to exactly one product and not to the portfolio.",
+  "combinesWith": [
+    "terminal-mono",
+    "neo-brutalism",
+    "y2k-aero",
+    "web-brutalism"
+  ],
+  "tip": "Nail everything to a single pixel unit. Pick one unit (2px here) and derive borders, bevels, drop shadows, spacing and sprite scaling exclusively as integer multiples of it -- no 3px, no 0.5, no percentages. The difference between 'authentic' and 'retro filter laid over the top' lies almost entirely in whether that grid holds everywhere, especially in the gaps and in the click offset of the buttons.",
+  "googleFonts": [
+    "Press Start 2P",
+    "Silkscreen",
+    "VT323"
+  ]
+}

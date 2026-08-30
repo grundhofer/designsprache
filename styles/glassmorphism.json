@@ -1,0 +1,69 @@
+{
+  "slug": "glassmorphism",
+  "name": "Glassmorphism",
+  "aka": ["Frosted Glass", "Liquid Glass (Apple, 2025)", "Acrylic / Mica (Microsoft)", "Aero (Microsoft, 2007)", "Milchglas-Look"],
+  "family": "Weiche Materialität",
+  "era": "2007 (Windows Aero) - heute; Web-Welle 2020/21, Plattform-Renaissance ab 2025",
+  "origin": "Die Linie beginnt bei Windows Vista Aero (2007) und macOS Yosemite (2014), wo Fensterchrome erstmals durchscheinend wurde, um Hierarchie ohne harte Kanten zu zeigen; Microsoft systematisierte das 2017 als Fluent Acrylic. Den Namen 'Glassmorphism' prägte Michal Malewicz Ende 2020, als backdrop-filter endlich in allen Browsern lief und der Look als Dribbble-Trend explodierte. Den bislang größten Sprung machte Apple mit 'Liquid Glass', angekündigt am 9. Juni 2025 auf der WWDC und ausgeliefert mit iOS/iPadOS/macOS Tahoe/watchOS/tvOS/visionOS 26: statt eines statischen Blurs rendert Apple in Echtzeit Refraktion, spekulare Highlights, die auf Gerätebewegung reagieren, und eine Farbgebung, die sich am Inhalt dahinter orientiert. Der Stil löst ein echtes Problem -- Ebenen sichtbar machen, ohne den darunterliegenden Kontext zu verdecken.",
+  "idea": "Bedienflächen sind kein Papier, sondern Glas: sie liegen über dem Inhalt, lassen ihn unscharf und übersättigt durchscheinen und markieren ihre Kante nur durch eine Lichtbrechung von einem Pixel.",
+  "markers": [
+    "backdrop-filter: blur(14-24px) saturate(160-180%) auf jeder Ebene",
+    "Füllung rgba(255,255,255,.08-.18) auf dunklem, .55-.70 auf hellem Untergrund",
+    "1px Innenkante oben (inset 0 1px 0 rgba(255,255,255,.4-.6)) als Lichtsammelkante",
+    "Radius 18-30px an Panels, 999px an Feldern und schwebenden Leisten",
+    "Zwingend unruhiger Untergrund: Farbverlauf, Foto oder unscharfe Farbkörper -- auf Uni-Fläche verschwindet der Effekt vollständig",
+    "Mindestens zwei gestapelte Glasebenen (Panel > Zeile), Tiefe kommt aus dem Stapel, nicht aus Schatten",
+    "Drop-Shadow tief und weit: 0 18px 44px rgba(4,6,24,.45)",
+    "Apple-Ausbaustufe: Lensing statt Blur, spekulares Highlight auf Gyroskop-Basis, zwei Materialvarianten (regular / clear)",
+    "Textkontrast schwankt messbar mit dem Untergrund -- hier 3,1:1 bis rund 16:1 innerhalb derselben Fläche"
+  ],
+  "params": {
+    "radius": "18-30px an Flächen, 999px an Pills, Feldern und Aktionsleisten",
+    "contrast": "niedrig bis mittel, und vor allem: nicht konstant",
+    "density": "luftig",
+    "depth": "Echtes Layering: jede Ebene unschärft die darunter; zusätzlich weiter, tiefer Schlagschatten und eine helle Innenkante als Fase",
+    "color": "Farbe kommt aus dem Untergrund, nicht aus der Fläche; das Glas selbst ist farblos und übersättigt nur, was hindurchscheint",
+    "type": "Neutrale, eng laufende Grotesk in 450-600, fast immer weiß mit leichtem Textschatten zur Absicherung",
+    "motion": "Weich und träge: 160-220ms cubic-bezier(.2,0,0,1) für Hover und Layer-Wechsel; auf Apple zusätzlich das wandernde Speculare und Größenwechsel der Tab-Bar beim Scrollen",
+    "texture": "Feines Korn (10-18% Opazität) gegen Verlaufsbänder; ansonsten optisch glatt"
+  },
+  "palette": ["#0A0D26", "#7B3BFF", "#00C8FF", "#FF4D97", "#FFB03A", "#FFFFFF"],
+  "examples": [
+    {"name": "Apple iOS 26 / macOS Tahoe 26 (Liquid Glass, 2025)", "what": "Tab-Bars und Sidebars, die den Inhalt dahinter brechen statt nur weichzeichnen, mit Glanzkanten, die beim Kippen des Geräts mitwandern, und Controls, die beim Scrollen schrumpfen"},
+    {"name": "Microsoft Fluent Acrylic / Mica (Windows 11)", "what": "Kommandoleisten und Flyouts mit Noise-Layer im Material; Mica nimmt nur die Wallpaper-Farbe auf, ohne live zu blurren -- der performante Gegenentwurf"},
+    {"name": "Apple visionOS", "what": "Der Stil in seiner konsequentesten Form: Fenster sind wirklich Glasscheiben im Raum, mit Schatten auf der echten Umgebung"},
+    {"name": "Arc Browser / Dia (The Browser Company)", "what": "Sidebar und Command-Bar als Glasflächen über einem farbigen Space-Gradient -- der bekannteste Web-native Vertreter"},
+    {"name": "Michal Malewicz, 'Glassmorphism in user interfaces' (hype4.academy, Dez. 2020)", "what": "Der Text, der den Begriff gesetzt und die Rezeptur (Blur + Transparenz + 1px-Kante + bunter Grund) kodifiziert hat"}
+  ],
+  "strengths": [
+    "Zeigt Ebenen-Hierarchie, ohne den Kontext darunter zu verdecken -- das können weder Flat noch Neumorphismus",
+    "Für Overlays, Modals, Sticky-Navs und Command-Paletten sachlich die beste verfügbare Lösung",
+    "Wirkt sofort hochwertig und aktuell, ohne dass eine einzige Grafik geladen werden muss",
+    "Auf Apple-Plattformen ab 2025 nicht nur erlaubt, sondern das systemeigene Material -- dort also gratis und korrekt",
+    "Skaliert farblich mit dem Inhalt: derselbe Code sieht auf jedem Hintergrundbild anders aus"
+  ],
+  "risks": [
+    "backdrop-filter ist teuer: mehrere gestapelte Glasflächen erzeugen auf Mobile Scroll-Jank und in WebView2/Tauri gelegentlich Repaint-Artefakte",
+    "Ohne unruhigen Untergrund ist der Stil wirkungslos -- er zwingt zu Farbverläufen, die man vielleicht gar nicht will",
+    "Der Textkontrast hängt davon ab, was gerade zufällig dahinterliegt; er ist nicht per Token garantierbar",
+    "Der Look gehört derzeit sichtbar Apple: eine eigene Web-App im Liquid-Glass-Kostüm liest sich als schlecht kopierte System-App",
+    "Kippt in 'Bootstrap-Template 2021', sobald der Blur zu klein, die Transparenz zu hoch und der Verlauf zu bunt gewählt ist"
+  ],
+  "a11y": "Der Kontrast ist eine Funktion des Untergrunds, nicht des Designs: weißer Text liegt in dieser Demo je nach Stelle zwischen rund 16:1 (über der dunklen Basis) und 3,1:1 (dort, wo ein heller Farbkörper hinter dem Glas steht) -- 4,5:1 nach WCAG 2.2 AA ist also nicht durchgängig erfüllt, sekundärer Text fällt lokal bis auf 2,4:1. Deshalb liegt hier ein dunkler Tint von 34% unter dem weißen Film; ohne ihn sinkt derselbe Text auf 1,7:1. Zwingend sind außerdem ein opaker Fallback unter @media (prefers-reduced-transparency: reduce) -- Apple musste nach der Legibility-Kritik an macOS Tahoe genau das nachrüsten und einen Transparenz-Regler in die Systemeinstellungen legen -- sowie ein stilfremder, deckender Fokus-Ring, weil eine 1px-Glaskante die 3:1-Anforderung aus SC 1.4.11 nie erreicht.",
+  "longevity": "Als Web-Trend ist der Look ein deutlicher 2020er-Marker und altert mittelmäßig; als Plattform-Material auf Apple-Geräten ist er bis mindestens Ende der Dekade gesetzt. Wer ihn im Web einsetzt, wettet also auf eine fremde Plattformmarke -- und deren nächste Kurskorrektur (Apple hat die Default-Transparenz bereits einmal gesenkt) trifft das eigene Produkt mit.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Technisch überall verfügbar, aber teuer und nur als sparsamer Deko-Layer mit opakem Fallback zu verantworten -- nicht als Grundfläche der App.",
+    "mobile": "Auf iOS ab 26 der systemeigene und damit richtige Weg; auf Android ein Fremdkörper, weil Material 3 mit tonaler Elevation eine völlig andere Tiefenlogik verwendet.",
+    "desktop": "In Tauri funktionsfähig, aber WebView2 und WebKitGTK zahlen den GPU-Preis unterschiedlich; native Fenstervibrancy über die Tauri-Effects-API ist der sauberere Weg als CSS-Blur."
+  },
+  "verdict": "Als Marken-Basis: nein -- als Bauteil: ja, an genau zwei Stellen. Der Stil ist ein Plattform-Material, kein Markenzeichen; wer ihn zur Grundfläche macht, sieht auf iOS wie eine mittelmäßige System-Kopie und auf Android wie ein Fremdkörper aus, und der Wiedererkennungswert gehört nicht ihm, sondern Apple. Für einen Solo-Entwickler kommt hinzu, dass er als einziger Stil in dieser Familie echte Laufzeitkosten hat und in Tauri je nach WebView unterschiedlich rendert -- also drei Plattformen, drei Verhaltensweisen. Sinnvoll bleibt er dort, wo er ein Problem löst statt Stimmung zu machen: Command-Palette und Modal-Overlay, jeweils mit opakem Fallback.",
+  "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
+  "tip": "Die Glaubwürdigkeit entsteht nicht am Blur, sondern an der Kante und am Tint. Erstens: immer eine helle 1px-Innenkante oben und eine schwächere unten setzen (inset 0 1px 0 rgba(255,255,255,.55)) -- ohne sie sieht Glas aus wie eine milchige Folie. Zweitens: unter den weißen Film gehört ein dunkler Tint von 25-35%, denn nur er macht den Textkontrast vom Untergrund unabhängig. Und saturate(180%) nie weglassen: die Übersättigung ist das, was Blur von Glas unterscheidet.",
+  "googleFonts": ["Inter"]
+}

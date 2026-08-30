@@ -1,0 +1,435 @@
+<style>
+.style-pixel-8bit {
+  --px-void: #0B0A12;
+  --px-shell: #2A2C46;
+  --px-shell-lo: #131427;
+  --px-shell-hi: #545A93;
+  --px-well: #191A2E;
+  --px-ink: #EDEBF2;
+  --px-dim: #A3A5D0;
+  --px-title: #2B2BAE;
+  --px-accent: #FF4D6D;
+  --px-green: #3BE081;
+  --px-amber: #FFC53D;
+  background: var(--px-void);
+  color: var(--px-ink);
+  font-family: "VT323", ui-monospace, "Courier New", monospace;
+  line-height: 1.15;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  color-scheme: dark;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  text-rendering: geometricPrecision;
+}
+
+.style-pixel-8bit * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.style-pixel-8bit .demo {
+  min-height: 460px;
+  width: 100%;
+  padding: 18px;
+  background-color: var(--px-void);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 3px),
+    repeating-conic-gradient(#17162E 0% 25%, transparent 0% 50%);
+  background-size: auto, 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- Fensterrahmen mit hartem Bevel ---------- */
+.style-pixel-8bit .win {
+  background: var(--px-shell);
+  border: 2px solid #000;
+  box-shadow:
+    inset 2px 2px 0 0 var(--px-shell-hi),
+    inset -2px -2px 0 0 var(--px-shell-lo),
+    6px 6px 0 0 rgba(0,0,0,0.55);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Titelleiste = HEADER ---------- */
+.style-pixel-8bit .titlebar {
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 2px),
+    var(--px-title);
+  border-bottom: 2px solid #000;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.style-pixel-8bit .titlebar h2 {
+  font-family: "Press Start 2P", "Silkscreen", monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #FFF;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.style-pixel-8bit .count {
+  font-family: "Press Start 2P", "Silkscreen", monospace;
+  font-size: 10px;
+  background: var(--px-accent);
+  color: #16000A;
+  padding: 4px 6px;
+  border: 2px solid #000;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.55), 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.style-pixel-8bit .spacer { flex: 1; }
+
+.style-pixel-8bit .wbtn {
+  width: 16px;
+  height: 14px;
+  background: var(--px-shell);
+  border: 2px solid #000;
+  box-shadow: inset 1px 1px 0 var(--px-shell-hi), inset -1px -1px 0 var(--px-shell-lo);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Silkscreen", monospace;
+  font-size: 8px;
+  color: var(--px-ink);
+}
+
+/* ---------- Liste ---------- */
+.style-pixel-8bit .body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.style-pixel-8bit .list {
+  list-style: none;
+  background: var(--px-well);
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px 0 var(--px-shell-lo), inset -2px -2px 0 #24263F;
+  padding: 6px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.style-pixel-8bit .row {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 2px solid transparent;
+}
+
+.style-pixel-8bit .row:hover {
+  background: #232544;
+  border-color: var(--px-shell-hi);
+}
+
+.style-pixel-8bit .sprite {
+  width: 24px;
+  height: 24px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.style-pixel-8bit .name {
+  font-family: "Silkscreen", "Press Start 2P", monospace;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--px-ink);
+  display: block;
+  text-transform: uppercase;
+}
+
+.style-pixel-8bit .time {
+  font-family: "VT323", monospace;
+  font-size: 19px;
+  line-height: 1;
+  color: var(--px-dim);
+  display: block;
+  margin-top: 2px;
+}
+
+.style-pixel-8bit .status {
+  font-family: "Silkscreen", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 6px;
+  border: 2px solid #000;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.style-pixel-8bit .status.on {
+  background: var(--px-green);
+  color: #052012;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.style-pixel-8bit .status.off {
+  background: var(--px-well);
+  color: var(--px-amber);
+  box-shadow: inset 1px 1px 0 var(--px-shell-lo);
+}
+
+.style-pixel-8bit .led {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  background: #052012;
+}
+
+.style-pixel-8bit .status.on .led {
+  animation: pixel-8bit-blink 1s steps(1, end) infinite;
+}
+
+.style-pixel-8bit .status.off .led {
+  background: var(--px-amber);
+  opacity: 0.55;
+}
+
+@keyframes pixel-8bit-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.15; }
+}
+
+/* ---------- Eingabefeld ---------- */
+.style-pixel-8bit .field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0D0E1C;
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px 0 #05060F, inset -2px -2px 0 #34375C;
+  padding: 8px;
+}
+
+.style-pixel-8bit .field .prompt {
+  font-family: "Silkscreen", monospace;
+  font-size: 10px;
+  color: var(--px-green);
+}
+
+.style-pixel-8bit .field input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-family: "VT323", monospace;
+  font-size: 21px;
+  line-height: 1;
+  color: var(--px-ink);
+  padding: 0;
+  letter-spacing: 0.02em;
+}
+
+.style-pixel-8bit .field input::placeholder {
+  color: #7C7FB0;
+  opacity: 1;
+}
+
+.style-pixel-8bit .field input:focus-visible {
+  outline: 2px solid var(--px-green);
+  outline-offset: 2px;
+}
+
+.style-pixel-8bit .caret {
+  width: 8px;
+  height: 18px;
+  background: var(--px-green);
+  animation: pixel-8bit-blink 1.06s steps(1, end) infinite;
+}
+
+/* ---------- Buttons ---------- */
+.style-pixel-8bit .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.style-pixel-8bit button {
+  font-family: "Press Start 2P", "Silkscreen", monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border: 2px solid #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.style-pixel-8bit .btn-primary {
+  background: var(--px-accent);
+  color: #1A0009;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.55), inset -2px -2px 0 rgba(0,0,0,0.35), 4px 4px 0 rgba(0,0,0,0.6);
+}
+
+.style-pixel-8bit .btn-secondary {
+  background: var(--px-shell);
+  color: var(--px-ink);
+  box-shadow: inset 2px 2px 0 var(--px-shell-hi), inset -2px -2px 0 var(--px-shell-lo), 4px 4px 0 rgba(0,0,0,0.6);
+}
+
+.style-pixel-8bit button:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset -2px -2px 0 rgba(255,255,255,0.35), inset 2px 2px 0 rgba(0,0,0,0.45), 0 0 0 rgba(0,0,0,0);
+}
+
+.style-pixel-8bit button:focus-visible {
+  outline: 2px dashed var(--px-ink);
+  outline-offset: 4px;
+}
+
+/* ---------- Statusleiste ---------- */
+.style-pixel-8bit .statusbar {
+  border-top: 2px solid #000;
+  background: var(--px-shell);
+  box-shadow: inset 0 2px 0 var(--px-shell-hi);
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  padding: 4px 6px;
+  font-family: "Silkscreen", monospace;
+  font-size: 10px;
+  color: var(--px-dim);
+}
+
+.style-pixel-8bit .statusbar .seg {
+  border: 2px solid var(--px-shell-lo);
+  box-shadow: inset -1px -1px 0 var(--px-shell-hi);
+  padding: 2px 6px;
+}
+
+.style-pixel-8bit .dither {
+  flex: 1;
+  border: 2px solid var(--px-shell-lo);
+  background-image:
+    repeating-linear-gradient(45deg, var(--px-shell-hi) 0 2px, var(--px-well) 2px 4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-pixel-8bit .status.on .led,
+  .style-pixel-8bit .caret {
+    animation: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .style-pixel-8bit .titlebar h2 { font-size: 10px; }
+  .style-pixel-8bit button { font-size: 8px; padding: 10px; }
+}
+</style>
+<div class="style-pixel-8bit">
+  <div class="demo">
+
+    <div class="win">
+
+      <div class="titlebar">
+        <h2>Projects</h2>
+        <span class="count">12</span>
+        <span class="spacer"></span>
+        <span class="wbtn">_</span>
+        <span class="wbtn">&#9633;</span>
+        <span class="wbtn">X</span>
+      </div>
+
+      <div class="body">
+
+        <ul class="list">
+          <li class="row">
+            <svg class="sprite" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+              <rect x="3" y="0" width="2" height="1" fill="#FF4D6D"/>
+              <rect x="2" y="1" width="4" height="1" fill="#FF4D6D"/>
+              <rect x="1" y="2" width="6" height="1" fill="#FF4D6D"/>
+              <rect x="0" y="3" width="8" height="2" fill="#FF4D6D"/>
+              <rect x="1" y="5" width="6" height="1" fill="#FF4D6D"/>
+              <rect x="2" y="6" width="4" height="1" fill="#FF4D6D"/>
+              <rect x="3" y="7" width="2" height="1" fill="#FF4D6D"/>
+              <rect x="3" y="3" width="2" height="2" fill="#191A2E"/>
+              <rect x="2" y="2" width="1" height="1" fill="#FFC53D"/>
+            </svg>
+            <div>
+              <span class="name">Nexus</span>
+              <span class="time">2 hrs ago</span>
+            </div>
+            <span class="status on"><span class="led"></span>Active</span>
+          </li>
+
+          <li class="row">
+            <svg class="sprite" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+              <rect x="5" y="0" width="2" height="1" fill="#A3A5D0"/>
+              <rect x="4" y="1" width="3" height="1" fill="#EDEBF2"/>
+              <rect x="3" y="2" width="3" height="1" fill="#EDEBF2"/>
+              <rect x="2" y="3" width="3" height="1" fill="#EDEBF2"/>
+              <rect x="1" y="4" width="3" height="1" fill="#EDEBF2"/>
+              <rect x="1" y="5" width="2" height="1" fill="#FFC53D"/>
+              <rect x="1" y="6" width="1" height="1" fill="#FF4D6D"/>
+            </svg>
+            <div>
+              <span class="name">Autowrite Studio</span>
+              <span class="time">yesterday</span>
+            </div>
+            <span class="status on"><span class="led"></span>Active</span>
+          </li>
+
+          <li class="row">
+            <svg class="sprite" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+              <rect x="1" y="1" width="2" height="1" fill="#3BE081"/>
+              <rect x="5" y="1" width="2" height="1" fill="#3BE081"/>
+              <rect x="0" y="2" width="8" height="2" fill="#3BE081"/>
+              <rect x="1" y="4" width="6" height="1" fill="#3BE081"/>
+              <rect x="2" y="5" width="4" height="1" fill="#3BE081"/>
+              <rect x="3" y="6" width="2" height="1" fill="#3BE081"/>
+              <rect x="1" y="2" width="1" height="1" fill="#EDEBF2"/>
+            </svg>
+            <div>
+              <span class="name">Balance Ally</span>
+              <span class="time">4 days ago</span>
+            </div>
+            <span class="status off"><span class="led"></span>Paused</span>
+          </li>
+        </ul>
+
+        <div class="field">
+          <span class="prompt">&gt;</span>
+          <input type="text" readonly placeholder="Search..." aria-label="Search">
+          <span class="caret"></span>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="button">New project</button>
+          <button class="btn-secondary" type="button">Import</button>
+        </div>
+      </div>
+
+      <div class="statusbar">
+        <span class="seg">READY</span>
+        <span class="seg">3 / 12</span>
+        <span class="dither"></span>
+        <span class="seg">v0.8</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>

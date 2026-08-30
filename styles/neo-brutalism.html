@@ -1,0 +1,442 @@
+<style>
+.style-neo-brutalism {
+  color-scheme: light;
+  --nb-ink: #000000;
+  --nb-paper: #F4F4F0;
+  --nb-card: #FFFFFF;
+  --nb-pink: #FF90E8;
+  --nb-yellow: #FFDE00;
+  --nb-cyan: #23D2E2;
+  --nb-lime: #B4F461;
+  --nb-border: 3px;
+  --nb-shadow: 6px 6px 0 var(--nb-ink);
+  --nb-shadow-sm: 4px 4px 0 var(--nb-ink);
+  width: 100%;
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.4;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.style-neo-brutalism,
+.style-neo-brutalism *,
+.style-neo-brutalism *::before,
+.style-neo-brutalism *::after { box-sizing: border-box; }
+
+.style-neo-brutalism .demo {
+  position: relative;
+  min-height: 460px;
+  padding: 46px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--nb-paper);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, .055) 0 2px, transparent 2px 11px);
+}
+
+.style-neo-brutalism .deco {
+  position: absolute;
+  border: var(--nb-border) solid var(--nb-ink);
+  z-index: 0;
+}
+
+.style-neo-brutalism .deco.d1 {
+  width: 86px;
+  height: 86px;
+  left: -22px;
+  top: 26px;
+  background: var(--nb-cyan);
+  transform: rotate(-9deg);
+  box-shadow: var(--nb-shadow);
+}
+
+.style-neo-brutalism .deco.d2 {
+  width: 62px;
+  height: 62px;
+  right: 16px;
+  bottom: 30px;
+  background: var(--nb-lime);
+  border-radius: 50%;
+  box-shadow: var(--nb-shadow-sm);
+}
+
+.style-neo-brutalism .deco.d3 {
+  width: 118px;
+  height: 26px;
+  right: -26px;
+  top: 54px;
+  background: var(--nb-yellow);
+  transform: rotate(8deg);
+  box-shadow: var(--nb-shadow-sm);
+}
+
+.style-neo-brutalism .panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 620px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  background: var(--nb-card);
+  box-shadow: 10px 10px 0 var(--nb-ink);
+}
+
+.style-neo-brutalism .bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: var(--nb-border) solid var(--nb-ink);
+  background: var(--nb-pink);
+}
+
+.style-neo-brutalism .bar .tag {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.style-neo-brutalism .bar .spacer { flex: 1 1 auto; }
+
+.style-neo-brutalism .bar i {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: var(--nb-border) solid var(--nb-ink);
+  background: var(--nb-card);
+}
+
+.style-neo-brutalism .pad { padding: 22px 22px 24px; }
+
+.style-neo-brutalism .head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.style-neo-brutalism .head h2 {
+  margin: 0;
+  font-family: "Archivo Black", "Arial Black", "Space Grotesk", system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
+
+.style-neo-brutalism .head .spacer { flex: 1 1 auto; }
+
+.style-neo-brutalism .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 46px;
+  padding: 0 10px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  background: var(--nb-yellow);
+  box-shadow: var(--nb-shadow-sm);
+  transform: rotate(-3deg);
+  font-family: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  font-size: 24px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.style-neo-brutalism .stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.style-neo-brutalism .item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  background: var(--nb-card);
+  box-shadow: var(--nb-shadow-sm);
+  transition: transform 90ms linear, box-shadow 90ms linear, background 90ms linear;
+}
+
+.style-neo-brutalism .item:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--nb-ink);
+  background: var(--nb-pink);
+}
+
+.style-neo-brutalism .item .glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: var(--nb-border) solid var(--nb-ink);
+  background: var(--nb-cyan);
+  font-family: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.style-neo-brutalism .item:nth-child(2) .glyph { background: var(--nb-lime); }
+.style-neo-brutalism .item:nth-child(3) .glyph { background: var(--nb-yellow); }
+
+.style-neo-brutalism .item .name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.style-neo-brutalism .item .spacer { flex: 1 1 auto; }
+
+.style-neo-brutalism .item .when {
+  flex: none;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+
+.style-neo-brutalism .item .state {
+  flex: none;
+  padding: 3px 10px 4px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  background: var(--nb-lime);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.style-neo-brutalism .item.paused .state { background: var(--nb-card); }
+
+.style-neo-brutalism .item .state::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 6px;
+  vertical-align: -1px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 50%;
+  background: var(--nb-ink);
+}
+
+.style-neo-brutalism .item.paused .state::before {
+  background: var(--nb-card);
+}
+
+.style-neo-brutalism .field {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 20px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  background: var(--nb-card);
+  box-shadow: var(--nb-shadow-sm);
+  transition: transform 90ms linear, box-shadow 90ms linear;
+}
+
+.style-neo-brutalism .field:focus-within {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+
+.style-neo-brutalism .field .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  border-right: var(--nb-border) solid var(--nb-ink);
+  background: var(--nb-yellow);
+}
+
+.style-neo-brutalism .field .icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.style-neo-brutalism .field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--nb-ink);
+  outline: none;
+}
+
+.style-neo-brutalism .field input::placeholder {
+  color: #4A4A46;
+  opacity: 1;
+}
+
+.style-neo-brutalism .field .hint {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-left: var(--nb-border) solid var(--nb-ink);
+  background: var(--nb-paper);
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.style-neo-brutalism .actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.style-neo-brutalism .btn {
+  padding: 13px 22px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 2px;
+  box-shadow: var(--nb-shadow);
+  font-family: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--nb-ink);
+  cursor: pointer;
+  transition: transform 90ms linear, box-shadow 90ms linear;
+}
+
+.style-neo-brutalism .btn-primary { background: var(--nb-yellow); }
+.style-neo-brutalism .btn-secondary { background: var(--nb-card); }
+
+.style-neo-brutalism .btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--nb-ink);
+}
+
+.style-neo-brutalism .btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+
+.style-neo-brutalism .actions .spacer { flex: 1 1 auto; }
+
+.style-neo-brutalism .star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: var(--nb-border) solid var(--nb-ink);
+  border-radius: 50%;
+  background: var(--nb-pink);
+  box-shadow: var(--nb-shadow-sm);
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(-8deg);
+}
+
+@media (max-width: 600px) {
+  .style-neo-brutalism .demo { padding: 26px 14px; }
+  .style-neo-brutalism .deco { display: none; }
+  .style-neo-brutalism .head h2 { font-size: 34px; }
+  .style-neo-brutalism .item .when { display: none; }
+  .style-neo-brutalism .field .hint { display: none; }
+  .style-neo-brutalism .star { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-neo-brutalism .item,
+  .style-neo-brutalism .btn,
+  .style-neo-brutalism .field { transition-duration: 1ms; }
+}
+</style>
+<div class="style-neo-brutalism">
+  <div class="demo">
+    <span class="deco d1"></span>
+    <span class="deco d3"></span>
+    <span class="deco d2"></span>
+
+    <div class="panel">
+      <div class="bar">
+        <span class="tag">Projekte // 2026</span>
+        <span class="spacer"></span>
+        <i></i><i></i><i></i>
+      </div>
+
+      <div class="pad">
+        <div class="head">
+          <h2>Projekte</h2>
+          <span class="spacer"></span>
+          <span class="count">12</span>
+        </div>
+
+        <div class="stack">
+          <div class="item">
+            <span class="glyph">N</span>
+            <span class="name">Nexus</span>
+            <span class="spacer"></span>
+            <span class="when">vor 2 Std.</span>
+            <span class="state">Aktiv</span>
+          </div>
+          <div class="item">
+            <span class="glyph">A</span>
+            <span class="name">Autowrite Studio</span>
+            <span class="spacer"></span>
+            <span class="when">gestern</span>
+            <span class="state">Aktiv</span>
+          </div>
+          <div class="item paused">
+            <span class="glyph">B</span>
+            <span class="name">Balance Ally</span>
+            <span class="spacer"></span>
+            <span class="when">vor 4 Tagen</span>
+            <span class="state">Pausiert</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="icon">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.5" stroke="#000" stroke-width="2.4"/>
+              <path d="m12.8 12.8 4.2 4.2" stroke="#000" stroke-width="2.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+          <span class="hint">12 Treffer</span>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="button">Neues Projekt</button>
+          <button class="btn btn-secondary" type="button">Importieren</button>
+          <span class="spacer"></span>
+          <span class="star" aria-hidden="true">✳</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

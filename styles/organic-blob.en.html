@@ -1,0 +1,375 @@
+<style>
+.style-organic-blob {
+  color-scheme: light;
+  --ob-paper: #FAF6EF;
+  --ob-paper-2: #F3EDE1;
+  --ob-ink: #2C3A31;
+  --ob-muted: #5C6E60;
+  --ob-sage: #A8C4A0;
+  --ob-sage-deep: #4F7355;
+  --ob-moss: #6E9070;
+  --ob-clay: #C9705B;
+  --ob-clay-soft: #F0D6C9;
+  --ob-apricot: #E8A87C;
+  --ob-line: #DCD3C2;
+  background: var(--ob-paper);
+  color: var(--ob-ink);
+  font-family: "Nunito", system-ui, sans-serif;
+  line-height: 1.55;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.style-organic-blob,
+.style-organic-blob * { box-sizing: border-box; }
+
+.style-organic-blob .demo {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 38px 34px 34px;
+  border-radius: 46% 54% 52% 48% / 8% 8% 10% 10%;
+  background:
+    radial-gradient(120% 90% at 8% 0%, #FFFDF8 0%, rgba(255,253,248,0) 60%),
+    var(--ob-paper);
+  isolation: isolate;
+}
+
+/* --- Hintergrund-Blobs ------------------------------------------------ */
+.style-organic-blob .field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.style-organic-blob .blob {
+  position: absolute;
+  filter: blur(22px);
+}
+.style-organic-blob .blob-a {
+  width: 270px; height: 246px;
+  right: -66px; top: -62px;
+  background: linear-gradient(150deg, #C2D8B6 0%, #97B98E 100%);
+  opacity: .58;
+  border-radius: 62% 38% 46% 54% / 55% 62% 38% 45%;
+  animation: organic-blob-morph 26s ease-in-out infinite;
+}
+.style-organic-blob .blob-b {
+  width: 258px; height: 232px;
+  left: -90px; bottom: -70px;
+  background: linear-gradient(20deg, #F3D3C0 0%, #E8A87C 100%);
+  opacity: .5;
+  border-radius: 44% 56% 63% 37% / 39% 51% 49% 61%;
+  animation: organic-blob-morph 31s ease-in-out infinite reverse;
+}
+.style-organic-blob .blob-c {
+  width: 204px; height: 168px;
+  right: 22%; bottom: -74px;
+  background: #DEE9D5;
+  opacity: .55;
+  border-radius: 58% 42% 38% 62% / 47% 60% 40% 53%;
+}
+@keyframes organic-blob-morph {
+  0%   { border-radius: 62% 38% 46% 54% / 55% 62% 38% 45%; transform: translate3d(0,0,0) rotate(0deg); }
+  33%  { border-radius: 38% 62% 58% 42% / 44% 38% 62% 56%; transform: translate3d(-10px,12px,0) rotate(6deg); }
+  66%  { border-radius: 55% 45% 34% 66% / 62% 51% 49% 38%; transform: translate3d(8px,-8px,0) rotate(-4deg); }
+  100% { border-radius: 62% 38% 46% 54% / 55% 62% 38% 45%; transform: translate3d(0,0,0) rotate(0deg); }
+}
+
+/* --- Kopf ------------------------------------------------------------- */
+.style-organic-blob .head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+.style-organic-blob .title-wrap { position: relative; padding-bottom: 10px; }
+.style-organic-blob .title {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ob-ink);
+}
+.style-organic-blob .scribble {
+  display: block;
+  width: 132px;
+  height: 11px;
+  margin-top: 2px;
+  color: var(--ob-clay);
+  overflow: visible;
+}
+.style-organic-blob .count {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 62px;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 27px;
+  color: #FFFDF8;
+  background: linear-gradient(145deg, #6E9070 0%, #4F7355 100%);
+  border-radius: 58% 42% 47% 53% / 52% 56% 44% 48%;
+  box-shadow: 0 10px 22px -12px rgba(79,115,85,.75);
+  animation: organic-blob-breathe 9s ease-in-out infinite;
+}
+@keyframes organic-blob-breathe {
+  0%, 100% { border-radius: 58% 42% 47% 53% / 52% 56% 44% 48%; }
+  50%      { border-radius: 44% 56% 56% 44% / 43% 47% 53% 57%; }
+}
+
+/* --- Wellen-Trenner --------------------------------------------------- */
+.style-organic-blob .wave {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 14px 0 16px;
+  color: var(--ob-sage);
+  opacity: .8;
+}
+
+/* --- Liste ------------------------------------------------------------ */
+.style-organic-blob .list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.style-organic-blob .row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: rgba(255,253,248,.94);
+  border: 1px solid #D3CBB8;
+  box-shadow: 0 10px 22px -18px rgba(44,58,49,.7);
+  transition: transform 420ms cubic-bezier(.34,1.3,.64,1), border-radius 700ms ease;
+}
+.style-organic-blob .row-1 {
+  border-radius: 30px 58px 34px 64px / 26px 40px 30px 48px;
+  margin-right: 26px;
+}
+.style-organic-blob .row-2 {
+  border-radius: 60px 26px 62px 32px / 44px 22px 46px 28px;
+  margin-left: 22px;
+}
+.style-organic-blob .row-3 {
+  border-radius: 36px 62px 26px 54px / 30px 46px 22px 40px;
+  margin-right: 12px;
+}
+.style-organic-blob .row:hover { transform: translateY(-2px); }
+.style-organic-blob .row-1:hover { border-radius: 58px 30px 64px 34px / 40px 26px 48px 30px; }
+.style-organic-blob .row-2:hover { border-radius: 26px 60px 32px 62px / 22px 44px 28px 46px; }
+.style-organic-blob .row-3:hover { border-radius: 62px 36px 54px 26px / 46px 30px 40px 22px; }
+
+.style-organic-blob .seed {
+  flex: none;
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: 60% 40% 55% 45% / 50% 58% 42% 50%;
+  background: #E6EEDF;
+  color: var(--ob-sage-deep);
+}
+.style-organic-blob .row-3 .seed { background: var(--ob-clay-soft); color: #8E4632; }
+.style-organic-blob .seed svg { width: 15px; height: 15px; display: block; }
+
+.style-organic-blob .name {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 16.5px;
+  letter-spacing: -0.005em;
+  color: var(--ob-ink);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.style-organic-blob .when {
+  flex: none;
+  font-size: 12.5px;
+  color: var(--ob-muted);
+  font-variant-numeric: tabular-nums;
+}
+.style-organic-blob .status {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 4px 13px 5px;
+  border-radius: 46% 54% 55% 45% / 50% 46% 54% 50%;
+  white-space: nowrap;
+}
+.style-organic-blob .status-on  { background: #DCE9D4; color: #35603C; }
+.style-organic-blob .status-off { background: var(--ob-clay-soft); color: #8E4632; }
+
+/* --- Suchfeld --------------------------------------------------------- */
+.style-organic-blob .seek {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 20px;
+  height: 50px;
+  margin-bottom: 18px;
+  background: #FFFDF8;
+  border: 1.5px solid #D3CBB8;
+  border-radius: 26px 46px 30px 50px / 25px;
+}
+.style-organic-blob .seek svg { width: 16px; height: 16px; flex: none; color: var(--ob-moss); }
+.style-organic-blob .seek input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: var(--ob-ink);
+  padding: 0;
+}
+.style-organic-blob .seek input::placeholder { color: var(--ob-muted); opacity: 1; }
+
+/* --- Aktionen --------------------------------------------------------- */
+.style-organic-blob .actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.style-organic-blob .btn {
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 13px 26px 14px;
+  border: 0;
+  cursor: pointer;
+  transition: transform 380ms cubic-bezier(.34,1.3,.64,1), border-radius 800ms ease, box-shadow 380ms ease;
+}
+.style-organic-blob .btn-primary {
+  color: #FFFDF8;
+  background: linear-gradient(140deg, #6E9070 0%, #4F7355 90%);
+  border-radius: 24px 38px 22px 34px / 22px 26px 20px 24px;
+  box-shadow: 0 14px 26px -16px rgba(79,115,85,.9);
+}
+.style-organic-blob .btn-primary:hover {
+  border-radius: 38px 24px 34px 22px / 26px 22px 24px 20px;
+  transform: translateY(-2px);
+}
+.style-organic-blob .btn-ghost {
+  color: #7A422F;
+  background: transparent;
+  border: 1.5px solid var(--ob-apricot);
+  border-radius: 34px 22px 36px 24px / 24px 20px 26px 22px;
+}
+.style-organic-blob .btn-ghost:hover {
+  border-radius: 22px 34px 24px 36px / 20px 24px 22px 26px;
+  background: #FBEEE4;
+  transform: translateY(-2px);
+}
+.style-organic-blob .btn:focus-visible {
+  outline: 2.5px solid var(--ob-sage-deep);
+  outline-offset: 3px;
+}
+.style-organic-blob .sprig {
+  margin-left: auto;
+  color: var(--ob-sage);
+  opacity: .9;
+}
+.style-organic-blob .sprig svg { display: block; width: 46px; height: 30px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-organic-blob .blob-a,
+  .style-organic-blob .blob-b,
+  .style-organic-blob .count { animation: none; }
+}
+@media (max-width: 520px) {
+  .style-organic-blob .demo { padding: 26px 20px; }
+  .style-organic-blob .title { font-size: 30px; }
+  .style-organic-blob .row { flex-wrap: wrap; gap: 8px 12px; }
+  .style-organic-blob .row-1,
+  .style-organic-blob .row-2,
+  .style-organic-blob .row-3 { margin-left: 0; margin-right: 0; }
+  .style-organic-blob .sprig { display: none; }
+}
+</style>
+<div class="style-organic-blob">
+  <div class="demo">
+    <div class="field" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+    </div>
+
+    <div class="head">
+      <div class="title-wrap">
+        <h2 class="title">Projects</h2>
+        <svg class="scribble" viewBox="0 0 132 11" fill="none" aria-hidden="true">
+          <path d="M2 7.4C18 3.1 33 2.2 49 4.4c16 2.2 25 5.6 41 4.2 10-.9 21-3.4 40-6.1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="count">12</div>
+    </div>
+
+    <svg class="wave" viewBox="0 0 400 16" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <path d="M0 9C22 9 26 3 48 3s26 6 48 6 26-6 48-6 26 6 48 6 26-6 48-6 26 6 48 6 26-6 48-6 26 6 48 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <ul class="list">
+      <li class="row row-1">
+        <span class="seed" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 15V7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 7c0-3 2.6-5.4 6-5.6.3 3.6-2.2 6.4-6 5.6Z" fill="currentColor"/><path d="M8 10C6 10 3.4 8.6 2.6 5.6 5.6 5 8 6.8 8 10Z" fill="currentColor" opacity=".55"/></svg>
+        </span>
+        <span class="name">Nexus</span>
+        <span class="when">2 hrs ago</span>
+        <span class="status status-on">Active</span>
+      </li>
+      <li class="row row-2">
+        <span class="seed" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 15V7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 7c0-3 2.6-5.4 6-5.6.3 3.6-2.2 6.4-6 5.6Z" fill="currentColor"/><path d="M8 10C6 10 3.4 8.6 2.6 5.6 5.6 5 8 6.8 8 10Z" fill="currentColor" opacity=".55"/></svg>
+        </span>
+        <span class="name">Autowrite Studio</span>
+        <span class="when">yesterday</span>
+        <span class="status status-on">Active</span>
+      </li>
+      <li class="row row-3">
+        <span class="seed" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.6"/><path d="M6.4 6v4M9.6 6v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="name">Balance Ally</span>
+        <span class="when">4 days ago</span>
+        <span class="status status-off">Paused</span>
+      </li>
+    </ul>
+
+    <div class="seek">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M10.8 10.8 14.5 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input type="text" readonly placeholder="Search..." aria-label="Search">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="button">New project</button>
+      <button class="btn btn-ghost" type="button">Import</button>
+      <span class="sprig" aria-hidden="true">
+        <svg viewBox="0 0 46 30" fill="none"><path d="M2 28C10 20 18 10 44 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 18c-1.6-3.4-.6-6.6 2.6-8 1.4 3.6.4 6.8-2.6 8Z" fill="currentColor"/><path d="M25 12c-.6-3.6 1.2-6.4 4.8-7 .6 3.8-1.2 6.6-4.8 7Z" fill="currentColor"/><path d="M11 20c-3.6.2-6-1.8-6.4-5.4 3.8-.6 6.4 1.4 6.4 5.4Z" fill="currentColor" opacity=".6"/></svg>
+      </span>
+    </div>
+  </div>
+</div>

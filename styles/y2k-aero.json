@@ -1,0 +1,109 @@
+{
+  "slug": "y2k-aero",
+  "name": "Y2K / Frutiger Aero",
+  "aka": [
+    "Frutiger Aero",
+    "Y2K Futurism",
+    "Aqua",
+    "Windows Aero",
+    "Glossy Skeuomorphismus",
+    "Bubbleism"
+  ],
+  "family": "Nostalgie & Subkultur",
+  "era": "1998-2013 (Y2K 1998-2004, Frutiger Aero 2004-2013), Revival seit 2022",
+  "origin": "Zwei aufeinanderfolgende Wellen derselben Techno-Optimismus-Erzählung. Y2K (1998-2004) entstand aus dem Jahrtausendwechsel-Hype: durchscheinendes Plastik am iMac G3 (Bondi Blue, 1998), Chrom-Verläufe, Metallic-Typo, Techno-Kultur, Matrix-Sci-Fi. Frutiger Aero (2004-2013) ist die gezähmte, HD-fähige Fortsetzung: Apples Aqua (Mac OS X, 2000 -- Steve Jobs: \"We made the buttons on the screen look so good you'll want to lick them\") und Windows Vista/7 Aero (2006/2009) machten Glanz, Transparenz und Verlauf zum Betriebssystem-Standard; die Nintendo Wii, Windows Media Player und frühe iOS-Icons trugen ihn weiter. Der Name wurde nachträglich von Sofi Lee (Consumer Aesthetics Research Institute) geprägt: Adrian Frutigers humanistische Grotesk (Segoe UI als Vista-Systemschrift ist ihr direkter Nachfahre) plus Windows Aero. Technisch möglich wurde er durch GPU-Compositing (Desktop Window Manager) und Retina-freies, aber HD-taugliches Rendering -- vorher war Echtzeit-Blur schlicht zu teuer.",
+  "idea": "Technik wird durch Natur und Licht humanisiert: jede Oberfläche ist ein nasses, angeleuchtetes Objekt, das man anfassen möchte. Glanz ist kein Dekor, sondern die Behauptung, dass die Zukunft freundlich wird.",
+  "markers": [
+    "Specular-Highlight auf jedem Control: weißer Verlauf über die oberen 40-50% der Fläche, harte Kante bei 50%",
+    "Aqua-Buttons als Pille (radius 999px), Aero-Container mit radius 12-20px -- nichts dazwischen",
+    "Blau-Cyan-Grün-Achse: #0E6CB0 / #2E9CE0 / #8FD35C, Weiß als vierte Grundfarbe",
+    "Backdrop-Blur 12-16px plus saturate(150%) auf Fensterrahmen (Aero-Glass)",
+    "Natur-Wallpaper als Pflicht-Untergrund: Himmelsverlauf, Grashügel, Bokeh-Kreise",
+    "Blasen mit 2 Highlights (32%/26% weiß oben, farbiger Gegenlicht-Reflex unten rechts)",
+    "Lens Flare als Kette von 4-6 Ringen auf einer Diagonale weg von der Lichtquelle",
+    "1px weiße Innenkante (inset 0 1px 0 rgba(255,255,255,.95)) auf allen Panels -- der Aero-Bevel",
+    "Wassertropfen mit asymmetrischem border-radius (52% 48% 46% 54% / 58% 56% 44% 42%)"
+  ],
+  "params": {
+    "radius": "12-20px an Containern, 999px an Buttons/Pills, 18px am Fensterrahmen",
+    "contrast": "mittel",
+    "density": "mittel",
+    "depth": "sehr stark: Bevel (inset-Highlight oben, inset-Shadow unten) + Außenschatten + Backdrop-Blur + Spiegelung; drei Ebenen gleichzeitig",
+    "color": "Eine Blau-Cyan-Achse vom tiefen #07456F bis #A8E6FB, dagegen ein Natur-Grün #8FD35C; Weiß trägt das Licht, gesättigte Akzente nur an Status-Gels",
+    "type": "Humanistische Grotesk mit offenen Punzen (Frutiger/Segoe-Linie, hier Istok Web), Headline weiß mit Glow; ein einzelnes Techno-Display (Audiowide) als Y2K-Zitat am Zähler",
+    "motion": "Langsam, schwebend, organisch: Blasen 12-21s ease-in-out infinite; UI-Reaktionen 140-160ms cubic-bezier(.22,1,.36,1) mit 1px Lift",
+    "texture": "Bokeh und Lichtstreuung statt Korn; Wassertropfen als punktuelle Oberflächenstörung; kein Noise"
+  },
+  "palette": [
+    "#07456F",
+    "#0E6CB0",
+    "#2E9CE0",
+    "#A8E6FB",
+    "#8FD35C",
+    "#FFFFFF"
+  ],
+  "examples": [
+    {
+      "name": "Apple Aqua (Mac OS X 10.0-10.6, 2000)",
+      "what": "Pillenförmige Default-Buttons mit pulsierendem Blau, gestreifte Fensterhintergründe, das Scrollbar-Gel -- der Ursprung des 'lickable' Highlights auf der oberen Hälfte"
+    },
+    {
+      "name": "Windows Vista / 7 Aero (2006/2009)",
+      "what": "Titelleisten mit echtem Gaussian-Blur des Hintergrunds, weiße 1px-Innenkante, farbige Glasrahmen, Flip-3D; der Desktop Window Manager als erste GPU-composited Consumer-Shell"
+    },
+    {
+      "name": "Nintendo Wii Menu (2006)",
+      "what": "Weiße Kachel-Kanäle mit blauem Glasglanz, sehr große Radien, Segoe-artige Rundschrift, sanfte Ping-Sounds -- Frutiger Aero ohne Natur-Fotografie"
+    },
+    {
+      "name": "iMac G3 (1998) und iBook 'Clamshell'",
+      "what": "Transluzentes farbiges Polycarbonat mit sichtbarer Elektronik dahinter -- die physische Vorlage für 'transparentes Plastik' im Y2K-UI"
+    },
+    {
+      "name": "Consumer Aesthetics Research Institute -- Eintrag 'Frutiger Aero'",
+      "what": "Die kuratierte Sammlung, die den Stil überhaupt erst als benennbare Kategorie fixiert hat: Vista-Wallpapers, Bildagentur-Fotografie (Delfine, Grashügel, Wassertropfen) und Software-Skins -- die Referenzquelle des heutigen Revivals"
+    },
+    {
+      "name": "Windows Media Player 11 / Zune (2006)",
+      "what": "Schwarzes Glas mit blauen Gel-Reglern und Reflexionen unter den Album-Covern -- die dunkle Ausspielung derselben Sprache"
+    }
+  ],
+  "strengths": [
+    "Warm, optimistisch und einladend -- das exakte Gegengift zum kalten Dev-Noir-Dunkelgrau, das 2026 Standard ist",
+    "Affordanz ist maximal: ein Aqua-Gel-Button sieht auf 200ms nach Knopf aus, kein Flat-Button-Ratespiel",
+    "Extrem hohe Wiedererkennung -- Glanzkante plus Himmel-Wallpaper sind sofort zuzuordnen",
+    "Rein mit CSS-Gradients und box-shadow baubar, keine Bild-Assets nötig, wenn man diszipliniert ist"
+  ],
+  "risks": [
+    "Ohne Fotografie oder aufwendig gebauten Verlaufs-Hintergrund kollabiert der Stil zu 'Bootstrap 2 mit Glanz'",
+    "Der Glanz muss auf JEDEM Element konsistent von derselben Lichtquelle kommen -- eine falsch gerichtete Kante zerstört die Illusion sofort",
+    "Datierungssignal ersten Ranges: Glossy-Gradient-Buttons lesen ab 2013 als 'alte Software', nicht als 'Stil'",
+    "Nicht theme-fähig: Es gibt keinen Dark Mode dieser Sprache, nur einen zweiten, komplett neu zu entwerfenden Look (WMP-11-Schwarzglas)",
+    "Backdrop-Filter ist teuer -- in Tauri/WebView2 gibt es Repaint-Artefakte beim Scrollen, auf Android-WebViews Jank"
+  ],
+  "a11y": "Der Stil erzeugt Kontrast-Probleme strukturell, nicht versehentlich: Das Specular-Highlight hellt genau den Bereich auf, in dem Text steht. In dieser Demo liegt weißer Text auf dem Primärbutton in den unteren zwei Dritteln bei rund 8:1 gegen #07456F, unter dem Glanzband lokal aber nur bei etwa 2,5:1 -- getragen wird das nur vom dunklen text-shadow, was WCAG 2.2 formal nicht anerkennt. Deshalb wurde hier bewusst ein schmales Highlight-Band (obere 42%) statt des historisch korrekten 50/50-Gloss verwendet; mit echtem Aqua-Gloss ist SC 1.4.3 nicht erreichbar. Der weiße Header liegt auf transluzentem Glas über einem Verlaufs-Wallpaper, sein Kontrast ist damit positionsabhängig und nur durch den zweifachen Textschatten gesichert; Status-Pills tragen zusätzlich einen Farb-Orb links, damit Farbe nicht der einzige Kanal ist.",
+  "longevity": "Der Revival-Zyklus läuft seit 2022 und steht 2026 am Höhepunkt -- was bedeutet, dass der Stil in zwei bis drei Jahren maximal datiert wirken wird. Als Marken-Fundament ist er damit eine Wette auf einen Trend, dessen Ablaufdatum bereits sichtbar ist.",
+  "scores": {
+    "longevity": 1,
+    "recognition": 5,
+    "effort": 5,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Gut machbar (Gradients, backdrop-filter, box-shadow reichen), aber jede Komponente braucht handgebaute Lichtführung -- ein Utility-Framework wie Tailwind trägt das nur über eigene Component-Klassen.",
+    "mobile": "In Compose müssen Bevel und Gloss als Brush.verticalGradient plus mehrere Layer nachgebaut werden; auf kleinen Flächen frisst der Glanz die Lesbarkeit und widerspricht Material-3-Konventionen frontal.",
+    "desktop": "Tauri ist die natürlichste Bühne (Fensterrahmen, Titelleiste, Glas hinter dem Chrome), aber WebView2 rendert backdrop-filter beim Resize sichtbar nach."
+  },
+  "verdict": "Als Basis für die Eigenmarke: nein. Der Stil hat die höchste Wiedererkennung im ganzen Katalog und genau deshalb das kürzeste Haltbarkeitsdatum -- ein Solo-Entwickler mit vielen kleinen Apps müsste in drei Jahren alle Oberflächen gleichzeitig neu bauen, denn ein 'halber Aero-Look' existiert nicht. Dazu kommt der Aufwand: jedes Control braucht drei bis fünf Layer handgeführtes Licht, das sich weder tokenisieren noch nach Compose spiegeln lässt, und es gibt keinen Dark Mode. Sinnvoll ist er als klar abgegrenzter Marketing-Layer -- eine Landingpage, ein Onboarding, ein Empty State -- oder als Zitat: ein einziger Gel-Akzent auf dem Primärbutton eines ansonsten nüchternen Systems.",
+  "combinesWith": [
+    "glassmorphism",
+    "skeuomorph",
+    "organic-blob",
+    "claymorphism"
+  ],
+  "tip": "Der Unterschied zwischen überzeugend und billig ist die Lichtquelle. Lege sie einmal fest (hier: oben links, plus ein Gegenlicht-Reflex unten) und wende sie auf JEDES Element an -- Button, Orb, Blase, Tropfen, Status-Pill. Sobald ein einziges Element seinen Glanz woanders hat, sieht das Ganze nach CSS-Effekt statt nach Material aus. Und: das Highlight schmal halten (obere 40%), nicht 50/50 -- das rettet gleichzeitig den Textkontrast und wirkt sogar teurer.",
+  "googleFonts": [
+    "Istok Web",
+    "Audiowide"
+  ]
+}

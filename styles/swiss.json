@@ -1,0 +1,69 @@
+{
+  "slug": "swiss",
+  "name": "Swiss / International Typographic Style",
+  "aka": ["Schweizer Stil", "Internationaler Typografischer Stil", "Neue Grafik", "Zürcher Schule", "Basler Schule"],
+  "family": "Modernistische Schulen",
+  "era": "1950-heute",
+  "origin": "Entstanden in Zürich und Basel in den 1950er Jahren um Josef Müller-Brockmann, Armin Hofmann, Emil Ruder und Max Bill, publizistisch gebündelt in der Zeitschrift 'Neue Grafik' (ab 1958). Der Stil suchte eine objektive, vom Gestalter-Ego gereinigte Kommunikation für ein mehrsprachiges Land und einen internationalen Markt – Information statt Ausdruck. Möglich wurde er durch die Grotesk-Schriften der Zeit (Akzidenz-Grotesk von 1896, ab 1957 Helvetica und Univers) und durch industriellen Offsetdruck mit präziser Passgenauigkeit, die ein millimetergenaues Raster überhaupt erst reproduzierbar machte. Müller-Brockmanns Tonhalle-Plakate (ab 1951, über 70 Motive bis 1972) und sein Buch 'Grid Systems in Graphic Design' (1981) sind die kanonischen Referenzen.",
+  "idea": "Ein modulares Raster trägt die gesamte Hierarchie; Ordnung entsteht aus Position, Größe und Weißraum statt aus Dekoration.",
+  "markers": [
+    "Radius 0px, ausnahmslos",
+    "Modulares Raster 12 Spalten + Baseline-Grid 24px, Kanten bündig zur Spaltenachse",
+    "Genau eine Signalfarbe (klassisch Rot #E30613) auf Schwarz/Weiß, Farbanteil unter 5% der Fläche",
+    "Keine Schatten, keine Verläufe, keine Texturen – Trennung über 1px-Hairlines und Abstand",
+    "Grotesk in maximal 3 Schnitten (400/500/700), Headline-Tracking -0.045em",
+    "Asymmetrische Satzachse: Inhalt linksbündig, große leere Randspalte rechts oder links",
+    "Weißraum-Budget: Außenränder ≥ 40px, Blockabstände in Vielfachen von 24px",
+    "Kontrast Text/Grund > 15:1 (#0B0B0B auf #FFFFFF)",
+    "Kein Zentriersatz, kein Blocksatz – alles Flattersatz linksbündig"
+  ],
+  "params": {
+    "radius": "0px",
+    "contrast": "sehr hoch",
+    "density": "luftig",
+    "depth": "keine; Trennung ausschließlich über 1px-Linien, Abstand und Fluchtlinien",
+    "color": "Schwarz und Weiß als System, eine einzige Signalfarbe (Rot) rein funktional für Status, Marke und Fokus.",
+    "type": "Neutrale Grotesk, streng hierarchisch über Größe und Gewicht, negatives Tracking in Headlines, Versalien nur in Mikrotypografie.",
+    "motion": "Minimal und funktional: 100-150ms linear oder ease-out, nur Farbwechsel und Position, niemals Scale oder Bounce.",
+    "texture": "keine"
+  },
+  "palette": ["#FFFFFF", "#0B0B0B", "#E30613", "#6E6E6E", "#D4D4D4"],
+  "examples": [
+    {"name": "Josef Müller-Brockmann, Tonhalle-Plakate Zürich (1951-1972)", "what": "Konzentrische Kreise und Balken auf strengem Spaltenraster, Akzidenz-Grotesk, Text bündig an der Rasterachse, Rot als einzige Buntfarbe"},
+    {"name": "SBB / Schweizerische Bundesbahnen Corporate Design", "what": "Bahnhofsbeschilderung und Fahrpläne: Helvetica-Ableitung, tabellarisches Raster, Rot #EB0000 nur für Marke und Warnung, null Dekoration bei extremer Informationsdichte"},
+    {"name": "Studio Feixen (Luzern)", "what": "Zeitgenössischer Beweis, dass Rasterdisziplin und Farbmut koexistieren: exakte Spaltenlogik, aber laute Flächen – Swiss ohne Museumsstaub"},
+    {"name": "Swissted (Mike Joyce)", "what": "Punk-Konzertplakate rekonstruiert in Berthold Akzidenz-Grotesk auf Rasterbasis; zeigt, wie stark der Stil beliebigen Inhalt formatiert"},
+    {"name": "Vercel / Linear Marketingseiten", "what": "Heutige Web-Übersetzung: Hairline-Divider statt Karten, tabellarische Ziffern, ein Akzent, große Randspalten"}
+  ],
+  "strengths": [
+    "70 Jahre belegte Haltbarkeit – der einzige Stil dieser Liste, der praktisch nicht datiert",
+    "Skaliert verlustfrei von Poster über Dashboard bis Mobile-Liste, weil die Regel (Raster) und nicht das Bild trägt",
+    "Übersetzt sich 1:1 in Tokens: Tailwind-Spacing, Compose-Dimens, SwiftUI-Padding – ein 8pt-Raster sieht überall identisch aus",
+    "Null Rendering-Kosten: keine Filter, keine Schatten, keine Assets – ideal für Tauri-WebView und Low-End-Android",
+    "Sehr hohe Informationsdichte bei bester Lesbarkeit"
+  ],
+  "risks": [
+    "Ohne exzellente Typografie und echte Raster-Disziplin wirkt es nicht 'Swiss', sondern schlicht unfertig",
+    "Austauschbar, wenn Font und Grid Defaults bleiben – Inter + 12 Spalten ist heute die halbe Startup-Welt",
+    "Wenig emotionale Wärme; für Consumer-Apps mit Spaß-Anspruch zu kühl",
+    "Der Weißraum kollabiert auf Mobile zuerst – wer dort spart, verliert genau das Merkmal",
+    "Hairlines unter 1px werden auf manchen Displays wegskaliert; die Trennung verschwindet dann komplett"
+  ],
+  "a11y": "Der Stil ist barrierefreiheitstechnisch der günstigste überhaupt: #0B0B0B auf Weiß liefert 19,7:1, es gibt keine Transparenz und keine Textur unter Text. Achtung beim Sekundärgrau – das klassische Hellgrau #8C8C8C erreicht auf Weiß nur 3,4:1 und fällt durch; erst ab etwa #6E6E6E (5,1:1) ist Sekundärtext konform, deshalb ist genau dieser Wert in der Demo gesetzt. Weitere reale Risiken sind zu kleine Schriftgrade in der Mikrotypografie (Legenden unter 11px, Tracking über 0.2em senkt die Worterkennung) und Statuskodierung allein über die rote Signalfarbe – jeder Status muss zusätzlich ein Wort oder eine Form tragen. Hairline-Divider als einziges Struktursignal können bei Sehschwäche verschwinden; Fokusringe daher mit 2px Rot ausführen, nicht mit 1px Grau.",
+  "longevity": "Der Referenzfall für Nicht-Altern: Die Tonhalle-Plakate von 1955 funktionieren heute unverändert, und jede Digital-Welle seit Flat 2.0 hat sich an dieser Grammatik bedient. Datieren kann nur die Schriftwahl, nicht das System.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "platforms": {
+    "web": "Ideal – CSS Grid ist die direkte technische Entsprechung des modularen Rasters, Hairlines und Weißraum kosten nichts.",
+    "mobile": "Gut, aber mit Disziplin: Das Raster muss auf 4 Spalten kollabieren und das Weißraum-Budget schrumpfen, ohne dass die Randspalte ganz verschwindet.",
+    "desktop": "Ideal für Tauri: dichte Listen und Tabellen sind die Heimatdisziplin, keine GPU-teuren Effekte im WebView."
+  },
+  "verdict": "Ja – aber als Struktur-Layer, nicht als komplette Marke. Swiss liefert genau das, was ein Solo-Entwickler mit vielen kleinen Apps braucht: ein Regelwerk für Raster, Spacing-Skala und Typo-Hierarchie, das in Tailwind, Compose und SwiftUI identisch reproduzierbar ist und in fünf Jahren nicht peinlich ist. Die Schwäche ist die Wiedererkennung: reines Swiss ist heute die Default-Ästhetik guter Software und trägt allein keine Eigenmarke. Es braucht deshalb genau einen eigenwilligen Träger obendrauf – eine ungewöhnliche Signalfarbe statt Rot, eine charaktervollere Grotesk oder ein konsequent sichtbares Rasterelement – sonst baut man 27 saubere, aber gesichtslose Apps.",
+  "combinesWith": ["de-stijl", "bauhaus", "dev-noir", "neo-brutalism"],
+  "tip": "Mach das Raster einmal sichtbar, statt es nur zu befolgen: eine Hairline auf einer Spaltenachse, eine Legendenzeile über der Liste, eine leere Randspalte, die konsequent leer bleibt. Der Unterschied zwischen 'Swiss' und 'weiße Seite' ist, dass der Betrachter die Konstruktion spürt – und dazu gehört der Mut, 25% der Fläche nicht zu benutzen.",
+  "googleFonts": ["Inter"]
+}

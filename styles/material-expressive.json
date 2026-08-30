@@ -1,0 +1,104 @@
+{
+  "slug": "material-expressive",
+  "name": "Material Design 3 / Material 3 Expressive",
+  "aka": [
+    "Material You",
+    "M3",
+    "M3 Expressive",
+    "Google Material"
+  ],
+  "family": "Digitale Epochen",
+  "era": "2014-heute (M3 2021, M3 Expressive ab Mai 2025)",
+  "origin": "Google stellte Material Design 2014 als Antwort auf den Affordanz-Verlust des reinen Flat Design vor: Flächen sind virtuelles Papier mit einer Höhe in dp, Schatten machen diese Höhe sichtbar. 2021 folgte mit Material You (M3) der eigentliche Systembruch - Farbe wird nicht mehr gepickt, sondern aus einem Seed-Farbwert im wahrnehmungsbasierten HCT-Modell zu Tonal Palettes berechnet, aus denen über 30 semantische Farbrollen entstehen; unter Android kann dieser Seed aus dem Hintergrundbild des Nutzers kommen (Dynamic Color). Im Mai 2025 kam auf der Google I/O Material 3 Expressive dazu, unterlegt mit 46 Studien und über 18.000 Teilnehmern: 35 neue Formen mit Shape-Morphing, ein federbasiertes Motion-System anstelle von Dauer-plus-Bezier, betonte Typo-Stile und neue Komponenten wie Button Groups, FAB Menu, Split Button und Loading Indicator. Ausgeliefert wurde die Linie ab September 2025 mit Android 16 QPR1.",
+  "idea": "Ein einziger Seed-Farbwert erzeugt algorithmisch das gesamte Farbsystem, und Tiefe entsteht nicht durch Schatten, sondern dadurch, dass höhere Flächen tonal näher an die Akzentfarbe rücken. Expressive fügt dem eine zweite Ebene hinzu: Form und Bewegung tragen Bedeutung, nicht nur Farbe.",
+  "markers": [
+    "Shape-Skala mit festen Stufen: xs 4px / s 8px / m 12px / l 16px / xl 28px / full",
+    "Gruppierte Listen mit 28px Außen- und 4px Innenecken bei 3px Fuge",
+    "Elevation über tonale Flächen statt Schatten: surface / container-low #F7F2FA / container #F3EDF7 / container-high #ECE6F0 / container-highest #E6E0E9",
+    "State Layer als Overlay der on-Farbe: 8% bei Hover, 10-12% bei Aktiv, 12% bei Fokus",
+    "Farbrollen-Paare garantieren Kontrast: primary/on-primary, primary-container/on-primary-container",
+    "Tonal Palette in Tonstufen 10/20/30/40/80/90/95 - Füllungen kommen aus Tone 90, Text darauf aus Tone 10",
+    "Gefüllte Icon-Varianten (fill, kein stroke) im 24px-Raster in tonalen Containern; Trefferfläche 48dp, Expressive-Buttons bis 56px hoch",
+    "Spring-Motion statt Bezier: Stiffness/Damping/Anfangsgeschwindigkeit, mit sichtbarem Ueberschwingen",
+    "Shape-Morphing als Zustandssignal: Pille wird beim Drücken zum Squircle (999px auf 12px)"
+  ],
+  "params": {
+    "radius": "4 / 8 / 12 / 16 / 28 / full - und in Expressive animiert zwischen diesen Stufen",
+    "contrast": "hoch",
+    "density": "mittel bis luftig - große Radien und 48dp-Ziele erzwingen Luft",
+    "depth": "tonal: jede Ebene ist eine eigene Surface-Container-Stufe. Schatten nur noch bei FAB und schwebenden Elementen",
+    "color": "Ein Seed-Farbwert erzeugt über HCT vier Tonal Palettes (primary/secondary/tertiary/neutral) und daraus alle Farbrollen - Füllfarben werden nie frei gewählt, sondern abgeleitet",
+    "type": "Roboto Flex als Variable Font, fünf Rollen (display/headline/title/body/label) in je drei Größen, dazu 15 betonte Schnitte für Akzentmomente",
+    "motion": "federbasiert, kein Bezier: Expressive-Schema mit sichtbarem Ueberschwingen, ca. 300-550ms wahrgenommene Dauer, in Compose bei 21 Komponenten Standard",
+    "texture": "keine - Oberflächen sind reine Tonwerte"
+  },
+  "palette": [
+    "#6750A4",
+    "#EADDFF",
+    "#21005D",
+    "#E8DEF8",
+    "#ECE6F0",
+    "#FEF7FF"
+  ],
+  "examples": [
+    {
+      "name": "Android 16 Systemoberfläche (2025)",
+      "what": "Schnelleinstellungen als gruppierte Kacheln mit 28px-Außen- und 4px-Innenecken, Buttons, die beim Drücken von der Pille zum Squircle morphen, federndes Ausklappen der Benachrichtigungen"
+    },
+    {
+      "name": "Google Uhr / Wecker unter M3 Expressive",
+      "what": "Der meistgezeigte Shape-Morph: die Zifferblatt- und Buttonformen wechseln beim Zustandswechsel die Kontur, statt nur die Farbe zu tauschen"
+    },
+    {
+      "name": "Wear OS 6 (2025)",
+      "what": "Expressive für runde Displays - Formen folgen der Rundung des Gehäuses, Buttons in Gruppen mit reagierender Breite"
+    },
+    {
+      "name": "Jetpack Compose androidx.compose.material3",
+      "what": "MaterialExpressiveTheme, MotionScheme.expressive(), ButtonGroup, FloatingActionButtonMenu - die Expressive-APIs sind opt-in und experimentell markiert"
+    },
+    {
+      "name": "Material Theme Builder",
+      "what": "Zeigt den Kern des Systems: ein Seed-Hex erzeugt die vollständige Tonleiter und daraus über 30 benannte Farbrollen für Light und Dark"
+    }
+  ],
+  "strengths": [
+    "Das vollständigste Token-System, das es gibt - Farbe, Form, Typo, Motion und Zustand sind durchgängig benannt und maschinenlesbar",
+    "Barrierefreiheit ist eingebaut: Farbrollen-Paare garantieren den Kontrast, Trefferflächen sind auf 48dp normiert",
+    "Light und Dark sind kein zweites Design, sondern zwei Ableitungen derselben Tonleiter",
+    "Auf Android praktisch kostenlos - Compose liefert das komplette System inklusive Spring-Motion ab Werk",
+    "Shape-Morphing ist ein echter zusätzlicher Bedeutungskanal, nicht nur Dekoration - Zustand wird auch ohne Farbe sichtbar"
+  ],
+  "risks": [
+    "Außerhalb von Android liest sich der Stil sofort als 'Android-App im Browser' - 28px-Pillen und tonale Lila-Flächen sind Googles Marke, nicht die eigene",
+    "Dynamic Color ist der direkte Gegenspieler einer Markenfarbe: wenn das Nutzer-Wallpaper den Seed setzt, gibt es keine Markenfarbe mehr",
+    "Die großen Expressive-Formen sind ein klarer 2025/26-Zeitstempel und werden entsprechend datieren",
+    "Ohne echte Umsetzung von State Layer, Motion und Formmorphing bleibt nur 'große Radien plus lila' übrig - eine Karikatur des Systems",
+    "Die Expressive-APIs in Compose sind noch experimentell und opt-in; auf Web und Desktop muss das System vollständig von Hand nachgebaut werden"
+  ],
+  "a11y": "Das ist die stärkste Seite des Systems: Farbrollen existieren nur als Paar (primary/on-primary, surface-container-high/on-surface-variant), sodass jede erlaubte Kombination den Kontrast bereits erfüllt, und die 48dp-Mindestziele sowie sichtbare State Layer sind Teil der Spezifikation. Zwei reale Fallstricke bleiben: Dynamic Color kann bei ungeeigneten Seed-Farben Rollenpaare in Grenzbereiche schieben, weshalb der Seed fixiert und der Kontrast einmal gemessen gehört; und das federnde Motion mit Ueberschwingen ist für vestibulär empfindliche Nutzer belastend, also braucht prefers-reduced-motion eine echte Umsetzung, nicht nur kürzere Dauern. Diese Demo setzt beides um: fester Seed statt Dynamic Color und ein Reduced-Motion-Zweig, der Morphing und Federbewegung abschaltet.",
+  "longevity": "Der tokenbasierte Kern (Tonal Palettes, Farbrollen, tonale Elevation) altert kaum und wird die nächsten Jahre überdauern. Die Expressive-Oberfläche - sehr große Pillen, Formmorphing, federndes Ueberschwingen - ist dagegen ein deutlich datierbarer Jahrgangsmarker.",
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 4,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Technisch mit CSS-Variablen gut nachbaubar, aber gestalterisch fremd - eine Website in M3 sieht aus wie ein portierter Android-Client.",
+    "mobile": "Auf Android die native, kostenlose und richtige Wahl; auf iOS ein Fremdkörper gegenüber den dortigen Konventionen.",
+    "desktop": "Passt weder zu macOS noch zu Windows; in einem Tauri-Fenster wirken 56px-Pillen und 28px-Radien deplatziert und verschwenden vertikalen Platz."
+  },
+  "verdict": "Als plattformübergreifende Marke: nein - M3 ist Googles Marke, nicht deine, und wer sein Web- und Tauri-UI materialisiert, sieht dort aus wie eine schlecht portierte Android-App. Dazu kommt, dass Dynamic Color genau die Markenfarbe auslöscht, die eine Eigenmarke tragen soll, und dass die Expressive-APIs in Compose noch experimentell und opt-in sind - kein Fundament für zehn Jahre. Richtig ist die getrennte Antwort: auf Android M3 nutzen, weil es dort gratis, konform und erwartet ist, aber mit fest gesetztem Seed in der eigenen Markenfarbe und ausgeschaltetem Dynamic Color. Was man dagegen unbedingt übernehmen sollte, ist die Methode statt der Optik: eine eigene Tonleiter mit festen Tonstufen, Farbrollen als Paare, State Layer in Prozent und eine Shape-Skala mit drei Werten - genau dieses Gerüst lässt sich in Tailwind, Tauri und Compose identisch reproduzieren, ohne dass irgendetwas nach Google aussieht.",
+  "combinesWith": [
+    "flat",
+    "organic-blob",
+    "claymorphism",
+    "playful-chunky"
+  ],
+  "tip": "Wähle NIE eine Füllfarbe direkt, sondern immer eine Tonstufe: Fläche aus Tone 90, Text darauf aus Tone 10, Akzentfläche aus Tone 40 mit Weiß. Und setze Elevation ausschließlich über die Surface-Container-Stufen statt über box-shadow - sobald jemand anfängt, zusätzlich Schatten zu stapeln, kippt M3 in beliebiges Flat 2.0 mit großen Radien. Wenn du nur eine Expressive-Zutat übernimmst, nimm das Shape-Morphing beim Drücken (999px auf 12px mit Federkurve): es ist billig, es ist auf 200ms erkennbar, und es transportiert Zustand auch ohne Farbe.",
+  "googleFonts": [
+    "Roboto Flex",
+    "Roboto"
+  ]
+}

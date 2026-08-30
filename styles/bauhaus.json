@@ -1,0 +1,69 @@
+{
+  "slug": "bauhaus",
+  "name": "Bauhaus / Konstruktivismus",
+  "aka": ["Staatliches Bauhaus", "Neue Typografie", "Russischer Konstruktivismus", "Elementare Gestaltung"],
+  "family": "Modernistische Schulen",
+  "era": "1919-1933, Wiederaufnahme ab ca. 1960 bis heute",
+  "origin": "Das Staatliche Bauhaus wurde im April 1919 in Weimar von Walter Gropius gegründet, zog 1925 nach Dessau, 1932 nach Berlin und wurde dort 1933 unter dem Druck der Nationalsozialisten aufgelöst. Es löste das Problem der industriellen Massenproduktion gestalterisch: eine Formensprache, die sich aus Funktion und Herstellbarkeit ableitet statt aus Ornament und Handwerkstradition. Herbert Bayers kleinschreibende 'Universal'-Schrift (1925), Kandinskys Zuordnung der Grundfarben zu Grundformen (Fragebogen 1923) und Moholy-Nagys Typofoto lieferten das visuelle Vokabular. Parallel und wechselseitig beeinflussend entwickelte der russische Konstruktivismus um Alexander Rodtschenko und El Lissitzky dieselben Mittel für politische Agitation – El Lissitzkys 'Schlagt die Weißen mit dem roten Keil' (1919) ist der Prototyp der diagonalen, formgetragenen Botschaft.",
+  "idea": "Bedeutung wird von Grundform und Grundfarbe getragen, nicht von Ornament – Kreis, Quadrat und Dreieck sind Vokabeln, keine Dekoration.",
+  "markers": [
+    "Nur Primärfarben #E1140A / #F5C518 / #0B4EA2 plus Schwarz und Papierton, keine Zwischentöne",
+    "Radius exakt 0px oder 50% – nichts dazwischen",
+    "Konturen und Trennungen 3-4px schwarz, flächig statt haarfein",
+    "Grundformen als semantische Marker: Quadrat/Rot, Kreis/Blau, Dreieck/Gelb (nach Kandinsky 1923)",
+    "Geometrische Grotesk mit kreisrundem 'o' (Futura-Genealogie), Headlines konsequent kleingeschrieben",
+    "Mindestens eine kompositorische Diagonale (Keil, Kippbalken, 45°-Streifenband) als konstruktivistisches Zitat",
+    "Flächen statt Verläufe: 0 Gradients, 0 weiche Schatten, Versatz-Schatten nur hart und farbig",
+    "Asymmetrische Gewichtung: ein Element dominiert die Fläche mit >25% Anteil",
+    "Motion mechanisch: steps()-Timing statt weicher Easings"
+  ],
+  "params": {
+    "radius": "0px oder 50%",
+    "contrast": "sehr hoch",
+    "density": "mittel",
+    "depth": "keine echte Tiefe; Schichtung durch Überlagerung von Flächen und harte Versatz-Schatten (5px, 0 Blur)",
+    "color": "Drei Primärfarben plus Schwarz auf warmem Papierton, jede Farbe fest an eine Form und eine Bedeutung gekoppelt.",
+    "type": "Geometrische Grotesk aus Kreis und Gerade konstruiert, Headlines kleingeschrieben, Mikrotypografie gesperrt bis 0.24em.",
+    "motion": "Mechanisch und getaktet: 140-180ms mit steps(2-4) oder cubic-bezier(0.2,0,0,1), Rotation um 45/90 Grad statt Skalierung.",
+    "texture": "keine; einziges Muster sind 45°-Diagonalstreifen als Flächenzeichen"
+  },
+  "palette": ["#F4F1E8", "#111111", "#E1140A", "#F5C518", "#0B4EA2"],
+  "examples": [
+    {"name": "Herbert Bayer, Universal-Alphabet (1925)", "what": "Ausschließlich Kleinbuchstaben, aus Kreis und Gerade konstruiert, keine Serifen, keine Versalien – die Schrift als Beweis der Konstruktionslogik"},
+    {"name": "El Lissitzky, 'Schlagt die Weißen mit dem roten Keil' (1919)", "what": "Roter Dreieckskeil dringt diagonal in einen weißen Kreis, Text folgt der Diagonalachse – Form trägt die Aussage vollständig"},
+    {"name": "Joost Schmidt, Plakat Bauhaus-Ausstellung Weimar (1923)", "what": "Rechtwinklig ineinandergreifende Balken in Rot/Schwarz, Schrift als Bauteil in die Konstruktion eingesetzt"},
+    {"name": "Bauhaus-Archiv Berlin, visuelle Identität", "what": "Heutige Anwendung: Grundformen als Navigationsmarker, strenge Primärfarbentrias, Kleinschreibung als Haltung"},
+    {"name": "Alexander Rodtschenko, Lengiz-Plakat 'Bücher' (1924)", "what": "Fotomontage plus schwarz-rote Sprechkeile in strenger Diagonale, Typografie in die Fläche gerastert"}
+  ],
+  "strengths": [
+    "Extreme Wiedererkennbarkeit mit minimalem Asset-Aufwand – drei Farben und drei Formen reichen als komplettes System",
+    "Formen sind semantisch belastbar: Status, Kategorie und Priorität lassen sich ohne Icon-Set kodieren",
+    "Funktioniert als Illustrations- und Empty-State-Sprache hervorragend, auch ohne das UI-Chrome zu übernehmen",
+    "Rein flächig, dadurch billig zu rendern und auf jeder Plattform identisch reproduzierbar",
+    "Historisch tief verankert – nicht als Trend lesbar, sondern als Zitat mit Herkunft"
+  ],
+  "risks": [
+    "Als vollständiges UI-Chrome zu laut: drei Primärfarben plus 4px-Konturen erschöpfen bei längerer Nutzung",
+    "Die Primärfarbentrias ist stark besetzt (IKEA, Google, Kinderspielzeug) und kippt schnell ins Zitathafte oder Infantile",
+    "Gelb ist als Textfarbe unbrauchbar und als Flächenfarbe nur mit schwarzer Schrift tragfähig",
+    "Ohne echte Kompositionsarbeit entsteht 'bunte Kästchen mit dicken Rändern' statt Bauhaus – die Asymmetrie muss gebaut, nicht dekoriert sein",
+    "Kleinschreibung ist eine starke Haltung, die in deutschen Business-Kontexten als Nachlässigkeit gelesen werden kann"
+  ],
+  "a11y": "Schwarz auf Papierton liefert 16,7:1, Schwarz auf Gelb #F5C518 rund 11,6:1 – beides unproblematisch. Kritisch ist das Bauhaus-Rot: reines Weiß auf #E1140A erreicht 4,9:1 und ist damit für 14px-Text gerade konform, der wärmere Papierton auf demselben Rot fällt mit 4,3:1 durch – auf Rot darf deshalb nur #FFFFFF stehen, nie der Papierton und nie ein dünner Schnitt. Gelb auf Weiß liegt bei 1,6:1 und ist für Text und dünne Linien komplett unbrauchbar. Da der Stil Bedeutung über Farbe und Form kodiert, muss jeder Status zusätzlich ein Wort tragen; die Grundformen sind ein guter zweiter Kanal für Farbfehlsichtige, ersetzen aber keine Textlabels.",
+  "longevity": "Als Brand- und Illustrationsschicht praktisch unvergänglich – die Formensprache ist seit über hundert Jahren lesbar. Als komplettes Produkt-UI altert sie schneller, weil die Lautstärke der Primärfarben nach einigen Jahren als Kostüm statt als System wahrgenommen wird.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 4,
+    "density": 3
+  },
+  "platforms": {
+    "web": "Gut – Flächen, Konturen und Formen sind reines CSS, aber die Farbmenge muss auf Content-Seiten heruntergeregelt werden.",
+    "mobile": "Eingeschränkt – dicke Konturen fressen auf kleinen Displays Platz, und die Formenmarker konkurrieren mit den Plattform-Icons.",
+    "desktop": "Schwierig als Vollstil für dichte Tauri-Werkzeuge; als Splash, Onboarding und Icon-System dagegen stark."
+  },
+  "verdict": "Als Vollstil nein, als Marken- und Illustrationsschicht ein klares Ja. Für einen Solo-Entwickler mit vielen kleinen Apps ist Bauhaus der billigste verfügbare Wiedererkennungsträger: drei Farben, drei Formen, eine geometrische Grotesk – das ist ein komplettes Logo-, Icon- und Empty-State-System ohne einen einzigen gezeichneten Asset, und es ist über Tailwind, Compose und SwiftUI identisch reproduzierbar. Ein Dashboard, das acht Stunden am Tag in Rot-Gelb-Blau mit 4px-Rändern läuft, ist dagegen anstrengend und wirkt nach dem dritten Projekt wie ein Kostüm. Die tragfähige Konstruktion ist deshalb: Bauhaus für App-Icons, Splash, leere Zustände und Marketing – darunter ein ruhiges Swiss-Raster fürs eigentliche UI.",
+  "combinesWith": ["swiss", "de-stijl", "neo-brutalism", "memphis"],
+  "tip": "Koppele jede Grundform fest an eine Bedeutung und halte diese Kopplung über alle Apps durch – Kreis immer Zustand, Quadrat immer Objekt, Dreieck immer Warnung. Sobald die Formen nur noch dekorativ verteilt werden, wird aus Bauhaus Kinderzimmer. Und: genau eine Diagonale pro Screen, nicht drei.",
+  "googleFonts": ["Jost"]
+}
