@@ -7,6 +7,8 @@
 &nbsp;·&nbsp; [Deutsch](https://grundhofer.github.io/designsprache/de/)
 &nbsp;·&nbsp; [English](https://grundhofer.github.io/designsprache/en/)
 
+![Dieselbe Projektliste in vier Stilen nebeneinander: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir. — The same project list in four styles side by side.](og.png)
+
 ---
 
 ## Deutsch
@@ -99,6 +101,21 @@ docs/               erzeugt / generated — nicht eingecheckt / not committed
 ```sh
 python3 build.py              # docs/index.html, docs/de/, docs/en/
 python3 build.py --artifact   # zusätzlich ein Fragment ohne <head>
+python3 build.py --og         # og.html, die Vorlage des Vorschaubilds
+```
+
+`og.png` liegt im Repository statt im Build, weil der CI-Runner keinen Browser hat. Neu
+rendern nach einer Änderung an `og.html`:
+
+`og.png` is committed rather than built, because the CI runner has no browser. Re-render it
+after changing `og.html`:
+
+```sh
+python3 build.py --og
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+  --virtual-time-budget=9000 --screenshot=og.png --window-size=1280,640 \
+  "file://$PWD/og.html"
 ```
 
 ### Die Scoping-Regel
@@ -116,6 +133,35 @@ this on every run and fails the build on violation.
 Die Demos sind handgebautes HTML und CSS — keine Bilder, keine Skripte, keine Bibliotheken.
 Grafik entsteht aus Gradients, `box-shadow`, Borders, Inline-SVG und CSS-Mustern. Schriften
 kommen von Google Fonts.
+
+---
+
+## Warum „Designsprache" / Why "Designsprache"
+
+Das Repository heißt nicht „Stil-Katalog", weil der Katalog nur der erste Teil ist.
+*Designsprache* ist das deutsche Wort für die visuelle und interaktive Sprache einer Marke —
+Farbe, Typografie, Radius, Abstand, Motion, Tonfall und die Regeln, nach denen sie
+zusammenwirken.
+
+Der Katalog beantwortet die Frage **„welche Sprachen gibt es und was entscheidet jede?"**
+Die Antwort auf **„welche wird meine?"** kommt später in dasselbe Repository: Design-Tokens
+im DTCG-Format, aus einer Quelle nach CSS, Tailwind, Jetpack Compose und SwiftUI generiert,
+dazu die Komponenten darauf. Der Katalog ist die Entscheidungsgrundlage dafür, kein Selbstzweck.
+
+Bis dahin steht hier ausschließlich der Katalog. Das ist kein Platzhalter — er funktioniert
+für sich, und wer nur ihn braucht, braucht den Rest nicht.
+
+The repository is not called "style catalog" because the catalog is only the first part.
+*Designsprache* is the German word for the visual and interactive language of a brand — color,
+typography, radius, spacing, motion, tone of voice, and the rules by which they work together.
+
+The catalog answers **"which languages exist, and what does each of them decide?"** The answer
+to **"which one becomes mine?"** will land in this same repository later: design tokens in DTCG
+format, generated from one source into CSS, Tailwind, Jetpack Compose and SwiftUI, plus the
+components built on them. The catalog is the basis for that decision, not an end in itself.
+
+Until then this repository holds the catalog and nothing else. That is not a placeholder — it
+stands on its own, and anyone who only needs the catalog does not need the rest.
 
 ---
 

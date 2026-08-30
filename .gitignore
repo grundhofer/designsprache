@@ -5,6 +5,10 @@
 /research/
 /stil-katalog.html
 
+# Zwischenschritt des Vorschaubilds - og.png dagegen liegt im Repo,
+# weil der CI-Runner keinen Browser zum Rendern hat.
+/og.html
+
 .DS_Store
 __pycache__/
 *.pyc

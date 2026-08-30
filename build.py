@@ -11,7 +11,7 @@ auf einer Seite koexistieren. build.py prueft das und bricht sonst ab.
 
 Build a bilingual catalog of 27 UI styles. See README.md.
 """
-import json, pathlib, re, html, sys
+import json, pathlib, re, html, shutil, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
@@ -1347,7 +1347,12 @@ _HEAD_TPL = """<!doctype html>
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{site}/{lang}/">
 <meta property="og:locale" content="{locale}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{site}/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="{imgalt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{site}/og.png">
 <link rel="icon" href="{icon}">
 <style>
 html {{ color-scheme: light dark; }}
@@ -1362,12 +1367,14 @@ img {{ max-width: 100%; }}
 HEAD = {
  "de": _HEAD_TPL.format(
    lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON,
+   imgalt="Dieselbe Projektliste in vier Stilen nebeneinander: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
    title="Stil-Katalog — 27 Wege, dieselbe Oberfläche zu bauen",
    desc=("27 UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
          "Mit Faktenblatt, Kennzahlen und Entscheidungsraster. Von Swiss und Bauhaus über "
          "Skeuomorphismus und Glassmorphism bis Dev-Noir und Neo-Brutalismus.")),
  "en": _HEAD_TPL.format(
    lang="en", locale="en_US", site=SITE_URL, icon=FAVICON,
+   imgalt="The same project list in four styles side by side: Swiss, Bauhaus, neo-brutalism, dev-noir.",
    title="Style Catalog — 27 ways to build the same interface",
    desc=("27 UI style directions, each rendered as the very same reference interface. "
          "With fact sheets, scores and a decision grid. From Swiss and Bauhaus through "
@@ -1447,7 +1454,107 @@ def build_landing():
         src.replace("__SITE__", SITE_URL).replace("__REPO__", REPO_URL).replace("__ICON__", FAVICON),
         encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    og = ROOT / "og.png"
+    if og.exists():
+        shutil.copyfile(og, DOCS / "og.png")
+    else:
+        print("  WARNUNG: og.png fehlt - Link-Vorschauen bleiben ohne Bild", file=sys.stderr)
     print(f"  {out.relative_to(ROOT)}  ({out.stat().st_size/1024:.0f} KB)")
+
+
+
+# ---------------------------------------------------------------------------
+# Social-Preview-Bild. Gebaut aus den echten Demos, nicht aus einer Attrappe:
+# vier Fassungen derselben Oberflaeche nebeneinander erklaeren das Projekt
+# ohne einen Satz Text.
+#
+#   python3 build.py --og      schreibt og.html (1280x640)
+#   dann einmalig rendern und og.png einchecken:
+#     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+#       --headless --disable-gpu --hide-scrollbars --virtual-time-budget=8000 \
+#       --screenshot=og.png --window-size=1280,640 file://$PWD/og.html
+#
+# og.png liegt im Repo, weil der CI-Runner keinen Browser hat; build.py
+# kopiert es bei jedem Lauf nach docs/.
+# ---------------------------------------------------------------------------
+
+OG_STYLES = ["swiss", "bauhaus", "neo-brutalism", "dev-noir"]
+OG_W, OG_H, OG_TILE, OG_GAP, OG_PAD = 1280, 640, 280, 22, 40
+OG_REF = 780                       # Bezugsbreite der Demos
+
+
+def build_og():
+    sheets, demos, data = [], [], []
+    for slug in OG_STYLES:
+        raw = (SRC / f"{slug}.html").read_text(encoding="utf-8")
+        m = re.search(r"<style>(.*?)</style>", raw, re.S)
+        sheets.append(m.group(1).strip())
+        demos.append(raw[m.end():].strip())
+        data.append(json.loads((SRC / f"{slug}.json").read_text(encoding="utf-8")))
+
+    fonts = set()
+    for d in data:
+        fonts.update(d.get("googleFonts") or [])
+    specs = [s for s in FONT_SPECS
+             if s.split(":")[0].replace("+", " ") in fonts] + CHROME_FONTS
+    links = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+             + "&".join("family=" + s for s in specs) + '&display=block">')
+
+    k = OG_TILE / OG_REF
+    tiles = "".join(
+        f'<div class="tile"><div class="frame"><div class="host">{demo}</div></div>'
+        f'<div class="lbl"><span class="n">{i + 1:02d}</span>{esc(d["name"].split(" / ")[0])}</div></div>'
+        for i, (demo, d) in enumerate(zip(demos, data)))
+
+    css = "\n".join(f"<style>\n{s}\n</style>" for s in sheets)
+
+    (ROOT / "og.html").write_text(f"""<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+{links}
+<style>
+  html, body {{ margin:0; padding:0; }}
+  body {{ width:{OG_W}px; height:{OG_H}px; overflow:hidden;
+    background:#141614; color:#E7EAE4; font-family:"Newsreader",Georgia,serif;
+    display:flex; flex-direction:column; padding:{OG_PAD}px; box-sizing:border-box; }}
+  .eyebrow {{ font-family:"IBM Plex Mono",monospace; font-size:14px; letter-spacing:.16em;
+    text-transform:uppercase; color:#C7A55F; }}
+  h1 {{ font-family:"IBM Plex Sans Condensed",Arial,sans-serif; font-weight:700;
+    font-size:76px; line-height:.95; letter-spacing:-.025em; margin:12px 0 0; }}
+  h1 em {{ font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:400;
+    color:#99A099; letter-spacing:-.01em; font-size:.58em; display:block; margin-top:4px; }}
+  .sub {{ margin:22px 0 0; max-width:820px; font-size:21px; line-height:1.45; color:#99A099; }}
+  .sub b {{ color:#E7EAE4; font-weight:500; }}
+  .sub .en {{ display:block; margin-top:4px; }}
+  .url {{ font-family:"IBM Plex Mono",monospace; font-size:15px; color:#77BFB1;
+    margin-top:20px; letter-spacing:.01em; }}
+  .row {{ display:flex; gap:{OG_GAP}px; margin-top:auto; align-items:stretch; }}
+  .tile {{ width:{OG_TILE}px; display:flex; flex-direction:column; }}
+  .frame {{ width:{OG_TILE}px; overflow:hidden; border:1px solid #333833; }}
+  .host {{ width:{OG_REF}px; transform:scale({k}); transform-origin:0 0; }}
+  .lbl {{ margin-top:auto; padding-top:10px; font-family:"IBM Plex Sans Condensed",Arial,sans-serif;
+    font-weight:600; font-size:17px; color:#E7EAE4; display:flex; gap:8px; align-items:baseline; }}
+  .lbl .n {{ font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; color:#C7A55F; }}
+</style>
+{css}
+</head><body>
+  <span class="eyebrow">Referenzkatalog &middot; Reference catalog</span>
+  <h1>Stil&#8209;Katalog<em>27 ways to build the same interface</em></h1>
+  <p class="sub">Dieselbe Projektliste, <b>27-mal gestaltet</b> &mdash; mit Faktenblatt,
+    Kennzahlen und Entscheidungsraster.
+    <span class="en">The same project list, <b>designed 27 ways</b> &mdash; with fact sheets,
+    scores and a decision grid.</span></p>
+  <p class="url">grundhofer.github.io/designsprache</p>
+  <div class="row">{tiles}</div>
+  <script>
+    // Rahmenhoehe auf die tatsaechliche Demohoehe setzen, damit nichts abgeschnitten
+    // wird und die Beschriftungen auf einer Grundlinie stehen.
+    document.querySelectorAll('.host').forEach(function (h) {{
+      h.parentElement.style.height = Math.round(h.scrollHeight * {k}) + 'px';
+    }});
+  </script>
+</body></html>
+""", encoding="utf-8")
+    print(f"  og.html  ({OG_W}x{OG_H}, {len(OG_STYLES)} Demos) - mit Chrome nach og.png rendern")
 
 
 if __name__ == "__main__":
@@ -1457,4 +1564,6 @@ if __name__ == "__main__":
         build(_lang, "site")
     if "--artifact" in sys.argv:
         build("de", "artifact")
+    if "--og" in sys.argv:
+        build_og()
     print("fertig.")

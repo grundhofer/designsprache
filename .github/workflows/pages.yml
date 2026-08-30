@@ -35,9 +35,12 @@ jobs:
       - name: Sanity check
         run: |
           set -e
-          for f in docs/index.html docs/de/index.html docs/en/index.html; do
+          for f in docs/index.html docs/de/index.html docs/en/index.html docs/og.png; do
             test -s "$f" || { echo "fehlt oder leer: $f"; exit 1; }
           done
+          # Link-Vorschauen brauchen eine absolute Bild-URL.
+          grep -q 'og:image" content="https://' docs/de/index.html || {
+            echo "og:image fehlt oder ist relativ"; exit 1; }
           for lang in de en; do
             n=$(grep -o 'class="k-plate"' "docs/$lang/index.html" | wc -l)
             test "$n" -eq 27 || { echo "$lang: $n statt 27 Eintraege"; exit 1; }
