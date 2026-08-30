@@ -10,7 +10,7 @@
   ],
   "family": "Further Poles",
   "era": "c. 2015-today, peak from 2019",
-  "origin": "The style grew out of the learning-game and habit-app wave, which found flat design too cool and too unrewarding. Formative was Duolingo's 2019 rebrand by the agency Johnson Banks with the house typeface Feather Bold, whose curves are derived from the shapes of the mascot Duo -- complemented in the product by a rounded grotesque (DIN Next Rounded). It solves a motivation problem, not an ordering problem: buttons should look touchable, progress should be visible, every action should trigger a small reward. Technically it needs almost nothing -- one blur-free box-shadow as a base, large radii, overshoot easing -- which spread it after 2019, within a short time, across Headway, Sololearn, Blinkist and hundreds of habit trackers.",
+  "origin": "The style grew out of the learning-game and habit-app wave, which found flat design too cold and too unrewarding. The formative moment was Duolingo's 2019 rebrand by the agency Johnson Banks with the house typeface Feather Bold, whose curves are derived from the shapes of the mascot Duo -- complemented in the product by a rounded grotesque (DIN Next Rounded). It solves a motivation problem, not an ordering problem: buttons should look touchable, progress should be visible, every action should trigger a small reward. Technically it needs almost nothing -- one blur-free box-shadow as a base, large radii, overshoot easing -- which is why it spread quickly after 2019 across Headway, Sololearn, Blinkist and hundreds of habit trackers.",
   "idea": "Every control is a physical object with thickness: it has a visible bottom edge, can be pressed in and springs back. Color and rounding say 'harmless, keep going'.",
   "markers": [
     "Base instead of shadow: box-shadow 0 4-6px 0 in the darker variant of the same color, blur 0",
@@ -29,7 +29,7 @@
     "density": "airy",
     "depth": "a hard color base under every object (0 4-6px 0, blur 0) plus inner shadows in filled tiles -- depth as material thickness, not as a light source",
     "color": "four to five saturated signal colors on white, each as a pair of surface and darker base tone; color carries meaning (green = running, yellow = waiting) and reward at the same time",
-    "type": "rounded grotesque in heavy weights: Fredoka for titles, numbers and buttons, Nunito 700-800 for running and meta text -- no cuts below 600",
+    "type": "rounded grotesque in heavy weights: Fredoka for titles, numbers and buttons, Nunito 700-800 for running and meta text -- no weights below 600",
     "motion": "short and springy: 120-140ms overshoot easing on hover and click, 900ms bar fill, a 2.2s alternating mascot idle",
     "texture": "none; only very soft color clouds in the background (14-18 % opacity) to carry mood"
   },
@@ -72,7 +72,7 @@
   ],
   "risks": [
     "White text on saturated green or yellow often reaches only 2:1 to 2.5:1 -- the style produces contrast problems systematically, not by accident",
-    "Reads as childish fast; for tools, finance or professional audiences a credibility risk",
+    "Quickly reads as childish; for tools, finance or professional audiences a credibility risk",
     "Scales badly into density: a 40-row table in the chunky look is unusable, because every row needs 70px",
     "Without real illustration or a mascot all that remains is 'colorful cards with thick borders' -- generic and interchangeable",
     "The reward elements (streak, XP, badges) are only credible when real logic sits behind them; as decoration they feel manipulative"

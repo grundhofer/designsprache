@@ -9,7 +9,7 @@
   ],
   "family": "Further Poles",
   "era": "1920s (print) - web adaptation from c. 2010, current",
-  "origin": "The style carries centuries of book and magazine typography -- type area, running heads, marginalia, drop caps, small caps -- into the interface. Formative were magazines like The New Yorker (Irvin display plus Caslon body text) and the NZZ, whose web relaunch held classical order without a card grid, together with the compositional theory of Jan Tschichold and Robert Bringhurst as the theoretical base; Richard Rutter's web adaptation 'The Elements of Typographic Style Applied to the Web' (webtypography.net, from 2005) was the way in for many web designers. It only became technically possible through webfonts (@font-face from 2009/2010), OpenType features in the browser (font-feature-settings, ligatures, oldstyle figures) and CSS Grid for real type areas. It solved the problem that text products on the web looked like databases instead of publications.",
+  "origin": "The style carries centuries of book and magazine typography -- type area, running heads, marginalia, drop caps, small caps -- into the interface. Formative influences were magazines like The New Yorker (Irvin display plus Caslon body text) and the NZZ, whose web relaunch held to classical order without a card grid, along with the typesetting rules of Jan Tschichold and Robert Bringhurst as the theoretical foundation; Richard Rutter's web adaptation 'The Elements of Typographic Style Applied to the Web' (webtypography.net, from 2005) was the way in for many web designers. It only became technically possible through webfonts (@font-face from 2009/2010), OpenType features in the browser (font-feature-settings, ligatures, oldstyle figures) and CSS Grid for real type areas. It solved the problem that text products on the web looked like databases instead of publications.",
   "idea": "Hierarchy comes out of typeface, tracking and white space -- not out of boxes, shadows or color fields. The screen is treated as a paper page with a type area.",
   "markers": [
     "Radius 0px throughout -- no rounded cards",
@@ -28,7 +28,7 @@
     "density": "medium to dense",
     "depth": "none; order through rules, indents and column edges",
     "color": "paper tone plus ink plus exactly one broken accent color (newsprint red #8C2F1F) for the drop cap, the counter and hover",
-    "type": "two serif cuts: a display face with high stroke contrast for titles, a reading face for body text; small caps and italics carry all secondary information",
+    "type": "two serif faces: a display face with high stroke contrast for titles, a reading face for body text; small caps and italics carry all secondary information",
     "motion": "almost none; 120-160ms color change on hover, no transform, no bounce -- paper does not move",
     "texture": "none to minimal: a soft light gradient at the top (5 % white) simulates the sheen of paper"
   },
@@ -80,8 +80,8 @@
     "Small caps are not real in many Google Fonts but synthesized by the browser -- optically too light unless corrected via font-weight",
     "Touch targets: hairline rows invite 32px rows, which is below the 44px minimum"
   ],
-  "a11y": "Contrast is the great strength: ink on paper tone sits at roughly 15:1, far above AAA. Critical instead are the small letterspaced small caps (10-12px) used for status and labels -- they sit at the limit of legibility and have to carry color values of at least 4.5:1; status must never be encoded by italics or gray value alone, which is why a filled or empty square stands here as an additional shape cue. Hairline dividers at 1px and low contrast vanish completely in Windows high-contrast mode, so the structure has to stand without them.",
-  "longevity": "The most durable style in the whole catalog: it references a formal language that has worked for 500 years and contains not a single effect that would read as a vintage. Anyone who built it in 2019 has to change nothing in 2030.",
+  "a11y": "Contrast is the great strength: ink on paper tone sits at roughly 15:1, far above AAA. The small letterspaced small caps (10-12px) used for status and labels are the critical part -- they sit at the limit of legibility and have to carry color values of at least 4.5:1; status must never be encoded by italics or gray value alone, which is why a filled or empty square stands here as an additional shape cue. Hairline dividers at 1px and low contrast vanish completely in Windows high-contrast mode, so the structure has to stand without them.",
+  "longevity": "The most durable style in the whole catalog: it references a formal language that has worked for 500 years and contains not a single effect that gives away a vintage. Anyone who built it in 2019 has to change nothing in 2030.",
   "scores": {
     "longevity": 5,
     "recognition": 4,
@@ -100,7 +100,7 @@
     "dev-noir",
     "data-dense"
   ],
-  "tip": "Vertical rhythm before ornament. Set a baseline (e.g. 24px) and tie every line height, every spacing and every hairline to a multiple of it -- only that makes the page look typeset rather than decorated. Drop cap, fleuron and small caps are extras; arriving without rhythm, they look like a wedding invitation.",
+  "tip": "Vertical rhythm before ornament. Set a baseline (e.g. 24px) and tie every line height, every spacing and every hairline to a multiple of it -- only that makes the page look typeset rather than decorated. Drop cap, fleuron and small caps are extras; without the rhythm they look like a wedding invitation.",
   "googleFonts": [
     "Instrument Serif",
     "Newsreader"

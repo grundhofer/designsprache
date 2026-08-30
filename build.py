@@ -537,7 +537,8 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 
 /* ============ Top bar (website only, omitted in the artifact build) ============ */
 .topbar {{ border-bottom:1px solid var(--rule-soft); background:var(--surface); }}
-.topbar-in {{ display:flex; align-items:center; gap:12px; padding:8px 0;
+/* padding-block, nicht die Kurzform: sonst faellt der horizontale Rand von .wrap weg. */
+.topbar-in {{ display:flex; align-items:center; gap:12px; padding-block:8px;
   font-family:var(--f-mono); font-size:11.5px; flex-wrap:wrap; }}
 .tb-brand {{ font-weight:600; color:var(--ink); text-decoration:none;
   letter-spacing:.03em; text-transform:uppercase; }}
@@ -624,14 +625,16 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 /* ============ Familien & Raster ============ */
 .fam {{ padding:clamp(30px,4vw,52px) 0 0; }}
 .fam-head {{ display:grid; gap:8px; padding-bottom:22px; border-bottom:1px solid var(--rule);
-  margin-bottom:26px; position:relative; }}
-@media (min-width:860px) {{ .fam-head {{ grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
+  margin-bottom:26px; }}
+@media (min-width:860px) {{ .fam-head {{
+  grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;
   gap:8px clamp(24px,4vw,60px); align-items:start; }} }}
 .fam-head h2 {{ font-size:clamp(23px,2.6vw,31px); }}
 .fam-head p {{ color:var(--ink-2); font-size:15.5px; max-width:62ch; }}
 .fam-count {{ font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em;
   text-transform:uppercase; color:var(--ink-3); }}
-@media (min-width:860px) {{ .fam-count {{ position:absolute; right:0; top:6px; }} }}
+@media (min-width:860px) {{ .fam-count {{ justify-self:end; padding-top:6px;
+  white-space:nowrap; }} }}
 .grid {{ display:grid; gap:clamp(20px,2.4vw,32px);
   grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr)); }}
 
