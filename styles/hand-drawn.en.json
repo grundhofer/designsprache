@@ -1,0 +1,109 @@
+{
+  "slug": "hand-drawn",
+  "name": "Sketch UI / Hand-Drawn",
+  "aka": [
+    "Rough.js look",
+    "Wireframe aesthetic",
+    "Sketchy UI",
+    "Excalidraw look",
+    "Balsamiq look"
+  ],
+  "family": "Expression & Gesture",
+  "era": "2008-present",
+  "origin": "The style comes out of tool building, not out of graphic design. Balsamiq Mockups (2008, Peldi Guilizzoni) was the first product to sell the thesis that a finished-looking draft suppresses criticism of itself - there the sketch look was never taste, it was a conversation strategy. The move to the web became technically possible through Rough.js (2017, Preet Shihn): under 9 kB, it turns a target path into a jittering substitute path for canvas and SVG and ships real stroke fills - hachure, cross-hatch, zigzag, dots, dashed - instead of alpha. Excalidraw (2020) and Mermaid's `look: handDrawn` build on top of it, and Wired Elements carries the same library into a complete, operable component set as Web Components. The second, independent route needs no script at all: Bootswatch Sketchy (Thomas Park) produces the same impression from asymmetric border-radius quartets and 2px borders alone - the proof that this language does not hang on a runtime library.",
+  "idea": "Edge geometry is generated per element instead of declared, and area coverage comes from line spacing instead of opacity; the visible unfinishedness is no defect but an invitation to argue about the idea instead of the pixels.",
+  "markers": [
+    "A different radius per corner: Bootswatch Sketchy 5.3.8 ships `255px 25px 225px 25px / 25px 225px 25px 255px` verbatim plus 18 more such quartets, all built from multiples of 5px",
+    "Outline of 1.5-2px ink on paper white #FBFAF6, every edge drawn twice (Rough.js strokes twice by default, `disableMultiStroke: false`)",
+    "Corners do not close, they overshoot the intersection by 2-5px - that is what separates this from a merely rounded rectangle",
+    "Areas from hachure instead of alpha: `hachureAngle: -41` degrees, and at a negative value `gap = strokeWidth * 4` and `fillWeight = strokeWidth / 2` apply",
+    "Depth exactly zero: no box-shadow, no gradient, no z-layer; separation comes solely from outline plus 20-24px of air",
+    "Deviation is measured in pixels, not percent: Rough.js base values `roughness: 1`, `bowing: 1`, `maxRandomnessOffset: 2`, `curveStepCount: 9`",
+    "Handwriting faces on handwriting metrics: Bootswatch Sketchy pairs Cabin Sketch (headings) with Neucha (body text), Excalidraw uses Excalifont as successor to Virgil",
+    "No offset shadow on the primary action, no displacement on state change - the outline gets redrawn with a different seed instead",
+    "The input field is a single wavy baseline, no box; the field has no surface to call its own"
+  ],
+  "params": {
+    "radius": "Irregular, different per corner and per axis; Bootswatch quartets such as 255px 25px 225px 25px / 25px 225px 25px 255px, varied slightly per element",
+    "contrast": "high",
+    "density": "medium - 20-24px of air between two outlines, because the outline itself already claims space",
+    "depth": "none - the sheet is flat, the card does not float above the paper, it is drawn onto the paper",
+    "color": "Ink and graphite tones on paper white #FBFAF6 plus exactly one marker accent; status comes out of stroke density, not out of a color scale",
+    "type": "Handwriting faces (Excalifont/Virgil, Neucha, Cabin Sketch, Caveat) in a single weight, sizes from 16px upward",
+    "motion": "No displacement, no scaling; the state change is a re-roll of the stroke",
+    "texture": "Hachure and cross-hatch at -41 degrees with a gap of 4x the stroke width, plus an optional 4-6% grid texture on the paper"
+  },
+  "palette": [
+    "#FBFAF6",
+    "#F2EEE3",
+    "#1E1B18",
+    "#6B645B",
+    "#B83A22"
+  ],
+  "examples": [
+    {
+      "name": "Bootswatch Sketchy 5.3.8",
+      "what": "The only shipped, versioned chrome evidence without a script: `$font-family-sans-serif: Neucha`, `$headings-font-family: \"Cabin Sketch\", cursive`, base radii 15/25/35px - but the components override those with 19 asymmetric quartets, from `255px 25px 225px 25px / 25px 225px 25px 255px` to `45px 85px 15px 25px / 15px 10px 35px 555px`. Borders 2px solid throughout, shadows only as a 0.25rem focus ring"
+    },
+    {
+      "name": "Rough.js",
+      "what": "The library underneath half the category, short of 9 kB: `defaultOptions` at roughness 1, bowing 1, maxRandomnessOffset 2, curveStepCount 9, curveFitting 0.95, fillStyle 'hachure', hachureAngle -41, seed 0; hachureGap and fillWeight sit at -1 and resolve internally to `strokeWidth * 4` respectively half the stroke width"
+    },
+    {
+      "name": "Wired Elements",
+      "what": "10.8k stars, MIT license, same author as Rough.js: 29 components as Web Components in the src directory - button, input, textarea, checkbox, radio, slider, card, dialog, combo, listbox, tabs, calendar, progress ring, toggle, video. The most complete operable proof that this language can carry a whole chrome"
+    },
+    {
+      "name": "Excalidraw",
+      "what": "Rough.js as renderer of the drawing surface, Excalifont as successor to Virgil; selectable alongside Nunito and Comic Shanns since the font picker in 0.18.0 (March 11, 2025). At once the best counter-evidence: only what is drawn is rough, while toolbar, panels, and dialogs are conventional flat UI"
+    },
+    {
+      "name": "Mermaid",
+      "what": "`look` knows exactly three values - classic, handDrawn, neo - and switches the entire edge geometry with them. `handDrawnSeed` defaults to 0, which the schema explicitly declares to mean a random seed, pinned only for automated tests"
+    },
+    {
+      "name": "Balsamiq Wireframes",
+      "what": "A commercial product since 2008 and the origin of the built-in message: there the sketch look is the selling point, because a finished-looking draft smothers objection"
+    }
+  ],
+  "strengths": [
+    "Occupies a rendering layer nobody else has: geometry is generated per element instead of declared - the exact counterpart to the raster quantization of pixel-8bit",
+    "Carries a built-in message: the unfinishedness is an offer to object, and it demonstrably lowers the threshold for changing something in a draft",
+    "Reachable without any runtime library - Bootswatch Sketchy proves that asymmetric radii and 2px borders suffice on their own, which makes it usable in static environments too",
+    "Ink on paper white is the highest-contrast base chord in the whole catalog and survives projectors, print, and bad displays",
+    "Lists and cards are the home form of the style: every row is a drawn rectangle in its own right, needing neither a divider nor zebra striping",
+    "Zero depth means zero shadow values, zero elevation ladder, zero dark-mode translation of shadows - the token list is shorter than in any soft style"
+  ],
+  "risks": [
+    "The strongest objection: almost everywhere, the style lives in the content, not in the interface. In Excalidraw, draw.io, and Mermaid only what is drawn is rough - toolbar, panels, and dialogs stay conventional flat UI",
+    "The two real chrome proofs (Bootswatch Sketchy, Wired Elements) are toolchain, not a shipped end-customer product - you do not build a payment form out of them",
+    "Self-limiting through its own message: 'this is a draft' is exactly the wrong thing for checkout, account balance, contract, or medication plan",
+    "Runtime cost: Rough.js produces several curve segments per edge and draws each one twice; a 200-row list costs a multiple of 200 divs, and without a fixed seed every repaint rolls again, so the list flickers while scrolling",
+    "Handwriting faces usually have exactly one weight, a small x-height, and restless numerals - hierarchy has to run entirely on size and stroke width, and columns of figures become unreadable",
+    "Tips into the childish fast: as soon as more than one accent, rounded solid fills, or icons out of a stock set join in, it stops reading as a sketch and starts reading as Comic Sans in a frame"
+  ],
+  "a11y": "The base chord is uncritical: ink #1E1B18 on paper #FBFAF6 lands at roughly 16.6:1, graphite #6B645B at roughly 5.6:1, the marker accent #B83A22 at roughly 5.5:1. The actual trap is the hachure areas - a label on a striped chip has to be measured against the stroke color, not against the paper: ink against #B83A22 is only about 3.0:1. That is why coverage stays around 20 percent (1.1px stroke, 4.4px gap), and why status is never read out of stroke density alone but always out of the wording - 'Active' versus 'Paused'. The second trap is the input field: a wavy baseline meets the 3:1 requirement on control borders only if it is at least 2px strong and drawn across the full field width, and focus needs an indicator of its own that is clearly visible - an outline redrawn with a new seed is no perceivable state change. Do not set handwriting faces below 16px, and never use them for columns of figures, IDs, or amounts. The message 'draft' has to exist as text, not merely as optics, otherwise it never arrives for screen reader users. For animation: re-rolling the outline is an autoplay loop and gets switched off under prefers-reduced-motion.",
+  "longevity": "As a product language this has been in the market since 2008 and has left its grammar untouched in all that time - it is a genre, not a trend, and will therefore not date. The price of that stability is that it has never left its niche: tooling, documentation, diagram, draft. Build it today and you build something that looks the same in ten years and passes as an end-customer product just as little.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Good - two finished routes: Rough.js or Wired Elements at runtime, or no script at all via asymmetric radii; in Tailwind as the arbitrary value rounded-[255px_25px_225px_25px/25px_225px_25px_255px].",
+    "mobile": "Hard - Compose and SwiftUI know no radii that differ per corner and per axis; you draw every outline as a path shape of its own, and the handwriting faces collide with Material 3 and HIG expectations.",
+    "desktop": "Like web, because Tauri is a webview - and the most natural home for it: diagramming, note-taking, and planning tools are exactly the genus in which the style is documented."
+  },
+  "verdict": "As the language of a product surface: no. The chain of evidence breaks exactly where it counts - Excalidraw, draw.io, and Mermaid render only the content that way, their own chrome is flat UI, and the two complete chrome implementations are libraries for developers, not shipped products. Build a net-worth overview or a payment flow out of it and you send the user 'not finished yet' straight to the face. As a purpose-bound tool inside your own portfolio, though: clearly yes, and cheap to have. For documentation sites, architecture and data-flow diagrams, onboarding illustrations, planning and roadmap views, or a sketch view next to the finished interface it is the right choice, because there the message 'this is a draft' is simply true. Entry costs next to nothing: the Bootswatch radii plus two Google fonts get you 80 percent of the effect, and Rough.js only joins once hachure areas or diagram edges are genuinely needed. As a second language beside a sober primary one, this is one of the few combinations in the catalog that do not get in each other's way.",
+  "combinesWith": [
+    "organic-blob",
+    "neo-brutalism",
+    "playful-chunky"
+  ],
+  "tip": "Draw every outline once as a fixed SVG path and ship that, instead of rolling it at runtime. The seed per element is then fixed anyway, the repaint costs nothing, nothing flickers while scrolling, and the library drops out completely - but do not sell that fixed seed as a style marker, it is rendering hygiene. If you do roll at runtime, roll again only on a real state change, never on resize or repaint. And fix the order: outline first, then the air, then the type - the moment you start filling areas before the outline stands, what you get is no sheet of paper but a rounded card in striped wallpaper.",
+  "googleFonts": [
+    "Neucha",
+    "Cabin Sketch"
+  ]
+}

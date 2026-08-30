@@ -1,0 +1,402 @@
+<style>
+.style-civic-service {
+  --cs-tinte: #0b0c0c;
+  --cs-papier: #ffffff;
+  --cs-marke: #1d70b8;
+  --cs-link-hover: #0f385c;
+  --cs-besucht: #54319f;
+  --cs-fokus: #ffdd00;
+  --cs-gruen: #00703c;
+  --cs-gruen-hover: #005a30;
+  --cs-gruen-sockel: #002d18;
+  --cs-linie: #b1b4b6;
+  --cs-flach: #f3f2f1;
+  --cs-flach-hover: #dbdad9;
+  --cs-flach-sockel: #929191;
+
+  width: 100%;
+  min-height: 460px;
+  background: #ffffff;
+  color: #0b0c0c;
+  font-family: "Public Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+.style-civic-service,
+.style-civic-service *,
+.style-civic-service *::before,
+.style-civic-service *::after {
+  box-sizing: border-box;
+}
+
+.style-civic-service .demo {
+  min-height: 460px;
+  background: var(--cs-papier);
+  padding: 0 0 30px;
+}
+
+/* ---- 10px schwarzer Vollbalken: das einzige Kopfelement ---- */
+
+.style-civic-service .oberkante {
+  height: 10px;
+  background: var(--cs-tinte);
+}
+
+/* ---- Phasenhinweis: rechteckige Marke, 1px Trennlinie, sonst nichts ---- */
+
+.style-civic-service .phase {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cs-linie);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.style-civic-service .phase .stempel {
+  flex: none;
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--cs-marke);
+  color: var(--cs-papier);
+  border-radius: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---- Zwei-Drittel-Spalte links, rechtes Drittel bleibt leer ---- */
+
+.style-civic-service .raum {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0 30px;
+  padding: 25px 30px 0;
+}
+
+/* Absichtlich ohne Inhalt: der Satzspiegel wird nicht ausgeglichen. */
+.style-civic-service .rest {
+  min-width: 0;
+}
+
+.style-civic-service .kopf {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin: 0 0 15px;
+}
+
+.style-civic-service .kopf h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 50px;
+  font-weight: 700;
+  letter-spacing: normal;
+  color: var(--cs-tinte);
+}
+
+.style-civic-service .zaehler {
+  margin: 0;
+  flex: none;
+  padding: 0 10px;
+  background: var(--cs-tinte);
+  color: var(--cs-papier);
+  border-radius: 0;
+  font-size: 27px;
+  line-height: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.style-civic-service .einleitung {
+  margin: 0 0 25px;
+  font-size: 19px;
+  line-height: 25px;
+  max-width: 100%;
+}
+
+/* ---- Projektliste: Bloecke mit 5px-Vollbalken, keine Karten ---- */
+
+.style-civic-service .liste {
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+  border-top: 1px solid var(--cs-linie);
+}
+
+.style-civic-service .liste li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 15px;
+  align-items: baseline;
+  padding: 15px 0 15px 15px;
+  border-bottom: 1px solid var(--cs-linie);
+  border-left: 5px solid var(--cs-gruen);
+}
+
+.style-civic-service .liste li.ruht {
+  border-left-color: var(--cs-linie);
+}
+
+.style-civic-service .projekt {
+  grid-column: 1;
+  justify-self: start;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  color: var(--cs-marke);
+  background: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.1578em;
+}
+
+.style-civic-service .projekt:hover {
+  color: var(--cs-link-hover);
+  text-decoration-thickness: 3px;
+  text-decoration-skip-ink: none;
+}
+
+.style-civic-service .projekt.besucht {
+  color: var(--cs-besucht);
+}
+
+/* Der Fokuszustand: volle gelbe Flaeche mit 4px schwarzer Unterkante,
+   ohne Uebergang. Hier fest gesetzt, damit er im Standbild sichtbar ist. */
+.style-civic-service .projekt.hat-fokus,
+.style-civic-service .projekt:focus-visible {
+  outline: 3px solid transparent;
+  color: var(--cs-tinte);
+  background: var(--cs-fokus);
+  box-shadow:
+    0 -2px var(--cs-fokus),
+    0 4px var(--cs-tinte);
+  text-decoration: none;
+}
+
+.style-civic-service .zustand {
+  grid-column: 2;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 700;
+  color: var(--cs-tinte);
+  white-space: nowrap;
+}
+
+.style-civic-service .zeit {
+  grid-column: 1;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--cs-tinte);
+  padding-top: 5px;
+}
+
+/* ---- Feld: 2px schwarzer Rahmen, 40px hoch, Radius 0 ---- */
+
+.style-civic-service .feldgruppe {
+  margin: 0 0 30px;
+}
+
+.style-civic-service .etikett {
+  display: block;
+  margin: 0 0 5px;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 700;
+  color: var(--cs-tinte);
+}
+
+.style-civic-service .feld {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 5px;
+  font-family: inherit;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 400;
+  color: var(--cs-tinte);
+  background: var(--cs-papier);
+  border: 2px solid var(--cs-tinte);
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.style-civic-service .feld::placeholder {
+  color: var(--cs-tinte);
+  opacity: 1;
+}
+
+.style-civic-service .feld:focus-visible {
+  outline: 3px solid var(--cs-fokus);
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px var(--cs-tinte);
+}
+
+/* ---- Aktionen: 2px-Vollsockel, 2px-Sprung beim Druecken ---- */
+
+.style-civic-service .aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 0 0 30px;
+}
+
+.style-civic-service .knopf {
+  position: relative;
+  top: 0;
+  display: inline-block;
+  margin: 0 0 2px;
+  padding: 8px 10px 5px;
+  font-family: inherit;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--cs-papier);
+  background: var(--cs-gruen);
+  border: 2px solid transparent;
+  border-radius: 0;
+  box-shadow: 0 2px 0 var(--cs-gruen-sockel);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.style-civic-service .knopf:hover {
+  background: var(--cs-gruen-hover);
+}
+
+.style-civic-service .knopf:active {
+  top: 2px;
+  box-shadow: none;
+}
+
+.style-civic-service .knopf:focus-visible:not(:active) {
+  outline: 3px solid transparent;
+  border-color: var(--cs-fokus);
+  color: var(--cs-tinte);
+  background: var(--cs-fokus);
+  box-shadow: 0 2px 0 var(--cs-tinte);
+}
+
+/* govuk-button--start: 24px fett plus Pfeil. Der einzige Anlass, an dem der Stil
+   ein Bauteil vergroessert - er markiert den Einstieg in einen Ablauf. */
+.style-civic-service .knopf.start {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px 7px;
+  font-size: 24px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.style-civic-service .knopf.start svg {
+  flex: none;
+  width: 17.5px;
+  height: 19px;
+  margin-left: 5px;
+  fill: currentColor;
+}
+
+.style-civic-service .knopf.zweitrangig {
+  color: var(--cs-tinte);
+  background: var(--cs-flach);
+  box-shadow: 0 2px 0 var(--cs-flach-sockel);
+}
+
+.style-civic-service .knopf.zweitrangig:hover {
+  background: var(--cs-flach-hover);
+}
+
+/* ---- Fusszeile: 1px Linie, 16px Text ---- */
+
+.style-civic-service .fussnote {
+  margin: 0;
+  padding: 15px 0 0;
+  border-top: 1px solid var(--cs-linie);
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--cs-tinte);
+}
+
+.style-civic-service .fussnote b {
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  .style-civic-service .raum { grid-template-columns: 1fr; }
+  .style-civic-service .rest { display: none; }
+  .style-civic-service .kopf h2 { font-size: 32px; line-height: 35px; }
+}
+</style>
+<div class="style-civic-service">
+  <div class="demo">
+
+    <div class="oberkante" aria-hidden="true"></div>
+
+    <div class="phase">
+      <strong class="stempel">Beta</strong>
+      <span>This is a new service. Your feedback helps us improve it.</span>
+    </div>
+
+    <div class="raum">
+      <div class="spalte">
+
+        <div class="kopf">
+          <h2>Projects</h2>
+          <p class="zaehler">12</p>
+        </div>
+
+        <p class="einleitung">Select a project to change its settings.</p>
+
+        <ul class="liste">
+          <li>
+            <a class="projekt hat-fokus" href="#nexus">Nexus</a>
+            <span class="zustand">Active</span>
+            <span class="zeit">2 hrs ago</span>
+          </li>
+          <li>
+            <a class="projekt besucht" href="#autowrite-studio">Autowrite Studio</a>
+            <span class="zustand">Active</span>
+            <span class="zeit">yesterday</span>
+          </li>
+          <li class="ruht">
+            <a class="projekt" href="#balance-ally">Balance Ally</a>
+            <span class="zustand">Paused</span>
+            <span class="zeit">4 days ago</span>
+          </li>
+        </ul>
+
+        <div class="feldgruppe">
+          <label class="etikett" for="civic-service-suche">Search projects</label>
+          <input class="feld" id="civic-service-suche" type="text" readonly placeholder="Search...">
+        </div>
+
+        <div class="aktionen">
+          <button class="knopf start" type="button">New project<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 40" focusable="false" aria-hidden="true"><path d="M0 0h13l20 20-20 20H0l20-20z"></path></svg></button>
+          <button class="knopf zweitrangig" type="button">Import</button>
+        </div>
+
+        <p class="fussnote">Every measurement comes from the audit spec, not from the design: body text <b>19px</b>, line heights in <b>5px</b> steps, radius <b>0px</b>, base <b>2px</b>, focus <b>#ffdd00</b> with a 4px black bottom edge.</p>
+
+      </div>
+      <div class="rest" aria-hidden="true"></div>
+    </div>
+
+  </div>
+</div>

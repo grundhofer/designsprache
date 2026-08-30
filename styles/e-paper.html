@@ -1,0 +1,591 @@
+<style>
+.style-e-paper {
+  color-scheme: light;
+
+  /* Panel-Palette: exakt 16 Stufen zwischen Tinte und Grund, keine davon mit Alpha */
+  --ep-ink: #2B2B2B;      /* Stufe 0  - dunkelste darstellbare Tinte, nie #000 */
+  --ep-g1: #373737;
+  --ep-g2: #444343;
+  --ep-g3: #50504F;
+  --ep-g4: #5C5C5A;
+  --ep-g5: #696866;
+  --ep-g6: #757472;
+  --ep-g7: #81807E;
+  --ep-g8: #8E8D8A;
+  --ep-g9: #9A9996;
+  --ep-g10: #A6A5A2;
+  --ep-g11: #B3B1AE;
+  --ep-g12: #BFBDB9;
+  --ep-g13: #CBCAC5;
+  --ep-g14: #D8D6D1;
+  --ep-paper: #E4E2DD;    /* Stufe 15 - hellster darstellbarer Grund, nie #FFF */
+
+  /* Ordered Dithering (Bayer 4x4) - die einzige Halbtontechnik in diesem Stil */
+  --ep-ras-12: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%23E4E2DD'/><rect x='0' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='2' width='1' height='1' fill='%232B2B2B'/></svg>");
+  --ep-ras-25: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%23E4E2DD'/><rect x='0' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='0' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='2' width='1' height='1' fill='%232B2B2B'/></svg>");
+  --ep-ras-50: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%23E4E2DD'/><rect x='0' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='1' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='1' width='1' height='1' fill='%232B2B2B'/><rect x='0' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='3' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='3' width='1' height='1' fill='%232B2B2B'/></svg>");
+  --ep-ras-75: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%23E4E2DD'/><rect x='0' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='0' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='1' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='1' width='1' height='1' fill='%232B2B2B'/><rect x='0' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='2' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='2' width='1' height='1' fill='%232B2B2B'/><rect x='1' y='3' width='1' height='1' fill='%232B2B2B'/><rect x='3' y='3' width='1' height='1' fill='%232B2B2B'/></svg>");
+  --ep-ras-25-inv: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%232B2B2B'/><rect x='0' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='0' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='2' width='1' height='1' fill='%23E4E2DD'/></svg>");
+  --ep-ras-50-inv: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%232B2B2B'/><rect x='0' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='1' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='1' width='1' height='1' fill='%23E4E2DD'/><rect x='0' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='3' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='3' width='1' height='1' fill='%23E4E2DD'/></svg>");
+  --ep-ras-75-inv: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'><rect width='4' height='4' fill='%232B2B2B'/><rect x='0' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='0' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='1' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='1' width='1' height='1' fill='%23E4E2DD'/><rect x='0' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='2' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='2' width='1' height='1' fill='%23E4E2DD'/><rect x='1' y='3' width='1' height='1' fill='%23E4E2DD'/><rect x='3' y='3' width='1' height='1' fill='%23E4E2DD'/></svg>");
+
+  --ep-stroke: 2px;
+
+  width: 100%;
+  min-height: 460px;
+  background: var(--ep-paper);
+  color: var(--ep-ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keine Bewegung: transition: none gilt ausnahmslos im gesamten Entwurf */
+.style-e-paper,
+.style-e-paper *,
+.style-e-paper *::before,
+.style-e-paper *::after {
+  box-sizing: border-box;
+  transition: none;
+  animation: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.style-e-paper .demo {
+  min-height: 460px;
+  padding: 26px;
+  background-color: var(--ep-paper);
+  background-image: var(--ep-ras-12);
+  background-size: 4px 4px;
+  background-repeat: repeat;
+  image-rendering: pixelated;
+}
+
+/* ---------- Panel: harte 2px-Kante, kein Schatten, kein Radius ---------- */
+
+.style-e-paper .panel {
+  border: var(--ep-stroke) solid var(--ep-ink);
+  background: var(--ep-paper);
+}
+
+/* ---------- Geraeteleiste ---------- */
+
+.style-e-paper .edge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 34px;
+  padding: 0 22px;
+  border-bottom: var(--ep-stroke) solid var(--ep-ink);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ep-ink);
+}
+
+.style-e-paper .edge .push { flex: 1 1 auto; }
+
+.style-e-paper .battery {
+  display: block;
+  width: 30px;
+  height: 14px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  padding: 2px;
+}
+
+.style-e-paper .battery i {
+  display: block;
+  width: 78%;
+  height: 100%;
+  background-color: var(--ep-paper);
+  background-image: var(--ep-ras-75);
+  background-size: 4px 4px;
+  image-rendering: pixelated;
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.style-e-paper .masthead {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  padding: 26px 22px 18px;
+}
+
+/* Ohne Farbe traegt allein der Groessensprung die Hierarchie: 36px gegen 19px im Eintrag */
+.style-e-paper .masthead h2 {
+  margin: 0;
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ep-ink);
+}
+
+.style-e-paper .masthead .push { flex: 1 1 auto; }
+
+.style-e-paper .kicker {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ep-g4);
+  padding-bottom: 2px;
+}
+
+.style-e-paper .tally {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 48px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ep-ink);
+}
+
+/* ---------- Regeln: 6px Volltonregel, sonst 2px, nie 1px ---------- */
+
+.style-e-paper .rule-heavy {
+  height: 6px;
+  background: var(--ep-ink);
+}
+
+.style-e-paper .rule {
+  height: var(--ep-stroke);
+  background: var(--ep-ink);
+}
+
+/* ---------- Liste: 68px-Zeilen, latenzgetriebene Dichte ---------- */
+
+.style-e-paper .entry {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  height: 68px;
+  padding: 0 22px;
+  background-color: var(--ep-paper);
+}
+
+.style-e-paper .entry:hover {
+  background-image: var(--ep-ras-12);
+  background-size: 4px 4px;
+  image-rendering: pixelated;
+}
+
+/* Auswahl = vollstaendige Invertierung, hart, ohne Transition */
+.style-e-paper .entry.now {
+  background-color: var(--ep-ink);
+  background-image: none;
+  color: var(--ep-paper);
+}
+
+.style-e-paper .cover {
+  width: 44px;
+  height: 58px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  background-color: var(--ep-paper);
+  background-size: 4px 4px;
+  image-rendering: pixelated;
+}
+
+.style-e-paper .cover.k75 { background-image: var(--ep-ras-75); }
+.style-e-paper .cover.k50 { background-image: var(--ep-ras-50); }
+.style-e-paper .cover.k25 { background-image: var(--ep-ras-25); }
+
+.style-e-paper .entry.now .cover {
+  border-color: var(--ep-paper);
+  background-color: var(--ep-ink);
+}
+
+.style-e-paper .entry.now .cover.k75 { background-image: var(--ep-ras-75-inv); }
+.style-e-paper .entry.now .cover.k50 { background-image: var(--ep-ras-50-inv); }
+.style-e-paper .entry.now .cover.k25 { background-image: var(--ep-ras-25-inv); }
+
+.style-e-paper .title {
+  display: block;
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ep-ink);
+}
+
+.style-e-paper .meta {
+  display: block;
+  margin-top: 3px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  color: var(--ep-g4);
+}
+
+.style-e-paper .entry.now .title,
+.style-e-paper .entry.now .meta { color: var(--ep-paper); }
+
+/* ---------- Status: nie farbig, immer Form plus Wort ---------- */
+
+.style-e-paper .state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 118px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ep-ink);
+}
+
+.style-e-paper .glyph {
+  display: block;
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  background: var(--ep-paper);
+}
+
+.style-e-paper .glyph.solid { background: var(--ep-ink); }
+
+.style-e-paper .entry.now .state { color: var(--ep-paper); }
+.style-e-paper .entry.now .glyph {
+  border-color: var(--ep-paper);
+  background: var(--ep-ink);
+}
+.style-e-paper .entry.now .glyph.solid { background: var(--ep-paper); }
+
+/* ---------- Feld ---------- */
+
+.style-e-paper .seek {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  margin: 20px 22px 0;
+  padding: 0 16px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  background: var(--ep-paper);
+}
+
+.style-e-paper .seek svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--ep-ink);
+  image-rendering: auto;
+}
+
+.style-e-paper .seek input {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: var(--ep-paper);
+  color: var(--ep-ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .01em;
+  outline: none;
+}
+
+.style-e-paper .seek input::placeholder {
+  color: var(--ep-g4);
+  opacity: 1;
+}
+
+.style-e-paper .seek input:focus-visible {
+  outline: 3px solid var(--ep-ink);
+  outline-offset: 4px;
+}
+
+.style-e-paper .seek .hint {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ep-g4);
+}
+
+/* ---------- Aktionen ---------- */
+
+.style-e-paper .acts {
+  display: flex;
+  gap: 14px;
+  padding: 18px 22px 20px;
+}
+
+.style-e-paper .act {
+  height: 52px;
+  padding: 0 26px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  border-radius: 2px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: none;
+}
+
+.style-e-paper .act-primary {
+  background: var(--ep-ink);
+  color: var(--ep-paper);
+}
+
+.style-e-paper .act-second {
+  background: var(--ep-paper);
+  color: var(--ep-ink);
+}
+
+.style-e-paper .act-primary:hover,
+.style-e-paper .act-primary:focus-visible {
+  background: var(--ep-paper);
+  color: var(--ep-ink);
+}
+
+.style-e-paper .act-second:hover,
+.style-e-paper .act-second:focus-visible {
+  background: var(--ep-ink);
+  color: var(--ep-paper);
+}
+
+.style-e-paper .act:focus-visible {
+  outline: 3px solid var(--ep-ink);
+  outline-offset: 4px;
+}
+
+/* ---------- Fuss: Paginierung statt Scrollbar ---------- */
+
+.style-e-paper .foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 54px;
+  padding: 0 22px;
+  border-top: var(--ep-stroke) solid var(--ep-ink);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ep-g4);
+}
+
+.style-e-paper .foot .push { flex: 1 1 auto; }
+
+.style-e-paper .page {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ep-ink);
+  font-size: 12px;
+  letter-spacing: .2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.style-e-paper .step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 30px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+  background: var(--ep-paper);
+  cursor: pointer;
+  padding: 0;
+}
+
+.style-e-paper .step svg {
+  display: block;
+  width: 10px;
+  height: 12px;
+  color: var(--ep-ink);
+  image-rendering: auto;
+}
+
+.style-e-paper .step.off {
+  background: var(--ep-paper);
+  cursor: default;
+}
+
+.style-e-paper .step.off svg { color: var(--ep-g9); }
+
+.style-e-paper .step:not(.off):hover { background: var(--ep-ink); }
+.style-e-paper .step:not(.off):hover svg { color: var(--ep-paper); }
+
+/* ---------- Graukeil: die 16 Stufen als Kalibrierstreifen ---------- */
+
+.style-e-paper .wedge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px 18px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ep-ink);
+}
+
+.style-e-paper .ramp {
+  display: flex;
+  flex: 1 1 auto;
+  height: 22px;
+  border: var(--ep-stroke) solid var(--ep-ink);
+}
+
+.style-e-paper .ramp span {
+  flex: 1 1 0;
+  display: block;
+}
+
+/* Der Keil rendert aus denselben Tokens wie die Oberflaeche - eine Leiter, keine zweite Liste */
+.style-e-paper .s0 { background: var(--ep-ink); }
+.style-e-paper .s1 { background: var(--ep-g1); }
+.style-e-paper .s2 { background: var(--ep-g2); }
+.style-e-paper .s3 { background: var(--ep-g3); }
+.style-e-paper .s4 { background: var(--ep-g4); }
+.style-e-paper .s5 { background: var(--ep-g5); }
+.style-e-paper .s6 { background: var(--ep-g6); }
+.style-e-paper .s7 { background: var(--ep-g7); }
+.style-e-paper .s8 { background: var(--ep-g8); }
+.style-e-paper .s9 { background: var(--ep-g9); }
+.style-e-paper .s10 { background: var(--ep-g10); }
+.style-e-paper .s11 { background: var(--ep-g11); }
+.style-e-paper .s12 { background: var(--ep-g12); }
+.style-e-paper .s13 { background: var(--ep-g13); }
+.style-e-paper .s14 { background: var(--ep-g14); }
+.style-e-paper .s15 { background: var(--ep-paper); }
+
+@media (max-width: 560px) {
+  .style-e-paper .demo { padding: 14px; }
+  .style-e-paper .masthead h2 { font-size: 26px; }
+  .style-e-paper .masthead .kicker { display: none; }
+  .style-e-paper .entry { grid-template-columns: 1fr auto; gap: 14px; }
+  .style-e-paper .cover { display: none; }
+  .style-e-paper .edge .drop { display: none; }
+  .style-e-paper .foot .drop { display: none; }
+}
+</style>
+<div class="style-e-paper">
+  <div class="demo">
+    <div class="panel">
+
+      <div class="edge">
+        <span>E-Ink 4 Bit</span>
+        <span class="drop">16 Stufen</span>
+        <span class="drop">Kein Alpha</span>
+        <span class="push"></span>
+        <span>82 %</span>
+        <span class="battery" aria-hidden="true"><i></i></span>
+      </div>
+
+      <div class="masthead">
+        <h2>Projekte</h2>
+        <span class="kicker">Zuletzt geöffnet</span>
+        <span class="push"></span>
+        <span class="tally">12</span>
+      </div>
+
+      <div class="rule-heavy"></div>
+
+      <div class="entry">
+        <span class="cover k75" aria-hidden="true"></span>
+        <span>
+          <span class="title">Nexus</span>
+          <span class="meta">vor 2 Std.</span>
+        </span>
+        <span class="state"><span class="glyph solid" aria-hidden="true"></span>Aktiv</span>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="entry now">
+        <span class="cover k50" aria-hidden="true"></span>
+        <span>
+          <span class="title">Autowrite Studio</span>
+          <span class="meta">gestern</span>
+        </span>
+        <span class="state"><span class="glyph solid" aria-hidden="true"></span>Aktiv</span>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="entry">
+        <span class="cover k25" aria-hidden="true"></span>
+        <span>
+          <span class="title">Balance Ally</span>
+          <span class="meta">vor 4 Tagen</span>
+        </span>
+        <span class="state"><span class="glyph" aria-hidden="true"></span>Pausiert</span>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="seek">
+        <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M11.5 11.5 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+        <input type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+        <span class="hint">Volltext</span>
+      </div>
+
+      <div class="acts">
+        <button class="act act-primary" type="button">Neues Projekt</button>
+        <button class="act act-second" type="button">Importieren</button>
+      </div>
+
+      <div class="foot">
+        <span class="drop">Vollbildaufbau 480 ms</span>
+        <span class="push"></span>
+        <span class="page">
+          <button class="step off" type="button" aria-label="Vorige Seite">
+            <svg viewBox="0 0 8 10" aria-hidden="true"><path d="M7 0 1 5l6 5z" fill="currentColor"/></svg>
+          </button>
+          Seite 1 / 4
+          <button class="step" type="button" aria-label="Nächste Seite">
+            <svg viewBox="0 0 8 10" aria-hidden="true"><path d="M1 0l6 5-6 5z" fill="currentColor"/></svg>
+          </button>
+        </span>
+      </div>
+
+      <div class="wedge">
+        <span>Graukeil 16</span>
+        <span class="ramp" aria-hidden="true">
+          <span class="s0"></span><span class="s1"></span><span class="s2"></span><span class="s3"></span>
+          <span class="s4"></span><span class="s5"></span><span class="s6"></span><span class="s7"></span>
+          <span class="s8"></span><span class="s9"></span><span class="s10"></span><span class="s11"></span>
+          <span class="s12"></span><span class="s13"></span><span class="s14"></span><span class="s15"></span>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>

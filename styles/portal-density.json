@@ -1,0 +1,109 @@
+{
+  "slug": "portal-density",
+  "name": "Portal-Dichte / Portalschule",
+  "aka": [
+    "Portal-Raster",
+    "Directory-Schule",
+    "kakaku-Dichte",
+    "Portal-Ära",
+    "Ostasiatische Portalfortsetzung"
+  ],
+  "family": "Weitere Pole",
+  "era": "1996-heute",
+  "origin": "Das ist ausdrücklich KEINE Regionalkategorie, und der Katalog würde einen Fehler festschreiben, wenn er sie als japanische Besonderheit führte. Die Gegenprobe im Internet Archive ist eindeutig: Yahoo! Japan und Yahoo.com hatten im Juni 2004 dasselbe Layout - 230 gegen 239 <a>-Elemente auf der Startseite, 65 gegen 71 verschachtelte <table>, bei Yahoo! Japan achtzehnmal das Attribut width=\"675\" als feste Spaltenbreite. Es gab 2004 keine japanische Gestaltung, es gab die Portal-Ära: als Suche noch schlecht war, war die Startseite das Inhaltsverzeichnis des Netzes, und Vollständigkeit war das Produktversprechen. Der Westen hat diese Form ab 2005 aufgegeben, weil Google die Aufgabe übernahm und weil Werbung sich auf Ergebnisseiten verlagerte. Ostasiatisch ist nur, wo die Form ÜBERLEBT hat: in Japan bei kakaku.com (1997), tabelog, jalan, nikkansports, in China bei hao123.com und sina.com.cn - dort, wo Preisvergleich, Reservierung und Navigationsseite ein bis heute tragendes Geschäftsmodell sind. Der Stil ist damit die einzige lebende Stelle im Parameterraum, an der hell, sehr dicht, radiusarm und polychrom zusammenfallen und Farbe weder Zustand noch Dekoration ist, sondern Kategorien-Index.",
+  "idea": "Farbe kodiert Taxonomie statt Semantik: eine durchnummerierte Kette gleichrangiger Kategoriefarben liegt als 3px-Kopfbalken auf den Kästen, keine davon ist Leitfarbe und keine bedeutet einen Zustand - Hierarchie entsteht ausschließlich aus Fett, 1px-Linien und einem Sprung in der Schriftgröße.",
+  "markers": [
+    "27 durchnummerierte Kategoriefarben in kakaku.com/css/common.css (.l-color-1 bis .l-color-27: #001789, #09f, #f60, #009899, #670099, #53b, #fc3, #013466, #3266cc, #feae00 ... #d20000), jede ausgeliefert als border-top:3px solid am Kasten und als 7px-Streifen über der Kopfzeile - keine ist Leitfarbe, keine bedeutet einen Zustand",
+    "Genau zwei Farben tragen Bedeutung: Link #0867bf mit Hover #1e85e5, Visited #8a3683 mit Hover #b351ab - der :visited-Zustand wird noch bewusst gestaltet, weil Wiederfinden in 200-1250 Links zum Geschäftsmodell gehört",
+    "Feste, zentrierte Spalte ohne Responsive-Umbruch: kakaku .l-wrap-regular{width:1035px;margin:0 auto;background:#fff}, jalan global.css zwölfmal width:950px, hao123 siebzehnmal width:1190px - der horizontale Scrollbalken ist eingeplant, nicht ein Fehler",
+    "Basisschrift 12-14px proportional und KEIN einziger Monospace-Einsatz: kakaku body{font-size:1.3em} auf 62.5%-Root = 13px in Meiryo/Hiragino, nikkansports 87x font-size:14px, jalan 57x font-size:12px, hao123 82x font-size:12px - in keiner der geprüften Dateien kommt monospace, Courier oder Consolas vor",
+    "Zahlen laufen in einer zweiten, proportionalen Familie: .c-num,.p-num{font-family:Verdana,sans-serif} - ohne font-variant-numeric, ohne Tabellenziffern; Zahlen sind Beiwerk der Zeile, nicht eine eigene Spalte",
+    "Radius 0-4px, dominant 2-3px: kakaku home.css sechsmal 5px und fünfmal 3px, tabelog top.css zwölfmal 3px, achtmal 4px, fünfmal 2px - Buttons als 82x34px-Kasten mit 3px Radius",
+    "Kontrast bewusst nicht maximiert: #333 auf #fff bzw. #f5f5f5 (12,6:1 statt der 21:1 von Schwarz), Blockrahmen 1px #ddd, Zeilentrenner 1px dotted #ddd, Zeilenhintergrund beim Hover #e9f3fd",
+    "Tiefe ist vorhanden, aber sparsam und hart: kakaku home.css enthält 5 box-shadow und 4 Gradienten (box-shadow:1px 1px 1px 0 #adbac7 inset am Suchfeld, linear-gradient(#fff,#e7e9ec 98%,#d5d7da) am Knopf), tabelog top.css 22 box-shadow - kein einziger weich verlaufender Schlagschatten",
+    "Motion ist vorhanden, aber nur als kurzer harter Wechsel: 27 transition-Deklarationen in kakaku home.css, 44 in nikkansports common.css, 36 in tabelog top.css; Links ohne Unterstreichung, Unterstreichung erst bei :hover",
+    "Fußblock aus Dutzenden 12-13px-Textlinks, durch .p-relation_item:before{content:\" | \"} in #ddd getrennt, plus ein vollflächiger Copyright-Streifen .l-f_copy{background:#001789;color:#fff;font-size:12px} - die Vollständigkeit ist das Versprechen"
+  ],
+  "params": {
+    "radius": "0-4px, dominant 2-3px; 5px nur an der Suchleiste",
+    "contrast": "mittel, bewusst nicht maximiert - #333 auf #fff und #f5f5f5, Linien in #ddd",
+    "density": "sehr dicht; feste zentrierte Spalte von 950-1220px, Zeilen mit padding:3-4px 8px und line-height 1.4-1.5",
+    "depth": "sparsam und hart: ein bis zwei 1px-Innenschatten am Eingabefeld, ein flacher Vertikalverlauf am Knopf, ansonsten trennen 1px-Linien - nichts verläuft weich",
+    "color": "polychrom, aber die Farbe kodiert Taxonomie: eine Kette gleichrangiger, durchnummerierter Kategoriefarben als 3px-Balken; daneben genau zwei bedeutungstragende Farben (Link, Visited) und ein Rot als Aufmerksamkeitsmarke",
+    "type": "eine einzige proportionale Gothic/Grotesk bei 12-14px in zwei Gewichten, plus eine zweite proportionale Familie (Verdana) für Zahlen - kein Monospace, keine Tabellenziffern",
+    "motion": "60-150ms, ausschließlich Farb- und Flächenwechsel bei Hover; keine Bewegung, keine Skalierung, keine Einblendung von Inhalt",
+    "texture": "keine; die einzige Flächenstruktur sind der graue #f5f5f5-Grund, die 1px-Rahmen und die gepunkteten Zeilentrenner"
+  },
+  "palette": [
+    "#f5f5f5",
+    "#333333",
+    "#0867bf",
+    "#001789",
+    "#f60",
+    "#009899"
+  ],
+  "examples": [
+    {
+      "name": "kakaku.com",
+      "what": "Der Referenzfall. common.css führt .l-color-1 bis .l-color-27 als vollständige Kategorienkette (#001789 Anwendungen, #f60 Haushalt, #009899 Kamera, #670099 Breitband, #393 Bücher, #c36 Uhren, #d20000 Outlet), jede als border-top:3px solid am Kasten; .l-wrap-regular ist 1035px breit, body läuft mit 1.3em auf 62.5%-Root, also 13px, in Meiryo/Hiragino; Links #0867bf, Visited #8a3683, Zeilen-Hover #e9f3fd; Zahlen in Verdana; Suchknopf 82x34px als Sprite mit Zuständen bei 0/-40/-80px; home.css hat 5 box-shadow, 4 Gradienten und 27 transitions, aber null Monospace"
+    },
+    {
+      "name": "tabelog.com",
+      "what": "Restaurantverzeichnis, 1253 <a>-Elemente auf der Startseite. top.css ist 118 KB groß und enthält 22 box-shadow und 36 transitions - der Beweis, dass Tiefe und Motion in diesem Stil nicht null sind, sondern nur hart und knapp; Radien verteilen sich auf zwölfmal 3px, achtmal 4px, fünfmal 2px, feste Rasterbreiten 1120/1260/1540px"
+    },
+    {
+      "name": "nikkansports.com",
+      "what": "Sportzeitung, 369 <a> auf der Startseite. Die Rubriküberschrift ist eine vollflächige Farbkachel: .text-heading{background:#0075c2;color:#fff;font-size:14px;width:148px;height:30px;line-height:30px} - dieselbe Idee wie der 3px-Balken, nur invertiert; Basisschrift 14px (87 Vorkommen), Text #333 in Hiragino/Meiryo, Neuigkeitsmarke als reines 11px-Wort in #e60012 statt als Icon"
+    },
+    {
+      "name": "jalan.net",
+      "what": "Reiseportal, 245 <a>. Der reduzierteste Vertreter: global.css enthält zwölfmal width:950px, keine einzige transition, keinen box-shadow und keinen border-radius; topcss120104.css fährt 57x font-size:12px. Zeigt, dass die Dichte auch ohne jede Tiefe und ohne jede Bewegung trägt - Schatten und Motion sind im Stil erlaubt, aber nicht konstitutiv"
+    },
+    {
+      "name": "hao123.com und sina.com.cn",
+      "what": "Die Gegenprobe außerhalb Japans: hao123 mit 430 <a>, 82x font-size:12px, 71x 14px und siebzehnmal width:1190px; sina.com.cn mit 1039 <a> auf 1000px fester Spalte. Dieselben Parameter, anderes Land - der Stil ist an das Portal-Geschäftsmodell gebunden, nicht an eine Region"
+    },
+    {
+      "name": "Yahoo! Japan und Yahoo.com, Juni 2004 (Internet Archive)",
+      "what": "Der historische Beleg gegen die Regionalthese: 230 gegen 239 <a>, 65 gegen 71 verschachtelte <table>, bei Yahoo! Japan achtzehnmal width=\"675\" als feste Spalte. Zwei Kontinente, ein Layout - die Portal-Ära war global, nur ihr Ende war es nicht"
+    }
+  ],
+  "strengths": [
+    "Trennt zwei Größen, die sonst verklebt sind: maximale Dichte muss nicht dunkel, monospace und semantikfarbig sein - hell, proportional und taxonomiefarbig geht genauso dicht",
+    "Farbe als Kategorien-Index skaliert auf beliebig viele gleichrangige Rubriken, ohne dass eine Marken- oder Statusfarbe verbraucht wird - ein Problem, an dem Ein-Akzent-Systeme regelmäßig scheitern",
+    "Technisch das billigste Verfahren im ganzen Katalog: 1px-Rahmen, ein 3px-Balken pro Kasten, zwei Schriftgrößen, keine Illustration, keine Ikonografie, keine Animation",
+    "Extrem robust gegen wachsende Inhalte - wer eine Rubrik hinzufügt, hängt eine Farbe an die Kette und einen Kasten ans Raster, ohne dass das Layout neu verhandelt werden muss",
+    "Ehrlich in der Navigation: alles ist sichtbar und anklickbar, statt hinter Menüs, Akkordeons und Suchfeldern versteckt - für Verzeichnisse ist das messbar schneller als jede aufgeräumte Alternative"
+  ],
+  "risks": [
+    "Der stärkste Einwand: der Stil ist ohne Portal-Geschäftsmodell nicht anwendbar. '200-1250 Textlinks auf der Startseite' ist eine Inhaltsmenge, keine Gestaltungsentscheidung - wer die Inhalte nicht hat, baut ein leeres Verzeichnis und der Stil kippt sofort ins Kostüm",
+    "Die authentische Festbreite von 950-1220px geht in jedem beschränkten Rahmen verloren; diese Demo ist von kakakus 1035px auf 780px umproportioniert (175/330/205 bei 12px Rinne). Die Dichte bleibt, die Fixbreite ist eine Ausrede",
+    "Der Stil hat keine Antwort auf Mobile. Alle lebenden Vertreter lösen das durch eine komplett getrennte Oberfläche unter s.kakaku.com beziehungsweise sp.tabelog.com - zwei Oberflächen, doppelte Pflege",
+    "Er ist datiert und wird als datiert gelesen. Wer ihn wählt, wählt bewusst die Anmutung von 2004 mit - was für ein Verzeichnis Kompetenz signalisieren kann und für ein Produkt Vernachlässigung",
+    "Ohne echte Taxonomie zerfällt die Farbkette in Willkür: zehn zufällig gewürfelte Bunttöne ohne zugeordnete Rubrik sehen nicht nach Index aus, sondern nach Fehler",
+    "Die Kategoriefarben sind untereinander nicht unterscheidbar für alle Nutzer - #393 und #d68011 oder #001789 und #670099 fallen bei Farbfehlsichtigkeit zusammen; die Farbe darf deshalb nie der einzige Kategorienhinweis sein"
+  ],
+  "a11y": "Der gute Teil: #333 auf #fff liegt bei 12,6:1 und auf #f5f5f5 bei 11,6:1, die Linkfarbe #0867bf bei 5,6:1 und die Visited-Farbe #8a3683 bei 7,2:1 - alle drei bestehen 1.4.3 auch bei 12px. Der schlechte Teil ist strukturell und muss benannt werden: #0867bf gegen den umgebenden Fließtext #333 erreicht nur 2,25:1 und verfehlt damit die 3:1 aus 1.4.1 für Links, die allein durch Farbe kenntlich sind. Die Vorbilder heilen das über a:hover{text-decoration:underline} - das ist die zulässige Technik nur für Hover und Fokus, nicht für den Ruhezustand; in Produktion gehört deshalb entweder eine permanente Unterstreichung im Fließtext oder eine dunklere Linkfarbe her. In dieser Demo stehen Links fast durchgängig allein in ihrer Zeile oder Zelle, wo die Regel nicht greift. Die Kategoriefarben sind nie alleiniger Informationsträger: der 3px-Balken steht immer über einem ausgeschriebenen Kastentitel, das 8px-Farbfeld immer neben dem Kategorienamen und neben seiner ausgeschriebenen Kettennummer, und der 7px-Streifen am Seitenkopf, der die vollständige Kette in 27 Gliedern zeigt, trägt selbst keine Information, die nicht daneben im Text stünde - was nötig ist, weil helle Kettenglieder wie #fc3 oder #cdcc00 gegen Weiß unter 2:1 liegen und 1.4.11 als alleiniger Indikator klar verfehlen. Zustand wird in diesem Stil grundsätzlich nicht über Farbe kodiert: 'Aktiv' und 'Pausiert' sind ausgeschriebene Wörter in einem neutralen Rahmen und unterscheiden sich über Schriftschnitt, nicht über Farbton. Ungelöst bleibt die Zielgröße: Zeilen von 25-27px Höhe unterschreiten 2.5.8 (24x24px ist gerade eben erreicht, 44px klar nicht), und für Touch ist der Stil ohne eigene, deutlich luftigere Variante schlicht ungeeignet.",
+  "longevity": "Der Stil hat über zwanzig Jahre überlebt, aber nicht als Mode, sondern als Funktion eines Geschäftsmodells: solange eine Startseite ein Inhaltsverzeichnis sein muss, bleibt er richtig, und kakaku.com fährt ihn 2026 praktisch unverändert. Sein Ende ist deshalb kein Geschmackswandel, sondern ein Strukturwandel - wenn Suche und Empfehlung die Navigation vollständig ersetzen, verschwindet die Aufgabe und mit ihr die Form, wie es im Westen ab 2005 geschehen ist. Zeitgebunden sind die Festbreite und die Sprite-Buttons; die Farbtaxonomie, die 1px-Rahmen und die 13px-Zeile sind es nicht.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 4,
+    "effort": 3,
+    "density": 5
+  },
+  "platforms": {
+    "web": "Gut, aber nur für Verzeichnisse, Kataloge, Archive und Admin-Übersichten - für Marketing, Onboarding oder Produktseiten ist der Stil falsch. Mit Tailwind trivial umsetzbar, die Kategorienkette ist eine Handvoll Tokens.",
+    "mobile": "Nein. 12-13px Basis, 25px-Zeilen und eine feste Spalte von 950-1220px sind auf Compose und SwiftUI nicht darstellbar; alle Vertreter betreiben deshalb eine getrennte mobile Oberfläche statt eines Breakpoints.",
+    "desktop": "Sehr gut - ein Tauri-Fenster mit fester Mindestbreite ist genau die Bühne, für die der Stil gebaut ist, und die fehlende Responsivität ist dort kein Mangel."
+  },
+  "verdict": "Als Markenbasis für ein Portfolio kleiner Apps: klar nein. Der Stil setzt eine Inhaltsmenge und eine Taxonomie voraus, die ein Solo-Entwickler nicht hat, und er hat keine mobile Antwort - Compose und SwiftUI können 13px-Zeilen und 25px-Zielgrößen nicht tragen, und die Vorbilder lösen das nur durch eine zweite, komplett getrennte Oberfläche. Was diesen Eintrag trotzdem wertvoll macht, ist eine einzelne übertragbare Entscheidung: Farbe als Kategorien-Index statt als Marken- oder Statusfarbe. Wer mehrere Werkzeuge unter einem Dach betreibt, gewinnt damit ein Ordnungsmittel, das kein Ein-Akzent-System liefert - jede App bekommt ihre Nummer in der Kette, der 3px-Balken trägt sie durch jedes Fenster, und die Marke bleibt farblich unverbraucht. Als Ganzes lohnt der Stil höchstens für genau einen Bildschirm, nämlich einen echten Index über alles, was man gebaut hat, am besten im Tauri-Fenster. Als Ausweis dafür, dass Dichte und Dunkelheit zwei verschiedene Parameter sind, lohnt er sich in jedem Fall.",
+  "combinesWith": [
+    "data-dense",
+    "swiss",
+    "editorial-print"
+  ],
+  "tip": "Baue die Kategorienkette zuerst und vollständig, bevor du den ersten Kasten zeichnest: eine durchnummerierte Liste von zwölf bis dreißig Farben, jede fest einer Rubrik zugeordnet, keine davon in der Marke, in einem Zustand oder in einem Button wiederverwendet. Genau diese Disziplin ist der Stil - sobald eine der Farben anfängt, 'Erfolg', 'Warnung' oder 'unsere Farbe' zu bedeuten, bricht das ganze System zusammen, weil der Betrachter dann in jedem der übrigen Töne ebenfalls eine Bedeutung sucht. Und setze die Farbe nur als 3px-Balken, 7px-Kopfstreifen oder 8px-Feld ein, nie als Fläche: die Kette muss zehnmal gleichzeitig im Blickfeld stehen können, ohne dass die Seite bunt wird.",
+  "googleFonts": [
+    "Noto Sans JP"
+  ]
+}

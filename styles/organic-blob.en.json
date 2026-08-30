@@ -2,7 +2,7 @@
   "slug": "organic-blob",
   "name": "Organic / Blob / Soft Nature",
   "aka": ["Blob Design", "Organic Shapes", "Soft Nature", "Wellness Look", "Biomorphic UI"],
-  "family": "Expression & Nature",
+  "family": "Expression & Gesture",
   "era": "2017-today (peak 2019-2021), precursors from the 1930s",
   "origin": "The formal language comes out of modernist biomorphism - Jean Arp's amoeba-like reliefs, Isamu Noguchi's tables, Alvar Aalto's Savoy vase - and was carried into digital design in 1995 by Greg Lynn as 'blob architecture' (from 'binary large object'). The blob reached the web around 2017/2018, made practical by the eight-value form of border-radius (the ellipse syntax with a slash) and by cheap SVG paths, which let you generate and animate irregular shapes without an image file. The wave was driven by illustration systems such as Humaaans and unDraw and by wellness and mindfulness apps that wanted a soft, bodily counterworld to the hard flat grid of the 2010s. The problem it solved was emotion: right-angled flat UIs read as clinical, and the blob made digital products touchable and calming.",
   "idea": "Nothing in the layout is right-angled or symmetrical: every surface gets a slightly different, irregular radius so the interface reads as grown rather than constructed. Color and form simulate nature - earth, leaf, stone - to translate digital rigor into calm.",

@@ -2,7 +2,7 @@
   "slug": "maximalism",
   "name": "Maximalism / Collage",
   "aka": ["More is more", "Collage Design", "Sticker Aesthetic", "Neo-Memphis", "Cluttercore"],
-  "family": "Expression & Nature",
+  "family": "Expression & Gesture",
   "era": "Roots 1954-1996, digital wave 2020-today",
   "origin": "Maximalism is not an invention of the 2020s but the return of a line running from Push Pin Studios (Milton Glaser, Seymour Chwast, from 1954) through the psychedelic posters of the sixties, the cut-and-paste fanzines of punk (Jamie Reid for the Sex Pistols, 1977) and Memphis (Ettore Sottsass, 1981) to David Carson's Ray Gun (1992-1996) and Richard Turley's Bloomberg Businessweek (2011-2014). It came back digitally around 2020 as a direct counter-movement to corporate flat minimalism, whose result - interchangeable sans-serif logos and white cards - had itself become the problem. The return was made possible by variable fonts, CSS transform and mix-blend-mode, plus GPU-accelerated scroll animation: what used to be a bitmap layout is now live-rendered DOM. Culturally it was carried by fashion (Gucci under Alessandro Michele from 2015) and by music marketing, where recognizability counts for more than efficiency.",
   "idea": "Overload as a stance: instead of taking elements away, they are layered, rotated, framed and allowed to collide until the surface has a personality. Order does not come from white space but from managing contrast inside the chaos.",

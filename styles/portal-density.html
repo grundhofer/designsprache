@@ -1,0 +1,985 @@
+<style>
+.style-portal-density {
+  color-scheme: light;
+
+  /* --- Grundwerte: Kontrast bewusst nicht maximiert --- */
+  --pd-ground: #f5f5f5;
+  --pd-paper: #fff;
+  --pd-ink: #333;
+  --pd-ink-2: #666;
+  --pd-ink-3: #767676;
+  --pd-rule: #ddd;
+  --pd-rule-2: #e6e6e6;
+
+  /* --- Links: eine Farbe, plus Visited. Das ist die einzige Semantik --- */
+  --pd-link: #0867bf;
+  --pd-link-hover: #1e85e5;
+  --pd-visited: #8a3683;
+  --pd-rowhover: #e9f3fd;
+  --pd-attention: #e60012;
+
+  /* --- Taxonomie: die durchnummerierte Kette. Keine davon ist Leitfarbe,
+         keine bedeutet einen Zustand, keine steckt in einem Knopf.
+         1-10, 13, 19 und 27 sind die aus kakaku.com/css/common.css belegten
+         Glieder; die Luecken dazwischen fuellt diese Demo plausibel auf. --- */
+  --pd-cat-1: #001789;
+  --pd-cat-2: #0099ff;
+  --pd-cat-3: #f60;
+  --pd-cat-4: #009899;
+  --pd-cat-5: #670099;
+  --pd-cat-6: #5533bb;
+  --pd-cat-7: #ffcc33;
+  --pd-cat-8: #013466;
+  --pd-cat-9: #3266cc;
+  --pd-cat-10: #feae00;
+  --pd-cat-11: #d68011;
+  --pd-cat-12: #b1005a;
+  --pd-cat-13: #339933;
+  --pd-cat-14: #0a8a5c;
+  --pd-cat-15: #7a6bd6;
+  --pd-cat-16: #cdcc00;
+  --pd-cat-17: #0093d0;
+  --pd-cat-18: #8c6239;
+  --pd-cat-19: #cc3366;
+  --pd-cat-20: #5c8c00;
+  --pd-cat-21: #e07b00;
+  --pd-cat-22: #006db3;
+  --pd-cat-23: #9b2fa0;
+  --pd-cat-24: #007b7b;
+  --pd-cat-25: #a05000;
+  --pd-cat-26: #4a5b8c;
+  --pd-cat-27: #d20000;
+
+  width: 100%;
+  min-height: 460px;
+  background: var(--pd-ground);
+  color: var(--pd-ink);
+  font-family: "Noto Sans JP", "Meiryo", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.style-portal-density,
+.style-portal-density *,
+.style-portal-density *::before,
+.style-portal-density *::after { box-sizing: border-box; }
+
+/* Eigener Mini-Reset: die Demo erbt nichts von aussen. */
+.style-portal-density ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.style-portal-density li { margin: 0; }
+.style-portal-density table { border-collapse: collapse; margin: 0; }
+.style-portal-density button { margin: 0; }
+
+.style-portal-density .demo {
+  min-height: 460px;
+  padding: 12px 0 0;
+  background: var(--pd-ground);
+  overflow-x: auto;
+}
+
+/* ---------- Die feste, zentrierte Spalte ---------- */
+
+.style-portal-density .seite {
+  width: 756px;
+  margin: 0 auto;
+  background: var(--pd-paper);
+  border: 1px solid var(--pd-rule);
+  border-top: 0;
+}
+
+/* Der 7px-Kopfstreifen traegt die ganze Kette: 27 gleich breite Glieder,
+   Verlauf mit harten Stopps, nichts verlaeuft weich. Genau das ist die
+   These des Stils - Farbe ist ein Index, deshalb steht sie hier auch
+   vollzaehlig und gleichrangig da, ohne dass ein Ton herausgehoben waere. */
+.style-portal-density .kopfstreifen {
+  height: 7px;
+  background: linear-gradient(to right,
+    var(--pd-cat-1)  0, var(--pd-cat-1)  3.7037%, var(--pd-cat-2)  3.7037%, var(--pd-cat-2)  7.4074%,
+    var(--pd-cat-3)  7.4074%, var(--pd-cat-3) 11.1111%, var(--pd-cat-4) 11.1111%, var(--pd-cat-4) 14.8148%,
+    var(--pd-cat-5) 14.8148%, var(--pd-cat-5) 18.5185%, var(--pd-cat-6) 18.5185%, var(--pd-cat-6) 22.2222%,
+    var(--pd-cat-7) 22.2222%, var(--pd-cat-7) 25.9259%, var(--pd-cat-8) 25.9259%, var(--pd-cat-8) 29.6296%,
+    var(--pd-cat-9) 29.6296%, var(--pd-cat-9) 33.3333%, var(--pd-cat-10) 33.3333%, var(--pd-cat-10) 37.0370%,
+    var(--pd-cat-11) 37.0370%, var(--pd-cat-11) 40.7407%, var(--pd-cat-12) 40.7407%, var(--pd-cat-12) 44.4444%,
+    var(--pd-cat-13) 44.4444%, var(--pd-cat-13) 48.1481%, var(--pd-cat-14) 48.1481%, var(--pd-cat-14) 51.8518%,
+    var(--pd-cat-15) 51.8518%, var(--pd-cat-15) 55.5555%, var(--pd-cat-16) 55.5555%, var(--pd-cat-16) 59.2592%,
+    var(--pd-cat-17) 59.2592%, var(--pd-cat-17) 62.9629%, var(--pd-cat-18) 62.9629%, var(--pd-cat-18) 66.6666%,
+    var(--pd-cat-19) 66.6666%, var(--pd-cat-19) 70.3703%, var(--pd-cat-20) 70.3703%, var(--pd-cat-20) 74.0740%,
+    var(--pd-cat-21) 74.0740%, var(--pd-cat-21) 77.7777%, var(--pd-cat-22) 77.7777%, var(--pd-cat-22) 81.4814%,
+    var(--pd-cat-23) 81.4814%, var(--pd-cat-23) 85.1851%, var(--pd-cat-24) 85.1851%, var(--pd-cat-24) 88.8888%,
+    var(--pd-cat-25) 88.8888%, var(--pd-cat-25) 92.5925%, var(--pd-cat-26) 92.5925%, var(--pd-cat-26) 96.2962%,
+    var(--pd-cat-27) 96.2962%, var(--pd-cat-27) 100%);
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.style-portal-density .kopf {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 7px;
+}
+
+.style-portal-density .wortmarke {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pd-ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.style-portal-density .wortmarke em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--pd-ink-2);
+  font-size: 12px;
+  margin-left: 7px;
+  letter-spacing: 0;
+}
+
+.style-portal-density .dienste {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--pd-rule);
+  white-space: nowrap;
+}
+
+.style-portal-density .dienste span::before {
+  content: " | ";
+  color: var(--pd-rule);
+}
+
+.style-portal-density .dienste span:first-child::before { content: none; }
+
+/* ---------- Rubrikleiste ---------- */
+
+.style-portal-density .rubriken {
+  display: flex;
+  align-items: stretch;
+  background: var(--pd-ground);
+  border: solid var(--pd-rule);
+  border-width: 1px 0;
+  font-size: 12px;
+}
+
+.style-portal-density .rubriken a {
+  padding: 5px 9px;
+  border-right: 1px solid var(--pd-rule);
+  white-space: nowrap;
+  transition: background-color 90ms linear, color 90ms linear;
+}
+
+.style-portal-density .rubriken a:first-child { border-left: 1px solid var(--pd-rule); }
+.style-portal-density .rubriken a:hover { background: var(--pd-paper); }
+
+.style-portal-density .rubriken .hier {
+  font-weight: 700;
+  color: var(--pd-ink);
+  background: var(--pd-paper);
+  /* Zustandsmarke in Tinte, nicht in einer Kategoriefarbe: sobald ein
+     Kettenglied "hier bist du" bedeutet, faellt der Index in sich zusammen. */
+  box-shadow: 0 -3px 0 0 var(--pd-ink) inset;
+}
+
+.style-portal-density .rubriken .hier:hover { text-decoration: none; cursor: default; }
+
+.style-portal-density .rubriken .zaehlwerk {
+  margin-left: auto;
+  padding: 5px 9px;
+  border-left: 1px solid var(--pd-rule);
+  color: var(--pd-ink-2);
+  white-space: nowrap;
+}
+
+/* ---------- Suchleiste ---------- */
+
+.style-portal-density .suchleiste {
+  margin: 10px 10px 0;
+  padding: 5px;
+  background: #ccdef2;
+  border-bottom: 1px solid #74a6db;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.style-portal-density .suchfeld {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.style-portal-density .suchfeld svg {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  color: #5793cb;
+  pointer-events: none;
+}
+
+.style-portal-density .eingabe {
+  width: 100%;
+  height: 34px;
+  padding: 6px 10px 6px 30px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--pd-paper);
+  color: var(--pd-ink);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 22px;
+  box-shadow: 1px 1px 1px 0 #adbac7 inset;
+  outline: 0;
+}
+
+.style-portal-density .eingabe::placeholder { color: #bbb; opacity: 1; }
+.style-portal-density .eingabe:focus { box-shadow: 1px 1px 1px 0 #adbac7 inset, 0 0 0 2px #0867bf; }
+
+.style-portal-density .suchknopf {
+  flex: none;
+  width: 82px;
+  height: 34px;
+  border: 1px solid #0a5ba7;
+  border-radius: 3px;
+  background: linear-gradient(#1e85e5, #0867bf);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 90ms linear;
+}
+
+.style-portal-density .suchknopf:hover { background: #0a6ec9; }
+.style-portal-density .suchknopf:active { background: #075197; }
+
+.style-portal-density .filterzeile {
+  padding: 6px 10px 0;
+  font-size: 12px;
+  color: var(--pd-ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.style-portal-density .filterzeile label { margin-right: 12px; }
+.style-portal-density .filterzeile input { vertical-align: -2px; margin: 0 3px 0 0; }
+
+/* ---------- Pfadzeile ---------- */
+
+.style-portal-density .pfad {
+  padding: 8px 10px 0;
+  font-size: 12px;
+  color: var(--pd-ink-2);
+}
+
+.style-portal-density .pfad span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: -3px 5px 0 4px;
+  border-right: 2px solid #b4b4b4;
+  border-bottom: 2px solid #b4b4b4;
+  transform: rotate(-45deg);
+  vertical-align: middle;
+}
+
+.style-portal-density .pfad span:first-child::before { content: none; }
+.style-portal-density .pfad .hier { font-weight: 700; color: var(--pd-ink); }
+
+/* ---------- Dreispaltiges Raster, 12px Rinne ---------- */
+
+.style-portal-density .raster {
+  display: grid;
+  grid-template-columns: 175px 330px 205px;
+  gap: 12px;
+  padding: 10px;
+  align-items: start;
+}
+
+.style-portal-density .stapel > * + * { margin-top: 10px; }
+
+/* ---------- Der Kasten: 1px #ddd, 3px Kategoriebalken ---------- */
+
+.style-portal-density .kasten {
+  border: 1px solid var(--pd-rule);
+  border-top: 3px solid var(--pd-cat-1);
+  border-radius: 0 0 3px 3px;
+  background: var(--pd-paper);
+}
+
+.style-portal-density .k1  { border-top-color: var(--pd-cat-1); }
+.style-portal-density .k3  { border-top-color: var(--pd-cat-3); }
+.style-portal-density .k4  { border-top-color: var(--pd-cat-4); }
+.style-portal-density .k5  { border-top-color: var(--pd-cat-5); }
+.style-portal-density .k10 { border-top-color: var(--pd-cat-10); }
+.style-portal-density .k13 { border-top-color: var(--pd-cat-13); }
+.style-portal-density .k19 { border-top-color: var(--pd-cat-19); }
+.style-portal-density .k26 { border-top-color: var(--pd-cat-26); }
+.style-portal-density .k27 { border-top-color: var(--pd-cat-27); }
+
+.style-portal-density .kastentitel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: linear-gradient(#fbfbfb, #f0f0f0);
+  border-bottom: 1px solid var(--pd-rule);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.style-portal-density .kastentitel .anzahl {
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--pd-ink-2);
+}
+
+.style-portal-density .kastentitel .rechts {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.style-portal-density .neu {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: var(--pd-attention);
+  color: #fff;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+.style-portal-density .neuwort {
+  color: var(--pd-attention);
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+  vertical-align: 1px;
+}
+
+/* ---------- Links ---------- */
+
+.style-portal-density a {
+  color: var(--pd-link);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 90ms linear;
+}
+
+.style-portal-density a:visited { color: var(--pd-visited); }
+.style-portal-density a:hover { color: var(--pd-link-hover); text-decoration: underline; }
+.style-portal-density a:visited:hover { color: #b351ab; }
+.style-portal-density a:focus-visible { outline: 2px solid #0867bf; outline-offset: 1px; }
+
+/* ---------- Verzeichnisliste in der linken Spalte ---------- */
+
+.style-portal-density .verzeichnis { padding: 2px 0; }
+
+.style-portal-density .verzeichnis li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 8px;
+  border-top: 1px dotted var(--pd-rule);
+  font-size: 12px;
+  transition: background-color 90ms linear;
+}
+
+.style-portal-density .verzeichnis li:first-child { border-top: 0; }
+.style-portal-density .verzeichnis li:hover { background: var(--pd-rowhover); }
+
+/* Die Nummer steht vor der Farbe, nicht die Farbe fuer sich: das Kettenglied
+   heisst 4, es heisst nicht "tuerkis" und es bedeutet nichts ausser "Rubrik 4". */
+.style-portal-density .kettennr {
+  flex: none;
+  width: 15px;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 10px;
+  color: var(--pd-ink-3);
+  text-align: right;
+  align-self: center;
+}
+
+.style-portal-density .farbfeld {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  align-self: center;
+}
+
+.style-portal-density .verzeichnis a {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.style-portal-density .ziffer {
+  flex: none;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 11px;
+  color: var(--pd-ink-3);
+  text-align: right;
+}
+
+/* ---------- Der Projektkasten ---------- */
+
+.style-portal-density .projektkopf {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 5px 8px;
+  background: var(--pd-ground);
+  border-bottom: 1px solid var(--pd-rule);
+}
+
+.style-portal-density .projektkopf h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.style-portal-density .projektkopf .gesamt {
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 16px;
+  font-weight: 700;
+  /* Das Rot ist Aufmerksamkeitsmarke, kein Kettenglied - wie der Preis bei kakaku. */
+  color: var(--pd-attention);
+  line-height: 1.2;
+}
+
+.style-portal-density .projektkopf .sortierung {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--pd-ink-2);
+}
+
+.style-portal-density .projektzeile {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 8px;
+  transition: background-color 90ms linear;
+}
+
+.style-portal-density .projektzeile + .projektzeile { border-top: 1px dotted var(--pd-rule); }
+.style-portal-density .projektzeile:hover { background: var(--pd-rowhover); }
+
+.style-portal-density .projektzeile .platz {
+  flex: none;
+  width: 15px;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 11px;
+  color: var(--pd-ink-3);
+}
+
+.style-portal-density .projektname {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.style-portal-density .zeitpunkt {
+  flex: none;
+  width: 74px;
+  text-align: right;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 11px;
+  color: var(--pd-ink-3);
+}
+
+/* Zustand traegt KEINE Kategoriefarbe - der Stil kennt keine Zustandsfarbe. */
+.style-portal-density .zustand {
+  flex: none;
+  width: 66px;
+  text-align: center;
+  padding: 0 4px;
+  border: 1px solid var(--pd-rule);
+  border-radius: 2px;
+  background: #fafafa;
+  font-size: 11px;
+  line-height: 17px;
+  color: var(--pd-ink);
+  font-weight: 700;
+}
+
+.style-portal-density .zustand.ruht {
+  color: var(--pd-ink-3);
+  font-weight: 400;
+  background: var(--pd-ground);
+}
+
+.style-portal-density .kastenfuss {
+  padding: 4px 8px;
+  border-top: 1px solid var(--pd-rule);
+  background: linear-gradient(to right, #fdfce9, #fff);
+  font-size: 12px;
+  text-align: right;
+}
+
+.style-portal-density .kastenfuss a::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: -2px 0 0 5px;
+  border-right: 2px solid #5793cb;
+  border-bottom: 2px solid #5793cb;
+  transform: rotate(-45deg);
+  vertical-align: middle;
+}
+
+/* ---------- Aktionsleiste ---------- */
+
+.style-portal-density .aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--pd-rule);
+  border-radius: 3px;
+  background: var(--pd-ground);
+}
+
+.style-portal-density .knopf {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 90ms linear, border-color 90ms linear;
+}
+
+.style-portal-density .knopf-primaer {
+  width: 122px;
+  border: 1px solid #0a5ba7;
+  background: linear-gradient(#1e85e5, #0867bf);
+  color: #fff;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, .14);
+}
+
+.style-portal-density .knopf-primaer:hover { background: #0a6ec9; }
+.style-portal-density .knopf-primaer:active { background: #075197; box-shadow: none; }
+
+.style-portal-density .knopf-sekundaer {
+  width: 106px;
+  border: 1px solid #ccc;
+  background: linear-gradient(#fff, #e7e9ec 98%, #d5d7da);
+  color: var(--pd-ink);
+  font-weight: 400;
+  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, .1) inset;
+}
+
+.style-portal-density .knopf-sekundaer:hover { background: #f0f1f3; border-color: #b4b4b4; }
+.style-portal-density .knopf-sekundaer:active { background: #e2e4e7; box-shadow: none; }
+
+.style-portal-density .hinweis {
+  flex: 1 1 100%;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px dotted var(--pd-rule);
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--pd-ink-2);
+}
+
+/* ---------- Datentabelle ---------- */
+
+.style-portal-density .werte {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.style-portal-density .werte th,
+.style-portal-density .werte td {
+  padding: 3px 7px;
+  border-top: 1px dotted var(--pd-rule);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.style-portal-density .werte tr:first-child th,
+.style-portal-density .werte tr:first-child td { border-top: 0; }
+
+.style-portal-density .werte th {
+  font-weight: 400;
+  color: var(--pd-ink-2);
+  white-space: nowrap;
+}
+
+.style-portal-density .werte td {
+  text-align: right;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  white-space: nowrap;
+}
+
+.style-portal-density .werte td.wort {
+  font-family: inherit;
+  color: var(--pd-ink-2);
+  width: 62px;
+}
+
+.style-portal-density .werte tr { transition: background-color 90ms linear; }
+.style-portal-density .werte tr:hover { background: var(--pd-rowhover); }
+
+/* ---------- Meldungen ---------- */
+
+.style-portal-density .meldungen li {
+  padding: 4px 8px;
+  border-top: 1px dotted var(--pd-rule);
+  font-size: 12px;
+  line-height: 1.4;
+  transition: background-color 90ms linear;
+}
+
+.style-portal-density .meldungen li:first-child { border-top: 0; }
+.style-portal-density .meldungen li:hover { background: var(--pd-rowhover); }
+
+.style-portal-density .datum {
+  display: block;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 10px;
+  color: var(--pd-ink-3);
+}
+
+/* ---------- Rangliste ---------- */
+
+.style-portal-density .rangliste li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 8px;
+  border-top: 1px dotted var(--pd-rule);
+  font-size: 12px;
+  transition: background-color 90ms linear;
+}
+
+.style-portal-density .rangliste li:first-child { border-top: 0; }
+.style-portal-density .rangliste li:hover { background: var(--pd-rowhover); }
+
+.style-portal-density .rang {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: #999;
+  color: #fff;
+  font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  font-variant-numeric: normal;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  align-self: center;
+}
+
+.style-portal-density .rangliste li:nth-child(1) .rang { background: #b8952e; }
+.style-portal-density .rangliste li:nth-child(2) .rang { background: #8e9296; }
+.style-portal-density .rangliste li:nth-child(3) .rang { background: #a3703c; }
+
+.style-portal-density .rangliste a {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Fuss: die Vollstaendigkeit ist das Versprechen ---------- */
+
+.style-portal-density .fusslinks {
+  margin: 0 10px;
+  padding: 12px 0 10px;
+  border-top: 1px solid var(--pd-rule);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #002c6e;
+}
+
+.style-portal-density .fusslinks a { color: #002c6e; padding: 0 6px; }
+.style-portal-density .fusslinks a:visited { color: #002c6e; }
+.style-portal-density .fusslinks a::before { content: " | "; color: var(--pd-rule); margin-left: -7px; }
+.style-portal-density .fusslinks a:first-child::before { content: none; }
+
+.style-portal-density .fusszeile {
+  padding: 5px 0;
+  background: var(--pd-cat-1);
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.style-portal-density .abstand { height: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .style-portal-density .rubriken a,
+  .style-portal-density a,
+  .style-portal-density .verzeichnis li,
+  .style-portal-density .projektzeile,
+  .style-portal-density .meldungen li,
+  .style-portal-density .rangliste li,
+  .style-portal-density .werte tr,
+  .style-portal-density .knopf,
+  .style-portal-density .suchknopf { transition-duration: 1ms; }
+}
+</style>
+<div class="style-portal-density">
+  <div class="demo">
+    <div class="seite">
+
+      <div class="kopfstreifen"></div>
+
+      <div class="kopf">
+        <div class="wortmarke">Projektindex<em>Verzeichnis aller Arbeitsstände</em></div>
+        <div class="dienste">
+          <span><a href="#">Hilfe</a></span><span><a href="#">Konto</a></span><span><a href="#">Abmelden</a></span>
+        </div>
+      </div>
+
+      <nav class="rubriken">
+        <a href="#">Start</a>
+        <a href="#" class="hier">Projekte</a>
+        <a href="#">Aufgaben</a>
+        <a href="#">Ablagen</a>
+        <a href="#">Berichte</a>
+        <a href="#">Team</a>
+        <a href="#">Archiv</a>
+        <span class="zaehlwerk">Stand 30.08. 14:02</span>
+      </nav>
+
+      <div class="suchleiste">
+        <div class="suchfeld">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="6.8" cy="6.8" r="4.6" stroke="currentColor" stroke-width="1.6"/>
+            <path d="m10.4 10.4 3.4 3.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input class="eingabe" type="text" readonly placeholder="Suchen..." aria-label="Suchen">
+        </div>
+        <button class="suchknopf" type="button">Suchen</button>
+      </div>
+
+      <div class="filterzeile">
+        <label><input type="checkbox" checked disabled> Projekte</label>
+        <label><input type="checkbox" disabled> Aufgaben</label>
+        <label><input type="checkbox" disabled> Ablagen</label>
+        <label><input type="checkbox" disabled> Notizen</label>
+        <label><input type="checkbox" disabled> Archiv einbeziehen</label>
+      </div>
+
+      <div class="pfad">
+        <span><a href="#">Start</a></span><span><a href="#">Arbeitsbereich</a></span><span class="hier">Projekte</span>
+      </div>
+
+      <div class="raster">
+
+        <!-- ---------- linke Spalte ---------- -->
+        <div class="stapel">
+
+          <section class="kasten">
+            <div class="kastentitel">Kategorien <span class="anzahl">27</span></div>
+            <ul class="verzeichnis">
+              <li><span class="kettennr">1</span><i class="farbfeld" style="background:var(--pd-cat-1)"></i><a href="#">Anwendungen</a><span class="ziffer">12</span></li>
+              <li><span class="kettennr">3</span><i class="farbfeld" style="background:var(--pd-cat-3)"></i><a href="#">Werkzeuge</a><span class="ziffer">8</span></li>
+              <li><span class="kettennr">4</span><i class="farbfeld" style="background:var(--pd-cat-4)"></i><a href="#">Bibliotheken</a><span class="ziffer">31</span></li>
+              <li><span class="kettennr">5</span><i class="farbfeld" style="background:var(--pd-cat-5)"></i><a href="#">Entwürfe</a><span class="ziffer">5</span></li>
+              <li><span class="kettennr">10</span><i class="farbfeld" style="background:var(--pd-cat-10)"></i><a href="#">Datenbestände</a><span class="ziffer">9</span></li>
+              <li><span class="kettennr">13</span><i class="farbfeld" style="background:var(--pd-cat-13)"></i><a href="#">Dokumentation</a><span class="ziffer">17</span></li>
+              <li><span class="kettennr">19</span><i class="farbfeld" style="background:var(--pd-cat-19)"></i><a href="#">Schnittstellen</a><span class="ziffer">24</span></li>
+              <li><span class="kettennr">27</span><i class="farbfeld" style="background:var(--pd-cat-27)"></i><a href="#">Ausgemustert</a><span class="ziffer">63</span></li>
+            </ul>
+          </section>
+
+          <section class="kasten k4">
+            <div class="kastentitel">Ablagen</div>
+            <ul class="verzeichnis">
+              <li><a href="#">Verträge</a><span class="ziffer">140</span></li>
+              <li><a href="#">Rechnungen 2026</a><span class="ziffer">88</span></li>
+              <li><a href="#">Sitzungsprotokolle</a><span class="ziffer">42</span></li>
+              <li><a href="#">Bildmaterial</a><span class="ziffer">1.204</span></li>
+              <li><a href="#">Sicherungen</a><span class="ziffer">16</span></li>
+            </ul>
+          </section>
+
+          <section class="kasten k19">
+            <div class="kastentitel">Verknüpft</div>
+            <ul class="verzeichnis">
+              <li><a href="#">Kalender</a></li>
+              <li><a href="#">Zeiterfassung</a></li>
+              <li><a href="#">Fehlerverfolgung</a></li>
+              <li><a href="#">Auslieferung</a></li>
+              <li><a href="#">Paketspiegel</a></li>
+              <li><a href="#">Lizenzregister</a></li>
+            </ul>
+          </section>
+
+
+        </div>
+
+        <!-- ---------- mittlere Spalte ---------- -->
+        <div class="stapel">
+
+          <section class="kasten k5">
+            <div class="projektkopf">
+              <h3>Projekte</h3>
+              <span class="gesamt">12</span>
+              <span class="neu">NEU</span>
+              <span class="sortierung">nach Aktivität</span>
+            </div>
+
+            <div class="projektzeile">
+              <span class="platz">1</span>
+              <span class="projektname"><a href="#">Nexus</a></span>
+              <span class="zeitpunkt">vor 2 Std.</span>
+              <span class="zustand">Aktiv</span>
+            </div>
+            <div class="projektzeile">
+              <span class="platz">2</span>
+              <span class="projektname"><a href="#">Autowrite Studio</a></span>
+              <span class="zeitpunkt">gestern</span>
+              <span class="zustand">Aktiv</span>
+            </div>
+            <div class="projektzeile">
+              <span class="platz">3</span>
+              <span class="projektname"><a href="#">Balance Ally</a></span>
+              <span class="zeitpunkt">vor 4 Tagen</span>
+              <span class="zustand ruht">Pausiert</span>
+            </div>
+
+            <div class="kastenfuss"><a href="#">Alle 12 Projekte anzeigen</a></div>
+          </section>
+
+          <div class="aktionen">
+            <button class="knopf knopf-primaer" type="button">Neues Projekt</button>
+            <button class="knopf knopf-sekundaer" type="button">Importieren</button>
+            <span class="hinweis">Import aus Ordner, Archiv oder Fremdsystem.<br>Zuletzt importiert am 24.08.2026.</span>
+          </div>
+
+          <section class="kasten k13">
+            <div class="kastentitel">Aktivität <span class="rechts"><a href="#">7 Tage</a></span></div>
+            <table class="werte">
+              <tbody>
+                <tr><th>Nexus</th><td class="wort">Anwendung</td><td>318</td><td>+42</td></tr>
+                <tr><th>Autowrite Studio</th><td class="wort">Werkzeug</td><td>174</td><td>+9</td></tr>
+                <tr><th>Balance Ally</th><td class="wort">Entwurf</td><td>61</td><td>0</td></tr>
+                <tr><th>Kartei</th><td class="wort">Bibliothek</td><td>1.093</td><td>+205</td></tr>
+                <tr><th>Fahrtenbuch</th><td class="wort">Anwendung</td><td>27</td><td>-3</td></tr>
+              </tbody>
+            </table>
+            <div class="kastenfuss"><a href="#">Vollständige Auswertung</a></div>
+          </section>
+
+          <section class="kasten k3">
+            <div class="kastentitel">Offene Aufgaben <span class="anzahl">23</span></div>
+            <ul class="verzeichnis">
+              <li><a href="#">Abhängigkeiten in Nexus aktualisieren</a><span class="ziffer">heute</span></li>
+              <li><a href="#">Lizenztext für Autowrite prüfen</a><span class="ziffer">02.09.</span></li>
+              <li><a href="#">Sicherung der Ablage Bildmaterial</a><span class="ziffer">05.09.</span></li>
+              <li><a href="#">Balance Ally: Entscheidung über Fortführung</a><span class="ziffer">14.09.</span></li>
+              <li><a href="#">Kartei auf neues Schema umstellen</a><span class="ziffer">21.09.</span></li>
+              <li><a href="#">Aufbewahrungsfristen der Ablage Verträge</a><span class="ziffer">30.09.</span></li>
+            </ul>
+          </section>
+
+        </div>
+
+        <!-- ---------- rechte Spalte ---------- -->
+        <div class="stapel">
+
+          <section class="kasten k27">
+            <div class="kastentitel">Meldungen</div>
+            <ul class="meldungen">
+              <li><a href="#">Ablage Sicherungen läuft in 6 Tagen aus</a><span class="neuwort">NEU</span><span class="datum">30.08.2026 09:14</span></li>
+              <li><a href="#">Zwei Bibliotheken mit neuer Version</a><span class="datum">29.08.2026 17:40</span></li>
+              <li><a href="#">Wartungsfenster am Sonntag, 02:00-04:00</a><span class="datum">28.08.2026 11:02</span></li>
+              <li><a href="#">Kontingent Bildmaterial zu 81 Prozent belegt</a><span class="datum">27.08.2026 08:55</span></li>
+            </ul>
+          </section>
+
+          <section class="kasten k10">
+            <div class="kastentitel">Meistgeöffnet</div>
+            <ul class="rangliste">
+              <li><span class="rang">1</span><a href="#">Nexus</a><span class="ziffer">318</span></li>
+              <li><span class="rang">2</span><a href="#">Kartei</a><span class="ziffer">240</span></li>
+              <li><span class="rang">3</span><a href="#">Autowrite Studio</a><span class="ziffer">174</span></li>
+              <li><span class="rang">4</span><a href="#">Fahrtenbuch</a><span class="ziffer">96</span></li>
+              <li><span class="rang">5</span><a href="#">Balance Ally</a><span class="ziffer">61</span></li>
+            </ul>
+          </section>
+
+          <section class="kasten k1">
+            <div class="kastentitel">Speicher</div>
+            <table class="werte">
+              <tbody>
+                <tr><th>Belegt</th><td>41,2 GB</td></tr>
+                <tr><th>Frei</th><td>58,8 GB</td></tr>
+                <tr><th>Dateien</th><td>12.480</td></tr>
+                <tr><th>Sicherung</th><td>06:00</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="kasten k26">
+            <div class="kastentitel">Zuletzt geöffnet</div>
+            <ul class="verzeichnis">
+              <li><a href="#">Nexus / Notizen</a><span class="ziffer">09:41</span></li>
+              <li><a href="#">Rechnungen 2026</a><span class="ziffer">08:57</span></li>
+              <li><a href="#">Kartei / Schema</a><span class="ziffer">gestern</span></li>
+              <li><a href="#">Sitzung 26.08.</a><span class="ziffer">26.08.</span></li>
+            </ul>
+          </section>
+
+        </div>
+
+      </div>
+
+      <div class="fusslinks">
+        <a href="#">Über den Index</a><a href="#">Nutzungsbedingungen</a><a href="#">Datenschutz</a><a href="#">Barrierefreiheit</a><a href="#">Schnittstellen</a><a href="#">Statusseite</a><a href="#">Änderungsprotokoll</a><a href="#">Kontakt</a><a href="#">Sitemap</a><a href="#">Exportformate</a><a href="#">Tastaturkürzel</a><a href="#">Fehler melden</a><a href="#">Rechteverwaltung</a><a href="#">Rollen</a><a href="#">Mandanten</a><a href="#">Aufbewahrungsfristen</a><a href="#">Sicherungsplan</a><a href="#">Wiederherstellung</a><a href="#">Kontingente</a><a href="#">Protokolle</a><a href="#">Warteschlangen</a><a href="#">Zertifikate</a><a href="#">Lizenzen</a><a href="#">Abrechnung</a><a href="#">Benachrichtigungen</a><a href="#">Ablagestruktur</a><a href="#">Papierkorb</a><a href="#">Ausgemusterte Projekte</a><a href="#">Glossar</a><a href="#">Handbuch</a><a href="#">Versionshinweise</a>
+      </div>
+
+      <div class="fusszeile">Projektindex &mdash; interner Arbeitsstand, Stand 30.08.2026</div>
+
+    </div>
+    <div class="abstand"></div>
+  </div>
+</div>

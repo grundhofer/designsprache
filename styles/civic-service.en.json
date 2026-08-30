@@ -1,0 +1,105 @@
+{
+  "slug": "civic-service",
+  "name": "Civic / Public-Sector Service Design",
+  "aka": [
+    "GOV.UK school",
+    "Service design",
+    "Public-Sector-UI",
+    "Government Design System",
+    "Government agency UI"
+  ],
+  "family": "Norm & Constraint",
+  "era": "2012-present",
+  "origin": "Born in 2012 at the UK Government Digital Service: GOV.UK went live in October 2012 and replaced hundreds of departmental sites with a single surface whose house typeface, New Transport by Margaret Calvert and Henrik Kubel, was drawn from the 1963 road-sign lettering. The style is not a design outcome but an audit outcome: every value had to be defended against WCAG contrast thresholds, against user testing with screen readers and magnification software, and against the Government Service Standard. In 2018 the result was codified as the GOV.UK Design System and as the npm package govuk-frontend, whose Sass files still pin the parameters verbatim: 960px page width, 30px gutter, border widths 2/4/5/10px, focus width 3px, type scale 80/48/36/27/24/19/16px. From 2018 onward NHS Digital built an independent second implementation in nhsuk-frontend, on its own typeface (Frutiger W01), its own palette (#212b32, #005eb8) and its own gutter (32px) - and arrived at the same core values: 19px body text, radius 0, yellow focus block.",
+  "idea": "Every value in the interface is derived from an accessibility and comprehension audit rather than from composition; the one conspicuous color is not a brand mark but the keyboard focus.",
+  "markers": [
+    "Radius 0px without exception - govuk-frontend sets border-radius: 0 on button, input, select and textarea, with no configurable escape hatch",
+    "Body text 19px/25px; the full scale is 80/48/36/27/24/19/16px and every line height a clean multiple of 5px (48/50, 36/40, 27/30, 24/30, 19/25, 16/20)",
+    "Depth is exactly one value: box-shadow: 0 2px 0 in flat color, no blur, no alpha; on press, position: relative with top: 2px and the base removed - the surface literally sinks in",
+    "Form borders 2px solid #0b0c0c, field height 40px, padding 5px; the whole spacing scale runs in steps of five (5/10/15/20/25/30/40/50/60px)",
+    "Focus is a filled block, not a ring: on text links box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c, on fields outline: 3px solid #ffdd00 plus inset 0 0 0 2px #0b0c0c - no transition, no delay",
+    "Links are always underlined: text-decoration-thickness 1px, text-underline-offset 0.1578em (= 3px at a 19px base), thickened on hover to max(3px, .12em)",
+    "Visited purple #54319f stays put - no reset to the link color, even though it visually breaks the palette",
+    "Separation only through 1px #b1b4b6 and 5px/10px solid bars; no cards, no shadows, no graded surface brightnesses",
+    "960px measure with a 30px gutter, content in the left two-thirds column (~630px); the right third stays empty and is never balanced out"
+  ],
+  "params": {
+    "radius": "0px throughout - buttons, fields, tags, status bars; not one component gets an exception",
+    "contrast": "very high - #0b0c0c on #ffffff is roughly 19.6:1; gray is ruled out as a body-text color and admitted only for rules",
+    "density": "airy - one decision per screen as a layout law; a 19px base and the 5px grid force large block spacing",
+    "depth": "2px solid base under controls plus 5px/10px solid bars on blocks and the page head; depth is proof of affordance, not atmosphere",
+    "color": "Eight functional values in use, with no tint/shade ladder: text #0b0c0c, link #1d70b8, hover #0f385c, visited #54319f, focus #ffdd00, success #00703c, error #d4351c, ground #ffffff",
+    "type": "Humanist grotesque (GDS Transport, Frutiger) in exactly two weights, 400/700, with no tracking correction and no all-caps setting outside short tags",
+    "motion": "None - as policy, not as a cost saving; the button press is a positional 2px jump with no transition",
+    "texture": "None - pure white, no gradients, no patterns, no noise layer"
+  },
+  "palette": [
+    "#ffffff",
+    "#0b0c0c",
+    "#1d70b8",
+    "#ffdd00",
+    "#00703c",
+    "#54319f"
+  ],
+  "examples": [
+    {
+      "name": "GOV.UK Design System / govuk-frontend",
+      "what": "components/button/_mixin.scss: border-radius: 0, box-shadow: 0 2px 0, :active sets top: 2px; components/input/_mixin.scss: 19px type, 40px height, 2px border in #0b0c0c, radius 0. settings/_measurements.scss: page width 960px, gutter 30px, border widths 10/5/4/2px, focus width 3px. helpers/_focused.scss: box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c"
+    },
+    {
+      "name": "NHS.UK Design System / nhsuk-frontend",
+      "what": "An independent second implementation on its own codebase: typeface Frutiger W01, black #212b32 in place of #0b0c0c, blue #005eb8, focus yellow #ffeb3b, gutter 32px in place of 30px - and the same invariants all the same. The source comments spell the link underline offset out as 3 ÷ 19 = 0.1578em against the 19px base"
+    },
+    {
+      "name": "HMRC Frontend / MOJ Frontend",
+      "what": "Departmental systems that do not rebuild govuk-frontend but pull it in as a dependency (hmrc-frontend package.json: govuk-frontend ^6.4.0). Radius, the 2px base and the focus block are inherited unchanged; all that gets added are domain components such as the account header and the case overview"
+    },
+    {
+      "name": "US Web Design System (counter-check)",
+      "what": "The most prominent neighbor breaks the rule: $theme-button-border-radius defaults to \"md\" (4px) and is configurable, and a 2px solid base does not exist. Evidence that the core parameters carry GOV.UK and NHS.UK, not the public sector as a whole"
+    },
+    {
+      "name": "Ontario Design System (counter-check)",
+      "what": "Also governmental, also strict - but buttons at border-radius: 4px, Open Sans in place of a humanist road-sign grotesque, primary blue #06c, button text 1.125rem. Sobriety alone does not produce this style"
+    }
+  ],
+  "strengths": [
+    "Accessibility is not rework, it is the blueprint - the style passes contrast, keyboard and magnification audits because it was derived from them",
+    "Extremely cheap to build: no shadows, no gradients, no illustration, no motion curves, two weights, eight colors",
+    "govuk-frontend and nhsuk-frontend are MIT-licensed and ship the audited values as finished tokens - you copy measurements instead of guessing",
+    "Forms, error states and multi-step flows are the most thoroughly tested components on the entire web",
+    "Radically device-independent: the language holds at 200% zoom, in forced-color modes and in print, with no special edition of its own"
+  ],
+  "risks": [
+    "The strongest objection: strip away the process rhetoric and what remains is black text on white, radius 0, a grotesque, one accent and one column - dangerously close to \"swiss with the composition taken away,\" so an impoverishment of an existing pole rather than a pole of its own. The entry holds only as long as its own signals stay visible: 19px in place of a fine scale, the yellow focus block, the 2px base, visited purple, underlined links, the uncomposed empty third",
+    "The claimed \"school\" is thinner than advertised: what is demonstrable is that the core parameters carry GOV.UK and NHS.UK. USWDS ships a configurable 4px radius, Ontario likewise - neither one has a 2px base",
+    "The surface looks like a government office. For a product that has to earn trust through warmth or desirability, that is a mis-signal, not proof of seriousness",
+    "The 19px base and the 5px grid cost area: dense lists, tables and tool surfaces are out of reach unless you break the rules",
+    "The most striking feature - the yellow focus block - is practically invisible on touch; on mobile the very signal that makes the style recognizable falls away",
+    "The deliberately retained visited purple #54319f gets reported as a bug by clients and designers with total reliability, and has to be defended every single time"
+  ],
+  "a11y": "The one entry in the catalog where accessibility produces the style instead of costing it. #0b0c0c on #ffffff lands at roughly 19.6:1, link blue #1d70b8 at roughly 5.1:1, visited purple #54319f at roughly 9.1:1, white text on the green button #00703c at roughly 6.2:1 - all four above AA. The rule color #b1b4b6 reaches only about 2.1:1 and is therefore admitted for decoration alone; the moment a border has to signal operability it turns 2px black. Focus never works through color alone: the yellow field #ffdd00 also carries a 4px black bottom edge, so a change of shape, and it keeps roughly 14.5:1 against #0b0c0c. A 3px transparent outline sits beneath every focus state so it will not vanish in forced-color modes and Windows high-contrast themes. Status is never communicated through the colored 5px bar alone, always additionally as a spelled-out word. Since there is no animation at all, prefers-reduced-motion is moot.",
+  "longevity": "The most durable style in the catalog, because its metronome is normative text rather than fashion: radius 0, the 2px base, the 19px base size and the yellow focus block have stood unchanged in the same codebase for over ten years. The only things that have moved are color values - the palette was retuned most recently (link from #1d70b8 to #1a65a6, purple from #4c2c92 to #54319f, red from #d4351c to #ca3535, green from #00703c to #0f7a52), and again as the result of contrast measurement, not as a matter of taste. The frame outlives every one of those adjustments.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Ideal - govuk-frontend and nhsuk-frontend are finished, MIT-licensed token sets; in Tailwind what is left over is rounded-none, six color tokens, one focus utility and a 5px spacing scale. Astro content pages benefit twice over, because no JavaScript is needed.",
+    "mobile": "Hard - Compose Material 3 brings radius, ripple and elevation along as defaults, so the 2px solid base and the yellow focus block have to be built against the platform. On touch there is barely such a thing as keyboard focus, which strips out the style's most striking feature and leaves a very angular, very large default surface behind.",
+    "desktop": "Workable in Tauri, because the web stack takes the values over directly - but the 19px base and the 5px grid cost so much area that dense tool windows will not work. For the settings, form and onboarding areas of a desktop app, by contrast, excellent."
+  },
+  "verdict": "As a house style for a portfolio of small apps: no. The style signals government office, not product, it forfeits its best feature on mobile, and it carries no density - a solo developer whose tools have to show lists, tables and states fights their own rules permanently. As a component layer, by contrast: unreservedly yes. Forms, error summaries, multi-step flows and settings dialogs are audited more thoroughly here than in any commercial system, and the values sit ready as MIT-licensed as Sass. The practical route is to take the focus state, the 5px spacing scale and the form measurements over from govuk-frontend and lay your own brand on top - you inherit the audit results without inheriting the civic look. And as an object lesson it belongs in every project: once you have seen a complete style emerge from eight colors and an audit spec, you design differently afterwards.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "warm-editorial",
+    "data-dense"
+  ],
+  "tip": "Build the focus state first of everything, as a single global utility - filled yellow, 4px black bottom edge, a 3px transparent outline underneath, no transition. After that no component can come into being without it, and the style's most expensive mistake is ruled out, namely retrofitting it as a ring at the end. Second piece of advice: leave the visited purple standing. It is the one place where the interface tells the user something it tells them nowhere else - where they have already been - and the reflex to optimize it away is exactly the habit this entry puts on display.",
+  "googleFonts": [
+    "Public Sans"
+  ]
+}

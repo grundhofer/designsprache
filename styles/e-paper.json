@@ -1,0 +1,107 @@
+{
+  "slug": "e-paper",
+  "name": "E-Paper / E-Ink-Oberflaeche",
+  "aka": [
+    "E-Ink-UI",
+    "Reflektiv-Display-Sprache",
+    "16-Graustufen-Interface",
+    "Dithering-UI",
+    "Paperlike"
+  ],
+  "family": "Norm & Beschraenkung",
+  "era": "2004-heute",
+  "origin": "Der Stil ist kein Entwurf, sondern der Abdruck einer Hardware. Elektrophoretische Displays schalten geladene Pigmentpartikel in Mikrokapseln um; das Bild bleibt danach ohne Strom stehen, reflektiert Umgebungslicht statt selbst zu leuchten und kennt keine Hintergrundbeleuchtung, gegen die man Kontrast aufbauen könnte. Daraus folgen drei Zwänge, aus denen die gesamte Sprache besteht: Der weißeste Punkt ist ein hellgraues, leicht warmes Papier und der schwärzeste ein dunkles Anthrazit, es gibt typischerweise 16 Graustufen und keinen Alpha-Kanal, und jede Änderung kostet einen sichtbaren Bildaufbau von etwa 100 bis 500 ms. Sony brachte 2004 mit dem Librié das erste kommerzielle E-Ink-Lesegerät, Amazon machte die Sprache ab 2007 mit dem Kindle zum Massenphänomen, reMarkable baute ab 2017 mit dem Linux-Derivat Codex ein ausdrücklich auf niedrige Latenz optimiertes Betriebssystem darum, das Light Phone II übertrug sie 2018 auf ein Telefon. Formalisiert wurde sie erst spät: das TRMNL-Framework veröffentlicht seit 2024 versioniert eine echte Token-Sprache aus Graustufenstufen, begrenzten Farbsätzen, Rendering-Modi, Dithering- und Text-Stroke-Utilities. Parallel läuft der größte, völlig unnostalgische Einsatz im Handel, auf Millionen elektronischer Regaletiketten.",
+  "idea": "Kontrast ist kein Gestaltungsmittel, sondern eine gedeckelte Ressource: Wenn Tinte nie Schwarz und Grund nie Weiß wird, es keine Farbe, keine Transparenz und keine Bewegung gibt, muss die gesamte Hierarchie aus Größe, Fettung, Form, Füllgrad und Invertierung entstehen - und jeder Halbton aus einem Dither-Raster statt aus einem Alphawert.",
+  "markers": [
+    "Tinte nie #000, Grund nie #FFF - die Referenz setzt #2B2B2B auf #E4E2DD und deckelt den Spitzenkontrast damit bei 10,9:1 statt 21:1",
+    "Genau 16 Graustufen als geschlossene Leiter, zwischen denen nicht interpoliert wird; TRMNL definiert dieselbe Anzahl als --black, --gray-10 bis --gray-75 und --white",
+    "Kein Alpha irgendwo: jeder Halbton ist ein ordered Dither (Bayer 4x4) auf einer 4-px-Kachel, kein rgba, kein opacity, kein backdrop-filter",
+    "Mindeststrichstärke 2px an Rahmen, Regeln, Icons und Trennern - eine 1px-Haarlinie zerfällt bei 16 Stufen; einzige Ausnahme nach oben ist die 6px-Volltonregel unter der Kopfzeile",
+    "Zeilenhöhe 68px statt der üblichen 40px: die Dichte ist latenzgetrieben, weil ein Vollbildaufbau 100-500 ms kostet",
+    "Radius 0px ausnahmslos, an Buttons maximal 2px; keine Schatten, keine Ebenen, kein Blur - Trennung läuft allein über 2px-Regeln",
+    "Status nie farbig: gefülltes 10px-Quadrat aktiv, hohles pausiert, halb gedithertes blockiert, immer mit ausgeschriebenem Wort daneben",
+    "Auswahl ist die vollständige Invertierung einer Zeile, hart und ohne Transition - transition: none gilt im gesamten Entwurf",
+    "Paginierung 'SEITE 1 / 4' statt Scrollbar, weil jeder Bildaufbau bezahlt werden muss; Blättern ist die einzige Navigationsmetapher"
+  ],
+  "params": {
+    "radius": "0px ausnahmslos, an Buttons maximal 2px",
+    "contrast": "gedeckelt auf 10:1 bis 15:1 - der einzige nicht maximierte Kontrast im Katalog; #2B2B2B auf #E4E2DD ergibt 10,9:1",
+    "density": "luftig und latenzgetrieben: 68px-Zeilen, 22px-Innenabstände, Paginierung statt Scroll",
+    "depth": "keine - es gibt keine Alpha-Ebene und keinen Schatten; alles liegt auf einer Ebene und wird nur durch 2px-Regeln getrennt",
+    "color": "null Chroma: 16 Graustufen mit R=G=B (am hellen Ende ±7 für den warmen Papierton), kein Akzent, keine Semantikfarbe",
+    "type": "proportionale Leseserife mit hoher x-Höhe für Inhalt (Literata/Bookerly-Klasse), Grotesk für Chrome und Labels; nur Regular und Semibold, Light und Thin verboten",
+    "motion": "keine - transition: none, keine Animation; Zustandswechsel sind harte Umschaltungen, Navigation ist Blättern",
+    "texture": "ordered Dithering (Bayer 4x4) als einzige Halbtontechnik, 4px-Kachel als data:image/svg+xml, Stufen 12,5 / 25 / 50 / 75 %"
+  },
+  "palette": [
+    "#2B2B2B",
+    "#5C5C5A",
+    "#8E8D8A",
+    "#B3B1AE",
+    "#D8D6D1",
+    "#E4E2DD"
+  ],
+  "examples": [
+    {
+      "name": "TRMNL Framework",
+      "what": "Der härteste Beleg, weil dokumentierte Token-Sprache statt Bauchgefühl: Graustufen von --black #000000 über --gray-10 #111111 bis --gray-75 #EEEEEE und --white #FFFFFF, also 16 Stufen; Gap-Skala 5/7/10/16/20/30/40px; Default-Screen 800x480 bei 1 Bit; eigene Overrides für 2-bit, 4-bit und Density 2x (dort Inter Variable mit 13px statt 16px Basis); Elemente Title/Value/Label/Description/Divider, Komponenten Table/Chart/Progress"
+    },
+    {
+      "name": "Amazon Kindle",
+      "what": "16-stufige Graustufe über alle Generationen hinweg, beim Kindle 11 (2024) auf 6 Zoll mit 1072x1448 und 300 ppi; Hausserife Bookerly mit hoher x-Höhe für lange Lesestrecken; Colorsoft zeigt die Grenze der Farbe auf diesen Panels: 300 ppi in Schwarzweiß gegen 150 ppi in Farbe"
+    },
+    {
+      "name": "reMarkable",
+      "what": "Betreibt mit Codex ein eigenes, Linux-basiertes und ausdrücklich auf E-Paper-Latenz optimiertes Betriebssystem; reMarkable 2 mit 10,3 Zoll und 1872x1404, Paper Pro mit 11,8 Zoll und 2160x1620 samt Kaleido-Farbschicht; UI komplett ohne Akzentton, Werkzeugwahl über gefüllte gegen hohle Symbole"
+    },
+    {
+      "name": "Light Phone II",
+      "what": "2,84-Zoll-Zwei-Farb-E-Ink als ganzes Interface: Menü als reine Wortliste ohne Icons, ohne Badges, ohne Farbe, Auswahl über Invertierung; der Nachfolger Light Phone III ist auf AMOLED gewechselt und hat die Sprache damit selbst verlassen"
+    },
+    {
+      "name": "Elektronische Regaletiketten",
+      "what": "Der industrielle, nicht-nostalgische Massenfall: Preis in maximaler Fettung und Größe, Grundpreis und Einheit zwei Stufen kleiner, Trennung über dicke Volltonregeln statt Haarlinien, Zustandswechsel als sichtbarer Vollbildaufbau - Hierarchie entsteht dort ausschließlich aus Größe und Position"
+    }
+  ],
+  "strengths": [
+    "Der einzige Eintrag mit einer Kontrastdecke - er macht die Parameterachse des Katalogs ehrlich, in der sonst praktisch jeder Eintrag im oberen Drittel sitzt",
+    "Extrem billig zu bauen: zwei Hexwerte, eine 16-stufige Leiter und eine 4x4-Bayer-Kachel; keine Farbe, keine Motion, keine Assets, keine Illustration",
+    "Robust bis zur Beleidigung: funktioniert im Sonnenlicht, im Graustufendruck, auf schlechten Panels, im Fax, im Screenshot und in jedem Kontrastmodus gleich",
+    "Zwingt zu Hierarchie über Größe, Fettung, Form, Füllgrad und Position - eine Disziplin, die sich in jede andere Sprache mitnehmen lässt",
+    "Zwei Größen, die der Katalog sonst nirgends führt, sind hier übertragbar formuliert: Mindeststrichstärke und Refresh-Kosten als Layoutgröße",
+    "Status ist nie allein über Farbe kommuniziert - schlicht weil es keine Farbe gibt; das erledigt eine ganze Klasse von Barrierefreiheitsfehlern von selbst"
+  ],
+  "risks": [
+    "Die Vertreter teilen keine Signatur, sondern eine Abwesenheit. Kindle, reMarkable, ein Onyx Boox, ein Regaletikett und ein TRMNL-Dashboard sehen einander in Dichte, Typocharakter und Layoutlogik gerade nicht ähnlich - was sie eint, ist 'keine Farbe, keine Bewegung, kein Schatten', und ein Eintrag, der sich nur über Streichungen definiert, ist per Konstruktion unscharf",
+    "Verschärfend: Kindle Colorsoft und reMarkable Paper Pro haben Farbe, A2-Modi nähern sich Videorate, das Light Phone III ist auf AMOLED gewechselt - die Hardware, aus der der Stil abgeleitet ist, verlässt gerade seine eigenen Prämissen",
+    "Die Kontrastdecke ist ein echtes Barrierefreiheitsrisiko: die mittleren Stufen der Leiter fallen unter 4,5:1 und sind für Fließtext unbrauchbar, obwohl sie im Original genau dort eingesetzt werden",
+    "Auf einem gewöhnlichen emissiven Display fehlt der reflektive Effekt, der den Stil rechtfertigt - dann liest sich derselbe Entwurf schnell als graue, halb geladene oder kaputte Seite",
+    "Ohne Farbe fehlt jedes Notfallsignal: Löschen, Fehler und Erfolg sehen identisch aus und müssen komplett über Wortwahl und Platzierung getragen werden",
+    "Die 4px-Bayer-Kachel schimmert, sobald der Browser die Fläche nicht ganzzahlig skaliert - hinter Fließtext ist Dithering deshalb praktisch unbrauchbar"
+  ],
+  "a11y": "Der Stil verhandelt Barrierefreiheit anders als alle anderen im Katalog: Er ist bei Farbe vorbildlich und beim Kontrast bewusst gedeckelt. Der maximal erreichbare Wert ist #2B2B2B auf #E4E2DD, also 10,9:1 - genug für alles Wichtige, aber die Leiter darunter wird schnell knapp. Die vom Vorbild vorgesehene 60-%-Dither-Stufe (#757472) landet bei nur 3,6:1 und ist für die 13px-Metazeile untauglich; in dieser Demo ist sie deshalb um zwei Stufen auf #5C5C5A abgedunkelt und erreicht 5,2:1. Für nicht-textliche Elemente ist die Mindeststrichstärke von 2px die eigentliche Barrierefreiheitsmaßnahme: Rahmen, Regeln, Statusquadrate und Icons stehen in voller Tinte bei 10,9:1 und damit weit über den geforderten 3:1, während eine 1px-Haarlinie in einer mittleren Graustufe genau der Fehler wäre, den dieser Stil verbietet. Der Fokusring ist ein 3px-Outline in voller Tinte mit 4px Versatz. Status wird grundsätzlich doppelt kodiert, über Form (gefülltes gegen hohles Quadrat) und über das ausgeschriebene Wort. Bewegung gibt es keine, deshalb ist prefers-reduced-motion gegenstandslos. Der deaktivierte Blätterpfeil steht bei rund 2,2:1 - als inaktives Bedienelement zulässig, aber nur, weil die Seitenzahl daneben den Zustand ausschreibt.",
+  "longevity": "Zwei Teile mit sehr unterschiedlicher Halbwertszeit. Das Prinzip - gedeckelter Kontrast, Hierarchie ohne Farbe, Halbton als Raster statt als Alphawert, Mindeststrichstärke - ist mindestens so alt wie Buchdruck und 1-Bit-Bildschirme und wird jede Modewelle überleben; als Entwurfsdisziplin ist es zeitlos. Die Herleitung aus der Hardware dagegen altert schon jetzt sichtbar: Farb-E-Ink, schnellere Refresh-Modi und der Rückzug des Light Phone von E-Ink nehmen dem Stil nach und nach seine Begründung. Wer ihn als Prinzip nimmt, hat etwas Dauerhaftes; wer ihn als Gerätezitat nimmt, hat ein Zeitfenster.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Sehr gut - die ganze Sprache besteht aus zwei Hexwerten, 2px-Borders und einem SVG-Muster; einzige echte Umstellung ist der Verzicht auf jede Alpha-Utility, also kein /10, /20, kein backdrop-blur, kein shadow.",
+    "mobile": "Gemischt - die 68px-Zeilen und 52px-Controls sind für Touch geradezu ideal, aber der Stil kämpft frontal gegen Material 3 mit dynamischer Farbe, Ripple und Elevation; auf einem hellen OLED wirkt der gedeckelte Kontrast schnell wie ein Rendering-Fehler.",
+    "desktop": "Gut für ein Lese-, Schreib- oder Fokuswerkzeug in Tauri, wo Ruhe der Zweck ist - schlecht für alles, was Statusfarben, Diagramme oder dichte Tabellen braucht."
+  },
+  "verdict": "Als durchgehende Sprache für ein Portfolio kleiner Apps: nein. Ohne Statusfarbe ist jede Fehlermeldung, jede Zerstörungsbestätigung und jedes Diagramm ein Kampf, und auf einem hellen Monitor kauft man sich den gedeckelten Kontrast ohne den reflektiven Vorteil ein, der ihn rechtfertigt. Als einzelner, bewusst gesetzter Modus dagegen ist er sehr stark und billig zu haben: eine Leseansicht, ein Fokus- oder Nachtmodus, eine Druck- und Exportansicht, oder ein Dashboard, das tatsächlich auf einem TRMNL- oder Inkplate-Panel landet - dort kostet er einen Nachmittag und sieht sofort teuer aus. Der größte Wert für einen Solo-Entwickler liegt aber woanders: Zwei Wochen mit diesem Stil zu bauen, ist die beste verfügbare Übung darin, Hierarchie ohne Farbe zu erzeugen. Was man dabei über Größensprünge, Fettung, Füllgrad und Weißraum lernt, trägt anschließend jede Oberfläche - auch die bunten. Konkret: als Modus ja, als Marke nein, als Übung unbedingt.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "terminal-mono",
+    "data-dense"
+  ],
+  "tip": "Baue die Leiter zuerst und verbiete Alpha auf der Token-Ebene, nicht erst im Review: sechzehn benannte Stufen von Tinte bis Grund, und keine einzige Farbfunktion mit vierter Komponente im ganzen Projekt. Danach implementierst du den Halbton genau einmal als parametrisierte 4x4-Bayer-Kachel und ziehst alle Flächenschattierungen daraus. Der Fehler, den fast jeder macht, ist die Strichstärke: Icon-Sets kommen mit 1,5px oder 1px Stroke, und genau diese Linien sind es, die den Entwurf ausfransen lassen. Jedes Icon auf 2px nachziehen oder ein anderes Set nehmen - das ist mehr Arbeit als die gesamte Palette und macht den Unterschied zwischen 'wie E-Ink' und 'wie ein zu hell gedrehtes Graustufen-Theme'.",
+  "googleFonts": [
+    "Literata",
+    "Inter"
+  ]
+}

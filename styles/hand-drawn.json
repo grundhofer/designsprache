@@ -1,0 +1,109 @@
+{
+  "slug": "hand-drawn",
+  "name": "Sketch-UI / Hand-Drawn",
+  "aka": [
+    "Rough.js-Look",
+    "Wireframe-Ästhetik",
+    "Sketchy UI",
+    "Excalidraw-Look",
+    "Balsamiq-Look"
+  ],
+  "family": "Ausdruck & Geste",
+  "era": "2008-heute",
+  "origin": "Der Stil kommt aus dem Werkzeugbau, nicht aus der Grafik. Balsamiq Mockups (2008, Peldi Guilizzoni) verkaufte als erstes Produkt die These, dass ein fertig aussehender Entwurf die Kritik daran unterdrückt - die Skizzenoptik war dort kein Geschmack, sondern eine Gesprächsstrategie. Technisch möglich wurde die Übertragung ins Web durch Rough.js (2017, Preet Shihn): unter 9 kB, erzeugt aus einem Sollpfad einen zitternden Ersatzpfad für Canvas und SVG und liefert mit hachure, cross-hatch, zigzag, dots und dashed echte Strichfüllungen statt Alpha. Darauf setzen Excalidraw (2020) und Mermaids `look: handDrawn` auf, und Wired Elements überträgt dieselbe Bibliothek auf einen vollständigen, bedienbaren Komponentensatz als Web Components. Der zweite, unabhängige Weg kommt ganz ohne Skript aus: Bootswatch Sketchy (Thomas Park) erzeugt denselben Eindruck allein aus asymmetrischen border-radius-Vierergruppen und 2px-Rändern - der Beleg dafür, dass die Sprache nicht an einer Laufzeit-Bibliothek hängt.",
+  "idea": "Die Kantengeometrie wird pro Element erzeugt statt deklariert, und Flächendeckung entsteht aus Linienabstand statt aus Deckkraft; die sichtbare Unfertigkeit ist kein Mangel, sondern eine Einladung, über die Idee zu streiten statt über die Pixel.",
+  "markers": [
+    "Radius pro Ecke verschieden: Bootswatch Sketchy 5.3.8 führt wörtlich `255px 25px 225px 25px / 25px 225px 25px 255px` und 18 weitere solcher Vierergruppen, alle aus 5px-Vielfachen gebaut",
+    "Kontur 1,5-2px Tinte auf Papierweiß #FBFAF6, jede Kante doppelt gezogen (Rough.js zeichnet per Default zweimal, `disableMultiStroke: false`)",
+    "Ecken schließen nicht, sondern schießen 2-5px über den Schnittpunkt hinaus - das ist der Unterschied zu einem bloß runden Rechteck",
+    "Flächen aus Hachur statt Alpha: `hachureAngle: -41` Grad, und bei negativem Wert gilt `gap = strokeWidth * 4`, `fillWeight = strokeWidth / 2`",
+    "Depth exakt null: kein box-shadow, kein Verlauf, keine z-Ebene; Trennung entsteht ausschließlich aus Kontur plus 20-24px Luft",
+    "Abweichung wird in Pixeln gemessen, nicht in Prozent: Rough.js-Grundwerte `roughness: 1`, `bowing: 1`, `maxRandomnessOffset: 2`, `curveStepCount: 9`",
+    "Handschrift-Schnitte mit Handschrift-Metrik: Bootswatch Sketchy paart Cabin Sketch (Überschriften) mit Neucha (Fließtext), Excalidraw nutzt Excalifont als Nachfolger von Virgil",
+    "Kein Offset-Schatten an der Primäraktion und kein Versatz beim Zustandswechsel - die Kontur wird stattdessen mit anderem Seed nachgezogen",
+    "Eingabefeld ist eine einzelne wellige Grundlinie, kein Kasten; das Feld hat keine eigene Fläche"
+  ],
+  "params": {
+    "radius": "Unregelmäßig, pro Ecke und pro Achse verschieden; Bootswatch-Vierergruppen wie 255px 25px 225px 25px / 25px 225px 25px 255px, pro Element leicht variiert",
+    "contrast": "hoch",
+    "density": "mittel - 20-24px Luft zwischen zwei Konturen, weil die Kontur selbst schon Raum beansprucht",
+    "depth": "keine - das Blatt ist flach, die Karte liegt nicht über dem Papier, sie ist auf das Papier gezeichnet",
+    "color": "Tinten- und Bleistifttöne auf Papierweiß #FBFAF6 plus genau ein Marker-Akzent; Status kommt aus Strichdichte, nicht aus einer Farbskala",
+    "type": "Handschrift-Schnitte (Excalifont/Virgil, Neucha, Cabin Sketch, Caveat) in einem einzigen Gewicht, Größen ab 16px aufwärts",
+    "motion": "Kein Versatz, keine Skalierung; der Zustandswechsel ist ein Neu-Würfeln des Strichs",
+    "texture": "Hachur und Kreuzschraffur bei -41 Grad mit Abstand 4x Strichstärke, dazu optional eine 4-6%-Karostruktur auf dem Papier"
+  },
+  "palette": [
+    "#FBFAF6",
+    "#F2EEE3",
+    "#1E1B18",
+    "#6B645B",
+    "#B83A22"
+  ],
+  "examples": [
+    {
+      "name": "Bootswatch Sketchy 5.3.8",
+      "what": "Der einzige ausgelieferte, versionierte Chrome-Beleg ohne Skript: `$font-family-sans-serif: Neucha`, `$headings-font-family: \"Cabin Sketch\", cursive`, Basisradien 15/25/35px - die Bauteile überschreiben sie aber mit 19 asymmetrischen Vierergruppen von `255px 25px 225px 25px / 25px 225px 25px 255px` bis `45px 85px 15px 25px / 15px 10px 35px 555px`. Ränder durchweg 2px solid, Schatten nur als 0.25rem-Fokusring"
+    },
+    {
+      "name": "Rough.js",
+      "what": "Die Bibliothek unter der halben Kategorie, keine 9 kB: `defaultOptions` mit roughness 1, bowing 1, maxRandomnessOffset 2, curveStepCount 9, curveFitting 0.95, fillStyle 'hachure', hachureAngle -41, seed 0; hachureGap und fillWeight stehen auf -1 und werden intern zu `strokeWidth * 4` bzw. halber Strichstärke aufgelöst"
+    },
+    {
+      "name": "Wired Elements",
+      "what": "10,8k Sterne, MIT-Lizenz, gleicher Autor wie Rough.js: 29 Komponenten als Web Components im src-Verzeichnis - Button, Input, Textarea, Checkbox, Radio, Slider, Card, Dialog, Combo, Listbox, Tabs, Calendar, Progress-Ring, Toggle, Video. Der vollständigste bedienbare Beweis, dass die Sprache eine ganze Chrome tragen kann"
+    },
+    {
+      "name": "Excalidraw",
+      "what": "Rough.js als Renderer der Zeichenfläche, Excalifont als Nachfolger von Virgil; seit dem Font-Picker in 0.18.0 (11.03.2025) neben Nunito und Comic Shanns wählbar. Zugleich der beste Gegenbeleg: nur das Gezeichnete ist rough, Toolbar, Panels und Dialoge sind konventionelles Flat-UI"
+    },
+    {
+      "name": "Mermaid",
+      "what": "`look` kennt genau drei Werte - classic, handDrawn, neo - und schaltet damit die gesamte Kantengeometrie um. `handDrawnSeed` steht per Default auf 0, was laut Schema ausdrücklich einen zufälligen Seed bedeutet und nur für automatisierte Tests fixiert wird"
+    },
+    {
+      "name": "Balsamiq Wireframes",
+      "what": "Kommerzielles Produkt seit 2008 und der Ursprung der eingebauten Botschaft: die Skizzenoptik ist dort das Verkaufsargument, weil ein fertig aussehender Entwurf Widerspruch erstickt"
+    }
+  ],
+  "strengths": [
+    "Besetzt eine Renderebene, die sonst niemand hat: Geometrie wird pro Element erzeugt statt deklariert - das exakte Gegenstück zur Rasterquantisierung von pixel-8bit",
+    "Trägt eine eingebaute Botschaft: die Unfertigkeit ist ein Widerspruchsangebot und senkt nachweislich die Hemmschwelle, an einem Entwurf noch etwas zu ändern",
+    "Ist ohne jede Laufzeit-Bibliothek erreichbar - Bootswatch Sketchy belegt, dass asymmetrische Radien und 2px-Ränder allein genügen; das macht ihn auch in statischen Umgebungen einsetzbar",
+    "Tinte auf Papierweiß ist der kontraststärkste Grundakkord des ganzen Katalogs und überlebt Beamer, Ausdruck und schlechte Displays",
+    "Listen und Karten sind die Heimatform des Stils: jede Zeile ist ein eigenes gezeichnetes Rechteck, es braucht weder Trennlinie noch Zebrastreifen",
+    "Depth null bedeutet null Schattenwerte, null Ebenenleiter, null Dark-Mode-Übersetzung von Schatten - die Tokenliste ist kürzer als bei jedem weichen Stil"
+  ],
+  "risks": [
+    "Der stärkste Einwand: Der Stil lebt fast überall im Inhalt, nicht in der Oberfläche. Bei Excalidraw, draw.io und Mermaid ist ausschließlich das Gezeichnete rough - Toolbar, Panels und Dialoge bleiben konventionelles Flat-UI",
+    "Die beiden echten Chrome-Belege (Bootswatch Sketchy, Wired Elements) sind Toolchain, kein ausgeliefertes Endkundenprodukt - man baut damit kein Bezahlformular",
+    "Selbstbegrenzend durch die eigene Botschaft: 'das ist ein Entwurf' ist genau das Falsche für Checkout, Kontostand, Vertrag oder Medikationsplan",
+    "Laufzeitkosten: Rough.js erzeugt pro Kante mehrere Kurvensegmente und zeichnet jede doppelt; eine 200-Zeilen-Liste kostet ein Vielfaches von 200 divs, und ohne festen Seed würfelt jeder Repaint neu, sodass die Liste beim Scrollen flimmert",
+    "Handschrift-Schnitte haben meist genau ein Gewicht, geringe x-Höhe und unruhige Ziffern - Hierarchie muss vollständig über Größe und Strichstärke laufen, und Zahlenkolonnen werden unlesbar",
+    "Kippt schnell ins Kindliche: sobald mehr als ein Akzent, gerundete Vollton-Flächen oder Icons aus einem Standardsatz dazukommen, wirkt es nicht mehr wie eine Skizze, sondern wie Comic Sans mit Rahmen"
+  ],
+  "a11y": "Der Grundakkord ist unkritisch: Tinte #1E1B18 auf Papier #FBFAF6 liegt bei rund 16,6:1, Bleistift #6B645B bei rund 5,6:1, der Marker-Akzent #B83A22 bei rund 5,5:1. Die eigentliche Falle sind die Hachur-Flächen - ein Label auf einem gestreiften Chip muss gegen die Strichfarbe gemessen werden, nicht gegen das Papier: Tinte gegen #B83A22 sind nur noch rund 3,0:1. Deshalb bleibt die Deckung bei etwa 20 Prozent (1,1px Strich, 4,4px Abstand), und der Status wird nie allein aus der Strichdichte gelesen, sondern immer aus dem Wortlaut - 'Aktiv' gegen 'Pausiert'. Zweite Falle ist das Eingabefeld: eine wellige Grundlinie erfüllt die 3:1-Anforderung an Bedienelement-Ränder nur, wenn sie mindestens 2px stark und über die volle Feldbreite gezogen ist, und der Fokus braucht einen eigenen, deutlich sichtbaren Indikator - ein mit neuem Seed nachgezogener Strich ist kein wahrnehmbarer Zustandswechsel. Handschrift-Schnitte nicht unter 16px setzen und niemals für Ziffernkolonnen, IDs oder Beträge verwenden. Die Botschaft 'Entwurf' muss als Text existieren, nicht nur als Optik, sonst kommt sie bei Screenreader-Nutzung gar nicht an. Für Animation gilt: das Neu-Würfeln der Kontur ist eine Autoplay-Schleife und wird unter prefers-reduced-motion abgeschaltet.",
+  "longevity": "Die Sprache ist als Produktsprache seit 2008 im Markt und hat ihre Grammatik in dieser Zeit nicht verändert - sie ist ein Genre, kein Trend, und wird deshalb auch nicht datieren. Der Preis dieser Stabilität ist, dass sie ihre Nische nie verlassen hat: Werkzeug, Dokumentation, Diagramm, Entwurf. Wer sie heute baut, baut etwas, das in zehn Jahren genauso aussieht und genauso wenig als Endkundenprodukt durchgeht.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 5,
+    "effort": 3,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Gut - zwei fertige Wege: Rough.js oder Wired Elements zur Laufzeit, oder ganz ohne Skript über asymmetrische Radien; in Tailwind als arbitrary value rounded-[255px_25px_225px_25px/25px_225px_25px_255px].",
+    "mobile": "Schwierig - Compose und SwiftUI kennen keine per-Ecke-und-Achse unterschiedlichen Radien; man zeichnet jede Kontur als eigene Path-Shape, und die Handschrift-Schnitte kollidieren mit Material-3- und HIG-Erwartungen.",
+    "desktop": "Wie Web, weil Tauri eine Webview ist - und der natürlichste Ort dafür: Diagramm-, Notiz- und Planungswerkzeuge sind genau die Gattung, in der der Stil belegt ist."
+  },
+  "verdict": "Als Sprache einer Produktoberfläche: nein. Die Belegkette bricht genau dort ab, wo es zählt - Excalidraw, draw.io und Mermaid rendern nur den Inhalt so, ihre eigene Chrome ist Flat-UI, und die beiden vollständigen Chrome-Implementierungen sind Bibliotheken für Entwickler, keine ausgelieferten Produkte. Wer damit eine Vermögensübersicht oder einen Bezahlvorgang baut, sendet dem Nutzer 'noch nicht fertig' ins Gesicht. Als zweckgebundenes Werkzeug im eigenen Portfolio dagegen: klar ja, und billig zu haben. Für Dokumentationsseiten, Architektur- und Datenflussdiagramme, Onboarding-Illustrationen, Planungs- und Roadmap-Ansichten oder eine Skizzenansicht neben der fertigen Oberfläche ist er die richtige Wahl, weil dort die Botschaft 'das ist ein Entwurf' schlicht wahr ist. Der Einstieg kostet fast nichts: die Bootswatch-Radien plus zwei Google-Fonts genügen für 80 Prozent der Wirkung, Rough.js kommt erst dazu, wenn wirklich Hachur-Flächen oder Diagrammkanten gebraucht werden. Als Zweitsprache neben einer nüchternen Hauptsprache ist das eine der wenigen Kombinationen im Katalog, die sich nicht ins Gehege kommen.",
+  "combinesWith": [
+    "organic-blob",
+    "neo-brutalism",
+    "playful-chunky"
+  ],
+  "tip": "Zeichne jede Kontur einmal als festen SVG-Pfad und liefere ihn aus, statt sie zur Laufzeit zu würfeln. Damit ist der Seed pro Element ohnehin fest, der Repaint kostet nichts, beim Scrollen flimmert nichts, und die Bibliothek entfällt komplett - aber verkaufe diesen festen Seed nicht als Stilmerkmal, er ist Rendering-Hygiene. Wenn du zur Laufzeit würfelst, dann würfle nur bei einer echten Zustandsänderung neu, niemals bei Resize oder Repaint. Und lege die Reihenfolge fest: erst die Kontur, dann die Luft, dann die Schrift - sobald du anfängst, Flächen zu füllen, bevor die Kontur steht, entsteht kein Blatt Papier, sondern eine gerundete Karte mit Streifentapete.",
+  "googleFonts": [
+    "Neucha",
+    "Cabin Sketch"
+  ]
+}

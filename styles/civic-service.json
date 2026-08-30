@@ -1,0 +1,105 @@
+{
+  "slug": "civic-service",
+  "name": "Civic / Behoerden-Servicedesign",
+  "aka": [
+    "GOV.UK-Schule",
+    "Service-Design",
+    "Public-Sector-UI",
+    "Government Design System",
+    "Behörden-UI"
+  ],
+  "family": "Norm & Beschraenkung",
+  "era": "2012-heute",
+  "origin": "Entstanden 2012 beim britischen Government Digital Service: GOV.UK ging im Oktober 2012 live und ersetzte hunderte Ressort-Auftritte durch eine einzige Oberfläche, deren Hausschrift New Transport von Margaret Calvert und Henrik Kubel aus der Verkehrsschilderschrift von 1963 abgeleitet wurde. Der Stil ist kein Entwurfsergebnis, sondern ein Prüfergebnis: Jeder Wert musste gegen WCAG-Kontrastschwellen, gegen Nutzertests mit Screenreadern und Vergrößerungssoftware und gegen den Government Service Standard verteidigt werden. 2018 wurde das Ergebnis als GOV.UK Design System und als npm-Paket govuk-frontend kodifiziert, dessen Sass-Dateien die Parameter bis heute wörtlich festschreiben: 960px Seitenbreite, 30px Gutter, Rahmenstärken 2/4/5/10px, Fokusbreite 3px, Typskala 80/48/36/27/24/19/16px. NHS Digital baute ab 2018 mit nhsuk-frontend eine unabhängige zweite Umsetzung mit eigener Schrift (Frutiger W01), eigener Palette (#212b32, #005eb8) und eigenem Gutter (32px) - und kam bei denselben Kernwerten heraus: 19px Fließtext, Radius 0, gelber Fokusblock.",
+  "idea": "Jeder Wert der Oberfläche wird aus einer Barrierefreiheits- und Verständlichkeitsprüfung abgeleitet statt aus Komposition; der einzige auffällige Farbton ist kein Markenzeichen, sondern der Tastaturfokus.",
+  "markers": [
+    "Radius 0px ausnahmslos - govuk-frontend setzt border-radius: 0 an Button, Input, Select und Textarea ohne konfigurierbare Ausnahme",
+    "Fließtext 19px/25px; die vollständige Skala ist 80/48/36/27/24/19/16px und jede Zeilenhöhe ein glattes 5px-Vielfaches (48/50, 36/40, 27/30, 24/30, 19/25, 16/20)",
+    "Tiefe ist genau ein Wert: box-shadow: 0 2px 0 in Vollton, kein Blur, kein Alpha; beim Drücken position: relative mit top: 2px und Sockel weg - die Fläche sinkt buchstäblich ein",
+    "Formularrahmen 2px solid #0b0c0c, Feldhöhe 40px, Innenabstand 5px; die gesamte Abstandsskala läuft in 5er-Schritten (5/10/15/20/25/30/40/50/60px)",
+    "Fokus ist eine Vollfläche, kein Ring: an Text-Links box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c, an Feldern outline: 3px solid #ffdd00 plus inset 0 0 0 2px #0b0c0c - ohne Transition, ohne Verzögerung",
+    "Links sind immer unterstrichen: text-decoration-thickness 1px, text-underline-offset 0.1578em (= 3px auf 19px), im Hover auf max(3px, .12em) verdickt",
+    "Visited-Lila #54319f bleibt stehen - kein Reset auf die Linkfarbe, obwohl es die Palette optisch bricht",
+    "Trennung nur über 1px #b1b4b6 und 5px/10px-Vollbalken; keine Karten, keine Schatten, keine abgestuften Flächenhelligkeiten",
+    "Satzspiegel 960px mit 30px Gutter, Inhalt in der linken Zwei-Drittel-Spalte (~630px); das rechte Drittel bleibt leer und wird nicht ausgeglichen"
+  ],
+  "params": {
+    "radius": "0px durchgehend - Buttons, Felder, Marken, Statusbalken; kein Bauteil mit Ausnahme",
+    "contrast": "sehr hoch - #0b0c0c auf #ffffff sind rund 19,6:1; Grau ist als Fließtextfarbe ausgeschlossen und nur für Trennlinien zugelassen",
+    "density": "luftig - eine Entscheidung pro Bildschirm als Layoutgesetz, 19px Basis und 5px-Raster erzwingen große Blockabstände",
+    "depth": "2px-Vollsockel unter Bedienelementen plus 5px/10px-Vollbalken an Blöcken und Seitenkopf; Tiefe ist Affordanznachweis, nicht Atmosphäre",
+    "color": "Acht funktionale Werte ohne Tint-/Shade-Leiter im Einsatz: Text #0b0c0c, Link #1d70b8, Hover #0f385c, Visited #54319f, Fokus #ffdd00, Erfolg #00703c, Fehler #d4351c, Grund #ffffff",
+    "type": "Humanistische Groteske (GDS Transport, Frutiger) in genau zwei Schnitten 400/700, ohne Tracking-Korrektur und ohne Versalsatz außer an Kurzmarken",
+    "motion": "Keine - als Politik, nicht als Sparmaßnahme; der Buttondruck ist ein positionaler 2px-Sprung ohne Transition",
+    "texture": "Keine - reines Weiß, keine Verläufe, keine Muster, keine Rauschebene"
+  },
+  "palette": [
+    "#ffffff",
+    "#0b0c0c",
+    "#1d70b8",
+    "#ffdd00",
+    "#00703c",
+    "#54319f"
+  ],
+  "examples": [
+    {
+      "name": "GOV.UK Design System / govuk-frontend",
+      "what": "components/button/_mixin.scss: border-radius: 0, box-shadow: 0 2px 0, :active setzt top: 2px; components/input/_mixin.scss: 19px Schrift, 40px Höhe, 2px Rahmen in #0b0c0c, Radius 0. settings/_measurements.scss: Seitenbreite 960px, Gutter 30px, Rahmenstärken 10/5/4/2px, Fokusbreite 3px. helpers/_focused.scss: box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c"
+    },
+    {
+      "name": "NHS.UK Design System / nhsuk-frontend",
+      "what": "Unabhängige zweite Umsetzung mit eigener Codebasis: Schrift Frutiger W01, Schwarz #212b32 statt #0b0c0c, Blau #005eb8, Fokusgelb #ffeb3b, Gutter 32px statt 30px - und trotzdem dieselben Invarianten. Die Kommentare im Quelltext rechnen den Link-Underline-Offset ausdrücklich als 3 ÷ 19 = 0.1578em auf die 19px-Basis"
+    },
+    {
+      "name": "HMRC Frontend / MOJ Frontend",
+      "what": "Ressortsysteme, die govuk-frontend nicht nachbauen, sondern als Abhängigkeit ziehen (hmrc-frontend package.json: govuk-frontend ^6.4.0). Radius, 2px-Sockel und Fokusblock werden unverändert geerbt; ergänzt werden nur fachliche Bauteile wie Kontokopf und Aktenübersicht"
+    },
+    {
+      "name": "US Web Design System (Gegenprobe)",
+      "what": "Der prominenteste Nachbar bricht die Regel: $theme-button-border-radius ist auf \"md\" voreingestellt (4px) und konfigurierbar, einen 2px-Vollsockel gibt es nicht. Zeigt, dass die Kernparameter GOV.UK und NHS.UK tragen, nicht die Behördenwelt als Ganzes"
+    },
+    {
+      "name": "Ontario Design System (Gegenprobe)",
+      "what": "Ebenfalls staatlich, ebenfalls streng - aber Buttons mit border-radius: 4px, Open Sans statt humanistischer Verkehrsgroteske, Primärblau #06c, Buttontext 1.125rem. Sachlichkeit allein erzeugt diesen Stil also nicht"
+    }
+  ],
+  "strengths": [
+    "Barrierefreiheit ist nicht Nacharbeit, sondern Bauplan - der Stil besteht Kontrast-, Tastatur- und Vergrößerungsprüfungen, weil er aus ihnen abgeleitet wurde",
+    "Extrem billig zu bauen: keine Schatten, keine Verläufe, keine Illustrationen, keine Motion-Kurven, zwei Schriftschnitte, acht Farben",
+    "govuk-frontend und nhsuk-frontend sind MIT-lizenziert und liefern die geprüften Werte als fertige Tokens - man kopiert Messergebnisse statt zu raten",
+    "Formulare, Fehlerzustände und mehrstufige Abläufe sind die am gründlichsten durchgetesteten Bauteile des gesamten Webs",
+    "Radikal geräteunabhängig: die Sprache funktioniert bei 200% Zoom, in erzwungenen Farbmodi und im Druck ohne eigene Sonderfassung"
+  ],
+  "risks": [
+    "Der stärkste Einwand: zieht man die Prozessrhetorik ab, bleiben schwarzer Text auf Weiß, Radius 0, Groteske, ein Akzent und eine Spalte - gefährlich nah an \"swiss, dem man die Komposition weggenommen hat\", also eher Verarmung eines vorhandenen Pols als eigener Pol. Der Eintrag hält nur, solange die eigenen Signale sichtbar bleiben: 19px statt feiner Skala, gelber Fokusblock, 2px-Sockel, Visited-Lila, unterstrichene Links, unkomponiertes leeres Drittel",
+    "Die behauptete \"Schule\" ist dünner als verkauft: belegbar tragen die Kernparameter GOV.UK und NHS.UK. USWDS führt einen konfigurierbaren 4px-Radius, Ontario ebenso - beide haben keinen 2px-Sockel",
+    "Die Oberfläche sieht nach Amt aus. Für ein Produkt, das Vertrauen über Wärme oder Begehrlichkeit aufbauen muss, ist das ein Fehlsignal, kein Ernsthaftigkeitsbeweis",
+    "19px Basis und 5px-Raster kosten Fläche: dichte Listen, Tabellen und Werkzeugoberflächen bekommt man damit nicht ohne Regelbruch",
+    "Das auffälligste Merkmal - der gelbe Fokusblock - ist auf Touch praktisch unsichtbar; auf Mobilgeräten fällt genau das Signal weg, das den Stil erkennbar macht",
+    "Das absichtlich behaltene Visited-Lila #54319f wird von Auftraggebern und Designern zuverlässig als Bug gemeldet und muss jedes Mal verteidigt werden"
+  ],
+  "a11y": "Der einzige Eintrag im Katalog, bei dem Barrierefreiheit den Stil erzeugt statt ihn zu kosten. #0b0c0c auf #ffffff liegt bei rund 19,6:1, das Linkblau #1d70b8 bei rund 5,1:1, das Visited-Lila #54319f bei rund 9,1:1, weißer Text auf dem grünen Button #00703c bei rund 6,2:1 - alle vier über AA. Die Trennlinie #b1b4b6 erreicht nur rund 2,1:1 und ist deshalb ausschließlich dekorativ zugelassen; sobald ein Rand Bedienbarkeit anzeigen muss, wird er 2px schwarz. Der Fokus arbeitet nie über Farbe allein: die gelbe Fläche #ffdd00 trägt zusätzlich eine 4px schwarze Unterkante, also eine Formänderung, und behält gegen #0b0c0c rund 14,5:1. Ein 3px transparenter outline liegt unter jedem Fokuszustand, damit er in erzwungenen Farbmodi und in Windows-Kontrastdesigns nicht verschwindet. Status wird nie allein über den farbigen 5px-Balken kommuniziert, sondern immer zusätzlich als ausgeschriebenes Wort. Da es keine Animation gibt, ist prefers-reduced-motion gegenstandslos.",
+  "longevity": "Der langlebigste Stil des Katalogs, weil sein Taktgeber Normtext ist und nicht Mode: Radius 0, der 2px-Sockel, die 19px-Basis und der gelbe Fokusblock stehen seit über zehn Jahren unverändert in derselben Codebasis. Was sich bewegt hat, sind ausschließlich Farbwerte - die Palette wurde zuletzt nachjustiert (Link von #1d70b8 auf #1a65a6, Lila von #4c2c92 auf #54319f, Rot von #d4351c auf #ca3535, Grün von #00703c auf #0f7a52), und zwar wieder als Ergebnis von Kontrastmessungen, nicht als Geschmacksentscheidung. Das Gerüst überlebt jede dieser Anpassungen.",
+  "scores": {
+    "longevity": 5,
+    "recognition": 4,
+    "effort": 2,
+    "density": 2
+  },
+  "platforms": {
+    "web": "Ideal - govuk-frontend und nhsuk-frontend sind fertige, MIT-lizenzierte Tokensätze; in Tailwind bleiben rounded-none, sechs Farbtokens, eine Focus-Utility und eine 5px-Spacing-Skala übrig. Astro-Inhaltsseiten profitieren doppelt, weil kein JavaScript nötig ist.",
+    "mobile": "Schwierig - Compose Material 3 bringt Radius, Ripple und Elevation als Voreinstellung mit, der 2px-Vollsockel und der gelbe Fokusblock müssen gegen die Plattform gebaut werden. Auf Touch existiert Tastaturfokus kaum, damit fällt das auffälligste Merkmal des Stils weg und übrig bleibt eine sehr kantige, sehr große Standardoberfläche.",
+    "desktop": "Brauchbar in Tauri, weil der Web-Stack die Werte direkt übernimmt - aber die 19px-Basis und das 5px-Raster kosten so viel Fläche, dass dichte Werkzeugfenster damit nicht funktionieren. Für Einstellungs-, Formular- und Onboarding-Bereiche einer Desktop-App dagegen exzellent."
+  },
+  "verdict": "Als Hausstil für ein Portfolio kleiner Apps: nein. Der Stil signalisiert Amt, nicht Produkt, er kostet auf Mobile sein bestes Merkmal, und er trägt keine Dichte - ein Solo-Entwickler, dessen Werkzeuge Listen, Tabellen und Zustände zeigen müssen, kämpft dauerhaft gegen die eigenen Regeln. Als Bauteilschicht dagegen: uneingeschränkt ja. Formulare, Fehlerzusammenfassungen, mehrstufige Abläufe und Einstellungsdialoge sind hier gründlicher durchgeprüft als in jedem kommerziellen System, und die Werte liegen MIT-lizenziert als Sass bereit. Der praktische Weg ist, den Fokuszustand, die 5px-Abstandsskala und die Formularmaße aus govuk-frontend zu übernehmen und darüber eine eigene Marke zu legen - man erbt die Prüfergebnisse, ohne die Behördenoptik zu erben. Und als Lehrstück gehört er in jedes Projekt: wer einmal gesehen hat, dass ein vollständiger Stil aus acht Farben und einer Prüfvorschrift entsteht, entwirft danach anders.",
+  "combinesWith": [
+    "swiss",
+    "editorial-print",
+    "warm-editorial",
+    "data-dense"
+  ],
+  "tip": "Baue den Fokuszustand als Allererstes, als eine einzige globale Utility - gelbe Vollfläche, 4px schwarze Unterkante, 3px transparenter outline darunter, keine Transition. Danach kann kein Bauteil mehr ohne ihn entstehen, und der teuerste Fehler des Stils ist ausgeschlossen, nämlich ihn am Ende als Ring nachzurüsten. Zweiter Rat: das Visited-Lila stehen lassen. Es ist die einzige Stelle, an der die Oberfläche dem Nutzer etwas erzählt, das sie sonst nirgends erzählt - wo er schon war -, und der Reflex, es wegzuoptimieren, ist genau die Gewohnheit, die dieser Eintrag vorführt.",
+  "googleFonts": [
+    "Public Sans"
+  ]
+}

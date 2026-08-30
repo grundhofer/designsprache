@@ -2,7 +2,7 @@
   "slug": "aurora-mesh",
   "name": "Aurora / Mesh Gradient",
   "aka": ["Aurora UI", "Mesh Gradient", "AI-Startup-Look", "Glow-Gradient", "Stripe-Gradient"],
-  "family": "Ausdruck & Natur",
+  "family": "Ausdruck & Geste",
   "era": "2018-heute (Peak ab 2023)",
   "origin": "Der Ursprung liegt bei Stripe, das ab etwa 2018 auf seinen Startseiten animierte, mehrfarbige Verlaufsflächen einsetzte - technisch aufwendig per WebGL-Mesh und maskgenau in die Marke integriert. Apple normalisierte die Bildsprache 2020 mit den Big-Sur- und M1-Keynote-Verläufen, und Michal Malewicz gab dem Ganzen im März 2021 mit dem Artikel 'Aurora UI - new visual trend for 2021' einen Namen, woraufhin das Muster über Dribbble und Behance in den Mainstream kippte. Die entscheidende Vereinfachung kam aus dem CSS: mehrere gestapelte radial-gradients plus ein großer blur() liefern denselben Eindruck ohne Shader, in fünfzehn Zeilen. Das gelöste Problem war Leere - minimalistische dunkle Landingpages ohne Bildmaterial wirkten tot, das Aurora-Feld gab ihnen Tiefe und Stimmung, ohne dass jemand fotografieren musste.",
   "idea": "Ein dunkler, fast schwarzer Grund trägt zwei bis fünf große, weit ausgeblurte Farbfelder, die wie Licht hinter Milchglas wirken; darauf liegt bewusst minimale Typografie und ein feines Liniensystem. Die Stimmung kommt komplett aus dem Hintergrund, nicht aus den Komponenten.",

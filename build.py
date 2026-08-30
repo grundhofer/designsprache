@@ -42,17 +42,21 @@ ORDER_DE = [
      "Was 2026 tatsächlich gebaut wird. Sechs Sprachen, die sich in echten Produkten bewährt "
      "haben — und die realistischsten Kandidaten für eine eigene Marke.",
      ["dev-noir", "warm-editorial", "neo-brutalism", "terminal-mono", "data-dense", "spatial-depth"]),
+    ("Norm & Beschränkung",
+     "Stile, deren Werte nicht der Gestalter gesetzt hat, sondern eine Prüfvorschrift, eine "
+     "Darstellungsnorm oder die Physik des Displays. Hier war nichts Geschmack.",
+     ["civic-service", "e-paper"]),
     ("Nostalgie & Subkultur",
      "Stile, die eine bestimmte Zeit zitieren. Sie erzeugen sofort Zugehörigkeit — und altern "
      "genau deshalb am schnellsten.",
      ["y2k-aero", "vaporwave", "retro-futurism"]),
-    ("Ausdruck & Natur",
-     "Von der weichen Form bis zur bewussten Überfüllung. Und der Verlaufs-Look, den 2026 "
-     "praktisch jedes KI-Startup trägt.",
-     ["organic-blob", "maximalism", "aurora-mesh"]),
+    ("Ausdruck & Geste",
+     "Von der weichen Form über die bewusste Überfüllung bis zur sichtbaren Handschrift. Was "
+     "sie verbindet, ist der Widerspruch gegen die Anonymität des Rasters.",
+     ["organic-blob", "maximalism", "aurora-mesh", "hand-drawn"]),
     ("Weitere Pole",
-     "Drei Extreme, die als Zutat nützlicher sind denn als ganzer Stil.",
-     ["editorial-print", "pixel-8bit", "playful-chunky"]),
+     "Vier Extreme, die als Zutat oft nützlicher sind denn als ganzer Stil.",
+     ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
 ]
 
 # Family names must match the "family" field in the .en.json files.
@@ -77,17 +81,21 @@ ORDER_EN = [
      "What actually gets built in 2026. Six languages proven in real products — and the most "
      "realistic candidates for a brand of your own.",
      ["dev-noir", "warm-editorial", "neo-brutalism", "terminal-mono", "data-dense", "spatial-depth"]),
+    ("Norm & Constraint",
+     "Styles whose values were not chosen by a designer but set by a compliance standard, a "
+     "display convention, or the physics of a screen. Here, nothing was taste.",
+     ["civic-service", "e-paper"]),
     ("Nostalgia & Subculture",
      "Styles that quote a specific moment. They create belonging instantly — and age fastest "
      "for exactly that reason.",
      ["y2k-aero", "vaporwave", "retro-futurism"]),
-    ("Expression & Nature",
-     "From the soft form to deliberate excess. Plus the gradient look that practically every "
-     "AI startup wears in 2026.",
-     ["organic-blob", "maximalism", "aurora-mesh"]),
+    ("Expression & Gesture",
+     "From the soft form through deliberate excess to a visible hand. What unites them is the "
+     "argument against the anonymity of the grid.",
+     ["organic-blob", "maximalism", "aurora-mesh", "hand-drawn"]),
     ("Further Poles",
-     "Three extremes that are more useful as an ingredient than as a whole style.",
-     ["editorial-print", "pixel-8bit", "playful-chunky"]),
+     "Four extremes that are often more useful as an ingredient than as a whole style.",
+     ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
 ]
 
 FONT_SPECS = [
@@ -119,6 +127,11 @@ FONT_SPECS = [
     "DM+Serif+Display:ital,wght@0,400;1,400",
     "Instrument+Serif:ital,wght@0,400;1,400",
     "Michroma", "Press+Start+2P", "Share+Tech+Mono", "VT323",
+    # ab Runde zwei: civic-service, e-paper, hand-drawn
+    "Public+Sans:ital,wght@0,300..900;1,300..900",
+    "Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900",
+    "Cabin+Sketch:wght@400;700",
+    "Neucha",
 ]
 
 # Load the page's own three families first so the chrome is never left without type.
@@ -140,17 +153,28 @@ def font_links():
     return "\n".join(out)
 
 
+N_ENTRIES = sum(len(x) for _, _, x in ORDER_DE)
+N_FAMILIES = len(ORDER_DE)
+
+
 def load(suffix=""):
     sheets, demos, data = [], {}, {}
     for _, _, slugs in ORDER:
         for slug in slugs:
-            raw = (SRC / f"{slug}{suffix}.html").read_text(encoding="utf-8")
+            src_html = SRC / f"{slug}{suffix}.html"
+            src_json = SRC / f"{slug}{suffix}.json"
+            for f in (src_html, src_json):
+                if not f.exists():
+                    sys.exit(f"{f.relative_to(ROOT)} fehlt. Ein Stil braucht vier Dateien: "
+                             f"{slug}.html, {slug}.json, {slug}.en.html, {slug}.en.json "
+                             f"(siehe CONTRIBUTING.md).")
+            raw = src_html.read_text(encoding="utf-8")
             m = re.search(r"<style>(.*?)</style>", raw, re.S)
             if not m:
                 sys.exit(f"kein <style> in {slug}{suffix}")
             sheets.append(m.group(1).strip())
             demos[slug] = raw[m.end():].strip()
-            data[slug] = json.loads((SRC / f"{slug}{suffix}.json").read_text(encoding="utf-8"))
+            data[slug] = json.loads(src_json.read_text(encoding="utf-8"))
     return sheets, demos, data
 
 
@@ -193,8 +217,8 @@ METRICS = METRICS_DE          # swapped per language inside build()
 # ---------------------------------------------------------------------------
 L10N = [
  ("Referenzkatalog · Designsprache", "Reference catalog · Designsprache"),
- ("Stil&#8209;Katalog<br><em>27 Wege, dieselbe Oberfläche zu bauen</em>",
-  "Style&#8209;Catalog<br><em>27 ways to build the same interface</em>"),
+ ("Stil&#8209;Katalog<br><em>{n} Wege, dieselbe Oberfläche zu bauen</em>",
+  "Style&#8209;Catalog<br><em>{n} ways to build the same interface</em>"),
  ("""Jeder Eintrag zeigt <strong>exakt dieselbe Oberfläche</strong> — eine
         Projektliste mit Kopfzeile, drei Einträgen, Suchfeld und zwei Schaltflächen. Was sich
         ändert, ist ausschließlich die Gestaltung. Dadurch wird sichtbar, was ein Stil
@@ -203,8 +227,8 @@ L10N = [
         header, three rows, a search field and two buttons. The only thing that changes is the
         design. That makes visible what a style actually decides — and what is merely
         taste."""),
- ("<b>27</b><span>Einträge</span>", "<b>27</b><span>Entries</span>"),
- ("<b>8</b><span>Familien</span>", "<b>8</b><span>Families</span>"),
+ ("<b>{n}</b><span>Einträge</span>", "<b>{n}</b><span>Entries</span>"),
+ ("<b>{nfam}</b><span>Familien</span>", "<b>{nfam}</b><span>Families</span>"),
  ("<b>1</b><span>Referenz&#8209;UI</span>", "<b>1</b><span>Reference&nbsp;UI</span>"),
  ("<b>7</b><span>Parameter</span>", "<b>7</b><span>Parameters</span>"),
 
@@ -261,7 +285,7 @@ L10N = [
  ('<option value="effort">Aufwand (wenig zuerst)</option>', '<option value="effort">Effort (least first)</option>'),
  ('<option value="density">Dichte</option>', '<option value="density">Density</option>'),
  ('<option value="name">Name</option>', '<option value="name">Name</option>'),
- ('aria-live="polite">27 von 27<', 'aria-live="polite">27 of 27<'),
+ ('aria-live="polite">{n} von {n}<', 'aria-live="polite">{n} of {n}<'),
  ('hidden>Kein Eintrag passt zu dieser Auswahl.<', 'hidden>No entry matches this selection.<'),
 
  ('<span class="eyebrow">Entscheidungsraster</span>', '<span class="eyebrow">Decision grid</span>'),
@@ -275,7 +299,7 @@ L10N = [
  ('<label for="mx">Waagerecht</label>', '<label for="mx">Horizontal</label>'),
  ('<label for="my">Senkrecht</label>', '<label for="my">Vertical</label>'),
 
- ('<h2>Alle 27 im Vergleich</h2>', '<h2>All 27 compared</h2>'),
+ ('<h2>Alle {n} im Vergleich</h2>', '<h2>All {n} compared</h2>'),
  ("""Die harten Parameter nebeneinander. Spalten mit Zahlen sind sortierbar — Kopfzeile
     anklicken. Ein Klick auf den Namen öffnet den vollständigen Eintrag.""",
   """The hard parameters side by side. Numeric columns are sortable — click the header.
@@ -324,12 +348,12 @@ L10N = [
         every platform. Across web, Tauri and Android, glassmorphism and skeuomorphism cost a
         multiple of Swiss or dev&#8209;noir. That is not a matter of taste but an
         estimate."""),
- ("""Alle 27 Demos sind handgebautes HTML und CSS — keine Bilder, keine
+ ("""Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
     stammen von Google Fonts, alle Farbwerte, Radien und Zeitangaben in den Faktenblättern
     sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
     Einschätzungen, keine Messwerte.""",
-  """All 27 demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
+  """All {n} demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
     the same thirteen pieces of text. Type comes from Google Fonts; the color values, radii and
     timings quoted in the fact sheets are sourced from the products they describe. The four
     scores are professional judgements, not measurements."""),
@@ -357,9 +381,9 @@ L10N = [
  ('[["Radius", p.radius], ["Kontrast", p.contrast], ["Dichte", p.density],\n       ["Tiefe", p.depth], ["Farbe", p.color], ["Typografie", p.type],\n       ["Motion", p.motion], ["Textur", p.texture]]',
   '[["Radius", p.radius], ["Contrast", p.contrast], ["Density", p.density],\n       ["Depth", p.depth], ["Color", p.color], ["Typography", p.type],\n       ["Motion", p.motion], ["Texture", p.texture]]'),
  ('" von 5</dd></div>"', '" of 5</dd></div>"'),
- ('sCap.textContent = "Dieselbe Referenz-UI wie in allen 27 Einträgen, hier in voller Größe.";',
-  'sCap.textContent = "The same reference UI as in all 27 entries, here at full size.";'),
- ('shown + " von 27"', 'shown + " of 27"'),
+ ('sCap.textContent = "Dieselbe Referenz-UI wie in allen {n} Einträgen, hier in voller Größe.";',
+  'sCap.textContent = "The same reference UI as in all {n} entries, here at full size.";'),
+ ('shown + " von {n}"', 'shown + " of {n}"'),
  ('"Getönt: der günstige Bereich — "', '"Tinted: the favourable region — "'),
  ('(xGood === "hoch" ? "hoch" : "niedrig") + " und "', '(xGood === "hoch" ? "high" : "low") + " and "'),
  ('" " + (yGood === "hoch" ? "hoch" : "niedrig") + "."', '" " + (yGood === "hoch" ? "high" : "low") + "."'),
@@ -385,7 +409,7 @@ def build(lang="de", mode="site"):
 
     sheets, demos, data = load(suffix)
     n = sum(len(s) for _, _, s in ORDER)
-    assert n == 27, n
+    assert n == N_ENTRIES, n
     check_scoping(sheets, [x for _, _, ss in ORDER for x in ss], suffix)
 
     # ---------- Plates ----------
@@ -463,6 +487,7 @@ def build(lang="de", mode="site"):
 
     tpl = PAGE if lang == "de" else page_en()
     body = tpl.format(
+        n=N_ENTRIES, nfam=N_FAMILIES,
         topbar="" if mode == "artifact" else TOPBAR[lang].format(repo=REPO_URL),
         fonts=font_links(),
         sheets="\n".join(f"<style>\n{s}\n</style>" for s in sheets),
@@ -833,7 +858,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   <div class="wrap mast-in">
     <div>
       <span class="eyebrow">Referenzkatalog · Designsprache</span>
-      <h1>Stil&#8209;Katalog<br><em>27 Wege, dieselbe Oberfläche zu bauen</em></h1>
+      <h1>Stil&#8209;Katalog<br><em>{n} Wege, dieselbe Oberfläche zu bauen</em></h1>
     </div>
     <div>
       <p class="k-lede">Jeder Eintrag zeigt <strong>exakt dieselbe Oberfläche</strong> — eine
@@ -844,8 +869,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
   </div>
   <div class="wrap">
     <div class="facts">
-      <div><b>27</b><span>Einträge</span></div>
-      <div><b>8</b><span>Familien</span></div>
+      <div><b>{n}</b><span>Einträge</span></div>
+      <div><b>{nfam}</b><span>Familien</span></div>
       <div><b>1</b><span>Referenz&#8209;UI</span></div>
       <div><b>7</b><span>Parameter</span></div>
     </div>
@@ -902,7 +927,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
         <option value="name">Name</option>
       </select>
     </div>
-    <span id="tally" aria-live="polite">27 von 27</span>
+    <span id="tally" aria-live="polite">{n} von {n}</span>
   </div>
 </nav>
 
@@ -929,7 +954,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 </section>
 
 <section class="tbl-sec wrap">
-  <h2>Alle 27 im Vergleich</h2>
+  <h2>Alle {n} im Vergleich</h2>
   <p>Die harten Parameter nebeneinander. Spalten mit Zahlen sind sortierbar — Kopfzeile
     anklicken. Ein Klick auf den Namen öffnet den vollständigen Eintrag.</p>
   <div class="tbl-scroll">
@@ -975,7 +1000,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
         Dev&#8209;Noir. Das ist keine Geschmacksfrage, sondern eine Aufwandsschätzung.</p>
     </div>
   </div>
-  <p class="k-colophon">Alle 27 Demos sind handgebautes HTML und CSS — keine Bilder, keine
+  <p class="k-colophon">Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
     stammen von Google Fonts, alle Farbwerte, Radien und Zeitangaben in den Faktenblättern
     sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
@@ -1072,7 +1097,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       }});
       sec.hidden = !any;
     }});
-    tally.textContent = shown + " von 27";
+    tally.textContent = shown + " von {n}";
     empty.hidden = shown !== 0;
     schedule();
   }}
@@ -1137,7 +1162,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
     sHost.appendChild(src.firstElementChild.cloneNode(true));
     sEnt.textContent = String(i + 1).padStart(2, "0");
     sName.textContent = d.name;
-    sCap.textContent = "Dieselbe Referenz-UI wie in allen 27 Einträgen, hier in voller Größe.";
+    sCap.textContent = "Dieselbe Referenz-UI wie in allen {n} Einträgen, hier in voller Größe.";
 
     sPal.innerHTML = (d.palette || []).map(function (h) {{
       return '<div><i style="background:' + esc(h) + '"></i><span>' + esc(h) + "</span></div>";
@@ -1368,15 +1393,15 @@ HEAD = {
  "de": _HEAD_TPL.format(
    lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON,
    imgalt="Dieselbe Projektliste in vier Stilen nebeneinander: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
-   title="Stil-Katalog — 27 Wege, dieselbe Oberfläche zu bauen",
-   desc=("27 UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
+   title=f"Stil-Katalog — {N_ENTRIES} Wege, dieselbe Oberfläche zu bauen",
+   desc=(f"{N_ENTRIES} UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
          "Mit Faktenblatt, Kennzahlen und Entscheidungsraster. Von Swiss und Bauhaus über "
          "Skeuomorphismus und Glassmorphism bis Dev-Noir und Neo-Brutalismus.")),
  "en": _HEAD_TPL.format(
    lang="en", locale="en_US", site=SITE_URL, icon=FAVICON,
    imgalt="The same project list in four styles side by side: Swiss, Bauhaus, neo-brutalism, dev-noir.",
-   title="Style Catalog — 27 ways to build the same interface",
-   desc=("27 UI style directions, each rendered as the very same reference interface. "
+   title=f"Style Catalog — {N_ENTRIES} ways to build the same interface",
+   desc=(f"{N_ENTRIES} UI style directions, each rendered as the very same reference interface. "
          "With fact sheets, scores and a decision grid. From Swiss and Bauhaus through "
          "skeuomorphism and glassmorphism to dev-noir and neo-brutalism.")),
 }
@@ -1385,7 +1410,7 @@ HEAD = {
 def check_scoping(sheets, slugs, suffix):
     """Bricht ab, wenn ein Selektor nicht auf .style-SLUG beginnt.
 
-    27 Stylesheets teilen sich eine Seite. Ein einziger ungescopter Selektor -
+    Alle Stylesheets teilen sich eine Seite. Ein einziger ungescopter Selektor -
     :root, body, ein nackter Element-Selektor - wuerde alle anderen Demos zerstoeren.
     Diese Pruefung laeuft bei jedem Build, damit ein Beitrag das nicht einschleppen kann.
     """
@@ -1451,7 +1476,9 @@ def build_landing():
     out = DOCS / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
-        src.replace("__SITE__", SITE_URL).replace("__REPO__", REPO_URL).replace("__ICON__", FAVICON),
+        (src.replace("__SITE__", SITE_URL).replace("__REPO__", REPO_URL)
+            .replace("__ICON__", FAVICON)
+            .replace("__N__", str(N_ENTRIES)).replace("__NFAM__", str(N_FAMILIES))),
         encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     og = ROOT / "og.png"
@@ -1500,6 +1527,7 @@ def build_og():
     links = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
              + "&".join("family=" + s for s in specs) + '&display=block">')
 
+    OG_N = N_ENTRIES
     k = OG_TILE / OG_REF
     tiles = "".join(
         f'<div class="tile"><div class="frame"><div class="host">{demo}</div></div>'
@@ -1538,10 +1566,10 @@ def build_og():
 {css}
 </head><body>
   <span class="eyebrow">Referenzkatalog &middot; Reference catalog</span>
-  <h1>Stil&#8209;Katalog<em>27 ways to build the same interface</em></h1>
-  <p class="sub">Dieselbe Projektliste, <b>27-mal gestaltet</b> &mdash; mit Faktenblatt,
+  <h1>Stil&#8209;Katalog<em>{OG_N} ways to build the same interface</em></h1>
+  <p class="sub">Dieselbe Projektliste, <b>{OG_N}-mal gestaltet</b> &mdash; mit Faktenblatt,
     Kennzahlen und Entscheidungsraster.
-    <span class="en">The same project list, <b>designed 27 ways</b> &mdash; with fact sheets,
+    <span class="en">The same project list, <b>designed {OG_N} ways</b> &mdash; with fact sheets,
     scores and a decision grid.</span></p>
   <p class="url">grundhofer.github.io/designsprache</p>
   <div class="row">{tiles}</div>

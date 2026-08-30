@@ -1,7 +1,7 @@
 # Stil-Katalog
 
-**27 UI-Stilrichtungen — jede als gerendertes Beispiel derselben Oberfläche.**
-27 UI style directions — each rendered as the very same interface.
+**31 UI-Stilrichtungen — jede als gerendertes Beispiel derselben Oberfläche.**
+31 UI style directions — each rendered as the very same interface.
 
 → **[grundhofer.github.io/designsprache](https://grundhofer.github.io/designsprache)**
 &nbsp;·&nbsp; [Deutsch](https://grundhofer.github.io/designsprache/de/)
@@ -16,7 +16,7 @@
 Über UI-Stile wird meist in Adjektiven geredet. „Clean", „modern", „verspielt" — Wörter, unter
 denen sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung.
 
-Jeder der 27 Einträge zeigt **exakt dieselbe Oberfläche**: eine Projektliste mit Kopfzeile, drei
+Jeder der 31 Einträge zeigt **exakt dieselbe Oberfläche**: eine Projektliste mit Kopfzeile, drei
 Einträgen, einem Suchfeld und zwei Schaltflächen — dieselben dreizehn Textbausteine, überall.
 Das Einzige, was sich ändert, ist die Gestaltung. Dadurch wird vergleichbar, was ein Stil
 tatsächlich entscheidet, und was nur Geschmack ist.
@@ -45,16 +45,28 @@ Wer diese sieben kennt, kann Stile **mischen statt kopieren**. Kein starkes Prod
 Reinstil: Linear ist Swiss-Raster plus Dark-Mode plus Terminal-Dichte, Notion ist Warm Editorial
 plus Flat, Stripe ist Swiss plus Aurora.
 
-### Die acht Familien
+### Die neun Familien
 
 **Modernistische Schulen** — Swiss · Bauhaus · De Stijl
 **Postmoderne & Rebellion** — Memphis · Swiss Punk · Web-Brutalismus
 **Digitale Epochen** — Skeuomorphismus · Flat · Material 3 Expressive
 **Weiche Materialität** — Neumorphismus · Glassmorphism · Claymorphism
 **Produkt-Ästhetik heute** — Dev-Noir · Warm Editorial · Neo-Brutalismus · Terminal-Mono · Data-Dense · Spatial
+**Norm & Beschränkung** — Civic/GOV.UK · E-Paper
 **Nostalgie & Subkultur** — Y2K/Frutiger Aero · Vaporwave · Retro-Futurismus
-**Ausdruck & Natur** — Organic/Blob · Maximalismus · Aurora-Mesh
-**Weitere Pole** — Editorial-Print · Pixel/8-Bit · Playful-Chunky
+**Ausdruck & Geste** — Organic/Blob · Maximalismus · Aurora-Mesh · Hand-Drawn
+**Weitere Pole** — Editorial-Print · Pixel/8-Bit · Playful-Chunky · Portal-Dichte
+
+„Norm & Beschränkung" ist die jüngste Familie und die einzige, die keine Geschmacksfrage
+versammelt: Stile, deren Werte nachweislich nicht der Gestalter gesetzt hat, sondern eine
+Prüfvorschrift, eine Darstellungsnorm oder die Physik des Displays. Das Aufnahmekriterium ist
+prüfbar — *man kann benennen, wer den Wert gesetzt hat, und es war nicht der Gestalter.*
+Sie beantwortet die Leitfrage des Katalogs von der anderen Seite: hier war nichts Geschmack.
+
+"Norm & Constraint" is the newest family and the only one that does not collect a matter of
+taste: styles whose values were demonstrably not set by a designer but by a compliance standard,
+a display convention, or the physics of a screen. The admission test is checkable — *you can name
+who set the value, and it was not the designer.*
 
 ---
 
@@ -63,7 +75,7 @@ plus Flat, Stripe ist Swiss plus Aurora.
 Talk about UI styles usually happens in adjectives. "Clean", "modern", "playful" — words that
 mean something different to everyone. This catalog replaces them with evidence.
 
-Each of the 27 entries shows **exactly the same interface**: a project list with a header, three
+Each of the 31 entries shows **exactly the same interface**: a project list with a header, three
 rows, a search field and two buttons — the same thirteen pieces of text throughout. The only
 thing that changes is the design. That makes it comparable what a style actually decides, and
 what is merely taste.
@@ -92,7 +104,7 @@ styles/
   swiss.json        Faktenblatt / fact sheet
   swiss.en.html     englische Fassung, CSS zeichengleich / English, byte-identical CSS
   swiss.en.json
-  … 27 Stile × 4 Dateien
+  … 31 Stile × 4 Dateien
 landing.html        zweisprachige Eingangsseite / bilingual entry page
 build.py            Generator
 docs/               erzeugt / generated — nicht eingecheckt / not committed
@@ -120,12 +132,12 @@ python3 build.py --og
 
 ### Die Scoping-Regel
 
-27 Stylesheets teilen sich eine Seite. Damit sie sich nicht gegenseitig zerstören, gilt für
+31 Stylesheets teilen sich eine Seite. Damit sie sich nicht gegenseitig zerstören, gilt für
 jede Demo: **jeder CSS-Selektor beginnt mit `.style-<slug>`**, `@keyframes`-Namen sind mit
 `<slug>-` präfigiert, und es gibt kein `:root`, kein `body`, keinen nackten Element-Selektor.
 `build.py` prüft das bei jedem Lauf und bricht bei Verstoß ab.
 
-27 stylesheets share one page. So they cannot destroy each other, every demo obeys one rule:
+31 stylesheets share one page. So they cannot destroy each other, every demo obeys one rule:
 **every CSS selector starts with `.style-<slug>`**, `@keyframes` names are prefixed with
 `<slug>-`, and there is no `:root`, no `body`, no bare element selector. `build.py` verifies
 this on every run and fails the build on violation.

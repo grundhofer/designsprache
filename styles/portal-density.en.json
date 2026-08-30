@@ -1,0 +1,109 @@
+{
+  "slug": "portal-density",
+  "name": "Portal Density / Portal School",
+  "aka": [
+    "Portal Grid",
+    "Directory School",
+    "kakaku Density",
+    "Portal Era",
+    "East Asian Portal Continuation"
+  ],
+  "family": "Further Poles",
+  "era": "1996-present",
+  "origin": "This is emphatically NOT a regional category, and the catalog would enshrine an error by filing it as a Japanese peculiarity. The cross-check in the Internet Archive is unambiguous: in June 2004 Yahoo! Japan and Yahoo.com ran the same layout - 230 versus 239 <a> elements on the home page, 65 versus 71 nested <table>, and on Yahoo! Japan the attribute width=\"675\" eighteen times as a fixed column width. There was no Japanese design language in 2004, there was the portal era: while search was still bad, the home page was the table of contents of the web, and completeness was the product promise. The West abandoned the form from 2005 on, because Google took over the job and because advertising moved to the results pages. What is East Asian is only where the form SURVIVED: in Japan at kakaku.com (1997), tabelog, jalan, nikkansports; in China at hao123.com and sina.com.cn - wherever price comparison, reservation and the navigation page are a business model that still carries today. That makes the style the only living spot in the parameter space where light, very dense, low-radius and polychrome coincide and where color is neither state nor decoration but a category index.",
+  "idea": "Color encodes taxonomy instead of semantics: a numbered chain of equal-rank category colors sits on the boxes as a 3px top bar, none of them is a lead color and none means a state - hierarchy comes solely from bold, 1px rules and one jump in type size.",
+  "markers": [
+    "27 numbered category colors in kakaku.com/css/common.css (.l-color-1 through .l-color-27: #001789, #09f, #f60, #009899, #670099, #53b, #fc3, #013466, #3266cc, #feae00 ... #d20000), each shipped as border-top:3px solid on the box and as a 7px stripe above the masthead - none is a lead color, none means a state",
+    "Exactly two colors carry meaning: link #0867bf with hover #1e85e5, visited #8a3683 with hover #b351ab - the :visited state is still deliberately designed, because finding your way back through 200-1250 links is part of the business model",
+    "Fixed, centered column with no responsive reflow: kakaku .l-wrap-regular{width:1035px;margin:0 auto;background:#fff}, jalan global.css twelve times width:950px, hao123 seventeen times width:1190px - the horizontal scrollbar is planned for, not a defect",
+    "Base type 12-14px proportional and NOT a single use of monospace: kakaku body{font-size:1.3em} on a 62.5% root = 13px in Meiryo/Hiragino, nikkansports 87x font-size:14px, jalan 57x font-size:12px, hao123 82x font-size:12px - in none of the files examined does monospace, Courier or Consolas occur",
+    "Numbers run in a second, proportional family: .c-num,.p-num{font-family:Verdana,sans-serif} - without font-variant-numeric, without tabular figures; numbers are an accessory of the row, not a column of their own",
+    "Radius 0-4px, dominant 2-3px: kakaku home.css six times 5px and five times 3px, tabelog top.css twelve times 3px, eight times 4px, five times 2px - buttons as an 82x34px box with a 3px radius",
+    "Contrast deliberately not maximized: #333 on #fff or #f5f5f5 (12.6:1 instead of the 21:1 of black), block borders 1px #ddd, row separators 1px dotted #ddd, row background on hover #e9f3fd",
+    "Depth is present, but sparing and hard: kakaku home.css contains 5 box-shadows and 4 gradients (box-shadow:1px 1px 1px 0 #adbac7 inset on the search field, linear-gradient(#fff,#e7e9ec 98%,#d5d7da) on the button), tabelog top.css 22 box-shadows - not a single softly graded drop shadow",
+    "Motion is present, but only as a short hard switch: 27 transition declarations in kakaku home.css, 44 in nikkansports common.css, 36 in tabelog top.css; links carry no underline, the underline arrives on :hover",
+    "Footer block of dozens of 12-13px text links, separated by .p-relation_item:before{content:\" | \"} in #ddd, plus a full-bleed copyright stripe .l-f_copy{background:#001789;color:#fff;font-size:12px} - completeness is the promise"
+  ],
+  "params": {
+    "radius": "0-4px, dominant 2-3px; 5px only on the search bar",
+    "contrast": "medium, deliberately not maximized - #333 on #fff and #f5f5f5, rules in #ddd",
+    "density": "very dense; fixed centered column of 950-1220px, rows with padding:3-4px 8px and line-height 1.4-1.5",
+    "depth": "sparing and hard: one or two 1px inner shadows on the input field, a flat vertical gradient on the button, otherwise 1px rules do the separating - nothing grades softly",
+    "color": "polychrome, but the color encodes taxonomy: a chain of equal-rank, numbered category colors as a 3px bar; beside it exactly two meaning-bearing colors (link, visited) and one red as an attention mark",
+    "type": "a single proportional gothic/grotesque at 12-14px in two weights, plus a second proportional family (Verdana) for numbers - no monospace, no tabular figures",
+    "motion": "60-150ms, exclusively color and area changes on hover; no movement, no scaling, no fading in of content",
+    "texture": "none; the only surface structure is the gray #f5f5f5 ground, the 1px borders and the dotted row separators"
+  },
+  "palette": [
+    "#f5f5f5",
+    "#333333",
+    "#0867bf",
+    "#001789",
+    "#f60",
+    "#009899"
+  ],
+  "examples": [
+    {
+      "name": "kakaku.com",
+      "what": "The reference case. common.css carries .l-color-1 through .l-color-27 as a complete category chain (#001789 applications, #f60 household, #009899 cameras, #670099 broadband, #393 books, #c36 watches, #d20000 outlet), each as border-top:3px solid on the box; .l-wrap-regular is 1035px wide, body runs at 1.3em on a 62.5% root, so 13px, in Meiryo/Hiragino; links #0867bf, visited #8a3683, row hover #e9f3fd; numbers in Verdana; search button 82x34px as a sprite with states at 0/-40/-80px; home.css has 5 box-shadows, 4 gradients and 27 transitions, but zero monospace"
+    },
+    {
+      "name": "tabelog.com",
+      "what": "Restaurant directory, 1253 <a> elements on the home page. top.css is 118 KB and contains 22 box-shadows and 36 transitions - the proof that depth and motion are not zero in this style, only hard and scarce; radii spread over twelve times 3px, eight times 4px, five times 2px, fixed grid widths 1120/1260/1540px"
+    },
+    {
+      "name": "nikkansports.com",
+      "what": "Sports paper, 369 <a> on the home page. The section heading is a full-bleed color tile: .text-heading{background:#0075c2;color:#fff;font-size:14px;width:148px;height:30px;line-height:30px} - the same idea as the 3px bar, only inverted; base type 14px (87 occurrences), text #333 in Hiragino/Meiryo, the new-item mark a plain 11px word in #e60012 instead of an icon"
+    },
+    {
+      "name": "jalan.net",
+      "what": "Travel portal, 245 <a>. The most reduced representative: global.css contains twelve times width:950px, not a single transition, no box-shadow and no border-radius; topcss120104.css runs 57x font-size:12px. Shows that the density carries even without any depth and any motion - shadows and motion are permitted in the style, but not constitutive"
+    },
+    {
+      "name": "hao123.com and sina.com.cn",
+      "what": "The cross-check outside Japan: hao123 with 430 <a>, 82x font-size:12px, 71x 14px and seventeen times width:1190px; sina.com.cn with 1039 <a> on a 1000px fixed column. Same parameters, different country - the style is bound to the portal business model, not to a region"
+    },
+    {
+      "name": "Yahoo! Japan and Yahoo.com, June 2004 (Internet Archive)",
+      "what": "The historical evidence against the regional thesis: 230 versus 239 <a>, 65 versus 71 nested <table>, on Yahoo! Japan eighteen times width=\"675\" as a fixed column. Two continents, one layout - the portal era was global, only its end was not"
+    }
+  ],
+  "strengths": [
+    "Separates two quantities that are otherwise glued together: maximum density need not be dark, monospaced and semantically colored - light, proportional and taxonomy-colored is just as dense",
+    "Color as a category index scales to any number of equal-rank sections without using up a brand or status color - a problem single-accent systems fail at regularly",
+    "Technically the cheapest method in the whole catalog: 1px borders, one 3px bar per box, two type sizes, no illustration, no iconography, no animation",
+    "Extremely robust against growing content - adding a section means appending a color to the chain and a box to the grid, with no renegotiation of the layout",
+    "Honest in its navigation: everything is visible and clickable instead of hidden behind menus, accordions and search fields - for directories that is measurably faster than any tidier alternative"
+  ],
+  "risks": [
+    "The strongest objection: the style is unusable without a portal business model. '200-1250 text links on the home page' is a quantity of content, not a design decision - anyone lacking the content builds an empty directory and the style tips into costume at once",
+    "The authentic fixed width of 950-1220px is lost in any constrained frame; this demo is reproportioned from kakaku's 1035px down to 780px (175/330/205 at a 12px gutter). The density survives, the fixed width is an excuse",
+    "The style has no answer to mobile. Every living representative solves that with a completely separate interface at s.kakaku.com or sp.tabelog.com - two interfaces, double maintenance",
+    "It is dated and it is read as dated. Choosing it means choosing the look of 2004 along with it - which can signal competence for a directory and neglect for a product",
+    "Without a real taxonomy the color chain falls apart into arbitrariness: ten randomly rolled hues with no assigned section do not look like an index, they look like a bug",
+    "The category colors are not distinguishable from one another for every user - #393 and #d68011, or #001789 and #670099, collapse under color vision deficiency; the color may therefore never be the only cue to a category"
+  ],
+  "a11y": "The good part: #333 on #fff comes to 12.6:1 and on #f5f5f5 to 11.6:1, the link color #0867bf to 5.6:1 and the visited color #8a3683 to 7.2:1 - all three pass 1.4.3 even at 12px. The bad part is structural and has to be named: #0867bf against the surrounding body text #333 reaches only 2.25:1 and so misses the 3:1 of 1.4.1 for links identified by color alone. The models patch that with a:hover{text-decoration:underline} - which is the permitted technique for hover and focus only, not for the resting state; in production that calls for either a permanent underline in body text or a darker link color. In this demo links stand almost throughout alone in their row or cell, where the rule does not bite. The category colors are never the sole carrier of information: the 3px bar always sits above a spelled-out box title, the 8px color chip always beside the category name and beside its spelled-out chain number, and the 7px stripe at the head of the page, which shows the complete chain in 27 links, itself carries no information that is not in the text next to it - which is necessary, because light chain links such as #fc3 or #cdcc00 fall below 2:1 against white and clearly miss 1.4.11 as a sole indicator. State is on principle never encoded by color in this style: 'Active' and 'Paused' are spelled-out words in a neutral frame and differ by weight, not by hue. Target size stays unsolved: rows 25-27px high fall short of 2.5.8 (24x24px is just barely met, 44px clearly is not), and for touch the style is simply unsuitable without its own, markedly airier variant.",
+  "longevity": "The style has survived more than twenty years, but not as a fashion - as a function of a business model: as long as a home page has to be a table of contents, it stays right, and kakaku.com runs it practically unchanged in 2026. Its end is therefore no change of taste but a structural change - once search and recommendation replace navigation entirely, the job disappears and the form with it, as happened in the West from 2005 on. Period-bound are the fixed width and the sprite buttons; the color taxonomy, the 1px borders and the 13px row are not.",
+  "scores": {
+    "longevity": 4,
+    "recognition": 4,
+    "effort": 3,
+    "density": 5
+  },
+  "platforms": {
+    "web": "Good, but only for directories, catalogs, archives and admin overviews - for marketing, onboarding or product pages the style is wrong. Trivial to build with Tailwind, the category chain is a handful of tokens.",
+    "mobile": "No. A 12-13px base, 25px rows and a fixed column of 950-1220px cannot be rendered on Compose and SwiftUI; every representative therefore operates a separate mobile interface instead of a breakpoint.",
+    "desktop": "Very good - a Tauri window with a fixed minimum width is exactly the stage this style was built for, and the missing responsiveness is no shortcoming there."
+  },
+  "verdict": "As a brand base for a portfolio of small apps: a clear no. The style presupposes a quantity of content and a taxonomy that a solo developer does not have, and it has no mobile answer - Compose and SwiftUI cannot carry 13px rows and 25px target sizes, and the models solve that only with a second, completely separate interface. What makes this entry valuable anyway is one transferable decision: color as a category index instead of as a brand or status color. Anyone running several tools under one roof gains an ordering device that no single-accent system delivers - each app gets its number in the chain, the 3px bar carries it through every window, and the brand stays chromatically unspent. As a whole the style pays off for exactly one screen at most, namely a real index of everything you have built, ideally in a Tauri window. As evidence that density and darkness are two different parameters, it pays off in every case.",
+  "combinesWith": [
+    "data-dense",
+    "swiss",
+    "editorial-print"
+  ],
+  "tip": "Build the category chain first and in full, before you draw the first box: a numbered list of twelve to thirty colors, each firmly assigned to one section, none of them reused in the brand, in a state or in a button. Exactly that discipline is the style - the moment one of the colors starts to mean 'success', 'warning' or 'our color', the whole system collapses, because the viewer then looks for a meaning in every remaining hue as well. And use the color only as a 3px bar, a 7px header stripe or an 8px chip, never as an area: the chain has to be able to sit in the field of view ten times at once without the page turning gaudy.",
+  "googleFonts": [
+    "Noto Sans JP"
+  ]
+}

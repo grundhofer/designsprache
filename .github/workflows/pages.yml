@@ -41,12 +41,18 @@ jobs:
           # Link-Vorschauen brauchen eine absolute Bild-URL.
           grep -q 'og:image" content="https://' docs/de/index.html || {
             echo "og:image fehlt oder ist relativ"; exit 1; }
+          # Sollwerte aus dem Generator ableiten, nicht hartkodieren.
+          N=$(python3 -c 'import build; print(build.N_ENTRIES)')
+          F=$(python3 -c 'import build; print(build.N_FAMILIES)')
+          echo "Erwartet: $N Eintraege, $F Familien"
           for lang in de en; do
             n=$(grep -o 'class="k-plate"' "docs/$lang/index.html" | wc -l)
-            test "$n" -eq 27 || { echo "$lang: $n statt 27 Eintraege"; exit 1; }
-            # 1 Reset im <head> + 1 Seiten-CSS + 27 Demos
+            test "$n" -eq "$N" || { echo "$lang: $n statt $N Eintraege"; exit 1; }
+            # 1 Reset im <head> + 1 Seiten-CSS + je eine Demo
             s=$(grep -c '<style>' "docs/$lang/index.html")
-            test "$s" -eq 29 || { echo "$lang: $s statt 29 style-Bloecke"; exit 1; }
+            test "$s" -eq "$((N + 2))" || { echo "$lang: $s statt $((N + 2)) style-Bloecke"; exit 1; }
+            f=$(grep -o 'class="fam-head"' "docs/$lang/index.html" | wc -l)
+            test "$f" -eq "$F" || { echo "$lang: $f statt $F Familien"; exit 1; }
           done
           # Kein Restdeutsch in der englischen Fassung (Eigennamen ausgenommen).
           if grep -qE '>[^<]*\b(und|nicht|Oberfläche|Einträge|Haltbarkeit)\b' docs/en/index.html; then

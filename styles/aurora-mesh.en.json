@@ -2,7 +2,7 @@
   "slug": "aurora-mesh",
   "name": "Aurora / Mesh Gradient",
   "aka": ["Aurora UI", "Mesh Gradient", "AI Startup Look", "Glow Gradient", "Stripe Gradient"],
-  "family": "Expression & Nature",
+  "family": "Expression & Gesture",
   "era": "2018-today (peak from 2023)",
   "origin": "The origin lies with Stripe, which from about 2018 put animated, multicolored gradient fields on its home pages - technically demanding, built as a WebGL mesh and masked precisely into the brand. Apple normalized the imagery in 2020 with the Big Sur and M1 keynote gradients, and in March 2021 Michal Malewicz gave the whole thing a name with the article 'Aurora UI - new visual trend for 2021', after which the pattern tipped into the mainstream through Dribbble and Behance. The decisive simplification came out of CSS: several stacked radial gradients plus one large blur() deliver the same impression without shaders, in fifteen lines. The problem it solved was emptiness - minimal dark landing pages with no imagery looked dead, and the aurora field gave them depth and mood without anyone having to shoot a photograph.",
   "idea": "A dark, near-black ground carries two to five large, heavily blurred color fields that read like light behind frosted glass; on top sits deliberately minimal typography and a fine system of hairline rules. The mood comes entirely from the background, not from the components.",
