@@ -47,7 +47,7 @@
     "The primary-color triad is heavily occupied (IKEA, Google, children's toys) and tips quickly into pastiche or the infantile",
     "Yellow is unusable as a text color and works as a fill only with black type on it",
     "Without real compositional work you get 'colored boxes with fat borders' instead of Bauhaus – the asymmetry has to be built, not decorated",
-    "Lowercase setting is a strong stance that can read as sloppiness in business contexts"
+    "Lowercase setting is a strong stance that can read as sloppiness in business contexts, particularly German-speaking ones, where nouns are normally capitalized"
   ],
   "a11y": "Black on the paper tone delivers 16.7:1, black on yellow #F5C518 about 11.6:1 – both unproblematic. The critical one is Bauhaus red: pure white on #E1140A reaches 4.9:1 and is therefore just compliant for 14px text, while the warmer paper tone on the same red fails at 4.3:1 – so only #FFFFFF may sit on red, never the paper tone and never a light weight. Yellow on white lands at 1.6:1 and is completely unusable for text and thin lines. Since the style encodes meaning through color and shape, every status must additionally carry a word; the primary shapes are a good second channel for color-blind users but do not replace text labels.",
   "longevity": "As a brand and illustration layer it is practically imperishable – the formal language has been legible for over a hundred years. As a complete product UI it ages faster, because after a few years the volume of the primary colors is perceived as a costume rather than a system.",
