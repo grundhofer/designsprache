@@ -101,5 +101,13 @@
     "Anton",
     "Archivo",
     "Space Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 5, "mobile": 1, "desktop": 2 },
+    "fits": ["marketing", "creative"],
+    "tone": ["loud", "expressive", "nostalgic"],
+    "signature": "Size jumps up to 1:19, outline type with no fill, and a distorted echo behind the headline."
+  }
 }

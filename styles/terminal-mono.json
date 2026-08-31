@@ -99,5 +99,25 @@
   "tip": "Zwinge dich auf eine einzige Zellhöhe und rechne jede Höhe als Vielfaches davon - Buttons, Inputs, Zeilen, Statusleiste. Der Stil wirkt nicht durch die Schrift überzeugend, sondern dadurch, dass die Grundlinien über die ganze Seite hinweg exakt aufeinander liegen; sobald ein Element 34px statt 40px hoch ist, sieht es nach Kostüm aus statt nach Terminal.",
   "googleFonts": [
     "Geist Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 4,
+    "platform": {
+      "web": 4,
+      "mobile": 2,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "data",
+      "internal"
+    ],
+    "tone": [
+      "technical",
+      "austere",
+      "nostalgic"
+    ],
+    "signature": "Punkt-Leader und Box-Drawing-Zeichen ziehen die Trennung, dazu ein blinkender Blockcursor."
+  }
 }

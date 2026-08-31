@@ -102,5 +102,13 @@
     "terminal-mono"
   ],
   "tip": "Set exactly one rule the factory state does not provide, and no others: a max-width around the text block (about 70 characters). In practice the style almost always fails on 200-character lines on a 32-inch monitor, not on a lack of beauty. Anyone who instead starts patching up spacing, grays and hover states ends up two hours later with a badly designed ordinary layout - and has lost the style's one strength, its refusal to compromise, along the way.",
-  "googleFonts": []
+  "googleFonts": [],
+  "finder": {
+    "mode": "light",
+    "a11y": 5,
+    "platform": { "web": 5, "mobile": 1, "desktop": 1 },
+    "fits": ["content", "dev-tool", "internal"],
+    "tone": ["austere", "technical", "nostalgic"],
+    "signature": "Times, blue underlined #0000EE links and factory-state system buttons - not a single font request."
+  }
 }

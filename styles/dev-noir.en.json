@@ -99,5 +99,25 @@
   "googleFonts": [
     "Inter",
     "Geist Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 3,
+    "platform": {
+      "web": 5,
+      "mobile": 2,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "data",
+      "internal"
+    ],
+    "tone": [
+      "precise",
+      "technical",
+      "calm"
+    ],
+    "signature": "Visible keyboard-shortcut badges and monospace metadata in every row; the mouse is optional."
+  }
 }

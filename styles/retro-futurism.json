@@ -101,5 +101,25 @@
   "googleFonts": [
     "Michroma",
     "Share Tech Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 4,
+    "platform": {
+      "web": 4,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "data",
+      "creative"
+    ],
+    "tone": [
+      "technical",
+      "nostalgic",
+      "precise"
+    ],
+    "signature": "Ecken werden um 20px angefast statt gerundet -- nur zwei, diagonal gegenüber; Rahmen sind Klammern."
+  }
 }

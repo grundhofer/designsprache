@@ -65,5 +65,13 @@
   "verdict": "Yes – but as a structural layer, not as a complete brand. Swiss delivers exactly what a solo developer with many small apps needs: a rule set for grid, spacing scale and type hierarchy that reproduces identically in Tailwind, Compose and SwiftUI and will not be embarrassing in five years. The weakness is recognizability: pure Swiss is the default aesthetic of good software today and carries no brand of its own. It therefore needs exactly one idiosyncratic carrier on top – an unusual signal color instead of red, a grotesque with more character, or a consistently visible grid element – otherwise you build 27 clean but faceless apps.",
   "combinesWith": ["de-stijl", "bauhaus", "dev-noir", "neo-brutalism"],
   "tip": "Make the grid visible once instead of merely obeying it: a hairline on a column axis, a legend row above the list, an empty margin column that stays consistently empty. The difference between 'Swiss' and 'a white page' is that the viewer can feel the construction – and that takes the nerve to leave 25% of the surface unused.",
-  "googleFonts": ["Inter"]
+  "googleFonts": ["Inter"],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": { "web": 5, "mobile": 4, "desktop": 5 },
+    "fits": ["data", "content", "internal", "dev-tool"],
+    "tone": ["precise", "calm", "austere"],
+    "signature": "An empty margin column that stays empty, and exactly one signal color on under five percent of the surface."
+  }
 }

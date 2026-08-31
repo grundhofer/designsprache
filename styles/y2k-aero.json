@@ -105,5 +105,24 @@
   "googleFonts": [
     "Istok Web",
     "Audiowide"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": {
+      "web": 4,
+      "mobile": 2,
+      "desktop": 4
+    },
+    "fits": [
+      "marketing",
+      "consumer"
+    ],
+    "tone": [
+      "warm",
+      "playful",
+      "nostalgic"
+    ],
+    "signature": "Weißer Glanzverlauf über der oberen Hälfte jedes Bedienelements, dazu 1px weiße Innenkante."
+  }
 }

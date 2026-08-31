@@ -32,6 +32,11 @@ jobs:
       - name: Build
         run: python3 build.py
 
+      # Zwei Eintraege duerfen nicht dieselbe Farbe unter anderem Hex fuehren.
+      # Kalibrierung und Begruendung stehen im Kopf des Skripts.
+      - name: Palettendubletten
+        run: python3 tools/palette-check.py
+
       - name: Sanity check
         run: |
           set -e

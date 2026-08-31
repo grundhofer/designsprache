@@ -90,6 +90,30 @@ you can mix styles instead of copying them.
 
 ---
 
+## Der Stil-Finder / The style finder
+
+Auf der Katalogseite führt der Knopf **Stil finden** zu neun Fragen — was du baust, wie es wirken
+soll, hell oder dunkel, Dichte, Haltbarkeit, Auffälligkeit, Aufwand, Barrierefreiheit,
+Plattformen. Daraus entsteht eine Empfehlung der fünf am besten passenden Einträge, und **jeder
+Treffer wird begründet**: „Ausdrücklich für Entwicklerwerkzeug geeignet", „Haltbarkeit 5 von 5",
+„Ist hell, du wolltest dunkel". Die Bewertung liest ausschließlich Merkmale aus den
+Faktenblättern, nicht aus Geschmack.
+
+Zu jeder Empfehlung gehört **Als Prompt kopieren**. Der Knopf legt eine vollständige
+Stilanweisung für einen KI-Agenten in die Zwischenablage — Kernidee, die sieben harten Parameter
+mit konkreten Werten, Palette, Schriften, alle Regeln aus `markers`, die bekannten Fehlerquellen
+aus `risks`, die Barrierefreiheits-Hinweise und den Praxistipp. Das ist genau das Material, das
+einen Agenten davon abhält, wieder generisches Standard-UI zu bauen. Wo die Zwischenablage
+gesperrt ist, wird der Text stattdessen eingeblendet und markiert.
+
+The **Find a style** button on the catalog page asks nine questions and recommends the five
+closest entries, justifying every match from the fact sheets' own attributes. **Copy as prompt**
+puts a complete style instruction for an AI agent on the clipboard: core idea, the seven hard
+parameters with concrete values, palette, type, every rule from `markers`, the known failure
+modes from `risks`, accessibility notes and the practical tip.
+
+---
+
 ## Aufbau / How it works
 
 Kein Framework, kein Build-Tool-Zoo. Ein Python-Skript ohne Abhängigkeiten baut aus den
@@ -107,6 +131,7 @@ styles/
   … 31 Stile × 4 Dateien
 landing.html        zweisprachige Eingangsseite / bilingual entry page
 build.py            Generator
+tools/              Prüfwerkzeuge / check tools
 docs/               erzeugt / generated — nicht eingecheckt / not committed
 ```
 
@@ -136,6 +161,22 @@ python3 build.py --og
 jede Demo: **jeder CSS-Selektor beginnt mit `.style-<slug>`**, `@keyframes`-Namen sind mit
 `<slug>-` präfigiert, und es gibt kein `:root`, kein `body`, keinen nackten Element-Selektor.
 `build.py` prüft das bei jedem Lauf und bricht bei Verstoß ab.
+
+### Palettendubletten
+
+`tools/palette-check.py` findet Stilpaare, die zwei oder mehr praktisch identische bunte Farben
+führen — gemessen in OKLab-ΔE, Neutrale ausgenommen. Der Anlass war ein echter Befund: zwei
+Einträge führten `#FF3B7F` und `#FF3D81` (ΔE 0,3) und lasen sich dadurch als ein Stil. Die
+Prüfung läuft in der CI. Ihre Kalibrierung ist jederzeit nachvollziehbar:
+
+`tools/palette-check.py` finds style pairs carrying two or more practically identical chromatic
+colors, measured in OKLab ΔE, neutrals excluded. It runs in CI. Its calibration is reproducible:
+
+```sh
+python3 tools/palette-check.py --at <Stand vor der Reparatur>   # Exit 1, findet die Dublette
+python3 tools/palette-check.py                                  # Exit 0
+python3 tools/palette-check.py --report                         # volle Rangliste
+```
 
 31 stylesheets share one page. So they cannot destroy each other, every demo obeys one rule:
 **every CSS selector starts with `.style-<slug>`**, `@keyframes` names are prefixed with

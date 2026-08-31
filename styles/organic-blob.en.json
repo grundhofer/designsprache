@@ -64,5 +64,17 @@
   "verdict": "As the base for a cross-platform house brand this is the wrong choice. The style carries no information density, is reproducible in Compose and SwiftUI only with considerable extra effort - exactly what a solo developer with many small apps cannot afford - and it is firmly placed in 2019-2021. It makes sense as a thematic sub-brand for exactly one app: a journaling, mindfulness or habit tool like 'Balance Ally' may look like this, the project tool next to it may not. If anything is to move up into the parent brand, let it be the color strategy (cream white instead of pure white, earth tones instead of digital blue) and the soft serif - not the blob shape.",
   "combinesWith": ["claymorphism", "warm-editorial", "aurora-mesh", "flat"],
   "tip": "One single blob per screen, everything else stays aligned. The style convinces precisely when the organic shape is the exception that comments on a strict grid - not when it replaces the grid. And pick the text ink two steps darker than the pastel palette 'wants': almost every cheap blob page fails on contrast, not on shape.",
-  "googleFonts": ["Fraunces", "Nunito"]
+  "googleFonts": ["Fraunces", "Nunito"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 2
+    },
+    "fits": ["consumer", "marketing"],
+    "tone": ["warm", "calm", "playful"],
+    "signature": "Shadows are never black but colour-tinted; the ground is cream white #FAF6EF, never pure white."
+  }
 }

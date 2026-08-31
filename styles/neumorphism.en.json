@@ -64,5 +64,13 @@
   "verdict": "As the basis of a brand of your own: a clear no. Not because it is ugly, but because it structurally violates three of the client's requirements: it has no dark theme, no second elevation level and no WCAG-compliant control edge -- and since the European Accessibility Act the last of those is no longer a matter of taste. For a brand spanning web, Tauri and Compose that means three separate redesigns instead of one token set. What can be carried over is exactly one detail: the inset inversion as an active state on a single component (toggle, segmented control) -- a cheap, tactile carrier of recognizability that works without the rest of the style.",
   "combinesWith": ["claymorphism", "skeuomorphism", "minimalism", "organic-blob"],
   "tip": "Never pick a blur larger than the distance (9px/18px, not 9px/40px) and keep the base color at roughly 88-92% lightness with a slight blue cast -- pure gray looks dead, saturated gray looks like a toy. And: the only way to make the style usable is a second, style-breaking signal channel per state (color, icon or text), because the relief alone does not carry the state.",
-  "googleFonts": ["Nunito"]
+  "googleFonts": ["Nunito"],
+  "finder": {
+    "mode": "light",
+    "a11y": 1,
+    "platform": {"web": 3, "mobile": 1, "desktop": 2},
+    "fits": ["consumer", "creative"],
+    "tone": ["calm", "nostalgic"],
+    "signature": "Not a single border value in the whole UI; the pressed state is a plain inversion of the two shadows."
+  }
 }

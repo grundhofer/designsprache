@@ -65,5 +65,13 @@
   "verdict": "Ja – aber als Struktur-Layer, nicht als komplette Marke. Swiss liefert genau das, was ein Solo-Entwickler mit vielen kleinen Apps braucht: ein Regelwerk für Raster, Spacing-Skala und Typo-Hierarchie, das in Tailwind, Compose und SwiftUI identisch reproduzierbar ist und in fünf Jahren nicht peinlich ist. Die Schwäche ist die Wiedererkennung: reines Swiss ist heute die Default-Ästhetik guter Software und trägt allein keine Eigenmarke. Es braucht deshalb genau einen eigenwilligen Träger obendrauf – eine ungewöhnliche Signalfarbe statt Rot, eine charaktervollere Grotesk oder ein konsequent sichtbares Rasterelement – sonst baut man 27 saubere, aber gesichtslose Apps.",
   "combinesWith": ["de-stijl", "bauhaus", "dev-noir", "neo-brutalism"],
   "tip": "Mach das Raster einmal sichtbar, statt es nur zu befolgen: eine Hairline auf einer Spaltenachse, eine Legendenzeile über der Liste, eine leere Randspalte, die konsequent leer bleibt. Der Unterschied zwischen 'Swiss' und 'weiße Seite' ist, dass der Betrachter die Konstruktion spürt – und dazu gehört der Mut, 25% der Fläche nicht zu benutzen.",
-  "googleFonts": ["Inter"]
+  "googleFonts": ["Inter"],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": { "web": 5, "mobile": 4, "desktop": 5 },
+    "fits": ["data", "content", "internal", "dev-tool"],
+    "tone": ["precise", "calm", "austere"],
+    "signature": "Eine leere Randspalte, die leer bleibt, und genau eine Signalfarbe auf unter fünf Prozent der Fläche."
+  }
 }

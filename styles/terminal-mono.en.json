@@ -99,5 +99,25 @@
   "tip": "Force yourself onto a single cell height and compute every height as a multiple of it - buttons, inputs, rows, status bar. The style does not convince through the typeface but through baselines that line up exactly across the whole page; the moment one element is 34px tall instead of 40px, it looks like costume rather than terminal.",
   "googleFonts": [
     "Geist Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 4,
+    "platform": {
+      "web": 4,
+      "mobile": 2,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "data",
+      "internal"
+    ],
+    "tone": [
+      "technical",
+      "austere",
+      "nostalgic"
+    ],
+    "signature": "Dot leaders and box-drawing characters do the dividing, plus a blinking block cursor."
+  }
 }

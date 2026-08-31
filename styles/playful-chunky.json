@@ -101,5 +101,13 @@
   "googleFonts": [
     "Fredoka",
     "Nunito"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 5, "desktop": 2 },
+    "fits": ["consumer", "civic"],
+    "tone": ["playful", "warm"],
+    "signature": "Rahmen immer 2px, nie 1px; der Sockel ist dieselbe Farbe 15-20% dunkler, niemals Grau."
+  }
 }

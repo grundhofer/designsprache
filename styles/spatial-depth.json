@@ -100,5 +100,23 @@
   "tip": "Setze die Deckkraft der Füllung, nicht die Blur-Stärke, als Lesbarkeitsgarantie - und prüfe jeden Textwert gegen den HELLSTEN Punkt des Hintergrunds, nicht gegen den Durchschnitt. Glas wird billig, sobald es über einer flachen Fläche liegt: der Stil braucht zwingend einen Hintergrund mit echtem Helligkeitsgefälle (hier drei überlagerte Radial-Gradients plus zwei unscharfe Lichtkugeln), sonst ist die ganze Materialarbeit unsichtbar und man hätte auch ein Grau nehmen können.",
   "googleFonts": [
     "Inter"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {
+      "web": 3,
+      "mobile": 5,
+      "desktop": 3
+    },
+    "fits": [
+      "consumer",
+      "marketing"
+    ],
+    "tone": [
+      "calm",
+      "formal"
+    ],
+    "signature": "Ornament: eine schwebende Leiste, die die Fensterunterkante überlappt, plus 44px-Fensterradius."
+  }
 }

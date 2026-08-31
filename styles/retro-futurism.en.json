@@ -101,5 +101,25 @@
   "googleFonts": [
     "Michroma",
     "Share Tech Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 4,
+    "platform": {
+      "web": 4,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "data",
+      "creative"
+    ],
+    "tone": [
+      "technical",
+      "nostalgic",
+      "precise"
+    ],
+    "signature": "Corners are chamfered by 20px instead of rounded -- only two, diagonally opposite; frames are brackets."
+  }
 }

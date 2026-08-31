@@ -67,5 +67,13 @@
   "verdict": "As a consistent base for the house brand, a clear no. The style contradicts exactly the requirement that matters here: a solo developer with many small apps needs a system that spits out new screens from tokens, and maximalism is by definition the opposite - every view is handwork, and Compose and SwiftUI charge for that effort twice. It makes sense as a clearly separated marketing layer: landing page, release announcement, changelog header, merch - wherever recognition is worth more than efficiency and the page is left again after thirty seconds. If something is to migrate into the product UI, then exactly one element: the hard offset shadow or the sticker status - a signature, not a style.",
   "combinesWith": ["neo-brutalism", "memphis", "swiss-punk", "y2k-aero"],
   "tip": "An invisible, strict grid belongs underneath the chaos - that is precisely the difference between Businessweek and word art. In practice: build the layout completely in black and white and without rotation first, until the hierarchy holds, then lay on rotations (at most +/-2.5deg), patterns and stickers as the last coat. And keep the rotation values odd - 1.4deg and 2.2deg read as handmade, 5deg and 10deg read as a template.",
-  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"]
+  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 5, "mobile": 1, "desktop": 2 },
+    "fits": ["marketing", "creative"],
+    "tone": ["loud", "expressive", "playful"],
+    "signature": "The same shape printed twice, 2-3px out of register in multiply - the third colour is in no palette."
+  }
 }

@@ -64,5 +64,13 @@
   "verdict": "Als durchgehende Produktsprache nein, als Signatur-Layout ein überlegenswertes Ja. Für einen Solo-Entwickler ist die Versuchung groß, weil De Stijl mit reinem CSS Grid und ohne einen einzigen Asset sofort unverwechselbar aussieht – aber genau diese Unverwechselbarkeit gehört Mondrian und nicht der eigenen Marke, und über 27 Apps hinweg wirkt sie schnell wie ein Kostüm. Dazu kommt der praktische Bruch: Eine handkomponierte asymmetrische Fläche verträgt keine dynamischen Listen, keine Einstellungsdialoge und keinen Android-Screen. Sinnvoll ist der Stil als eine wiederkehrende Sonderfläche – Startbildschirm, Launcher, App-Übersicht, Marketing-Hero – über einem ruhigen Swiss-Raster fürs eigentliche UI.",
   "combinesWith": ["swiss", "bauhaus", "neo-brutalism", "flat"],
   "tip": "Staffele die schwarzen Balken bewusst in mindestens drei verschiedenen Stärken und lass keine zwei Felder gleich groß werden. Ein Bento-Grid mit gleichmäßigem Gap und gleich großen Kacheln ist kein De Stijl, sondern ein Raster – der ganze Stil lebt davon, dass das Auge die Ungleichheit als Gleichgewicht auflöst. Und halte den Farbanteil unter einem Viertel der Fläche: Weiß ist die Hauptfarbe, nicht der Rest.",
-  "googleFonts": ["Archivo"]
+  "googleFonts": ["Archivo"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": { "web": 5, "mobile": 1, "desktop": 3 },
+    "fits": ["marketing", "creative"],
+    "tone": ["precise", "austere", "formal"],
+    "signature": "Farbfelder sitzen an den Rändern, nie in der Mitte, und keine zwei Felder sind gleich groß."
+  }
 }

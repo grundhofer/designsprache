@@ -101,5 +101,26 @@
   "tip": "Setze genau eine Schattenstufe und genau einen Radiuswert für das ganze Produkt und halte dich daran - der Unterschied zwischen sauberem Flat 2.0 und billigem Flat ist fast immer, dass jemand eine zweite und dritte Schattenstufe eingeführt hat. Und gib jedem interaktiven Element neben der Farbe einen zweiten Marker (Fläche, 1px-Border oder Icon), sonst läuft man exakt in den Affordanz-Kollaps von 2013.",
   "googleFonts": [
     "Work Sans"
-  ]
+  ],
+  "finder": {
+    "mode": "both",
+    "a11y": 3,
+    "platform": {
+      "web": 5,
+      "mobile": 5,
+      "desktop": 5
+    },
+    "fits": [
+      "consumer",
+      "data",
+      "internal",
+      "civic"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "technical"
+    ],
+    "signature": "Null Verläufe, genau eine Schattenstufe -- jede Fläche ist ein einziger Volltonwert."
+  }
 }

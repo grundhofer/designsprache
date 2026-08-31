@@ -65,5 +65,13 @@
   "verdict": "Als Marken-Basis: nein -- als Bauteil: ja, an genau zwei Stellen. Der Stil ist ein Plattform-Material, kein Markenzeichen; wer ihn zur Grundfläche macht, sieht auf iOS wie eine mittelmäßige System-Kopie und auf Android wie ein Fremdkörper aus, und der Wiedererkennungswert gehört nicht ihm, sondern Apple. Für einen Solo-Entwickler kommt hinzu, dass er als einziger Stil in dieser Familie echte Laufzeitkosten hat und in Tauri je nach WebView unterschiedlich rendert -- also drei Plattformen, drei Verhaltensweisen. Sinnvoll bleibt er dort, wo er ein Problem löst statt Stimmung zu machen: Command-Palette und Modal-Overlay, jeweils mit opakem Fallback.",
   "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
   "tip": "Die Glaubwürdigkeit entsteht nicht am Blur, sondern an der Kante und am Tint. Erstens: immer eine helle 1px-Innenkante oben und eine schwächere unten setzen (inset 0 1px 0 rgba(255,255,255,.55)) -- ohne sie sieht Glas aus wie eine milchige Folie. Zweitens: unter den weißen Film gehört ein dunkler Tint von 25-35%, denn nur er macht den Textkontrast vom Untergrund unabhängig. Und saturate(180%) nie weglassen: die Übersättigung ist das, was Blur von Glas unterscheidet.",
-  "googleFonts": ["Inter"]
+  "googleFonts": ["Inter"],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {"web": 3, "mobile": 3, "desktop": 2},
+    "fits": ["marketing", "consumer", "creative"],
+    "tone": ["expressive", "loud", "technical"],
+    "signature": "Eine 1px helle Innenkante oben plus saturate(180%) -- ohne die Übersättigung bleibt nur Milchglas."
+  }
 }

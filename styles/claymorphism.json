@@ -65,5 +65,13 @@
   "verdict": "Als Marken-Basis: nein, aber der interessanteste Kandidat dieser Familie. Er ist der einzige der drei, der barrierefrei umsetzbar ist und dessen Tiefenlogik sich sauber in Tokens gießen lässt -- zwei Schattenwerte, ein Radius, sechs Flächenfarben, fertig, und das identisch in Tailwind, Compose und SwiftUI. Was ihn disqualifiziert, ist die Tonlage und die Dichte: eine Werkzeugsammlung eines Solo-Entwicklers, die aussieht wie eine Lern-App für Achtjährige, verliert genau die Zielgruppe, die sie erreichen will, und ein Tauri-Fenster mit 46px-Radien und 20px-Paddings zeigt halb so viel wie nötig. Brauchbar bleibt der Squish -- ein einziger federnder :active-Zustand am Primärbutton, ohne den restlichen Stil.",
   "combinesWith": ["organic-blob", "memphis", "neumorphism", "material-expressive"],
   "tip": "Die Schattenfarbe entscheidet alles: nie rgba(0,0,0,x), sondern immer eine dunkle, gesättigte Variante des Grundtons (hier rgba(84,56,172,.4) auf Lavendel). Dazu die zwei inset-Werte als Paar setzen -- helles Highlight oben, farbiger Schatten unten rechts -- und den Außenschatten mit negativem spread (-18px) weit nach unten versetzen. Ohne das negative Spread wird aus Knetmasse ein Bootstrap-Card-Shadow.",
-  "googleFonts": ["Fredoka", "Nunito"]
+  "googleFonts": ["Fredoka", "Nunito"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {"web": 3, "mobile": 4, "desktop": 1},
+    "fits": ["consumer", "marketing"],
+    "tone": ["warm", "playful"],
+    "signature": "Schatten nie schwarz, sondern ein dunkler Ton der Grundfarbe, weit versetzt mit negativem Spread."
+  }
 }

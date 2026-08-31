@@ -105,5 +105,24 @@
   "googleFonts": [
     "Istok Web",
     "Audiowide"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": {
+      "web": 4,
+      "mobile": 2,
+      "desktop": 4
+    },
+    "fits": [
+      "marketing",
+      "consumer"
+    ],
+    "tone": [
+      "warm",
+      "playful",
+      "nostalgic"
+    ],
+    "signature": "A white gloss gradient over the top half of every control, plus a 1px white inner edge."
+  }
 }

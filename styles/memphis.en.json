@@ -100,5 +100,13 @@
   "googleFonts": [
     "Archivo Black",
     "Poppins"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 3, "desktop": 2 },
+    "fits": ["consumer", "marketing", "creative"],
+    "tone": ["playful", "loud", "warm", "nostalgic"],
+    "signature": "The list stands straight while the decoration beside it tilts; radii mix 0px, 999px and asymmetric."
+  }
 }

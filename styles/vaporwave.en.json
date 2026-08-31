@@ -103,5 +103,24 @@
     "Chakra Petch",
     "Share Tech Mono",
     "Noto Sans JP"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {
+      "web": 5,
+      "mobile": 2,
+      "desktop": 3
+    },
+    "fits": [
+      "creative",
+      "marketing"
+    ],
+    "tone": [
+      "loud",
+      "nostalgic",
+      "expressive"
+    ],
+    "signature": "Depth comes from offsetless glow instead of shadow; magenta and cyan offset by two pixels."
+  }
 }

@@ -102,5 +102,13 @@
     "terminal-mono"
   ],
   "tip": "Setze genau eine Regel, die der Werkszustand nicht liefert, und sonst keine: eine max-width um den Textblock (etwa 70 Zeichen). Der Stil scheitert in der Praxis fast immer an Zeilen mit 200 Zeichen auf einem 32-Zoll-Monitor, nicht an fehlender Schönheit. Wer stattdessen anfängt, Abstände, Grautöne und Hover-Zustände nachzubessern, landet in zwei Stunden bei einem schlecht gestalteten normalen Layout - und hat die einzige Stärke des Stils, seine Kompromisslosigkeit, unterwegs verloren.",
-  "googleFonts": []
+  "googleFonts": [],
+  "finder": {
+    "mode": "light",
+    "a11y": 5,
+    "platform": { "web": 5, "mobile": 1, "desktop": 1 },
+    "fits": ["content", "dev-tool", "internal"],
+    "tone": ["austere", "technical", "nostalgic"],
+    "signature": "Times, blaue unterstrichene Links #0000EE und Systembuttons im Werkszustand - kein einziger Font-Request."
+  }
 }

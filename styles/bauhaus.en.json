@@ -65,5 +65,13 @@
   "verdict": "As a full style no, as a brand and illustration layer a clear yes. For a solo developer with many small apps, Bauhaus is the cheapest available carrier of recognition: three colors, three shapes, one geometric grotesque – that is a complete logo, icon and empty-state system without a single drawn asset, and it reproduces identically across Tailwind, Compose and SwiftUI. A dashboard that runs eight hours a day in red-yellow-blue with 4px borders, by contrast, is exhausting and feels like a costume by the third project. The workable construction is therefore: Bauhaus for app icons, splash, empty states and marketing – with a quiet Swiss grid underneath for the actual UI.",
   "combinesWith": ["swiss", "de-stijl", "neo-brutalism", "memphis"],
   "tip": "Bind every primary shape firmly to one meaning and hold that binding across all apps – circle always state, square always object, triangle always warning. The moment the shapes are merely scattered as decoration, Bauhaus turns into a nursery. And: exactly one diagonal per screen, not three.",
-  "googleFonts": ["Jost"]
+  "googleFonts": ["Jost"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": { "web": 4, "mobile": 2, "desktop": 2 },
+    "fits": ["marketing", "creative"],
+    "tone": ["loud", "precise", "playful"],
+    "signature": "Radius is only 0px or 50%, nothing in between, plus exactly one diagonal per surface."
+  }
 }

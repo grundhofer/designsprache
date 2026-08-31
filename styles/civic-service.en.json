@@ -101,5 +101,24 @@
   "tip": "Build the focus state first of everything, as a single global utility - filled yellow, 4px black bottom edge, a 3px transparent outline underneath, no transition. After that no component can come into being without it, and the style's most expensive mistake is ruled out, namely retrofitting it as a ring at the end. Second piece of advice: leave the visited purple standing. It is the one place where the interface tells the user something it tells them nowhere else - where they have already been - and the reflex to optimize it away is exactly the habit this entry puts on display.",
   "googleFonts": [
     "Public Sans"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 5,
+    "platform": {
+      "web": 5,
+      "mobile": 2,
+      "desktop": 3
+    },
+    "fits": [
+      "civic",
+      "content"
+    ],
+    "tone": [
+      "formal",
+      "austere",
+      "calm"
+    ],
+    "signature": "The yellow focus block with its 4px black bottom edge, and the 2px solid plinth under every button."
+  }
 }

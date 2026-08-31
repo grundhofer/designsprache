@@ -101,5 +101,26 @@
   "tip": "Set exactly one shadow step and exactly one radius value for the whole product and stick to it - the difference between clean Flat 2.0 and cheap flat is almost always that someone introduced a second and a third shadow step. And give every interactive element a second marker besides color (fill, 1px border or icon), or you run straight into the affordance collapse of 2013.",
   "googleFonts": [
     "Work Sans"
-  ]
+  ],
+  "finder": {
+    "mode": "both",
+    "a11y": 3,
+    "platform": {
+      "web": 5,
+      "mobile": 5,
+      "desktop": 5
+    },
+    "fits": [
+      "consumer",
+      "data",
+      "internal",
+      "civic"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "technical"
+    ],
+    "signature": "Zero gradients and exactly one shadow step -- every surface is a single flat colour value."
+  }
 }

@@ -65,5 +65,13 @@
   "verdict": "As a brand basis: no, but the most interesting candidate in this family. It is the only one of the three that can be implemented accessibly and whose depth logic pours cleanly into tokens -- two shadow values, one radius, six surface colors, done, and identical in Tailwind, Compose and SwiftUI. What disqualifies it is the tone and the density: a solo developer's collection of tools that looks like a learning app for eight-year-olds loses precisely the audience it wants to reach, and a Tauri window with 46px radii and 20px padding shows half of what it needs to. What stays usable is the squish -- a single springy :active state on the primary button, without the rest of the style.",
   "combinesWith": ["organic-blob", "memphis", "neumorphism", "material-expressive"],
   "tip": "The shadow color decides everything: never rgba(0,0,0,x), always a dark, saturated variant of the base tone (here rgba(84,56,172,.4) on lavender). Set the two inset values as a pair -- light highlight at the top, tinted shadow at the bottom right -- and push the outer shadow far down with a negative spread (-18px). Without that negative spread the clay turns into a Bootstrap card shadow.",
-  "googleFonts": ["Fredoka", "Nunito"]
+  "googleFonts": ["Fredoka", "Nunito"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {"web": 3, "mobile": 4, "desktop": 1},
+    "fits": ["consumer", "marketing"],
+    "tone": ["warm", "playful"],
+    "signature": "Shadows are never black but a dark tone of the base colour, offset wide with a negative spread."
+  }
 }

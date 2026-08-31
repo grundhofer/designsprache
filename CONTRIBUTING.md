@@ -53,7 +53,7 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 
 #### Die Scoping-Regel
 
-27 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
+31 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
 
 1. Genau **ein** `<style>`-Element, danach genau **ein** `<div class="style-<slug>">`.
 2. **Jeder** CSS-Selektor beginnt mit `.style-<slug>`. Kein `:root`, kein `html`, kein `body`,
@@ -78,6 +78,29 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 - **Ehrlichkeit vor Schönheit**: Wenn ein Stil systematisch Kontrastprobleme erzeugt
   (Neumorphismus, Glassmorphism), setze das so um — und benenne es im Feld `a11y`.
 
+#### Der finder-Block
+
+Jedes Faktenblatt braucht am Ende einen `finder`-Block. Er speist den Stil-Finder und ist
+**sprachneutral** — er steht in `.json` und `.en.json` wortgleich, nur `signature` wird übersetzt.
+
+```json
+"finder": {
+  "mode": "light",
+  "a11y": 4,
+  "platform": { "web": 5, "mobile": 3, "desktop": 4 },
+  "fits": ["content", "marketing"],
+  "tone": ["calm", "warm"],
+  "signature": "Ein Satz, höchstens 110 Zeichen: das eine Merkmal, an dem man ihn erkennt."
+}
+```
+
+`fits` aus: `dev-tool` `data` `content` `consumer` `marketing` `creative` `civic` `internal`.
+`tone` aus: `precise` `calm` `warm` `loud` `playful` `formal` `technical` `nostalgic`
+`expressive` `austere`. Zwei bis vier je Feld — zwei treffende sind besser als vier ungefähre.
+
+Nutze die ganze Skala 1–5. Wenn alles bei 3 und 4 landet, ist die Zahl wertlos. Sieh dir zur
+Orientierung `neumorphism.json` (a11y 1) und `civic-service.json` (a11y 5) an.
+
 #### Das Faktenblatt
 
 Struktur siehe jede bestehende `.json`. Was zählt:
@@ -99,7 +122,8 @@ andere Längen — die Füllzeichen entsprechend nachzählen und anpassen, niema
 ### Prüfen vor dem Pull Request
 
 ```sh
-python3 build.py        # muss ohne Fehler durchlaufen
+python3 build.py                    # muss ohne Fehler durchlaufen
+python3 tools/palette-check.py      # muss ohne Befund durchlaufen
 ```
 
 Dann `docs/de/index.html` und `docs/en/index.html` im Browser öffnen und den neuen Eintrag
@@ -137,7 +161,7 @@ How you arrange, weight and enrich that with style-typical elements is your desi
 that is where the style lives. A demo that is merely "the same box with a different radius"
 misses the point.
 
-**The scoping rule.** 27 stylesheets share one page. Exactly one `<style>` element followed by
+**The scoping rule.** 31 stylesheets share one page. Exactly one `<style>` element followed by
 exactly one `<div class="style-<slug>">`; **every** CSS selector starts with `.style-<slug>`
 (no `:root`, `html`, `body`, bare `*` or bare element selectors, not even inside `@media`);
 CSS variables only on `.style-<slug>`; `@keyframes` names prefixed with `<slug>-`. `build.py`

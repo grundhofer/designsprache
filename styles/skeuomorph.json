@@ -100,5 +100,24 @@
   "googleFonts": [
     "Bitter",
     "Lato"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {
+      "web": 3,
+      "mobile": 1,
+      "desktop": 5
+    },
+    "fits": [
+      "creative",
+      "consumer"
+    ],
+    "tone": [
+      "nostalgic",
+      "warm",
+      "expressive"
+    ],
+    "signature": "Gloss-Overlay auf der oberen Buttonhälfte, Lichtquelle strikt auf 12 Uhr, der Druck kehrt sie nach innen."
+  }
 }

@@ -363,21 +363,21 @@ L10N = [
  ('id="s-close">Schließen · Esc<', 'id="s-close">Close · Esc<'),
 
  # --- Zeichenketten im Skript ---
- ('"Kernidee"', '"Core idea"'),
- ('"Herkunft"', '"Origin"'),
- ('"Woran man ihn erkennt"', '"How to spot it"'),
+ ('blk("Kernidee"', 'blk("Core idea"'),
+ ('blk("Herkunft"', 'blk("Origin"'),
+ ('blk("Woran man ihn erkennt"', 'blk("How to spot it"'),
  ('blk("Parameter"', 'blk("Parameters"'),
- ('"Kennzahlen"', '"Scores"'),
- ('"Echte Vertreter"', '"Real examples"'),
- ('"Stärken"', '"Strengths"'),
+ ('blk("Kennzahlen"', 'blk("Scores"'),
+ ('blk("Echte Vertreter"', 'blk("Real examples"'),
+ ('blk("Stärken"', 'blk("Strengths"'),
  ('blk("Risiken"', 'blk("Risks"'),
- ('"Barrierefreiheit"', '"Accessibility"'),
- ('"Alterungsverhalten"', '"How it ages"'),
- ('"Plattformen"', '"Platforms"'),
- ('"Praxistipp"', '"Practical tip"'),
- ('"Als Basis für eine Eigenmarke"', '"As a basis for your own brand"'),
- ('"Kombiniert sich mit"', '"Combines with"'),
- ('"Auch bekannt als"', '"Also known as"'),
+ ('blk("Barrierefreiheit"', 'blk("Accessibility"'),
+ ('blk("Alterungsverhalten"', 'blk("How it ages"'),
+ ('blk("Plattformen"', 'blk("Platforms"'),
+ ('blk("Praxistipp"', 'blk("Practical tip"'),
+ ('blk("Als Basis für eine Eigenmarke"', 'blk("As a basis for your own brand"'),
+ ('blk("Kombiniert sich mit"', 'blk("Combines with"'),
+ ('blk("Auch bekannt als"', 'blk("Also known as"'),
  ('[["Radius", p.radius], ["Kontrast", p.contrast], ["Dichte", p.density],\n       ["Tiefe", p.depth], ["Farbe", p.color], ["Typografie", p.type],\n       ["Motion", p.motion], ["Textur", p.texture]]',
   '[["Radius", p.radius], ["Contrast", p.contrast], ["Density", p.density],\n       ["Depth", p.depth], ["Color", p.color], ["Typography", p.type],\n       ["Motion", p.motion], ["Texture", p.texture]]'),
  ('" von 5</dd></div>"', '" of 5</dd></div>"'),
@@ -390,6 +390,16 @@ L10N = [
  ('"Für diese Kombination gibt es keine objektiv bessere Ecke — Dichte ist eine "\n        + "Eigenschaft, kein Gütekriterium. Deshalb ohne Tönung."',
   '"There is no objectively better corner for this combination — density is a property, "\n        + "not a mark of quality. Hence no tint."'),
  ('.localeCompare(DATA[b.dataset.slug].name, "de")', '.localeCompare(DATA[b.dataset.slug].name, "en")'),
+ # Der gesamte Textblock des Stil-Finders als EIN Paar - dreissig Einzelpaare waeren
+ # weder zu pflegen noch zu pruefen.
+ ('  var FT = {{\n    lede: "Neun Fragen. Die Empfehlung entsteht aus den Merkmalen der Faktenblätter, nicht aus Geschmack — jeder Treffer wird begründet. Du kannst die Eigenschaften des empfohlenen Stils anschließend als Anweisung für einen KI-Agenten kopieren.",\n    go: "Empfehlung zeigen", answered: "% von 9 beantwortet", need: "Beantworte mindestens die erste Frage.",\n    resTitle: "Deine Empfehlung", resLede: "Die % am besten passenden Einträge von %. Die Prozentzahl ist der Anteil der erreichten Punkte, keine Note.",\n    open: "Eintrag öffnen", copy: "Als Prompt kopieren", copied: "Kopiert", show: "Text anzeigen",\n    manual: "Automatisches Kopieren ist hier gesperrt. Der Text ist markiert — mit Strg+C bzw. Cmd+C kopieren.",\n    caption: "Dieselbe Referenz-UI wie in allen % Einträgen.",\n    note: "Die Empfehlung gewichtet neun Merkmale. Sie ersetzt kein eigenes Urteil — sieh dir die Demos an und lies das Faktenblatt. Ein Stil, der auf Platz vier steht, kann für dein Projekt der richtige sein.",\n    pIntro: "Verwende die folgende Designsprache als visuelle Grundlage für dieses Projekt. Weiche nicht davon ab, ohne es zu begründen.",\n    pIdea: "Kernidee", pParams: "Harte Parameter", pPalette: "Palette", pFonts: "Schriften",\n    pRules: "Regeln, die einzuhalten sind", pAvoid: "Bekannte Fehlerquellen dieses Stils — vermeide sie",\n    pA11y: "Barrierefreiheit", pTip: "Praxistipp", pSource: "Quelle",\n    pRadius: "Radius", pContrast: "Kontrast", pDensity: "Dichte", pDepth: "Tiefe",\n    pColor: "Farbe", pType: "Typografie", pMotion: "Motion", pTexture: "Textur",\n    pFontNote: "über Google Fonts, jeweils mit generischem Fallback",\n    why: {{\n      useYes: "Ausdrücklich für % geeignet", useNo: "Nicht auf % ausgelegt",\n      tone: "Trifft % der gewünschten Wirkung: %", toneNo: "Trifft keine der gewünschten Wirkungen",\n      modeYes: "Modus passt: %", modeNo: "Ist %, du wolltest %",\n      density: "Dichte % von 5", longevity: "Haltbarkeit % von 5",\n      recognition: "Wiedererkennung % von 5", effort: "Aufwand % von 5",\n      a11y: "Barrierefreiheit % von 5", platform: "Plattform-Eignung: %"\n    }},\n    modeName: {{ light: "hell", dark: "dunkel", both: "hell und dunkel", any: "egal" }},\n    platName: {{ web: "Web", mobile: "Mobile", desktop: "Desktop" }},\n    q: [\n      {{ id: "use", h: "Was baust du?", s: "bestimmt die Grundeignung", o: [\n        ["dev-tool","Entwicklerwerkzeug"],["data","Datenwerkzeug, Dashboard"],\n        ["content","Text, Doku, Redaktion"],["consumer","App für Endkunden"],\n        ["marketing","Landingpage, Portfolio"],["creative","Werkzeug zum Gestalten"],\n        ["civic","Behörde, Bildung, Gesundheit"],["internal","internes Werkzeug"]] }},\n      {{ id: "tone", multi: true, max: 3, h: "Wie soll es wirken?", s: "zwei bis drei auswählen", o: [\n        ["precise","präzise"],["calm","ruhig"],["warm","warm"],["loud","laut"],\n        ["playful","verspielt"],["formal","seriös"],["technical","technisch"],\n        ["nostalgic","nostalgisch"],["expressive","eigenwillig"],["austere","streng"]] }},\n      {{ id: "mode", h: "Hell oder dunkel?", s: "der Modus, in dem es hauptsächlich läuft", o: [\n        ["light","hell"],["dark","dunkel"],["any","egal"]] }},\n      {{ id: "density", h: "Wie viel Information pro Bildschirm?", s: "", o: [\n        ["1","sehr luftig"],["3","mittel"],["5","sehr dicht"],["any","egal"]] }},\n      {{ id: "longevity", h: "Wie lange soll es tragen?", s: "kurzlebige Stile kosten später einen Neuentwurf", o: [\n        ["5","ein Jahrzehnt"],["3","einige Jahre"],["1","kurzlebig, Hauptsache jetzt"],["any","egal"]] }},\n      {{ id: "recognition", h: "Auffallen oder vertraut wirken?", s: "", o: [\n        ["5","unverwechselbar"],["3","eigen, aber ruhig"],["1","bewusst vertraut"],["any","egal"]] }},\n      {{ id: "effort", h: "Wie viel Aufwand kannst du investieren?", s: "aufwendige Stile brauchen mehr Handarbeit je Plattform", o: [\n        ["1","wenig"],["3","mittel"],["5","viel"]] }},\n      {{ id: "a11y", h: "Wie wichtig ist Barrierefreiheit?", s: "", o: [\n        ["5","kritisch"],["3","wichtig"],["1","nachrangig"]] }},\n      {{ id: "platform", multi: true, h: "Für welche Plattformen?", s: "mehrere möglich", o: [\n        ["web","Web"],["mobile","Mobile"],["desktop","Desktop"]] }}\n    ]\n  }};\n',
+  '  var FT = {{\n    lede: "Nine questions. The recommendation comes from the fact sheets\' own attributes, not from taste — every match is justified. You can then copy the recommended style\'s properties as an instruction for an AI agent.",\n    go: "Show recommendation", answered: "% of 9 answered", need: "Answer at least the first question.",\n    resTitle: "Your recommendation", resLede: "The % closest matches out of %. The percentage is the share of points reached, not a grade.",\n    open: "Open entry", copy: "Copy as prompt", copied: "Copied", show: "Show text",\n    manual: "Automatic copying is blocked here. The text is selected \u2014 press Ctrl+C or Cmd+C.",\n    caption: "The same reference UI as in all % entries.",\n    note: "The recommendation weighs nine attributes. It does not replace your own judgement — look at the demos and read the fact sheet. A style ranked fourth may still be the right one for your project.",\n    pIntro: "Use the following design language as the visual foundation for this project. Do not deviate from it without stating why.",\n    pIdea: "Core idea", pParams: "Hard parameters", pPalette: "Palette", pFonts: "Type",\n    pRules: "Rules to follow", pAvoid: "Known failure modes of this style — avoid them",\n    pA11y: "Accessibility", pTip: "Practical tip", pSource: "Source",\n    pRadius: "Radius", pContrast: "Contrast", pDensity: "Density", pDepth: "Depth",\n    pColor: "Color", pType: "Typography", pMotion: "Motion", pTexture: "Texture",\n    pFontNote: "via Google Fonts, each with a generic fallback",\n    why: {{\n      useYes: "Explicitly suited to %", useNo: "Not built for %",\n      tone: "Matches % of the intended feel: %", toneNo: "Matches none of the intended feel",\n      modeYes: "Mode fits: %", modeNo: "Is %, you wanted %",\n      density: "Density % of 5", longevity: "Longevity % of 5",\n      recognition: "Recognisability % of 5", effort: "Effort % of 5",\n      a11y: "Accessibility % of 5", platform: "Platform fit: %"\n    }},\n    modeName: {{ light: "light", dark: "dark", both: "light and dark", any: "either" }},\n    platName: {{ web: "Web", mobile: "Mobile", desktop: "Desktop" }},\n    q: [\n      {{ id: "use", h: "What are you building?", s: "sets the baseline fit", o: [\n        ["dev-tool","Developer tool"],["data","Data tool, dashboard"],\n        ["content","Text, docs, editorial"],["consumer","Consumer app"],\n        ["marketing","Landing page, portfolio"],["creative","Tool for making things"],\n        ["civic","Government, education, health"],["internal","Internal tool"]] }},\n      {{ id: "tone", multi: true, max: 3, h: "How should it feel?", s: "pick two or three", o: [\n        ["precise","precise"],["calm","calm"],["warm","warm"],["loud","loud"],\n        ["playful","playful"],["formal","formal"],["technical","technical"],\n        ["nostalgic","nostalgic"],["expressive","expressive"],["austere","austere"]] }},\n      {{ id: "mode", h: "Light or dark?", s: "the mode it mainly runs in", o: [\n        ["light","light"],["dark","dark"],["any","either"]] }},\n      {{ id: "density", h: "How much information per screen?", s: "", o: [\n        ["1","very airy"],["3","medium"],["5","very dense"],["any","either"]] }},\n      {{ id: "longevity", h: "How long should it last?", s: "short-lived styles cost a redesign later", o: [\n        ["5","a decade"],["3","a few years"],["1","short-lived, it just has to land now"],["any","either"]] }},\n      {{ id: "recognition", h: "Stand out or feel familiar?", s: "", o: [\n        ["5","unmistakable"],["3","distinct but quiet"],["1","deliberately familiar"],["any","either"]] }},\n      {{ id: "effort", h: "How much effort can you invest?", s: "demanding styles need more hand work per platform", o: [\n        ["1","little"],["3","moderate"],["5","a lot"]] }},\n      {{ id: "a11y", h: "How important is accessibility?", s: "", o: [\n        ["5","critical"],["3","important"],["1","secondary"]] }},\n      {{ id: "platform", multi: true, h: "Which platforms?", s: "several possible", o: [\n        ["web","Web"],["mobile","Mobile"],["desktop","Desktop"]] }}\n    ]\n  }};\n'),
+ ('<button class="fi-open" type="button" id="fi-open">Stil finden</button>',
+  '<button class="fi-open" type="button" id="fi-open">Find a style</button>'),
+ ('<h2 id="fi-title">Welcher Stil passt zu deinem Projekt?</h2>',
+  '<h2 id="fi-title">Which style fits your project?</h2>'),
+ ('id="fi-again" hidden>Antworten ändern<', 'id="fi-again" hidden>Change answers<'),
+ ('id="fi-close">Schließen · Esc<', 'id="fi-close">Close · Esc<'),
 ]
 
 UI = {
@@ -487,7 +497,7 @@ def build(lang="de", mode="site"):
 
     tpl = PAGE if lang == "de" else page_en()
     body = tpl.format(
-        n=N_ENTRIES, nfam=N_FAMILIES,
+        n=N_ENTRIES, nfam=N_FAMILIES, site=SITE_URL, lang=lang,
         topbar="" if mode == "artifact" else TOPBAR[lang].format(repo=REPO_URL),
         fonts=font_links(),
         sheets="\n".join(f"<style>\n{s}\n</style>" for s in sheets),
@@ -762,6 +772,82 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .k-tag.static {{ cursor:default; }}
 .k-tag.static:hover {{ border-color:var(--rule); color:var(--ink-2); }}
 
+/* ============ Stil-Finder ============ */
+.fi-open {{ font-family:var(--f-mono); font-size:11.5px; letter-spacing:.02em;
+  padding:5px 11px; border:1px solid var(--accent); background:var(--accent);
+  color:var(--accent-ink); cursor:pointer; border-radius:2px; white-space:nowrap; }}
+.fi-open:hover {{ filter:brightness(1.12); }}
+.k-finder {{ position:fixed; inset:0; z-index:110; background:var(--ground);
+  overflow-y:auto; overscroll-behavior:contain; }}
+.fi-bar {{ position:sticky; top:0; z-index:5; background:var(--ground);
+  border-bottom:1px solid var(--rule); }}
+.fi-bar-in {{ display:flex; align-items:center; gap:12px; padding:10px 0; flex-wrap:wrap; }}
+.fi-bar h2 {{ font-size:19px; flex:1 1 auto; min-width:0; }}
+.fi-body {{ padding:clamp(22px,3vw,40px) 0 90px; }}
+.fi-lede {{ max-width:62ch; color:var(--ink-2); font-size:15.5px; margin-bottom:26px; }}
+
+.fi-q {{ border-top:1px solid var(--rule); padding:18px 0 20px; display:grid; gap:10px; }}
+@media (min-width:900px) {{ .fi-q {{ grid-template-columns:minmax(0,280px) minmax(0,1fr);
+  gap:10px clamp(24px,4vw,56px); align-items:start; }} }}
+.fi-q > div:first-child {{ display:grid; gap:4px; align-content:start; }}
+.fi-q h3 {{ font-size:17px; }}
+.fi-q p {{ font-family:var(--f-mono); font-size:11px; color:var(--ink-3); line-height:1.5; }}
+.fi-opts {{ display:flex; flex-wrap:wrap; gap:7px; }}
+.fi-opt {{ font-family:var(--f-disp); font-size:14px; font-weight:500; padding:7px 13px;
+  border:1px solid var(--rule); background:var(--surface); color:var(--ink-2);
+  cursor:pointer; border-radius:2px; text-align:left; }}
+.fi-opt:hover {{ border-color:var(--ink-3); color:var(--ink); }}
+.fi-opt[aria-pressed="true"] {{ background:var(--accent); border-color:var(--accent);
+  color:var(--accent-ink); }}
+.fi-go {{ position:sticky; bottom:0; background:var(--ground); border-top:1px solid var(--rule);
+  padding:14px 0; display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:8px; }}
+.fi-go button {{ font-family:var(--f-disp); font-size:16px; font-weight:600; padding:10px 22px;
+  border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink);
+  cursor:pointer; border-radius:2px; }}
+.fi-go button:disabled {{ opacity:.4; cursor:default; }}
+.fi-go span {{ font-family:var(--f-mono); font-size:11.5px; color:var(--ink-3); }}
+
+.fi-res {{ display:grid; gap:clamp(20px,2.5vw,34px); }}
+.fi-card {{ border:1px solid var(--rule); background:var(--surface); }}
+.fi-card-head {{ display:flex; align-items:baseline; gap:11px; padding:14px 16px 12px;
+  flex-wrap:wrap; border-bottom:1px solid var(--rule-soft); }}
+.fi-rank {{ font-family:var(--f-mono); font-size:12px; font-weight:600; color:var(--accent-ink);
+  background:var(--accent); padding:2px 8px; border-radius:2px; }}
+.fi-card-head h3 {{ font-size:21px; flex:1 1 auto; min-width:0; }}
+.fi-score {{ font-family:var(--f-mono); font-size:12px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; }}
+.fi-card-body {{ display:grid; gap:clamp(16px,2vw,28px); padding:16px; }}
+@media (min-width:940px) {{ .fi-card-body {{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); }} }}
+.fi-frame {{ position:relative; overflow:hidden; border:1px solid var(--rule);
+  background:var(--surface-2); }}
+.fi-host {{ width:780px; transform-origin:0 0; pointer-events:none; }}
+.fi-sig {{ font-size:15px; line-height:1.55; }}
+.fi-why {{ list-style:none; padding:0; margin:12px 0 0; display:grid; gap:6px; }}
+.fi-why li {{ font-size:13.5px; line-height:1.5; padding-left:18px; position:relative;
+  color:var(--ink-2); }}
+.fi-why li::before {{ content:""; position:absolute; left:0; top:.62em; width:8px; height:1px;
+  background:var(--brass); }}
+.fi-why li.no::before {{ background:var(--ink-3); }}
+.fi-why li.no {{ color:var(--ink-3); }}
+.fi-acts {{ display:flex; gap:9px; flex-wrap:wrap; margin-top:16px; }}
+.fi-acts button {{ font-family:var(--f-mono); font-size:12px; padding:7px 12px;
+  border:1px solid var(--rule); background:var(--surface-2); color:var(--ink);
+  cursor:pointer; border-radius:2px; }}
+.fi-acts button:hover {{ border-color:var(--accent); color:var(--accent); }}
+.fi-acts button.prim {{ border-color:var(--accent); background:var(--accent);
+  color:var(--accent-ink); }}
+.fi-acts button.prim:hover {{ filter:brightness(1.12); color:var(--accent-ink); }}
+.fi-acts button.ok {{ border-color:var(--brass); color:var(--brass); }}
+.fi-hint {{ margin-top:12px; font-family:var(--f-mono); font-size:11.5px;
+  color:var(--brass); line-height:1.5; }}
+.fi-hint + .fi-pre {{ margin-top:6px; }}
+.fi-pre {{ margin-top:12px; background:var(--surface-2); border:1px solid var(--rule);
+  padding:12px; font-family:var(--f-mono); font-size:11px; line-height:1.55;
+  white-space:pre-wrap; max-height:300px; overflow:auto; color:var(--ink-2); }}
+.fi-note {{ font-family:var(--f-mono); font-size:11.5px; color:var(--ink-3);
+  border-top:1px solid var(--rule-soft); margin-top:30px; padding-top:16px;
+  line-height:1.7; max-width:74ch; }}
+
 /* ============ Matrix ============ */
 .mx {{ border-top:1px solid var(--rule); padding:clamp(38px,5vw,64px) 0 0; }}
 .mx-head {{ display:grid; gap:14px; margin-bottom:24px; }}
@@ -928,6 +1014,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       </select>
     </div>
     <span id="tally" aria-live="polite">{n} von {n}</span>
+    <button class="fi-open" type="button" id="fi-open">Stil finden</button>
   </div>
 </nav>
 
@@ -1007,6 +1094,22 @@ tbody tr:hover {{ background:var(--surface-2); }}
     Einschätzungen, keine Messwerte.</p>
 </section>
 
+<div class="k-finder" id="finder" hidden>
+  <div class="fi-bar"><div class="wrap fi-bar-in">
+    <h2 id="fi-title">Welcher Stil passt zu deinem Projekt?</h2>
+    <button class="nav-b" type="button" id="fi-again" hidden>Antworten ändern</button>
+    <button class="nav-b" type="button" id="fi-close">Schließen · Esc</button>
+  </div></div>
+  <div class="wrap fi-body">
+    <p class="fi-lede" id="fi-lede">Acht Fragen. Die Empfehlung entsteht aus den Merkmalen der
+      Faktenblätter, nicht aus Geschmack — jeder Treffer wird begründet. Du kannst die
+      Eigenschaften des empfohlenen Stils anschließend als Anweisung für einen KI-Agenten
+      kopieren.</p>
+    <div id="fi-quiz"></div>
+    <div id="fi-results" hidden></div>
+  </div>
+</div>
+
 <div class="k-sheet" id="sheet" hidden>
   <div class="sheet-bar"><div class="wrap sheet-bar-in">
     <span class="ent" id="s-ent"></span>
@@ -1031,6 +1134,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   "use strict";
   var DATA = JSON.parse(document.getElementById("payload").textContent);
   var W = 780;
+  var SITE = "{site}", LANG = "{lang}";
   var plates = Array.prototype.slice.call(document.querySelectorAll(".k-plate"));
   var order = plates.map(function (p) {{ return p.dataset.slug; }});
   var METRIC = {{
@@ -1326,6 +1430,347 @@ tbody tr:hover {{ background:var(--surface-2); }}
     lastFocus = b;
     open(order.indexOf(b.closest("tr").dataset.slug));
   }});
+
+  /* ---------- Stil-Finder ----------
+     Bewertet jeden Eintrag gegen die Antworten und begruendet jeden Treffer.
+     Die Merkmale stammen aus dem finder-Block der Faktenblaetter, nicht aus Geschmack. */
+
+  var FT = {{
+    lede: "Neun Fragen. Die Empfehlung entsteht aus den Merkmalen der Faktenblätter, nicht aus Geschmack — jeder Treffer wird begründet. Du kannst die Eigenschaften des empfohlenen Stils anschließend als Anweisung für einen KI-Agenten kopieren.",
+    go: "Empfehlung zeigen", answered: "% von 9 beantwortet", need: "Beantworte mindestens die erste Frage.",
+    resTitle: "Deine Empfehlung", resLede: "Die % am besten passenden Einträge von %. Die Prozentzahl ist der Anteil der erreichten Punkte, keine Note.",
+    open: "Eintrag öffnen", copy: "Als Prompt kopieren", copied: "Kopiert", show: "Text anzeigen",
+    manual: "Automatisches Kopieren ist hier gesperrt. Der Text ist markiert — mit Strg+C bzw. Cmd+C kopieren.",
+    caption: "Dieselbe Referenz-UI wie in allen % Einträgen.",
+    note: "Die Empfehlung gewichtet neun Merkmale. Sie ersetzt kein eigenes Urteil — sieh dir die Demos an und lies das Faktenblatt. Ein Stil, der auf Platz vier steht, kann für dein Projekt der richtige sein.",
+    pIntro: "Verwende die folgende Designsprache als visuelle Grundlage für dieses Projekt. Weiche nicht davon ab, ohne es zu begründen.",
+    pIdea: "Kernidee", pParams: "Harte Parameter", pPalette: "Palette", pFonts: "Schriften",
+    pRules: "Regeln, die einzuhalten sind", pAvoid: "Bekannte Fehlerquellen dieses Stils — vermeide sie",
+    pA11y: "Barrierefreiheit", pTip: "Praxistipp", pSource: "Quelle",
+    pRadius: "Radius", pContrast: "Kontrast", pDensity: "Dichte", pDepth: "Tiefe",
+    pColor: "Farbe", pType: "Typografie", pMotion: "Motion", pTexture: "Textur",
+    pFontNote: "über Google Fonts, jeweils mit generischem Fallback",
+    why: {{
+      useYes: "Ausdrücklich für % geeignet", useNo: "Nicht auf % ausgelegt",
+      tone: "Trifft % der gewünschten Wirkung: %", toneNo: "Trifft keine der gewünschten Wirkungen",
+      modeYes: "Modus passt: %", modeNo: "Ist %, du wolltest %",
+      density: "Dichte % von 5", longevity: "Haltbarkeit % von 5",
+      recognition: "Wiedererkennung % von 5", effort: "Aufwand % von 5",
+      a11y: "Barrierefreiheit % von 5", platform: "Plattform-Eignung: %"
+    }},
+    modeName: {{ light: "hell", dark: "dunkel", both: "hell und dunkel", any: "egal" }},
+    platName: {{ web: "Web", mobile: "Mobile", desktop: "Desktop" }},
+    q: [
+      {{ id: "use", h: "Was baust du?", s: "bestimmt die Grundeignung", o: [
+        ["dev-tool","Entwicklerwerkzeug"],["data","Datenwerkzeug, Dashboard"],
+        ["content","Text, Doku, Redaktion"],["consumer","App für Endkunden"],
+        ["marketing","Landingpage, Portfolio"],["creative","Werkzeug zum Gestalten"],
+        ["civic","Behörde, Bildung, Gesundheit"],["internal","internes Werkzeug"]] }},
+      {{ id: "tone", multi: true, max: 3, h: "Wie soll es wirken?", s: "zwei bis drei auswählen", o: [
+        ["precise","präzise"],["calm","ruhig"],["warm","warm"],["loud","laut"],
+        ["playful","verspielt"],["formal","seriös"],["technical","technisch"],
+        ["nostalgic","nostalgisch"],["expressive","eigenwillig"],["austere","streng"]] }},
+      {{ id: "mode", h: "Hell oder dunkel?", s: "der Modus, in dem es hauptsächlich läuft", o: [
+        ["light","hell"],["dark","dunkel"],["any","egal"]] }},
+      {{ id: "density", h: "Wie viel Information pro Bildschirm?", s: "", o: [
+        ["1","sehr luftig"],["3","mittel"],["5","sehr dicht"],["any","egal"]] }},
+      {{ id: "longevity", h: "Wie lange soll es tragen?", s: "kurzlebige Stile kosten später einen Neuentwurf", o: [
+        ["5","ein Jahrzehnt"],["3","einige Jahre"],["1","kurzlebig, Hauptsache jetzt"],["any","egal"]] }},
+      {{ id: "recognition", h: "Auffallen oder vertraut wirken?", s: "", o: [
+        ["5","unverwechselbar"],["3","eigen, aber ruhig"],["1","bewusst vertraut"],["any","egal"]] }},
+      {{ id: "effort", h: "Wie viel Aufwand kannst du investieren?", s: "aufwendige Stile brauchen mehr Handarbeit je Plattform", o: [
+        ["1","wenig"],["3","mittel"],["5","viel"]] }},
+      {{ id: "a11y", h: "Wie wichtig ist Barrierefreiheit?", s: "", o: [
+        ["5","kritisch"],["3","wichtig"],["1","nachrangig"]] }},
+      {{ id: "platform", multi: true, h: "Für welche Plattformen?", s: "mehrere möglich", o: [
+        ["web","Web"],["mobile","Mobile"],["desktop","Desktop"]] }}
+    ]
+  }};
+
+  var ANS = {{}}, FI = document.getElementById("finder");
+  var fiQuiz = document.getElementById("fi-quiz"), fiRes = document.getElementById("fi-results");
+  var fiAgain = document.getElementById("fi-again");
+  var fiFocus = null;
+  var f1 = function (t, a) {{ return String(t).replace("%", a); }};
+  var f2 = function (t, a, b) {{ return String(t).replace("%", a).replace("%", b); }};
+  var labelOf = function (qid, val) {{
+    var q = FT.q.filter(function (x) {{ return x.id === qid; }})[0];
+    if (!q) return val;
+    var o = q.o.filter(function (x) {{ return x[0] === val; }})[0];
+    return o ? o[1] : val;
+  }};
+
+  /* ---------- Bewertung ---------- */
+  function rate(slug) {{
+    var d = DATA[slug], f = d.finder || {{}}, sc = d.scores || {{}};
+    var pts = 0, max = 0, why = [];
+    function add(w, got, text, ok) {{
+      max += w; pts += w * got;
+      if (text) why.push({{ t: text, ok: ok !== false, w: w * got }});
+    }}
+    var fits = f.fits || [], tone = f.tone || [], plat = f.platform || {{}};
+
+    if (ANS.use) {{
+      var hit = fits.indexOf(ANS.use) !== -1;
+      add(25, hit ? 1 : 0, f1(hit ? FT.why.useYes : FT.why.useNo, labelOf("use", ANS.use)), hit);
+    }}
+    if (ANS.tone && ANS.tone.length) {{
+      var m = ANS.tone.filter(function (t) {{ return tone.indexOf(t) !== -1; }});
+      add(20, m.length / ANS.tone.length,
+        m.length ? f2(FT.why.tone, m.length + "/" + ANS.tone.length,
+          m.map(function (t) {{ return labelOf("tone", t); }}).join(", ")) : FT.why.toneNo,
+        m.length > 0);
+    }}
+    if (ANS.mode) {{
+      var g = ANS.mode === "any" ? 0.7 : (f.mode === ANS.mode || f.mode === "both" ? 1 : 0);
+      add(12, g, ANS.mode === "any" ? null
+        : (g ? f1(FT.why.modeYes, FT.modeName[f.mode] || f.mode)
+             : f2(FT.why.modeNo, FT.modeName[f.mode] || f.mode, FT.modeName[ANS.mode])), g > 0);
+    }}
+    [["density", 12], ["longevity", 14], ["recognition", 12]].forEach(function (pair) {{
+      var k = pair[0], w = pair[1], v = ANS[k];
+      if (!v) return;
+      if (v === "any") {{ add(w, 0.6, null); return; }}
+      var have = sc[k] || 0, g = 1 - Math.abs(have - (+v)) / 4;
+      add(w, Math.max(0, g), f1(FT.why[k], have), g >= 0.5);
+    }});
+    if (ANS.effort) {{
+      var e = sc.effort || 3, cap = +ANS.effort;
+      var g2 = e <= cap ? 1 : Math.max(0, 1 - (e - cap) / 2);
+      add(10, g2, f1(FT.why.effort, e), g2 >= 0.5);
+    }}
+    if (ANS.a11y) {{
+      var imp = (+ANS.a11y - 1) / 4, q = ((f.a11y || 3) - 1) / 4;
+      add(14, 1 - imp * (1 - q), imp > 0 ? f1(FT.why.a11y, f.a11y || 3) : null, q >= 0.5);
+    }}
+    if (ANS.platform && ANS.platform.length) {{
+      var vals = ANS.platform.map(function (p) {{ return plat[p] || 3; }});
+      var avg = vals.reduce(function (a, b) {{ return a + b; }}, 0) / vals.length;
+      add(12, (avg - 1) / 4, f1(FT.why.platform, ANS.platform.map(function (p, i) {{
+        return FT.platName[p] + " " + vals[i]; }}).join(", ")), avg >= 3);
+    }}
+    why.sort(function (a, b) {{ return (a.ok === b.ok) ? b.w - a.w : (a.ok ? -1 : 1); }});
+    return {{ slug: slug, pct: max ? Math.round(100 * pts / max) : 0, why: why }};
+  }}
+
+  /* ---------- Prompt ---------- */
+  function buildPrompt(slug) {{
+    var d = DATA[slug], p = d.params || {{}}, L = [];
+    L.push(FT.pIntro, "", "# " + d.name, "", "## " + FT.pIdea, d.idea, "", "## " + FT.pParams);
+    [[FT.pRadius, p.radius], [FT.pContrast, p.contrast], [FT.pDensity, p.density],
+     [FT.pDepth, p.depth], [FT.pColor, p.color], [FT.pType, p.type],
+     [FT.pMotion, p.motion], [FT.pTexture, p.texture]].forEach(function (r) {{
+      if (r[1]) L.push("- **" + r[0] + ":** " + r[1]);
+    }});
+    if ((d.palette || []).length) L.push("", "## " + FT.pPalette, d.palette.join("  "));
+    if ((d.googleFonts || []).length)
+      L.push("", "## " + FT.pFonts, d.googleFonts.join(", ") + " (" + FT.pFontNote + ")");
+    if ((d.markers || []).length) {{
+      L.push("", "## " + FT.pRules);
+      d.markers.forEach(function (m) {{ L.push("- " + m); }});
+    }}
+    if ((d.risks || []).length) {{
+      L.push("", "## " + FT.pAvoid);
+      d.risks.forEach(function (r) {{ L.push("- " + r); }});
+    }}
+    if (d.a11y) L.push("", "## " + FT.pA11y, d.a11y);
+    if (d.tip) L.push("", "## " + FT.pTip, d.tip);
+    L.push("", "---", FT.pSource + ": " + SITE + "/" + LANG + "/ — " + d.name);
+    return L.join("\n");
+  }}
+
+  /* ---------- Fragebogen ---------- */
+  function renderQuiz() {{
+    fiQuiz.innerHTML = FT.q.map(function (q) {{
+      return '<div class="fi-q"><div><h3>' + esc(q.h) + "</h3>"
+        + (q.s ? "<p>" + esc(q.s) + "</p>" : "") + '</div><div class="fi-opts">'
+        + q.o.map(function (o) {{
+            return '<button class="fi-opt" type="button" data-q="' + q.id + '" data-v="'
+              + esc(o[0]) + '" aria-pressed="false">' + esc(o[1]) + "</button>";
+          }}).join("") + "</div></div>";
+    }}).join("")
+      + '<div class="fi-go"><button type="button" id="fi-go" disabled></button>'
+      + '<span id="fi-count"></span></div>';
+    document.getElementById("fi-go").textContent = FT.go;
+    updateCount();
+  }}
+
+  function updateCount() {{
+    var n = FT.q.filter(function (q) {{
+      var v = ANS[q.id]; return q.multi ? (v && v.length) : !!v;
+    }}).length;
+    document.getElementById("fi-count").textContent =
+      n ? f1(FT.answered, n) : FT.need;
+    document.getElementById("fi-go").disabled = !ANS.use;
+  }}
+
+  fiQuiz.addEventListener("click", function (e) {{
+    var b = e.target.closest(".fi-opt");
+    if (!b) return;
+    var qid = b.dataset.q, v = b.dataset.v;
+    var q = FT.q.filter(function (x) {{ return x.id === qid; }})[0];
+    if (q.multi) {{
+      ANS[qid] = ANS[qid] || [];
+      var i = ANS[qid].indexOf(v);
+      if (i >= 0) ANS[qid].splice(i, 1);
+      else {{ if (q.max && ANS[qid].length >= q.max) ANS[qid].shift(); ANS[qid].push(v); }}
+      fiQuiz.querySelectorAll('[data-q="' + qid + '"]').forEach(function (o) {{
+        o.setAttribute("aria-pressed", String(ANS[qid].indexOf(o.dataset.v) !== -1));
+      }});
+    }} else {{
+      ANS[qid] = ANS[qid] === v ? null : v;
+      fiQuiz.querySelectorAll('[data-q="' + qid + '"]').forEach(function (o) {{
+        o.setAttribute("aria-pressed", String(ANS[qid] === o.dataset.v));
+      }});
+    }}
+    updateCount();
+  }});
+
+  /* ---------- Ergebnis ---------- */
+  function showResults() {{
+    var ranked = order.map(rate).sort(function (a, b) {{ return b.pct - a.pct; }}).slice(0, 5);
+    fiRes.innerHTML = "<h3 style=\"font-size:21px;margin-bottom:6px\">" + esc(FT.resTitle)
+      + '</h3><p class="fi-lede">' + esc(f2(FT.resLede, ranked.length, order.length))
+      + '</p><div class="fi-res">'
+      + ranked.map(function (r, i) {{
+          var d = DATA[r.slug];
+          return '<article class="fi-card"><div class="fi-card-head">'
+            + '<span class="fi-rank">' + (i + 1) + "</span><h3>" + esc(d.name) + "</h3>"
+            + '<span class="fi-score">' + r.pct + " %</span></div>"
+            + '<div class="fi-card-body"><div><div class="fi-frame" data-demo="' + esc(r.slug)
+            + '"><div class="fi-host"></div></div><p class="cap">'
+            + esc(f1(FT.caption, order.length)) + "</p></div><div>"
+            + '<p class="fi-sig">' + esc((d.finder && d.finder.signature) || d.idea) + "</p>"
+            + '<ul class="fi-why">' + r.why.slice(0, 6).map(function (w) {{
+                return '<li class="' + (w.ok ? "" : "no") + '">' + esc(w.t) + "</li>";
+              }}).join("") + "</ul>"
+            + '<div class="fi-acts"><button type="button" class="prim" data-go3="' + esc(r.slug)
+            + '">' + esc(FT.open) + '</button><button type="button" data-copy="' + esc(r.slug)
+            + '">' + esc(FT.copy) + '</button><button type="button" data-show="' + esc(r.slug)
+            + '">' + esc(FT.show) + "</button></div></div></div></article>";
+        }}).join("")
+      + '</div><p class="fi-note">' + esc(FT.note) + "</p>";
+
+    /* Erst sichtbar machen, dann messen - in einem hidden-Element ist clientWidth 0
+       und die Rahmen fielen auf Randstaerke zusammen. */
+    fiQuiz.hidden = true; fiRes.hidden = false; fiAgain.hidden = false;
+    fiRes.querySelectorAll("[data-demo]").forEach(function (fr) {{
+      var src = document.querySelector('.k-plate[data-slug="' + fr.dataset.demo + '"] .demo-host');
+      if (!src || !src.firstElementChild) return;
+      var host = fr.querySelector(".fi-host");
+      host.textContent = "";
+      host.appendChild(src.firstElementChild.cloneNode(true));
+    }});
+    fitFinder();
+    [60, 300].forEach(function (d) {{ setTimeout(fitFinder, d); }});
+    FI.scrollTop = 0;
+  }}
+
+  fiRes.addEventListener("click", function (e) {{
+    var go = e.target.closest("[data-go3]");
+    if (go) {{ closeFinder(); open(order.indexOf(go.dataset.go3)); return; }}
+    var sh = e.target.closest("[data-show]");
+    if (sh) {{
+      var wrap = sh.closest("div").parentElement;
+      var box = wrap.querySelector(".fi-pre");
+      if (box) {{
+        box.remove();
+        var h = wrap.querySelector(".fi-hint"); if (h) h.remove();
+        return;
+      }}
+      showPrompt(sh, buildPrompt(sh.dataset.show), null);
+      return;
+    }}
+    var cp = e.target.closest("[data-copy]");
+    if (!cp) return;
+    var txt = buildPrompt(cp.dataset.copy);
+    var done = function () {{
+      var old = cp.dataset.label || cp.textContent;
+      cp.dataset.label = old;
+      cp.textContent = FT.copied; cp.classList.add("ok");
+      setTimeout(function () {{ cp.textContent = old; cp.classList.remove("ok"); }}, 1800);
+    }};
+    /* Schlaegt das Kopieren fehl - im Artifact-Sandkasten und ohne Nutzergeste ist die
+       Zwischenablage gesperrt -, darf nicht einfach nichts passieren. Dann wird der Text
+       eingeblendet und markiert, sodass Strg/Cmd+C greift. */
+    var manual = function () {{
+      var box = showPrompt(cp, txt, FT.manual);
+      if (box) {{
+        var r = document.createRange(); r.selectNodeContents(box);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        box.scrollIntoView({{ block: "nearest" }});
+      }}
+    }};
+    if (navigator.clipboard && navigator.clipboard.writeText) {{
+      navigator.clipboard.writeText(txt).then(done, function () {{ legacy(txt, done, manual); }});
+    }} else legacy(txt, done, manual);
+  }});
+
+  function legacy(txt, done, manual) {{
+    var ta = document.createElement("textarea");
+    ta.value = txt;
+    ta.style.cssText = "position:fixed;top:-1000px;left:0;opacity:0";
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try {{ ok = document.execCommand("copy"); }} catch (e) {{}}
+    ta.remove();
+    if (ok) done(); else manual();
+  }}
+
+  function showPrompt(btn, txt, hint) {{
+    var wrap = btn.closest("div").parentElement;
+    var old = wrap.querySelector(".fi-pre");
+    if (old) old.remove();
+    var pre = document.createElement("pre");
+    pre.className = "fi-pre";
+    pre.textContent = txt;
+    if (hint) {{
+      var p = document.createElement("p");
+      p.className = "fi-hint";
+      p.textContent = hint;
+      pre.setAttribute("data-hint", "1");
+      wrap.appendChild(p);
+    }}
+    wrap.appendChild(pre);
+    return pre;
+  }}
+
+  function fitFinder() {{
+    fiRes.querySelectorAll(".fi-frame").forEach(function (fr) {{
+      var host = fr.querySelector(".fi-host");
+      if (!host || !fr.clientWidth) return;
+      var k = fr.clientWidth / W;
+      host.style.transform = "scale(" + k + ")";
+      fr.style.height = Math.round(host.scrollHeight * k) + "px";
+    }});
+  }}
+  window.addEventListener("resize", function () {{ if (!FI.hidden) setTimeout(fitFinder, 60); }});
+
+  /* ---------- Öffnen und Schließen ---------- */
+  function openFinder() {{
+    if (!fiQuiz.children.length) renderQuiz();
+    FI.hidden = false; document.body.style.overflow = "hidden"; FI.scrollTop = 0;
+    document.getElementById("fi-close").focus();
+  }}
+  function closeFinder() {{
+    FI.hidden = true; document.body.style.overflow = "";
+    if (fiFocus) {{ try {{ fiFocus.focus(); }} catch (e) {{}} }}
+  }}
+  document.getElementById("fi-open").addEventListener("click", function (e) {{
+    fiFocus = e.currentTarget; openFinder();
+  }});
+  document.getElementById("fi-close").addEventListener("click", closeFinder);
+  fiAgain.addEventListener("click", function () {{
+    fiRes.hidden = true; fiQuiz.hidden = false; fiAgain.hidden = true; FI.scrollTop = 0;
+  }});
+  fiQuiz.addEventListener("click", function (e) {{
+    if (e.target.id === "fi-go") showResults();
+  }});
+  document.addEventListener("keydown", function (e) {{
+    if (!FI.hidden && e.key === "Escape") {{ e.preventDefault(); closeFinder(); }}
+  }});
+  document.getElementById("fi-lede").textContent = FT.lede;
+
 }})();
 </script>
 '''

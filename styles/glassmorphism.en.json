@@ -65,5 +65,13 @@
   "verdict": "As a brand basis: no -- as a component: yes, in exactly two places. The style is a platform material, not a trademark; make it the base surface and you look like a mediocre system copy on iOS and a foreign body on Android, and the recognition value belongs to Apple, not to you. For a solo developer it is also the only style in this family with real runtime cost, and it renders differently in Tauri depending on the WebView -- three platforms, three behaviors. It stays sensible where it solves a problem instead of setting a mood: command palette and modal overlay, each with an opaque fallback.",
   "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
   "tip": "Credibility comes not from the blur but from the edge and the tint. First: always set a light 1px inner edge at the top and a weaker one at the bottom (inset 0 1px 0 rgba(255,255,255,.55)) -- without it glass looks like a milky film. Second: a dark tint of 25-35% belongs beneath the white film, because only that makes text contrast independent of the ground. And never drop saturate(180%): the oversaturation is what separates blur from glass.",
-  "googleFonts": ["Inter"]
+  "googleFonts": ["Inter"],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {"web": 3, "mobile": 3, "desktop": 2},
+    "fits": ["marketing", "consumer", "creative"],
+    "tone": ["expressive", "loud", "technical"],
+    "signature": "A 1px bright inner edge on top plus saturate(180%) -- without the oversaturation it is just frosted film."
+  }
 }

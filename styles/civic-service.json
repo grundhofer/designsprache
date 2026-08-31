@@ -101,5 +101,24 @@
   "tip": "Baue den Fokuszustand als Allererstes, als eine einzige globale Utility - gelbe Vollfläche, 4px schwarze Unterkante, 3px transparenter outline darunter, keine Transition. Danach kann kein Bauteil mehr ohne ihn entstehen, und der teuerste Fehler des Stils ist ausgeschlossen, nämlich ihn am Ende als Ring nachzurüsten. Zweiter Rat: das Visited-Lila stehen lassen. Es ist die einzige Stelle, an der die Oberfläche dem Nutzer etwas erzählt, das sie sonst nirgends erzählt - wo er schon war -, und der Reflex, es wegzuoptimieren, ist genau die Gewohnheit, die dieser Eintrag vorführt.",
   "googleFonts": [
     "Public Sans"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 5,
+    "platform": {
+      "web": 5,
+      "mobile": 2,
+      "desktop": 3
+    },
+    "fits": [
+      "civic",
+      "content"
+    ],
+    "tone": [
+      "formal",
+      "austere",
+      "calm"
+    ],
+    "signature": "Der gelbe Fokusblock mit schwarzer 4px-Unterkante und der 2px-Vollsockel unter jedem Button."
+  }
 }

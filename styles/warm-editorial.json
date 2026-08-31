@@ -103,5 +103,23 @@
     "Instrument Serif",
     "Newsreader",
     "Inter"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 2
+    },
+    "fits": [
+      "content",
+      "marketing"
+    ],
+    "tone": [
+      "warm",
+      "calm"
+    ],
+    "signature": "Gesperrte Versalien-Mikrolabels in Grotesk über einer Serifen-Lesekolumne von 66 Zeichen."
+  }
 }

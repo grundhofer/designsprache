@@ -67,5 +67,13 @@
   "verdict": "Als durchgängige Basis für die Eigenmarke ein klares Nein. Der Stil widerspricht genau der Anforderung, die hier zählt: ein Solo-Entwickler mit vielen kleinen Apps braucht ein System, das aus Tokens neue Screens ausspuckt, und Maximalismus ist per Definition das Gegenteil davon - jede Ansicht ist Handarbeit, und Compose sowie SwiftUI zahlen den Aufwand doppelt. Sinnvoll ist er als klar abgegrenzte Marketing-Ebene: Landingpage, Release-Ankündigung, Changelog-Header, Merch - dort, wo Wiedererkennung mehr wert ist als Effizienz, und wo die Seite nach dreißig Sekunden wieder verlassen wird. Wenn davon etwas in die Produkt-UI wandern soll, dann genau ein Element: der harte Offset-Schatten oder der Sticker-Status - eine Signatur, kein Stil.",
   "combinesWith": ["neo-brutalism", "memphis", "swiss-punk", "y2k-aero"],
   "tip": "Unter das Chaos gehört ein unsichtbares, strenges Raster - genau das ist der Unterschied zwischen Businessweek und Word-Art. Praktisch: Layout zuerst komplett in Schwarzweiß und ohne Rotation bauen, bis die Hierarchie stimmt, dann erst Rotationen (maximal +/-2,5deg), Muster und Sticker als letzte Schicht auflegen. Und die Rotationswerte krumm halten - 1,4deg und 2,2deg lesen sich handgemacht, 5deg und 10deg lesen sich nach Vorlage.",
-  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"]
+  "googleFonts": ["Anton", "DM Serif Display", "Space Mono", "Bricolage Grotesque"],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 5, "mobile": 1, "desktop": 2 },
+    "fits": ["marketing", "creative"],
+    "tone": ["loud", "expressive", "playful"],
+    "signature": "Dieselbe Form zweimal, 2-3px versetzt im Multiply-Überdruck - die dritte Farbe steht in keiner Palette."
+  }
 }

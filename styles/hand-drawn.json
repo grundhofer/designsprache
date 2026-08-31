@@ -105,5 +105,13 @@
   "googleFonts": [
     "Neucha",
     "Cabin Sketch"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": { "web": 4, "mobile": 2, "desktop": 5 },
+    "fits": ["creative", "dev-tool", "content"],
+    "tone": ["warm", "playful", "expressive"],
+    "signature": "Ecken schließen nicht, sie schießen 2-5px über den Schnittpunkt hinaus; Flächen sind Schraffur, kein Alpha."
+  }
 }

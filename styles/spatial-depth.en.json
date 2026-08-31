@@ -100,5 +100,23 @@
   "tip": "Make the opacity of the fill, not the blur radius, your legibility guarantee - and check every text value against the BRIGHTEST point of the background, not against the average. Glass turns cheap the moment it sits over a flat surface: the style absolutely needs a background with a real brightness gradient (here three stacked radial gradients plus two blurred light orbs), otherwise all the material work is invisible and a gray would have done just as well.",
   "googleFonts": [
     "Inter"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {
+      "web": 3,
+      "mobile": 5,
+      "desktop": 3
+    },
+    "fits": [
+      "consumer",
+      "marketing"
+    ],
+    "tone": [
+      "calm",
+      "formal"
+    ],
+    "signature": "A floating action bar overlapping the window's bottom edge, plus 44px window corners."
+  }
 }

@@ -103,5 +103,25 @@
   "googleFonts": [
     "Literata",
     "Inter"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": {
+      "web": 4,
+      "mobile": 3,
+      "desktop": 3
+    },
+    "fits": [
+      "content",
+      "data",
+      "civic"
+    ],
+    "tone": [
+      "calm",
+      "austere",
+      "precise"
+    ],
+    "signature": "Selection inverts the whole row; you page instead of scrolling, because every refresh costs time."
+  }
 }

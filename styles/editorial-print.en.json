@@ -104,5 +104,13 @@
   "googleFonts": [
     "Instrument Serif",
     "Newsreader"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": { "web": 5, "mobile": 2, "desktop": 4 },
+    "fits": ["content", "marketing"],
+    "tone": ["calm", "formal"],
+    "signature": "A three-line drop cap, small caps tracked at 0.2em, hairlines as the only dividers - zero shadows."
+  }
 }

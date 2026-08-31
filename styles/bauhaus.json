@@ -65,5 +65,13 @@
   "verdict": "Als Vollstil nein, als Marken- und Illustrationsschicht ein klares Ja. Für einen Solo-Entwickler mit vielen kleinen Apps ist Bauhaus der billigste verfügbare Wiedererkennungsträger: drei Farben, drei Formen, eine geometrische Grotesk – das ist ein komplettes Logo-, Icon- und Empty-State-System ohne einen einzigen gezeichneten Asset, und es ist über Tailwind, Compose und SwiftUI identisch reproduzierbar. Ein Dashboard, das acht Stunden am Tag in Rot-Gelb-Blau mit 4px-Rändern läuft, ist dagegen anstrengend und wirkt nach dem dritten Projekt wie ein Kostüm. Die tragfähige Konstruktion ist deshalb: Bauhaus für App-Icons, Splash, leere Zustände und Marketing – darunter ein ruhiges Swiss-Raster fürs eigentliche UI.",
   "combinesWith": ["swiss", "de-stijl", "neo-brutalism", "memphis"],
   "tip": "Koppele jede Grundform fest an eine Bedeutung und halte diese Kopplung über alle Apps durch – Kreis immer Zustand, Quadrat immer Objekt, Dreieck immer Warnung. Sobald die Formen nur noch dekorativ verteilt werden, wird aus Bauhaus Kinderzimmer. Und: genau eine Diagonale pro Screen, nicht drei.",
-  "googleFonts": ["Jost"]
+  "googleFonts": ["Jost"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": { "web": 4, "mobile": 2, "desktop": 2 },
+    "fits": ["marketing", "creative"],
+    "tone": ["loud", "precise", "playful"],
+    "signature": "Radius nur 0px oder 50%, nichts dazwischen, dazu genau eine Diagonale pro Fläche."
+  }
 }

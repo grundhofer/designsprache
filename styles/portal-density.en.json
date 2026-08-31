@@ -105,5 +105,13 @@
   "tip": "Build the category chain first and in full, before you draw the first box: a numbered list of twelve to thirty colors, each firmly assigned to one section, none of them reused in the brand, in a state or in a button. Exactly that discipline is the style - the moment one of the colors starts to mean 'success', 'warning' or 'our color', the whole system collapses, because the viewer then looks for a meaning in every remaining hue as well. And use the color only as a 3px bar, a 7px header stripe or an 8px chip, never as an area: the chain has to be able to sit in the field of view ten times at once without the page turning gaudy.",
   "googleFonts": [
     "Noto Sans JP"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 1, "desktop": 5 },
+    "fits": ["data", "content", "internal"],
+    "tone": ["precise", "nostalgic"],
+    "signature": "A fixed centred column of 950-1220px, 13px rows, 200 to 1250 text links on a single page."
+  }
 }

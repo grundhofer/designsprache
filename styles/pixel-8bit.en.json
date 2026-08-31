@@ -105,5 +105,13 @@
     "Press Start 2P",
     "Silkscreen",
     "VT323"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 1, "desktop": 5 },
+    "fits": ["creative", "consumer"],
+    "tone": ["nostalgic", "playful", "technical"],
+    "signature": "Every value a multiple of 2px, depth as a 2px light/dark bevel, animation only ever in steps()."
+  }
 }

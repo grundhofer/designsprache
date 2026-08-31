@@ -100,5 +100,25 @@
   "googleFonts": [
     "IBM Plex Sans Condensed",
     "IBM Plex Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "dark",
+    "a11y": 2,
+    "platform": {
+      "web": 4,
+      "mobile": 1,
+      "desktop": 5
+    },
+    "fits": [
+      "data",
+      "internal",
+      "dev-tool"
+    ],
+    "tone": [
+      "precise",
+      "technical",
+      "austere"
+    ],
+    "signature": "Right-aligned tabular figures, a hairline between every cell, a sparkline inside the row."
+  }
 }

@@ -105,5 +105,13 @@
   "tip": "Baue die Kategorienkette zuerst und vollständig, bevor du den ersten Kasten zeichnest: eine durchnummerierte Liste von zwölf bis dreißig Farben, jede fest einer Rubrik zugeordnet, keine davon in der Marke, in einem Zustand oder in einem Button wiederverwendet. Genau diese Disziplin ist der Stil - sobald eine der Farben anfängt, 'Erfolg', 'Warnung' oder 'unsere Farbe' zu bedeuten, bricht das ganze System zusammen, weil der Betrachter dann in jedem der übrigen Töne ebenfalls eine Bedeutung sucht. Und setze die Farbe nur als 3px-Balken, 7px-Kopfstreifen oder 8px-Feld ein, nie als Fläche: die Kette muss zehnmal gleichzeitig im Blickfeld stehen können, ohne dass die Seite bunt wird.",
   "googleFonts": [
     "Noto Sans JP"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 1, "desktop": 5 },
+    "fits": ["data", "content", "internal"],
+    "tone": ["precise", "nostalgic"],
+    "signature": "Feste zentrierte Spalte von 950-1220px, 13px-Zeilen, 200 bis 1250 Textlinks auf einer einzigen Seite."
+  }
 }

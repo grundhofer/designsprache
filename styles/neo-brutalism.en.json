@@ -100,5 +100,25 @@
     "Archivo Black",
     "Space Grotesk",
     "Space Mono"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 2,
+      "desktop": 3
+    },
+    "fits": [
+      "marketing",
+      "creative",
+      "consumer"
+    ],
+    "tone": [
+      "loud",
+      "playful",
+      "expressive"
+    ],
+    "signature": "On hover the element travels exactly its shadow offset and lands flat on the surface."
+  }
 }

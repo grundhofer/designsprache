@@ -65,5 +65,13 @@
   "verdict": "Als Basis für eine Eigenmarke ist das die bequemste und zugleich schwächste Wahl im ganzen Katalog: technisch billig, plattformübergreifend problemlos, in Compose und SwiftUI mit Bordmitteln machbar - und vollkommen austauschbar. Genau dieser Look ist 2023 bis 2026 die Standarduniform jedes KI- und SaaS-Startups geworden; wer ihn wählt, bekommt eine professionell wirkende Oberfläche und exakt null Wiedererkennung, was für jemanden mit vielen kleinen Apps das eigentliche Ziel verfehlt. Brauchbar ist er als dünne Marketing-Schicht über einer anderen, stärkeren Produkt-Basis: Aurora auf der Landingpage, nüchterne Struktur in der App. Als Marke braucht es dann trotzdem ein eigenes, nicht-generisches Signal - eine eigenwillige Schrift, eine unerwartete Akzentfarbe oder ein Formdetail, das nicht aus dem Verlaufsgenerator kommt.",
   "combinesWith": ["dev-noir", "glassmorphism", "swiss", "terminal-mono"],
   "tip": "Zwei Dinge trennen die teure Variante von der Generator-Variante: erstens eine Kornschicht von 3-6% über den Verläufen, sonst ist auf jedem 8-Bit-Panel Banding sichtbar; zweitens eine Abdunkelungsebene zwischen Aurora und Inhalt, damit die Typo nicht von der Blob-Position abhängt. Und die Farbwahl bewusst gegen die Norm setzen - Violett-Cyan ist der Standard, Bernstein-Rost oder Mint-Indigo lesen sich sofort als eigene Marke statt als Vorlage.",
-  "googleFonts": ["Inter"]
+  "googleFonts": ["Inter"],
+  "finder": {
+    "mode": "dark",
+    "a11y": 3,
+    "platform": { "web": 5, "mobile": 4, "desktop": 3 },
+    "fits": ["marketing", "dev-tool"],
+    "tone": ["calm", "expressive"],
+    "signature": "Kein einziger Schlagschatten - Tiefe kommt aus blur(60px), Glasfüllung und farbigem Glow."
+  }
 }

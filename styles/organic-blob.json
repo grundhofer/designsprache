@@ -64,5 +64,17 @@
   "verdict": "Als Basis für eine plattformübergreifende Eigenmarke ist das die falsche Wahl. Der Stil trägt keine Informationsdichte, ist in Compose und SwiftUI nur mit erheblichem Zusatzaufwand reproduzierbar - genau das, was ein Solo-Entwickler mit vielen kleinen Apps nicht leisten kann - und er ist zeitlich klar auf 2019-2021 verortet. Sinnvoll ist er als thematischer Sub-Brand für genau eine App: ein Journaling-, Achtsamkeits- oder Habit-Tool wie 'Balance Ally' darf so aussehen, das Projektwerkzeug daneben nicht. Wenn davon etwas in die Dachmarke soll, dann die Farbstrategie (Cremeweiß statt Reinweiß, Erdtöne statt Digitalblau) und die weiche Serif - nicht die Blob-Form.",
   "combinesWith": ["claymorphism", "warm-editorial", "aurora-mesh", "flat"],
   "tip": "Ein einziger Blob pro Screen, alles andere bleibt ausgerichtet. Der Stil überzeugt genau dann, wenn die organische Form die Ausnahme ist, die ein strenges Raster kommentiert - nicht wenn sie das Raster ersetzt. Und den Text-Ink zwei Stufen dunkler wählen, als die Pastellpalette 'will': fast jede billige Blob-Seite scheitert am Kontrast, nicht an der Form.",
-  "googleFonts": ["Fraunces", "Nunito"]
+  "googleFonts": ["Fraunces", "Nunito"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 2
+    },
+    "fits": ["consumer", "marketing"],
+    "tone": ["warm", "calm", "playful"],
+    "signature": "Schatten sind nie schwarz, sondern farbig getönt; der Grund ist Cremeweiß #FAF6EF, nie Reinweiß."
+  }
 }

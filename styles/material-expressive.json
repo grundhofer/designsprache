@@ -100,5 +100,25 @@
   "googleFonts": [
     "Roboto Flex",
     "Roboto"
-  ]
+  ],
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 2,
+      "mobile": 4,
+      "desktop": 1
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "civic"
+    ],
+    "tone": [
+      "expressive",
+      "playful",
+      "warm"
+    ],
+    "signature": "Jede Füllfarbe ist eine Tonstufe des Seeds; die Pille morpht beim Druck zum Squircle."
+  }
 }

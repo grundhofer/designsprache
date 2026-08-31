@@ -100,5 +100,24 @@
   "googleFonts": [
     "Bitter",
     "Lato"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": {
+      "web": 3,
+      "mobile": 1,
+      "desktop": 5
+    },
+    "fits": [
+      "creative",
+      "consumer"
+    ],
+    "tone": [
+      "nostalgic",
+      "warm",
+      "expressive"
+    ],
+    "signature": "Gloss overlay on the top half of every button, light fixed at 12 o'clock, pressing inverts it inward."
+  }
 }

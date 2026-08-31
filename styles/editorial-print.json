@@ -104,5 +104,13 @@
   "googleFonts": [
     "Instrument Serif",
     "Newsreader"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 4,
+    "platform": { "web": 5, "mobile": 2, "desktop": 4 },
+    "fits": ["content", "marketing"],
+    "tone": ["calm", "formal"],
+    "signature": "Initiale über drei Zeilen, Kapitälchen mit 0.2em Sperrung, Trennung nur durch Hairlines - null Schatten."
+  }
 }

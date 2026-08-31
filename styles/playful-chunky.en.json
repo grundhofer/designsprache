@@ -101,5 +101,13 @@
   "googleFonts": [
     "Fredoka",
     "Nunito"
-  ]
+  ],
+  "finder": {
+    "mode": "light",
+    "a11y": 2,
+    "platform": { "web": 4, "mobile": 5, "desktop": 2 },
+    "fits": ["consumer", "civic"],
+    "tone": ["playful", "warm"],
+    "signature": "Borders always 2px, never 1px; the plinth is the same hue 15-20% darker, never grey."
+  }
 }

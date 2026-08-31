@@ -64,5 +64,13 @@
   "verdict": "As a continuous product language no, as a signature layout a yes worth considering. The temptation is strong for a solo developer, because De Stijl looks instantly unmistakable with pure CSS Grid and not a single asset – but that unmistakability belongs to Mondrian rather than to your own brand, and across 27 apps it quickly feels like a costume. On top of that comes the practical break: a hand-composed asymmetric surface tolerates no dynamic lists, no settings dialogs and no Android screen. The style makes sense as a recurring special surface – home screen, launcher, app overview, marketing hero – over a quiet Swiss grid for the actual UI.",
   "combinesWith": ["swiss", "bauhaus", "neo-brutalism", "flat"],
   "tip": "Grade the black bars deliberately in at least three different weights and let no two fields end up the same size. A bento grid with an even gap and equally sized tiles is not De Stijl, it is a grid – the whole style lives on the eye resolving the inequality into equilibrium. And keep color under a quarter of the surface: white is the main color, not the leftover.",
-  "googleFonts": ["Archivo"]
+  "googleFonts": ["Archivo"],
+  "finder": {
+    "mode": "light",
+    "a11y": 3,
+    "platform": { "web": 5, "mobile": 1, "desktop": 3 },
+    "fits": ["marketing", "creative"],
+    "tone": ["precise", "austere", "formal"],
+    "signature": "Color fields sit at the edges, never in the center, and no two fields are the same size."
+  }
 }
