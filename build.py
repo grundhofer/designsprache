@@ -1951,8 +1951,10 @@ def build_landing():
 # ---------------------------------------------------------------------------
 
 OG_STYLES = ["swiss", "bauhaus", "neo-brutalism", "dev-noir"]
-OG_W, OG_H, OG_TILE, OG_GAP, OG_PAD = 1280, 640, 280, 22, 40
-OG_REF = 780                       # Bezugsbreite der Demos
+OG_W, OG_H, OG_PAD, OG_GAP = 1280, 640, 40, 20
+OG_TILE, OG_FRAME = 285, 196      # Kachelbreite und feste Rahmenhoehe des Demo-Streifens
+OG_REF = 780                      # Bezugsbreite der Demos
+OG_CARD = "dev-noir"              # aus diesem Faktenblatt stammt der gezeigte Prompt-Auszug
 
 
 def build_og():
@@ -1967,19 +1969,31 @@ def build_og():
     fonts = set()
     for d in data:
         fonts.update(d.get("googleFonts") or [])
-    specs = [s for s in FONT_SPECS
-             if s.split(":")[0].replace("+", " ") in fonts] + CHROME_FONTS
+    specs = [x for x in FONT_SPECS
+             if x.split(":")[0].replace("+", " ") in fonts] + CHROME_FONTS
     links = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-             + "&".join("family=" + s for s in specs) + '&display=block">')
+             + "&".join("family=" + x for x in dict.fromkeys(specs)) + '&display=block">')
 
-    OG_N = N_ENTRIES
+    # Der Prompt-Auszug stammt aus einem echten Faktenblatt, nicht aus einer Attrappe.
+    card = json.loads((SRC / f"{OG_CARD}.json").read_text(encoding="utf-8"))
+    cp = card["params"]
+    zeilen = [("## " + card["name"], "h"), ("", "")]
+    zeilen += [("- **" + k + ":** " + cp[v][:46] + ("…" if len(cp[v]) > 46 else ""), "")
+               for k, v in (("Radius", "radius"), ("Kontrast", "contrast"),
+                            ("Tiefe", "depth"), ("Farbe", "color"))]
+    zeilen += [("", ""), ("## Regeln", "h")]
+    zeilen += [("- " + m[:52] + ("…" if len(m) > 52 else ""), "")
+               for m in card["markers"][:2]]
+    pre = "".join('<div class="%s">%s</div>' % (c or "l", html.escape(t) or "&nbsp;")
+                  for t, c in zeilen)
+
     k = OG_TILE / OG_REF
     tiles = "".join(
         f'<div class="tile"><div class="frame"><div class="host">{demo}</div></div>'
         f'<div class="lbl"><span class="n">{i + 1:02d}</span>{esc(d["name"].split(" / ")[0])}</div></div>'
         for i, (demo, d) in enumerate(zip(demos, data)))
 
-    css = "\n".join(f"<style>\n{s}\n</style>" for s in sheets)
+    css = "\n".join(f"<style>\n{x}\n</style>" for x in sheets)
 
     (ROOT / "og.html").write_text(f"""<!doctype html>
 <html lang="de"><head><meta charset="utf-8">
@@ -1989,46 +2003,61 @@ def build_og():
   body {{ width:{OG_W}px; height:{OG_H}px; overflow:hidden;
     background:#141614; color:#E7EAE4; font-family:"Newsreader",Georgia,serif;
     display:flex; flex-direction:column; padding:{OG_PAD}px; box-sizing:border-box; }}
-  .eyebrow {{ font-family:"IBM Plex Mono",monospace; font-size:14px; letter-spacing:.16em;
+  .top {{ display:flex; gap:44px; align-items:flex-start; }}
+  .left {{ flex:1 1 auto; min-width:0; }}
+  .eyebrow {{ font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.16em;
     text-transform:uppercase; color:#C7A55F; }}
   h1 {{ font-family:"IBM Plex Sans Condensed",Arial,sans-serif; font-weight:700;
-    font-size:76px; line-height:.95; letter-spacing:-.025em; margin:12px 0 0; }}
+    font-size:66px; line-height:.94; letter-spacing:-.025em; margin:10px 0 0; }}
   h1 em {{ font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:400;
-    color:#99A099; letter-spacing:-.01em; font-size:.58em; display:block; margin-top:4px; }}
-  .sub {{ margin:22px 0 0; max-width:820px; font-size:21px; line-height:1.45; color:#99A099; }}
-  .sub b {{ color:#E7EAE4; font-weight:500; }}
-  .sub .en {{ display:block; margin-top:4px; }}
-  .url {{ font-family:"IBM Plex Mono",monospace; font-size:15px; color:#77BFB1;
-    margin-top:20px; letter-spacing:.01em; }}
-  .row {{ display:flex; gap:{OG_GAP}px; margin-top:auto; align-items:stretch; }}
-  .tile {{ width:{OG_TILE}px; display:flex; flex-direction:column; }}
-  .frame {{ width:{OG_TILE}px; overflow:hidden; border:1px solid #333833; }}
+    color:#99A099; letter-spacing:-.01em; font-size:.52em; display:block; margin-top:3px; }}
+  .purpose {{ margin:14px 0 0; font-size:18px; line-height:1.4; color:#E7EAE4; max-width:34ch; }}
+  .purpose span {{ display:block; color:#99A099; font-size:15px; margin-top:3px; }}
+  .url {{ font-family:"IBM Plex Mono",monospace; font-size:14px; color:#77BFB1; margin-top:14px; }}
+  .card {{ flex:0 0 452px; border:1px solid #333833; background:#1B1E1B; }}
+  .card-h {{ display:flex; align-items:center; gap:8px; padding:9px 12px;
+    border-bottom:1px solid #333833; font-family:"IBM Plex Mono",monospace; font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase; color:#6F766F; }}
+  .card-h b {{ color:#C7A55F; font-weight:500; }}
+  .card-b {{ padding:11px 13px; font-family:"IBM Plex Mono",monospace; font-size:11px;
+    line-height:1.62; color:#99A099; }}
+  .card-b .h {{ color:#E7EAE4; }}
+  .card-f {{ padding:10px 13px 12px; border-top:1px solid #333833; }}
+  .btn {{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:12px;
+    padding:6px 12px; background:#77BFB1; color:#101413; border-radius:2px; }}
+  .btn + span {{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:#6F766F;
+    margin-left:10px; }}
+  .row {{ display:flex; gap:{OG_GAP}px; margin-top:auto; align-items:flex-start; }}
+  .tile {{ width:{OG_TILE}px; }}
+  .frame {{ width:{OG_TILE}px; height:{OG_FRAME}px; overflow:hidden; border:1px solid #333833; }}
   .host {{ width:{OG_REF}px; transform:scale({k}); transform-origin:0 0; }}
-  .lbl {{ margin-top:auto; padding-top:10px; font-family:"IBM Plex Sans Condensed",Arial,sans-serif;
-    font-weight:600; font-size:17px; color:#E7EAE4; display:flex; gap:8px; align-items:baseline; }}
-  .lbl .n {{ font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; color:#C7A55F; }}
+  .lbl {{ padding-top:9px; font-family:"IBM Plex Sans Condensed",Arial,sans-serif;
+    font-weight:600; font-size:16px; color:#E7EAE4; display:flex; gap:8px; align-items:baseline; }}
+  .lbl .n {{ font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600;
+    color:#C7A55F; }}
 </style>
 {css}
 </head><body>
-  <span class="eyebrow">Referenzkatalog &middot; Reference catalog</span>
-  <h1>Stil&#8209;Katalog<em>{OG_N} ways to build the same interface</em></h1>
-  <p class="sub">Dieselbe Projektliste, <b>{OG_N}-mal gestaltet</b> &mdash; mit Faktenblatt,
-    Kennzahlen und Entscheidungsraster.
-    <span class="en">The same project list, <b>designed {OG_N} ways</b> &mdash; with fact sheets,
-    scores and a decision grid.</span></p>
-  <p class="url">grundhofer.github.io/designsprache</p>
+  <div class="top">
+    <div class="left">
+      <span class="eyebrow">Referenzkatalog &middot; Reference catalog</span>
+      <h1>Stil&#8209;Katalog<em>{N_ENTRIES} ways to build the same interface</em></h1>
+      <p class="purpose">Dieselbe Oberfläche, {N_ENTRIES}&#8209;mal gestaltet — vergleichen,
+        auswählen, als Anweisung für einen KI&#8209;Agenten kopieren.
+        <span>The same interface, designed {N_ENTRIES} ways — compare, choose, copy it as an
+        instruction for an AI agent.</span></p>
+      <p class="url">{SITE_URL.replace("https://", "")}</p>
+    </div>
+    <div class="card">
+      <div class="card-h">Als Prompt kopieren <b>&middot;</b> Copy as prompt</div>
+      <div class="card-b">{pre}</div>
+      <div class="card-f"><span class="btn">Kopiert &middot; Copied</span><span>4.000 Zeichen</span></div>
+    </div>
+  </div>
   <div class="row">{tiles}</div>
-  <script>
-    // Rahmenhoehe auf die tatsaechliche Demohoehe setzen, damit nichts abgeschnitten
-    // wird und die Beschriftungen auf einer Grundlinie stehen.
-    document.querySelectorAll('.host').forEach(function (h) {{
-      h.parentElement.style.height = Math.round(h.scrollHeight * {k}) + 'px';
-    }});
-  </script>
 </body></html>
 """, encoding="utf-8")
-    print(f"  og.html  ({OG_W}x{OG_H}, {len(OG_STYLES)} Demos) - mit Chrome nach og.png rendern")
-
+    print(f"  og.html  ({OG_W}x{OG_H}, {len(OG_STYLES)} Demos + Prompt-Karte)")
 
 if __name__ == "__main__":
     print("Stil-Katalog")

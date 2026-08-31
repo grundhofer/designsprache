@@ -7,242 +7,115 @@
 &nbsp;·&nbsp; [Deutsch](https://grundhofer.github.io/designsprache/de/)
 &nbsp;·&nbsp; [English](https://grundhofer.github.io/designsprache/en/)
 
-![Dieselbe Projektliste in vier Stilen nebeneinander: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir. — The same project list in four styles side by side.](og.png)
+![Stil-Katalog: dieselbe Projektliste in vier Stilen, daneben der Prompt-Export für KI-Agenten. — The same project list in four styles, alongside the prompt export for AI agents.](og.png)
 
 ---
 
-## Deutsch
+## Wozu
 
-Über UI-Stile wird meist in Adjektiven geredet. „Clean", „modern", „verspielt" — Wörter, unter
-denen sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung.
+Über UI-Stile wird in Adjektiven geredet — „clean", „modern", „verspielt". Wörter, unter denen
+sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung: **31-mal
+dieselbe Projektliste**, überall dieselben dreizehn Textbausteine, nur die Gestaltung ändert
+sich. Dadurch wird vergleichbar, was ein Stil tatsächlich entscheidet — und was nur Geschmack
+ist.
 
-Jeder der 31 Einträge zeigt **exakt dieselbe Oberfläche**: eine Projektliste mit Kopfzeile, drei
-Einträgen, einem Suchfeld und zwei Schaltflächen — dieselben dreizehn Textbausteine, überall.
-Das Einzige, was sich ändert, ist die Gestaltung. Dadurch wird vergleichbar, was ein Stil
-tatsächlich entscheidet, und was nur Geschmack ist.
+Zu jedem Eintrag gehört ein Faktenblatt mit harten Werten statt Stimmungen: Herkunft, sechs bis
+neun überprüfbare Merkmale, echte Vertreter mit belegten Farben und Radien, Risiken,
+Barrierefreiheits-Konsequenzen, Alterungsverhalten und Plattform-Eignung.
 
-Zu jedem Stil gehört ein Faktenblatt: Herkunft und Entstehungskontext, sechs bis neun harte
-visuelle Merkmale mit konkreten Werten, echte Vertreter mit belegten Farbwerten und Radien,
-Stärken, Risiken, Barrierefreiheits-Konsequenzen, Alterungsverhalten, Plattform-Eignung und
-ein Praxistipp.
+Talk about UI styles happens in adjectives — words that mean something different to everyone.
+This catalog replaces them with evidence: **the same project list 31 times**, the same thirteen
+pieces of text throughout, only the design changes. Every entry comes with a fact sheet of hard,
+checkable values rather than moods.
 
-### Die sieben Parameter
+## Stil finden und als Prompt kopieren / Find a style, copy it as a prompt
 
-Stilnamen sind austauschbar. Was einen Stil ausmacht, sind sieben Größen — und jede davon ist
-eine Entscheidung, die man als Design-Token schreiben kann:
-
-| Parameter | Spanne | Wirkung |
-|---|---|---|
-| **Radius** | 0 px → vollrund | Der am stärksten unterschätzte Markenträger |
-| **Kontrast** | 1,5:1 → 18:1 | Ob eine Oberfläche ruhig oder laut wirkt |
-| **Tiefe** | keine → Linie → Schatten → Unschärfe → z-Achse | Wie Hierarchie entsteht |
-| **Dichte** | Faktor 5 zwischen den Extremen | Information pro Bildschirm |
-| **Farbe** | monochrom+Akzent → Flächenfarbe → Verlauf | Wie viel Bedeutung Farbe trägt |
-| **Typografie** | Grotesk / Serif / Mono / Display | Zweitstärkster Wiedererkennungsträger |
-| **Motion** | 0 ms → 120 ms linear → 400 ms Spring | Die Persönlichkeit — meist vergessen |
-
-Wer diese sieben kennt, kann Stile **mischen statt kopieren**. Kein starkes Produkt trägt einen
-Reinstil: Linear ist Swiss-Raster plus Dark-Mode plus Terminal-Dichte, Notion ist Warm Editorial
-plus Flat, Stripe ist Swiss plus Aurora.
-
-### Die neun Familien
-
-**Modernistische Schulen** — Swiss · Bauhaus · De Stijl
-**Postmoderne & Rebellion** — Memphis · Swiss Punk · Web-Brutalismus
-**Digitale Epochen** — Skeuomorphismus · Flat · Material 3 Expressive
-**Weiche Materialität** — Neumorphismus · Glassmorphism · Claymorphism
-**Produkt-Ästhetik heute** — Dev-Noir · Warm Editorial · Neo-Brutalismus · Terminal-Mono · Data-Dense · Spatial
-**Norm & Beschränkung** — Civic/GOV.UK · E-Paper
-**Nostalgie & Subkultur** — Y2K/Frutiger Aero · Vaporwave · Retro-Futurismus
-**Ausdruck & Geste** — Organic/Blob · Maximalismus · Aurora-Mesh · Hand-Drawn
-**Weitere Pole** — Editorial-Print · Pixel/8-Bit · Playful-Chunky · Portal-Dichte
-
-„Norm & Beschränkung" ist die jüngste Familie und die einzige, die keine Geschmacksfrage
-versammelt: Stile, deren Werte nachweislich nicht der Gestalter gesetzt hat, sondern eine
-Prüfvorschrift, eine Darstellungsnorm oder die Physik des Displays. Das Aufnahmekriterium ist
-prüfbar — *man kann benennen, wer den Wert gesetzt hat, und es war nicht der Gestalter.*
-Sie beantwortet die Leitfrage des Katalogs von der anderen Seite: hier war nichts Geschmack.
-
-"Norm & Constraint" is the newest family and the only one that does not collect a matter of
-taste: styles whose values were demonstrably not set by a designer but by a compliance standard,
-a display convention, or the physics of a screen. The admission test is checkable — *you can name
-who set the value, and it was not the designer.*
-
----
-
-## English
-
-Talk about UI styles usually happens in adjectives. "Clean", "modern", "playful" — words that
-mean something different to everyone. This catalog replaces them with evidence.
-
-Each of the 31 entries shows **exactly the same interface**: a project list with a header, three
-rows, a search field and two buttons — the same thirteen pieces of text throughout. The only
-thing that changes is the design. That makes it comparable what a style actually decides, and
-what is merely taste.
-
-Every style comes with a fact sheet: origin and context, six to nine hard visual markers with
-concrete values, real-world examples with sourced color values and radii, strengths, risks,
-accessibility consequences, how it ages, platform fit, and one practical tip.
-
-The seven parameters that constitute any style — radius, contrast, depth, density, color,
-typography, motion — are each a decision you can write down as a design token. Know them, and
-you can mix styles instead of copying them.
-
----
-
-## Der Stil-Finder / The style finder
-
-Auf der Katalogseite führt der Knopf **Stil finden** zu neun Fragen — was du baust, wie es wirken
-soll, hell oder dunkel, Dichte, Haltbarkeit, Auffälligkeit, Aufwand, Barrierefreiheit,
-Plattformen. Daraus entsteht eine Empfehlung der fünf am besten passenden Einträge, und **jeder
-Treffer wird begründet**: „Ausdrücklich für Entwicklerwerkzeug geeignet", „Haltbarkeit 5 von 5",
-„Ist hell, du wolltest dunkel". Die Bewertung liest ausschließlich Merkmale aus den
-Faktenblättern, nicht aus Geschmack.
+Der Knopf **Stil finden** stellt neun Fragen — was du baust, wie es wirken soll, hell oder
+dunkel, Dichte, Haltbarkeit, Auffälligkeit, Aufwand, Barrierefreiheit, Plattformen. Daraus
+entsteht eine Empfehlung der fünf passendsten Einträge, und **jeder Treffer wird begründet**,
+auch die negativen: „Haltbarkeit 5 von 5", „Ist hell, du wolltest dunkel".
 
 Zu jeder Empfehlung gehört **Als Prompt kopieren**. Der Knopf legt eine vollständige
-Stilanweisung für einen KI-Agenten in die Zwischenablage — Kernidee, die sieben harten Parameter
-mit konkreten Werten, Palette, Schriften, alle Regeln aus `markers`, die bekannten Fehlerquellen
-aus `risks`, die Barrierefreiheits-Hinweise und den Praxistipp. Das ist genau das Material, das
-einen Agenten davon abhält, wieder generisches Standard-UI zu bauen. Wo die Zwischenablage
-gesperrt ist, wird der Text stattdessen eingeblendet und markiert.
+Stilanweisung für einen KI-Agenten in die Zwischenablage: Kernidee, die sieben harten Parameter
+mit konkreten Werten, Palette, Schriften, alle Regeln, die bekannten Fehlerquellen des Stils,
+Barrierefreiheit und Praxistipp. Rund 4.000 Zeichen, direkt einsetzbar — genau das Material, das
+einen Agenten davon abhält, wieder generisches Standard-UI zu bauen. Ist die Zwischenablage
+gesperrt, wird der Text stattdessen eingeblendet und markiert.
 
-The **Find a style** button on the catalog page asks nine questions and recommends the five
-closest entries, justifying every match from the fact sheets' own attributes. **Copy as prompt**
-puts a complete style instruction for an AI agent on the clipboard: core idea, the seven hard
-parameters with concrete values, palette, type, every rule from `markers`, the known failure
-modes from `risks`, accessibility notes and the practical tip.
+**Find a style** asks nine questions and recommends the five closest entries, justifying every
+match from the fact sheets' own attributes. **Copy as prompt** then puts a complete style
+instruction for an AI agent on your clipboard — core idea, the seven hard parameters with
+concrete values, palette, type, every rule, the known failure modes, accessibility and one
+practical tip. About 4,000 characters, ready to paste.
 
 ---
 
 ## Aufbau / How it works
 
-Kein Framework, kein Build-Tool-Zoo. Ein Python-Skript ohne Abhängigkeiten baut aus den
-Quelldateien drei statische Seiten.
-
-No framework, no build-tool zoo. One dependency-free Python script turns the sources into three
-static pages.
+Kein Framework. Ein Python-Skript ohne Abhängigkeiten baut aus den Quelldateien drei statische
+Seiten. No framework — one dependency-free Python script turns the sources into three static
+pages.
 
 ```
-styles/
-  swiss.html        Demo: ein <style>-Element + ein <div class="style-swiss">
-  swiss.json        Faktenblatt / fact sheet
-  swiss.en.html     englische Fassung, CSS zeichengleich / English, byte-identical CSS
-  swiss.en.json
-  … 31 Stile × 4 Dateien
-landing.html        zweisprachige Eingangsseite / bilingual entry page
-build.py            Generator
-tools/              Prüfwerkzeuge / check tools
-docs/               erzeugt / generated — nicht eingecheckt / not committed
+styles/<slug>.html      Demo: ein <style>-Element + ein <div class="style-slug">
+styles/<slug>.json      Faktenblatt / fact sheet
+styles/<slug>.en.*      englische Fassung, CSS zeichengleich / English, byte-identical CSS
+landing.html            zweisprachige Eingangsseite / bilingual entry page
+build.py                Generator
+tools/palette-check.py  Prüfwerkzeug / check tool
+docs/                   erzeugt, nicht eingecheckt / generated, not committed
 ```
 
 ```sh
-python3 build.py              # docs/index.html, docs/de/, docs/en/
-python3 build.py --artifact   # zusätzlich ein Fragment ohne <head>
-python3 build.py --og         # og.html, die Vorlage des Vorschaubilds
+python3 build.py                 # docs/index.html, docs/de/, docs/en/
+python3 tools/palette-check.py   # Palettendubletten / palette duplicates
 ```
 
-`og.png` liegt im Repository statt im Build, weil der CI-Runner keinen Browser hat. Neu
-rendern nach einer Änderung an `og.html`:
+**Die Scoping-Regel.** 31 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
+jeder CSS-Selektor mit `.style-<slug>`, `@keyframes` sind slug-präfigiert, und es gibt kein
+`:root`, kein `body`, keinen nackten Element-Selektor. `build.py` prüft das bei jedem Lauf und
+bricht bei Verstoß ab — ebenso, wenn deutscher Text geändert wurde, ohne den englischen
+nachzuziehen.
 
-`og.png` is committed rather than built, because the CI runner has no browser. Re-render it
-after changing `og.html`:
+31 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
+`@keyframes` names are slug-prefixed, and there is no `:root`, `body` or bare element selector.
+`build.py` enforces this on every run.
 
-```sh
-python3 build.py --og
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
-  --virtual-time-budget=9000 --screenshot=og.png --window-size=1280,640 \
-  "file://$PWD/og.html"
-```
-
-### Die Scoping-Regel
-
-31 Stylesheets teilen sich eine Seite. Damit sie sich nicht gegenseitig zerstören, gilt für
-jede Demo: **jeder CSS-Selektor beginnt mit `.style-<slug>`**, `@keyframes`-Namen sind mit
-`<slug>-` präfigiert, und es gibt kein `:root`, kein `body`, keinen nackten Element-Selektor.
-`build.py` prüft das bei jedem Lauf und bricht bei Verstoß ab.
-
-### Palettendubletten
-
-`tools/palette-check.py` findet Stilpaare, die zwei oder mehr praktisch identische bunte Farben
-führen — gemessen in OKLab-ΔE, Neutrale ausgenommen. Der Anlass war ein echter Befund: zwei
-Einträge führten `#FF3B7F` und `#FF3D81` (ΔE 0,3) und lasen sich dadurch als ein Stil. Die
-Prüfung läuft in der CI. Ihre Kalibrierung ist jederzeit nachvollziehbar:
-
-`tools/palette-check.py` finds style pairs carrying two or more practically identical chromatic
-colors, measured in OKLab ΔE, neutrals excluded. It runs in CI. Its calibration is reproducible:
-
-```sh
-python3 tools/palette-check.py --at <Stand vor der Reparatur>   # Exit 1, findet die Dublette
-python3 tools/palette-check.py                                  # Exit 0
-python3 tools/palette-check.py --report                         # volle Rangliste
-```
-
-31 stylesheets share one page. So they cannot destroy each other, every demo obeys one rule:
-**every CSS selector starts with `.style-<slug>`**, `@keyframes` names are prefixed with
-`<slug>-`, and there is no `:root`, no `body`, no bare element selector. `build.py` verifies
-this on every run and fails the build on violation.
+`tools/palette-check.py` findet Stilpaare mit zwei oder mehr praktisch identischen bunten Farben
+(OKLab-ΔE unter 2, Neutrale ausgenommen) und läuft in der CI. Es findet Stilpaare, die man sonst
+für einen Stil hält. Runs in CI; finds pairs that would otherwise read as one style.
 
 Die Demos sind handgebautes HTML und CSS — keine Bilder, keine Skripte, keine Bibliotheken.
-Grafik entsteht aus Gradients, `box-shadow`, Borders, Inline-SVG und CSS-Mustern. Schriften
-kommen von Google Fonts.
+The demos are hand-built HTML and CSS — no images, no scripts, no libraries.
 
 ---
 
 ## Warum „Designsprache" / Why "Designsprache"
 
-Das Repository heißt nicht „Stil-Katalog", weil der Katalog nur der erste Teil ist.
-*Designsprache* ist das deutsche Wort für die visuelle und interaktive Sprache einer Marke —
-Farbe, Typografie, Radius, Abstand, Motion, Tonfall und die Regeln, nach denen sie
-zusammenwirken.
+Der Katalog beantwortet, **welche Sprachen es gibt und was jede entscheidet**. Die Antwort auf
+*welche wird meine* kommt später in dasselbe Repository: Design-Tokens im DTCG-Format, aus einer
+Quelle nach CSS, Tailwind, Compose und SwiftUI generiert. Bis dahin steht hier nur der Katalog —
+kein Platzhalter, er funktioniert für sich.
 
-Der Katalog beantwortet die Frage **„welche Sprachen gibt es und was entscheidet jede?"**
-Die Antwort auf **„welche wird meine?"** kommt später in dasselbe Repository: Design-Tokens
-im DTCG-Format, aus einer Quelle nach CSS, Tailwind, Jetpack Compose und SwiftUI generiert,
-dazu die Komponenten darauf. Der Katalog ist die Entscheidungsgrundlage dafür, kein Selbstzweck.
-
-Bis dahin steht hier ausschließlich der Katalog. Das ist kein Platzhalter — er funktioniert
-für sich, und wer nur ihn braucht, braucht den Rest nicht.
-
-The repository is not called "style catalog" because the catalog is only the first part.
-*Designsprache* is the German word for the visual and interactive language of a brand — color,
-typography, radius, spacing, motion, tone of voice, and the rules by which they work together.
-
-The catalog answers **"which languages exist, and what does each of them decide?"** The answer
-to **"which one becomes mine?"** will land in this same repository later: design tokens in DTCG
-format, generated from one source into CSS, Tailwind, Jetpack Compose and SwiftUI, plus the
-components built on them. The catalog is the basis for that decision, not an end in itself.
-
-Until then this repository holds the catalog and nothing else. That is not a placeholder — it
-stands on its own, and anyone who only needs the catalog does not need the rest.
+The catalog answers **which languages exist and what each of them decides**. The answer to
+*which one becomes mine* will land in this same repository later: design tokens in DTCG format,
+generated from one source into CSS, Tailwind, Compose and SwiftUI.
 
 ---
 
 ## Mitmachen / Contributing
 
-Ein 28. Stil ist willkommen — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)**.
-Korrekturen an Jahreszahlen, Urhebern, Farbwerten oder Einschätzungen ebenso: die
-Faktenblätter sind recherchiert, aber nicht unfehlbar.
-
-A 28th style is welcome — see **[CONTRIBUTING.md](CONTRIBUTING.md)**. Corrections to dates,
-attributions, color values or judgements are equally welcome: the fact sheets are researched
-but not infallible.
-
----
+Ein 32. Stil und Korrekturen an Jahreszahlen, Urhebern oder Farbwerten sind willkommen — siehe
+**[CONTRIBUTING.md](CONTRIBUTING.md)**. A 32nd style and corrections are welcome.
 
 ## Lizenz / License
 
-- **Code** (`build.py`, `landing.html`, die Demos in `styles/*.html`) — [MIT](LICENSE).
-  Nimm eine Demo, bau sie um, verwende sie kommerziell.
-- **Texte** (die Faktenblätter in `styles/*.json`, die Prosa der Seite) —
-  [CC BY 4.0](LICENSE-CONTENT.md). Weiterverwendung mit Namensnennung.
+**Code** (`build.py`, `tools/`, `landing.html`, die Demos) — [MIT](LICENSE).
+**Texte** (die Faktenblätter, die Prosa der Seite) — [CC BY 4.0](LICENSE-CONTENT.md).
 
-Die vier Kennzahlen je Stil (Haltbarkeit, Wiedererkennung, Aufwand, Dichte) sind fachliche
-Einschätzungen, keine Messwerte. Genannte Produkt- und Markennamen gehören ihren jeweiligen
-Inhabern; die Demos sind eigenständige Nachbauten im jeweiligen Stil, keine Kopien.
-
-The four scores per style are professional judgements, not measurements. Product and brand
-names belong to their respective owners; the demos are original recreations in the respective
-style, not copies.
+Die vier Kennzahlen je Stil sind fachliche Einschätzungen, keine Messwerte. Genannte Produkt-
+und Markennamen gehören ihren Inhabern; die Demos sind eigenständige Nachbauten im jeweiligen
+Stil, keine Kopien. The four scores are professional judgements, not measurements; the demos are
+original recreations, not copies.
 
 © Sebastian Grundhöfer
