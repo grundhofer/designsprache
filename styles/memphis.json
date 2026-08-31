@@ -9,15 +9,15 @@
   ],
   "family": "Postmoderne & Rebellion",
   "era": "1981-1988, Revival ab ca. 2016 bis heute",
-  "origin": "Die Memphis Group entstand im Dezember 1980 in Mailand um Ettore Sottsass und präsentierte im September 1981 ihre erste Kollektion auf dem Salone del Mobile. Sie war eine offene Kampfansage an das funktionalistische Bauhaus-Erbe und an Sottsass' eigene Vergangenheit bei Olivetti: Form sollte nicht mehr der Funktion folgen, sondern Sprache, Witz und Wegwerfbarkeit transportieren. Technisch möglich wurde der Stil durch billige Kunststoff-Schichtstoffe (Abet Laminati), auf die sich beliebige Muster drucken ließen - Sottsass' Muster 'Bacterio' (1978) und die Terrazzo-Imitate machten aus billigem Material teures Zeichen. Nach der Auflösung 1988 wanderte die Bildsprache über MTV-Grafik, Saved-by-the-Bell-Muster und später über Illustrations-Systeme von Mailchimp und Slack ins Digitale.",
+  "origin": "Die Memphis Group entstand im Dezember 1980 in Mailand um Ettore Sottsass und präsentierte im September 1981 ihre erste Kollektion auf dem Salone del Mobile. Sie war eine offene Kampfansage an das funktionalistische Bauhaus-Erbe und an Sottsass' eigene Vergangenheit bei Olivetti: Form sollte nicht mehr der Funktion folgen, sondern Sprache, Witz und Wegwerfbarkeit transportieren. Technisch möglich wurde der Stil durch billige Kunststoff-Schichtstoffe (Abet Laminati), auf die sich beliebige Muster drucken ließen - Sottsass' Muster 'Bacterio' (1978) und die Terrazzo-Imitate machten aus billigem Material teures Zeichen. Nach der Auflösung 1988 wanderte die Bildsprache über MTV-Grafik, Saved-by-the-Bell-Muster und später über Illustrations-Systeme von Mailchimp und Slack ins Digitale. Die Farbwelt dieser Fassung ist an Fotografien der Originalobjekte von 1981 bis 1986 gemessen und in OKLCH nachgerechnet - Carlton- und Casablanca-Regal (1981), Super-Lampe von Martine Bedin (1981), Madras-Tisch und Teppich von Nathalie du Pasquier (1985/86): gebrochenes Ocker um Buntton 70 Grad, Terrakotta um 66 Grad, Türkis um 181 Grad, Ultramarin um 262 Grad, Flieder um 303 Grad. Türkis und Ultramarin sind bewusst an den Rändern der historischen Memphis-Bandbreite gewählt, damit der Eintrag im Katalog nicht auf den Bunttönen von neo-brutalism und maximalism liegt. Die reinsatten Magenta-, Cyan- und Gelbtöne, die heute als 'Memphis' zirkulieren, stammen aus dem Revival ab 2016 und nicht aus Mailand 1981; historisch ist Memphis wärmer, gebrochener und pastelliger.",
   "idea": "Farben und Formen werden nach Spannung statt nach Harmonie kombiniert; Dekoration darf nichts bedeuten und muss nichts rechtfertigen. Das Objekt spricht, statt zu dienen.",
   "markers": [
-    "Terrazzo-Sprenkel und 'Bacterio'-Squiggles als Flächenmuster, Punktgröße 3-9px",
-    "Schwarze Konturen 2-4px um praktisch jedes Element, kein Blur-Schatten",
+    "Bacterio-Laminat als tragende Fläche neben der Liste, volle Deckkraft, Kachel 78px - nicht als Hintergrundschleier",
+    "Dünne Konturen: 2px an Karten und Feldern, an den Dekorformen gar keine - die durchgehende 3px-Kontur gehört dem Neo-Brutalismus",
     "Harter Offset-Schatten 5-12px ohne Weichzeichnung, oft in einer Kontrastfarbe statt Schwarz",
     "Radien absichtlich inkonsistent: 0px, 50% und Mischformen wie '50% 4px 50% 4px' im selben Layout",
-    "Rotationen zwischen -3deg und +7deg auf Karten, Buttons und Überschriften",
-    "Pastell (#B9F2E4, #C9B6FF) direkt neben Knallfarben (#FF3B7F, #FFD635) ohne vermittelnden Zwischenton",
+    "Rotationen zwischen -3deg und +7deg auf Kopfzeile, Zähler, Buttons und Dekoration - die Liste selbst steht gerade",
+    "Pastell (#B4EDE2, #D7C7F0) direkt neben gebrochenen Laminatfarben (#F9BA65, #BB7826) ohne vermittelnden Zwischenton",
     "Bedeutungsfreie Zusatzformen: Kreis, Dreieck, Zickzackband, Streifenfeld, Punktraster",
     "Display-Schrift versal, sehr fett, mit versetztem Farb-Textschatten (3-5px, 0 Blur)",
     "Zickzack-Zierbalken aus 45deg-Gradients, Kachelgröße 16px"
@@ -27,18 +27,18 @@
     "contrast": "hoch",
     "density": "mittel",
     "depth": "keine echte Tiefe; Ebenen entstehen über harte Offset-Schatten (0 Blur) und Rotation, nicht über Licht",
-    "color": "Vier bis sechs gleichberechtigte Vollfarben plus zwei Pastelltöne, absichtlich ohne harmonische Brücke - Schwarz ist der einzige Vermittler",
+    "color": "Fünf gebrochene Laminatfarben aus dem historischen Memphis 1981-1986 - Ocker #F9BA65, Terrakotta #BB7826, Türkis #6DDBC9, Ultramarin #6290E7, Flieder #B392E1 - plus zwei Pastelltöne (#B4EDE2, #D7C7F0). Tragende Fläche ist das Minzgrün #7FC8BA, gefasst von einem hellen Rahmen #CFE6E1. Wärmer und weniger gesättigt als die Revival-Palette; die Wucht kommt aus dem Flächenkontrast - Minzgrund gegen weiße Karten gegen schwarze Kontur -, nicht aus der Reinsättigung.",
     "type": "Fette geometrische Display-Grotesk für Titel, freundliche geometrische Sans für Text; Metadaten versal mit weitem Sperrsatz",
     "motion": "Sparsam, aber federnd: 120ms cubic-bezier(.34,1.56,.64,1) beim Drücken, langsame 5s-Wobble-Schleife auf Dekorformen",
-    "texture": "Terrazzo-Punktfeld ca. 55% Deckkraft, Streifen- und Karoraster als Flächen"
+    "texture": "Bacterio-Laminat schwarz auf weiß, volle Deckkraft, als tragende Fläche neben der Liste und als Füllung einzelner Elemente; Terrazzo-Sprenkel 3-9px bei ca. 50% Deckkraft auf dem Grund"
   },
   "palette": [
-    "#FF3B7F",
-    "#16D2C6",
-    "#FFD635",
-    "#2B33E0",
-    "#C9B6FF",
-    "#14110F"
+    "#F9BA65",
+    "#BB7826",
+    "#6DDBC9",
+    "#6290E7",
+    "#B392E1",
+    "#17130E"
   ],
   "examples": [
     {
@@ -73,7 +73,8 @@
     "Musterflächen unter Text machen den Kontrast lokal unberechenbar; jede Terrazzo-Fläche unter einer Zeile ist ein potenzieller Fehler",
     "Kippt schnell ins Billige, wenn Rotationen zufällig statt systematisch gesetzt sind oder mehr als sechs Farben im Spiel sind",
     "Ermüdet bei langen Arbeitssitzungen; für dichte Datenmasken und Tabellen praktisch unbrauchbar",
-    "Schwer zu tokenisieren: 'absichtlich inkonsistente Radien' widersprechen jedem Design-Token-System und müssen von Hand gepflegt werden"
+    "Schwer zu tokenisieren: 'absichtlich inkonsistente Radien' widersprechen jedem Design-Token-System und müssen von Hand gepflegt werden",
+    "Wird im Katalog mit neo-brutalism und maximalism verwechselt - vor dieser Fassung teilten die drei bis zu drei nahezu gleiche Bunttöne; in dieser Fassung liegt kein Buntton von Memphis näher als 23 Grad (OKLCH) an einem Buntton der beiden anderen. Auseinander hält man sie an der Anordnung (Memphis: gerade, ungedrehte Liste, die Dekoration liegt daneben; Maximalismus: rotierte und beschnittene Ebenen uebereinander; Neo-Brutalismus: rechtwinkliger Stapel auf Kante), am Radius (Memphis mischt 0px, 999px und asymmetrisch nebeneinander, Neo-Brutalismus bleibt bei 0-4px), an der Kontur (Memphis 2px, auf den Dekorformen gar keine - Neo-Brutalismus 3px Schwarz auf allem), an der Textur (Bacterio-Laminat vollflächig und volldeckend gegen 4-6% Diagonalraster gegen 11px-Halbton) und an der Grundfläche (#7FC8BA gegen #F4F4F0 gegen #D3CBB7). Der harte Versatzschatten ohne Blur taugt als Unterscheidungsmerkmal nicht: Neo-Brutalismus hat ihn von Memphis geerbt, alle drei benutzen ihn."
   ],
   "a11y": "Das Kernproblem sind Musterhintergründe: Terrazzo-Sprenkel und Streifen unter Text zerstören den planbaren Kontrast, deshalb steht Fließtext hier immer auf reinem Weiß. Rotierte Elemente verschieben die visuelle Reihenfolge gegenüber der DOM-Reihenfolge - bei mehr als zwei Grad wird das für Screenreader-Nutzer und Tastatur-Navigation spürbar inkonsistent. Statusfarben dürfen nie der einzige Kanal sein: 'Pausiert' braucht zusätzlich das Schraffurmuster und den Text, weil Pastell auf Weiß unter 3:1 liegt.",
   "longevity": "Der Stil altert schnell und sichtbar - Memphis-Illustrationen aus 2019 wirken 2026 bereits wie Zeitkapseln. Als vollständige UI-Sprache ist er eine Ansage auf Zeit, als Illustrations-Layer über einem neutralen Grundgerüst hält er deutlich länger.",
@@ -95,7 +96,7 @@
     "maximalism",
     "swiss"
   ],
-  "tip": "Setze die Rotationen systematisch statt zufällig: definiere genau drei Winkel (z. B. -1.5deg, +0.7deg, +7deg) und vergib sie nach Rolle, nicht nach Gefühl. Zufällige Schieflagen lesen sich als Bug, ein wiederkehrendes Winkel-Set liest sich als Absicht - das ist der ganze Unterschied zwischen Sottsass und Kindergeburtstag.",
+  "tip": "Setze die Rotationen systematisch statt zufällig: definiere genau drei Winkel (z. B. -1.5deg, +1deg, +7deg) und vergib sie nach Rolle, nicht nach Gefühl. Zufällige Schieflagen lesen sich als Bug, ein wiederkehrendes Winkel-Set liest sich als Absicht - das ist der ganze Unterschied zwischen Sottsass und Kindergeburtstag.",
   "googleFonts": [
     "Archivo Black",
     "Poppins"

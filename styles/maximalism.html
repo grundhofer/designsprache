@@ -1,17 +1,24 @@
 <style>
 .style-maximalism {
   color-scheme: light;
-  --mx-ink: #16101A;
-  --mx-cream: #FFF6E8;
-  --mx-acid: #F4E63F;
-  --mx-pink: #FF3D81;
-  --mx-blue: #2B36D6;
-  --mx-orange: #FF6B1A;
-  --mx-mint: #4FD6A8;
+  /* Riso-Sonderfarben mit publizierten Tintenwerten (Pantone-U-Referenz der Drumfarben) */
+  --mx-ink: #1B1714;      /* Zeitungsschwarz, in unbeschichtetes Papier eingesunken */
+  --mx-paper: #D3CBB7;    /* Zeitungspapier, graubeige */
+  --mx-sheet: #DFD8C6;    /* aufgeklebter Bogen, eine Nuance heller als der Grund */
+  --mx-orange: #FF6C2F;   /* Riso Orange, Pantone Orange 021 U */
+  --mx-red: #F15060;      /* Riso Bright Red, Pantone 032 U */
+  --mx-blue: #375E77;     /* Riso Steel, Pantone 302 U */
+  --mx-gold: #AC936E;     /* Riso Metallic Gold, Pantone 874 U */
+  --mx-gold-hi: #E4D3AE;
+  --mx-gold-lo: #7C6949;
+  --mx-scrap: #EDE7D8;    /* helleres Fremdpapier: der eingeklebte Fotoausriss */
+  --mx-misfit: 2px;       /* Registerversatz: eine Ebene um diesen Betrag daneben */
   background:
-    repeating-linear-gradient(45deg, rgba(22,16,26,.055) 0 3px, transparent 3px 9px),
-    radial-gradient(circle at 50% 50%, rgba(22,16,26,.16) 1.4px, transparent 1.6px) 0 0 / 11px 11px,
-    var(--mx-acid);
+    repeating-linear-gradient(45deg, rgba(27,23,20,.07) 0 3px, transparent 3px 9px),
+    radial-gradient(circle at 50% 50%, rgba(241,80,96,.34) 2px, transparent 2.2px) 2px 1px / 11px 11px,
+    radial-gradient(circle at 50% 50%, rgba(55,94,119,.30) 1.8px, transparent 2px) 0 3px / 11px 11px,
+    radial-gradient(circle at 50% 50%, rgba(27,23,20,.26) 1.7px, transparent 1.9px) 0 0 / 11px 11px,
+    var(--mx-paper);
   color: var(--mx-ink);
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   line-height: 1.35;
@@ -35,57 +42,125 @@
   border: 4px solid var(--mx-ink);
 }
 
-/* --- Deko-Ebene: Tapes, Sterne, Barcode ------------------------------- */
+/* --- Deko-Ebenen: Klebeband, Siegel, Barcode, Passkreuz, Ausriss ------- */
 .style-maximalism .deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.style-maximalism .deco-top { z-index: 2; }
 .style-maximalism .tape {
   position: absolute;
   border: 2px solid var(--mx-ink);
   opacity: .95;
 }
+/* Gummiertes Goldband: Metallicfolie als Collage-Element */
 .style-maximalism .tape-1 {
   width: 190px; height: 26px;
   top: 14px; left: -34px;
-  background: repeating-linear-gradient(90deg, var(--mx-pink) 0 9px, var(--mx-cream) 9px 18px);
+  background: linear-gradient(104deg,
+    var(--mx-gold-lo) 0 8%, var(--mx-gold) 20%, var(--mx-gold-hi) 34%,
+    var(--mx-gold) 46%, var(--mx-gold-lo) 62%, var(--mx-gold-hi) 78%, var(--mx-gold) 100%);
   transform: rotate(-19deg);
 }
+/* Riso-Klebestreifen, zwei Tinten ausser Register uebereinander */
 .style-maximalism .tape-2 {
   width: 150px; height: 22px;
-  bottom: 78px; right: -40px;
-  background: repeating-linear-gradient(90deg, var(--mx-blue) 0 7px, var(--mx-mint) 7px 14px);
+  bottom: 86px; right: -28px;
+  background: repeating-linear-gradient(90deg, var(--mx-orange) 0 7px, transparent 7px 14px);
   transform: rotate(24deg);
 }
+.style-maximalism .tape-2::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: repeating-linear-gradient(90deg, var(--mx-blue) 0 7px, transparent 7px 14px);
+  transform: translate(calc(var(--mx-misfit) * 1.5), var(--mx-misfit));
+  mix-blend-mode: multiply;
+}
+/* Siegel: zwei deckungsgleiche Kreise, um 3px versetzt gedruckt */
 .style-maximalism .tape-3 {
-  width: 96px; height: 96px;
-  right: 12px; top: 122px;
+  width: 88px; height: 88px;
+  left: -20px; top: 268px;
+  border: 0;
+  transform: rotate(-6deg);
+}
+.style-maximalism .tape-3::before,
+.style-maximalism .tape-3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
-  border-width: 3px;
-  background: var(--mx-orange);
-  box-shadow: inset 0 0 0 5px var(--mx-cream), inset 0 0 0 8px var(--mx-ink);
-  opacity: .9;
+  mix-blend-mode: multiply;
+}
+.style-maximalism .tape-3::before {
+  background: var(--mx-red);
+  transform: translate(calc(var(--mx-misfit) * 2), calc(var(--mx-misfit) * -1.5));
+}
+.style-maximalism .tape-3::after {
+  background: var(--mx-blue);
+  transform: translate(calc(var(--mx-misfit) * -2), calc(var(--mx-misfit) * 1.5));
 }
 .style-maximalism .barcode {
   position: absolute;
-  left: 18px; bottom: 10px;
-  width: 116px; height: 26px;
+  left: 306px; top: 4px;
+  width: 116px; height: 24px;
   background: repeating-linear-gradient(90deg, var(--mx-ink) 0 2px, transparent 2px 4px, var(--mx-ink) 4px 5px, transparent 5px 9px);
-  opacity: .55;
+  opacity: .62;
   transform: rotate(-1.5deg);
+  filter: drop-shadow(2px 1px 0 var(--mx-blue));
 }
 .style-maximalism .star {
   position: absolute;
   color: var(--mx-ink);
 }
 .style-maximalism .star svg { display: block; }
-.style-maximalism .star-1 { top: 96px; left: 6px; transform: rotate(-12deg); }
-.style-maximalism .star-2 { bottom: 118px; left: 44%; color: var(--mx-pink); transform: rotate(18deg); }
+.style-maximalism .star-1 { top: 236px; left: 2px; transform: rotate(-12deg); }
+/* Passkreuz: der Versatz sitzt hier auf dem Zeichen, das ihn verhindern soll */
+.style-maximalism .star-2 {
+  right: 30px; bottom: 12px;
+  transform: rotate(6deg);
+  filter: drop-shadow(2px 1.5px 0 var(--mx-red)) drop-shadow(-2px -1.5px 0 var(--mx-blue));
+}
+
+/* --- Fotoausriss: Halbton-Verlauf mit unregelmaessiger Kante ----------- */
+.style-maximalism .tear {
+  position: absolute;
+  top: -18px; right: 168px;
+  width: 140px; height: 96px;
+  transform: rotate(-5deg);
+  background: var(--mx-scrap);
+  filter: drop-shadow(4px 3px 0 rgba(27,23,20,.45));
+  clip-path: polygon(
+    3% 6%, 14% 1%, 27% 7%, 41% 2%, 55% 8%, 68% 2%, 82% 7%, 95% 1%, 100% 14%,
+    96% 29%, 100% 43%, 95% 57%, 100% 72%, 94% 86%, 97% 97%, 84% 93%, 70% 99%,
+    56% 92%, 43% 98%, 29% 91%, 16% 97%, 4% 90%, 0 76%, 4% 61%, 0 47%, 5% 33%, 0 19%
+  );
+}
+.style-maximalism .tear::before,
+.style-maximalism .tear::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+/* grobe Punkte in den Tiefen, mit Registerversatz in Rot */
+.style-maximalism .tear::before {
+  background: radial-gradient(circle at 50% 50%, var(--mx-ink) 42%, transparent 46%) 0 0 / 8px 8px;
+  -webkit-mask-image: linear-gradient(197deg, #000 0 34%, rgba(0,0,0,.35) 58%, transparent 78%);
+  mask-image: linear-gradient(197deg, #000 0 34%, rgba(0,0,0,.35) 58%, transparent 78%);
+  filter: drop-shadow(2px 1px 0 var(--mx-red));
+}
+/* feine Punkte in den Lichtern, versetzt in Stahlblau */
+.style-maximalism .tear::after {
+  background: radial-gradient(circle at 50% 50%, var(--mx-ink) 30%, transparent 34%) 0 0 / 5px 5px;
+  -webkit-mask-image: linear-gradient(197deg, transparent 22%, rgba(0,0,0,.55) 52%, #000 92%);
+  mask-image: linear-gradient(197deg, transparent 22%, rgba(0,0,0,.55) 52%, #000 92%);
+  filter: drop-shadow(-2px -1px 0 var(--mx-blue));
+}
 
 /* --- Rahmen im Rahmen ------------------------------------------------- */
 .style-maximalism .frame {
   position: relative;
   z-index: 1;
-  background: var(--mx-cream);
+  background: var(--mx-sheet);
   border: 3px solid var(--mx-ink);
-  box-shadow: 11px 11px 0 var(--mx-ink), 20px 20px 0 var(--mx-pink);
+  box-shadow: 11px 11px 0 var(--mx-ink), 20px 20px 0 var(--mx-blue);
   transform: rotate(-0.8deg);
   padding: 7px;
 }
@@ -110,10 +185,10 @@
   line-height: .86;
   letter-spacing: -0.005em;
   text-transform: uppercase;
-  color: var(--mx-cream);
+  color: var(--mx-sheet);
   -webkit-text-stroke: 2.5px var(--mx-ink);
   paint-order: stroke fill;
-  text-shadow: 5px 5px 0 var(--mx-pink), 10px 10px 0 var(--mx-blue);
+  text-shadow: 3px 2px 0 var(--mx-red), -3px -2px 0 var(--mx-blue);
   transform: rotate(-2deg) skewX(-4deg);
   transform-origin: left bottom;
 }
@@ -129,14 +204,15 @@
 .style-maximalism .counter .burst {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  color: var(--mx-blue);
+  color: var(--mx-red);
+  filter: drop-shadow(-3px -2px 0 var(--mx-blue));
 }
 .style-maximalism .counter .num {
   position: relative;
   font-family: "DM Serif Display", Georgia, serif;
   font-size: 34px;
   line-height: 1;
-  color: var(--mx-cream);
+  color: var(--mx-sheet);
   text-shadow: 2px 2px 0 var(--mx-ink);
   padding-bottom: 3px;
 }
@@ -145,14 +221,28 @@
   50%      { transform: rotate(4deg) scale(1.045); }
 }
 
-/* --- Zierbalken ------------------------------------------------------- */
+/* --- Zierbalken: derselbe Balken zweimal, um 4px auseinander gedruckt -- */
 .style-maximalism .rule {
-  height: 16px;
-  margin: 14px 0 16px;
-  border: 2px solid var(--mx-ink);
-  background:
-    repeating-linear-gradient(90deg, var(--mx-ink) 0 12px, var(--mx-acid) 12px 24px);
+  position: relative;
+  height: 18px;
+  margin: 14px 0 18px;
   transform: rotate(.5deg);
+}
+.style-maximalism .rule::before,
+.style-maximalism .rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, currentcolor 0 12px, transparent 12px 24px);
+  mix-blend-mode: multiply;
+}
+.style-maximalism .rule::before {
+  color: var(--mx-orange);
+  transform: translate(calc(var(--mx-misfit) * -1), calc(var(--mx-misfit) * -0.5));
+}
+.style-maximalism .rule::after {
+  color: var(--mx-blue);
+  transform: translate(var(--mx-misfit), calc(var(--mx-misfit) * 0.5));
 }
 
 /* --- Liste ------------------------------------------------------------ */
@@ -172,16 +262,16 @@
 }
 .style-maximalism .row-1 {
   background:
-    repeating-linear-gradient(-45deg, rgba(43,54,214,.14) 0 6px, transparent 6px 13px),
-    var(--mx-cream);
+    repeating-linear-gradient(-45deg, rgba(27,23,20,.17) 0 6px, transparent 6px 13px),
+    var(--mx-red);
   box-shadow: 6px 6px 0 var(--mx-blue);
   transform: rotate(-1.2deg);
   z-index: 1;
 }
 .style-maximalism .row-2 {
   background:
-    radial-gradient(circle at 50% 50%, rgba(22,16,26,.22) 1.5px, transparent 1.7px) 0 0 / 9px 9px,
-    var(--mx-pink);
+    radial-gradient(circle at 50% 50%, rgba(27,23,20,.26) 1.8px, transparent 2px) 0 0 / 9px 9px,
+    var(--mx-orange);
   box-shadow: 6px 6px 0 var(--mx-ink);
   transform: rotate(0.9deg);
   margin-left: 14px;
@@ -189,24 +279,35 @@
 }
 .style-maximalism .row-3 {
   background:
-    repeating-conic-gradient(from 0deg at 50% 50%, var(--mx-blue) 0deg 90deg, #1F2AB0 90deg 180deg) 0 0 / 14px 14px;
-  color: var(--mx-cream);
+    radial-gradient(circle at 50% 50%, rgba(223,216,198,.22) 2px, transparent 2.2px) 0 0 / 9px 9px,
+    var(--mx-blue);
+  color: var(--mx-sheet);
   box-shadow: 6px 6px 0 var(--mx-orange);
   transform: rotate(-1.6deg);
   margin-right: 10px;
   z-index: 3;
 }
 .style-maximalism .idx {
+  position: relative;
   flex: none;
   width: 26px; height: 26px;
   display: grid; place-items: center;
   font-family: "Space Mono", ui-monospace, monospace;
   font-size: 13px;
   font-weight: 700;
-  background: var(--mx-acid);
+  background: var(--mx-gold);
   color: var(--mx-ink);
   border: 2px solid var(--mx-ink);
   border-radius: 50%;
+}
+.style-maximalism .idx::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--mx-blue);
+  border-radius: 50%;
+  transform: translate(calc(var(--mx-misfit) * -1), calc(var(--mx-misfit) * -0.75));
+  mix-blend-mode: multiply;
 }
 .style-maximalism .name {
   flex: 1 1 auto;
@@ -239,6 +340,7 @@
   border: 1.5px solid currentColor;
 }
 .style-maximalism .status {
+  position: relative;
   flex: none;
   font-family: "Space Mono", ui-monospace, monospace;
   font-size: 11px;
@@ -250,8 +352,18 @@
   color: var(--mx-ink);
   white-space: nowrap;
 }
+.style-maximalism .status::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--mx-blue);
+  transform: translate(calc(var(--mx-misfit) * -1), calc(var(--mx-misfit) * -0.75));
+  mix-blend-mode: multiply;
+}
 .style-maximalism .status-on {
-  background: var(--mx-acid);
+  background: linear-gradient(102deg,
+    var(--mx-gold) 0 16%, var(--mx-gold-hi) 34%,
+    var(--mx-gold) 52%, var(--mx-gold-hi) 74%, var(--mx-gold) 100%);
   box-shadow: 3px 3px 0 var(--mx-ink);
   transform: rotate(4deg);
 }
@@ -268,8 +380,8 @@
   align-items: stretch;
   margin: 26px 0 20px;
   border: 2.5px solid var(--mx-ink);
-  background: var(--mx-cream);
-  box-shadow: 6px 6px 0 var(--mx-mint);
+  background: var(--mx-sheet);
+  box-shadow: 6px 6px 0 var(--mx-red);
   transform: rotate(.6deg);
 }
 .style-maximalism .seek-tag {
@@ -278,7 +390,7 @@
   place-items: center;
   width: 46px;
   background: var(--mx-ink);
-  color: var(--mx-acid);
+  color: var(--mx-paper);
   font-size: 18px;
 }
 .style-maximalism .seek input {
@@ -318,13 +430,13 @@
   letter-spacing: .02em;
   text-transform: uppercase;
   background: var(--mx-ink);
-  color: var(--mx-acid);
-  box-shadow: 7px 7px 0 var(--mx-pink), 7px 7px 0 2.5px var(--mx-ink);
+  color: var(--mx-paper);
+  box-shadow: -3px -2px 0 var(--mx-blue), 7px 7px 0 var(--mx-orange), 7px 7px 0 2.5px var(--mx-ink);
   transform: rotate(-1.6deg);
 }
 .style-maximalism .btn-primary:hover {
   transform: rotate(-1.6deg) translate(3px, 3px);
-  box-shadow: 3px 3px 0 var(--mx-pink), 3px 3px 0 2.5px var(--mx-ink);
+  box-shadow: -3px -2px 0 var(--mx-blue), 3px 3px 0 var(--mx-orange), 3px 3px 0 2.5px var(--mx-ink);
 }
 .style-maximalism .btn-ghost {
   font-family: "Space Mono", ui-monospace, monospace;
@@ -332,12 +444,12 @@
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  background: var(--mx-cream);
+  background: var(--mx-sheet);
   color: var(--mx-ink);
   border-style: dashed;
   transform: rotate(1.8deg);
 }
-.style-maximalism .btn-ghost:hover { background: var(--mx-mint); }
+.style-maximalism .btn-ghost:hover { background: var(--mx-gold); }
 .style-maximalism .btn:focus-visible {
   outline: 3px solid var(--mx-blue);
   outline-offset: 3px;
@@ -346,6 +458,7 @@
   margin-left: auto;
   color: var(--mx-ink);
   transform: rotate(-8deg);
+  filter: drop-shadow(2px 1.5px 0 var(--mx-orange));
 }
 .style-maximalism .arrow svg { display: block; width: 62px; height: 30px; }
 
@@ -354,13 +467,14 @@
 }
 @media (max-width: 560px) {
   .style-maximalism .demo { padding: 20px 14px 26px; }
-  .style-maximalism .title { font-size: 38px; text-shadow: 3px 3px 0 var(--mx-pink), 6px 6px 0 var(--mx-blue); }
+  .style-maximalism .title { font-size: 38px; text-shadow: 2px 1.5px 0 var(--mx-orange), -2px -1.5px 0 var(--mx-blue); }
   .style-maximalism .counter { width: 64px; height: 64px; }
   .style-maximalism .counter .num { font-size: 26px; }
-  .style-maximalism .frame { box-shadow: 7px 7px 0 var(--mx-ink), 13px 13px 0 var(--mx-pink); }
+  .style-maximalism .frame { box-shadow: 7px 7px 0 var(--mx-ink), 13px 13px 0 var(--mx-blue); }
   .style-maximalism .row { flex-wrap: wrap; gap: 8px 10px; }
   .style-maximalism .row-2 { margin-left: 0; }
   .style-maximalism .row-3 { margin-right: 0; }
+  .style-maximalism .tear { top: -14px; right: 8px; width: 104px; height: 74px; }
   .style-maximalism .arrow { display: none; }
 }
 </style>
@@ -369,13 +483,9 @@
     <div class="deco" aria-hidden="true">
       <span class="tape tape-1"></span>
       <span class="tape tape-2"></span>
-      <span class="tape tape-3"></span>
       <span class="barcode"></span>
       <span class="star star-1">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 0l3.2 11.4L31 6.6l-6.6 9.2 9.6 5.4-11.8 1 3.4 11.4L17 25.8 7.4 33.6l3.4-11.4L-1 21.2l9.6-5.4L2 6.6l10.8 4.8L17 0Z" fill="currentColor"/></svg>
-      </span>
-      <span class="star star-2">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 0v24M0 12h24M3.5 3.5l17 17M20.5 3.5l-17 17" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>
       </span>
     </div>
 
@@ -385,7 +495,7 @@
           <h2 class="title">Projekte</h2>
           <div class="counter">
             <svg class="burst" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-              <path d="M50 2l7.6 12.2L71.4 8l1.4 14.4 14.4 1.4-6.2 13.4L93.2 45l-12.2 7.6 6.2 13.4-14.4 1.4-1.4 14.4-13.8-6.2L50 88l-7.6-12.4-13.8 6.2-1.4-14.4-14.4-1.4 6.2-13.4L6.8 45l12.2-7.6-6.2-13.4 14.4-1.4L28.6 8l13.8 6.2L50 2Z" fill="currentColor" stroke="#16101A" stroke-width="3"/>
+              <path d="M50 2l7.6 12.2L71.4 8l1.4 14.4 14.4 1.4-6.2 13.4L93.2 45l-12.2 7.6 6.2 13.4-14.4 1.4-1.4 14.4-13.8-6.2L50 88l-7.6-12.4-13.8 6.2-1.4-14.4-14.4-1.4 6.2-13.4L6.8 45l12.2-7.6-6.2-13.4 14.4-1.4L28.6 8l13.8 6.2L50 2Z" fill="currentColor" stroke="#1B1714" stroke-width="3"/>
             </svg>
             <span class="num">12</span>
           </div>
@@ -427,6 +537,14 @@
           </span>
         </div>
       </div>
+    </div>
+
+    <div class="deco deco-top" aria-hidden="true">
+      <span class="tear"></span>
+      <span class="tape tape-3"></span>
+      <span class="star star-2">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="7.6" stroke="currentColor" stroke-width="2.4"/><path d="M13 0v9M13 17v9M0 13h9M17 13h9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </span>
     </div>
   </div>
 </div>

@@ -1,20 +1,31 @@
 <style>
 .style-memphis {
-  --mem-ink: #14110F;
-  --mem-paper: #F6F1E4;
-  --mem-pink: #FF3B7F;
-  --mem-cyan: #16D2C6;
-  --mem-yellow: #FFD635;
-  --mem-blue: #2B33E0;
-  --mem-lilac: #C9B6FF;
-  --mem-mint: #B9F2E4;
-  --mem-line: 3px;
+  /* Palette nach Fotografien der Originalobjekte 1981-1986 gemessen und in OKLCH
+     nachgerechnet - nicht nach der Revival-Palette von 2016. Siehe .json / origin. */
+  --mem-ink: #17130E;
+  --mem-paper: #CFE6E1;
+  --mem-field: #7FC8BA;
+  --mem-card: #FFFFFF;
+  --mem-ochre: #F9BA65;
+  --mem-terra: #BB7826;
+  --mem-terra-deep: #663D00;
+  --mem-sage: #6DDBC9;
+  --mem-sky: #6290E7;
+  --mem-lilac: #B392E1;
+  --mem-mint: #B4EDE2;
+  --mem-flieder: #D7C7F0;
+  --mem-muted: #555D57;
+  --mem-line: 2px;
+
+  /* Sottsass, "Bacterio" (Abet Laminati, 1978): schwarze Kritzel auf Weiß.
+     Als Datei-URI, damit keine externe Ressource geladen wird. */
+  --mem-bacterio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FFFFFF'/%3E%3Cg fill='none' stroke='%2317130E' stroke-width='5' stroke-linecap='round'%3E%3Cpath d='M11 15c6-8 14 3 20-4'/%3E%3Cpath d='M45 9c9 3 4 13 13 13'/%3E%3Cpath d='M74 17c-6 6 3 10-2 16'/%3E%3Cpath d='M13 35c10-3 7 10 17 5'/%3E%3Cpath d='M51 41c-8 1-5 11-14 8'/%3E%3Cpath d='M79 39c5 8-5 10 0 17'/%3E%3Cpath d='M9 61c8 4 3 13 12 13'/%3E%3Cpath d='M37 63c10-4 8 9 18 3'/%3E%3Cpath d='M67 67c-7 4 1 12-6 15'/%3E%3Cpath d='M21 87c9-6 13 4 21-2'/%3E%3Cpath d='M53 89c6 2 13-5 17 2'/%3E%3Cpath d='M86 79c-5 6 4 9 0 16'/%3E%3C/g%3E%3Cg fill='%2317130E'%3E%3Cellipse cx='31' cy='25' rx='4' ry='7'/%3E%3Cellipse cx='61' cy='31' rx='7' ry='3'/%3E%3Cellipse cx='90' cy='57' rx='3' ry='6'/%3E%3Cellipse cx='43' cy='77' rx='6' ry='3'/%3E%3Cellipse cx='12' cy='49' rx='3' ry='5'/%3E%3Cellipse cx='71' cy='51' rx='4' ry='4'/%3E%3C/g%3E%3C/svg%3E");
 
   color-scheme: light;
   width: 100%;
   background:
-    radial-gradient(circle at 12% 8%, rgba(255,59,127,.16) 0 22%, transparent 23%),
-    radial-gradient(circle at 88% 92%, rgba(43,51,224,.14) 0 24%, transparent 25%),
+    radial-gradient(circle at 12% 8%, rgba(249,186,101,.30) 0 22%, transparent 23%),
+    radial-gradient(circle at 88% 92%, rgba(179,146,225,.28) 0 24%, transparent 25%),
     var(--mem-paper);
   color: var(--mem-ink);
   font-family: "Poppins", "Trebuchet MS", system-ui, sans-serif;
@@ -34,31 +45,31 @@
   position: relative;
   min-height: 460px;
   padding: 26px 24px 28px;
-  background: #FFFFFF;
+  background: var(--mem-field);
   border: var(--mem-line) solid var(--mem-ink);
-  box-shadow: 12px 12px 0 var(--mem-cyan), 12px 12px 0 3px var(--mem-ink);
+  box-shadow: 12px 12px 0 var(--mem-sky), 12px 12px 0 2px var(--mem-ink);
   overflow: hidden;
 }
 
-/* --- Terrazzo-Sprenkel: Sottsass' "Bacterio"-Prinzip als CSS-Punktfeld --- */
+/* --- Terrazzo-Sprenkel: das gesprenkelte Laminat als Grundfläche --- */
 .style-memphis .terrazzo {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .55;
+  opacity: .5;
   background-image:
-    radial-gradient(ellipse 7px 4px at 18% 22%, var(--mem-pink) 99%, transparent 100%),
-    radial-gradient(ellipse 4px 7px at 62% 12%, var(--mem-blue) 99%, transparent 100%),
-    radial-gradient(ellipse 9px 3px at 84% 40%, var(--mem-yellow) 99%, transparent 100%),
-    radial-gradient(ellipse 3px 6px at 34% 68%, var(--mem-cyan) 99%, transparent 100%),
+    radial-gradient(ellipse 7px 4px at 18% 22%, var(--mem-terra) 99%, transparent 100%),
+    radial-gradient(ellipse 4px 7px at 62% 12%, var(--mem-sky) 99%, transparent 100%),
+    radial-gradient(ellipse 9px 3px at 84% 40%, var(--mem-ochre) 99%, transparent 100%),
+    radial-gradient(ellipse 3px 6px at 34% 68%, var(--mem-sage) 99%, transparent 100%),
     radial-gradient(ellipse 6px 5px at 8% 86%, var(--mem-ink) 99%, transparent 100%),
     radial-gradient(ellipse 5px 8px at 74% 78%, var(--mem-lilac) 99%, transparent 100%),
-    radial-gradient(ellipse 4px 4px at 48% 44%, var(--mem-pink) 99%, transparent 100%);
+    radial-gradient(ellipse 4px 4px at 48% 44%, var(--mem-terra) 99%, transparent 100%);
   background-size: 190px 170px;
   background-position: 0 0;
 }
 
-/* --- Formen, die nichts bedeuten --- */
+/* --- Formen, die nichts bedeuten. Konturlos: die Kontur gehört dem Nachbarn. --- */
 .style-memphis .shape {
   position: absolute;
   pointer-events: none;
@@ -70,8 +81,7 @@
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: var(--mem-yellow);
-  border: var(--mem-line) solid var(--mem-ink);
+  background: var(--mem-ochre);
 }
 
 .style-memphis .shape-tri {
@@ -81,7 +91,7 @@
   height: 0;
   border-left: 34px solid transparent;
   border-right: 34px solid transparent;
-  border-bottom: 58px solid var(--mem-blue);
+  border-bottom: 58px solid var(--mem-sky);
   transform: rotate(18deg);
 }
 
@@ -95,7 +105,7 @@
     linear-gradient(var(--mem-ink) 2px, transparent 2px),
     linear-gradient(90deg, var(--mem-ink) 2px, transparent 2px);
   background-size: 18px 18px;
-  opacity: .35;
+  opacity: .28;
 }
 
 .style-memphis .squiggle {
@@ -111,7 +121,7 @@
 
 .style-memphis .squiggle path {
   fill: none;
-  stroke: var(--mem-pink);
+  stroke: var(--mem-terra);
   stroke-width: 7;
   stroke-linecap: round;
 }
@@ -127,10 +137,10 @@
   height: 16px;
   margin: 0 0 20px;
   background:
-    linear-gradient(135deg, var(--mem-cyan) 25%, transparent 25%) 0 0/16px 16px,
-    linear-gradient(225deg, var(--mem-cyan) 25%, transparent 25%) 0 0/16px 16px,
-    linear-gradient(315deg, var(--mem-cyan) 25%, transparent 25%) 8px 0/16px 16px,
-    linear-gradient(45deg,  var(--mem-cyan) 25%, transparent 25%) 8px 0/16px 16px;
+    linear-gradient(135deg, var(--mem-lilac) 25%, transparent 25%) 0 0/16px 16px,
+    linear-gradient(225deg, var(--mem-lilac) 25%, transparent 25%) 0 0/16px 16px,
+    linear-gradient(315deg, var(--mem-lilac) 25%, transparent 25%) 8px 0/16px 16px,
+    linear-gradient(45deg,  var(--mem-lilac) 25%, transparent 25%) 8px 0/16px 16px;
   border-bottom: var(--mem-line) solid var(--mem-ink);
 }
 
@@ -157,7 +167,7 @@
   letter-spacing: -.02em;
   text-transform: uppercase;
   color: var(--mem-ink);
-  text-shadow: 4px 4px 0 var(--mem-pink);
+  text-shadow: 4px 4px 0 var(--mem-terra);
 }
 
 .style-memphis .kicker {
@@ -167,7 +177,7 @@
   font-size: 11px;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: var(--mem-blue);
+  color: var(--mem-terra-deep);
   margin-top: 10px;
 }
 
@@ -178,7 +188,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--mem-yellow);
+  background: var(--mem-ochre);
   border: var(--mem-line) solid var(--mem-ink);
   box-shadow: 5px 5px 0 var(--mem-ink);
   transform: rotate(7deg);
@@ -188,11 +198,27 @@
   color: var(--mem-ink);
 }
 
-/* --- Liste --- */
-.style-memphis .list {
+/* --- Liste plus Laminatstreifen. Die Liste steht gerade, die Dekoration
+       liegt daneben - das ist der Aufbau, nicht der gekippte Stapel. --- */
+.style-memphis .listwrap {
   position: relative;
-  list-style: none;
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 16px;
+  align-items: stretch;
   margin: 0 0 22px;
+}
+
+.style-memphis .laminate {
+  border: var(--mem-line) solid var(--mem-ink);
+  background: var(--mem-bacterio) 0 0/78px 78px repeat;
+  box-shadow: 7px 7px 0 var(--mem-terra);
+  transform: rotate(-1.2deg);
+}
+
+.style-memphis .list {
+  list-style: none;
+  margin: 0;
   padding: 0;
   display: grid;
   gap: 12px;
@@ -204,24 +230,13 @@
   align-items: center;
   gap: 14px;
   padding: 13px 14px;
-  background: #FFFFFF;
+  background: var(--mem-card);
   border: var(--mem-line) solid var(--mem-ink);
 }
 
-.style-memphis .row:nth-child(1) {
-  transform: rotate(-.9deg);
-  box-shadow: 6px 6px 0 var(--mem-mint);
-}
-
-.style-memphis .row:nth-child(2) {
-  transform: rotate(.7deg);
-  box-shadow: 6px 6px 0 var(--mem-lilac);
-}
-
-.style-memphis .row:nth-child(3) {
-  transform: rotate(-.4deg);
-  box-shadow: 6px 6px 0 var(--mem-yellow);
-}
+.style-memphis .row:nth-child(1) { box-shadow: 6px 6px 0 var(--mem-mint); }
+.style-memphis .row:nth-child(2) { box-shadow: 6px 6px 0 var(--mem-flieder); }
+.style-memphis .row:nth-child(3) { box-shadow: 6px 6px 0 var(--mem-ochre); }
 
 .style-memphis .glyph {
   width: 26px;
@@ -230,18 +245,18 @@
 }
 
 .style-memphis .row:nth-child(1) .glyph {
-  background: var(--mem-pink);
+  background: var(--mem-sage);
   border-radius: 50%;
 }
 
 .style-memphis .row:nth-child(2) .glyph {
-  background: var(--mem-cyan);
+  background: var(--mem-bacterio) center/32px 32px;
   border-radius: 0;
   transform: rotate(45deg);
 }
 
 .style-memphis .row:nth-child(3) .glyph {
-  background: var(--mem-blue);
+  background: var(--mem-sky);
   border-radius: 50% 4px 50% 4px;
 }
 
@@ -257,7 +272,7 @@
   font-weight: 500;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: #5B5560;
+  color: var(--mem-muted);
   margin-top: 2px;
 }
 
@@ -272,7 +287,7 @@
 }
 
 .style-memphis .status-on {
-  background: var(--mem-cyan);
+  background: var(--mem-sage);
   color: var(--mem-ink);
   border-radius: 999px;
 }
@@ -280,8 +295,8 @@
 .style-memphis .status-off {
   background: repeating-linear-gradient(
     45deg,
-    var(--mem-lilac) 0 5px,
-    #FFFFFF 5px 10px
+    var(--mem-flieder) 0 5px,
+    var(--mem-card) 5px 10px
   );
   color: var(--mem-ink);
   border-radius: 0;
@@ -300,11 +315,11 @@
   display: grid;
   place-items: center;
   width: 48px;
-  background: var(--mem-pink);
+  background: var(--mem-ochre);
   border: var(--mem-line) solid var(--mem-ink);
   border-right: 0;
   font-size: 19px;
-  color: #FFFFFF;
+  color: var(--mem-ink);
 }
 
 .style-memphis .search {
@@ -315,20 +330,20 @@
   font-weight: 500;
   color: var(--mem-ink);
   padding: 14px 16px;
-  background: #FFFFFF;
+  background: var(--mem-card);
   border: var(--mem-line) solid var(--mem-ink);
   border-radius: 0;
-  box-shadow: 6px 6px 0 var(--mem-blue);
+  box-shadow: 6px 6px 0 var(--mem-sky);
   outline: none;
 }
 
 .style-memphis .search::placeholder {
-  color: #6E6875;
+  color: var(--mem-muted);
   font-weight: 500;
 }
 
 .style-memphis .search:focus-visible {
-  box-shadow: 6px 6px 0 var(--mem-pink);
+  box-shadow: 6px 6px 0 var(--mem-terra);
 }
 
 /* --- Aktionen --- */
@@ -353,8 +368,8 @@
 }
 
 .style-memphis .btn-primary {
-  background: var(--mem-pink);
-  color: #FFFFFF;
+  background: var(--mem-ochre);
+  color: var(--mem-ink);
   box-shadow: 7px 7px 0 var(--mem-ink);
   transform: rotate(-1.5deg);
 }
@@ -365,20 +380,20 @@
 }
 
 .style-memphis .btn-secondary {
-  background: #FFFFFF;
+  background: var(--mem-card);
   color: var(--mem-ink);
   border-style: dashed;
-  box-shadow: 5px 5px 0 var(--mem-cyan);
+  box-shadow: 5px 5px 0 var(--mem-sage);
   transform: rotate(1deg);
 }
 
 .style-memphis .btn-secondary:hover {
   transform: rotate(1deg) translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--mem-cyan);
+  box-shadow: 2px 2px 0 var(--mem-sage);
 }
 
 .style-memphis .btn:focus-visible {
-  outline: 3px solid var(--mem-blue);
+  outline: 3px solid var(--mem-terra-deep);
   outline-offset: 3px;
 }
 
@@ -387,11 +402,7 @@
   width: 76px;
   height: 34px;
   border: 2px solid var(--mem-ink);
-  background: repeating-linear-gradient(
-    90deg,
-    var(--mem-yellow) 0 8px,
-    #FFFFFF 8px 16px
-  );
+  background: var(--mem-bacterio) center/40px 40px;
   transform: rotate(-3deg);
 }
 
@@ -403,6 +414,8 @@
 @media (max-width: 520px) {
   .style-memphis .demo { padding: 20px 16px 22px; }
   .style-memphis .count { width: 58px; height: 58px; font-size: 23px; }
+  .style-memphis .listwrap { grid-template-columns: 46px 1fr; gap: 10px; }
+  .style-memphis .laminate { background-size: 46px 46px; box-shadow: 4px 4px 0 var(--mem-terra); }
   .style-memphis .squiggle { display: none; }
   .style-memphis .stripes { display: none; }
 }
@@ -427,32 +440,35 @@
       <div class="count">12</div>
     </div>
 
-    <ul class="list">
-      <li class="row">
-        <span class="glyph"></span>
-        <span>
-          <span class="name">Nexus</span>
-          <span class="time">2 hrs ago</span>
-        </span>
-        <span class="status status-on">Active</span>
-      </li>
-      <li class="row">
-        <span class="glyph"></span>
-        <span>
-          <span class="name">Autowrite Studio</span>
-          <span class="time">yesterday</span>
-        </span>
-        <span class="status status-on">Active</span>
-      </li>
-      <li class="row">
-        <span class="glyph"></span>
-        <span>
-          <span class="name">Balance Ally</span>
-          <span class="time">4 days ago</span>
-        </span>
-        <span class="status status-off">Paused</span>
-      </li>
-    </ul>
+    <div class="listwrap">
+      <div class="laminate" aria-hidden="true"></div>
+      <ul class="list">
+        <li class="row">
+          <span class="glyph"></span>
+          <span>
+            <span class="name">Nexus</span>
+            <span class="time">2 hrs ago</span>
+          </span>
+          <span class="status status-on">Active</span>
+        </li>
+        <li class="row">
+          <span class="glyph"></span>
+          <span>
+            <span class="name">Autowrite Studio</span>
+            <span class="time">yesterday</span>
+          </span>
+          <span class="status status-on">Active</span>
+        </li>
+        <li class="row">
+          <span class="glyph"></span>
+          <span>
+            <span class="name">Balance Ally</span>
+            <span class="time">4 days ago</span>
+          </span>
+          <span class="status status-off">Paused</span>
+        </li>
+      </ul>
+    </div>
 
     <div class="field">
       <span class="field-tag" aria-hidden="true">◎</span>

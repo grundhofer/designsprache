@@ -4,17 +4,18 @@
   "aka": ["More is more", "Collage Design", "Sticker Aesthetic", "Neo-Memphis", "Cluttercore"],
   "family": "Expression & Gesture",
   "era": "Roots 1954-1996, digital wave 2020-today",
-  "origin": "Maximalism is not an invention of the 2020s but the return of a line running from Push Pin Studios (Milton Glaser, Seymour Chwast, from 1954) through the psychedelic posters of the sixties, the cut-and-paste fanzines of punk (Jamie Reid for the Sex Pistols, 1977) and Memphis (Ettore Sottsass, 1981) to David Carson's Ray Gun (1992-1996) and Richard Turley's Bloomberg Businessweek (2011-2014). It came back digitally around 2020 as a direct counter-movement to corporate flat minimalism, whose result - interchangeable sans-serif logos and white cards - had itself become the problem. The return was made possible by variable fonts, CSS transform and mix-blend-mode, plus GPU-accelerated scroll animation: what used to be a bitmap layout is now live-rendered DOM. Culturally it was carried by fashion (Gucci under Alessandro Michele from 2015) and by music marketing, where recognizability counts for more than efficiency.",
+  "origin": "Maximalism is not an invention of the 2020s but the return of a line running from Push Pin Studios (Milton Glaser, Seymour Chwast, from 1954) through the psychedelic posters of the sixties, the cut-and-paste fanzines of punk (Jamie Reid for the Sex Pistols, 1977) and Memphis (Ettore Sottsass, 1981) to David Carson's Ray Gun (1992-1996) and Richard Turley's Bloomberg Businessweek (2011-2014). It came back digitally around 2020 as a direct counter-movement to corporate flat minimalism, whose result - interchangeable sans-serif logos and white cards - had itself become the problem. The return was made possible by variable fonts, CSS transform and mix-blend-mode, plus GPU-accelerated scroll animation: what used to be a bitmap layout is now live-rendered DOM. Culturally it was carried by fashion (Gucci under Alessandro Michele from 2015) and by music marketing, where recognizability counts for more than efficiency. The colors of this entry do not come from a harmony but from the material of the collage itself: from newspaper printing and from risography (Riso Kagaku, since 1980), whose spot-color drums have published ink values and whose separations shift slightly against each other on every pass. That misregistration - still a by-product of cutting in the photomontages of Hannah Höch and John Heartfield - is the actual procedure here.",
   "idea": "Overload as a stance: instead of taking elements away, they are layered, rotated, framed and allowed to collide until the surface has a personality. Order does not come from white space but from managing contrast inside the chaos.",
   "markers": [
     "3-6 type families at once, here four: Anton, DM Serif Display, Space Mono, Bricolage Grotesque",
     "Frame within a frame: 3px solid outside, 2px dashed inside, plus a hard offset shadow of 11px/20px in two colors",
+    "Misregistration as a real procedure, not a claim: the same shape twice, 2-3px apart, mix-blend-mode multiply - the overlap produces a third color that is not in the palette at all (#F15060 over #375E77 gives #341D2D)",
     "Rotations between -2.2deg and +1.8deg on nearly every element, never 0deg",
     "Overlapping layers via negative margins (-6px) and explicit z-index stacking - each row covers the one above it",
-    "Pattern on pattern: diagonal stripes, halftone dots and a checkered conic gradient all in one frame",
-    "Hard drop shadows with no blur (box-shadow 6px 6px 0), never soft elevation",
-    "Saturated color collision: acid yellow, hot pink, ultramarine and orange in a single screen",
-    "Sticker-style secondary elements: tape strips, starbursts, barcodes, circular seals as pure decoration",
+    "11px halftone grid in three separations offset against each other (black 0/0, red 2/1, steel blue 0/3) plus 45deg stripes - the ground is itself a printed sheet",
+    "Hard drop shadows with no blur (box-shadow 6px 6px 0), never soft elevation - shared inheritance with Memphis and neo-brutalism and therefore not an identifying mark",
+    "Found printed matter instead of color harmony: published Riso inks on newsprint grey-beige, metallic gold as a scrap of foil",
+    "Secondary elements from the print shop: tape, registration mark, barcode, seal and a photo tear-out with a halftone ramp and a ragged edge",
     "White space practically zero; padding 11-22px, rows touch each other"
   ],
   "params": {
@@ -22,21 +23,22 @@
     "contrast": "very high",
     "density": "very dense",
     "depth": "hard offset shadows without blur plus real overlap via z-index - depth as collage, not as light",
-    "color": "Four to six saturated colors that deliberately clash, held together by a near-black ink and a cream white acting as glue.",
+    "color": "Found printed matter instead of color harmony: four published Riso inks - Bright Red (Pantone 032 U), Orange (Orange 021 U), Steel (302 U), Metallic Gold (874 U) - on newsprint grey-beige #D3CBB7, held together by a newspaper black #1B1714 that has sunk into the paper. The chroma does not come from the palette but from the overprint: two inks 2px out of register produce a third color along the edge.",
     "type": "Deliberate family mix: bold condensed as the shout, serif italic as the irony, mono as the receipt, grotesque as the speaking voice.",
     "motion": "Jerky rather than smooth: 90ms linear on press (the shadow shrinks, the element slides), plus a slow 6s ease-in-out wobble on stickers",
-    "texture": "11px halftone dot grid and 45deg stripes on the ground; in print often 4-8% film grain on top"
+    "texture": "11px halftone dot grid in three separations offset against each other (black 0/0, red 2/1, steel blue 0/3) plus 45deg stripes on the ground; inside the photo tear-out the grid runs from 8px coarse to 5px fine and carries its own offset in red and steel blue"
   },
-  "palette": ["#16101A", "#FFF6E8", "#F4E63F", "#FF3D81", "#2B36D6", "#FF6B1A"],
+  "palette": ["#1B1714", "#D3CBB7", "#F15060", "#FF6C2F", "#375E77", "#AC936E"],
   "examples": [
     {"name": "David Carson, Ray Gun (1992-1996)", "what": "Overlaid columns, shattered type sizes, an entire interview set in Zapf Dingbats - the proof that legibility here is a bargaining chip."},
     {"name": "Bloomberg Businessweek under Richard Turley (2011-2014)", "what": "Business journalism with neon colors, stock-photo collage and form-sheet aesthetics; shows that maximalism also works under a hard information brief, as long as a grid sits underneath."},
     {"name": "Gucci under Alessandro Michele (2015-2022)", "what": "Pattern on pattern, vintage serif next to block letter, sticker appliques - the fashion trigger of the current wave."},
-    {"name": "Ettore Sottsass / Memphis Group (1981)", "what": "Terrazzo patterns, graphic bacteria and biting primaries on furniture - the shape library today's web borrows from."},
+    {"name": "Hannah Höch and John Heartfield, photomontage (1919-1938)", "what": "Found material cut out of newspapers and magazines, mounted hard against itself - with Heartfield straight into newspaper printing on the covers of the AIZ. This is where the principle comes from that the material is found and the cut edge stays visible."},
+    {"name": "Risography, Riso Kagaku (since 1980)", "what": "One spot color per drum; more than two colors means more than one pass, and the paper is fed in again for every pass - hence the misregistration that became the style. The ink values are published: Bright Red = Pantone 032 U, Orange = Orange 021 U, Steel = 302 U, Metallic Gold = 874 U."},
     {"name": "Meow Wolf and comparable Awwwards winners", "what": "Scroll-driven layer displacement, sticker cursors, several animation tracks running at once - the web version of the principle, each one built as a one-off."}
   ],
   "strengths": [
-    "Recognition within 200ms - no other family in this catalog is this hard to confuse",
+    "Separates itself at thumbnail size by its ground alone: newsprint grey-beige instead of white, before any detail is legible",
     "Carries personality and attitude without text; ideal for campaigns, launches, merch, release pages",
     "Tolerates high element density, because density is the design device itself",
     "Fully producible in CSS: transform, box-shadow, repeating gradients - no image files needed"
@@ -46,9 +48,10 @@
     "The difference between 'curated chaos' and 'word art' is measured in millimeters - without a sure typographic eye it turns cheap",
     "Exhausting on repeat: what delights on a landing page is unbearable at the fourth step of a workflow",
     "Scales badly to small viewports - rotated, overlapping elements need width or they stack into mush",
-    "Maintenance cost: every new feature has to be fitted into the collage by hand instead of falling out of tokens"
+    "Maintenance cost: every new feature has to be fitted into the collage by hand instead of falling out of tokens",
+    "Confusable with memphis and neo-brutalism: all three are loud, colorful and rectangular. They are told apart by arrangement and ground - Memphis puts down a calm straight list and places the decoration beside it (radii 0, 999px and asymmetric side by side, 2px outlines and none at all on the decorative shapes, Bacterio laminate and terrazzo speckle on mint green #7FC8BA), neo-brutalism stacks strictly at right angles with a 3px black outline on everything and radius 0-4px on off-white #F4F4F0 with a barely visible diagonal grid, maximalism layers rotated, cropped planes with a frame inside a frame, a visible 11px halftone and a 2px misregistration on newsprint grey-beige #D3CBB7. The hard offset shadow without blur explicitly does not serve as the distinguishing mark: neo-brutalism inherited it from Memphis, and all three use it."
   ],
-  "a11y": "The biggest risk is text on pattern: halftone dots and stripes under body copy push the effective contrast far below the measured value, which is why an opaque surface sits under every text here and the ink stays at #16101A (>13:1 on cream and acid, ~6:1 on pink). Rotations decouple the visual order from the DOM order - to a sighted user the tab focus appears to jump around wildly, which stays manageable only through a disciplined source order and a thick, offset focus ring. Continuous motion, blink and marquee effects must be switched off under prefers-reduced-motion; sharp color collisions such as pink on ultramarine are additionally taxing for people with red-green deficiency.",
+  "a11y": "The biggest risk is text on pattern: halftone dots and stripes under body copy push the effective contrast far below the measured value, which is why an opaque surface sits under every text here and the ink stays at #1B1714 (11.0:1 on the newsprint #D3CBB7, 12.5:1 on the lighter sheet, 6.3:1 on Riso orange, 6.1:1 on metallic gold, 5.1:1 on bright red); the single reversed row sets the lighter sheet on steel blue and reaches 4.9:1. The misregistration is deliberately confined to frames, bars, stickers and the registration mark - placed under body copy the doubled edge reads as a vision problem. Rotations decouple the visual order from the DOM order - to a sighted user the tab focus appears to jump around wildly, which stays manageable only through a disciplined source order and a thick, offset focus ring. Continuous motion, blink and marquee effects must be switched off under prefers-reduced-motion.",
   "longevity": "As a stance, maximalism is cyclically stable - it returns every twenty years - but each concrete expression is sharply dated: the current sticker variant will read as '2020s' from about 2027 onward exactly the way Carson reads as '90s' today. Choosing it means deliberately choosing a time stamp.",
   "scores": {
     "longevity": 2,

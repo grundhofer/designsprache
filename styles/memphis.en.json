@@ -9,15 +9,15 @@
   ],
   "family": "Postmodernism & Revolt",
   "era": "1981-1988, revival from c. 2016 to today",
-  "origin": "The Memphis Group formed in Milan in December 1980 around Ettore Sottsass and showed its first collection at the Salone del Mobile in September 1981. It was an open declaration of war on the functionalist Bauhaus legacy and on Sottsass' own past at Olivetti: form was no longer to follow function but to carry language, wit and disposability. What made the style technically possible were cheap plastic laminates (Abet Laminati) that could be printed with any pattern at all - Sottsass' 'Bacterio' pattern (1978) and the terrazzo imitations turned cheap material into an expensive sign. After the group dissolved in 1988 the visual language migrated into the digital world by way of MTV graphics, Saved-by-the-Bell patterns and later the illustration systems of Mailchimp and Slack.",
+  "origin": "The Memphis Group formed in Milan in December 1980 around Ettore Sottsass and showed its first collection at the Salone del Mobile in September 1981. It was an open declaration of war on the functionalist Bauhaus legacy and on Sottsass' own past at Olivetti: form was no longer to follow function but to carry language, wit and disposability. What made the style technically possible were cheap plastic laminates (Abet Laminati) that could be printed with any pattern at all - Sottsass' 'Bacterio' pattern (1978) and the terrazzo imitations turned cheap material into an expensive sign. After the group dissolved in 1988 the visual language migrated into the digital world by way of MTV graphics, Saved-by-the-Bell patterns and later the illustration systems of Mailchimp and Slack. The colors in this version were measured off photographs of the original objects from 1981 to 1986 and recomputed in OKLCH - the Carlton and Casablanca bookcases (1981), Martine Bedin's Super lamp (1981), Nathalie du Pasquier's Madras table and carpet (1985/86): a broken ochre around hue 70 degrees, terracotta around 66, turquoise around 181, ultramarine around 262, lilac around 303. Turquoise and ultramarine are deliberately taken from the outer edges of the historical Memphis range so that this entry does not sit on the hues of neo-brutalism and maximalism in the catalog. The fully saturated magenta, cyan and yellow that circulate as 'Memphis' today come from the revival that started in 2016, not from Milan in 1981; historically Memphis is warmer, more broken and more pastel.",
   "idea": "Colors and shapes are combined for tension rather than harmony; decoration is allowed to mean nothing and has to justify nothing. The object speaks instead of serving.",
   "markers": [
-    "Terrazzo speckles and 'Bacterio' squiggles as surface patterns, dot size 3-9px",
-    "Black outlines 2-4px around practically every element, never a blurred shadow",
+    "Bacterio laminate as a load-bearing panel beside the list, full opacity, 78px tile - not a background wash",
+    "Thin outlines: 2px on cards and fields, none at all on the decorative shapes - the uniform 3px outline belongs to neo-brutalism",
     "Hard offset shadow 5-12px with zero blur, often in a contrast color rather than black",
     "Radii deliberately inconsistent: 0px, 50% and hybrids such as '50% 4px 50% 4px' inside the same layout",
-    "Rotations between -3deg and +7deg on cards, buttons and headings",
-    "Pastels (#B9F2E4, #C9B6FF) placed straight against loud colors (#FF3B7F, #FFD635) with no mediating middle tone",
+    "Rotations between -3deg and +7deg on the header, the counter, the buttons and the decoration - the list itself stays straight",
+    "Pastels (#B4EDE2, #D7C7F0) placed straight against broken laminate colors (#F9BA65, #BB7826) with no mediating middle tone",
     "Meaningless extra shapes: circle, triangle, zigzag band, striped panel, dot grid",
     "Display type in caps, very heavy, with an offset colored text shadow (3-5px, 0 blur)",
     "Zigzag trim bar built from 45deg gradients, tile size 16px"
@@ -27,18 +27,18 @@
     "contrast": "high",
     "density": "medium",
     "depth": "no real depth; layers come from hard offset shadows (0 blur) and rotation, not from light",
-    "color": "Four to six equally weighted solid colors plus two pastels, deliberately without a harmonic bridge - black is the only mediator",
+    "color": "Five broken laminate colors from historical Memphis 1981-1986 - ochre #F9BA65, terracotta #BB7826, turquoise #6DDBC9, ultramarine #6290E7, lilac #B392E1 - plus two pastels (#B4EDE2, #D7C7F0). The carrying surface is the mint green #7FC8BA, framed by a light border of #CFE6E1. Warmer and less saturated than the revival palette; the punch comes from the area contrast - mint ground against white cards against black outline - not from pure saturation.",
     "type": "Heavy geometric display grotesque for titles, friendly geometric sans for text; metadata in caps with wide letterspacing",
     "motion": "Sparing but springy: 120ms cubic-bezier(.34,1.56,.64,1) on press, a slow 5s wobble loop on decorative shapes",
-    "texture": "Terrazzo dot field at roughly 55% opacity, stripe and check grids as surfaces"
+    "texture": "Bacterio laminate, black on white at full opacity, as a load-bearing panel beside the list and as a fill for individual elements; terrazzo speckles 3-9px at roughly 50% opacity on the ground"
   },
   "palette": [
-    "#FF3B7F",
-    "#16D2C6",
-    "#FFD635",
-    "#2B33E0",
-    "#C9B6FF",
-    "#14110F"
+    "#F9BA65",
+    "#BB7826",
+    "#6DDBC9",
+    "#6290E7",
+    "#B392E1",
+    "#17130E"
   ],
   "examples": [
     {
@@ -73,7 +73,8 @@
     "Patterned surfaces under text make contrast locally unpredictable; every terrazzo area beneath a line of type is a potential failure",
     "Turns cheap-looking fast when rotations are set at random rather than systematically, or when more than six colors are in play",
     "Tiring over long working sessions; practically unusable for dense data screens and tables",
-    "Hard to tokenize: 'deliberately inconsistent radii' contradict every design token system and have to be maintained by hand"
+    "Hard to tokenize: 'deliberately inconsistent radii' contradict every design token system and have to be maintained by hand",
+    "Gets confused with neo-brutalism and maximalism in this catalog - before this revision the three shared up to three near-identical hues; in this revision no Memphis hue sits closer than 23 degrees (OKLCH) to a hue of either of the other two. What still tells them apart is the layout (Memphis: a straight, unrotated list with the decoration set beside it; maximalism: rotated and cropped layers stacked on top of each other; neo-brutalism: a right-angled stack flush to the edge), the radius (Memphis mixes 0px, 999px and asymmetric values side by side, neo-brutalism never leaves 0-4px), the outline (Memphis 2px and none at all on the decorative shapes - neo-brutalism 3px black on everything), the texture (a full-opacity Bacterio laminate panel versus a 4-6% diagonal grid versus an 11px halftone) and the ground (#7FC8BA versus #F4F4F0 versus #D3CBB7). The hard zero-blur offset shadow is no use as a distinguishing feature: neo-brutalism inherited it from Memphis, and all three use it."
   ],
   "a11y": "The core problem is patterned backgrounds: terrazzo speckles and stripes under text destroy any predictable contrast, which is why body text here always sits on pure white. Rotated elements shift the visual order away from the DOM order - beyond two degrees that becomes noticeably inconsistent for screen reader users and keyboard navigation. Status color must never be the only channel: 'Paused' needs the hatch pattern and the label as well, because pastel on white falls below 3:1.",
   "longevity": "The style ages fast and visibly - Memphis illustrations from 2019 already look like time capsules in 2026. As a complete UI language it is a statement with an expiry date; as an illustration layer over a neutral base structure it holds up considerably longer.",
@@ -95,7 +96,7 @@
     "maximalism",
     "swiss"
   ],
-  "tip": "Set the rotations systematically instead of at random: define exactly three angles (say -1.5deg, +0.7deg, +7deg) and assign them by role, not by feel. Random tilts read as a bug, a recurring set of angles reads as intent - that is the whole difference between Sottsass and a kid's birthday party.",
+  "tip": "Set the rotations systematically instead of at random: define exactly three angles (say -1.5deg, +1deg, +7deg) and assign them by role, not by feel. Random tilts read as a bug, a recurring set of angles reads as intent - that is the whole difference between Sottsass and a kid's birthday party.",
   "googleFonts": [
     "Archivo Black",
     "Poppins"

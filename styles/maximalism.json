@@ -4,17 +4,18 @@
   "aka": ["More is more", "Collage-Design", "Sticker-Ästhetik", "Neo-Memphis", "Cluttercore"],
   "family": "Ausdruck & Geste",
   "era": "Wurzeln 1954-1996, digitale Welle 2020-heute",
-  "origin": "Der Maximalismus ist keine Erfindung der 2020er, sondern die Wiederkehr einer Linie, die von Push Pin Studios (Milton Glaser, Seymour Chwast, ab 1954) über die psychedelischen Plakate der Sechziger, die Cut-and-paste-Fanzines des Punk (Jamie Reid für die Sex Pistols, 1977) und Memphis (Ettore Sottsass, 1981) bis zu David Carsons Ray Gun (1992-1996) und Richard Turleys Bloomberg Businessweek (2011-2014) reicht. Digital zurück kam er ab etwa 2020 als direkte Gegenbewegung zum Corporate-Flat-Minimalismus, dessen Ergebnis - austauschbare Sans-Serif-Logos und weiße Karten - selbst zum Problem geworden war. Möglich machten die Rückkehr variable Schriften, CSS transform und mix-blend-mode sowie GPU-beschleunigte Scroll-Animation: was früher ein Bitmap-Layout war, ist heute live gerendertes DOM. Kulturell trug ihn die Mode (Gucci unter Alessandro Michele ab 2015) und die Musikvermarktung, wo Wiedererkennbarkeit mehr zählt als Effizienz.",
+  "origin": "Der Maximalismus ist keine Erfindung der 2020er, sondern die Wiederkehr einer Linie, die von Push Pin Studios (Milton Glaser, Seymour Chwast, ab 1954) über die psychedelischen Plakate der Sechziger, die Cut-and-paste-Fanzines des Punk (Jamie Reid für die Sex Pistols, 1977) und Memphis (Ettore Sottsass, 1981) bis zu David Carsons Ray Gun (1992-1996) und Richard Turleys Bloomberg Businessweek (2011-2014) reicht. Digital zurück kam er ab etwa 2020 als direkte Gegenbewegung zum Corporate-Flat-Minimalismus, dessen Ergebnis - austauschbare Sans-Serif-Logos und weiße Karten - selbst zum Problem geworden war. Möglich machten die Rückkehr variable Schriften, CSS transform und mix-blend-mode sowie GPU-beschleunigte Scroll-Animation: was früher ein Bitmap-Layout war, ist heute live gerendertes DOM. Kulturell trug ihn die Mode (Gucci unter Alessandro Michele ab 2015) und die Musikvermarktung, wo Wiedererkennbarkeit mehr zählt als Effizienz. Die Farben dieses Eintrags stammen nicht aus einer Harmonie, sondern aus dem Material der Collage selbst: aus dem Zeitungsdruck und aus der Risographie (Riso Kagaku, seit 1980), deren Sonderfarben-Trommeln publizierte Tintenwerte haben und deren Auszüge bei jedem Durchlauf leicht gegeneinander verrutschen. Diese Fehlpassung, in der Fotomontage von Hannah Höch und John Heartfield noch ein Nebenprodukt des Schneidens, ist hier das eigentliche Verfahren.",
   "idea": "Überfüllung als Haltung: Statt Elemente wegzunehmen, werden sie geschichtet, gedreht, gerahmt und miteinander kollidieren gelassen, bis die Fläche eine Persönlichkeit hat. Ordnung entsteht nicht durch Weißraum, sondern durch Kontrastführung innerhalb des Chaos.",
   "markers": [
     "3-6 Schriftfamilien gleichzeitig, hier vier: Anton, DM Serif Display, Space Mono, Bricolage Grotesque",
     "Rahmen im Rahmen: außen 3px solid, innen 2px dashed, dazu harter Versatzschatten 11px/20px in zwei Farben",
+    "Registerversatz als Verfahren, nicht als Behauptung: dieselbe Form zweimal, 2-3px auseinander, mix-blend-mode multiply - an der Überschneidung entsteht eine dritte Farbe, die in der Palette gar nicht vorkommt (#F15060 über #375E77 ergibt #341D2D)",
     "Rotationen zwischen -2,2deg und +1,8deg auf nahezu jedem Element, nie 0deg",
     "Überlappende Ebenen über negative Margins (-6px) und explizite z-index-Staffelung - jede Zeile überdeckt die darüberliegende",
-    "Muster auf Muster: Diagonalstreifen, Halbtonpunkte und Karo-Conic-Gradient gleichzeitig im Bild",
-    "Harte Schlagschatten ohne Blur (box-shadow 6px 6px 0), nie weiche Elevation",
-    "Gesättigte Farbkollision: Acid-Gelb, Hot Pink, Ultramarin und Orange in einem Screen",
-    "Sticker-Sekundärelemente: Klebeband-Streifen, Starburst, Barcode, Kreis-Siegel als reine Deko",
+    "Halbtonraster 11px in drei gegeneinander versetzten Auszügen (Schwarz 0/0, Rot 2/1, Stahlblau 0/3) plus 45deg-Streifen - der Grund ist selbst ein Druckbogen",
+    "Harte Schlagschatten ohne Blur (box-shadow 6px 6px 0), nie weiche Elevation - geteiltes Erbe mit Memphis und Neo-Brutalismus und deshalb kein Erkennungsmerkmal",
+    "Gefundenes Druckmaterial statt Farbharmonie: publizierte Riso-Tinten auf Zeitungspapier-Graubeige, Metallicgold als Folienschnipsel",
+    "Sekundärelemente aus der Druckerei: Klebeband, Passkreuz, Barcode, Siegel und ein Fotoausriss mit Halbton-Verlauf und gerissener Kante",
     "Weißraum praktisch null; Padding 11-22px, Zeilen berühren sich"
   ],
   "params": {
@@ -22,21 +23,22 @@
     "contrast": "sehr hoch",
     "density": "sehr dicht",
     "depth": "harte Offset-Schatten ohne Blur plus echte Überlappung mit z-index - Tiefe als Collage, nicht als Licht",
-    "color": "Vier bis sechs gesättigte Farben, die sich absichtlich beißen, zusammengehalten von einem fast schwarzen Ink und einem Cremeweiß als Klebstoff.",
+    "color": "Gefundenes Druckmaterial statt Farbharmonie: vier publizierte Riso-Tinten - Bright Red (Pantone 032 U), Orange (Orange 021 U), Steel (302 U), Metallic Gold (874 U) - auf Zeitungspapier-Graubeige #D3CBB7, zusammengehalten von einem eingesunkenen Zeitungsschwarz #1B1714. Die Buntheit kommt nicht aus der Palette, sondern aus dem Überdruck: zwei Tinten 2px außer Register ergeben an der Kante eine dritte Farbe.",
     "type": "Bewusster Familienmix: fette Kondensierte als Schrei, Serif-Kursiv als Ironie, Mono als Beleg, Grotesk als Stimme.",
     "motion": "Ruckartig statt weich: 90ms linear beim Drücken (Schatten schrumpft, Element rutscht), dazu ein langsames Wackeln 6s ease-in-out auf Stickern",
-    "texture": "Halbton-Punktraster 11px und 45deg-Streifen auf dem Grund; auf Papier oft zusätzlich Film-Grain 4-8%"
+    "texture": "Halbton-Punktraster 11px in drei gegeneinander versetzten Auszügen (Schwarz 0/0, Rot 2/1, Stahlblau 0/3) plus 45deg-Streifen auf dem Grund; im Fotoausriss läuft das Raster von 8px grob nach 5px fein und trägt seinen eigenen Versatz in Rot und Stahlblau"
   },
-  "palette": ["#16101A", "#FFF6E8", "#F4E63F", "#FF3D81", "#2B36D6", "#FF6B1A"],
+  "palette": ["#1B1714", "#D3CBB7", "#F15060", "#FF6C2F", "#375E77", "#AC936E"],
   "examples": [
     {"name": "David Carson, Ray Gun (1992-1996)", "what": "Überlagerte Spalten, zerschossene Schriftgrößen, ein komplettes Interview in Zapf Dingbats gesetzt - der Beleg dafür, dass Lesbarkeit hier eine Verhandlungsmasse ist."},
     {"name": "Bloomberg Businessweek unter Richard Turley (2011-2014)", "what": "Wirtschaftsjournalismus mit Neonfarben, Stock-Foto-Collage und Formularästhetik; zeigt, dass Maximalismus auch mit hartem Informationsauftrag funktioniert, wenn ein Raster darunter liegt."},
     {"name": "Gucci unter Alessandro Michele (2015-2022)", "what": "Muster auf Muster, Vintage-Serif neben Blockletter, Sticker-Applikationen - der modische Auslöser der aktuellen Welle."},
-    {"name": "Ettore Sottsass / Memphis Group (1981)", "what": "Terrazzo-Muster, Grafik-Bakterien und beißende Primärfarben auf Möbeln - die Formen-Bibliothek, aus der sich das heutige Web bedient."},
+    {"name": "Hannah Höch und John Heartfield, Fotomontage (1919-1938)", "what": "Aus Zeitungen und Illustrierten geschnittenes Fremdmaterial, hart gegeneinander montiert - bei Heartfield auf den Titeln der AIZ direkt im Zeitungsdruck. Von hier stammt das Prinzip, dass das Material gefunden ist und die Schnittkante sichtbar bleibt."},
+    {"name": "Risographie, Riso Kagaku (seit 1980)", "what": "Je Trommel eine Sonderfarbe; mehr als zwei Farben heißt mehr als ein Durchlauf, und bei jedem Durchlauf wird das Papier neu eingezogen - daher die Fehlpassung, die zum Stilmerkmal geworden ist. Die Tintenwerte sind publiziert: Bright Red = Pantone 032 U, Orange = Orange 021 U, Steel = 302 U, Metallic Gold = 874 U."},
     {"name": "Meow Wolf und vergleichbare Awwwards-Sieger", "what": "Scroll-getriebene Ebenenverschiebung, Sticker-Cursor, mehrere gleichzeitig laufende Animationsspuren - die Web-Version des Prinzips, jeweils als Einzelanfertigung gebaut."}
   ],
   "strengths": [
-    "Wiedererkennung auf 200ms - keine andere Familie in diesem Katalog ist so schwer zu verwechseln",
+    "Trennt sich schon in der Miniaturansicht am Grund: Zeitungspapier-Graubeige statt Weiß, bevor irgendein Detail lesbar ist",
     "Trägt Persönlichkeit und Haltung ohne Text; ideal für Kampagne, Launch, Merch, Release-Seiten",
     "Verträgt hohe Elementdichte, weil Dichte das Gestaltungsmittel selbst ist",
     "Vollständig mit CSS erzeugbar: transform, box-shadow, repeating-gradients - keine Bilddateien nötig"
@@ -46,9 +48,10 @@
     "Der Unterschied zwischen 'kuratiertes Chaos' und 'Word-Art' liegt in Millimetern - ohne sicheres typografisches Auge wird es billig",
     "Bei jeder Wiederholung ermüdend: was auf einer Landingpage begeistert, ist im vierten Arbeitsschritt einer App unerträglich",
     "Skaliert schlecht auf kleine Viewports - rotierte, überlappende Elemente brauchen Breite oder sie stapeln zu Matsch",
-    "Wartungskosten: jede neue Funktion muss von Hand in die Collage eingepasst werden statt aus Tokens zu fallen"
+    "Wartungskosten: jede neue Funktion muss von Hand in die Collage eingepasst werden statt aus Tokens zu fallen",
+    "Verwechselbar mit memphis und neo-brutalism: alle drei sind laut, bunt und rechteckig. Auseinander hält man sie an Anordnung und Grund - Memphis stellt eine ruhige gerade Liste hin und legt die Dekoration daneben (Radien 0, 999px und asymmetrisch nebeneinander, 2px Konturen und an den Dekorformen gar keine, Bacterio-Laminat und Terrazzo-Sprenkel auf Minzgrün #7FC8BA), Neo-Brutalismus stapelt streng rechtwinklig mit 3px schwarzer Kontur auf allem und Radius 0-4px auf gebrochenem Weiß #F4F4F0 mit fast unsichtbarem Diagonalraster, Maximalismus überlagert rotierte, beschnittene Ebenen mit Rahmen im Rahmen, sichtbarem 11px-Halbton und 2px-Registerversatz auf Zeitungspapier-Graubeige #D3CBB7. Der harte Versatzschatten ohne Blur taugt zur Unterscheidung ausdrücklich nicht: Neo-Brutalismus hat ihn von Memphis geerbt, alle drei benutzen ihn."
   ],
-  "a11y": "Das größte Risiko ist Text auf Muster: Halbtonpunkte und Streifen unter Fließtext senken den effektiven Kontrast weit unter den gemessenen Wert, deshalb liegt hier unter jedem Text eine deckende Fläche und der Ink bleibt bei #16101A (>13:1 auf Creme und Acid, ~6:1 auf Pink). Rotationen entkoppeln die visuelle von der DOM-Reihenfolge - Tab-Fokus springt für Sehende scheinbar wild, was nur durch konsequente Quellreihenfolge und einen dicken, versetzten Fokusring beherrschbar bleibt. Dauerbewegung, Blink- und Marquee-Effekte müssen unter prefers-reduced-motion abgeschaltet werden; scharfe Farbkollisionen wie Pink auf Ultramarin sind für Menschen mit Rot-Grün-Schwäche zusätzlich anstrengend.",
+  "a11y": "Das größte Risiko ist Text auf Muster: Halbtonpunkte und Streifen unter Fließtext senken den effektiven Kontrast weit unter den gemessenen Wert, deshalb liegt hier unter jedem Text eine deckende Fläche und der Ink bleibt bei #1B1714 (11,0:1 auf dem Zeitungspapier #D3CBB7, 12,5:1 auf dem hellen Bogen, 6,3:1 auf Riso-Orange, 6,1:1 auf Metallic Gold, 5,1:1 auf Bright Red); die eine umgekehrte Zeile setzt den hellen Bogen auf Steel-Blau und kommt auf 4,9:1. Der Registerversatz bleibt bewusst auf Rahmen, Balken, Sticker und Passkreuz beschränkt - unter Fließtext gelegt liest sich die doppelte Kante wie eine Sehstörung. Rotationen entkoppeln die visuelle von der DOM-Reihenfolge - Tab-Fokus springt für Sehende scheinbar wild, was nur durch konsequente Quellreihenfolge und einen dicken, versetzten Fokusring beherrschbar bleibt. Dauerbewegung, Blink- und Marquee-Effekte müssen unter prefers-reduced-motion abgeschaltet werden.",
   "longevity": "Als Haltung ist der Maximalismus zyklisch stabil - er kommt alle zwanzig Jahre wieder - aber die konkrete Ausprägung ist immer scharf datiert: die aktuelle Sticker-Variante wird ab etwa 2027 genauso als '2020er' lesbar sein, wie Carson heute als '90er' lesbar ist. Wer ihn wählt, wählt bewusst eine Zeitmarke.",
   "scores": {
     "longevity": 2,
