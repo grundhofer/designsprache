@@ -97,6 +97,8 @@ Jedes Faktenblatt braucht am Ende einen `finder`-Block. Er speist den Stil-Finde
 `fits` aus: `dev-tool` `data` `content` `consumer` `marketing` `creative` `civic` `internal`.
 `tone` aus: `precise` `calm` `warm` `loud` `playful` `formal` `technical` `nostalgic`
 `expressive` `austere`. Zwei bis vier je Feld — zwei treffende sind besser als vier ungefähre.
+`mode` aus: `light` `dark` `both` — `both` nur, wenn der Stil in beiden Modi gleich überzeugend
+ist.
 
 Nutze die ganze Skala 1–5. Wenn alles bei 3 und 4 landet, ist die Zahl wertlos. Sieh dir zur
 Orientierung `neumorphism.json` (a11y 1) und `civic-service.json` (a11y 5) an.
@@ -105,7 +107,7 @@ Orientierung `neumorphism.json` (a11y 1) und `civic-service.json` (a11y 5) an.
 
 Struktur siehe jede bestehende `.json`. Was zählt:
 
-- `markers` — 6 bis 9 **harte, überprüfbare** Merkmale mit Zahlen. Nicht „wirkt modern",
+- `markers` — neun bis elf **harte, überprüfbare** Merkmale mit Zahlen. Nicht „wirkt modern",
   sondern „Radius 0–2 px", „Trennung ausschließlich über 1 px-Linien", „Kontrast > 12:1".
 - `examples` — mindestens vier **echte** Vertreter mit konkreter Beobachtung. Nicht „sieht gut
   aus", sondern welche Farbwerte, Radien, Schriften dort tatsächlich zu sehen sind.
@@ -177,13 +179,17 @@ width of 780 px; the page scales the demo into its frame.
 **Honesty over prettiness**: if a style systematically causes contrast problems, build it that
 way — and say so in the `a11y` field.
 
-For the fact sheet, what matters: `markers` are 6–9 hard, checkable properties with numbers,
+For the fact sheet, what matters: `markers` are nine to eleven hard, checkable properties with numbers,
 not adjectives; `examples` are at least four real-world instances with concrete observations;
 `verdict` is honest, and a clear no is a good answer; `scores` are integers 1–5, where `effort`
 and `density` are properties rather than verdicts.
 
-Run `python3 build.py`, then open `docs/de/index.html` and `docs/en/index.html` and look at
-your entry — in both themes, wide and narrow.
+**Every fact sheet needs a `finder` block** at the end — it feeds the style finder and is
+language-neutral: identical in `.json` and `.en.json`, only `signature` is translated. `mode` is
+one of `light` `dark` `both`. See the German section above for the field list.
+
+Run `python3 build.py` and `python3 tools/palette-check.py`, then open `docs/de/index.html` and
+`docs/en/index.html` and look at your entry — in both themes, wide and narrow.
 
 ---
 

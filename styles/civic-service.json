@@ -8,7 +8,7 @@
     "Government Design System",
     "Behörden-UI"
   ],
-  "family": "Norm & Beschraenkung",
+  "family": "Norm & Beschränkung",
   "era": "2012-heute",
   "origin": "Entstanden 2012 beim britischen Government Digital Service: GOV.UK ging im Oktober 2012 live und ersetzte hunderte Ressort-Auftritte durch eine einzige Oberfläche, deren Hausschrift New Transport von Margaret Calvert und Henrik Kubel aus der Verkehrsschilderschrift von 1963 abgeleitet wurde. Der Stil ist kein Entwurfsergebnis, sondern ein Prüfergebnis: Jeder Wert musste gegen WCAG-Kontrastschwellen, gegen Nutzertests mit Screenreadern und Vergrößerungssoftware und gegen den Government Service Standard verteidigt werden. 2018 wurde das Ergebnis als GOV.UK Design System und als npm-Paket govuk-frontend kodifiziert, dessen Sass-Dateien die Parameter bis heute wörtlich festschreiben: 960px Seitenbreite, 30px Gutter, Rahmenstärken 2/4/5/10px, Fokusbreite 3px, Typskala 80/48/36/27/24/19/16px. NHS Digital baute ab 2018 mit nhsuk-frontend eine unabhängige zweite Umsetzung mit eigener Schrift (Frutiger W01), eigener Palette (#212b32, #005eb8) und eigenem Gutter (32px) - und kam bei denselben Kernwerten heraus: 19px Fließtext, Radius 0, gelber Fokusblock.",
   "idea": "Jeder Wert der Oberfläche wird aus einer Barrierefreiheits- und Verständlichkeitsprüfung abgeleitet statt aus Komposition; der einzige auffällige Farbton ist kein Markenzeichen, sondern der Tastaturfokus.",

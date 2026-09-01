@@ -75,7 +75,8 @@
     "Katakana as pure decoration is the point where the style tips into cultural appropriation; set without meaning it quickly gets embarrassing",
     "Glow accumulates: more than three glowing elements per screen and the hierarchy is dead",
     "It dates twice over -- to the 80s being quoted, and to 2015-2018, when the quoting happened",
-    "Structurally unsuited to data entry, forms and long-form text: scanlines and aberration attack exactly the letterform edges"
+    "Structurally unsuited to data entry, forms and long-form text: scanlines and aberration attack exactly the letterform edges",
+    "Shares its cyan and its amber almost exactly with glassmorphism -- side by side the two blur into a single style"
   ],
   "a11y": "The style produces its barriers on purpose. Chromatic aberration doubles every letter edge in two colors -- for people with dyslexia or astigmatism that is measurably more strenuous, and this demo's headline additionally runs as a chrome gradient with a dark horizon edge at 50% whose local contrast drops to about 3:1. The scanline layer lowers every text contrast by roughly 25% across the board, which is why all body text here is set with considerably more reserve than would otherwise be needed. What is implemented is the honest compromise: aberration and chrome only on the headline, all functional text (names, times, status, placeholder) clean and undistorted at a minimum of 4.5:1, status additionally coded through the border color on the left, and both grid scroll and tracking band switched off completely under prefers-reduced-motion.",
   "longevity": "The style is tied to two nostalgia waves, the second of which (2015-2018) is already over -- as a product surface it looks as dated today as the 80s it quotes. As a genre signature in music, gaming and the demoscene, by contrast, it has stabilized and barely ages there any more, because it is no longer read as a trend but as a fixed visual language.",

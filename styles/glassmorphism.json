@@ -47,7 +47,8 @@
     "Ohne unruhigen Untergrund ist der Stil wirkungslos -- er zwingt zu Farbverläufen, die man vielleicht gar nicht will",
     "Der Textkontrast hängt davon ab, was gerade zufällig dahinterliegt; er ist nicht per Token garantierbar",
     "Der Look gehört derzeit sichtbar Apple: eine eigene Web-App im Liquid-Glass-Kostüm liest sich als schlecht kopierte System-App",
-    "Kippt in 'Bootstrap-Template 2021', sobald der Blur zu klein, die Transparenz zu hoch und der Verlauf zu bunt gewählt ist"
+    "Kippt in 'Bootstrap-Template 2021', sobald der Blur zu klein, die Transparenz zu hoch und der Verlauf zu bunt gewählt ist",
+    "Teilt Cyan und Bernstein fast wortgleich mit Vaporwave -- nebeneinander verschwimmen beide zu einem Stil"
   ],
   "a11y": "Der Kontrast ist eine Funktion des Untergrunds, nicht des Designs: weißer Text liegt in dieser Demo je nach Stelle zwischen rund 16:1 (über der dunklen Basis) und 3,1:1 (dort, wo ein heller Farbkörper hinter dem Glas steht) -- 4,5:1 nach WCAG 2.2 AA ist also nicht durchgängig erfüllt, sekundärer Text fällt lokal bis auf 2,4:1. Deshalb liegt hier ein dunkler Tint von 34% unter dem weißen Film; ohne ihn sinkt derselbe Text auf 1,7:1. Zwingend sind außerdem ein opaker Fallback unter @media (prefers-reduced-transparency: reduce) -- Apple musste nach der Legibility-Kritik an macOS Tahoe genau das nachrüsten und einen Transparenz-Regler in die Systemeinstellungen legen -- sowie ein stilfremder, deckender Fokus-Ring, weil eine 1px-Glaskante die 3:1-Anforderung aus SC 1.4.11 nie erreicht.",
   "longevity": "Als Web-Trend ist der Look ein deutlicher 2020er-Marker und altert mittelmäßig; als Plattform-Material auf Apple-Geräten ist er bis mindestens Ende der Dekade gesetzt. Wer ihn im Web einsetzt, wettet also auf eine fremde Plattformmarke -- und deren nächste Kurskorrektur (Apple hat die Default-Transparenz bereits einmal gesenkt) trifft das eigene Produkt mit.",
@@ -63,7 +64,7 @@
     "desktop": "In Tauri funktionsfähig, aber WebView2 und WebKitGTK zahlen den GPU-Preis unterschiedlich; native Fenstervibrancy über die Tauri-Effects-API ist der sauberere Weg als CSS-Blur."
   },
   "verdict": "Als Marken-Basis: nein -- als Bauteil: ja, an genau zwei Stellen. Der Stil ist ein Plattform-Material, kein Markenzeichen; wer ihn zur Grundfläche macht, sieht auf iOS wie eine mittelmäßige System-Kopie und auf Android wie ein Fremdkörper aus, und der Wiedererkennungswert gehört nicht ihm, sondern Apple. Für einen Solo-Entwickler kommt hinzu, dass er als einziger Stil in dieser Familie echte Laufzeitkosten hat und in Tauri je nach WebView unterschiedlich rendert -- also drei Plattformen, drei Verhaltensweisen. Sinnvoll bleibt er dort, wo er ein Problem löst statt Stimmung zu machen: Command-Palette und Modal-Overlay, jeweils mit opakem Fallback.",
-  "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
+  "combinesWith": ["dev-noir", "spatial-depth", "y2k-aero", "organic-blob"],
   "tip": "Die Glaubwürdigkeit entsteht nicht am Blur, sondern an der Kante und am Tint. Erstens: immer eine helle 1px-Innenkante oben und eine schwächere unten setzen (inset 0 1px 0 rgba(255,255,255,.55)) -- ohne sie sieht Glas aus wie eine milchige Folie. Zweitens: unter den weißen Film gehört ein dunkler Tint von 25-35%, denn nur er macht den Textkontrast vom Untergrund unabhängig. Und saturate(180%) nie weglassen: die Übersättigung ist das, was Blur von Glas unterscheidet.",
   "googleFonts": ["Inter"],
   "finder": {

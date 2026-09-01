@@ -12,10 +12,12 @@ Applies to the editorial texts in this repository: the fact sheets in
 (introductions, family descriptions, parameter texts, closing section) in
 `build.py` and `landing.html`.
 
-Der **Quelltext** — `build.py` als Programm, `landing.html` als Markup und die
-Stil-Demos in `styles/*.html` — steht unter der [MIT-Lizenz](LICENSE).
-The **source code** — `build.py` as a program, `landing.html` as markup, and the
-style demos in `styles/*.html` — is under the [MIT license](LICENSE).
+Der **Quelltext** — `build.py` als Programm, `tools/`, `landing.html` als Markup und
+die Stil-Demos in `styles/*.html` und `styles/*.en.html` — steht unter der
+[MIT-Lizenz](LICENSE).
+The **source code** — `build.py` as a program, `tools/`, `landing.html` as markup, and
+the style demos in `styles/*.html` and `styles/*.en.html` — is under the
+[MIT license](LICENSE).
 
 ## Du darfst / You are free to
 

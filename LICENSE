@@ -2,8 +2,8 @@ MIT License
 
 Copyright (c) 2026 Sebastian Grundhöfer
 
-Applies to the source code of this repository: build.py, landing.html and the
-style demonstrations in styles/*.html and styles/*.en.html.
+Applies to the source code of this repository: build.py, tools/, landing.html and
+the style demonstrations in styles/*.html and styles/*.en.html.
 The prose content in styles/*.json and styles/*.en.json is licensed separately
 under CC BY 4.0 — see LICENSE-CONTENT.md.
 

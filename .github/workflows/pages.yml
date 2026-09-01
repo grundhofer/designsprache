@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      # build.py prueft dabei das CSS-Scoping aller 27 Demos und bricht bei
+      # build.py prueft dabei das CSS-Scoping aller Demos und bricht bei
       # einem ungescopten Selektor ab. It also fails if an L10N pair no longer
       # matches, which catches German copy edited without the English one.
       - name: Build

@@ -47,7 +47,8 @@
     "Without a busy ground the style has no effect -- it forces gradients you may not want at all",
     "Text contrast depends on whatever happens to be behind it; it cannot be guaranteed by token",
     "The look visibly belongs to Apple right now: a web app of your own in Liquid Glass costume reads as a badly copied system app",
-    "Tips over into 'Bootstrap template 2021' as soon as the blur is too small, the transparency too high and the gradient too colorful"
+    "Tips over into 'Bootstrap template 2021' as soon as the blur is too small, the transparency too high and the gradient too colorful",
+    "Shares its cyan and its amber almost exactly with vaporwave -- side by side the two blur into a single style"
   ],
   "a11y": "Contrast is a function of the ground, not of the design: white text in this demo sits between roughly 16:1 (over the dark base) and 3.1:1 (where a light color body stands behind the glass) depending on the spot -- so 4.5:1 per WCAG 2.2 AA is not met throughout, and secondary text drops locally to 2.4:1. That is why a dark tint of 34% sits beneath the white film here; without it the same text falls to 1.7:1. An opaque fallback under @media (prefers-reduced-transparency: reduce) is mandatory as well -- Apple had to retrofit exactly that after the legibility criticism of macOS Tahoe, and to add a transparency slider to system settings -- and so is a style-breaking, opaque focus ring, because a 1px glass edge will never reach the 3:1 requirement of SC 1.4.11.",
   "longevity": "As a web trend the look is a distinct 2020s marker and ages middlingly; as a platform material on Apple devices it is set until the end of the decade at least. Using it on the web therefore means betting on someone else's platform brand -- and their next course correction (Apple has already lowered the default transparency once) hits your own product with it.",
@@ -63,7 +64,7 @@
     "desktop": "Workable in Tauri, but WebView2 and WebKitGTK pay the GPU price differently; native window vibrancy via the Tauri effects API is the cleaner route than CSS blur."
   },
   "verdict": "As a brand basis: no -- as a component: yes, in exactly two places. The style is a platform material, not a trademark; make it the base surface and you look like a mediocre system copy on iOS and a foreign body on Android, and the recognition value belongs to Apple, not to you. For a solo developer it is also the only style in this family with real runtime cost, and it renders differently in Tauri depending on the WebView -- three platforms, three behaviors. It stays sensible where it solves a problem instead of setting a mood: command palette and modal overlay, each with an opaque fallback.",
-  "combinesWith": ["dev-noir", "minimalism", "frutiger-aero", "organic-blob"],
+  "combinesWith": ["dev-noir", "spatial-depth", "y2k-aero", "organic-blob"],
   "tip": "Credibility comes not from the blur but from the edge and the tint. First: always set a light 1px inner edge at the top and a weaker one at the bottom (inset 0 1px 0 rgba(255,255,255,.55)) -- without it glass looks like a milky film. Second: a dark tint of 25-35% belongs beneath the white film, because only that makes text contrast independent of the ground. And never drop saturate(180%): the oversaturation is what separates blur from glass.",
   "googleFonts": ["Inter"],
   "finder": {

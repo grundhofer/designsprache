@@ -62,7 +62,7 @@
     "desktop": "In Tauri technisch problemlos, aber Desktop-UIs brauchen Menüs, Popover und Dialoge -- also genau die Ebenen, die Neumorphismus nicht darstellen kann."
   },
   "verdict": "Als Basis der Eigenmarke: klares Nein. Nicht weil er hässlich wäre, sondern weil er drei Anforderungen des Auftraggebers strukturell verletzt: er kennt kein Dark Theme, kein zweites Elevationslevel und keine WCAG-konforme Bedienelement-Kante -- letzteres ist seit dem European Accessibility Act kein Geschmacksthema mehr. Für eine Marke über Web, Tauri und Compose hinweg bedeutet das drei getrennte Neuentwürfe statt eines Token-Satzes. Was sich hingegen mitnehmen lässt, ist genau ein Detail: der inset-Umkehr als Aktiv-Zustand an einer einzigen Komponente (Toggle, Segmented Control) -- ein billiger, taktiler Wiedererkennungsträger, der ohne den Rest des Stils funktioniert.",
-  "combinesWith": ["claymorphism", "skeuomorphism", "minimalism", "organic-blob"],
+  "combinesWith": ["claymorphism", "skeuomorph", "organic-blob"],
   "tip": "Blur nie größer als die Distanz wählen (9px/18px, nicht 9px/40px) und die Basisfarbe bei ca. 88-92% Helligkeit mit einem leichten Blaustich halten -- reines Grau wirkt tot, gesättigtes Grau wirkt nach Spielzeug. Und: Der einzige Weg, den Stil benutzbar zu machen, ist ein zweiter, stilfremder Signalkanal pro Zustand (Farbe, Icon oder Text), weil das Relief allein den Zustand nicht transportiert.",
   "googleFonts": ["Nunito"],
   "finder": {

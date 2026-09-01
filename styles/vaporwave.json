@@ -75,7 +75,8 @@
     "Katakana als reine Dekoration ist die Stelle, an der der Stil in kulturelle Aneignung kippt; ohne Bedeutung gesetzt wirkt es schnell peinlich",
     "Glow addiert sich: mehr als drei leuchtende Elemente pro Screen und die Hierarchie ist tot",
     "Datiert doppelt -- auf die 80er, die zitiert werden, und auf 2015-2018, als zitiert wurde",
-    "Für Datenmasken, Formulare und Langtext strukturell ungeeignet: Scanlines und Aberration greifen genau die Textkanten an"
+    "Für Datenmasken, Formulare und Langtext strukturell ungeeignet: Scanlines und Aberration greifen genau die Textkanten an",
+    "Teilt Cyan und Bernstein fast wortgleich mit Glassmorphism -- nebeneinander verschwimmen beide zu einem Stil"
   ],
   "a11y": "Der Stil produziert seine Barrieren absichtlich. Chromatic Aberration verdoppelt jede Buchstabenkante in zwei Farben -- für Menschen mit Legasthenie oder Astigmatismus ist das messbar anstrengender, und die Überschrift dieser Demo läuft zusätzlich als Chrome-Verlauf mit einer dunklen Horizontkante bei 50%, deren lokaler Kontrast auf etwa 3:1 fällt. Die Scanline-Ebene senkt jeden Text-Kontrast pauschal um ca. 25%, weshalb hier alle Fließtexte mit deutlich mehr Reserve gesetzt sind, als nötig wäre. Umgesetzt ist der ehrliche Kompromiss: Aberration und Chrome nur auf der Überschrift, alle funktionalen Texte (Namen, Zeiten, Status, Placeholder) sauber und unverzerrt bei mindestens 4,5:1, Status zusätzlich über Rahmenfarbe links kodiert, und Gitter-Scroll sowie Tracking-Band vollständig unter prefers-reduced-motion abgeschaltet.",
   "longevity": "Der Stil ist an zwei Nostalgiewellen gebunden, von denen die zweite (2015-2018) bereits vorbei ist -- als Produktoberfläche wirkt er heute so datiert wie die 80er, die er zitiert. Als Genre-Signatur in Musik, Gaming und Demoszene ist er dagegen stabil geworden und altert dort kaum noch, weil er nicht mehr als Trend, sondern als feste Bildsprache gelesen wird.",

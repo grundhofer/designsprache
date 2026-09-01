@@ -6,10 +6,10 @@
 
 Quelldateien je Stil:  <slug>.html  <slug>.json  <slug>.en.html  <slug>.en.json
 Die .html enthaelt genau ein <style>-Element und genau ein <div class="style-SLUG">.
-Jeder CSS-Selektor darin beginnt mit .style-SLUG, damit 27 Stylesheets kollisionsfrei
+Jeder CSS-Selektor darin beginnt mit .style-SLUG, damit alle Stylesheets kollisionsfrei
 auf einer Seite koexistieren. build.py prueft das und bricht sonst ab.
 
-Build a bilingual catalog of 27 UI styles. See README.md.
+Build a bilingual catalog of UI styles. See README.md.
 """
 import json, pathlib, re, html, shutil, sys
 
@@ -209,7 +209,7 @@ METRICS = METRICS_DE          # swapped per language inside build()
 
 
 # ---------------------------------------------------------------------------
-# Translation of the page chrome. The 27 fact sheets and demos live in their own
+# Translation of the page chrome. The fact sheets and demos live in their own
 # .en files; only the page's own prose is listed here.
 # Each pair is replaced verbatim in the template; page_en() asserts that no pair
 # misses, so editing the German copy without updating the English one fails the
@@ -245,9 +245,9 @@ L10N = [
   """<dt>Radius<i>01</i></dt><dd>From 0&#8239;px to fully round. The most underrated carrier
         of brand identity.<em>0 uncompromising · 6 tool-like · 16+ friendly</em>"""),
  ("""<dt>Kontrast<i>02</i></dt><dd>Der Abstand zwischen Grund und Schrift. Entscheidet, ob
-        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 18:1 Swiss</em>""",
+        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 21:1 Web-Brutalismus</em>""",
   """<dt>Contrast<i>02</i></dt><dd>The distance between ground and type. Decides whether an
-        interface reads as calm or loud.<em>1.5:1 neumorphism → 18:1 Swiss</em>"""),
+        interface reads as calm or loud.<em>1.5:1 neumorphism → 21:1 web brutalism</em>"""),
  ("""<dt>Tiefe<i>03</i></dt><dd>Wie Hierarchie entsteht: gar nicht, über Linien, über
         Schatten, über Unschärfe oder über echte z&#8209;Achse.<em>Der teuerste Parameter im
         Cross&#8209;Platform&#8209;Betrieb</em>""",
@@ -284,6 +284,10 @@ L10N = [
  ('<option value="recognition">Wiedererkennung</option>', '<option value="recognition">Recognisability</option>'),
  ('<option value="effort">Aufwand (wenig zuerst)</option>', '<option value="effort">Effort (least first)</option>'),
  ('<option value="density">Dichte</option>', '<option value="density">Density</option>'),
+ ('longevity: {{ label: "Haltbarkeit"', 'longevity: {{ label: "Longevity"'),
+ ('recognition: {{ label: "Wiedererkennung"', 'recognition: {{ label: "Recognisability"'),
+ ('effort: {{ label: "Aufwand"', 'effort: {{ label: "Effort"'),
+ ('density: {{ label: "Dichte"', 'density: {{ label: "Density"'),
  ('<option value="name">Name</option>', '<option value="name">Name</option>'),
  ('aria-live="polite">{n} von {n}<', 'aria-live="polite">{n} of {n}<'),
  ('hidden>Kein Eintrag passt zu dieser Auswahl.<', 'hidden>No entry matches this selection.<'),
@@ -350,11 +354,13 @@ L10N = [
         estimate."""),
  ("""Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen von Google Fonts, alle Farbwerte, Radien und Zeitangaben in den Faktenblättern
+    stammen aus Google Fonts oder, wo der Stil es verlangt, aus dem System-Stack, alle
+    Farbwerte, Radien und Zeitangaben in den Faktenblättern
     sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
     Einschätzungen, keine Messwerte.""",
   """All {n} demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
-    the same thirteen pieces of text. Type comes from Google Fonts; the color values, radii and
+    the same thirteen pieces of text. Type comes from Google Fonts or, where the style demands it, from the system stack;
+    the color values, radii and
     timings quoted in the fact sheets are sourced from the products they describe. The four
     scores are professional judgements, not measurements."""),
 
@@ -400,6 +406,13 @@ L10N = [
   '<h2 id="fi-title">Which style fits your project?</h2>'),
  ('id="fi-again" hidden>Antworten ändern<', 'id="fi-again" hidden>Change answers<'),
  ('id="fi-close">Schließen · Esc<', 'id="fi-close">Close · Esc<'),
+ (""">Neun Fragen. Die Empfehlung entsteht aus den Merkmalen der
+      Faktenblätter, nicht aus Geschmack — jeder Treffer wird begründet. Du kannst die
+      Eigenschaften des empfohlenen Stils anschließend als Anweisung für einen KI-Agenten
+      kopieren.</p>""",
+  """>Nine questions. The recommendation comes from the fact sheets' own attributes, not
+      from taste — every match is justified. You can then copy the recommended style's
+      properties as an instruction for an AI agent.</p>"""),
 ]
 
 UI = {
@@ -632,7 +645,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .bar-in {{ display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center;
   padding:11px 0; }}
 .chips {{ display:flex; flex-wrap:wrap; gap:6px; flex:1 1 auto; min-width:0; }}
-/* On narrow screens eight chips would swell the sticky bar to five rows and cover half
+/* On narrow screens ten chips would swell the sticky bar to five rows and cover half
    the viewport, so there they become one horizontally scrollable row. */
 @media (max-width:820px) {{
   .chips {{ flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
@@ -975,7 +988,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       <div><dt>Radius<i>01</i></dt><dd>Von 0&#8239;px bis vollrund. Der am stärksten
         unterschätzte Marken­träger.<em>0 kompromisslos · 6 werkzeughaft · 16+ freundlich</em></dd></div>
       <div><dt>Kontrast<i>02</i></dt><dd>Der Abstand zwischen Grund und Schrift. Entscheidet, ob
-        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 18:1 Swiss</em></dd></div>
+        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 21:1 Web-Brutalismus</em></dd></div>
       <div><dt>Tiefe<i>03</i></dt><dd>Wie Hierarchie entsteht: gar nicht, über Linien, über
         Schatten, über Unschärfe oder über echte z&#8209;Achse.<em>Der teuerste Parameter im
         Cross&#8209;Platform&#8209;Betrieb</em></dd></div>
@@ -1089,7 +1102,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
   </div>
   <p class="k-colophon">Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen von Google Fonts, alle Farbwerte, Radien und Zeitangaben in den Faktenblättern
+    stammen aus Google Fonts oder, wo der Stil es verlangt, aus dem System-Stack, alle
+    Farbwerte, Radien und Zeitangaben in den Faktenblättern
     sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
     Einschätzungen, keine Messwerte.</p>
 </section>
@@ -1101,7 +1115,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
     <button class="nav-b" type="button" id="fi-close">Schließen · Esc</button>
   </div></div>
   <div class="wrap fi-body">
-    <p class="fi-lede" id="fi-lede">Acht Fragen. Die Empfehlung entsteht aus den Merkmalen der
+    <p class="fi-lede" id="fi-lede">Neun Fragen. Die Empfehlung entsteht aus den Merkmalen der
       Faktenblätter, nicht aus Geschmack — jeder Treffer wird begründet. Du kannst die
       Eigenschaften des empfohlenen Stils anschließend als Anweisung für einen KI-Agenten
       kopieren.</p>
@@ -1638,7 +1652,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
             + '<span class="fi-rank">' + (i + 1) + "</span><h3>" + esc(d.name) + "</h3>"
             + '<span class="fi-score">' + r.pct + " %</span></div>"
             + '<div class="fi-card-body"><div><div class="fi-frame" data-demo="' + esc(r.slug)
-            + '"><div class="fi-host"></div></div><p class="cap">'
+            + '"><div class="fi-host" inert></div></div><p class="cap">'
             + esc(f1(FT.caption, order.length)) + "</p></div><div>"
             + '<p class="fi-sig">' + esc((d.finder && d.finder.signature) || d.idea) + "</p>"
             + '<ul class="fi-why">' + r.why.slice(0, 6).map(function (w) {{
@@ -1807,7 +1821,7 @@ _HEAD_TPL = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="author" content="Sebastian Grundhoefer">
+<meta name="author" content="Sebastian Grundhöfer">
 <link rel="canonical" href="{site}/{lang}/">
 <link rel="alternate" hreflang="de" href="{site}/de/">
 <link rel="alternate" hreflang="en" href="{site}/en/">
@@ -1837,14 +1851,14 @@ img {{ max-width: 100%; }}
 HEAD = {
  "de": _HEAD_TPL.format(
    lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON,
-   imgalt="Dieselbe Projektliste in vier Stilen nebeneinander: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
+   imgalt="Dieselbe Projektliste in vier Stilen, daneben der Prompt-Export für KI-Agenten: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
    title=f"Stil-Katalog — {N_ENTRIES} Wege, dieselbe Oberfläche zu bauen",
    desc=(f"{N_ENTRIES} UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
          "Mit Faktenblatt, Kennzahlen und Entscheidungsraster. Von Swiss und Bauhaus über "
          "Skeuomorphismus und Glassmorphism bis Dev-Noir und Neo-Brutalismus.")),
  "en": _HEAD_TPL.format(
    lang="en", locale="en_US", site=SITE_URL, icon=FAVICON,
-   imgalt="The same project list in four styles side by side: Swiss, Bauhaus, neo-brutalism, dev-noir.",
+   imgalt="The same project list in four styles, alongside the prompt export for AI agents: Swiss, Bauhaus, neo-brutalism, dev-noir.",
    title=f"Style Catalog — {N_ENTRIES} ways to build the same interface",
    desc=(f"{N_ENTRIES} UI style directions, each rendered as the very same reference interface. "
          "With fact sheets, scores and a decision grid. From Swiss and Bauhaus through "

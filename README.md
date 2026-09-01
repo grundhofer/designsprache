@@ -19,8 +19,8 @@ dieselbe Projektliste**, überall dieselben dreizehn Textbausteine, nur die Gest
 sich. Dadurch wird vergleichbar, was ein Stil tatsächlich entscheidet — und was nur Geschmack
 ist.
 
-Zu jedem Eintrag gehört ein Faktenblatt mit harten Werten statt Stimmungen: Herkunft, sechs bis
-neun überprüfbare Merkmale, echte Vertreter mit belegten Farben und Radien, Risiken,
+Zu jedem Eintrag gehört ein Faktenblatt mit harten Werten statt Stimmungen: Herkunft, neun bis
+elf überprüfbare Merkmale, echte Vertreter mit belegten Farben und Radien, Risiken,
 Barrierefreiheits-Konsequenzen, Alterungsverhalten und Plattform-Eignung.
 
 Talk about UI styles happens in adjectives — words that mean something different to everyone.
@@ -36,7 +36,7 @@ entsteht eine Empfehlung der fünf passendsten Einträge, und **jeder Treffer wi
 auch die negativen: „Haltbarkeit 5 von 5", „Ist hell, du wolltest dunkel".
 
 Zu jeder Empfehlung gehört **Als Prompt kopieren**. Der Knopf legt eine vollständige
-Stilanweisung für einen KI-Agenten in die Zwischenablage: Kernidee, die sieben harten Parameter
+Stilanweisung für einen KI-Agenten in die Zwischenablage: Kernidee, die acht harten Parameter
 mit konkreten Werten, Palette, Schriften, alle Regeln, die bekannten Fehlerquellen des Stils,
 Barrierefreiheit und Praxistipp. Rund 4.000 Zeichen, direkt einsetzbar — genau das Material, das
 einen Agenten davon abhält, wieder generisches Standard-UI zu bauen. Ist die Zwischenablage
@@ -44,7 +44,7 @@ gesperrt, wird der Text stattdessen eingeblendet und markiert.
 
 **Find a style** asks nine questions and recommends the five closest entries, justifying every
 match from the fact sheets' own attributes. **Copy as prompt** then puts a complete style
-instruction for an AI agent on your clipboard — core idea, the seven hard parameters with
+instruction for an AI agent on your clipboard — core idea, the eight hard parameters with
 concrete values, palette, type, every rule, the known failure modes, accessibility and one
 practical tip. About 4,000 characters, ready to paste.
 
