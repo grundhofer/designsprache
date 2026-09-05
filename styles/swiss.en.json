@@ -10,7 +10,7 @@
     "Radius 0px, without exception",
     "Modular 12-column grid + 24px baseline grid, edges flush to the column axis",
     "Exactly one signal color (classically red #E30613) on black and white, color under 5% of the surface",
-    "No shadows, no gradients, no textures – separation through 1px hairlines and spacing",
+    "No shadows, no gradients, no textures – separation through lines and spacing alone, in exactly two weights: a 1px hairline in the grid, a 3px bar as a caesura",
     "Grotesque in no more than 3 weights (400/500/700), headline tracking -0.045em",
     "Asymmetric type axis: content flush left, a large empty margin column at the right or left",
     "White-space budget: outer margins ≥ 40px, block spacing in multiples of 24px",

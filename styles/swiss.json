@@ -10,7 +10,7 @@
     "Radius 0px, ausnahmslos",
     "Modulares Raster 12 Spalten + Baseline-Grid 24px, Kanten bündig zur Spaltenachse",
     "Genau eine Signalfarbe (klassisch Rot #E30613) auf Schwarz/Weiß, Farbanteil unter 5% der Fläche",
-    "Keine Schatten, keine Verläufe, keine Texturen – Trennung über 1px-Hairlines und Abstand",
+    "Keine Schatten, keine Verläufe, keine Texturen – Trennung ausschließlich über Linien und Abstand, in genau zwei Stärken: 1px-Hairline im Raster, 3px-Balken als Zäsur",
     "Grotesk in maximal 3 Schnitten (400/500/700), Headline-Tracking -0.045em",
     "Asymmetrische Satzachse: Inhalt linksbündig, große leere Randspalte rechts oder links",
     "Weißraum-Budget: Außenränder ≥ 40px, Blockabstände in Vielfachen von 24px",
