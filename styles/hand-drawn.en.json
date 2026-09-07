@@ -82,7 +82,7 @@
     "Handwriting faces usually have exactly one weight, a small x-height, and restless numerals - hierarchy has to run entirely on size and stroke width, and columns of figures become unreadable",
     "Tips into the childish fast: as soon as more than one accent, rounded solid fills, or icons out of a stock set join in, it stops reading as a sketch and starts reading as Comic Sans in a frame"
   ],
-  "a11y": "The base chord is uncritical: ink #1E1B18 on paper #FBFAF6 lands at roughly 16.6:1, graphite #6B645B at roughly 5.6:1, the marker accent #B83A22 at roughly 5.5:1. The actual trap is the hachure areas - a label on a striped chip has to be measured against the stroke color, not against the paper: ink against #B83A22 is only about 3.0:1. That is why coverage stays around 20 percent (1.1px stroke, 4.4px gap), and why status is never read out of stroke density alone but always out of the wording - 'Active' versus 'Paused'. The second trap is the input field: a wavy baseline meets the 3:1 requirement on control borders only if it is at least 2px strong and drawn across the full field width, and focus needs an indicator of its own that is clearly visible - an outline redrawn with a new seed is no perceivable state change. Do not set handwriting faces below 16px, and never use them for columns of figures, IDs, or amounts. The message 'draft' has to exist as text, not merely as optics, otherwise it never arrives for screen reader users. For animation: re-rolling the outline is an autoplay loop and gets switched off under prefers-reduced-motion.",
+  "a11y": "Hatching behind text needs checking at the point with the least contrast, not just against the paper. Sparse hatching alone does not guarantee readability. Status words must remain understandable independently of the pattern. Input boundaries need sufficient contrast when required for identification; stroke width alone proves no contrast ratio. Focus must be visibly distinct from the resting state. Use handwriting cautiously for long passages and numeric columns. The meaning “draft” also needs to be available as text.",
   "longevity": "As a product language this has been in the market since 2008 and has left its grammar untouched in all that time - it is a genre, not a trend, and will therefore not date. The price of that stability is that it has never left its niche: tooling, documentation, diagram, draft. Build it today and you build something that looks the same in ten years and passes as an end-customer product just as little.",
   "scores": {
     "longevity": 4,
@@ -113,5 +113,11 @@
     "fits": ["creative", "dev-tool", "content"],
     "tone": ["warm", "playful", "expressive"],
     "signature": "Corners never close, they overshoot the join by 2-5px; fills are hatching, never alpha."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: non-text contrast",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+    }
+  ]
 }

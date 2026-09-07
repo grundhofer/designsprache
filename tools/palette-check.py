@@ -73,6 +73,8 @@ KONTEXT = {
 
 def _oklab(hx):
     hx = hx.strip().lstrip("#")
+    if len(hx) == 3:
+        hx = "".join(c * 2 for c in hx)
     r, g, b = (int(hx[i:i + 2], 16) / 255 for i in (0, 2, 4))
     f = lambda c: c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
     r, g, b = f(r), f(g), f(b)
@@ -119,8 +121,10 @@ def load(at=None):
         data = json.loads(read(f"{slug}.json"))
         css = re.search(r"<style>(.*?)</style>", read(f"{slug}.html"), re.S)
         css = css.group(1) if css else ""
-        palette = [h for h in data.get("palette", [])
-                   if isinstance(h, str) and h.startswith("#") and len(h) == 7]
+        palette = list(dict.fromkeys(
+            "#" + ("".join(c * 2 for c in h[1:]) if len(h) == 4 else h[1:]).upper()
+            for h in data.get("palette", [])
+            if isinstance(h, str) and re.fullmatch(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})", h)))
         out[slug] = {
             "bunt": [h for h in palette if chroma(h) > CHROMA_MIN],
             "ground": ground_of(css, palette),
@@ -128,11 +132,30 @@ def load(at=None):
     return out
 
 
+def color_matches(left, right, limit):
+    """Maximum one-to-one match: two variants of ONE color are not two shared colors."""
+    candidates = {x: sorted((delta_e(x, y), y) for y in set(right)
+                             if delta_e(x, y) < limit) for x in set(left)}
+    matched = {}
+
+    def assign(x, visited):
+        for _, y in candidates[x]:
+            if y in visited:
+                continue
+            visited.add(y)
+            if y not in matched or assign(matched[y], visited):
+                matched[y] = x
+                return True
+        return False
+
+    for x in sorted(candidates):
+        assign(x, set())
+    return sorted(((x, y, delta_e(x, y)) for y, x in matched.items()), key=lambda t: t[2])
+
+
 def pairs(styles, limit):
     for a, b in combinations(sorted(styles), 2):
-        near = sorted(((x, y, delta_e(x, y))
-                       for x in styles[a]["bunt"] for y in styles[b]["bunt"]
-                       if delta_e(x, y) < limit), key=lambda t: t[2])
+        near = color_matches(styles[a]["bunt"], styles[b]["bunt"], limit)
         if len(near) >= MIN_DUPE:
             yield a, b, near
 
@@ -151,8 +174,8 @@ def main():
         rows = sorted(pairs(styles, NEAR_DE), key=lambda r: r[2][0][2])
         for a, b, near in rows:
             key = frozenset({a, b})
-            tag = ("DUBLETTE" if near[0][2] < DUPE_DE and len(
-                [1 for *_, d in near if d < DUPE_DE]) >= MIN_DUPE and key not in ALLOWED
+            tag = ("DUBLETTE" if len(color_matches(styles[a]["bunt"], styles[b]["bunt"], DUPE_DE))
+                >= MIN_DUPE and key not in ALLOWED
                 else "erlaubt " if key in ALLOWED else "        ")
             note = ALLOWED.get(key) or KONTEXT.get(key) or ""
             gl = "  gleiche Grundflaeche" if (styles[a]["ground"] and

@@ -82,7 +82,7 @@
     "Handschrift-Schnitte haben meist genau ein Gewicht, geringe x-Höhe und unruhige Ziffern - Hierarchie muss vollständig über Größe und Strichstärke laufen, und Zahlenkolonnen werden unlesbar",
     "Kippt schnell ins Kindliche: sobald mehr als ein Akzent, gerundete Vollton-Flächen oder Icons aus einem Standardsatz dazukommen, wirkt es nicht mehr wie eine Skizze, sondern wie Comic Sans mit Rahmen"
   ],
-  "a11y": "Der Grundakkord ist unkritisch: Tinte #1E1B18 auf Papier #FBFAF6 liegt bei rund 16,6:1, Bleistift #6B645B bei rund 5,6:1, der Marker-Akzent #B83A22 bei rund 5,5:1. Die eigentliche Falle sind die Hachur-Flächen - ein Label auf einem gestreiften Chip muss gegen die Strichfarbe gemessen werden, nicht gegen das Papier: Tinte gegen #B83A22 sind nur noch rund 3,0:1. Deshalb bleibt die Deckung bei etwa 20 Prozent (1,1px Strich, 4,4px Abstand), und der Status wird nie allein aus der Strichdichte gelesen, sondern immer aus dem Wortlaut - 'Aktiv' gegen 'Pausiert'. Zweite Falle ist das Eingabefeld: eine wellige Grundlinie erfüllt die 3:1-Anforderung an Bedienelement-Ränder nur, wenn sie mindestens 2px stark und über die volle Feldbreite gezogen ist, und der Fokus braucht einen eigenen, deutlich sichtbaren Indikator - ein mit neuem Seed nachgezogener Strich ist kein wahrnehmbarer Zustandswechsel. Handschrift-Schnitte nicht unter 16px setzen und niemals für Ziffernkolonnen, IDs oder Beträge verwenden. Die Botschaft 'Entwurf' muss als Text existieren, nicht nur als Optik, sonst kommt sie bei Screenreader-Nutzung gar nicht an. Für Animation gilt: das Neu-Würfeln der Kontur ist eine Autoplay-Schleife und wird unter prefers-reduced-motion abgeschaltet.",
+  "a11y": "Schraffuren hinter Text brauchen eine Prüfung an der kontrastärmsten Stelle, nicht nur gegen den Papiergrund. Eine lockere Schraffur allein garantiert keine Lesbarkeit. Die Statuswörter müssen unabhängig vom Muster verständlich bleiben. Bei Eingabefeldern braucht die sichtbare Begrenzung ausreichenden Kontrast, sofern sie für die Erkennbarkeit nötig ist; ihre Strichstärke allein beweist kein Kontrastverhältnis. Ein klarer Fokus muss sich vom Ruhezustand unterscheiden. Handschriften sind für lange Texte und Zahlenspalten vorsichtig einzusetzen. Die Bedeutung „Entwurf“ muss auch als Text vorliegen.",
   "longevity": "Die Sprache ist als Produktsprache seit 2008 im Markt und hat ihre Grammatik in dieser Zeit nicht verändert - sie ist ein Genre, kein Trend, und wird deshalb auch nicht datieren. Der Preis dieser Stabilität ist, dass sie ihre Nische nie verlassen hat: Werkzeug, Dokumentation, Diagramm, Entwurf. Wer sie heute baut, baut etwas, das in zehn Jahren genauso aussieht und genauso wenig als Endkundenprodukt durchgeht.",
   "scores": {
     "longevity": 4,
@@ -113,5 +113,11 @@
     "fits": ["creative", "dev-tool", "content"],
     "tone": ["warm", "playful", "expressive"],
     "signature": "Ecken schließen nicht, sie schießen 2-5px über den Schnittpunkt hinaus; Flächen sind Schraffur, kein Alpha."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Nicht-Text-Kontrast",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+    }
+  ]
 }

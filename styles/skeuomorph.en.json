@@ -76,7 +76,7 @@
     "Low-contrast grays on textured ground destroy legibility once you drop the text shadows",
     "As a full style with no subject-matter grounding it reads as a caricature of 2010-2012 rather than a stance"
   ],
-  "a11y": "The affordance is excellent - buttons are recognizable as buttons without color coding, and states are communicated through shape rather than color alone. The problems are text on textured ground (the noise lowers effective contrast) and the thin letterpress shadows, which vanish under magnification or Windows high-contrast mode. Rule: always measure contrast against the darkest point of the texture, not against its average, and set focus rings explicitly, since the bevel itself shows no focus.",
+  "a11y": "The affordance is excellent - buttons are recognizable as buttons without color coding, and states are communicated through shape rather than color alone. The problems are text on textured ground (the noise lowers effective contrast) and the thin letterpress shadows, which vanish under magnification or Windows high-contrast mode. Rule: always measure contrast against the part of the texture with the least contrast to the text, not against its average, and set focus rings explicitly, since the bevel itself shows no focus.",
   "longevity": "As a general UI style, hard-dated - it is inseparable from 2007-2012 and is read as retro immediately. In the niche of pro-audio and instrument software, by contrast, it barely ages at all, because there the physical model really exists.",
   "scores": {
     "longevity": 2,
@@ -119,5 +119,11 @@
       "expressive"
     ],
     "signature": "Gloss overlay on the top half of every button, light fixed at 12 o'clock, pressing inverts it inward."
-  }
+  },
+  "sources": [
+    {
+      "title": "W3C: contrast over varied backgrounds",
+      "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18"
+    }
+  ]
 }

@@ -80,7 +80,7 @@
     "Signals 'game' or 'gimmick'; in finance, health or B2B contexts a loss of trust",
     "Overwhelming as a language for a whole product family: the style has no quiet setting"
   ],
-  "a11y": "The style allows high contrast (text on ground here well above 10:1) but sabotages itself through its font sizes: bitmap fonts are bound to integer pixel sizes, so they survive neither browser zoom nor user font enlargement cleanly, and at 10px they run below the WCAG recommendations for body text. Bitmap fonts with very tight spacing are also markedly harder for people with dyslexia -- longer texts belong in VT323 at 19-21px or in a normal typeface altogether. The blinking LED and cursor elements have to be switched off under prefers-reduced-motion, and status must never be encoded by green/amber alone, which is why the word stands here as well.",
+  "a11y": "The style allows high contrast, but tiny pixel lettering remains hard to read. WCAG does not prescribe a universal minimum font size; text must, among other requirements, support enlargement to 200% without loss of content or function. These webfonts can scale, although their pixel pattern may look different at intermediate sizes. Check reflow and readability instead of disabling zoom. Longer text needs a readable face and more generous sizing. Blinking decoration should be time-limited or stoppable, respect reduced motion and never replace status information.",
   "longevity": "It cuts both ways: as a quotation of a closed hardware era it ages no further, because it is already historical -- it cannot go 'out of fashion' the way a 2021 trend can. But it ties the brand permanently to indie game culture, and there is no getting back out of that association.",
   "scores": {
     "longevity": 3,
@@ -113,5 +113,11 @@
     "fits": ["creative", "consumer"],
     "tone": ["nostalgic", "playful", "technical"],
     "signature": "Every value a multiple of 2px, depth as a 2px light/dark bevel, animation only ever in steps()."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: text enlargement",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+    }
+  ]
 }

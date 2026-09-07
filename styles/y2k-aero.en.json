@@ -81,7 +81,7 @@
     "Not theme-capable: there is no dark mode of this language, only a second look that has to be designed from scratch (the WMP 11 black-glass variant)",
     "Backdrop filter is expensive -- Tauri/WebView2 shows repaint artifacts while scrolling, Android WebViews show jank"
   ],
-  "a11y": "The style produces contrast problems structurally, not by accident: the specular highlight brightens exactly the area where the text sits. In this demo, white text on the primary button sits at roughly 8:1 against #07456F across the lower two thirds, but locally only at about 2.5:1 under the gloss band -- carried solely by the dark text-shadow, which WCAG 2.2 formally does not credit. That is why a narrow highlight band (upper 42%) was used here deliberately instead of the historically correct 50/50 gloss; with a true Aqua gloss, SC 1.4.3 is unreachable. The white header sits on translucent glass over a gradient wallpaper, so its contrast is position-dependent and secured only by the doubled text shadow; status pills additionally carry a color orb on the left so that color is not the only channel.",
+  "a11y": "Highlights can brighten the background directly beneath light lettering and sharply reduce contrast. The dark part of a gradient alone therefore does not establish sufficient text contrast. A sufficiently opaque halo or text shadow can serve as the background for contrast evaluation, but a thin, soft shadow does not guarantee this. Check the least favorable point of each label. A product can use a darker highlight, dark lettering or opaque text backing. Status still needs words alongside colored orbs.",
   "longevity": "The revival cycle has been running since 2022 and peaks in 2026 -- which means the style will look maximally dated in two to three years. As a brand foundation it is therefore a bet on a trend whose expiry date is already visible.",
   "scores": {
     "longevity": 1,
@@ -124,5 +124,11 @@
       "nostalgic"
     ],
     "signature": "A white gloss gradient over the top half of every control, plus a 1px white inner edge."
-  }
+  },
+  "sources": [
+    {
+      "title": "W3C: contrast and text halos",
+      "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18"
+    }
+  ]
 }

@@ -32,6 +32,16 @@ jobs:
       - name: Build
         run: python3 build.py
 
+      - name: Source and palette regression tests
+        run: python3 -m unittest discover -s tests -v
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Finder and prompt regression tests
+        run: node --test tests/finder.test.cjs
+
       # Zwei Eintraege duerfen nicht dieselbe Farbe unter anderem Hex fuehren.
       # Kalibrierung und Begruendung stehen im Kopf des Skripts.
       - name: Palettendubletten

@@ -10,7 +10,7 @@
   ],
   "family": "Produkt-Ästhetik heute",
   "era": "2012-heute, dominant seit ~2020",
-  "origin": "Der Stil ist die Übertragung des Zeitschriften- und Buchsatzes auf Software und beginnt im Web mit Medium (2012) und den großen Longform-Formaten der Redaktionen. Ab 2018 wandert er von Publikationen in Werkzeuge: Notion, Substack, Craft, Readwise und Are.na bauen Oberflächen, die sich wie Papier verhalten sollen, weil ihr eigentliches Produkt Text ist. Das gelöste Problem ist Ermüdung - Reinweiß #FFFFFF bei hoher Leuchtdichte strengt bei stundenlangem Lesen an, während leicht gelbstichige Papiertöne den Blaulichtanteil senken und längere Sitzungen tragen. Möglich wurde die Umsetzung durch bezahlbare hochwertige Webfonts, variable Serifen mit optischen Größenachsen (Fraunces, Source Serif 4) und Displays mit genug Auflösung, damit feine Serifen bei 16-21px nicht zerfallen.",
+  "origin": "Der Stil ist die Übertragung des Zeitschriften- und Buchsatzes auf Software und beginnt im Web mit Medium (2012) und den großen Longform-Formaten der Redaktionen. Ab 2018 wandert er von Publikationen in Werkzeuge: Notion, Substack, Craft, Readwise und Are.na bauen Oberflächen, die sich wie Papier verhalten sollen, weil ihr eigentliches Produkt Text ist. Das gestalterische Ziel ist eine ruhige, papierähnliche Leseumgebung. Warme Flächen sind dabei eine ästhetische Entscheidung, kein Nachweis für weniger Augenermüdung; Lesekomfort hängt auch von Helligkeit, Schrift, Umgebung und individuellen Bedürfnissen ab. Möglich wurde die Umsetzung durch bezahlbare hochwertige Webfonts, variable Serifen mit optischen Größenachsen (Fraunces, Source Serif 4) und Displays mit genug Auflösung, damit feine Serifen bei 16-21px nicht zerfallen.",
   "idea": "Die Oberfläche gibt sich als bedrucktes Blatt aus: warmes Papier statt Reinweiß, eine Serifenschrift trägt die Inhaltsebene, und Struktur entsteht aus Weißraum, Linealen und typografischer Hierarchie statt aus Kästen und Farbe.",
   "markers": [
     "Grundfläche #FAF7F2 / #F5F1EA statt #FFFFFF - warm getönt, nie neutralgrau",
@@ -78,7 +78,7 @@
     "Dark-Mode ist nicht trivial - Papiertöne lassen sich nicht einfach invertieren, es braucht eine eigene warme Dunkelpalette",
     "Ohne strenges Raster kippt die Großzügigkeit in Beliebigkeit; Weißraum ohne System sieht nach Unentschlossenheit aus"
   ],
-  "a11y": "Der Stil ist von Haus aus barrierearm: #2B2622 auf #FAF7F2 erreicht etwa 13:1, und die großen Zeilenabstände sowie die begrenzte Messweite entsprechen genau den Empfehlungen für Leseschwäche und Dyslexie. Die Risiken liegen an den Rändern - gesperrte Versalien unter 10px und kursive Serifen als Platzhalter sind schlecht erfassbar, und Sekundärtext in #8A7E6F liegt bei etwa 3,9:1 und darf deshalb nur für beiläufige Metadaten wie Kolumnentitel und Ziffern verwendet werden - Formularlabel und Platzhalter laufen hier bewusst eine Stufe dunkler in #5C5348 (rund 7,4:1). Die gedämpfte Ockerfarbe des Pausiert-Zustands ist aus demselben Grund auf #8A6A1E gezogen (rund 5:1), weil sie in 9,5px-Versalien gesetzt ist. Statuslabels sind hier zusätzlich durch Wortlaut und Position codiert, sodass die gedämpften Farben Grün und Ocker nicht allein die Information tragen.",
+  "a11y": "Dunkle Tinte auf hellem Papier bietet viel Kontrastreserve. Großzügiger Zeilenabstand und begrenzte Zeilenlänge sind hilfreiche Ausgangspunkte, ersetzen aber keine Prüfung mit den tatsächlichen Lesern. Kleine Versalien und kursive Platzhalter bleiben schwer erfassbar. #8A7E6F auf #FAF7F2 unterschreitet 4,5:1: Auch Kolumnentitel, Zeitangaben und andere lesbare Metadaten brauchen normalen Textkontrast. Diese Schwäche der Demo darf nicht unverändert ins Produkt übernommen werden; #5C5348 bietet mehr Reserve. Status wird zusätzlich durch Wortlaut vermittelt.",
   "longevity": "Der langlebigste Stil dieser Familie: die Grundlagen sind Satztechnik, kein Trend, und Layouts aus 2012 wirken heute noch aktuell. Datierbar sind nur die Modeschriften der jeweiligen Jahre - eine Instrument-Serif-Headline verrät den Jahrgang 2023-2026 deutlicher als das Layout selbst.",
   "scores": {
     "longevity": 5,
@@ -121,5 +121,11 @@
       "calm"
     ],
     "signature": "Gesperrte Versalien-Mikrolabels in Grotesk über einer Serifen-Lesekolumne von 66 Zeichen."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Textkontrast einschließlich Metadaten",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    }
+  ]
 }

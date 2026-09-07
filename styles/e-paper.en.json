@@ -10,14 +10,14 @@
   ],
   "family": "Norm & Constraint",
   "era": "2004-today",
-  "origin": "The style is not a design, it is the imprint of a piece of hardware. Electrophoretic displays switch charged pigment particles inside microcapsules; the image then stays put without power, reflects ambient light instead of emitting its own, and has no backlight to build contrast against. Three constraints follow, and the entire language consists of them: the whitest point is a light gray, faintly warm paper and the blackest a dark charcoal, there are typically 16 gray levels and no alpha channel, and every change costs a visible refresh of roughly 100 to 500 ms. Sony shipped the first commercial E-Ink reader in 2004 with the Librie, Amazon turned the language into a mass phenomenon from 2007 on with the Kindle, reMarkable built an operating system around it from 2017 on with the Linux derivative Codex, explicitly tuned for low latency, and the Light Phone II carried it onto a phone in 2018. Formalization came late: since 2024 the TRMNL framework has published a versioned, genuine token language of gray levels, restricted color sets, rendering modes, dithering and text-stroke utilities. In parallel, the largest and wholly unnostalgic deployment runs in retail, on millions of electronic shelf labels.",
+  "origin": "The design is shaped by reflective, bistable displays: the panel can retain a static image without further power for image retention; the processor, radio and optional front light still consume energy. This entry depicts a deliberately monochrome reader variant. Grayscale, color range and refresh time depend on the panel and its driving mode: E Ink Kaleido, for example, combines 16 gray levels with 4096 colors, while TRMNL supports different device profiles. Software can composite transparency before output; this demo omits it as a design choice. Its warm paper colors and 16 named steps are a screen approximation, not a universal measurement of an e-paper panel.",
   "idea": "Contrast is not a design device but a capped resource: when ink never goes black and ground never goes white, and there is no color, no transparency and no motion, the whole hierarchy has to come out of size, weight, shape, fill level and inversion - and every halftone out of a dither grid instead of an alpha value.",
   "markers": [
-    "Ink never #000, ground never #FFF - the reference sets #2B2B2B on #E4E2DD and caps peak contrast at 10.9:1 instead of 21:1",
-    "Exactly 16 gray levels as a closed ladder with no interpolation in between; TRMNL defines the same count as --black, --gray-10 through --gray-75 and --white",
+    "Demo ink #2B2B2B on paper #E4E2DD: about 10.9:1 rather than 21:1; not a universal e-paper ceiling",
+    "16 named steps in this demo; choose the actual count from the product device profile",
     "No alpha anywhere: every halftone is an ordered dither (Bayer 4x4) on a 4px tile, no rgba, no opacity, no backdrop-filter",
-    "Minimum stroke weight 2px on frames, rules, icons and dividers - a 1px hairline falls apart across 16 levels; the only exception upward is the 6px solid rule under the masthead",
-    "Row height 68px instead of the usual 40px: the density is latency-driven, because a full refresh costs 100-500 ms",
+    "Demo stroke minimum 2px, with a 6px heading rule; check strokes on the target device because resolution and rendering vary",
+    "68px rows and page-by-page navigation in this demo; actual update time depends on panel, temperature and driving mode",
     "Radius 0px without exception, 2px at most on buttons; no shadows, no layers, no blur - separation runs on 2px rules alone",
     "Status never colored: filled 10px square for active, hollow for paused, half-dithered for blocked, always with the word spelled out beside it",
     "Selection is the complete inversion of a row, hard and without transition - transition: none holds across the entire design",
@@ -25,9 +25,9 @@
   ],
   "params": {
     "radius": "0px without exception, 2px at most on buttons",
-    "contrast": "capped at 10:1 to 15:1 - the only contrast in the catalog that is not maximized; #2B2B2B on #E4E2DD yields 10.9:1",
+    "contrast": "Demo palette: #2B2B2B on #E4E2DD gives about 10.9:1; physical panel contrast depends on the device and lighting",
     "density": "airy and latency-driven: 68px rows, 22px insets, pagination instead of scrolling",
-    "depth": "none - there is no alpha layer and no shadow; everything sits on one plane and is separated by 2px rules alone",
+    "depth": "none in this demo; 2px rules separate content on one plane, with alpha and shadows deliberately avoided",
     "color": "zero chroma: 16 gray levels with R=G=B (plus/minus 7 at the light end for the warm paper tone), no accent, no semantic color",
     "type": "proportional reading serif with a high x-height for content (Literata/Bookerly class), grotesque for chrome and labels; Regular and Semibold only, Light and Thin forbidden",
     "motion": "none - transition: none, no animation; state changes are hard switches, navigation is paging",
@@ -79,7 +79,7 @@
     "Without color there is no emergency signal: deletion, error and success look identical and have to be carried entirely by wording and placement",
     "The 4px Bayer tile shimmers as soon as the browser scales the area by a non-integer factor - behind body text, dithering is therefore practically unusable"
   ],
-  "a11y": "This style negotiates accessibility differently from every other one in the catalog: exemplary on color, deliberately capped on contrast. The maximum reachable value is #2B2B2B on #E4E2DD, so 10.9:1 - enough for everything that matters, but the ladder below it runs short fast. The 60% dither level the originals call for (#757472) lands at only 3.6:1 and is unfit for the 13px meta line; in this demo it is therefore darkened by two steps to #5C5C5A and reaches 5.2:1. For non-text elements the 2px minimum stroke weight is the actual accessibility measure: frames, rules, status squares and icons stand in full ink at 10.9:1 and thus far above the required 3:1, while a 1px hairline in a middle gray would be exactly the mistake this style forbids. The focus ring is a 3px outline in full ink at 4px offset. Status is always double-coded, through shape (filled against hollow square) and through the word spelled out. There is no motion, so prefers-reduced-motion is moot. The disabled paging arrow sits at around 2.2:1 - permissible as an inactive control, but only because the page number beside it spells the state out.",
+  "a11y": "The darkest and lightest demo colors calculate to about 10.9:1; this does not measure the reflected contrast of a real panel. The metadata uses #5C5C5A instead of the overly light #757472. For a hardware implementation, check gray levels and dithering on the target device. The 2px strokes are a demo choice, not a WCAG minimum. Focus uses a 3px outline with a 4px offset; status uses both shape and wording. The demo has no motion. Disabled controls are exempt from contrast requirements, although their purpose should remain understandable.",
   "longevity": "Two parts with very different half-lives. The principle - capped contrast, hierarchy without color, halftone as a grid rather than an alpha value, minimum stroke weight - is at least as old as letterpress and 1-bit screens and will outlive every fashion cycle; as a design discipline it is timeless. The derivation from the hardware, by contrast, is already aging visibly: color E-Ink, faster refresh modes and the Light Phone's retreat from E-Ink are stripping the style of its justification step by step. Take it as a principle and you have something durable; take it as a device quotation and you have a window.",
   "scores": {
     "longevity": 4,
@@ -123,5 +123,19 @@
       "precise"
     ],
     "signature": "Selection inverts the whole row; you page instead of scrolling, because every refresh costs time."
-  }
+  },
+  "sources": [
+    {
+      "title": "E Ink: bistability and power use",
+      "url": "https://www.eink.com/tech/detail/Benefits"
+    },
+    {
+      "title": "E Ink Kaleido: grayscale and color",
+      "url": "https://www.eink.com/brand/detail/Kaleido"
+    },
+    {
+      "title": "TRMNL: device profiles",
+      "url": "https://trmnl.com/framework/docs/3.3/devices"
+    }
+  ]
 }

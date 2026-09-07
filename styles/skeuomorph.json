@@ -76,7 +76,7 @@
     "Kontrastarme Grautöne auf texturiertem Grund reißen die Lesbarkeit ein, wenn man Textschatten weglässt",
     "Als Vollstil ohne Sachbezug wirkt er als Karikatur der Jahre 2010-2012 statt als Haltung"
   ],
-  "a11y": "Die Affordanz ist ausgezeichnet - Buttons sind ohne Farbcodierung als Buttons erkennbar, und Zustände werden über Form statt nur über Farbe kommuniziert. Problematisch sind Text auf texturiertem Grund (der Noise senkt den effektiven Kontrast) und die dünnen Letterpress-Schatten, die bei Vergrößerung oder Windows-Kontrastmodus verschwinden. Regel: Kontrast immer gegen den dunkelsten Punkt der Textur messen, nicht gegen den Mittelwert, und Fokusringe explizit setzen, da der Bevel selbst keinen Fokus zeigt.",
+  "a11y": "Die Affordanz ist ausgezeichnet - Buttons sind ohne Farbcodierung als Buttons erkennbar, und Zustände werden über Form statt nur über Farbe kommuniziert. Problematisch sind Text auf texturiertem Grund (der Noise senkt den effektiven Kontrast) und die dünnen Letterpress-Schatten, die bei Vergrößerung oder Windows-Kontrastmodus verschwinden. Regel: Kontrast immer gegen den Punkt der Textur mit dem geringsten Kontrast zum Text messen, nicht gegen den Mittelwert, und Fokusringe explizit setzen, da der Bevel selbst keinen Fokus zeigt.",
   "longevity": "Als allgemeiner UI-Stil hart datiert - er ist untrennbar mit 2007-2012 verknüpft und wird sofort als Retro gelesen. In der Nische der Pro-Audio- und Instrumenten-Software altert er dagegen praktisch nicht, weil dort das physische Vorbild real existiert.",
   "scores": {
     "longevity": 2,
@@ -119,5 +119,11 @@
       "expressive"
     ],
     "signature": "Gloss-Overlay auf der oberen Buttonhälfte, Lichtquelle strikt auf 12 Uhr, der Druck kehrt sie nach innen."
-  }
+  },
+  "sources": [
+    {
+      "title": "W3C: Kontrast auf unruhigen Hintergründen",
+      "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18"
+    }
+  ]
 }

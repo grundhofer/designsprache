@@ -9,7 +9,7 @@
   ],
   "family": "Product Aesthetics Today",
   "era": "1970-today (as a deliberate design style: c. 2019-today)",
-  "origin": "The style is a re-enactment of a technical constraint: VT100 terminals and line printers could only render a fixed character grid, so rules had to be built from the box-drawing characters of code page 437 and later Unicode U+2500-257F. From about 2019 on this turns into a voluntary design decision: Charm (Bubble Tea, Lip Gloss, from 2020) makes TUIs presentable again, the U.S. Graphics Company turns the monospace grid into a trademark with Berkeley Mono (2021), and Terminal.shop starts selling coffee over SSH in 2024. The problem being solved today is not a technical one but a positioning one: the style says 'built by developers for developers' in 200 milliseconds and sets itself apart from generic SaaS layouts. What made the web version possible were good screen monospaces and ch units, which let you compute a real character grid in the browser.",
+  "origin": "The style is a re-enactment of a technical constraint: Character terminals render content on a fixed grid. The VT100 used its own DEC Special Graphics character set for lines; IBM PC interfaces later used code page 437, and modern TUIs often use Unicode U+2500-257F. From about 2019 on this turns into a voluntary design decision: Charm (Bubble Tea, Lip Gloss, from 2020) makes TUIs presentable again, the U.S. Graphics Company turns the monospace grid into a trademark with Berkeley Mono (2021), and Terminal.shop starts selling coffee over SSH in 2024. The problem being solved today is not a technical one but a positioning one: the style says 'built by developers for developers' in 200 milliseconds and sets itself apart from generic SaaS layouts. What made the web version possible were good screen monospaces and ch units, which let you compute a real character grid in the browser.",
   "idea": "The character grid is the layout system: everything sits on whole-number column and row positions, and every separation is built out of text instead of graphics.",
   "markers": [
     "Radius 0px without exception, inputs and buttons included",
@@ -18,7 +18,7 @@
     "Rules as box-drawing characters (U+250C ┌, U+2500 ─, U+2524 ┤) or 1px hairlines, never as shadow",
     "Dot leaders (······) fill the space between label and value the way a table of contents does",
     "Palette: ground + foreground + exactly 2 accents (here #00C08B ok, #E8A33D warning), no third color, box-shadow nowhere",
-    "Block cursor 8x15px blinking with steps(1,end) on a 1.06s period",
+    "Block cursor 8x15px blinking with steps(1,end) on a 1.06s period for four cycles, then stationary",
     "Status bar along the bottom edge carrying mode, counter and key bindings (a vim/tmux quotation)",
     "Buttons as a bracket form [text] or ▸ text, not as a filled pill"
   ],
@@ -76,7 +76,7 @@
     "To non-developers it reads as unfinished or unwelcoming - with clients outside the tech bubble that is a real sales risk",
     "Without a proportional second face, marketing copy is close to unsellable; a pure mono stack severely limits the landing page"
   ],
-  "a11y": "Contrast is not a problem: #D9D9D4 on #0C0C0C sits at 13.8:1, the accents at 8.3:1 (#00C08B) and 9.1:1 (#E8A33D). Two real problems remain: the blinking cursor falls under WCAG 2.2.2 (pause/stop) and therefore has to either stay under five seconds or be switchable via prefers-reduced-motion - the latter is what is implemented here. Second, status is encoded through color plus dot alone; the word 'Active'/'Paused' stands next to it and carries the information, the dot is pure redundancy - it has to stay exactly that way, otherwise the style violates 1.4.1.",
+  "a11y": "Light text on a dark ground offers contrast headroom; small metadata and accents still need individual checks. A decorative cursor that automatically blinks for more than five seconds alongside other content needs a way to pause, stop or hide it. Also respect reduced motion. In this demo blinking ends after four cycles and is disabled entirely with reduced motion. The words Active and Paused carry the status information; the colored dot only supplements them.",
   "longevity": "The underlying frame is structural, not fashionable: character grid and zero radius do not age, because they have a genuine technical ancestry. Only the color choice is datable - neon green and glow mark a vintage, a muted green or a plain white on black does not.",
   "scores": {
     "longevity": 4,
@@ -119,5 +119,15 @@
       "nostalgic"
     ],
     "signature": "Dot leaders and box-drawing characters do the dividing, plus a blinking block cursor."
-  }
+  },
+  "sources": [
+    {
+      "title": "DEC: Special Graphics in the terminal manual",
+      "url": "https://vt100.net/docs/vt220-rm/chapter4.html"
+    },
+    {
+      "title": "WCAG: automatically blinking content",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+    }
+  ]
 }

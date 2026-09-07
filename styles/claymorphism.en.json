@@ -49,7 +49,7 @@
     "Tips instantly into the childish: for developer tools, financial data or anything serious the look reads as unprofessional",
     "Looks cheap the moment the shadows go neutral black or the inset highlight is missing -- then all that remains is a rounded card with a drop shadow"
   ],
-  "a11y": "Clearly better than neumorphism, but not unproblematic: text reaches 10.3:1 here (headings and names), secondary text 5.7:1 and the status pills 6.9:1 -- clean AA values, because the surfaces have colors of their own. The edges remain the problem: a white card on the slab measures 1.1:1 and is thus far below the 3:1 of WCAG 2.2 SC 1.4.11; the separation is carried by the shadow alone, which drops out in high-contrast mode or on poor displays. Because of the 26-46px radii the focus ring needs an offset of its own of 3-4px, otherwise it disappears into the rounding -- and the mint/peach color difference must never be the sole carrier of the status information.",
+  "a11y": "Strong text colors offer more contrast headroom than typical neumorphic palettes, while white cards may barely separate from the background. Decorative card borders do not universally need 3:1; the requirement concerns visual features needed to identify a control or its state. Do not rely on soft shadows alone for those signals. Provide contrasting focus clear of the rounded edge, and use mint and peach only alongside text or shape to communicate status.",
   "longevity": "Clearly datable to 2021/22 and tightly coupled to the 3D render wave of the time; as a full style it ages badly. It is likely to survive where friendliness is functional -- children's apps, learning apps, onboarding flows -- that is, as a genre convention rather than a zeitgeist.",
   "scores": {
     "longevity": 2,
@@ -73,5 +73,11 @@
     "fits": ["consumer", "marketing"],
     "tone": ["warm", "playful"],
     "signature": "Shadows are never black but a dark tone of the base colour, offset wide with a negative spread."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: essential features and decorative borders",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+    }
+  ]
 }

@@ -16,7 +16,7 @@
     "Grouped lists with 28px outer and 4px inner corners at a 3px gap",
     "Elevation through tonal surfaces instead of shadows: surface / container-low #F7F2FA / container #F3EDF7 / container-high #ECE6F0 / container-highest #E6E0E9",
     "State layer as an overlay of the on-color: 8% on hover, 10-12% on active, 12% on focus",
-    "Color-role pairs guarantee contrast: primary/on-primary, primary-container/on-primary-container",
+    "Use intended color-role pairs: primary/on-primary and primary-container/on-primary-container; check contrast after changing values or states",
     "Tonal palette in tone steps 10/20/30/40/80/90/95 - fills come from tone 90, text on them from tone 10",
     "Filled icon variants (fill, no stroke) on a 24px grid in tonal containers; 48dp hit area, Expressive buttons up to 56px tall",
     "Spring motion instead of bezier: stiffness/damping/initial velocity, with visible overshoot",
@@ -27,7 +27,7 @@
     "contrast": "high",
     "density": "medium to airy - large radii and 48dp targets force air",
     "depth": "tonal: every level is its own surface-container step. Shadows only on the FAB and floating elements",
-    "color": "One seed color produces four tonal palettes via HCT (primary/secondary/tertiary/neutral) and from those every color role - fill colors are never chosen freely, they are derived",
+    "color": "A seed color generates five core tonal palettes through HCT: primary, secondary, tertiary, neutral and neutral variant. Semantic color roles draw from these palettes; error has a separate palette.",
     "type": "Roboto Flex as a variable font, five roles (display/headline/title/body/label) in three sizes each, plus 15 emphasized cuts for accent moments",
     "motion": "spring-based, not bezier: the Expressive scheme with visible overshoot, around 300-550ms perceived duration, standard on 21 components in Compose",
     "texture": "none - surfaces are pure tonal values"
@@ -76,7 +76,7 @@
     "Without a real implementation of state layer, motion and shape morphing, all that remains is 'big radii plus purple' - a caricature of the system",
     "The Expressive APIs in Compose are still experimental and opt-in; on web and desktop the system has to be rebuilt entirely by hand"
   ],
-  "a11y": "This is the system's strongest side: color roles exist only as pairs (primary/on-primary, surface-container-high/on-surface-variant), so every permitted combination already meets contrast, and the 48dp minimum targets plus visible state layers are part of the specification. Two real traps remain: with unsuitable seed colors, Dynamic Color can push role pairs into borderline territory, which is why the seed should be fixed and the contrast measured once; and the springy motion with overshoot is a burden for users with vestibular sensitivity, so prefers-reduced-motion needs a real implementation, not just shorter durations. This demo does both: a fixed seed instead of Dynamic Color, and a reduced-motion branch that switches off morphing and spring movement.",
+  "a11y": "Semantic color pairs and generous touch areas provide a useful starting point, not a blanket contrast guarantee. Check the rendered role pairs in every supported mode and state, especially after custom color changes or overlays. This does not require disabling Dynamic Color. The demo uses a fixed palette for a reproducible comparison. Its reduced-motion rule disables morphing and spring movement; a finished product needs that alternative too.",
   "longevity": "The token-based core (tonal palettes, color roles, tonal elevation) barely ages and will outlast the next few years. The Expressive surface - very large pills, shape morphing, springy overshoot - is by contrast a clearly datable vintage marker.",
   "scores": {
     "longevity": 3,
@@ -120,5 +120,15 @@
       "warm"
     ],
     "signature": "Every fill is a tone step derived from one seed; the pill morphs into a squircle when pressed."
-  }
+  },
+  "sources": [
+    {
+      "title": "Material: five core tonal palettes",
+      "url": "https://codelabs.developers.google.com/customizing-material-color"
+    },
+    {
+      "title": "Google: Material 3 Expressive research",
+      "url": "https://design.google/library/expressive-material-design-google-research"
+    }
+  ]
 }

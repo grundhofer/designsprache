@@ -9,7 +9,7 @@
   ],
   "family": "Produkt-Ästhetik heute",
   "era": "1970-heute (als bewusster Designstil: ca. 2019-heute)",
-  "origin": "Der Stil ist die Nachbildung einer technischen Zwangslage: VT100-Terminals und Zeilendrucker konnten nur ein festes Zeichenraster darstellen, Trennlinien mussten aus den Box-Drawing-Zeichen von Codepage 437 und später Unicode U+2500-257F gebaut werden. Ab etwa 2019 wird daraus eine freiwillige Designentscheidung: Charm (Bubble Tea, Lip Gloss, ab 2020) macht TUIs wieder salonfähig, die U.S. Graphics Company vermarktet mit Berkeley Mono (2021) das Monospace-Raster als Markenzeichen, und Terminal.shop verkauft ab 2024 Kaffee über SSH. Das gelöste Problem ist heute kein technisches, sondern ein Positionierungsproblem: der Stil signalisiert in 200 Millisekunden 'gebaut von Entwicklern für Entwickler' und grenzt sich von generischen SaaS-Layouts ab. Möglich wurde die Web-Umsetzung durch gute Screen-Monospaces und durch ch-Einheiten, mit denen sich ein echtes Zeichenraster im Browser rechnen lässt.",
+  "origin": "Der Stil ist die Nachbildung einer technischen Zwangslage: Zeichenbasierte Terminals stellen Inhalte in einem festen Raster dar. Der VT100 nutzte für Linien einen eigenen DEC-Special-Graphics-Zeichensatz; IBM-PC-Oberflächen verwendeten später Codepage 437, heutige TUIs oft Unicode U+2500-257F. Ab etwa 2019 wird daraus eine freiwillige Designentscheidung: Charm (Bubble Tea, Lip Gloss, ab 2020) macht TUIs wieder salonfähig, die U.S. Graphics Company vermarktet mit Berkeley Mono (2021) das Monospace-Raster als Markenzeichen, und Terminal.shop verkauft ab 2024 Kaffee über SSH. Das gelöste Problem ist heute kein technisches, sondern ein Positionierungsproblem: der Stil signalisiert in 200 Millisekunden 'gebaut von Entwicklern für Entwickler' und grenzt sich von generischen SaaS-Layouts ab. Möglich wurde die Web-Umsetzung durch gute Screen-Monospaces und durch ch-Einheiten, mit denen sich ein echtes Zeichenraster im Browser rechnen lässt.",
   "idea": "Das Zeichenraster ist das Layoutsystem: alles sitzt auf ganzzahligen Spalten- und Zeilenpositionen, und jede Trennung wird aus Text gebaut statt aus Grafik.",
   "markers": [
     "Radius 0px ausnahmslos, auch bei Inputs und Buttons",
@@ -18,7 +18,7 @@
     "Trennlinien als Box-Drawing-Zeichen (U+250C ┌, U+2500 ─, U+2524 ┤) oder 1px-Hairlines, nie als Schatten",
     "Punkt-Leader (······) füllen den Raum zwischen Label und Wert wie in einem Inhaltsverzeichnis",
     "Palette: Grund + Vordergrund + genau 2 Akzente (hier #00C08B Ok, #E8A33D Warnung), keine dritte Farbe, box-shadow nirgends",
-    "Blockcursor 8x15px mit steps(1,end)-Blink bei 1.06s Periode",
+    "Blockcursor 8x15px mit steps(1,end)-Blink bei 1.06s Periode für vier Durchläufe, danach still",
     "Statuszeile am unteren Rand mit Modus, Zähler und Tastenkürzeln (vim/tmux-Zitat)",
     "Buttons als Klammerform [Text] bzw. ▸ Text, nicht als gefüllte Pille"
   ],
@@ -76,7 +76,7 @@
     "Für Nicht-Entwickler wirkt er unfertig oder abweisend - bei Kunden außerhalb der Tech-Blase ein echtes Verkaufsrisiko",
     "Ohne proportionale Zweitschrift ist Marketing-Copy kaum verkaufbar; ein reiner Mono-Stack limitiert die Landingpage stark"
   ],
-  "a11y": "Der Kontrast ist unkritisch: #D9D9D4 auf #0C0C0C liegt bei 13,8:1, die Akzente bei 8,3:1 (#00C08B) und 9,1:1 (#E8A33D). Zwei echte Probleme bleiben: der blinkende Cursor fällt unter WCAG 2.2.2 (Pausieren/Stoppen) und muss deshalb entweder unter fünf Sekunden bleiben oder per prefers-reduced-motion abschaltbar sein - hier ist Letzteres umgesetzt. Zweitens ist der Status ausschließlich über Farbe plus Punkt codiert; das Wort 'Aktiv'/'Pausiert' steht daneben und trägt die Information, der Punkt ist reine Redundanz - genau so muss es bleiben, sonst verstößt der Stil gegen 1.4.1.",
+  "a11y": "Heller Text auf dunklem Grund bietet viel Kontrastreserve; kleine Metadaten und Akzente müssen dennoch einzeln geprüft werden. Ein dekorativer Cursor, der automatisch länger als fünf Sekunden neben anderem Inhalt blinkt, braucht eine Möglichkeit zum Pausieren, Stoppen oder Ausblenden. Reduced Motion sollte zusätzlich respektiert werden. In dieser Demo endet der Blink nach vier Durchläufen und entfällt bei reduzierter Bewegung ganz. Die Wörter Aktiv und Pausiert tragen die Statusinformation, der farbige Punkt ergänzt sie nur.",
   "longevity": "Das Grundgerüst ist strukturell und nicht modisch: Zeichenraster und Nullradius altern nicht, weil sie eine echte technische Herkunft haben. Datierbar ist nur die Farbwahl - Neongrün und Glow markieren einen Jahrgang, ein gedecktes Grün oder ein reines Weiß auf Schwarz nicht.",
   "scores": {
     "longevity": 4,
@@ -119,5 +119,15 @@
       "nostalgic"
     ],
     "signature": "Punkt-Leader und Box-Drawing-Zeichen ziehen die Trennung, dazu ein blinkender Blockcursor."
-  }
+  },
+  "sources": [
+    {
+      "title": "DEC: Special Graphics im Terminal-Handbuch",
+      "url": "https://vt100.net/docs/vt220-rm/chapter4.html"
+    },
+    {
+      "title": "WCAG: automatisch blinkende Inhalte",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+    }
+  ]
 }

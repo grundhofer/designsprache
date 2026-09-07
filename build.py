@@ -13,6 +13,8 @@ Build a bilingual catalog of UI styles. See README.md.
 """
 import json, pathlib, re, html, shutil, sys
 
+from tools.catalog_checks import check_catalog
+
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
 DOCS = ROOT / "docs"
@@ -230,13 +232,13 @@ L10N = [
  ("<b>{n}</b><span>Einträge</span>", "<b>{n}</b><span>Entries</span>"),
  ("<b>{nfam}</b><span>Familien</span>", "<b>{nfam}</b><span>Families</span>"),
  ("<b>1</b><span>Referenz&#8209;UI</span>", "<b>1</b><span>Reference&nbsp;UI</span>"),
- ("<b>7</b><span>Parameter</span>", "<b>7</b><span>Parameters</span>"),
+ ("<b>8</b><span>Parameter</span>", "<b>8</b><span>Parameters</span>"),
 
- ("<h2>Die sieben Parameter</h2>", "<h2>The seven parameters</h2>"),
- ("""Stilnamen sind austauschbar. Was einen Stil ausmacht, sind sieben Größen — und
+ ("<h2>Die acht Parameter</h2>", "<h2>The eight parameters</h2>"),
+ ("""Stilnamen sind austauschbar. Was einen Stil ausmacht, sind acht Größen — und
         jede davon ist eine Entscheidung, die man in Tokens schreiben kann. Wer sie kennt, kann
         Stile mischen statt kopieren.""",
-  """Style names are interchangeable. What actually constitutes a style are seven
+  """Style names are interchangeable. What actually constitutes a style are eight
         quantities — and every one of them is a decision you can write down as a token. Know
         them, and you can mix styles instead of copying them."""),
 
@@ -245,19 +247,19 @@ L10N = [
   """<dt>Radius<i>01</i></dt><dd>From 0&#8239;px to fully round. The most underrated carrier
         of brand identity.<em>0 uncompromising · 6 tool-like · 16+ friendly</em>"""),
  ("""<dt>Kontrast<i>02</i></dt><dd>Der Abstand zwischen Grund und Schrift. Entscheidet, ob
-        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 21:1 Web-Brutalismus</em>""",
+        eine Oberfläche ruhig oder laut wirkt.<em>Text und Bedienelemente getrennt prüfen</em>""",
   """<dt>Contrast<i>02</i></dt><dd>The distance between ground and type. Decides whether an
-        interface reads as calm or loud.<em>1.5:1 neumorphism → 21:1 web brutalism</em>"""),
+        interface reads as calm or loud.<em>Check text and controls separately</em>"""),
  ("""<dt>Tiefe<i>03</i></dt><dd>Wie Hierarchie entsteht: gar nicht, über Linien, über
         Schatten, über Unschärfe oder über echte z&#8209;Achse.<em>Der teuerste Parameter im
         Cross&#8209;Platform&#8209;Betrieb</em>""",
   """<dt>Depth<i>03</i></dt><dd>How hierarchy is produced: not at all, through rules, through
         shadows, through blur, or on a real z&#8209;axis.<em>The most expensive parameter to run
         cross&#8209;platform</em>"""),
- ("""<dt>Dichte<i>04</i></dt><dd>Information pro Bildschirm. Zwischen den Extremen liegt
-        Faktor fünf.<em>Bloomberg → Apple&#8209;Marketing</em>""",
-  """<dt>Density<i>04</i></dt><dd>Information per screen. The extremes are a factor of five
-        apart.<em>Bloomberg → Apple marketing</em>"""),
+ ("""<dt>Dichte<i>04</i></dt><dd>Information pro Bildschirm. Sie ergibt sich aus Zeilenhöhe,
+        Abständen und der Zahl gleichzeitig sichtbarer Inhalte.<em>Bloomberg → Apple&#8209;Marketing</em>""",
+  """<dt>Density<i>04</i></dt><dd>Information per screen, shaped by row height, spacing
+        and the amount of content visible at once.<em>Bloomberg → Apple marketing</em>"""),
  ("""<dt>Farbe<i>05</i></dt><dd>Wie viel Bedeutung Farbe trägt: monochrom plus Akzent,
         Flächenfarbe oder Verlauf.<em>Der stärkste Wiedererkennungsträger</em>""",
   """<dt>Color<i>05</i></dt><dd>How much meaning color carries: monochrome plus an accent,
@@ -310,9 +312,9 @@ L10N = [
     Clicking a name opens the full entry."""),
  ('<th>Nr.</th><th>Stil</th><th>Radius</th><th>Kontrast</th><th>Dichte</th><th>Tiefe</th>',
   '<th>No.</th><th>Style</th><th>Radius</th><th>Contrast</th><th>Density</th><th>Depth</th>'),
- ('aria-sort="none">Haltb.</th>', 'aria-sort="none">Lasting</th>'),
- ('aria-sort="none">Wiedererk.</th>', 'aria-sort="none">Distinct</th>'),
- ('aria-sort="none">Aufwand</th>', 'aria-sort="none">Effort</th>'),
+ ('aria-sort="none"><button type="button">Haltb.</button></th>', 'aria-sort="none"><button type="button">Lasting</button></th>'),
+ ('aria-sort="none"><button type="button">Wiedererk.</button></th>', 'aria-sort="none"><button type="button">Distinct</button></th>'),
+ ('aria-sort="none"><button type="button">Aufwand</button></th>', 'aria-sort="none"><button type="button">Effort</button></th>'),
 
  ('<span class="eyebrow">Wie es weitergeht</span>', '<span class="eyebrow">Where to go from here</span>'),
  ('<h2>Vom Katalog zur eigenen Sprache</h2>', '<h2>From catalog to a language of your own</h2>'),
@@ -334,39 +336,42 @@ L10N = [
         &ldquo;Combines with&rdquo;."""),
  ('<h3>Haltbarkeit schlägt Wirkung</h3>', '<h3>Longevity beats impact</h3>'),
  ("""Für einen Fundus, der viele Apps über Jahre tragen soll, ist Haltbarkeit
-        wertvoller als Schockwirkung. Ein Stil mit Wiedererkennung 5 und Haltbarkeit 1 kostet
-        dich in drei Jahren einen vollständigen Neuentwurf — über alle Projekte gleichzeitig.
+        wertvoller als Schockwirkung. Ein Stil mit Wiedererkennung 5 und Haltbarkeit 1 kann
+        früher einen Neuentwurf nötig machen — möglicherweise über mehrere Projekte zugleich.
         Das Raster oben macht diesen Handel sichtbar.""",
   """For a kit meant to carry many apps over years, longevity is worth more than shock value.
-        A style scoring 5 on recognisability and 1 on longevity costs you a complete redesign in
-        three years — across every project at once. The grid above makes that trade
+        A style scoring 5 on recognisability and 1 on longevity may need a redesign sooner,
+        potentially across several projects at once. The grid above makes that trade
         visible."""),
  ('<h3>Der Stil bestimmt die Kosten</h3>', '<h3>The style sets your costs</h3>'),
  ("""Flächenfarbe, Radius und Typografie lassen sich aus Tokens sauber nach CSS,
         Compose und SwiftUI generieren. Unschärfe, mehrschichtige Verläufe und Materialien
-        nicht — die musst du auf jeder Plattform von Hand nachbauen. Glassmorphism und
-        Skeuomorphismus kosten über Web, Tauri und Android ein Vielfaches von Swiss oder
-        Dev&#8209;Noir. Das ist keine Geschmacksfrage, sondern eine Aufwandsschätzung.""",
+        brauchen plattformspezifische Renderer und Fallbacks. Auch sie lassen sich teilweise
+        in Tokens beschreiben. Wie viel Mehrarbeit daraus entsteht, hängt von den Zielplattformen
+        und vorhandenen Komponenten ab; Tauri nutzt dabei die Web-Umsetzung.""",
   """Flat fills, radius and typography generate cleanly from tokens into CSS, Compose and
-        SwiftUI. Blur, layered gradients and materials do not — those you rebuild by hand on
-        every platform. Across web, Tauri and Android, glassmorphism and skeuomorphism cost a
-        multiple of Swiss or dev&#8209;noir. That is not a matter of taste but an
-        estimate."""),
+        SwiftUI. Blur, layered gradients and materials need platform-specific renderers and
+        fallbacks, though tokens can describe parts of them too. The extra work depends on
+        target platforms and existing components; Tauri reuses the web implementation."""),
  ("""Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen aus Google Fonts oder, wo der Stil es verlangt, aus dem System-Stack, alle
-    Farbwerte, Radien und Zeitangaben in den Faktenblättern
-    sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
-    Einschätzungen, keine Messwerte.""",
+    stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
+    redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
+    Demo-Entscheidungen; Werte sind keine unveränderlichen Produktvorgaben. Verlinkte Quellen
+    belegen jeweils die benannte Aussage, nicht das gesamte Faktenblatt. Die vier Kennzahlen
+    sind fachliche Einschätzungen, keine Messwerte.""",
   """All {n} demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
     the same thirteen pieces of text. Type comes from Google Fonts or, where the style demands it, from the system stack;
-    the color values, radii and
-    timings quoted in the fact sheets are sourced from the products they describe. The four
-    scores are professional judgements, not measurements."""),
+    style names and families are editorial categories. Fact sheets describe both influences
+    and concrete demo choices; their values are not permanent product specifications. Linked
+    sources support the named topic, not the entire fact sheet. The four scores are
+    editorial judgments, not measurements."""),
 
  ('aria-label="Voriger Eintrag"', 'aria-label="Previous entry"'),
  ('aria-label="Nächster Eintrag"', 'aria-label="Next entry"'),
  ('id="s-close">Schließen · Esc<', 'id="s-close">Close · Esc<'),
+
+ ('<div><dt>Textur<i>08</i></dt><dd>Die Beschaffenheit einer Fläche: glatt, gekörnt, gerastert oder stofflich.<em>Kein Muster · feines Korn · sichtbares Druckraster</em></dd></div>', '<div><dt>Texture<i>08</i></dt><dd>The character of a surface: smooth, grainy, dithered or tactile.<em>No pattern · fine grain · visible halftone</em></dd></div>'),
 
  # --- Zeichenketten im Skript ---
  ('blk("Kernidee"', 'blk("Core idea"'),
@@ -415,6 +420,64 @@ L10N = [
       properties as an instruction for an AI agent.</p>"""),
 ]
 
+GUIDE = {
+    "de": '''<section class="k-close wrap" aria-labelledby="guide-title">
+  <span class="eyebrow">In der Praxis</span>
+  <h2 id="guide-title">Vom Stil zur benutzbaren Oberfläche</h2>
+  <p>Die Demos sind feste, auf 780 px entworfene Vergleichsbilder aus HTML und CSS.
+    Ihre Eingabefelder und Schaltflächen sind absichtlich inaktiv. Ein fertiges Produkt
+    braucht zusätzlich Verhalten, Zustände und ein Layout für seine echten Inhalte.</p>
+  <div class="close-grid">
+    <div><h3>Eine Hauptstimme, klare Rollen</h3><p>Wähle einen Grundstil und höchstens
+      einen ergänzenden Einfluss. Lege zuerst Rollen für Hintergrund, Text, Akzent, Rand
+      und Fokus fest. Dokumentiere danach die acht Parameter. Ein Farbwert allein sagt
+      noch nicht, auf welcher Fläche er lesbar ist.</p></div>
+    <div><h3>Den schwierigen Zustand gestalten</h3><p>Prüfe lange Namen, leere Listen,
+      Ladezustände, Fehler und deaktivierte Aktionen. Teste schmale Fenster und vergrößerten
+      Text. Das Verkleinern der gesamten Demo macht die Stile vergleichbar; für ein Produkt
+      müssen Text, Reihenfolge und Bedienelemente dagegen neu umbrechen können.</p></div>
+    <div><h3>Barrierefreiheit konkret prüfen</h3><p>Prüfe Tastaturbedienung, sichtbaren Fokus
+      und Statusmeldungen mit Text. WCAG 2.2 AA verlangt für normalen Text mindestens 4,5:1,
+      für großen Text 3:1. Kleine Metadaten sind davon nicht ausgenommen. Prüfe transparente
+      Flächen auch vor ihrem ungünstigsten Hintergrund und biete eine deckende Variante an.</p></div>
+  </div>
+  <p class="k-colophon">Zum Nachlesen:
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Textkontrast</a> ·
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">Textvergrößerung</a> ·
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">Zielgrößen und Ausnahmen</a>.
+    Die Stil- und Finder-Kennzahlen sind redaktionelle Einschätzungen, keine WCAG-Prüfung.
+    Die Prozentzahl im Finder beschreibt nur die Übereinstimmung mit den beantworteten
+    Präferenzen; „egal“ wird nicht gewertet.</p>
+</section>''',
+    "en": '''<section class="k-close wrap" aria-labelledby="guide-title">
+  <span class="eyebrow">In practice</span>
+  <h2 id="guide-title">From a style to a usable interface</h2>
+  <p>The demos are fixed comparisons designed at 780 px in HTML and CSS.
+    Their fields and buttons are deliberately inactive. A finished product also needs
+    behavior, states and a layout that accommodates its actual content.</p>
+  <div class="close-grid">
+    <div><h3>One main voice, explicit roles</h3><p>Choose a base style and at most one
+      supporting influence. Define roles for background, text, accent, border and focus
+      first. Then document the eight parameters. A color value alone does not tell you
+      which surfaces it will be readable on.</p></div>
+    <div><h3>Design the difficult state</h3><p>Check long names, empty lists, loading,
+      errors and disabled actions. Test narrow windows and enlarged text. Scaling the
+      whole demo helps compare styles; in a product, text, reading order and controls
+      need to reflow to fit the available space.</p></div>
+    <div><h3>Check accessibility in context</h3><p>Check keyboard operation, visible focus
+      and status messages with text. WCAG 2.2 AA requires at least 4.5:1 for normal text
+      and 3:1 for large text. Small metadata is not exempt. Test translucent surfaces
+      against their least favorable background and offer an opaque variant.</p></div>
+  </div>
+  <p class="k-colophon">Further reading:
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Text contrast</a> ·
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">Text resizing</a> ·
+    <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">Target sizes and exceptions</a>.
+    Style and finder scores are editorial judgments, not a WCAG audit. The finder percentage
+    describes the match against answered preferences only; “no preference” is not scored.</p>
+</section>''',
+}
+
 UI = {
     "de": {"entries": "Einträge", "ofFive": "von 5",
            "openAria": "Eintrag {i}: {name} — vollständiges Faktenblatt öffnen"},
@@ -443,6 +506,10 @@ def build(lang="de", mode="site"):
             idx += 1
             d = data[slug]
             sc = d["scores"]
+            search_text = " ".join([
+                d["name"], *d.get("aka", []), fam, d.get("idea", ""),
+                *d["markers"], *d["params"].values(), *d["googleFonts"],
+            ]).lower()
             bars = "".join(
                 f'<div class="sc" title="{esc(METRICS[k]["label"])}: {sc.get(k,0)} {U["ofFive"]} — {esc(METRICS[k]["hint"])}">'
                 f'<span class="sc-k">{esc(METRICS[k]["short"])}</span>'
@@ -454,7 +521,7 @@ def build(lang="de", mode="site"):
 <article class="k-plate" data-slug="{esc(slug)}" data-family="{esc(fam)}"
   data-longevity="{sc.get('longevity',0)}" data-recognition="{sc.get('recognition',0)}"
   data-effort="{sc.get('effort',0)}" data-density="{sc.get('density',0)}" data-idx="{idx}"
-  data-search="{esc((d['name'] + ' ' + ' '.join(d.get('aka') or []) + ' ' + fam + ' ' + d.get('idea','')).lower())}">
+  data-search="{esc(search_text)}">
   <div class="plate-frame" data-open><div class="demo-host" inert>{demos[slug]}</div></div>
   <div class="plate-meta">
     <div class="plate-line">
@@ -503,7 +570,7 @@ def build(lang="de", mode="site"):
     ).replace("</", "<\\/")
 
     fam_chips = "".join(
-        f'<button class="k-chip" type="button" data-fam="{esc(f)}">{esc(f)}</button>'
+        f'<button class="k-chip" type="button" data-fam="{esc(f)}" aria-pressed="false">{esc(f)}</button>'
         for f, _, _ in ORDER)
 
     metric_opts = "".join(f'<option value="{k}">{esc(v["label"])}</option>' for k, v in METRICS.items())
@@ -518,6 +585,7 @@ def build(lang="de", mode="site"):
         rows="".join(rows),
         chips=fam_chips,
         payload=payload,
+        guide=GUIDE[lang],
         mx=metric_opts.replace('value="longevity"', 'value="longevity" selected'),
         my=metric_opts.replace('value="recognition"', 'value="recognition" selected'),
     )
@@ -539,7 +607,7 @@ PAGE = r'''<title>Stil-Katalog</title>
 /* ============ Tokens ============ */
 :root {{
   --ground:#E9EBE6; --surface:#F5F7F2; --surface-2:#FCFDFA;
-  --ink:#171A17; --ink-2:#565D58; --ink-3:#838A84;
+  --ink:#171A17; --ink-2:#565D58; --ink-3:#5C645D;
   --rule:#C6CBC2; --rule-soft:#DCE0D8;
   --accent:#1E4A45; --accent-ink:#FCFDFA; --accent-soft:#D9E5E1;
   --brass:#8A6A2F;
@@ -552,7 +620,7 @@ PAGE = r'''<title>Stil-Katalog</title>
 @media (prefers-color-scheme: dark) {{
   :root:not([data-theme="light"]) {{
     --ground:#141614; --surface:#1B1E1B; --surface-2:#232722;
-    --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#6F766F;
+    --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#9BA39A;
     --rule:#333833; --rule-soft:#252A25;
     --accent:#77BFB1; --accent-ink:#101413; --accent-soft:#20342F;
     --brass:#C7A55F;
@@ -561,7 +629,7 @@ PAGE = r'''<title>Stil-Katalog</title>
 }}
 :root[data-theme="dark"] {{
   --ground:#141614; --surface:#1B1E1B; --surface-2:#232722;
-  --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#6F766F;
+  --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#9BA39A;
   --rule:#333833; --rule-soft:#252A25;
   --accent:#77BFB1; --accent-ink:#101413; --accent-soft:#20342F;
   --brass:#C7A55F;
@@ -569,6 +637,7 @@ PAGE = r'''<title>Stil-Katalog</title>
 }}
 
 /* ============ Grundlagen ============ */
+[hidden] {{ display:none !important; }}
 body {{ background:var(--ground); color:var(--ink); font-family:var(--f-body);
   font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }}
 .wrap {{ box-sizing:border-box; max-width:var(--maxw); margin:0 auto;
@@ -643,7 +712,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .k-bar {{ position:sticky; top:0; z-index:40; background:var(--ground);
   border-bottom:1px solid var(--rule); }}
 .bar-in {{ display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center;
-  padding:11px 0; }}
+  padding-block:11px; }}
 .chips {{ display:flex; flex-wrap:wrap; gap:6px; flex:1 1 auto; min-width:0; }}
 /* On narrow screens ten chips would swell the sticky bar to five rows and cover half
    the viewport, so there they become one horizontally scrollable row. */
@@ -728,7 +797,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   overflow-y:auto; overscroll-behavior:contain; }}
 .sheet-bar {{ position:sticky; top:0; z-index:5; background:var(--ground);
   border-bottom:1px solid var(--rule); }}
-.sheet-bar-in {{ display:flex; align-items:center; gap:12px; padding:10px 0; }}
+.sheet-bar-in {{ display:flex; align-items:center; gap:12px; padding-block:10px; }}
 .sheet-bar .ent {{ font-size:12px; }}
 .sheet-bar h2 {{ font-size:19px; flex:1 1 auto; min-width:0; }}
 .nav-b {{ font-family:var(--f-mono); font-size:12px; padding:5px 10px;
@@ -736,7 +805,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   cursor:pointer; border-radius:2px; }}
 .nav-b:hover:not(:disabled) {{ border-color:var(--ink-3); }}
 .nav-b:disabled {{ opacity:.35; cursor:default; }}
-.sheet-body {{ display:grid; gap:clamp(24px,3vw,44px); padding:clamp(20px,3vw,36px) 0 90px;
+.sheet-body {{ display:grid; gap:clamp(24px,3vw,44px); padding-block:clamp(20px,3vw,36px) 90px;
   align-items:start; }}
 @media (min-width:1040px) {{ .sheet-body {{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); }}
   .sheet-left {{ position:sticky; top:66px; }} }}
@@ -785,6 +854,14 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .k-tag.static {{ cursor:default; }}
 .k-tag.static:hover {{ border-color:var(--rule); color:var(--ink-2); }}
 
+.k-sheet, .k-finder {{ box-sizing:border-box; width:100%; height:100%; max-width:none;
+  max-height:none; margin:0; padding:0; border:0; color:var(--ink); }}
+.k-sheet::backdrop, .k-finder::backdrop {{ background:var(--ground); }}
+.sheet-bar-in {{ flex-wrap:wrap; }}
+:where(.fi-opt, .nav-b, .k-chip, .k-tag, .mx-chip) {{ min-height:24px; }}
+.fi-pre, .blk p, .blk li, .kv dd {{ overflow-wrap:anywhere; }}
+@media (max-width:600px) {{ .k-bar {{ position:static; }} }}
+
 /* ============ Stil-Finder ============ */
 .fi-open {{ font-family:var(--f-mono); font-size:11.5px; letter-spacing:.02em;
   padding:5px 11px; border:1px solid var(--accent); background:var(--accent);
@@ -794,9 +871,9 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   overflow-y:auto; overscroll-behavior:contain; }}
 .fi-bar {{ position:sticky; top:0; z-index:5; background:var(--ground);
   border-bottom:1px solid var(--rule); }}
-.fi-bar-in {{ display:flex; align-items:center; gap:12px; padding:10px 0; flex-wrap:wrap; }}
+.fi-bar-in {{ display:flex; align-items:center; gap:12px; padding-block:10px; flex-wrap:wrap; }}
 .fi-bar h2 {{ font-size:19px; flex:1 1 auto; min-width:0; }}
-.fi-body {{ padding:clamp(22px,3vw,40px) 0 90px; }}
+.fi-body {{ padding-block:clamp(22px,3vw,40px) 90px; }}
 .fi-lede {{ max-width:62ch; color:var(--ink-2); font-size:15.5px; margin-bottom:26px; }}
 
 .fi-q {{ border-top:1px solid var(--rule); padding:18px 0 20px; display:grid; gap:10px; }}
@@ -862,7 +939,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   line-height:1.7; max-width:74ch; }}
 
 /* ============ Matrix ============ */
-.mx {{ border-top:1px solid var(--rule); padding:clamp(38px,5vw,64px) 0 0; }}
+.mx {{ border-top:1px solid var(--rule); padding-block:clamp(38px,5vw,64px) 0; }}
 .mx-head {{ display:grid; gap:14px; margin-bottom:24px; }}
 @media (min-width:900px) {{ .mx-head {{ grid-template-columns:minmax(0,1fr) auto;
   align-items:end; gap:30px; }} }}
@@ -900,7 +977,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   border:1px solid var(--rule); }}
 
 /* ============ Tabelle ============ */
-.tbl-sec {{ border-top:1px solid var(--rule); padding:clamp(38px,5vw,64px) 0 0;
+.tbl-sec {{ border-top:1px solid var(--rule); padding-block:clamp(38px,5vw,64px) 0;
   margin-top:clamp(38px,5vw,64px); }}
 .tbl-sec h2 {{ font-size:clamp(23px,2.6vw,31px); }}
 .tbl-sec > p {{ color:var(--ink-2); max-width:62ch; margin:7px 0 22px; }}
@@ -912,7 +989,9 @@ thead th {{ position:sticky; top:0; background:var(--surface-2); z-index:2;
   font-family:var(--f-mono); font-size:10px; font-weight:500; letter-spacing:.1em;
   text-transform:uppercase; color:var(--ink-3); border-bottom:1px solid var(--rule);
   white-space:nowrap; }}
-thead th.sortable {{ cursor:pointer; user-select:none; }}
+thead th.sortable {{ user-select:none; }}
+thead th.sortable button {{ font:inherit; letter-spacing:inherit; text-transform:inherit;
+  color:inherit; background:none; border:0; padding:4px 0; cursor:pointer; }}
 thead th.sortable:hover {{ color:var(--ink); }}
 thead th[aria-sort]:not([aria-sort="none"]) {{ color:var(--accent); }}
 td.k-num {{ font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right;
@@ -929,7 +1008,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 
 /* ============ Schluss ============ */
 .k-close {{ border-top:1px solid var(--rule); margin-top:clamp(38px,5vw,64px);
-  padding:clamp(38px,5vw,64px) 0 clamp(60px,7vw,100px); }}
+  padding-block:clamp(38px,5vw,64px) clamp(60px,7vw,100px); }}
 .k-close h2 {{ font-size:clamp(23px,2.6vw,31px); margin-bottom:10px; }}
 .close-grid {{ display:grid; gap:clamp(20px,3vw,40px); margin-top:26px;
   grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); }}
@@ -971,7 +1050,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       <div><b>{n}</b><span>Einträge</span></div>
       <div><b>{nfam}</b><span>Familien</span></div>
       <div><b>1</b><span>Referenz&#8209;UI</span></div>
-      <div><b>7</b><span>Parameter</span></div>
+      <div><b>8</b><span>Parameter</span></div>
     </div>
   </div>
 </header>
@@ -979,8 +1058,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
 <section class="primer">
   <div class="wrap">
     <div class="primer-head">
-      <h2>Die sieben Parameter</h2>
-      <p>Stilnamen sind austauschbar. Was einen Stil ausmacht, sind sieben Größen — und
+      <h2>Die acht Parameter</h2>
+      <p>Stilnamen sind austauschbar. Was einen Stil ausmacht, sind acht Größen — und
         jede davon ist eine Entscheidung, die man in Tokens schreiben kann. Wer sie kennt, kann
         Stile mischen statt kopieren.</p>
     </div>
@@ -988,12 +1067,12 @@ tbody tr:hover {{ background:var(--surface-2); }}
       <div><dt>Radius<i>01</i></dt><dd>Von 0&#8239;px bis vollrund. Der am stärksten
         unterschätzte Marken­träger.<em>0 kompromisslos · 6 werkzeughaft · 16+ freundlich</em></dd></div>
       <div><dt>Kontrast<i>02</i></dt><dd>Der Abstand zwischen Grund und Schrift. Entscheidet, ob
-        eine Oberfläche ruhig oder laut wirkt.<em>1,5:1 Neumorphismus → 21:1 Web-Brutalismus</em></dd></div>
+        eine Oberfläche ruhig oder laut wirkt.<em>Text und Bedienelemente getrennt prüfen</em></dd></div>
       <div><dt>Tiefe<i>03</i></dt><dd>Wie Hierarchie entsteht: gar nicht, über Linien, über
         Schatten, über Unschärfe oder über echte z&#8209;Achse.<em>Der teuerste Parameter im
         Cross&#8209;Platform&#8209;Betrieb</em></dd></div>
-      <div><dt>Dichte<i>04</i></dt><dd>Information pro Bildschirm. Zwischen den Extremen liegt
-        Faktor fünf.<em>Bloomberg → Apple&#8209;Marketing</em></dd></div>
+      <div><dt>Dichte<i>04</i></dt><dd>Information pro Bildschirm. Sie ergibt sich aus Zeilenhöhe,
+        Abständen und der Zahl gleichzeitig sichtbarer Inhalte.<em>Bloomberg → Apple&#8209;Marketing</em></dd></div>
       <div><dt>Farbe<i>05</i></dt><dd>Wie viel Bedeutung Farbe trägt: monochrom plus Akzent,
         Flächenfarbe oder Verlauf.<em>Der stärkste Wiedererkennungsträger</em></dd></div>
       <div><dt>Typografie<i>06</i></dt><dd>Grotesk, Serif, Monospace oder Display — und in
@@ -1001,6 +1080,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       <div><dt>Motion<i>07</i></dt><dd>Dauer und Kurve. Die Persönlichkeit einer Oberfläche —
         und der Parameter, der am häufigsten vergessen wird.<em>0&#8239;ms · 120&#8239;ms linear ·
         400&#8239;ms Spring mit Überschwingen</em></dd></div>
+      <div><dt>Textur<i>08</i></dt><dd>Die Beschaffenheit einer Fläche: glatt, gekörnt, gerastert oder stofflich.<em>Kein Muster · feines Korn · sichtbares Druckraster</em></dd></div>
     </dl>
   </div>
 </section>
@@ -1061,9 +1141,9 @@ tbody tr:hover {{ background:var(--surface-2); }}
     <table>
       <thead><tr>
         <th>Nr.</th><th>Stil</th><th>Radius</th><th>Kontrast</th><th>Dichte</th><th>Tiefe</th>
-        <th class="sortable k-num" data-col="6" aria-sort="none">Haltb.</th>
-        <th class="sortable k-num" data-col="7" aria-sort="none">Wiedererk.</th>
-        <th class="sortable k-num" data-col="8" aria-sort="none">Aufwand</th>
+        <th class="sortable k-num" data-col="6" aria-sort="none"><button type="button">Haltb.</button></th>
+        <th class="sortable k-num" data-col="7" aria-sort="none"><button type="button">Wiedererk.</button></th>
+        <th class="sortable k-num" data-col="8" aria-sort="none"><button type="button">Aufwand</button></th>
       </tr></thead>
       <tbody id="tbody">{rows}</tbody>
     </table>
@@ -1087,28 +1167,31 @@ tbody tr:hover {{ background:var(--surface-2); }}
     <div>
       <h3>Haltbarkeit schlägt Wirkung</h3>
       <p>Für einen Fundus, der viele Apps über Jahre tragen soll, ist Haltbarkeit
-        wertvoller als Schockwirkung. Ein Stil mit Wiedererkennung 5 und Haltbarkeit 1 kostet
-        dich in drei Jahren einen vollständigen Neuentwurf — über alle Projekte gleichzeitig.
+        wertvoller als Schockwirkung. Ein Stil mit Wiedererkennung 5 und Haltbarkeit 1 kann
+        früher einen Neuentwurf nötig machen — möglicherweise über mehrere Projekte zugleich.
         Das Raster oben macht diesen Handel sichtbar.</p>
     </div>
     <div>
       <h3>Der Stil bestimmt die Kosten</h3>
       <p>Flächenfarbe, Radius und Typografie lassen sich aus Tokens sauber nach CSS,
         Compose und SwiftUI generieren. Unschärfe, mehrschichtige Verläufe und Materialien
-        nicht — die musst du auf jeder Plattform von Hand nachbauen. Glassmorphism und
-        Skeuomorphismus kosten über Web, Tauri und Android ein Vielfaches von Swiss oder
-        Dev&#8209;Noir. Das ist keine Geschmacksfrage, sondern eine Aufwandsschätzung.</p>
+        brauchen plattformspezifische Renderer und Fallbacks. Auch sie lassen sich teilweise
+        in Tokens beschreiben. Wie viel Mehrarbeit daraus entsteht, hängt von den Zielplattformen
+        und vorhandenen Komponenten ab; Tauri nutzt dabei die Web-Umsetzung.</p>
     </div>
   </div>
   <p class="k-colophon">Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen aus Google Fonts oder, wo der Stil es verlangt, aus dem System-Stack, alle
-    Farbwerte, Radien und Zeitangaben in den Faktenblättern
-    sind aus den jeweiligen Vorbildern belegt. Die vier Kennzahlen sind fachliche
-    Einschätzungen, keine Messwerte.</p>
+    stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
+    redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
+    Demo-Entscheidungen; Werte sind keine unveränderlichen Produktvorgaben. Verlinkte Quellen
+    belegen jeweils die benannte Aussage, nicht das gesamte Faktenblatt. Die vier Kennzahlen
+    sind fachliche Einschätzungen, keine Messwerte.</p>
 </section>
 
-<div class="k-finder" id="finder" hidden>
+{guide}
+
+<dialog class="k-finder" id="finder" aria-labelledby="fi-title" hidden>
   <div class="fi-bar"><div class="wrap fi-bar-in">
     <h2 id="fi-title">Welcher Stil passt zu deinem Projekt?</h2>
     <button class="nav-b" type="button" id="fi-again" hidden>Antworten ändern</button>
@@ -1122,12 +1205,12 @@ tbody tr:hover {{ background:var(--surface-2); }}
     <div id="fi-quiz"></div>
     <div id="fi-results" hidden></div>
   </div>
-</div>
+</dialog>
 
-<div class="k-sheet" id="sheet" hidden>
+<dialog class="k-sheet" id="sheet" aria-labelledby="s-name" hidden>
   <div class="sheet-bar"><div class="wrap sheet-bar-in">
     <span class="ent" id="s-ent"></span>
-    <h2 id="s-name"></h2>
+    <h2 id="s-name" tabindex="-1"></h2>
     <button class="nav-b" type="button" id="s-prev" aria-label="Voriger Eintrag">←</button>
     <button class="nav-b" type="button" id="s-next" aria-label="Nächster Eintrag">→</button>
     <button class="nav-b" type="button" id="s-close">Schließen · Esc</button>
@@ -1140,7 +1223,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
     </div>
     <div class="sheet-right" id="s-right"></div>
   </div>
-</div>
+</dialog>
 
 <script type="application/json" id="payload">{payload}</script>
 <script>
@@ -1169,6 +1252,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   function fitAll() {{
     document.querySelectorAll(".demo-host").forEach(fit);
     if (!sheet.hidden) fit(sHost);
+    if (FI && !FI.hidden) fitFinder();
   }}
   /* setTimeout rather than requestAnimationFrame on purpose: rAF never fires in a
      hidden tab, and this page is often opened in a background tab. */
@@ -1271,13 +1355,25 @@ tbody tr:hover {{ background:var(--surface-2); }}
     return '<div class="blk ' + (cls ||"") + '"><h4>' + esc(title) + "</h4>" + inner + "</div>";
   }}
 
+  function cloneDemo(node, prefix) {{
+    var copy = node.cloneNode(true), ids = {{}};
+    copy.querySelectorAll("[id]").forEach(function (el) {{
+      ids[el.id] = prefix + "-" + el.id;
+      el.id = ids[el.id];
+    }});
+    copy.querySelectorAll("label[for]").forEach(function (label) {{
+      if (ids[label.htmlFor]) label.htmlFor = ids[label.htmlFor];
+    }});
+    return copy;
+  }}
+
   function open(i) {{
     if (i < 0 || i >= order.length) return;
     cur = i;
     var slug = order[i], d = DATA[slug];
     var src = document.querySelector('.k-plate[data-slug="' + slug + '"] .demo-host');
     sHost.textContent = "";
-    sHost.appendChild(src.firstElementChild.cloneNode(true));
+    sHost.appendChild(cloneDemo(src.firstElementChild, "sheet"));
     sEnt.textContent = String(i + 1).padStart(2, "0");
     sName.textContent = d.name;
     sCap.textContent = "Dieselbe Referenz-UI wie in allen {n} Einträgen, hier in voller Größe.";
@@ -1307,6 +1403,12 @@ tbody tr:hover {{ background:var(--surface-2); }}
     html += blk("Echte Vertreter", '<div class="ex">' + (d.examples || []).map(function (e) {{
       return "<div><b>" + esc(e.name) + "</b><span>" + esc(e.what) + "</span></div>";
     }}).join("") + "</div>");
+    if ((d.sources || []).length) {{
+      html += blk(LANG === "de" ? "Quellen zu ausgewählten Aussagen" : "Sources for selected claims",
+        '<ul>' + d.sources.map(function (source) {{
+          return '<li><a href="' + esc(source.url) + '">' + esc(source.title) + '</a></li>';
+        }}).join("") + '</ul>');
+    }}
     html += blk("Stärken", list(d.strengths));
     html += blk("Risiken", list(d.risks, "risks-x"), "risks");
     html += blk("Barrierefreiheit", "<p>" + esc(d.a11y) + "</p>");
@@ -1335,14 +1437,17 @@ tbody tr:hover {{ background:var(--surface-2); }}
     prevB.disabled = i === 0;
     nextB.disabled = i === order.length - 1;
     sheet.hidden = false;
+    if (!sheet.open) sheet.showModal();
+    sName.focus();
     document.body.style.overflow = "hidden";
     sheet.scrollTop = 0;
     [0, 60, 300].forEach(function (d) {{ setTimeout(function () {{ fit(sHost); }}, d); }});
   }}
 
   function close() {{
+    sheet.close();
     sheet.hidden = true;
-    document.body.style.overflow = "";
+    document.body.style.overflow = FI.hidden ? "" : "hidden";
     sHost.textContent = "";
     if (lastFocus) {{ try {{ lastFocus.focus(); }} catch (e) {{}} }}
   }}
@@ -1356,9 +1461,9 @@ tbody tr:hover {{ background:var(--surface-2); }}
     if (!plate) return;
     lastFocus = plate.querySelector(".plate-open");
     open(order.indexOf(plate.dataset.slug));
-    document.getElementById("s-close").focus();
   }});
   document.getElementById("s-close").addEventListener("click", close);
+  sheet.addEventListener("cancel", function (e) {{ e.preventDefault(); close(); }});
   prevB.addEventListener("click", function () {{ open(cur - 1); }});
   nextB.addEventListener("click", function () {{ open(cur + 1); }});
   sRight.addEventListener("click", function (e) {{
@@ -1367,8 +1472,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
   }});
   document.addEventListener("keydown", function (e) {{
     if (sheet.hidden) return;
-    if (e.key === "Escape") {{ e.preventDefault(); close(); }}
-    else if (e.key === "ArrowLeft" && cur > 0) open(cur - 1);
+    if (e.target.closest("input, textarea, select, pre")) return;
+    if (e.key === "ArrowLeft" && cur > 0) open(cur - 1);
     else if (e.key === "ArrowRight" && cur < order.length - 1) open(cur + 1);
   }});
 
@@ -1405,6 +1510,11 @@ tbody tr:hover {{ background:var(--surface-2); }}
     h += '<div class="mx-ax mx-corner" style="grid-row:6;grid-column:1">' +
       esc(METRIC[xk].label) + " →</div>";
     plot.innerHTML = h;
+    if (xk === yk) {{
+      mxnote.textContent = LANG === "de" ? "Beide Achsen zeigen dieselbe Kennzahl. Wähle zwei verschiedene Größen für einen Vergleich."
+        : "Both axes show the same score. Choose two different measures to compare them.";
+      return;
+    }}
     mxnote.textContent = hot
       ? "Getönt: der günstige Bereich — " + METRIC[xk].label + " " +
         (xGood === "hoch" ? "hoch" : "niedrig") + " und " + METRIC[yk].label +
@@ -1423,7 +1533,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   /* ---------- Tabelle ---------- */
   var tbody = document.getElementById("tbody");
   document.querySelectorAll("th.sortable").forEach(function (th) {{
-    th.addEventListener("click", function () {{
+    th.querySelector("button").addEventListener("click", function () {{
       var col = +th.dataset.col;
       var asc = th.getAttribute("aria-sort") === "descending";
       document.querySelectorAll("th.sortable").forEach(function (o) {{
@@ -1535,16 +1645,15 @@ tbody tr:hover {{ background:var(--surface-2); }}
           m.map(function (t) {{ return labelOf("tone", t); }}).join(", ")) : FT.why.toneNo,
         m.length > 0);
     }}
-    if (ANS.mode) {{
-      var g = ANS.mode === "any" ? 0.7 : (f.mode === ANS.mode || f.mode === "both" ? 1 : 0);
+    if (ANS.mode && ANS.mode !== "any") {{
+      var g = f.mode === ANS.mode || f.mode === "both" ? 1 : 0;
       add(12, g, ANS.mode === "any" ? null
         : (g ? f1(FT.why.modeYes, FT.modeName[f.mode] || f.mode)
              : f2(FT.why.modeNo, FT.modeName[f.mode] || f.mode, FT.modeName[ANS.mode])), g > 0);
     }}
     [["density", 12], ["longevity", 14], ["recognition", 12]].forEach(function (pair) {{
       var k = pair[0], w = pair[1], v = ANS[k];
-      if (!v) return;
-      if (v === "any") {{ add(w, 0.6, null); return; }}
+      if (!v || v === "any") return;
       var have = sc[k] || 0, g = 1 - Math.abs(have - (+v)) / 4;
       add(w, Math.max(0, g), f1(FT.why[k], have), g >= 0.5);
     }});
@@ -1588,6 +1697,10 @@ tbody tr:hover {{ background:var(--surface-2); }}
       d.risks.forEach(function (r) {{ L.push("- " + r); }});
     }}
     if (d.a11y) L.push("", "## " + FT.pA11y, d.a11y);
+    L.push("", LANG === "de" ? "## Prüfung im Produkt" : "## Product checks",
+      LANG === "de"
+        ? "Die Demo beschreibt einen Stil. Übernimm bekannte Kontrast- oder Bedienprobleme nicht unverändert. Prüfe Tastatur, Fokus, lesbare Metadaten, schmale Ansichten, Textvergrößerung sowie Lade-, Leer- und Fehlerzustände. Begründe nötige Anpassungen an der Gestaltung."
+        : "The demo describes a style. Adapt known contrast or usability problems before using it in a product. Check keyboard access, focus, readable metadata, narrow layouts, enlarged text, and loading, empty and error states. Explain necessary design adjustments.");
     if (d.tip) L.push("", "## " + FT.pTip, d.tip);
     L.push("", "---", FT.pSource + ": " + SITE + "/" + LANG + "/ — " + d.name);
     return L.join("\n");
@@ -1596,7 +1709,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   /* ---------- Fragebogen ---------- */
   function renderQuiz() {{
     fiQuiz.innerHTML = FT.q.map(function (q) {{
-      return '<div class="fi-q"><div><h3>' + esc(q.h) + "</h3>"
+      return '<div class="fi-q" role="group" aria-labelledby="fi-q-' + q.id + '"><div><h3 id="fi-q-' + q.id + '">' + esc(q.h) + "</h3>"
         + (q.s ? "<p>" + esc(q.s) + "</p>" : "") + '</div><div class="fi-opts">'
         + q.o.map(function (o) {{
             return '<button class="fi-opt" type="button" data-q="' + q.id + '" data-v="'
@@ -1604,7 +1717,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
           }}).join("") + "</div></div>";
     }}).join("")
       + '<div class="fi-go"><button type="button" id="fi-go" disabled></button>'
-      + '<span id="fi-count"></span></div>';
+      + '<span id="fi-count" aria-live="polite"></span></div>';
     document.getElementById("fi-go").textContent = FT.go;
     updateCount();
   }}
@@ -1643,7 +1756,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   /* ---------- Ergebnis ---------- */
   function showResults() {{
     var ranked = order.map(rate).sort(function (a, b) {{ return b.pct - a.pct; }}).slice(0, 5);
-    fiRes.innerHTML = "<h3 style=\"font-size:21px;margin-bottom:6px\">" + esc(FT.resTitle)
+    fiRes.innerHTML = "<h3 id=\"fi-result-title\" tabindex=\"-1\" style=\"font-size:21px;margin-bottom:6px\">" + esc(FT.resTitle)
       + '</h3><p class="fi-lede">' + esc(f2(FT.resLede, ranked.length, order.length))
       + '</p><div class="fi-res">'
       + ranked.map(function (r, i) {{
@@ -1655,7 +1768,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
             + '"><div class="fi-host" inert></div></div><p class="cap">'
             + esc(f1(FT.caption, order.length)) + "</p></div><div>"
             + '<p class="fi-sig">' + esc((d.finder && d.finder.signature) || d.idea) + "</p>"
-            + '<ul class="fi-why">' + r.why.slice(0, 6).map(function (w) {{
+            + '<ul class="fi-why">' + r.why.map(function (w) {{
                 return '<li class="' + (w.ok ? "" : "no") + '">' + esc(w.t) + "</li>";
               }}).join("") + "</ul>"
             + '<div class="fi-acts"><button type="button" class="prim" data-go3="' + esc(r.slug)
@@ -1673,8 +1786,9 @@ tbody tr:hover {{ background:var(--surface-2); }}
       if (!src || !src.firstElementChild) return;
       var host = fr.querySelector(".fi-host");
       host.textContent = "";
-      host.appendChild(src.firstElementChild.cloneNode(true));
+      host.appendChild(cloneDemo(src.firstElementChild, "finder"));
     }});
+    document.getElementById("fi-result-title").focus();
     fitFinder();
     [60, 300].forEach(function (d) {{ setTimeout(fitFinder, d); }});
     FI.scrollTop = 0;
@@ -1682,7 +1796,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 
   fiRes.addEventListener("click", function (e) {{
     var go = e.target.closest("[data-go3]");
-    if (go) {{ closeFinder(); open(order.indexOf(go.dataset.go3)); return; }}
+    if (go) {{ lastFocus = go; open(order.indexOf(go.dataset.go3)); return; }}
     var sh = e.target.closest("[data-show]");
     if (sh) {{
       var wrap = sh.closest("div").parentElement;
@@ -1724,19 +1838,21 @@ tbody tr:hover {{ background:var(--surface-2); }}
     var ta = document.createElement("textarea");
     ta.value = txt;
     ta.style.cssText = "position:fixed;top:-1000px;left:0;opacity:0";
-    document.body.appendChild(ta); ta.select();
+    var restore = document.activeElement;
+    FI.appendChild(ta); ta.select();
     var ok = false;
     try {{ ok = document.execCommand("copy"); }} catch (e) {{}}
     ta.remove();
+    if (restore) restore.focus();
     if (ok) done(); else manual();
   }}
 
   function showPrompt(btn, txt, hint) {{
     var wrap = btn.closest("div").parentElement;
-    var old = wrap.querySelector(".fi-pre");
-    if (old) old.remove();
+    wrap.querySelectorAll(".fi-pre, .fi-hint").forEach(function (el) {{ el.remove(); }});
     var pre = document.createElement("pre");
     pre.className = "fi-pre";
+    pre.tabIndex = 0;
     pre.textContent = txt;
     if (hint) {{
       var p = document.createElement("p");
@@ -1763,11 +1879,12 @@ tbody tr:hover {{ background:var(--surface-2); }}
   /* ---------- Öffnen und Schließen ---------- */
   function openFinder() {{
     if (!fiQuiz.children.length) renderQuiz();
-    FI.hidden = false; document.body.style.overflow = "hidden"; FI.scrollTop = 0;
+    FI.hidden = false; FI.showModal(); document.body.style.overflow = "hidden"; FI.scrollTop = 0;
+    fitFinder();
     document.getElementById("fi-close").focus();
   }}
   function closeFinder() {{
-    FI.hidden = true; document.body.style.overflow = "";
+    FI.close(); FI.hidden = true; document.body.style.overflow = "";
     if (fiFocus) {{ try {{ fiFocus.focus(); }} catch (e) {{}} }}
   }}
   document.getElementById("fi-open").addEventListener("click", function (e) {{
@@ -1776,13 +1893,12 @@ tbody tr:hover {{ background:var(--surface-2); }}
   document.getElementById("fi-close").addEventListener("click", closeFinder);
   fiAgain.addEventListener("click", function () {{
     fiRes.hidden = true; fiQuiz.hidden = false; fiAgain.hidden = true; FI.scrollTop = 0;
+    fiQuiz.querySelector("button").focus();
   }});
   fiQuiz.addEventListener("click", function (e) {{
     if (e.target.id === "fi-go") showResults();
   }});
-  document.addEventListener("keydown", function (e) {{
-    if (!FI.hidden && e.key === "Escape") {{ e.preventDefault(); closeFinder(); }}
-  }});
+  FI.addEventListener("cancel", function (e) {{ e.preventDefault(); closeFinder(); }});
   document.getElementById("fi-lede").textContent = FT.lede;
 
 }})();
@@ -1876,6 +1992,13 @@ def check_scoping(sheets, slugs, suffix):
     problems = []
     for css, slug in zip(sheets, slugs):
         css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+        for url in re.finditer(r"url\(\s*(['\"]?)(.*?)\1\s*\)", css, re.S | re.I):
+            if not url.group(2).startswith(("data:image/svg+xml", "#")):
+                problems.append(f"{slug}: externe CSS-Ressource: {url.group(2)[:80]}")
+        if re.search(r"@import\b", css, re.I):
+            problems.append(f"{slug}: @import ist nicht erlaubt")
+        # Braces and commas inside strings (including SVG data URIs) are not CSS structure.
+        css = re.sub(r'''"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*' ''', '""', css, flags=re.X)
         stack, buf = [], ""
         for ch in css:
             if ch == "{":
@@ -1891,12 +2014,15 @@ def check_scoping(sheets, slugs, suffix):
                     elif name in ("@media", "@supports", "@layer", "@container"):
                         stack.append("group")
                     else:
+                        problems.append(f"{slug}: nicht erlaubte globale At-Regel: {name}")
                         stack.append("opaque")
                 else:
                     if not (stack and stack[-1] == "opaque"):
                         for one in (x.strip() for x in sel.split(",")):
-                            if one and not one.startswith(".style-" + slug):
+                            if one and not re.match(r"\.style-" + re.escape(slug) + r"(?![\w-])", one):
                                 problems.append(f"{slug}: ungescopter Selektor: {one[:80]}")
+                            if re.match(r"\.style-" + re.escape(slug) + r"\s*[+~]", one):
+                                problems.append(f"{slug}: Selektor verlaesst die Demo: {one[:80]}")
                     stack.append("rule")
             elif ch == "}":
                 buf = ""
@@ -1904,6 +2030,8 @@ def check_scoping(sheets, slugs, suffix):
                     stack.pop()
             else:
                 buf += ch
+        if stack:
+            problems.append(f"{slug}: nicht geschlossene CSS-Regel")
     if problems:
         for x in problems[:20]:
             print("  FEHLER  " + x, file=sys.stderr)
@@ -2075,6 +2203,9 @@ def build_og():
 
 if __name__ == "__main__":
     print("Stil-Katalog")
+    problems = check_catalog(ROOT, ORDER_DE, ORDER_EN, FONT_SPECS)
+    if problems:
+        sys.exit("\n".join(problems))
     build_landing()
     for _lang in ("de", "en"):
         build(_lang, "site")

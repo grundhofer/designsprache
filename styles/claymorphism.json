@@ -49,7 +49,7 @@
     "Kippt sofort ins Kindliche: für Entwicklerwerkzeuge, Finanzdaten oder alles Ernsthafte wirkt der Look unseriös",
     "Wirkt billig, sobald die Schatten neutral-schwarz sind oder das inset-Highlight fehlt -- dann bleibt nur eine runde Karte mit Schlagschatten"
   ],
-  "a11y": "Deutlich besser als Neumorphismus, aber nicht unproblematisch: Text erreicht hier 10,3:1 (Ueberschriften und Namen), sekundärer Text 5,7:1 und die Status-Pills 6,9:1 -- das sind saubere AA-Werte, weil die Flächen eigene Farben haben. Die Kanten bleiben das Problem: eine weiße Karte auf dem Slab misst 1,1:1 und ist damit weit unter den 3:1 aus WCAG 2.2 SC 1.4.11; die Abgrenzung trägt allein der Schatten, der bei erhöhtem Kontrastmodus oder auf schlechten Displays wegfällt. Der Fokus-Ring braucht wegen der 26-46px-Radien einen eigenen offset von 3-4px, sonst verschwindet er in der Rundung -- und der Farbunterschied Mint/Pfirsich darf nie der einzige Träger der Statusinformation sein.",
+  "a11y": "Die kräftigen Textfarben bieten mehr Kontrastreserve als typische Neumorphismus-Paletten. Weiße Karten können sich dagegen nur schwach vom Untergrund abheben. Ein dekorativer Kartenrand muss nicht pauschal 3:1 erreichen; relevant sind visuelle Merkmale, die ein Bedienelement oder seinen Zustand erkennbar machen. Verlasse dich bei solchen Signalen nicht allein auf weiche Schatten. Ein kontrastreicher Fokus mit Abstand zur Rundung bleibt nötig; Mint und Pfirsich dürfen den Status nur zusätzlich zu Text oder Form vermitteln.",
   "longevity": "Klar auf 2021/22 datierbar und eng an die damalige 3D-Render-Welle gekoppelt; als Vollstil altert er schlecht. Ueberleben dürfte er dort, wo Freundlichkeit funktional ist -- Kinder-Apps, Lern-Apps, Onboarding-Strecken -- also als Genre-Konvention, nicht als Zeitgeist.",
   "scores": {
     "longevity": 2,
@@ -73,5 +73,11 @@
     "fits": ["consumer", "marketing"],
     "tone": ["warm", "playful"],
     "signature": "Schatten nie schwarz, sondern ein dunkler Ton der Grundfarbe, weit versetzt mit negativem Spread."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: notwendige Merkmale und dekorative Ränder",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+    }
+  ]
 }

@@ -63,23 +63,36 @@ styles/<slug>.en.*      englische Fassung, CSS zeichengleich / English, byte-ide
 landing.html            zweisprachige Eingangsseite / bilingual entry page
 build.py                Generator
 tools/palette-check.py  Prüfwerkzeug / check tool
+tools/catalog_checks.py Quellen- und Sprachprüfung / source and language checks
+tests/                  Regressionstests / regression tests
 docs/                   erzeugt, nicht eingecheckt / generated, not committed
 ```
 
 ```sh
 python3 build.py                 # docs/index.html, docs/de/, docs/en/
 python3 tools/palette-check.py   # Palettendubletten / palette duplicates
+python3 -m unittest discover -s tests -v
+node --test tests/finder.test.cjs # nach dem Build; Node 22+ / after building; Node 22+
 ```
 
 **Die Scoping-Regel.** 31 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
 jeder CSS-Selektor mit `.style-<slug>`, `@keyframes` sind slug-präfigiert, und es gibt kein
 `:root`, kein `body`, keinen nackten Element-Selektor. `build.py` prüft das bei jedem Lauf und
-bricht bei Verstoß ab — ebenso, wenn deutscher Text geändert wurde, ohne den englischen
-nachzuziehen.
+bricht bei Verstoß ab — ebenso, wenn eine bestehende Übersetzung des Seitengerüsts
+nicht mehr zur deutschen Vorlage passt.
 
 31 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
 `@keyframes` names are slug-prefixed, and there is no `:root`, `body` or bare element selector.
 `build.py` enforces this on every run.
+
+Zusätzlich prüft der Build alle vier Quelldateien je Eintrag, die Referenztexte,
+inaktive Demo-Felder, gültige Kennzahlen und Stil-/Schriftverweise sowie zeichengleiches
+CSS und sprachneutrale Metadaten in beiden Sprachen. Die Tests brauchen keine Pakete;
+Node wird nur für die JavaScript-Regressionstests benötigt, nicht zum Bauen der Seite.
+
+The build also checks all four sources per entry, reference copy, inactive demo fields,
+valid scores and style/font references, and identical CSS and language-neutral metadata.
+Tests need no packages; Node is only needed for JavaScript regression tests, not the build.
 
 `tools/palette-check.py` findet Stilpaare mit zwei oder mehr praktisch identischen bunten Farben
 (OKLab-ΔE unter 2, Neutrale ausgenommen) und läuft in der CI. Es findet Stilpaare, die man sonst
@@ -87,6 +100,12 @@ für einen Stil hält. Runs in CI; finds pairs that would otherwise read as one 
 
 Die Demos sind handgebautes HTML und CSS — keine Bilder, keine Skripte, keine Bibliotheken.
 The demos are hand-built HTML and CSS — no images, no scripts, no libraries.
+
+Der neue Abschnitt **Vom Stil zur benutzbaren Oberfläche** beschreibt Rollen, Zustände,
+Textvergrößerung und Kontrastprüfung. Ausgewählte Faktenblätter verlinken Quellen direkt;
+die Quellen gelten für die benannten Themen, nicht pauschal für alle Aussagen eines Eintrags.
+**From a style to a usable interface** covers roles, states, text resizing and contrast
+checks. Selected fact sheets now link sources for specific claims.
 
 ---
 

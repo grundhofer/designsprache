@@ -75,7 +75,7 @@
     "Dark-only schließt Nutzer mit Astigmatismus aus, für die heller Text auf dunklem Grund messbar schlechter lesbar ist",
     "Kippt ins Billige, sobald Neon-Akzente, mehrere Glows und übertriebene Gradients zusammenkommen - dann wird daraus Cyberpunk-Kitsch"
   ],
-  "a11y": "Die Hairlines bei 7-11% Weiß erreichen nur etwa 1,15-1,3:1 und sind damit ausschließlich als dekorative Trenner zulässig - der Rahmen eines Eingabefeldes muss dagegen 3:1 erreichen, hier über eine eigene Stufe rgba(255,255,255,.36) (rund 3,2:1 gegen den Feldgrund) plus einen 3px-Focus-Ring in nahezu deckender Akzentfarbe (rund 4,2:1). Reinweißer Text auf reinem Schwarz erzeugt Halation, deshalb #EDEDEF auf #08080B statt #FFF auf #000; die Mono-Metadaten in #71717F liegen bei rund 4,1:1 und sind deshalb bewusst nur als Sekundärinformation gesetzt. Status wird nie allein über Farbe kommuniziert: der farbige Dot ist immer von einem Textlabel begleitet, und der pulsierende Aktiv-Indikator wird unter prefers-reduced-motion abgeschaltet.",
+  "a11y": "Die Hairlines bei 7-11% Weiß erreichen nur etwa 1,15-1,3:1 und sind damit ausschließlich als dekorative Trenner zulässig - der Rahmen eines Eingabefeldes muss dagegen 3:1 erreichen, hier über eine eigene Stufe rgba(255,255,255,.36) (rund 3,2:1 gegen den Feldgrund) plus einen 3px-Focus-Ring in nahezu deckender Akzentfarbe (rund 4,2:1). Die Metadatenfarbe #71717F unterschreitet auf dem dunklen Grund 4,5:1 und muss für lesbare Informationen im Produkt aufgehellt werden. Status wird nie allein über Farbe kommuniziert: der farbige Dot ist immer von einem Textlabel begleitet, und der pulsierende Aktiv-Indikator wird unter prefers-reduced-motion abgeschaltet.",
   "longevity": "Das Grundgerüst aus Grauskala, Hairlines, Mono-Metadaten und knapper Motion ist strukturell und wird die nächsten fünf bis zehn Jahre überstehen; die radialen Glow-Gradients und der violette Standard-Akzent sind der zeitgebundene Teil und werden zuerst datiert wirken.",
   "scores": {
     "longevity": 4,
@@ -119,5 +119,11 @@
       "calm"
     ],
     "signature": "Sichtbare Tastenkürzel-Badges und Monospace-Metadaten in jeder Zeile; die Maus ist optional."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Kontrast für lesbare Informationen",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    }
+  ]
 }

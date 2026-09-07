@@ -16,7 +16,7 @@
     "Gruppierte Listen mit 28px Außen- und 4px Innenecken bei 3px Fuge",
     "Elevation über tonale Flächen statt Schatten: surface / container-low #F7F2FA / container #F3EDF7 / container-high #ECE6F0 / container-highest #E6E0E9",
     "State Layer als Overlay der on-Farbe: 8% bei Hover, 10-12% bei Aktiv, 12% bei Fokus",
-    "Farbrollen-Paare garantieren Kontrast: primary/on-primary, primary-container/on-primary-container",
+    "Vorgesehene Farbrollen paaren: primary/on-primary und primary-container/on-primary-container; geänderte Werte und Zustände auf Kontrast prüfen",
     "Tonal Palette in Tonstufen 10/20/30/40/80/90/95 - Füllungen kommen aus Tone 90, Text darauf aus Tone 10",
     "Gefüllte Icon-Varianten (fill, kein stroke) im 24px-Raster in tonalen Containern; Trefferfläche 48dp, Expressive-Buttons bis 56px hoch",
     "Spring-Motion statt Bezier: Stiffness/Damping/Anfangsgeschwindigkeit, mit sichtbarem Ueberschwingen",
@@ -27,7 +27,7 @@
     "contrast": "hoch",
     "density": "mittel bis luftig - große Radien und 48dp-Ziele erzwingen Luft",
     "depth": "tonal: jede Ebene ist eine eigene Surface-Container-Stufe. Schatten nur noch bei FAB und schwebenden Elementen",
-    "color": "Ein Seed-Farbwert erzeugt über HCT vier Tonal Palettes (primary/secondary/tertiary/neutral) und daraus alle Farbrollen - Füllfarben werden nie frei gewählt, sondern abgeleitet",
+    "color": "Ein Seed-Farbwert erzeugt über HCT fünf zentrale Tonpaletten: primary, secondary, tertiary, neutral und neutral variant. Semantische Farbrollen beziehen daraus ihre Werte; error besitzt eine eigene Palette.",
     "type": "Roboto Flex als Variable Font, fünf Rollen (display/headline/title/body/label) in je drei Größen, dazu 15 betonte Schnitte für Akzentmomente",
     "motion": "federbasiert, kein Bezier: Expressive-Schema mit sichtbarem Ueberschwingen, ca. 300-550ms wahrgenommene Dauer, in Compose bei 21 Komponenten Standard",
     "texture": "keine - Oberflächen sind reine Tonwerte"
@@ -76,7 +76,7 @@
     "Ohne echte Umsetzung von State Layer, Motion und Formmorphing bleibt nur 'große Radien plus lila' übrig - eine Karikatur des Systems",
     "Die Expressive-APIs in Compose sind noch experimentell und opt-in; auf Web und Desktop muss das System vollständig von Hand nachgebaut werden"
   ],
-  "a11y": "Das ist die stärkste Seite des Systems: Farbrollen existieren nur als Paar (primary/on-primary, surface-container-high/on-surface-variant), sodass jede erlaubte Kombination den Kontrast bereits erfüllt, und die 48dp-Mindestziele sowie sichtbare State Layer sind Teil der Spezifikation. Zwei reale Fallstricke bleiben: Dynamic Color kann bei ungeeigneten Seed-Farben Rollenpaare in Grenzbereiche schieben, weshalb der Seed fixiert und der Kontrast einmal gemessen gehört; und das federnde Motion mit Ueberschwingen ist für vestibulär empfindliche Nutzer belastend, also braucht prefers-reduced-motion eine echte Umsetzung, nicht nur kürzere Dauern. Diese Demo setzt beides um: fester Seed statt Dynamic Color und ein Reduced-Motion-Zweig, der Morphing und Federbewegung abschaltet.",
+  "a11y": "Semantische Farbpaare und große Berührungsflächen sind eine gute Ausgangsbasis, aber kein pauschaler Kontrastnachweis. Prüfe die tatsächlich gerenderten Rollenpaare in jedem unterstützten Modus und Zustand, besonders nach eigenen Farbänderungen oder Overlays. Dynamic Color muss dafür nicht abgeschaltet werden. Die Demo nutzt eine feste Palette für einen reproduzierbaren Vergleich. Ihre Reduced-Motion-Regel deaktiviert Morphing und Federbewegung; diese Alternative gehört auch in ein fertiges Produkt.",
   "longevity": "Der tokenbasierte Kern (Tonal Palettes, Farbrollen, tonale Elevation) altert kaum und wird die nächsten Jahre überdauern. Die Expressive-Oberfläche - sehr große Pillen, Formmorphing, federndes Ueberschwingen - ist dagegen ein deutlich datierbarer Jahrgangsmarker.",
   "scores": {
     "longevity": 3,
@@ -120,5 +120,15 @@
       "warm"
     ],
     "signature": "Jede Füllfarbe ist eine Tonstufe des Seeds; die Pille morpht beim Druck zum Squircle."
-  }
+  },
+  "sources": [
+    {
+      "title": "Material: fünf zentrale Tonpaletten",
+      "url": "https://codelabs.developers.google.com/customizing-material-color"
+    },
+    {
+      "title": "Google: Forschung zu Material 3 Expressive",
+      "url": "https://design.google/library/expressive-material-design-google-research"
+    }
+  ]
 }

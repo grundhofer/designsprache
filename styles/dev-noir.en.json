@@ -75,7 +75,7 @@
     "Dark-only excludes users with astigmatism, for whom light text on a dark ground is measurably harder to read",
     "Tips into the cheap as soon as neon accents, several glows and overdone gradients come together - at that point it turns into cyberpunk kitsch"
   ],
-  "a11y": "The hairlines at 7-11% white reach only about 1.15-1.3:1 and are therefore admissible solely as decorative dividers - the border of an input field, by contrast, must reach 3:1, here via its own step rgba(255,255,255,.36) (around 3.2:1 against the field ground) plus a 3px focus ring in an almost opaque accent color (around 4.2:1). Pure white text on pure black produces halation, hence #EDEDEF on #08080B instead of #FFF on #000; the mono metadata in #71717F sits at around 4.1:1 and is therefore deliberately set as secondary information only. Status is never communicated by color alone: the colored dot is always accompanied by a text label, and the pulsing active indicator is switched off under prefers-reduced-motion.",
+  "a11y": "The hairlines at 7-11% white reach only about 1.15-1.3:1 and are therefore admissible solely as decorative dividers - the border of an input field, by contrast, must reach 3:1, here via its own step rgba(255,255,255,.36) (around 3.2:1 against the field ground) plus a 3px focus ring in an almost opaque accent color (around 4.2:1). The metadata color #71717F falls below 4.5:1 against the dark ground and needs lightening for readable information in a product. Status is never communicated by color alone: the colored dot is always accompanied by a text label, and the pulsing active indicator is switched off under prefers-reduced-motion.",
   "longevity": "The underlying frame of grayscale, hairlines, mono metadata and terse motion is structural and will survive the next five to ten years; the radial glow gradients and the default violet accent are the time-bound part and will look dated first.",
   "scores": {
     "longevity": 4,
@@ -119,5 +119,11 @@
       "calm"
     ],
     "signature": "Visible keyboard-shortcut badges and monospace metadata in every row; the mouse is optional."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: contrast for readable information",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    }
+  ]
 }

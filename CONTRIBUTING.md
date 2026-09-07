@@ -62,7 +62,7 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 4. `@keyframes`-Namen mit `<slug>-` präfigieren.
 5. Klassennamen innerhalb der Demo sind frei — sie sind durch Regel 2 abgeschirmt.
 
-`build.py` prüft das bei jedem Lauf und bricht bei Verstoß mit Zeilenangabe ab.
+`build.py` prüft das bei jedem Lauf und bricht bei Verstoß mit einer Diagnose zum betroffenen Stil ab.
 
 #### Weitere Regeln
 
@@ -113,6 +113,11 @@ Struktur siehe jede bestehende `.json`. Was zählt:
   aus", sondern welche Farbwerte, Radien, Schriften dort tatsächlich zu sehen sind.
 - `verdict` — ehrlich. Ein klares Nein ist eine gute Antwort.
 - `scores` — ganze Zahlen 1 bis 5. `effort` und `density` sind Eigenschaften, kein Urteil.
+- `palette` — sechsstellige Hex-Werte (`#FF6600`, nicht `#f60`).
+- `sources` — optional eine Liste aus `{"title": "Belegtes Thema", "url": "https://…"}`.
+  Verlinke die konkrete Quelle und benenne im Titel, welche Aussage sie stützt. In beiden
+  Sprachen bleiben die URLs gleich; die Titel werden übersetzt. Demo-Entscheidungen und
+  redaktionelle Einschätzungen dürfen nicht als universelle Produktvorgaben erscheinen.
 
 Die englische Fassung ist eine echte Übersetzung, keine maschinelle: idiomatische Fachbegriffe,
 amerikanisches Englisch, gleiche Stimme. Die Felder `slug`, `palette`, `scores`, `googleFonts`
@@ -126,6 +131,8 @@ andere Längen — die Füllzeichen entsprechend nachzählen und anpassen, niema
 ```sh
 python3 build.py                    # muss ohne Fehler durchlaufen
 python3 tools/palette-check.py      # muss ohne Befund durchlaufen
+python3 -m unittest discover -s tests -v
+node --test tests/finder.test.cjs    # Node 22+, keine npm-Pakete nötig
 ```
 
 Dann `docs/de/index.html` und `docs/en/index.html` im Browser öffnen und den neuen Eintrag
@@ -190,6 +197,17 @@ one of `light` `dark` `both`. See the German section above for the field list.
 
 Run `python3 build.py` and `python3 tools/palette-check.py`, then open `docs/de/index.html` and
 `docs/en/index.html` and look at your entry — in both themes, wide and narrow.
+
+Use six-digit hex values in `palette`. Optional `sources` entries contain `title` and an
+HTTPS `url`; name the specific claim the source supports, translate titles, and keep the
+URLs identical between languages. Distinguish demo choices and editorial judgments from
+product specifications. The build validates the file inventory, reference content, metadata,
+references, and identical demo CSS across languages.
+
+Also run `python3 -m unittest discover -s tests -v` and
+`node --test tests/finder.test.cjs` after building. The JavaScript tests require Node 22+
+but no npm packages. They check scoring and prompt output, not browser layout or native
+dialog behavior; manual browser review remains necessary.
 
 ---
 

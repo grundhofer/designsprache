@@ -77,7 +77,7 @@
     "Die Dichte erzeugt kognitive Last: für gelegentlich genutzte Apps ist sie eine Zumutung, nicht ein Feature",
     "Kippt ins Billige, sobald Hairlines zu hell, Zeilenhöhen ungleich oder Zahlen nicht tabular gesetzt sind - dann sieht es nach Excel-Export aus"
   ],
-  "a11y": "Der Haupttext liegt bei 12,7:1 gegen den Panelgrund, aber die Labels bei 9px sind unter WCAG 1.4.3 kritisch: 9px in Versalien bleibt kleiner Text und braucht die vollen 4.5:1 - der hier verwendete Dim-Ton #7B8794 erreicht 5,2:1 und ist damit zulässig, das Faint-Grau #505B68 liegt bei 2,7:1 und ist deshalb bewusst nur für Zeilennummern, Trennstriche und Achsenbeschriftungen eingesetzt, nie für Information, die man lesen können muss. Rot/Grün darf nie allein stehen: in dieser Demo tragen das Wort 'Aktiv'/'Pausiert' und die Richtung des Sparkline-Verlaufs die Information redundant zur Farbe. Die 18px hohen Buttons unterschreiten Target Size 2.5.8 (24x24px) und sind nur zulässig, wenn die 24px-Umkreise sich nicht schneiden - in Produktion ist der 4px-Abstand zwischen den Aktionen deshalb Pflicht, keine Kosmetik.",
+  "a11y": "Heller Text auf dunklem Grund bietet Reserve, doch auch kleine Achsenbeschriftungen, Zeilennummern und Metadaten sind lesbare Informationen. #505B68 mit rund 2,7:1 reicht dafür nicht; diese Demo-Schwäche braucht im Produkt eine hellere Textfarbe. Wörter und Kurvenverläufe ergänzen die rot-grüne Codierung. Prüfe die tatsächlichen Klickflächen: Die 18px hohen Aktionen brauchen größere Trefferflächen oder ausreichenden Abstand gemäß der 24px-Kreis-Ausnahme. Ein pauschaler Abstand von 4px belegt die Ausnahme nicht.",
   "longevity": "Der Stil hat seit 1982 überlebt, weil er aus einer Aufgabe folgt und nicht aus einer Mode - solange Menschen viele Werte gleichzeitig vergleichen müssen, bleibt er richtig. Datierbar ist nur die Farbtemperatur des Grunds: das blauschwarze Grafana-Grau ist ein 2020er-Marker, das reine Schwarz mit Amber ist zeitlos.",
   "scores": {
     "longevity": 5,
@@ -120,5 +120,11 @@
       "austere"
     ],
     "signature": "Tabellenziffern rechtsbündig, Hairline zwischen jeder Zelle, Sparkline direkt in der Zeile."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Zielgröße und Ausnahmen",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    }
+  ]
 }

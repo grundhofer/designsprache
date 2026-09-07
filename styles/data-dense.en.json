@@ -77,7 +77,7 @@
     "The density creates cognitive load: for occasionally used apps it is an imposition, not a feature",
     "It turns cheap the moment hairlines are too light, row heights uneven or numbers not set in tabular figures - then it looks like an Excel export"
   ],
-  "a11y": "Body text sits at 12.7:1 against the panel ground, but the 9px labels are critical under WCAG 1.4.3: 9px in caps is still small text and needs the full 4.5:1 - the dim tone used here, #7B8794, reaches 5.2:1 and is therefore permissible, while the faint gray #505B68 sits at 2.7:1 and is deliberately used only for row numbers, dividers and axis labels, never for information anyone has to read. Red/green must never stand alone: in this demo the words 'Active'/'Paused' and the direction of the sparkline carry the information redundantly to the color. The 18px buttons fall short of Target Size 2.5.8 (24x24px) and are only permissible if the 24px circles do not intersect - in production the 4px gap between the actions is therefore mandatory, not cosmetic.",
+  "a11y": "Light text on a dark ground offers headroom, but small axis labels, row numbers and metadata are still readable information. #505B68 at about 2.7:1 is insufficient for them; this demo weakness needs a lighter text color in a product. Words and chart direction supplement red/green coding. Check actual clickable bounds: the 18px actions need larger hit areas or sufficient spacing under the 24px-circle exception. A blanket 4px gap does not establish that exception.",
   "longevity": "The style has survived since 1982 because it follows from a task rather than from a fashion - as long as people have to compare many values at once, it stays right. Only the color temperature of the ground is datable: the blue-black Grafana gray is a 2020s marker, plain black with amber is timeless.",
   "scores": {
     "longevity": 5,
@@ -120,5 +120,11 @@
       "austere"
     ],
     "signature": "Right-aligned tabular figures, a hairline between every cell, a sparkline inside the row."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: target size and exceptions",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    }
+  ]
 }

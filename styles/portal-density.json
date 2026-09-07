@@ -39,7 +39,7 @@
     "#333333",
     "#0867bf",
     "#001789",
-    "#f60",
+    "#ff6600",
     "#009899"
   ],
   "examples": [
@@ -83,7 +83,7 @@
     "Ohne echte Taxonomie zerfällt die Farbkette in Willkür: zehn zufällig gewürfelte Bunttöne ohne zugeordnete Rubrik sehen nicht nach Index aus, sondern nach Fehler",
     "Die Kategoriefarben sind untereinander nicht unterscheidbar für alle Nutzer - #393 und #d68011 oder #001789 und #670099 fallen bei Farbfehlsichtigkeit zusammen; die Farbe darf deshalb nie der einzige Kategorienhinweis sein"
   ],
-  "a11y": "Der gute Teil: #333 auf #fff liegt bei 12,6:1 und auf #f5f5f5 bei 11,6:1, die Linkfarbe #0867bf bei 5,6:1 und die Visited-Farbe #8a3683 bei 7,2:1 - alle drei bestehen 1.4.3 auch bei 12px. Der schlechte Teil ist strukturell und muss benannt werden: #0867bf gegen den umgebenden Fließtext #333 erreicht nur 2,25:1 und verfehlt damit die 3:1 aus 1.4.1 für Links, die allein durch Farbe kenntlich sind. Die Vorbilder heilen das über a:hover{text-decoration:underline} - das ist die zulässige Technik nur für Hover und Fokus, nicht für den Ruhezustand; in Produktion gehört deshalb entweder eine permanente Unterstreichung im Fließtext oder eine dunklere Linkfarbe her. In dieser Demo stehen Links fast durchgängig allein in ihrer Zeile oder Zelle, wo die Regel nicht greift. Die Kategoriefarben sind nie alleiniger Informationsträger: der 3px-Balken steht immer über einem ausgeschriebenen Kastentitel, das 8px-Farbfeld immer neben dem Kategorienamen und neben seiner ausgeschriebenen Kettennummer, und der 7px-Streifen am Seitenkopf, der die vollständige Kette in 27 Gliedern zeigt, trägt selbst keine Information, die nicht daneben im Text stünde - was nötig ist, weil helle Kettenglieder wie #fc3 oder #cdcc00 gegen Weiß unter 2:1 liegen und 1.4.11 als alleiniger Indikator klar verfehlen. Zustand wird in diesem Stil grundsätzlich nicht über Farbe kodiert: 'Aktiv' und 'Pausiert' sind ausgeschriebene Wörter in einem neutralen Rahmen und unterscheiden sich über Schriftschnitt, nicht über Farbton. Ungelöst bleibt die Zielgröße: Zeilen von 25-27px Höhe unterschreiten 2.5.8 (24x24px ist gerade eben erreicht, 44px klar nicht), und für Touch ist der Stil ohne eigene, deutlich luftigere Variante schlicht ungeeignet.",
+  "a11y": "Der gute Teil: #333 auf #fff liegt bei 12,6:1 und auf #f5f5f5 bei 11,6:1, die Linkfarbe #0867bf bei 5,6:1 und die Visited-Farbe #8a3683 bei 7,2:1 - alle drei bestehen 1.4.3 auch bei 12px. Der schlechte Teil ist strukturell und muss benannt werden: #0867bf gegen den umgebenden Fließtext #333 erreicht nur 2,25:1 und verfehlt damit die 3:1 aus 1.4.1 für Links, die allein durch Farbe kenntlich sind. Die Vorbilder heilen das über a:hover{text-decoration:underline} - das ist die zulässige Technik nur für Hover und Fokus, nicht für den Ruhezustand; in Produktion gehört deshalb entweder eine permanente Unterstreichung im Fließtext oder ein zusätzliches, dauerhaft sichtbares Erkennungsmerkmal her. In dieser Demo stehen Links fast durchgängig allein in ihrer Zeile oder Zelle, wo die Regel nicht greift. Die Kategoriefarben sind nie alleiniger Informationsträger: der 3px-Balken steht immer über einem ausgeschriebenen Kastentitel, das 8px-Farbfeld immer neben dem Kategorienamen und neben seiner ausgeschriebenen Kettennummer, und der 7px-Streifen am Seitenkopf, der die vollständige Kette in 27 Gliedern zeigt, trägt selbst keine Information, die nicht daneben im Text stünde - was nötig ist, weil helle Kettenglieder wie #fc3 oder #cdcc00 gegen Weiß unter 2:1 liegen und 1.4.11 als alleiniger Indikator klar verfehlen. Zustand wird in diesem Stil grundsätzlich nicht über Farbe kodiert: 'Aktiv' und 'Pausiert' sind ausgeschriebene Wörter in einem neutralen Rahmen und unterscheiden sich über Schriftschnitt, nicht über Farbton. Prüfe die tatsächlichen Klickflächen: WCAG 2.2 AA nennt 24 × 24 CSS-Pixel oder eine definierte Ausnahme; 44 × 44 gehört zur erweiterten AAA-Anforderung. Eine Zeilenhöhe von 25–27px allein belegt weder Bestehen noch Verstoß. Eine luftigere Touch-Variante bleibt sinnvoll.",
   "longevity": "Der Stil hat über zwanzig Jahre überlebt, aber nicht als Mode, sondern als Funktion eines Geschäftsmodells: solange eine Startseite ein Inhaltsverzeichnis sein muss, bleibt er richtig, und kakaku.com fährt ihn 2026 praktisch unverändert. Sein Ende ist deshalb kein Geschmackswandel, sondern ein Strukturwandel - wenn Suche und Empfehlung die Navigation vollständig ersetzen, verschwindet die Aufgabe und mit ihr die Form, wie es im Westen ab 2005 geschehen ist. Zeitgebunden sind die Festbreite und die Sprite-Buttons; die Farbtaxonomie, die 1px-Rahmen und die 13px-Zeile sind es nicht.",
   "scores": {
     "longevity": 4,
@@ -113,5 +113,11 @@
     "fits": ["data", "content", "internal"],
     "tone": ["precise", "nostalgic"],
     "signature": "Feste zentrierte Spalte von 950-1220px, 13px-Zeilen, 200 bis 1250 Textlinks auf einer einzigen Seite."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Zielgröße und Ausnahmen",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    }
+  ]
 }

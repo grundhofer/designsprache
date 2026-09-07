@@ -39,7 +39,7 @@
     "#333333",
     "#0867bf",
     "#001789",
-    "#f60",
+    "#ff6600",
     "#009899"
   ],
   "examples": [
@@ -83,7 +83,7 @@
     "Without a real taxonomy the color chain falls apart into arbitrariness: ten randomly rolled hues with no assigned section do not look like an index, they look like a bug",
     "The category colors are not distinguishable from one another for every user - #393 and #d68011, or #001789 and #670099, collapse under color vision deficiency; the color may therefore never be the only cue to a category"
   ],
-  "a11y": "The good part: #333 on #fff comes to 12.6:1 and on #f5f5f5 to 11.6:1, the link color #0867bf to 5.6:1 and the visited color #8a3683 to 7.2:1 - all three pass 1.4.3 even at 12px. The bad part is structural and has to be named: #0867bf against the surrounding body text #333 reaches only 2.25:1 and so misses the 3:1 of 1.4.1 for links identified by color alone. The models patch that with a:hover{text-decoration:underline} - which is the permitted technique for hover and focus only, not for the resting state; in production that calls for either a permanent underline in body text or a darker link color. In this demo links stand almost throughout alone in their row or cell, where the rule does not bite. The category colors are never the sole carrier of information: the 3px bar always sits above a spelled-out box title, the 8px color chip always beside the category name and beside its spelled-out chain number, and the 7px stripe at the head of the page, which shows the complete chain in 27 links, itself carries no information that is not in the text next to it - which is necessary, because light chain links such as #fc3 or #cdcc00 fall below 2:1 against white and clearly miss 1.4.11 as a sole indicator. State is on principle never encoded by color in this style: 'Active' and 'Paused' are spelled-out words in a neutral frame and differ by weight, not by hue. Target size stays unsolved: rows 25-27px high fall short of 2.5.8 (24x24px is just barely met, 44px clearly is not), and for touch the style is simply unsuitable without its own, markedly airier variant.",
+  "a11y": "The good part: #333 on #fff comes to 12.6:1 and on #f5f5f5 to 11.6:1, the link color #0867bf to 5.6:1 and the visited color #8a3683 to 7.2:1 - all three pass 1.4.3 even at 12px. The bad part is structural and has to be named: #0867bf against the surrounding body text #333 reaches only 2.25:1 and so misses the 3:1 of 1.4.1 for links identified by color alone. The models patch that with a:hover{text-decoration:underline} - which is the permitted technique for hover and focus only, not for the resting state; in production that calls for either a permanent underline in body text or another persistent visual cue. In this demo links stand almost throughout alone in their row or cell, where the rule does not bite. The category colors are never the sole carrier of information: the 3px bar always sits above a spelled-out box title, the 8px color chip always beside the category name and beside its spelled-out chain number, and the 7px stripe at the head of the page, which shows the complete chain in 27 links, itself carries no information that is not in the text next to it - which is necessary, because light chain links such as #fc3 or #cdcc00 fall below 2:1 against white and clearly miss 1.4.11 as a sole indicator. State is on principle never encoded by color in this style: 'Active' and 'Paused' are spelled-out words in a neutral frame and differ by weight, not by hue. Check actual clickable bounds: WCAG 2.2 AA specifies 24 × 24 CSS pixels or a defined exception; 44 × 44 belongs to the enhanced AAA criterion. A 25–27px row height alone proves neither a pass nor a failure. A roomier touch variant remains useful.",
   "longevity": "The style has survived more than twenty years, but not as a fashion - as a function of a business model: as long as a home page has to be a table of contents, it stays right, and kakaku.com runs it practically unchanged in 2026. Its end is therefore no change of taste but a structural change - once search and recommendation replace navigation entirely, the job disappears and the form with it, as happened in the West from 2005 on. Period-bound are the fixed width and the sprite buttons; the color taxonomy, the 1px borders and the 13px row are not.",
   "scores": {
     "longevity": 4,
@@ -113,5 +113,11 @@
     "fits": ["data", "content", "internal"],
     "tone": ["precise", "nostalgic"],
     "signature": "A fixed centred column of 950-1220px, 13px rows, 200 to 1250 text links on a single page."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: target size and exceptions",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    }
+  ]
 }

@@ -10,14 +10,14 @@
   ],
   "family": "Norm & Beschränkung",
   "era": "2004-heute",
-  "origin": "Der Stil ist kein Entwurf, sondern der Abdruck einer Hardware. Elektrophoretische Displays schalten geladene Pigmentpartikel in Mikrokapseln um; das Bild bleibt danach ohne Strom stehen, reflektiert Umgebungslicht statt selbst zu leuchten und kennt keine Hintergrundbeleuchtung, gegen die man Kontrast aufbauen könnte. Daraus folgen drei Zwänge, aus denen die gesamte Sprache besteht: Der weißeste Punkt ist ein hellgraues, leicht warmes Papier und der schwärzeste ein dunkles Anthrazit, es gibt typischerweise 16 Graustufen und keinen Alpha-Kanal, und jede Änderung kostet einen sichtbaren Bildaufbau von etwa 100 bis 500 ms. Sony brachte 2004 mit dem Librié das erste kommerzielle E-Ink-Lesegerät, Amazon machte die Sprache ab 2007 mit dem Kindle zum Massenphänomen, reMarkable baute ab 2017 mit dem Linux-Derivat Codex ein ausdrücklich auf niedrige Latenz optimiertes Betriebssystem darum, das Light Phone II übertrug sie 2018 auf ein Telefon. Formalisiert wurde sie erst spät: das TRMNL-Framework veröffentlicht seit 2024 versioniert eine echte Token-Sprache aus Graustufenstufen, begrenzten Farbsätzen, Rendering-Modi, Dithering- und Text-Stroke-Utilities. Parallel läuft der größte, völlig unnostalgische Einsatz im Handel, auf Millionen elektronischer Regaletiketten.",
+  "origin": "Die Gestaltung ist von reflektierenden, bistabilen Displays geprägt: Das Panel kann ein statisches Bild ohne weitere Energiezufuhr für die Bildhaltung bewahren; Prozessor, Funk und eine optionale Frontbeleuchtung benötigen weiterhin Strom. Dieser Eintrag zeigt eine bewusst monochrome Lesegerät-Variante. Graustufen, Farbraum und Aktualisierungszeit hängen vom Panel und dessen Ansteuerung ab: E Ink Kaleido kombiniert beispielsweise 16 Graustufen mit 4096 Farben, TRMNL unterstützt unterschiedliche Geräteprofile. Transparenz kann vor der Ausgabe in Software verrechnet werden; die Demo verzichtet gestalterisch darauf. Ihre warmen Papierfarben und 16 benannten Stufen sind eine Bildschirmannäherung, keine universelle Messung eines E-Paper-Panels.",
   "idea": "Kontrast ist kein Gestaltungsmittel, sondern eine gedeckelte Ressource: Wenn Tinte nie Schwarz und Grund nie Weiß wird, es keine Farbe, keine Transparenz und keine Bewegung gibt, muss die gesamte Hierarchie aus Größe, Fettung, Form, Füllgrad und Invertierung entstehen - und jeder Halbton aus einem Dither-Raster statt aus einem Alphawert.",
   "markers": [
-    "Tinte nie #000, Grund nie #FFF - die Referenz setzt #2B2B2B auf #E4E2DD und deckelt den Spitzenkontrast damit bei 10,9:1 statt 21:1",
-    "Genau 16 Graustufen als geschlossene Leiter, zwischen denen nicht interpoliert wird; TRMNL definiert dieselbe Anzahl als --black, --gray-10 bis --gray-75 und --white",
+    "Demo-Tinte #2B2B2B auf Papier #E4E2DD: rund 10,9:1 statt 21:1; keine allgemeine Obergrenze für E-Paper",
+    "16 benannte Stufen in dieser Demo; die passende Anzahl richtet sich im Produkt nach dem Geräteprofil",
     "Kein Alpha irgendwo: jeder Halbton ist ein ordered Dither (Bayer 4x4) auf einer 4-px-Kachel, kein rgba, kein opacity, kein backdrop-filter",
-    "Mindeststrichstärke 2px an Rahmen, Regeln, Icons und Trennern - eine 1px-Haarlinie zerfällt bei 16 Stufen; einzige Ausnahme nach oben ist die 6px-Volltonregel unter der Kopfzeile",
-    "Zeilenhöhe 68px statt der üblichen 40px: die Dichte ist latenzgetrieben, weil ein Vollbildaufbau 100-500 ms kostet",
+    "Mindeststrichstärke der Demo 2px, die Titelregel 6px; Strichstärken auf dem Zielgerät prüfen, da Auflösung und Rendering variieren",
+    "68px-Zeilen und seitenweiser Wechsel in dieser Demo; die reale Aktualisierungszeit hängt von Panel, Temperatur und Ansteuerung ab",
     "Radius 0px ausnahmslos, an Buttons maximal 2px; keine Schatten, keine Ebenen, kein Blur - Trennung läuft allein über 2px-Regeln",
     "Status nie farbig: gefülltes 10px-Quadrat aktiv, hohles pausiert, halb gedithertes blockiert, immer mit ausgeschriebenem Wort daneben",
     "Auswahl ist die vollständige Invertierung einer Zeile, hart und ohne Transition - transition: none gilt im gesamten Entwurf",
@@ -25,9 +25,9 @@
   ],
   "params": {
     "radius": "0px ausnahmslos, an Buttons maximal 2px",
-    "contrast": "gedeckelt auf 10:1 bis 15:1 - der einzige nicht maximierte Kontrast im Katalog; #2B2B2B auf #E4E2DD ergibt 10,9:1",
+    "contrast": "Demo-Palette: #2B2B2B auf #E4E2DD ergibt rund 10,9:1; der physische Panelkontrast ist geräte- und lichtabhängig",
     "density": "luftig und latenzgetrieben: 68px-Zeilen, 22px-Innenabstände, Paginierung statt Scroll",
-    "depth": "keine - es gibt keine Alpha-Ebene und keinen Schatten; alles liegt auf einer Ebene und wird nur durch 2px-Regeln getrennt",
+    "depth": "keine in dieser Demo; 2px-Linien trennen die Inhalte auf einer Ebene, Alpha und Schatten werden bewusst vermieden",
     "color": "null Chroma: 16 Graustufen mit R=G=B (am hellen Ende ±7 für den warmen Papierton), kein Akzent, keine Semantikfarbe",
     "type": "proportionale Leseserife mit hoher x-Höhe für Inhalt (Literata/Bookerly-Klasse), Grotesk für Chrome und Labels; nur Regular und Semibold, Light und Thin verboten",
     "motion": "keine - transition: none, keine Animation; Zustandswechsel sind harte Umschaltungen, Navigation ist Blättern",
@@ -79,7 +79,7 @@
     "Ohne Farbe fehlt jedes Notfallsignal: Löschen, Fehler und Erfolg sehen identisch aus und müssen komplett über Wortwahl und Platzierung getragen werden",
     "Die 4px-Bayer-Kachel schimmert, sobald der Browser die Fläche nicht ganzzahlig skaliert - hinter Fließtext ist Dithering deshalb praktisch unbrauchbar"
   ],
-  "a11y": "Der Stil verhandelt Barrierefreiheit anders als alle anderen im Katalog: Er ist bei Farbe vorbildlich und beim Kontrast bewusst gedeckelt. Der maximal erreichbare Wert ist #2B2B2B auf #E4E2DD, also 10,9:1 - genug für alles Wichtige, aber die Leiter darunter wird schnell knapp. Die vom Vorbild vorgesehene 60-%-Dither-Stufe (#757472) landet bei nur 3,6:1 und ist für die 13px-Metazeile untauglich; in dieser Demo ist sie deshalb um zwei Stufen auf #5C5C5A abgedunkelt und erreicht 5,2:1. Für nicht-textliche Elemente ist die Mindeststrichstärke von 2px die eigentliche Barrierefreiheitsmaßnahme: Rahmen, Regeln, Statusquadrate und Icons stehen in voller Tinte bei 10,9:1 und damit weit über den geforderten 3:1, während eine 1px-Haarlinie in einer mittleren Graustufe genau der Fehler wäre, den dieser Stil verbietet. Der Fokusring ist ein 3px-Outline in voller Tinte mit 4px Versatz. Status wird grundsätzlich doppelt kodiert, über Form (gefülltes gegen hohles Quadrat) und über das ausgeschriebene Wort. Bewegung gibt es keine, deshalb ist prefers-reduced-motion gegenstandslos. Der deaktivierte Blätterpfeil steht bei rund 2,2:1 - als inaktives Bedienelement zulässig, aber nur, weil die Seitenzahl daneben den Zustand ausschreibt.",
+  "a11y": "Die dunkelste und hellste Demo-Farbe ergeben rechnerisch rund 10,9:1; das sagt nichts über den gemessenen Reflexionskontrast eines realen Panels aus. Die Metazeile nutzt #5C5C5A statt des zu hellen #757472. Für die Umsetzung auf Hardware müssen Graustufen und Raster auf dem Zielgerät geprüft werden. 2px-Striche sind eine Entscheidung dieser Demo, kein WCAG-Mindestwert. Der Fokus ist ein 3px-Outline mit 4px Versatz; Status wird durch Form und Wortlaut codiert. Die Demo enthält keine Bewegung. Deaktivierte Bedienelemente sind von den Kontrastanforderungen ausgenommen; ihre Funktion sollte trotzdem verständlich bleiben.",
   "longevity": "Zwei Teile mit sehr unterschiedlicher Halbwertszeit. Das Prinzip - gedeckelter Kontrast, Hierarchie ohne Farbe, Halbton als Raster statt als Alphawert, Mindeststrichstärke - ist mindestens so alt wie Buchdruck und 1-Bit-Bildschirme und wird jede Modewelle überleben; als Entwurfsdisziplin ist es zeitlos. Die Herleitung aus der Hardware dagegen altert schon jetzt sichtbar: Farb-E-Ink, schnellere Refresh-Modi und der Rückzug des Light Phone von E-Ink nehmen dem Stil nach und nach seine Begründung. Wer ihn als Prinzip nimmt, hat etwas Dauerhaftes; wer ihn als Gerätezitat nimmt, hat ein Zeitfenster.",
   "scores": {
     "longevity": 4,
@@ -123,5 +123,19 @@
       "precise"
     ],
     "signature": "Auswahl invertiert die ganze Zeile; geblättert statt gescrollt, weil jeder Bildaufbau Zeit kostet."
-  }
+  },
+  "sources": [
+    {
+      "title": "E Ink: Bistabilität und Energiebedarf",
+      "url": "https://www.eink.com/tech/detail/Benefits"
+    },
+    {
+      "title": "E Ink Kaleido: Graustufen und Farben",
+      "url": "https://www.eink.com/brand/detail/Kaleido"
+    },
+    {
+      "title": "TRMNL: Geräteprofile",
+      "url": "https://trmnl.com/framework/docs/3.3/devices"
+    }
+  ]
 }

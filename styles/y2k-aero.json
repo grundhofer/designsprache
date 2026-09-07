@@ -81,7 +81,7 @@
     "Nicht theme-fähig: Es gibt keinen Dark Mode dieser Sprache, nur einen zweiten, komplett neu zu entwerfenden Look (WMP-11-Schwarzglas)",
     "Backdrop-Filter ist teuer -- in Tauri/WebView2 gibt es Repaint-Artefakte beim Scrollen, auf Android-WebViews Jank"
   ],
-  "a11y": "Der Stil erzeugt Kontrast-Probleme strukturell, nicht versehentlich: Das Specular-Highlight hellt genau den Bereich auf, in dem Text steht. In dieser Demo liegt weißer Text auf dem Primärbutton in den unteren zwei Dritteln bei rund 8:1 gegen #07456F, unter dem Glanzband lokal aber nur bei etwa 2,5:1 -- getragen wird das nur vom dunklen text-shadow, was WCAG 2.2 formal nicht anerkennt. Deshalb wurde hier bewusst ein schmales Highlight-Band (obere 42%) statt des historisch korrekten 50/50-Gloss verwendet; mit echtem Aqua-Gloss ist SC 1.4.3 nicht erreichbar. Der weiße Header liegt auf transluzentem Glas über einem Verlaufs-Wallpaper, sein Kontrast ist damit positionsabhängig und nur durch den zweifachen Textschatten gesichert; Status-Pills tragen zusätzlich einen Farb-Orb links, damit Farbe nicht der einzige Kanal ist.",
+  "a11y": "Glanzlichter können den Hintergrund direkt unter heller Schrift aufhellen und den Kontrast stark verringern. Der dunkle Bereich eines Verlaufs allein belegt deshalb keinen ausreichenden Textkontrast. Ein ausreichend deckender Halo oder Textschatten kann als Hintergrund für die Kontrastprüfung dienen; ein weicher, dünner Schatten garantiert das aber nicht. Prüfe die ungünstigste Stelle jeder Beschriftung. In einem Produkt helfen ein dunkleres Glanzband, dunkle Schrift oder eine deckende Textfläche. Status benötigt neben farbigen Kugeln weiterhin ausgeschriebene Wörter.",
   "longevity": "Der Revival-Zyklus läuft seit 2022 und steht 2026 am Höhepunkt -- was bedeutet, dass der Stil in zwei bis drei Jahren maximal datiert wirken wird. Als Marken-Fundament ist er damit eine Wette auf einen Trend, dessen Ablaufdatum bereits sichtbar ist.",
   "scores": {
     "longevity": 1,
@@ -124,5 +124,11 @@
       "nostalgic"
     ],
     "signature": "Weißer Glanzverlauf über der oberen Hälfte jedes Bedienelements, dazu 1px weiße Innenkante."
-  }
+  },
+  "sources": [
+    {
+      "title": "W3C: Kontrast und Halo um Schrift",
+      "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18"
+    }
+  ]
 }

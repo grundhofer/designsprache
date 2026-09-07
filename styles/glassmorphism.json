@@ -4,7 +4,7 @@
   "aka": ["Frosted Glass", "Liquid Glass (Apple, 2025)", "Acrylic / Mica (Microsoft)", "Aero (Microsoft, 2007)", "Milchglas-Look"],
   "family": "Weiche Materialität",
   "era": "2007 (Windows Aero) - heute; Web-Welle 2020/21, Plattform-Renaissance ab 2025",
-  "origin": "Die Linie beginnt bei Windows Vista Aero (2007) und macOS Yosemite (2014), wo Fensterchrome erstmals durchscheinend wurde, um Hierarchie ohne harte Kanten zu zeigen; Microsoft systematisierte das 2017 als Fluent Acrylic. Den Namen 'Glassmorphism' prägte Michal Malewicz Ende 2020, als backdrop-filter endlich in allen Browsern lief und der Look als Dribbble-Trend explodierte. Den bislang größten Sprung machte Apple mit 'Liquid Glass', angekündigt am 9. Juni 2025 auf der WWDC und ausgeliefert mit iOS/iPadOS/macOS Tahoe/watchOS/tvOS/visionOS 26: statt eines statischen Blurs rendert Apple in Echtzeit Refraktion, spekulare Highlights, die auf Gerätebewegung reagieren, und eine Farbgebung, die sich am Inhalt dahinter orientiert. Der Stil löst ein echtes Problem -- Ebenen sichtbar machen, ohne den darunterliegenden Kontext zu verdecken.",
+  "origin": "Die Linie beginnt bei Windows Vista Aero (2007) und macOS Yosemite (2014), wo Fensterchrome erstmals durchscheinend wurde, um Hierarchie ohne harte Kanten zu zeigen; Microsoft systematisierte das 2017 als Fluent Acrylic. Den Namen 'Glassmorphism' prägte Michal Malewicz Ende 2020, während die Browserunterstützung für backdrop-filter noch lückenhaft war; browserübergreifend verfügbar wurde die Eigenschaft erst im September 2024; der Look verbreitete sich bereits zuvor als Dribbble-Trend. Den bislang größten Sprung machte Apple mit 'Liquid Glass', angekündigt am 9. Juni 2025 auf der WWDC und ausgeliefert mit iOS/iPadOS/macOS Tahoe/watchOS/tvOS/visionOS 26: statt eines statischen Blurs rendert Apple in Echtzeit Refraktion, spekulare Highlights, die auf Gerätebewegung reagieren, und eine Farbgebung, die sich am Inhalt dahinter orientiert. Der Stil löst ein echtes Problem -- Ebenen sichtbar machen, ohne den darunterliegenden Kontext zu verdecken.",
   "idea": "Bedienflächen sind kein Papier, sondern Glas: sie liegen über dem Inhalt, lassen ihn unscharf und übersättigt durchscheinen und markieren ihre Kante nur durch eine Lichtbrechung von einem Pixel.",
   "markers": [
     "backdrop-filter: blur(14-24px) saturate(160-180%) auf jeder Ebene",
@@ -50,7 +50,7 @@
     "Kippt in 'Bootstrap-Template 2021', sobald der Blur zu klein, die Transparenz zu hoch und der Verlauf zu bunt gewählt ist",
     "Teilt Cyan und Bernstein fast wortgleich mit Vaporwave -- nebeneinander verschwimmen beide zu einem Stil"
   ],
-  "a11y": "Der Kontrast ist eine Funktion des Untergrunds, nicht des Designs: weißer Text liegt in dieser Demo je nach Stelle zwischen rund 16:1 (über der dunklen Basis) und 3,1:1 (dort, wo ein heller Farbkörper hinter dem Glas steht) -- 4,5:1 nach WCAG 2.2 AA ist also nicht durchgängig erfüllt, sekundärer Text fällt lokal bis auf 2,4:1. Deshalb liegt hier ein dunkler Tint von 34% unter dem weißen Film; ohne ihn sinkt derselbe Text auf 1,7:1. Zwingend sind außerdem ein opaker Fallback unter @media (prefers-reduced-transparency: reduce) -- Apple musste nach der Legibility-Kritik an macOS Tahoe genau das nachrüsten und einen Transparenz-Regler in die Systemeinstellungen legen -- sowie ein stilfremder, deckender Fokus-Ring, weil eine 1px-Glaskante die 3:1-Anforderung aus SC 1.4.11 nie erreicht.",
+  "a11y": "Transparente Flächen müssen über ihren wechselnden Hintergründen geprüft werden. Die Demo zeigt bewusst, wie helle Farbkörper den Textkontrast lokal unter 4,5:1 drücken können; ein dunkler Tint stabilisiert ihn, garantiert ihn aber nicht. Für ein Produkt braucht es eine ausreichend deckende Fläche hinter lesbarem Text, einen sichtbaren Fokus und eine opake Alternative. prefers-reduced-transparency kann diese Alternative aktivieren, wird aber nicht überall unterstützt: zusätzlich eine eigene Einstellung oder einen sicheren Standard anbieten. Ein heller Glasrand allein ist kein verlässliches Fokussignal.",
   "longevity": "Als Web-Trend ist der Look ein deutlicher 2020er-Marker und altert mittelmäßig; als Plattform-Material auf Apple-Geräten ist er bis mindestens Ende der Dekade gesetzt. Wer ihn im Web einsetzt, wettet also auf eine fremde Plattformmarke -- und deren nächste Kurskorrektur (Apple hat die Default-Transparenz bereits einmal gesenkt) trifft das eigene Produkt mit.",
   "scores": {
     "longevity": 3,
@@ -65,7 +65,7 @@
   },
   "verdict": "Als Marken-Basis: nein -- als Bauteil: ja, an genau zwei Stellen. Der Stil ist ein Plattform-Material, kein Markenzeichen; wer ihn zur Grundfläche macht, sieht auf iOS wie eine mittelmäßige System-Kopie und auf Android wie ein Fremdkörper aus, und der Wiedererkennungswert gehört nicht ihm, sondern Apple. Für einen Solo-Entwickler kommt hinzu, dass er als einziger Stil in dieser Familie echte Laufzeitkosten hat und in Tauri je nach WebView unterschiedlich rendert -- also drei Plattformen, drei Verhaltensweisen. Sinnvoll bleibt er dort, wo er ein Problem löst statt Stimmung zu machen: Command-Palette und Modal-Overlay, jeweils mit opakem Fallback.",
   "combinesWith": ["dev-noir", "spatial-depth", "y2k-aero", "organic-blob"],
-  "tip": "Die Glaubwürdigkeit entsteht nicht am Blur, sondern an der Kante und am Tint. Erstens: immer eine helle 1px-Innenkante oben und eine schwächere unten setzen (inset 0 1px 0 rgba(255,255,255,.55)) -- ohne sie sieht Glas aus wie eine milchige Folie. Zweitens: unter den weißen Film gehört ein dunkler Tint von 25-35%, denn nur er macht den Textkontrast vom Untergrund unabhängig. Und saturate(180%) nie weglassen: die Übersättigung ist das, was Blur von Glas unterscheidet.",
+  "tip": "Die Glaubwürdigkeit entsteht nicht am Blur, sondern an der Kante und am Tint. Erstens: immer eine helle 1px-Innenkante oben und eine schwächere unten setzen (inset 0 1px 0 rgba(255,255,255,.55)) -- ohne sie sieht Glas aus wie eine milchige Folie. Zweitens: unter den weißen Film gehört ein dunkler Tint von 25-35%, er stabilisiert den Textkontrast, macht ihn aber nicht vom Untergrund unabhängig; dafür braucht es eine deckende Textfläche oder eine Prüfung über alle erlaubten Hintergründe. Und saturate(180%) nie weglassen: die Übersättigung ist das, was Blur von Glas unterscheidet.",
   "googleFonts": ["Inter"],
   "finder": {
     "mode": "dark",
@@ -74,5 +74,15 @@
     "fits": ["marketing", "consumer", "creative"],
     "tone": ["expressive", "loud", "technical"],
     "signature": "Eine 1px helle Innenkante oben plus saturate(180%) -- ohne die Übersättigung bleibt nur Milchglas."
-  }
+  },
+  "sources": [
+    {
+      "title": "Browserunterstützung: backdrop-filter",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/backdrop-filter"
+    },
+    {
+      "title": "Kontrast auf wechselnden Hintergründen",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    }
+  ]
 }

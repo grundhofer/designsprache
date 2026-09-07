@@ -80,7 +80,7 @@
     "Signalisiert 'Spiel' oder 'Spielerei'; für Finanz-, Gesundheits- oder B2B-Kontexte ein Vertrauensverlust",
     "Als Sprache für eine ganze Produktfamilie erdrückend: der Stil hat keine leise Stufe"
   ],
-  "a11y": "Der Stil erlaubt hohe Kontraste (hier Text auf Grund weit über 10:1), sabotiert sich aber über die Schriftgrößen: Bitmap-Fonts sind an ganzzahlige Pixelgrößen gebunden, verkraften also weder Browser-Zoom noch Nutzer-Schriftvergrößerung sauber und werden bei 10px unter den WCAG-Empfehlungen für Fließtext betrieben. Bitmap-Schriften mit sehr kleinen Zwischenräumen sind zudem für Menschen mit Legasthenie deutlich schwerer -- längere Texte gehören in VT323 bei 19-21px oder ganz in eine normale Schrift. Die blinkenden LED- und Cursor-Elemente müssen unter prefers-reduced-motion abgeschaltet werden, und Status darf nie nur über Grün/Amber codiert sein, deshalb steht hier zusätzlich das Wort.",
+  "a11y": "Der Stil erlaubt hohe Kontraste, doch winzige Pixelschriften bleiben schwer lesbar. WCAG schreibt keine allgemeine Mindestschriftgröße vor; Text muss sich unter anderem auf 200% vergrößern lassen, ohne Inhalt oder Funktion zu verlieren. Die verwendeten Webfonts lassen sich skalieren, auch wenn ihr Pixelraster bei Zwischenstufen anders wirkt. Prüfe Umbruch und Lesbarkeit statt Zoom zu sperren. Längere Texte brauchen eine gut lesbare Schrift und großzügigere Größen. Blinkende Dekoration muss zeitlich begrenzt oder abschaltbar sein, reduzierte Bewegung respektieren und darf Statusinformation nie ersetzen.",
   "longevity": "Doppeltes Verhalten: als Zitat einer abgeschlossenen Hardware-Ära altert er nicht weiter, weil er schon historisch ist -- er kann nicht 'aus der Mode' kommen wie ein Trend von 2021. Er bindet die Marke aber dauerhaft an die Indie-Game-Kultur, und aus dieser Zuordnung kommt man nicht mehr heraus.",
   "scores": {
     "longevity": 3,
@@ -113,5 +113,11 @@
     "fits": ["creative", "consumer"],
     "tone": ["nostalgic", "playful", "technical"],
     "signature": "Jeder Wert ein Vielfaches von 2px, Tiefe als 2px-Bevel hell/dunkel, Animation ausschließlich in steps()."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: Textvergrößerung",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+    }
+  ]
 }

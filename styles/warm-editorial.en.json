@@ -10,7 +10,7 @@
   ],
   "family": "Product Aesthetics Today",
   "era": "2012-today, dominant since ~2020",
-  "origin": "The style transfers magazine and book typesetting onto software and begins on the web with Medium (2012) and the big longform formats of the newsrooms. From 2018 it migrates from publications into tools: Notion, Substack, Craft, Readwise and Are.na build interfaces meant to behave like paper, because their actual product is text. The problem it solves is fatigue - pure white #FFFFFF at high luminance strains the eye over hours of reading, while slightly yellowed paper tones cut the blue component and carry longer sessions. Execution became possible through affordable high-quality web fonts, variable serifs with optical size axes (Fraunces, Source Serif 4) and displays with enough resolution that fine serifs do not fall apart at 16-21px.",
+  "origin": "The style transfers magazine and book typesetting onto software and begins on the web with Medium (2012) and the big longform formats of the newsrooms. From 2018 it migrates from publications into tools: Notion, Substack, Craft, Readwise and Are.na build interfaces meant to behave like paper, because their actual product is text. The design goal is a calm, paper-like reading environment. Warm surfaces are an aesthetic choice, not evidence of reduced eye strain; reading comfort also depends on brightness, type, surroundings and individual needs. Execution became possible through affordable high-quality web fonts, variable serifs with optical size axes (Fraunces, Source Serif 4) and displays with enough resolution that fine serifs do not fall apart at 16-21px.",
   "idea": "The interface passes itself off as a printed sheet: warm paper instead of pure white, a serif carries the content layer, and structure comes from white space, rules and typographic hierarchy rather than from boxes and color.",
   "markers": [
     "Base surface #FAF7F2 / #F5F1EA instead of #FFFFFF - warm-tinted, never neutral gray",
@@ -78,7 +78,7 @@
     "Dark mode is not trivial - paper tones cannot simply be inverted, it takes a warm dark palette of its own",
     "Without a strict grid the generosity tips into arbitrariness; white space without a system reads as indecision"
   ],
-  "a11y": "The style is accessible by default: #2B2622 on #FAF7F2 reaches about 13:1, and the generous leading and limited measure match the recommendations for reading difficulties and dyslexia exactly. The risks sit at the edges - letterspaced caps below 10px and italic serifs as placeholders are hard to parse, and secondary text in #8A7E6F sits at about 3.9:1 and may therefore only be used for incidental metadata such as running heads and numerals - form labels and placeholders deliberately run one step darker here in #5C5348 (around 7.4:1). The muted ochre of the paused state is pulled to #8A6A1E (around 5:1) for the same reason, because it is set in 9.5px caps. Status labels here are additionally coded by wording and position, so the muted green and ochre do not carry the information alone.",
+  "a11y": "Dark ink on light paper offers contrast headroom. Generous leading and a limited line length are useful starting points, not a substitute for testing with actual readers. Small caps and italic placeholders remain hard to parse. #8A7E6F on #FAF7F2 falls below 4.5:1: running heads, timestamps and other readable metadata still need normal text contrast. Do not carry this demo weakness unchanged into a product; #5C5348 offers more headroom. Status also has a text label.",
   "longevity": "The most durable style in this family: the fundamentals are typesetting craft, not a trend, and layouts from 2012 still read as current today. Only the fashionable typefaces of each year are datable - an Instrument Serif headline gives away the 2023-2026 vintage more clearly than the layout itself.",
   "scores": {
     "longevity": 5,
@@ -121,5 +121,11 @@
       "calm"
     ],
     "signature": "Letter-spaced sans-serif micro-caps above a serif reading column of about 66 characters."
-  }
+  },
+  "sources": [
+    {
+      "title": "WCAG: text contrast including metadata",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    }
+  ]
 }
