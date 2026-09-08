@@ -39,7 +39,7 @@ class CatalogChecks(unittest.TestCase):
                 self.assertIn('.m-app.m-' + slug, css)
                 self.assertIn(mobile.NOTES[slug][lang == 'en'], script)
                 font = mobile.THEMES[slug][-2]
-                self.assertTrue(font in self.fonts or font == 'Times New Roman', font)
+                self.assertTrue(font in self.fonts or font in ('Times New Roman', 'system-ui'), font)
             with self.assertRaises(ValueError):
                 mobile.assets(self.slugs + ['future-style'], lang)
 

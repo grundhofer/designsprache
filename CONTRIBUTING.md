@@ -61,7 +61,7 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 
 #### Die Scoping-Regel
 
-31 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
+33 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
 
 1. Genau **ein** `<style>`-Element, danach genau **ein** `<div class="style-<slug>">`.
 2. **Jeder** CSS-Selektor beginnt mit `.style-<slug>`. Kein `:root`, kein `html`, kein `body`,
@@ -184,7 +184,7 @@ How you arrange, weight and enrich that with style-typical elements is your desi
 that is where the style lives. A demo that is merely "the same box with a different radius"
 misses the point.
 
-**The scoping rule.** 31 stylesheets share one page. Exactly one `<style>` element followed by
+**The scoping rule.** 33 stylesheets share one page. Exactly one `<style>` element followed by
 exactly one `<div class="style-<slug>">`; **every** CSS selector starts with `.style-<slug>`
 (no `:root`, `html`, `body`, bare `*` or bare element selectors, not even inside `@media`);
 CSS variables only on `.style-<slug>`; `@keyframes` names prefixed with `<slug>-`. `build.py`

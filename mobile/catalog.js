@@ -53,7 +53,7 @@
     var button = function(action, text, cls) {
       return '<button type="button" class="' + cls + '" data-m-action="' + action + '">' + esc(text) + '</button>';
     };
-    var out = '<div class="m-app m-' + slug + ' m-' + MOBILE_DATA[slug].layout + '" role="group" aria-label="'
+    var out = '<div class="m-app m-' + slug + ' m-' + MOBILE_DATA[slug].layout + '" data-m-screen="' + screen + '" role="group" aria-label="'
       + esc(MT.preview + ': ' + DATA[slug].name) + '"><div class="m-top">'
       + (screen === 'list' ? '<span>' + esc(MT.projects) + ' / 01</span>' : button('list', '‹ ' + MT.back, 'm-back'))
       + '<span>' + esc(MT.demo) + '</span></div><div class="m-head"><h3 class="m-title" data-m-heading tabindex="-1">'

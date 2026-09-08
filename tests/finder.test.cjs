@@ -56,6 +56,20 @@ for (const lang of ['de', 'en']) {
     assert.equal(finder({}).rate('swiss').pct, 0);
   });
 
+  test(`${lang}: platform languages participate in search, ranking and mobile exports`, () => {
+    const mobile = finder({ use: 'consumer', platform: ['mobile'] });
+    const desktop = finder({ use: 'consumer', platform: ['desktop'] });
+    for (const slug of ['apple-liquid-glass', 'one-ui']) {
+      assert.ok(mobile.rate(slug).pct > desktop.rate(slug).pct);
+      assert.ok(page.includes(`data-mobile-slug="${slug}"`));
+      assert.ok(data[slug].sources.length >= 4);
+      mobile.mobileMode = true;
+      assert.ok(mobile.buildPrompt(slug).includes(mobile.MOBILE_DATA[slug].note));
+    }
+    assert.ok(page.includes('id="family-apple-liquid-glass"'));
+    assert.ok(page.includes(`${Object.keys(data).length} ${lang === 'de' ? 'Stile auf kleinem Bildschirm' : 'styles for a small screen'}`));
+  });
+
   test(`${lang}: marker search, family filtering and empty results use generated search data`, () => {
     const decode = text => text.replace(/&(?:amp|quot|lt|gt|#x27);/g, entity => ({
       '&amp;': '&', '&quot;': '"', '&lt;': '<', '&gt;': '>', '&#x27;': "'",

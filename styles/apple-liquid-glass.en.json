@@ -1,0 +1,133 @@
+{
+  "aka": [
+    "Apple Liquid Glass",
+    "iOS 26",
+    "macOS Tahoe",
+    "Apple platform design"
+  ],
+  "palette": [
+    "#EEF3FA",
+    "#FFFFFF",
+    "#172434",
+    "#0069DB",
+    "#B5C3D4",
+    "#E6EFF9"
+  ],
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 4,
+    "density": 2
+  },
+  "combinesWith": [
+    "glassmorphism",
+    "spatial-depth",
+    "flat",
+    "swiss"
+  ],
+  "googleFonts": [],
+  "finder": {
+    "mode": "both",
+    "a11y": 3,
+    "platform": {
+      "web": 2,
+      "mobile": 5,
+      "desktop": 4
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "creative"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "expressive"
+    ],
+    "signature": "Opaque content beneath a distinct glass-like layer for navigation and actions."
+  },
+  "slug": "apple-liquid-glass",
+  "family": "Platform Languages",
+  "name": "Apple / Liquid Glass",
+  "era": "2025–present; introduced June 9, 2025",
+  "origin": "Apple introduced Liquid Glass as a material language across its generation-26 operating systems. It combines translucent, context-sensitive controls with platform-specific navigation. This entry focuses on that functional material layer; the catalog’s glassmorphism entry covers the broader glass aesthetic. Our light web adaptation uses authored fixed CSS values and reproduces neither Apple’s renderer nor an exact app screen.",
+  "idea": "Controls occupy a distinct material layer above content. Glass identifies navigation and actions; the project list remains a quiet, opaque reading surface.",
+  "a11y": "Native Apple materials respond to system settings such as reduced transparency and increased contrast. This CSS demo implements only a limited approximation: opaque content rows, explicit focus outlines in the mobile view and opaque toolbars when blur is unsupported or matching contrast/transparency preferences apply. Transparency alone does not establish contrast. Test text, focus, enlarged type and actual system variants in the target product.",
+  "longevity": "Separating content from controls is a durable principle. The appearance of refraction, highlights and morphing depends strongly on Apple’s system generation. The score describes this material language, not the lifespan of an entire Apple app.",
+  "verdict": "A relevant platform choice for apps in Apple’s ecosystem, where native components are the appropriate starting point. Less suitable as an independent house style across web, Android and Windows, because both behavior and recognition are closely tied to Apple. The separation of layers transfers well; a blur filter alone does not constitute Liquid Glass.",
+  "tip": "Start with an opaque, readable content layer. Add glass only to a clearly defined navigation or action surface. Use system components in a native product and test reduced-effect variants before refining the appearance.",
+  "markers": [
+    "Demo: 28px window radius; toolbar and action bar form separate material surfaces.",
+    "Demo: opaque project rows on #FFFFFF, with no glass over the reading surface.",
+    "Demo: material base #E6EFF9; with blur support, the same color uses alpha E8.",
+    "Demo: backdrop-filter with 20px blur and saturation factor 1.2, without actual refraction.",
+    "Demo: a 1px light inner edge and a soft shadow distinguish the action bar.",
+    "Demo: a 34px bold heading, 18px project names and 14px metadata on desktop.",
+    "Demo: #0069DB identifies the primary action; the remaining interface is predominantly neutral.",
+    "Demo: pill-shaped actions at least 44px high on desktop and 48px on mobile.",
+    "Demo: time below the name, status alongside it; reading order stays linear.",
+    "Demo: prefers-contrast: more or prefers-reduced-transparency: reduce makes material surfaces opaque."
+  ],
+  "params": {
+    "radius": "Demo: 28px window, 22px mobile content group, 999px action surfaces; not Apple token specifications.",
+    "contrast": "Opaque reading surfaces; material contrast depends on the backdrop and needs separate testing.",
+    "density": "Airy: one clear content focus, separated rows and few simultaneous actions.",
+    "depth": "Content beneath a distinct control layer; the demo uses optional blur, inner highlights and soft shadows.",
+    "color": "Authored fixed demo palette: #EEF3FA ground, #FFFFFF content, #172434 text, #0069DB primary action.",
+    "type": "System type with -apple-system/BlinkMacSystemFont on desktop and system-ui on mobile; no embedded Apple font.",
+    "motion": "Native behavior includes context-sensitive morphing and material responses; this comparison switches views without morphing.",
+    "texture": "Glass-like surfaces on the control layer; content remains smooth and opaque."
+  },
+  "examples": [
+    {
+      "name": "Apple Music, iOS 26",
+      "what": "The documented tab bar becomes more compact while scrolling to reveal content."
+    },
+    {
+      "name": "Safari, 2025 design announcement",
+      "what": "Apple names Safari as an example of redesigned glass-like controls."
+    },
+    {
+      "name": "Apple TV, iPadOS and macOS 26",
+      "what": "The documented sidebars incorporate content behind and around them into their material appearance."
+    },
+    {
+      "name": "Dock, macOS Tahoe 26",
+      "what": "The system announcement shows material layers and light, dark, tinted and clear appearances."
+    }
+  ],
+  "strengths": [
+    "Content and controls have distinct roles.",
+    "Native components can adopt system behavior and appearance preferences.",
+    "The principles work across Apple device classes with adapted navigation."
+  ],
+  "risks": [
+    "Blur and rounded corners can resemble generic glassmorphism; the functional layering must remain clear.",
+    "Translucent controls need testing over every supported backdrop.",
+    "A CSS recreation reproduces neither native refraction nor all accessibility adaptations automatically.",
+    "The mobile score primarily reflects iOS; suitability on Android depends much more on context."
+  ],
+  "platforms": {
+    "web": "The layering transfers. Native material effects need simplified CSS alternatives with an opaque fallback.",
+    "mobile": "Native system components suit iOS. On Android, account for its navigation and interaction conventions first.",
+    "desktop": "Relevant to macOS; a deliberately foreign design language on Windows and Linux. The demo is a wide web adaptation."
+  },
+  "sources": [
+    {
+      "title": "Apple: introduction and cross-platform examples, June 2025",
+      "url": "https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/"
+    },
+    {
+      "title": "Apple: Liquid Glass and native components",
+      "url": "https://developer.apple.com/documentation/TechnologyOverviews/liquid-glass"
+    },
+    {
+      "title": "Apple: material variants and system settings",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/materials"
+    },
+    {
+      "title": "Apple: iOS 26 features and compact tab bars",
+      "url": "https://www.apple.com/os/pdf/All_New_Features_iOS_26_Sept_2025.pdf"
+    }
+  ]
+}

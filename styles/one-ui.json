@@ -1,0 +1,138 @@
+{
+  "aka": [
+    "Samsung One UI",
+    "Galaxy UI",
+    "One UI reachability"
+  ],
+  "palette": [
+    "#F3F3F5",
+    "#FFFFFF",
+    "#17171B",
+    "#2158C9",
+    "#D0D0D6",
+    "#E7E7EB"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 2
+  },
+  "combinesWith": [
+    "material-expressive",
+    "flat",
+    "warm-editorial",
+    "apple-liquid-glass"
+  ],
+  "googleFonts": [
+    "Roboto"
+  ],
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 5,
+      "desktop": 3
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "internal"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "formal"
+    ],
+    "signature": "Ein ruhiger Betrachtungsbereich über deckenden Fokusblöcken und gut erreichbaren Aktionen."
+  },
+  "slug": "one-ui",
+  "family": "Plattformsprachen",
+  "name": "Samsung / One UI",
+  "era": "2018–heute; hier das Prinzip der Betrachtungs- und Interaktionsbereiche",
+  "origin": "Samsung stellte One UI im November 2018 vor. Ein dokumentiertes Leitprinzip trennt oben einen Betrachtungsbereich von den darunterliegenden Interaktionen. Die Gestaltung wird über Geräteklassen und Versionen weiterentwickelt; dieser Eintrag beschreibt das grundlegende Layoutprinzip statt einen vollständigen Stand einer bestimmten One-UI-Version. Farben, Radien und Größen der Demo sind eigene Vergleichswerte.",
+  "idea": "Information zuerst erfassen, danach bequem handeln: Ein ruhiger Betrachtungsbereich gibt dem Titel Raum, während zusammengehörige Aufgaben in gut erreichbaren Fokusblöcken stehen.",
+  "a11y": "Erreichbarkeit ist eine Layoutabsicht, keine Garantie für jede Hand, Haltung oder Displaygröße. Prüfe die Touchziele auf dem tatsächlichen Gerät sowie Lesereihenfolge, externe Tastatur, Screenreader, Textvergrößerung und Bildschirmtastatur. Die Demo nutzt beschriftete Zustände, deckende Flächen und sichtbaren Fokus. Der große mobile Listenkopf wird für Detail und Formular verkürzt; er darf bei wenig Höhe nicht die Aufgabe verdrängen.",
+  "longevity": "Die Trennung von Betrachtung und Interaktion ist robuster als einzelne Icon-, Schatten- oder Farbjahrgänge. Dauerhaft brauchbar ist die bewusste Platzierung der Aufgaben; eine unveränderte große Kopfzone auf jedem Display wäre dagegen eine starre Kopie.",
+  "verdict": "Eine nützliche Referenz für große Touch-Displays und überschaubare Alltagsaufgaben. Als universelles Desktop-Layout ist der große Betrachtungsbereich weniger überzeugend; dort sollte er bei Bedarf zur schmalen Übersicht werden. Samsung-spezifische Markenmerkmale sind optional, die Prüfung der Erreichbarkeit und die Gruppierung zusammengehöriger Aktionen sind der übertragbare Kern.",
+  "tip": "Entwirf zuerst die einhändig erreichbare Aufgabenfolge auf dem Zielgerät. Gib dem Titel erst danach den verbleibenden Raum. Verkleinere den Betrachtungsbereich für Formulare, Querformat und eingeblendete Tastatur; übernimm keine starre Halbierung des Screens.",
+  "markers": [
+    "Demo: eigener Betrachtungsbereich; mobil 160px Mindesthöhe für den Listenkopf.",
+    "Demo: breite Ansicht mit 220px Betrachtungsspalte und flexibler Interaktionsspalte.",
+    "Demo: #F3F3F5 als Grund, #FFFFFF für zusammengehörige Projektzeilen.",
+    "Demo: eine gemeinsame Listengruppe mit 24px Außenradius statt drei schwebender Karten.",
+    "Demo: 1px innere Trennlinien; keine Schatten zwischen den Zeilen.",
+    "Demo: zentrierter Titel im Betrachtungsbereich, linksbündige Namen im Aufgabenbereich.",
+    "Demo: 38px Desktop-Titel und 18px Projektnamen; 14px Zeit- und Statusangaben.",
+    "Demo: ein zurückhaltender blauer Aktionswert #2158C9; Status zusätzlich als Text.",
+    "Demo: Suchfeld und Aktionen mindestens 48px hoch; pillenförmige Konturen.",
+    "Demo: Detail- und Formularansicht verkürzen die mobile Kopfzone auf 64px Mindesthöhe."
+  ],
+  "params": {
+    "radius": "Demo: 24px Außenradius der Listengruppe und 999px an Suche und Aktionen; keine Samsung-Tokenvorgabe.",
+    "contrast": "Dunkler Text auf deckenden hellen Flächen; Status und Fokus brauchen eigenständige Prüfung.",
+    "density": "Luftig im Betrachtungsbereich, gruppiert und kompakter im Interaktionsbereich.",
+    "depth": "Flächen gruppieren Inhalte; Schatten sind für die Hierarchie dieser Demo nicht nötig.",
+    "color": "Eigene Demopalette aus neutralem Hellgrau, Weiß, dunkler Schrift und #2158C9 als Hauptaktion.",
+    "type": "Roboto mit Arial/sans-serif-Fallback in der Web-Demo; kein mitgeliefertes SamsungOne und keine Behauptung identischer Schriftmetriken.",
+    "motion": "Samsung dokumentiert schnell anlaufende, weich auslaufende Bewegung; die Vergleichsdemo zeigt unmittelbare Ansichtswechsel ohne Animation.",
+    "texture": "Deckende, glatte Fokusblöcke ohne Glas oder Papiermuster."
+  },
+  "examples": [
+    {
+      "name": "Samsung Gallery, Bewegungsrichtlinie",
+      "what": "Die Richtlinie zeigt den Übergang der Rasteransicht beim Zusammenziehen und Aufspreizen mit zwei Fingern."
+    },
+    {
+      "name": "Samsung Kontakte, Bewegungsrichtlinie",
+      "what": "Die Detailansicht dient als Beispiel für die Beziehung zwischen Scrollbewegung und Inhalt."
+    },
+    {
+      "name": "Samsung Kalender, Bewegungsrichtlinie",
+      "what": "Kalender ist ein dokumentiertes Beispiel für lineare Übergänge; die Bewegungsregel hängt vom Vorgang ab."
+    },
+    {
+      "name": "One UI 7 Quick Panel, Designvorstellung 2025",
+      "what": "Samsung zeigt die getrennten Zugänge zu Schnelleinstellungen und Benachrichtigungen als Neuordnung von Interaktionsbereichen."
+    }
+  ],
+  "strengths": [
+    "Erreichbarkeit wird Teil der Komposition statt nachträgliche Korrektur.",
+    "Zusammengehörige Zeilen wirken durch gemeinsame Flächen als Gruppe.",
+    "Das Grundprinzip lässt sich mit einer eigenen Marke und deckenden Flächen verbinden."
+  ],
+  "risks": [
+    "Eine starre große Kopfzone verschwendet Platz auf kleinen oder breiten Displays.",
+    "Weiße Karten und runde Buttons allein ergeben noch keine One-UI-Komposition.",
+    "Roboto ist nur die Ersatzschrift dieser Demo; Metrik und Umbrüche können vom System abweichen.",
+    "Die Mobile-Bewertung meint vor allem Galaxy-ähnliche Android-Kontexte und ersetzt keine Plattformentscheidung für iOS."
+  ],
+  "platforms": {
+    "web": "Gut als Touch-orientiertes Layoutprinzip nutzbar. Große leere Kopfzonen nur einsetzen, wenn sie die Aufgabe unterstützen.",
+    "mobile": "Besonders relevant für große Galaxy-Displays. Auf anderen Plattformen Navigation, Gesten und Komponenten an deren Erwartungen anpassen.",
+    "desktop": "Die Demo übersetzt Betrachtung und Interaktion in zwei Spalten. Das ist eine eigene Adaption, keine exakte Samsung-DeX-Oberfläche."
+  },
+  "sources": [
+    {
+      "title": "Samsung: Vorstellung von One UI im November 2018",
+      "url": "https://news.samsung.com/uk/sdc-2018-samsung-reveals-breakthroughs-in-intelligence-iot-and-mobile-ux"
+    },
+    {
+      "title": "Samsung: Betrachtungsbereich, Erreichbarkeit und Fokusblöcke",
+      "url": "https://developer.samsung.com/one-ui/layout/basic.html"
+    },
+    {
+      "title": "Samsung: Layouts für unterschiedliche Geräteklassen",
+      "url": "https://developer.samsung.com/one-ui/layout/grid.html"
+    },
+    {
+      "title": "Samsung: Bewegungsprinzipien und App-Beispiele",
+      "url": "https://developer.samsung.com/one-ui/motion/basic.html"
+    },
+    {
+      "title": "Samsung: One UI 7, Gestaltung der Interaktionsbereiche",
+      "url": "https://design.samsung.com/global/contents/one-ui-7/"
+    }
+  ]
+}

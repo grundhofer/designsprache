@@ -113,3 +113,27 @@ preview switching and mobile prompt exports. Build, palette and Pages sanity che
 The new mobile layouts have not received a rendered browser or real-device accessibility
 pass. Tests use lightweight DOM fixtures and do not establish visual or native-platform
 conformance. Mobile theme values are authored adaptations rather than vendor specifications.
+
+## Platform-language entries — 2026-09-08
+
+Added Apple / Liquid Glass and Samsung / One UI as the Platform Languages family: 33 entries
+in 10 families. Both have bilingual fact sheets, desktop demos, three mobile screens,
+finder scores and mobile prompt guidance. The mobile introduction now derives its entry
+count from the catalog, and family sections have stable anchors for direct links.
+
+Apple's entry distinguishes a functional material layer from generic glassmorphism.
+Its web demo has opaque content and optional toolbar blur, with opaque fallbacks for
+unsupported blur and matching transparency/contrast preferences. It does not claim native
+refraction or morphing. One UI's mobile list has an upper viewing area; detail and form
+screens reduce that area. Its broad desktop layout is explicitly an authored adaptation.
+
+Sources are Apple and Samsung's own announcements and design documentation. Numeric markers,
+palettes and demo font choices are explicitly authored values, not measured vendor tokens.
+The mobile platform scores describe the relevant ecosystem (iOS or Galaxy-like Android),
+with the limitation stated in each fact sheet. Existing scores remain editorial judgments.
+
+Validation: 12 Python and 22 Node tests, the bilingual build, Pages sanity checks and the
+palette comparison across 528 pairs pass. Existing mobile tests now cover 198 combinations
+of style, language and screen. New checks verify platform-sensitive finder scores, mobile
+exports, family anchors and the derived count. Rendered browser and device testing of these
+new entries remains outstanding; the earlier browser results do not cover them.

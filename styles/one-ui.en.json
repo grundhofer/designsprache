@@ -1,0 +1,138 @@
+{
+  "aka": [
+    "Samsung One UI",
+    "Galaxy UI",
+    "One UI reachability"
+  ],
+  "palette": [
+    "#F3F3F5",
+    "#FFFFFF",
+    "#17171B",
+    "#2158C9",
+    "#D0D0D6",
+    "#E7E7EB"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 2
+  },
+  "combinesWith": [
+    "material-expressive",
+    "flat",
+    "warm-editorial",
+    "apple-liquid-glass"
+  ],
+  "googleFonts": [
+    "Roboto"
+  ],
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 5,
+      "desktop": 3
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "internal"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "formal"
+    ],
+    "signature": "A quiet viewing area above opaque focus blocks and reachable actions."
+  },
+  "slug": "one-ui",
+  "family": "Platform Languages",
+  "name": "Samsung / One UI",
+  "era": "2018–present; focused here on viewing and interaction areas",
+  "origin": "Samsung introduced One UI in November 2018. A documented principle separates an upper viewing area from interactions below it. The design evolves across device classes and versions; this entry describes the underlying layout principle rather than a complete snapshot of a particular One UI release. Demo colors, radii and sizes are authored comparison values.",
+  "idea": "Read first, then act comfortably: a quiet viewing area gives the title space, while related tasks sit in reachable focus blocks.",
+  "a11y": "Reachability is a layout intent, not a guarantee for every hand, posture or screen size. Test touch targets on the actual device as well as reading order, external keyboards, screen readers, enlarged text and the on-screen keyboard. The demo uses labeled states, opaque surfaces and visible focus. Its large mobile list header is shortened for detail and form screens so it does not crowd out the task on short displays.",
+  "longevity": "Separating viewing and interaction is more durable than particular generations of icons, shadows or colors. Deliberate task placement is reusable; an unchanged oversized header on every display would be a rigid copy.",
+  "verdict": "A useful reference for large touch displays and focused everyday tasks. An oversized viewing area is less persuasive as a universal desktop layout; there it can become a compact overview. Samsung-specific branding is optional; evaluating reachability and grouping related actions are the transferable core.",
+  "tip": "Design the task sequence around one-handed reach on the target device first. Give the title the remaining space afterward. Reduce the viewing area for forms, landscape orientation and the on-screen keyboard; do not impose a fixed half-screen split.",
+  "markers": [
+    "Demo: a dedicated viewing area; the mobile list header has a 160px minimum height.",
+    "Demo: the wide view uses a 220px viewing column and a flexible interaction column.",
+    "Demo: #F3F3F5 ground with #FFFFFF for grouped project rows.",
+    "Demo: one shared list group with 24px outer corners instead of three floating cards.",
+    "Demo: 1px internal separators; no shadows between rows.",
+    "Demo: a centered title in the viewing area and left-aligned names in the task area.",
+    "Demo: 38px desktop heading and 18px project names; 14px time and status text.",
+    "Demo: one restrained blue action value, #2158C9; status is also expressed in text.",
+    "Demo: search field and actions at least 48px high, with pill-shaped outlines.",
+    "Demo: detail and form screens shorten the mobile header to a 64px minimum height."
+  ],
+  "params": {
+    "radius": "Demo: 24px outer list-group corners and 999px search/action corners; not a Samsung token specification.",
+    "contrast": "Dark text on opaque light surfaces; status and focus require separate testing.",
+    "density": "Airy in the viewing area, grouped and more compact in the interaction area.",
+    "depth": "Surfaces group content; this demo does not require shadows to establish hierarchy.",
+    "color": "Authored demo palette of neutral light gray, white, dark text and #2158C9 for the primary action.",
+    "type": "Roboto with Arial/sans-serif fallbacks in the web demo; SamsungOne is not bundled and identical font metrics are not implied.",
+    "motion": "Samsung documents motion that accelerates quickly and settles gently; this comparison uses immediate view changes without animation.",
+    "texture": "Opaque, smooth focus blocks without glass or paper textures."
+  },
+  "examples": [
+    {
+      "name": "Samsung Gallery, motion guideline",
+      "what": "The guideline illustrates grid-view transitions during pinch gestures."
+    },
+    {
+      "name": "Samsung Contacts, motion guideline",
+      "what": "The detail view illustrates the relationship between scrolling and content."
+    },
+    {
+      "name": "Samsung Calendar, motion guideline",
+      "what": "Calendar is a documented example of linear transitions; the motion rule depends on the operation."
+    },
+    {
+      "name": "One UI 7 Quick Panel, 2025 design presentation",
+      "what": "Samsung presents separate access to Quick Settings and notifications as a reorganization of interaction areas."
+    }
+  ],
+  "strengths": [
+    "Reachability becomes part of the composition rather than a late correction.",
+    "Shared surfaces make related rows read as a group.",
+    "The underlying principle works with independent branding and opaque surfaces."
+  ],
+  "risks": [
+    "A rigid oversized header wastes space on small or wide displays.",
+    "White cards and rounded buttons alone do not create a One UI composition.",
+    "Roboto is only this demo’s substitute font; metrics and wrapping can differ from the system.",
+    "The mobile score primarily reflects Galaxy-like Android contexts and does not decide the appropriate platform language for iOS."
+  ],
+  "platforms": {
+    "web": "Useful as a touch-oriented layout principle. Use large empty headers only when they support the task.",
+    "mobile": "Especially relevant to large Galaxy displays. Adapt navigation, gestures and components to other platforms’ expectations.",
+    "desktop": "The demo translates viewing and interaction into two columns. It is an authored adaptation, not an exact Samsung DeX interface."
+  },
+  "sources": [
+    {
+      "title": "Samsung: One UI introduction in November 2018",
+      "url": "https://news.samsung.com/uk/sdc-2018-samsung-reveals-breakthroughs-in-intelligence-iot-and-mobile-ux"
+    },
+    {
+      "title": "Samsung: viewing area, reachability and focus blocks",
+      "url": "https://developer.samsung.com/one-ui/layout/basic.html"
+    },
+    {
+      "title": "Samsung: layouts for different device classes",
+      "url": "https://developer.samsung.com/one-ui/layout/grid.html"
+    },
+    {
+      "title": "Samsung: motion principles and app examples",
+      "url": "https://developer.samsung.com/one-ui/motion/basic.html"
+    },
+    {
+      "title": "Samsung: One UI 7 interaction-area design",
+      "url": "https://design.samsung.com/global/contents/one-ui-7/"
+    }
+  ]
+}

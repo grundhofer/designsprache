@@ -6,6 +6,8 @@ ROOT = Path(__file__).parent
 
 # ground, surface, ink, accent, accent ink, rule, radius, font, layout
 THEMES = {
+    'apple-liquid-glass': ('#EEF3FA', '#FFFFFF', '#172434', '#0069DB', '#FFFFFF', '#B5C3D4', '22px', 'system-ui', 'cards'),
+    'one-ui': ('#F3F3F5', '#FFFFFF', '#17171B', '#2158C9', '#FFFFFF', '#D0D0D6', '24px', 'Roboto', 'cards'),
     'swiss': ('#FFFFFF', '#FFFFFF', '#0B0B0B', '#E30613', '#FFFFFF', '#D4D4D4', '0', 'Inter', 'ruled'),
     'bauhaus': ('#F4F1E8', '#F5C518', '#111111', '#0B4EA2', '#FFFFFF', '#111111', '0', 'Jost', 'blocks'),
     'de-stijl': ('#F5F3EE', '#FFFFFF', '#14110F', '#1F3D99', '#FFFFFF', '#14110F', '0', 'Archivo', 'blocks'),
@@ -40,6 +42,8 @@ THEMES = {
 }
 
 NOTES = {
+    'apple-liquid-glass': ('Deckende Projektzeilen liegen unter einer abgesetzten, glasartigen Navigation. Die untere Leiste bleibt beschriftet. Blur ist eine optionale CSS-Annäherung; Lichtbrechung, Morphing und native Systemanpassungen werden nicht nachgebildet. Ohne Blur oder bei erhöhtem Kontrast sind die Bedienflächen deckend.', 'Opaque project rows sit beneath a distinct glass-like navigation layer. The bottom bar keeps text labels. Blur is an optional CSS approximation; refraction, morphing and native system adaptations are not reproduced. Without blur or with increased contrast, controls are opaque.'),
+    'one-ui': ('Der Listentitel erhält oben einen ruhigen Betrachtungsbereich; Suche, Projektzeilen und Hauptaktion folgen darunter. Detail und Formular verkürzen den Kopf zugunsten von Inhalt und Bildschirmtastatur. Weiße Fokusblöcke bleiben deckend. Roboto dient hier als Ersatzschrift, nicht als Nachbildung von SamsungOne.', 'The list title gets a quiet upper viewing area, followed by search, project rows and the primary action. Detail and form screens shorten the header to leave room for content and the on-screen keyboard. White focus blocks stay opaque. Roboto is a substitute here, not a reproduction of SamsungOne.'),
     'swiss': ('Das Raster wird einspaltig; Zeit und Status stehen unter dem Namen. Die rote Zählung und die harten Linien bleiben.', 'The grid becomes one column; time and status move below the name. The red count and hard rules remain.'),
     'bauhaus': ('Primärfarben und geometrische Flächen tragen die Hierarchie. Rechteckige Zeilen erhalten eine große Touchfläche.', 'Primary colors and geometric fields carry hierarchy. Rectangular rows receive generous touch targets.'),
     'de-stijl': ('Schwarze Stege und ungleiche Farbflächen bleiben erhalten; die Projekte folgen einer eindeutigen vertikalen Lesereihenfolge.', 'Black dividers and unequal color fields remain; projects follow a clear vertical reading order.'),
@@ -84,7 +88,7 @@ def assets(slugs, lang):
         font = tokens.pop('font')
         tokens.pop('layout')
         css += '\n.m-app.m-' + slug + '{' + ''.join('--m-' + k + ':' + v + ';' for k, v in tokens.items())
-        css += '--m-font:"' + font + '",' + ('serif' if font in ('Newsreader', 'Times New Roman') else 'sans-serif') + ';}'
+        css += '--m-font:' + ('system-ui' if font == 'system-ui' else '"' + font + '"') + ',' + ('serif' if font in ('Newsreader', 'Times New Roman') else 'sans-serif') + ';}'
         light_ink = sum(int(values[2][i:i+2], 16) for i in (1, 3, 5)) > 510
         css += '\n.m-app.m-' + slug + '{color-scheme:' + ('dark' if light_ink else 'light') + ';}'
     payload = {s: {'layout': THEMES[s][-1], 'note': NOTES[s][lang == 'en'],
@@ -112,11 +116,12 @@ def controls(lang, sheet=False):
 </div>'''
 
 
-def intro(lang):
+def intro(lang, count=None):
+    count = len(THEMES) if count is None else count
     if lang == 'en':
-        return '''<aside class="mobile-intro wrap" hidden>
+        return f'''<aside class="mobile-intro wrap" hidden>
   <span class="eyebrow">Same projects · different space</span>
-  <h2>31 styles for a small screen</h2>
+  <h2>{count} styles for a small screen</h2>
   <p>Compare the list, detail and new-project screens. Open an entry to try its mobile flow.
     These are authored touch adaptations of the existing styles, not native platform screenshots.</p>
   <details><summary>Style and platform are two decisions</summary>
@@ -125,12 +130,13 @@ def intro(lang):
     defines materials for controls and navigation across Apple platforms.
     <a href="https://developer.samsung.com/one-ui/layout/basic.html">Samsung One UI</a> separates an upper viewing area
     from a more reachable interaction area. A visual style still needs the navigation and input conventions of its target platform.</p>
-    <p>Apple and One UI are references for the next additions; they do not yet have their own catalog demos.</p>
+    <p>Find Apple / Liquid Glass and Samsung One UI in the Platform Languages family, with their own fact sheets and demos.
+    Material remains in Digital Eras so the catalog also preserves its historical context.</p>
   </details>
 </aside>'''
-    return '''<aside class="mobile-intro wrap" hidden>
+    return f'''<aside class="mobile-intro wrap" hidden>
   <span class="eyebrow">Dieselben Projekte · anderer Raum</span>
-  <h2>31 Stile auf kleinem Bildschirm</h2>
+  <h2>{count} Stile auf kleinem Bildschirm</h2>
   <p>Vergleiche Liste, Detail und das Anlegen eines Projekts. Öffne einen Eintrag, um den mobilen Ablauf auszuprobieren.
     Die Demos sind eigene Touch-Adaptionen der bestehenden Stile, keine nativen Plattform-Screenshots.</p>
   <details><summary>Stil und Plattform sind zwei Entscheidungen</summary>
@@ -139,6 +145,7 @@ def intro(lang):
     definiert Materialien für Bedienelemente und Navigation auf Apple-Plattformen.
     <a href="https://developer.samsung.com/one-ui/layout/basic.html">Samsung One UI</a> trennt einen oberen Betrachtungsbereich
     von einem besser erreichbaren Interaktionsbereich. Ein visueller Stil braucht zusätzlich die Navigations- und Eingabekonventionen seiner Zielplattform.</p>
-    <p>Apple und One UI sind Referenzen für die nächsten Ergänzungen; eigene Katalog-Demos haben sie hier noch nicht.</p>
+    <p>Apple / Liquid Glass und Samsung One UI stehen mit eigenen Faktenblättern und Demos in der Familie Plattformsprachen.
+    Material bleibt in Digitale Epochen, damit auch seine historische Einordnung sichtbar bleibt.</p>
   </details>
 </aside>'''

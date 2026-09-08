@@ -1,0 +1,133 @@
+{
+  "aka": [
+    "Apple Liquid Glass",
+    "iOS 26",
+    "macOS Tahoe",
+    "Apple platform design"
+  ],
+  "palette": [
+    "#EEF3FA",
+    "#FFFFFF",
+    "#172434",
+    "#0069DB",
+    "#B5C3D4",
+    "#E6EFF9"
+  ],
+  "scores": {
+    "longevity": 3,
+    "recognition": 4,
+    "effort": 4,
+    "density": 2
+  },
+  "combinesWith": [
+    "glassmorphism",
+    "spatial-depth",
+    "flat",
+    "swiss"
+  ],
+  "googleFonts": [],
+  "finder": {
+    "mode": "both",
+    "a11y": 3,
+    "platform": {
+      "web": 2,
+      "mobile": 5,
+      "desktop": 4
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "creative"
+    ],
+    "tone": [
+      "calm",
+      "precise",
+      "expressive"
+    ],
+    "signature": "Deckende Inhalte unter einer abgesetzten, glasartigen Navigations- und Aktionsschicht."
+  },
+  "slug": "apple-liquid-glass",
+  "family": "Plattformsprachen",
+  "name": "Apple / Liquid Glass",
+  "era": "2025–heute; vorgestellt am 9. Juni 2025",
+  "origin": "Apple führte Liquid Glass als plattformübergreifende Materialsprache mit den 26er-Systemgenerationen ein. Der Ansatz verbindet transparente, kontextabhängige Bedienelemente mit weiterhin plattformspezifischer Navigation. Dieser Eintrag behandelt diese funktionale Materialschicht; Glassmorphism im Katalog beschreibt die allgemeinere Glasästhetik. Unsere helle Web-Adaption verwendet eigene feste CSS-Werte und bildet weder Apples Renderer noch eine konkrete App exakt nach.",
+  "idea": "Die Bedienung liegt als eigene Materialschicht über dem Inhalt. Glas kennzeichnet Navigation und Aktionen; die Projektliste bleibt eine ruhige, deckende Lesefläche.",
+  "a11y": "Native Apple-Materialien berücksichtigen Systemeinstellungen wie reduzierte Transparenz und erhöhten Kontrast. Diese CSS-Demo implementiert nur eine begrenzte Annäherung: deckende Inhaltszeilen, explizite Fokusmarkierungen in der mobilen Ansicht und deckende Werkzeugleisten ohne Blur-Unterstützung oder bei passenden Kontrast-/Transparenzpräferenzen. Transparenz allein liefert keinen Kontrastnachweis. Text, Fokus, Schriftvergrößerung und tatsächliche Systemvarianten müssen im Zielprodukt geprüft werden.",
+  "longevity": "Die Trennung von Inhalt und Bedienung ist ein dauerhaft brauchbares Prinzip. Wie Lichtbrechung, Glanz und Verformung aussehen, hängt dagegen stark von Apples jeweiliger Systemgeneration ab. Die Bewertung beschreibt diese aktuelle Materialsprache, nicht die Lebensdauer einer gesamten Apple-App.",
+  "verdict": "Für Apps im Apple-Ökosystem eine relevante Plattformentscheidung: die nativen Komponenten sind der geeignete Ausgangspunkt. Als unabhängiger Hausstil für Web, Android und Windows nur bedingt sinnvoll, weil sowohl Verhalten als auch Wiedererkennung eng an Apple gebunden sind. Übertragbar ist die klare Schichtung; ein Blur-Filter allein macht noch kein Liquid Glass.",
+  "tip": "Lege zuerst eine deckende, gut lesbare Inhaltsebene an. Ergänze Glas nur für eine klar abgegrenzte Navigations- oder Aktionsfläche. Im nativen Produkt Systemkomponenten verwenden und vor dem Feinschliff die Varianten mit reduziertem Effekt prüfen.",
+  "markers": [
+    "Demo: 28px Fensterradius; Werkzeugleiste und Aktionsleiste bilden eigene Materialflächen.",
+    "Demo: deckende Projektzeilen auf #FFFFFF, ohne Glas auf der Lesefläche.",
+    "Demo: Materialgrund #E6EFF9; bei Blur-Unterstützung dieselbe Farbe mit Alpha E8.",
+    "Demo: backdrop-filter mit 20px Blur und Sättigungsfaktor 1,2, keine echte Lichtbrechung.",
+    "Demo: 1px heller Innenrand und ein weicher Schatten grenzen die Aktionsleiste ab.",
+    "Demo: 34px fetter Titel, 18px Projektnamen und 14px Metadaten auf Desktop.",
+    "Demo: #0069DB kennzeichnet die Hauptaktion; die übrige Oberfläche bleibt überwiegend neutral.",
+    "Demo: pillenförmige Aktionen mit mindestens 44px Höhe auf Desktop und 48px auf Mobile.",
+    "Demo: Zeitangabe unter dem Namen, Status daneben; die Lesereihenfolge bleibt linear.",
+    "Demo: bei prefers-contrast: more oder prefers-reduced-transparency: reduce werden die Materialflächen deckend."
+  ],
+  "params": {
+    "radius": "Demo: 28px Fenster, 22px mobile Inhaltsgruppe, 999px Aktionsflächen; keine Apple-Tokenvorgaben.",
+    "contrast": "Deckende Leseflächen; Materialkontrast ist hintergrundabhängig und separat zu prüfen.",
+    "density": "Luftig: ein klarer Inhaltsschwerpunkt, getrennte Zeilen und wenige gleichzeitig sichtbare Aktionen.",
+    "depth": "Inhalt, darüber eine abgesetzte Bedienebene; Demo mit Blur-Fallback, Innenlicht und weichem Schatten.",
+    "color": "Eigene feste Demopalette: #EEF3FA Grund, #FFFFFF Inhalt, #172434 Text, #0069DB Hauptaktion.",
+    "type": "Systemschrift mit -apple-system/BlinkMacSystemFont auf Desktop, system-ui auf Mobile; keine eingebettete Apple-Schrift.",
+    "motion": "Nativ kontextabhängige Verformung und Materialreaktionen; die Vergleichsdemo wechselt Ansichten ohne Morphing.",
+    "texture": "Glasartige Oberfläche auf der Bedienebene; Inhalte bleiben glatt und deckend."
+  },
+  "examples": [
+    {
+      "name": "Apple Music, iOS 26",
+      "what": "Die dokumentierte Tab-Leiste wird beim Scrollen kompakter und gibt Inhalt frei."
+    },
+    {
+      "name": "Safari, Designvorstellung 2025",
+      "what": "Apple nennt Safari als Beispiel für die überarbeiteten glasartigen Bedienelemente."
+    },
+    {
+      "name": "Apple TV, iPadOS und macOS 26",
+      "what": "Die dokumentierten Seitenleisten beziehen den Inhalt hinter und um die Leiste in ihre Materialwirkung ein."
+    },
+    {
+      "name": "Dock, macOS Tahoe 26",
+      "what": "Die Systemvorstellung zeigt Materiallagen und helle, dunkle, getönte sowie klare Erscheinungsvarianten."
+    }
+  ],
+  "strengths": [
+    "Inhalt und Bedienung erhalten klar unterscheidbare Rollen.",
+    "Native Komponenten können Systemverhalten und Darstellungspräferenzen übernehmen.",
+    "Die Prinzipien funktionieren auf mehreren Apple-Geräteklassen, bei angepasster Navigation."
+  ],
+  "risks": [
+    "Blur plus Rundung kann mit beliebigem Glassmorphism verwechselt werden; die funktionale Schichtung muss sichtbar bleiben.",
+    "Transparente Bedienelemente brauchen Tests über allen erlaubten Hintergründen.",
+    "Eine CSS-Nachbildung reproduziert weder native Lichtbrechung noch automatisch alle Bedienhilfen.",
+    "Die Mobile-Bewertung meint vor allem iOS; für Android ist die Eignung deutlich kontextabhängiger."
+  ],
+  "platforms": {
+    "web": "Die Schichtung lässt sich übertragen. Native Materialeffekte brauchen vereinfachte CSS-Alternativen mit deckendem Fallback.",
+    "mobile": "Für iOS sind native Systemkomponenten passend. Auf Android zuerst dessen Navigations- und Bedienkonventionen berücksichtigen.",
+    "desktop": "Relevant für macOS; für Windows und Linux eine bewusste fremde Designsprache. Die Demo ist eine breite Web-Adaption."
+  },
+  "sources": [
+    {
+      "title": "Apple: Einführung und plattformübergreifende Beispiele, Juni 2025",
+      "url": "https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/"
+    },
+    {
+      "title": "Apple: Liquid Glass und native Komponenten",
+      "url": "https://developer.apple.com/documentation/TechnologyOverviews/liquid-glass"
+    },
+    {
+      "title": "Apple: Materialvarianten und Systemeinstellungen",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/materials"
+    },
+    {
+      "title": "Apple: iOS-26-Funktionen, kompakte Tab-Leisten",
+      "url": "https://www.apple.com/os/pdf/All_New_Features_iOS_26_Sept_2025.pdf"
+    }
+  ]
+}

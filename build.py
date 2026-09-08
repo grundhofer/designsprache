@@ -60,6 +60,10 @@ ORDER_DE = [
     ("Weitere Pole",
      "Vier Extreme, die als Zutat oft nützlicher sind denn als ganzer Stil.",
      ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
+    ("Plattformsprachen",
+     "Gestaltung aus den Konventionen eines Betriebssystems: Materialschichten bei Apple, "
+     "Erreichbarkeit bei Samsung. Die Demos übertragen diese Prinzipien auf dieselbe Projektliste.",
+     ["apple-liquid-glass", "one-ui"]),
 ]
 
 # Family names must match the "family" field in the .en.json files.
@@ -99,6 +103,10 @@ ORDER_EN = [
     ("Further Poles",
      "Four extremes that are often more useful as an ingredient than as a whole style.",
      ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
+    ("Platform Languages",
+     "Design shaped by operating-system conventions: material layers at Apple, "
+     "reachability at Samsung. The demos apply these principles to the same project list.",
+     ["apple-liquid-glass", "one-ui"]),
 ]
 
 FONT_SPECS = [
@@ -541,7 +549,7 @@ def build(lang="de", mode="site"):
   </div>
 </article>''')
         sections.append(f'''
-<section class="fam" data-family="{esc(fam)}">
+<section class="fam" id="family-{esc(slugs[0])}" data-family="{esc(fam)}">
   <header class="fam-head">
     <h2>{esc(fam)}</h2>
     <p>{esc(intro)}</p>
@@ -594,7 +602,7 @@ def build(lang="de", mode="site"):
         mobile_css=mobile_css, mobile_script=mobile_script,
         mobile_controls=mobile_catalog.controls(lang),
         mobile_sheet_controls=mobile_catalog.controls(lang, sheet=True),
-        mobile_intro=mobile_catalog.intro(lang),
+        mobile_intro=mobile_catalog.intro(lang, n),
         mobile_help=("Eigene mobile Adaption. Änderungen bleiben in dieser Demo und werden beim Schließen zurückgesetzt."
                      if lang == "de" else "Authored mobile adaptation. Changes stay in this demo and reset when you close the entry."),
         mobile_reset="Demo zurücksetzen" if lang == "de" else "Reset demo",

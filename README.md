@@ -1,7 +1,7 @@
 # Stil-Katalog
 
-**31 UI-Stilrichtungen — jede als gerendertes Beispiel derselben Oberfläche.**
-31 UI style directions — each rendered as the very same interface.
+**33 UI-Stilrichtungen — jede als gerendertes Beispiel derselben Oberfläche.**
+33 UI style directions — each rendered as the very same interface.
 
 → **[grundhofer.github.io/designsprache](https://grundhofer.github.io/designsprache)**
 &nbsp;·&nbsp; [Deutsch](https://grundhofer.github.io/designsprache/de/)
@@ -14,7 +14,7 @@
 ## Wozu
 
 Über UI-Stile wird in Adjektiven geredet — „clean", „modern", „verspielt". Wörter, unter denen
-sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung: **31-mal
+sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung: **33-mal
 dieselbe Projektliste**, überall dieselben dreizehn Textbausteine, nur die Gestaltung ändert
 sich. Dadurch wird vergleichbar, was ein Stil tatsächlich entscheidet — und was nur Geschmack
 ist.
@@ -24,7 +24,7 @@ elf überprüfbare Merkmale, echte Vertreter mit belegten Farben und Radien, Ris
 Barrierefreiheits-Konsequenzen, Alterungsverhalten und Plattform-Eignung.
 
 Talk about UI styles happens in adjectives — words that mean something different to everyone.
-This catalog replaces them with evidence: **the same project list 31 times**, the same thirteen
+This catalog replaces them with evidence: **the same project list 33 times**, the same thirteen
 pieces of text throughout, only the design changes. Every entry comes with a fact sheet of hard,
 checkable values rather than moods.
 
@@ -52,7 +52,7 @@ practical tip. About 4,000 characters, ready to paste.
 
 ## Desktop und Smartphone / Desktop and smartphone
 
-**Desktop / Smartphone** schaltet alle 31 Vergleichsdemos gemeinsam um. Für das Smartphone
+**Desktop / Smartphone** schaltet alle 33 Vergleichsdemos gemeinsam um. Für das Smartphone
 gibt es drei Ansichten: **Projektliste, Projektdetail und neues Projekt**. Die mobilen
 Adaptionen haben eigene Layouts bis 390 px Breite, größere Bedienflächen und gestapelte
 Metadaten. Schrift, Flächen, Konturen und charakteristische Stilmittel bleiben erkennbar.
@@ -63,7 +63,7 @@ dieser Demo und werden beim Schließen, Stilwechsel oder Zurücksetzen verworfen
 und Finder-Vorschauen bleiben inaktiv. Der Prompt-Export ergänzt in der Smartphone-Ansicht
 die konkreten mobilen Anpassungen des gewählten Stils.
 
-**Desktop / Smartphone** switches all 31 comparisons together. The mobile reference has
+**Desktop / Smartphone** switches all 33 comparisons together. The mobile reference has
 three screens: **project list, project detail and new project**. Open a fact sheet to try
 search, navigation, creation and a line-by-line name import. Demo changes live only in
 memory and reset on close, style change or reset. Mobile prompts include the selected
@@ -73,10 +73,16 @@ Direkt zur mobilen Ansicht / Open the mobile view:
 [Deutsch](https://grundhofer.github.io/designsprache/de/?view=mobile),
 [English](https://grundhofer.github.io/designsprache/en/?view=mobile).
 
-Material ist bereits als Stil enthalten. Apple / Liquid Glass und Samsung One UI sind im
-mobilen Einführungstext als Plattformreferenzen verlinkt; eigene Einträge folgen separat.
-Material already has a catalog entry. Apple / Liquid Glass and Samsung One UI are linked
-as platform references in the mobile introduction; dedicated entries are a separate next step.
+Die neue Familie **Plattformsprachen** enthält **Apple / Liquid Glass** und **Samsung / One UI**
+mit eigenen Faktenblättern, Quellen und Desktop-/Smartphone-Demos. Apple zeigt die Trennung
+von deckenden Inhalten und glasartiger Bedienebene, One UI die Aufteilung in Betrachtungs-
+und Interaktionsbereiche. Die konkreten Demo-Werte sind eigene Entwurfsentscheidungen.
+Material bleibt historisch unter „Digitale Epochen“ eingeordnet.
+
+The new **Platform Languages** family contains **Apple / Liquid Glass** and **Samsung / One UI**,
+with sourced fact sheets and desktop/mobile demos. Apple separates opaque content from a
+glass-like control layer; One UI separates viewing and interaction areas. Concrete demo
+values are authored choices. Material retains its historical place in Digital Eras.
 
 ---
 
@@ -106,13 +112,13 @@ python3 -m unittest discover -s tests -v
 node --test tests/finder.test.cjs # nach dem Build; Node 22+ / after building; Node 22+
 ```
 
-**Die Scoping-Regel.** 31 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
+**Die Scoping-Regel.** 33 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
 jeder CSS-Selektor mit `.style-<slug>`, `@keyframes` sind slug-präfigiert, und es gibt kein
 `:root`, kein `body`, keinen nackten Element-Selektor. `build.py` prüft das bei jedem Lauf und
 bricht bei Verstoß ab — ebenso, wenn eine bestehende Übersetzung des Seitengerüsts
 nicht mehr zur deutschen Vorlage passt.
 
-31 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
+33 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
 `@keyframes` names are slug-prefixed, and there is no `:root`, `body` or bare element selector.
 `build.py` enforces this on every run.
 
@@ -157,8 +163,8 @@ generated from one source into CSS, Tailwind, Compose and SwiftUI.
 
 ## Mitmachen / Contributing
 
-Ein 32. Stil und Korrekturen an Jahreszahlen, Urhebern oder Farbwerten sind willkommen — siehe
-**[CONTRIBUTING.md](CONTRIBUTING.md)**. A 32nd style and corrections are welcome.
+Ein 34. Stil und Korrekturen an Jahreszahlen, Urhebern oder Farbwerten sind willkommen — siehe
+**[CONTRIBUTING.md](CONTRIBUTING.md)**. A 34th style and corrections are welcome.
 
 ## Lizenz / License
 
