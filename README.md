@@ -1,7 +1,7 @@
-# Stil-Katalog
+# Designsprache
 
-**33 UI-Stilrichtungen — jede als gerendertes Beispiel derselben Oberfläche.**
-33 UI style directions — each rendered as the very same interface.
+**37 Stile und Designsprachen · 6 interaktive Prinzipien · 8 Nutzungskontexte.**
+37 styles and design languages · 6 interactive principles · 8 contexts.
 
 → **[grundhofer.github.io/designsprache](https://grundhofer.github.io/designsprache)**
 &nbsp;·&nbsp; [Deutsch](https://grundhofer.github.io/designsprache/de/)
@@ -11,20 +11,40 @@
 
 ---
 
+## Drei Ebenen / Three levels
+
+1. **Stile & Designsprachen:** 37 Faktenblätter, Desktop-/Smartphone-Vergleiche und Prompt-Export.
+   Die Plattformfamilie enthält Apple, Samsung, Microsoft Fluent, GNOME/Adwaita, KDE/Breeze und IBM Carbon.
+2. **Gestaltungs- & Bedienprinzipien:** sechs interaktive Beispiele für Gruppierung, schrittweise Offenlegung,
+   Rückmeldung mit Fehlerbehebung und Rückgängig, Navigation, adaptive Eingabe und inklusive Darstellung.
+3. **Geräte & Nutzungskontexte:** Web, Desktop, Smartphone, Tablet/Foldable, Smartwatch, TV,
+   Auto und räumliche Anwendungen. Jedes Beispiel hat eine passende Aufgabe, Quellen und Verbindungen
+   zu den beiden anderen Ebenen. Die Gerätedemos sind schematische Web-Adaptionen.
+
+Die Ebenen sind über `?level=styles`, `?level=principles` und `?level=contexts` direkt erreichbar.
+Sprache und Desktop-/Smartphone-Auswahl bleiben beim Wechsel erhalten. Ohne JavaScript sind alle
+Beschreibungen und Quellen sichtbar. Versuche speichern keine Daten dauerhaft.
+
+**Styles**, **interaction principles** and **device contexts** have separate, linkable views.
+Six interactive labs cover grouping, disclosure, feedback/recovery, navigation, adaptive input
+and inclusive presentation. Eight device contexts show task-specific examples and link to related
+styles and principles. All experiment state is session-only. Device examples are schematic web
+adaptations, not native implementations or hardware simulations.
+
 ## Wozu
 
 Über UI-Stile wird in Adjektiven geredet — „clean", „modern", „verspielt". Wörter, unter denen
-sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung: **33-mal
+sich jeder etwas anderes vorstellt. Dieser Katalog ersetzt sie durch Anschauung: **37-mal
 dieselbe Projektliste**, überall dieselben dreizehn Textbausteine, nur die Gestaltung ändert
 sich. Dadurch wird vergleichbar, was ein Stil tatsächlich entscheidet — und was nur Geschmack
 ist.
 
 Zu jedem Eintrag gehört ein Faktenblatt mit harten Werten statt Stimmungen: Herkunft, neun bis
-elf überprüfbare Merkmale, echte Vertreter mit belegten Farben und Radien, Risiken,
+elf überprüfbare Merkmale, reale Anwendungen oder offizielle Komponentenreferenzen, Risiken,
 Barrierefreiheits-Konsequenzen, Alterungsverhalten und Plattform-Eignung.
 
 Talk about UI styles happens in adjectives — words that mean something different to everyone.
-This catalog replaces them with evidence: **the same project list 33 times**, the same thirteen
+This catalog replaces them with evidence: **the same project list 37 times**, the same thirteen
 pieces of text throughout, only the design changes. Every entry comes with a fact sheet of hard,
 checkable values rather than moods.
 
@@ -52,7 +72,7 @@ practical tip. About 4,000 characters, ready to paste.
 
 ## Desktop und Smartphone / Desktop and smartphone
 
-**Desktop / Smartphone** schaltet alle 33 Vergleichsdemos gemeinsam um. Für das Smartphone
+**Desktop / Smartphone** schaltet alle 37 Vergleichsdemos gemeinsam um. Für das Smartphone
 gibt es drei Ansichten: **Projektliste, Projektdetail und neues Projekt**. Die mobilen
 Adaptionen haben eigene Layouts bis 390 px Breite, größere Bedienflächen und gestapelte
 Metadaten. Schrift, Flächen, Konturen und charakteristische Stilmittel bleiben erkennbar.
@@ -63,7 +83,7 @@ dieser Demo und werden beim Schließen, Stilwechsel oder Zurücksetzen verworfen
 und Finder-Vorschauen bleiben inaktiv. Der Prompt-Export ergänzt in der Smartphone-Ansicht
 die konkreten mobilen Anpassungen des gewählten Stils.
 
-**Desktop / Smartphone** switches all 33 comparisons together. The mobile reference has
+**Desktop / Smartphone** switches all 37 comparisons together. The mobile reference has
 three screens: **project list, project detail and new project**. Open a fact sheet to try
 search, navigation, creation and a line-by-line name import. Demo changes live only in
 memory and reset on close, style change or reset. Mobile prompts include the selected
@@ -73,13 +93,15 @@ Direkt zur mobilen Ansicht / Open the mobile view:
 [Deutsch](https://grundhofer.github.io/designsprache/de/?view=mobile),
 [English](https://grundhofer.github.io/designsprache/en/?view=mobile).
 
-Die neue Familie **Plattformsprachen** enthält **Apple / Liquid Glass** und **Samsung / One UI**
+Die Familie **Plattformsprachen** enthält **Apple / Liquid Glass**, **Samsung / One UI**,
+**Microsoft / Fluent**, **GNOME / Adwaita**, **KDE / Breeze** und **IBM / Carbon**
 mit eigenen Faktenblättern, Quellen und Desktop-/Smartphone-Demos. Apple zeigt die Trennung
 von deckenden Inhalten und glasartiger Bedienebene, One UI die Aufteilung in Betrachtungs-
 und Interaktionsbereiche. Die konkreten Demo-Werte sind eigene Entwurfsentscheidungen.
 Material bleibt historisch unter „Digitale Epochen“ eingeordnet.
 
-The new **Platform Languages** family contains **Apple / Liquid Glass** and **Samsung / One UI**,
+The **Platform Languages** family contains **Apple / Liquid Glass**, **Samsung / One UI**,
+**Microsoft / Fluent**, **GNOME / Adwaita**, **KDE / Breeze** and **IBM / Carbon**,
 with sourced fact sheets and desktop/mobile demos. Apple separates opaque content from a
 glass-like control layer; One UI separates viewing and interaction areas. Concrete demo
 values are authored choices. Material retains its historical place in Digital Eras.
@@ -99,6 +121,7 @@ styles/<slug>.en.*      englische Fassung, CSS zeichengleich / English, byte-ide
 landing.html            zweisprachige Eingangsseite / bilingual entry page
 build.py                Generator
 mobile/                 Mobile Layouts, Stilwerte, Übersetzungen und Demo-Verhalten
+explorer/               Drei Ebenen, Prinzipien und Nutzungskontexte / levels, principles and contexts
 tools/palette-check.py  Prüfwerkzeug / check tool
 tools/catalog_checks.py Quellen- und Sprachprüfung / source and language checks
 tests/                  Regressionstests / regression tests
@@ -109,16 +132,16 @@ docs/                   erzeugt, nicht eingecheckt / generated, not committed
 python3 build.py                 # docs/index.html, docs/de/, docs/en/
 python3 tools/palette-check.py   # Palettendubletten / palette duplicates
 python3 -m unittest discover -s tests -v
-node --test tests/finder.test.cjs # nach dem Build; Node 22+ / after building; Node 22+
+node --test tests/*.test.cjs # nach dem Build; Node 22+ / after building; Node 22+
 ```
 
-**Die Scoping-Regel.** 33 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
+**Die Scoping-Regel.** 37 Stylesheets teilen sich eine Seite. Deshalb beginnt in jeder Demo
 jeder CSS-Selektor mit `.style-<slug>`, `@keyframes` sind slug-präfigiert, und es gibt kein
 `:root`, kein `body`, keinen nackten Element-Selektor. `build.py` prüft das bei jedem Lauf und
 bricht bei Verstoß ab — ebenso, wenn eine bestehende Übersetzung des Seitengerüsts
 nicht mehr zur deutschen Vorlage passt.
 
-33 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
+37 stylesheets share one page, so every CSS selector in a demo starts with `.style-<slug>`,
 `@keyframes` names are slug-prefixed, and there is no `:root`, `body` or bare element selector.
 `build.py` enforces this on every run.
 
@@ -163,8 +186,8 @@ generated from one source into CSS, Tailwind, Compose and SwiftUI.
 
 ## Mitmachen / Contributing
 
-Ein 34. Stil und Korrekturen an Jahreszahlen, Urhebern oder Farbwerten sind willkommen — siehe
-**[CONTRIBUTING.md](CONTRIBUTING.md)**. A 34th style and corrections are welcome.
+Ein 38. Stil und Korrekturen an Jahreszahlen, Urhebern oder Farbwerten sind willkommen — siehe
+**[CONTRIBUTING.md](CONTRIBUTING.md)**. A 38th style and corrections are welcome.
 
 ## Lizenz / License
 

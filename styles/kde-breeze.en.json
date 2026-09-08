@@ -1,0 +1,141 @@
+{
+  "slug": "kde-breeze",
+  "name": "KDE / Breeze",
+  "family": "Platform Languages",
+  "aka": [
+    "KDE",
+    "kde breeze"
+  ],
+  "palette": [
+    "#EFF0F1",
+    "#FFFFFF",
+    "#232629",
+    "#176B9B",
+    "#A7AAAD",
+    "#DDEBF3"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 5
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [
+    "Noto Sans"
+  ],
+  "era": "Contemporary design system · authored web adaptation",
+  "idea": "A simple initial view leads to powerful tools while retaining orientation and adaptable workspaces.",
+  "origin": "Breeze is a visual reference for the KDE desktop. KDE guidelines combine an easy start with capabilities for experienced users. System colors and familiar components take precedence. This demo fixes a light example palette; actual KDE applications respect the chosen system theme.",
+  "tip": "Start with sensible defaults. Make advanced capabilities discoverable and let people restore the initial configuration.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "creative",
+      "internal"
+    ],
+    "tone": [
+      "precise",
+      "technical",
+      "calm"
+    ],
+    "signature": "Toolbar, path and clear columns for an adaptable workspace."
+  },
+  "markers": [
+    "Demo: Compact toolbar with labeled actions.",
+    "Demo: Path bar identifies the current area.",
+    "Demo: 140px sidebar for locations and navigation.",
+    "Demo: Project name, timestamp and status in aligned columns.",
+    "Demo: 36px minimum height for desktop actions.",
+    "Demo: 3px field and button radii.",
+    "Demo: 1px boundaries between tools and content.",
+    "Demo: 16px project text with 14px metadata.",
+    "Demo: Noto Sans as the authored web comparison font."
+  ],
+  "params": {
+    "radius": "Demo: 3px; see markers for component variations.",
+    "contrast": "Dark text on opaque light surfaces; focus and states are separate roles.",
+    "density": "Tool-oriented density with desktop rows at least 48px and actions at least 36px high.",
+    "depth": "Grouping through surfaces and 1px boundaries.",
+    "color": "Authored demo: #EFF0F1, #FFFFFF, #232629, #176B9B, #A7AAAD, #DDEBF3",
+    "type": "Demo font: Noto Sans",
+    "motion": "Immediate view changes; no animated transitions in this comparison.",
+    "texture": "Smooth opaque surfaces."
+  },
+  "examples": [
+    {
+      "name": "Dolphin",
+      "what": "File management with multiple views as a reference for an adaptable workspace."
+    },
+    {
+      "name": "Kate",
+      "what": "Text editing with tools for more substantial workflows."
+    },
+    {
+      "name": "Okular",
+      "what": "Document viewing and annotation combine reading with additional tools."
+    },
+    {
+      "name": "Gwenview",
+      "what": "Image viewing with supplementary editing functions."
+    }
+  ],
+  "sources": [
+    {
+      "title": "KDE: App design",
+      "url": "https://develop.kde.org/hig/kde_app_design/"
+    },
+    {
+      "title": "KDE: Simple by default",
+      "url": "https://develop.kde.org/hig/simple_by_default/"
+    },
+    {
+      "title": "KDE: Human Interface Guidelines",
+      "url": "https://develop.kde.org/hig/"
+    },
+    {
+      "title": "Dolphin",
+      "url": "https://apps.kde.org/dolphin/"
+    },
+    {
+      "title": "Kate",
+      "url": "https://apps.kde.org/kate/"
+    },
+    {
+      "title": "Okular",
+      "url": "https://apps.kde.org/okular/"
+    },
+    {
+      "title": "Gwenview",
+      "url": "https://apps.kde.org/gwenview/"
+    }
+  ],
+  "strengths": [
+    "A simple initial view leads to powerful tools while retaining orientation and adaptable workspaces.",
+    "A documented system supports consistent component decisions."
+  ],
+  "risks": [
+    "Too many visible tools can obscure the easy start; expert features need clear organization.",
+    "These colors, sizes and radii describe this demo, not a full vendor token specification.",
+    "The web adaptation does not reproduce native window management, assistive technology integration or device input."
+  ],
+  "a11y": "Test visible keyboard focus, screen-reader names, 200% text resizing and contrast in every state. Use system colors for native implementations and retain text labels for status. These editorial scores are not an accessibility certification.",
+  "longevity": "Stable hierarchy and task structure outlast individual theme generations. Check current platform components when implementing.",
+  "verdict": "A simple initial view leads to powerful tools while retaining orientation and adaptable workspaces. Start with sensible defaults. Make advanced capabilities discoverable and let people restore the initial configuration.",
+  "platforms": {
+    "web": "Authored HTML/CSS comparison; use semantic controls in a product.",
+    "mobile": "Fixed columns become names with metadata below. Toolbar actions get larger targets and the extra sidebar disappears. A touch adaptation with reflowed content.",
+    "desktop": "The broad reference shows the system’s task hierarchy. Actual native applications also need platform navigation and input conventions."
+  }
+}

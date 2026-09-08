@@ -15,6 +15,7 @@ import json, pathlib, re, html, shutil, sys
 
 from tools.catalog_checks import check_catalog
 from mobile import catalog as mobile_catalog
+from explorer import catalog as explorer_catalog
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
@@ -61,9 +62,9 @@ ORDER_DE = [
      "Vier Extreme, die als Zutat oft nützlicher sind denn als ganzer Stil.",
      ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
     ("Plattformsprachen",
-     "Gestaltung aus den Konventionen eines Betriebssystems: Materialschichten bei Apple, "
-     "Erreichbarkeit bei Samsung. Die Demos übertragen diese Prinzipien auf dieselbe Projektliste.",
-     ["apple-liquid-glass", "one-ui"]),
+     "Gestaltung aus Plattformen und Designsystemen: Apple, Samsung, Microsoft, "
+     "GNOME, KDE und IBM. Die Demos übertragen ihre Hierarchien auf dieselbe Projektliste.",
+     ["apple-liquid-glass", "one-ui", "fluent", "gnome-adwaita", "kde-breeze", "ibm-carbon"]),
 ]
 
 # Family names must match the "family" field in the .en.json files.
@@ -104,12 +105,14 @@ ORDER_EN = [
      "Four extremes that are often more useful as an ingredient than as a whole style.",
      ["editorial-print", "pixel-8bit", "playful-chunky", "portal-density"]),
     ("Platform Languages",
-     "Design shaped by operating-system conventions: material layers at Apple, "
-     "reachability at Samsung. The demos apply these principles to the same project list.",
-     ["apple-liquid-glass", "one-ui"]),
+     "Design shaped by platforms and design systems: Apple, Samsung, Microsoft, "
+     "GNOME, KDE and IBM. The demos apply their hierarchies to the same project list.",
+     ["apple-liquid-glass", "one-ui", "fluent", "gnome-adwaita", "kde-breeze", "ibm-carbon"]),
 ]
 
 FONT_SPECS = [
+    "IBM+Plex+Sans:wght@400;500;600;700",
+    "Noto+Sans:wght@400;500;600;700",
     "Archivo:ital,wght@0,100..900;1,100..900",
     "Bitter:ital,wght@0,100..900;1,100..900",
     "Bricolage+Grotesque:opsz,wght@12..96,200..800",
@@ -362,14 +365,14 @@ L10N = [
         SwiftUI. Blur, layered gradients and materials need platform-specific renderers and
         fallbacks, though tokens can describe parts of them too. The extra work depends on
         target platforms and existing components; Tauri reuses the web implementation."""),
- ("""Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
+ ("""Alle {n} Desktop-Stildemos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
     stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
     redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
     Demo-Entscheidungen; Werte sind keine unveränderlichen Produktvorgaben. Verlinkte Quellen
     belegen jeweils die benannte Aussage, nicht das gesamte Faktenblatt. Die vier Kennzahlen
     sind fachliche Einschätzungen, keine Messwerte.""",
-  """All {n} demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
+  """All {n} desktop style demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
     the same thirteen pieces of text. Type comes from Google Fonts or, where the style demands it, from the system stack;
     style names and families are editorial categories. Fact sheets describe both influences
     and concrete demo choices; their values are not permanent product specifications. Linked
@@ -509,6 +512,7 @@ def build(lang="de", mode="site"):
     assert n == N_ENTRIES, n
     check_scoping(sheets, [x for _, _, ss in ORDER for x in ss], suffix)
     mobile_css, mobile_script = mobile_catalog.assets(data, lang)
+    explorer_css, explorer_script = explorer_catalog.assets(lang)
 
     # ---------- Plates ----------
     idx, sections = 0, []
@@ -599,6 +603,10 @@ def build(lang="de", mode="site"):
         chips=fam_chips,
         payload=payload,
         guide=GUIDE[lang],
+        explorer_header=explorer_catalog.header(lang, n),
+        explorer_principles=explorer_catalog.principles(lang),
+        explorer_contexts=explorer_catalog.contexts(lang, data),
+        explorer_css=explorer_css, explorer_script=explorer_script,
         mobile_css=mobile_css, mobile_script=mobile_script,
         mobile_controls=mobile_catalog.controls(lang),
         mobile_sheet_controls=mobile_catalog.controls(lang, sheet=True),
@@ -697,9 +705,9 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   padding-bottom:clamp(24px,4vw,40px); }}
 @media (min-width:900px) {{ .mast-in {{ grid-template-columns:minmax(0,7fr) minmax(0,5fr);
   gap:clamp(32px,5vw,72px); align-items:end; }} }}
-.mast h1 {{ font-size:clamp(40px,7vw,76px); line-height:.95; letter-spacing:-.025em;
+.mast h2 {{ font-size:clamp(40px,7vw,76px); line-height:.95; letter-spacing:-.025em;
   font-weight:700; margin:10px 0 0; }}
-.mast h1 em {{ font-family:var(--f-body); font-style:italic; font-weight:400;
+.mast h2 em {{ font-family:var(--f-body); font-style:italic; font-weight:400;
   letter-spacing:-.01em; color:var(--ink-2); }}
 .mast .k-lede {{ font-size:clamp(17px,1.5vw,20px); line-height:1.5; color:var(--ink-2);
   max-width:56ch; margin-top:18px; }}
@@ -1050,16 +1058,20 @@ tbody tr:hover {{ background:var(--surface-2); }}
     animation-iteration-count:1 !important; transition-duration:.001ms !important; }}
 }}
 {mobile_css}
+{explorer_css}
 </style>
 
 {sheets}
 
 {topbar}
+{explorer_header}
+<main id="experience">
+<section id="styles" data-level="styles" aria-labelledby="styles-title">
 <header class="mast">
   <div class="wrap mast-in">
     <div>
       <span class="eyebrow">Referenzkatalog · Designsprache</span>
-      <h1>Stil&#8209;Katalog<br><em>{n} Wege, dieselbe Oberfläche zu bauen</em></h1>
+      <h2 id="styles-title" tabindex="-1">Stil&#8209;Katalog<br><em>{n} Wege, dieselbe Oberfläche zu bauen</em></h2>
     </div>
     <div>
       <p class="k-lede">Jeder Eintrag zeigt <strong>exakt dieselbe Oberfläche</strong> — eine
@@ -1137,9 +1149,9 @@ tbody tr:hover {{ background:var(--surface-2); }}
 
 {mobile_intro}
 
-<main class="wrap" id="cat">{sections}
+<div class="wrap" id="cat">{sections}
   <p class="empty" id="empty" hidden>Kein Eintrag passt zu dieser Auswahl.</p>
-</main>
+</div>
 
 <section class="mx wrap">
   <div class="mx-head">
@@ -1206,7 +1218,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
         und vorhandenen Komponenten ab; Tauri nutzt dabei die Web-Umsetzung.</p>
     </div>
   </div>
-  <p class="k-colophon">Alle {n} Demos sind handgebautes HTML und CSS — keine Bilder, keine
+  <p class="k-colophon">Alle {n} Desktop-Stildemos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
     stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
     redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
@@ -1216,6 +1228,10 @@ tbody tr:hover {{ background:var(--surface-2); }}
 </section>
 
 {guide}
+</section>
+{explorer_principles}
+{explorer_contexts}
+</main>
 
 <dialog class="k-finder" id="finder" aria-labelledby="fi-title" hidden>
   <div class="fi-bar"><div class="wrap fi-bar-in">
@@ -1943,6 +1959,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   document.getElementById("fi-lede").textContent = FT.lede;
 
 {mobile_script}
+{explorer_script}
 
 }})();
 </script>
@@ -2011,16 +2028,16 @@ HEAD = {
  "de": _HEAD_TPL.format(
    lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON,
    imgalt="Dieselbe Projektliste in vier Stilen, daneben der Prompt-Export für KI-Agenten: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
-   title=f"Stil-Katalog — {N_ENTRIES} Wege, dieselbe Oberfläche zu bauen",
+   title=f"Designsprache — {N_ENTRIES} Stile, Prinzipien und Nutzungskontexte",
    desc=(f"{N_ENTRIES} UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
-         "Mit Faktenblatt, Kennzahlen und Entscheidungsraster. Von Swiss und Bauhaus über "
+         "Mit Faktenblättern, sechs interaktiven Bedienprinzipien und acht Nutzungskontexten. Von Swiss über "
          "Skeuomorphismus und Glassmorphism bis Dev-Noir und Neo-Brutalismus.")),
  "en": _HEAD_TPL.format(
    lang="en", locale="en_US", site=SITE_URL, icon=FAVICON,
    imgalt="The same project list in four styles, alongside the prompt export for AI agents: Swiss, Bauhaus, neo-brutalism, dev-noir.",
-   title=f"Style Catalog — {N_ENTRIES} ways to build the same interface",
+   title=f"Designsprache — {N_ENTRIES} styles, principles and contexts",
    desc=(f"{N_ENTRIES} UI style directions, each rendered as the very same reference interface. "
-         "With fact sheets, scores and a decision grid. From Swiss and Bauhaus through "
+         "With fact sheets, six interactive principles and eight device contexts. From Swiss through "
          "skeuomorphism and glassmorphism to dev-noir and neo-brutalism.")),
 }
 

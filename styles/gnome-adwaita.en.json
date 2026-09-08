@@ -1,0 +1,138 @@
+{
+  "slug": "gnome-adwaita",
+  "name": "GNOME / Adwaita",
+  "family": "Platform Languages",
+  "aka": [
+    "GNOME",
+    "gnome adwaita"
+  ],
+  "palette": [
+    "#F6F5F4",
+    "#FFFFFF",
+    "#2E3436",
+    "#1C71D8",
+    "#C0BFBC",
+    "#DEDDDA"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 2,
+    "density": 3
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [],
+  "era": "Contemporary design system · authored web adaptation",
+  "idea": "A focused window gathers a few main actions in its header and related content in a quiet list.",
+  "origin": "Adwaita and libadwaita shape GNOME applications. GNOME guidelines combine a focused task with adaptable windows. Header bars combine a window title and contextual actions. This demo is an authored HTML adaptation.",
+  "tip": "Choose one clear main task and keep only its frequent actions in the header. Then check narrow windows.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 4,
+      "desktop": 5
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "internal"
+    ],
+    "tone": [
+      "calm",
+      "precise"
+    ],
+    "signature": "Centered window title, few primary actions and a boxed list."
+  },
+  "markers": [
+    "Demo: Window header with three alignment points.",
+    "Demo: Centered title with the project count below.",
+    "Demo: Main actions at the start and end of the header.",
+    "Demo: 520px maximum width for the inner reading list.",
+    "Demo: 12px outer radius on the shared list.",
+    "Demo: White rows with internal separators.",
+    "Demo: Gray window ground without decorative texture.",
+    "Demo: 16px names and 14px timestamps.",
+    "Demo: Outlined search field above the content."
+  ],
+  "params": {
+    "radius": "Demo: 12px; see markers for component variations.",
+    "contrast": "Dark text on opaque light surfaces; focus and states are separate roles.",
+    "density": "Bounded reading width, few actions and desktop rows at least 64px high.",
+    "depth": "Grouping through surfaces and 1px boundaries.",
+    "color": "Authored demo: #F6F5F4, #FFFFFF, #2E3436, #1C71D8, #C0BFBC, #DEDDDA",
+    "type": "Demo font: system-ui",
+    "motion": "Immediate view changes; no animated transitions in this comparison.",
+    "texture": "Smooth opaque surfaces."
+  },
+  "examples": [
+    {
+      "name": "GNOME Files / Nautilus",
+      "what": "Grid, list and search provide different ways to access the same files."
+    },
+    {
+      "name": "GNOME Text Editor",
+      "what": "A main window focused on text editing with syntax highlighting."
+    },
+    {
+      "name": "GNOME Clocks",
+      "what": "Dedicated views for world clocks, alarms, stopwatch and timers."
+    },
+    {
+      "name": "GNOME Calendar",
+      "what": "A calendar application as a reference for time-based content."
+    }
+  ],
+  "sources": [
+    {
+      "title": "GNOME: Design Principles",
+      "url": "https://developer.gnome.org/hig/principles.html"
+    },
+    {
+      "title": "GNOME: Header Bars",
+      "url": "https://developer.gnome.org/hig/patterns/containers/header-bars.html"
+    },
+    {
+      "title": "GNOME: Boxed Lists",
+      "url": "https://developer.gnome.org/hig/patterns/containers/boxed-lists.html"
+    },
+    {
+      "title": "GNOME Files / Nautilus",
+      "url": "https://apps.gnome.org/Nautilus/"
+    },
+    {
+      "title": "GNOME Text Editor",
+      "url": "https://apps.gnome.org/TextEditor/"
+    },
+    {
+      "title": "GNOME Clocks",
+      "url": "https://apps.gnome.org/Clocks/"
+    },
+    {
+      "title": "GNOME Calendar",
+      "url": "https://apps.gnome.org/Calendar/"
+    }
+  ],
+  "strengths": [
+    "A focused window gathers a few main actions in its header and related content in a quiet list.",
+    "A documented system supports consistent component decisions."
+  ],
+  "risks": [
+    "A minimal header must not make important actions undiscoverable.",
+    "These colors, sizes and radii describe this demo, not a full vendor token specification.",
+    "The web adaptation does not reproduce native window management, assistive technology integration or device input."
+  ],
+  "a11y": "Test visible keyboard focus, screen-reader names, 200% text resizing and contrast in every state. Use system colors for native implementations and retain text labels for status. These editorial scores are not an accessibility certification.",
+  "longevity": "Stable hierarchy and task structure outlast individual theme generations. Check current platform components when implementing.",
+  "verdict": "A focused window gathers a few main actions in its header and related content in a quiet list. Choose one clear main task and keep only its frequent actions in the header. Then check narrow windows.",
+  "platforms": {
+    "web": "Authored HTML/CSS comparison; use semantic controls in a product.",
+    "mobile": "The list becomes a single boxed group. The title stays compact and actions retain labels. This demonstrates adaptiveness, not a native GNOME phone interface.",
+    "desktop": "The broad reference shows the system’s task hierarchy. Actual native applications also need platform navigation and input conventions."
+  }
+}

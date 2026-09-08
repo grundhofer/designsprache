@@ -6,6 +6,10 @@ ROOT = Path(__file__).parent
 
 # ground, surface, ink, accent, accent ink, rule, radius, font, layout
 THEMES = {
+    'fluent': ('#F3F3F3', '#FFFFFF', '#242424', '#0F6CBD', '#FFFFFF', '#D1D1D1', '4px', 'system-ui', 'cards'),
+    'gnome-adwaita': ('#F6F5F4', '#FFFFFF', '#2E3436', '#1C71D8', '#FFFFFF', '#C0BFBC', '12px', 'system-ui', 'cards'),
+    'kde-breeze': ('#EFF0F1', '#FFFFFF', '#232629', '#176B9B', '#FFFFFF', '#A7AAAD', '3px', 'Noto Sans', 'ruled'),
+    'ibm-carbon': ('#F4F4F4', '#FFFFFF', '#161616', '#0F62FE', '#FFFFFF', '#8D8D8D', '0', 'IBM Plex Sans', 'blocks'),
     'apple-liquid-glass': ('#EEF3FA', '#FFFFFF', '#172434', '#0069DB', '#FFFFFF', '#B5C3D4', '22px', 'system-ui', 'cards'),
     'one-ui': ('#F3F3F5', '#FFFFFF', '#17171B', '#2158C9', '#FFFFFF', '#D0D0D6', '24px', 'Roboto', 'cards'),
     'swiss': ('#FFFFFF', '#FFFFFF', '#0B0B0B', '#E30613', '#FFFFFF', '#D4D4D4', '0', 'Inter', 'ruled'),
@@ -42,6 +46,10 @@ THEMES = {
 }
 
 NOTES = {
+    'fluent': ('Auf dem Smartphone entfällt die feste Seitenleiste. Inhaltsgruppen, kleine Radien und blaue Aktionshierarchie bleiben; die Aktionen wachsen auf Touchgröße. Mica wird nicht simuliert.', 'On smartphones the fixed sidebar disappears. Content groups, small radii and blue action hierarchy remain; controls grow to touch size. Mica is not simulated.'),
+    'gnome-adwaita': ('Die Liste wird zur einspaltigen, eingefassten Gruppe. Der Titel bleibt kompakt; Aktionen bleiben beschriftet. Das zeigt Anpassungsfähigkeit, keine native GNOME-Telefonoberfläche.', 'The list becomes a single boxed group. The title stays compact and actions retain labels. This demonstrates adaptiveness, not a native GNOME phone interface.'),
+    'kde-breeze': ('Die festen Spalten werden zu Namen mit darunterliegenden Metadaten. Werkzeugaktionen erhalten größere Trefferflächen; eine zusätzliche Seitenleiste entfällt. Touch-Adaption, keine verkleinerte Desktop-Oberfläche.', 'Fixed columns become names with metadata below. Toolbar actions get larger targets and the extra sidebar disappears. A touch adaptation with reflowed content.'),
+    'ibm-carbon': ('Die Tabelle wird zur einspaltigen Liste mit beschrifteten Metadaten. Rechteckige Flächen und IBM Plex bleiben; Felder und Aktionen erhalten Touchgröße.', 'The table becomes a single-column list with labeled metadata. Rectangular surfaces and IBM Plex remain; fields and actions grow to touch size.'),
     'apple-liquid-glass': ('Deckende Projektzeilen liegen unter einer abgesetzten, glasartigen Navigation. Die untere Leiste bleibt beschriftet. Blur ist eine optionale CSS-Annäherung; Lichtbrechung, Morphing und native Systemanpassungen werden nicht nachgebildet. Ohne Blur oder bei erhöhtem Kontrast sind die Bedienflächen deckend.', 'Opaque project rows sit beneath a distinct glass-like navigation layer. The bottom bar keeps text labels. Blur is an optional CSS approximation; refraction, morphing and native system adaptations are not reproduced. Without blur or with increased contrast, controls are opaque.'),
     'one-ui': ('Der Listentitel erhält oben einen ruhigen Betrachtungsbereich; Suche, Projektzeilen und Hauptaktion folgen darunter. Detail und Formular verkürzen den Kopf zugunsten von Inhalt und Bildschirmtastatur. Weiße Fokusblöcke bleiben deckend. Roboto dient hier als Ersatzschrift, nicht als Nachbildung von SamsungOne.', 'The list title gets a quiet upper viewing area, followed by search, project rows and the primary action. Detail and form screens shorten the header to leave room for content and the on-screen keyboard. White focus blocks stay opaque. Roboto is a substitute here, not a reproduction of SamsungOne.'),
     'swiss': ('Das Raster wird einspaltig; Zeit und Status stehen unter dem Namen. Die rote Zählung und die harten Linien bleiben.', 'The grid becomes one column; time and status move below the name. The red count and hard rules remain.'),

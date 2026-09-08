@@ -1,0 +1,109 @@
+/* The three editorial levels share the catalog shell; experiments have neutral tokens. */
+.ex-intro { padding-block:48px 24px; }
+.ex-intro h1 { font-size:clamp(32px,5vw,64px); line-height:1.1; margin:12px 0 20px; max-width:20ch; }
+.ex-intro p { max-width:76ch; color:var(--ink-2); font-size:18px; }
+.ex-levels { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding-bottom:24px; }
+.ex-levels a { display:grid; grid-template-columns:32px 1fr; gap:6px 12px; border:1px solid var(--rule); padding:20px; color:var(--ink); text-decoration:none; background:var(--surface); }
+.ex-levels a > span { grid-row:1/3; font:14px var(--f-mono); color:var(--ink-3); }
+.ex-levels strong { font-size:16px; line-height:1.35; }
+.ex-levels small { grid-column:2; font-size:13px; color:var(--ink-2); }
+.ex-levels a[aria-current="page"] { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+.ex-levels a[aria-current="page"] :is(span,small) { color:inherit; }
+#styles .mast h2 { font-size:clamp(30px,4vw,44px); line-height:1.1; }
+.ex-panel { padding-block:32px 80px; }
+.ex-section-head { margin-bottom:32px; max-width:82ch; }
+.ex-section-head h2 { font-size:clamp(28px,4vw,44px); line-height:1.15; margin:12px 0 20px; }
+.ex-section-head p { font-size:18px; color:var(--ink-2); }
+.ex-context-index { display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:24px; }
+.ex-context-index a { padding:8px 0; }
+.ex-labs, .ex-contexts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; }
+.ex-lab, .ex-context { border:1px solid var(--rule); background:var(--surface); padding:clamp(16px,2vw,28px); min-width:0; scroll-margin-top:24px; }
+.ex-lab header, .ex-context header { margin-bottom:24px; }
+.ex-lab h3, .ex-context h3 { font-size:26px; line-height:1.2; margin:10px 0 14px; }
+.ex-lab header p, .ex-context header p { color:var(--ink-2); }
+.ex-lab *, .ex-context * { box-sizing:border-box; min-width:0; }
+.ex-lab p, .ex-context p { overflow-wrap:anywhere; }
+.ex-controls { display:flex; align-items:end; flex-wrap:wrap; gap:12px; margin-block:12px 20px; }
+.ex-lab label, .ex-context label { display:grid; gap:6px; font-size:14px; }
+.ex-controls > label { flex:1 1 160px; }
+.ex-lab label.ex-check { display:flex; align-items:center; gap:8px; flex:1 1 170px; min-height:44px; cursor:pointer; }
+.ex-lab :is(button,input,select), .ex-context :is(button,input,select) { font:inherit; max-width:100%; }
+.ex-lab :is(button,select,input:not([type="checkbox"])), .ex-context :is(button,select,input) { min-height:44px; padding:10px 12px; border:1px solid var(--rule); color:var(--ink); background:var(--surface-2); border-radius:4px; }
+.ex-lab button, .ex-context button { cursor:pointer; white-space:normal; overflow-wrap:anywhere; }
+.ex-lab button:disabled { cursor:wait; opacity:.65; }
+.ex-lab input[type="checkbox"] { width:20px; height:20px; accent-color:var(--accent); flex:none; }
+.ex-lab :is(button,input,select,summary):focus-visible, .ex-context :is(button,input,select,summary):focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.ex-demo, .ex-context-demo { --rule:#A7B0B7; --surface:#FFFFFF; --surface-2:#F1F4F5; --ink:#162B32; --accent:#1E4A45;
+  container-type:inline-size; color-scheme:light; color:var(--ink); background:var(--surface-2); border:1px solid var(--rule); padding:20px; font:16px/1.5 system-ui,sans-serif; overflow-wrap:anywhere; }
+.ex-context-demo:empty { display:none; }
+.ex-demo h4, .ex-context-demo h4 { font:600 22px/1.3 system-ui,sans-serif; margin:0 0 16px; }
+.ex-demo :is(p,dl), .ex-context-demo :is(p,dl) { margin:12px 0; }
+.ex-demo button, .ex-context-demo button { color:var(--ink); background:var(--surface); border-color:var(--rule); }
+.ex-demo [aria-pressed="true"], .ex-context-demo [aria-pressed="true"] { background:#DCECE7; border-color:#1E4A45; box-shadow:inset 3px 0 #1E4A45; }
+.ex-note { font-size:14px; line-height:1.6; margin-top:16px; }
+.ex-source { margin-top:24px; font-size:13px; }
+.ex-lab details, .ex-context details { margin-block:16px; }
+.ex-lab summary, .ex-context summary { cursor:pointer; padding-block:10px; font-weight:600; }
+.ex-context ul { padding-left:20px; margin-block:24px 16px; }
+.ex-context li { margin-block:10px; }
+.ex-disclosure { display:grid; gap:12px; }
+.ex-disclosure details label { margin-block:12px; }
+.ex-disclosure button { justify-self:start; }
+.ex-status { padding:12px; border-left:3px solid #1E4A45; background:#E8F0EC; }
+.ex-group { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 12px; padding:16px; margin-top:16px; background:#FFFFFF; border:1px solid #A7B0B7; }
+.ex-group strong { font-size:22px; }
+.ex-group small { grid-column:1/-1; font-size:14px; }
+.ex-grouping[data-grouping="flat"] :is(h4,strong,span,small) { font:400 16px/1.5 system-ui,sans-serif; }
+.ex-grouping[data-grouping="flat"] .ex-group { display:flex; flex-wrap:wrap; gap:8px; background:transparent; border:0; padding:4px 0; margin:4px 0; }
+.ex-grouping[data-grouping="flat"] h4 { margin:0; }
+.ex-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:20px; }
+.ex-project-list { display:flex; flex-direction:column; gap:8px; }
+.ex-project-list button { display:flex; justify-content:space-between; gap:12px; text-align:left; min-height:48px; }
+.ex-project-detail { padding:16px; background:#FFFFFF; border:1px solid #A7B0B7; }
+.ex-project-detail dl { display:grid; gap:12px; }
+.ex-project-detail dt { font-size:13px; }
+.ex-project-detail dd { margin:0; font-weight:600; }
+.ex-adaptive[data-width="narrow"] { max-width:340px; margin-inline:auto; }
+.ex-adaptive[data-input="pointer"] button { min-height:32px; padding:5px 8px; }
+.ex-adaptive[data-input="touch"] button { min-height:52px; padding:12px; }
+.ex-inclusive { font-size:16px; }
+.ex-inclusive h4 { font-size:1.375em; }
+.ex-inclusive.ex-large { font-size:32px; }
+.ex-inclusive.ex-contrast { --surface:#FFFFFF; --surface-2:#FFFFFF; --ink:#000000; --rule:#000000; --accent:#000000; color:#000000; background:#FFFFFF; border:2px solid #000000; }
+.ex-pulse { width:56px; height:8px; background:currentColor; transform-origin:left; margin-bottom:20px; }
+.ex-inclusive.is-playing .ex-pulse { animation:ex-confirm 700ms ease-out 1; }
+.ex-inclusive.ex-motion .ex-pulse { animation:none; }
+@keyframes ex-confirm { from { transform:scaleX(.25); } to { transform:scaleX(1); } }
+.ex-device-smartphone { max-width:320px; margin-inline:auto; border:2px solid #64747C; border-radius:20px; padding:18px; background:#FFFFFF; }
+.ex-address { border:1px solid #A7B0B7; border-radius:4px; padding:8px 12px; background:#FFFFFF; font:14px/1.4 var(--f-mono); }
+.ex-watch { max-width:244px; margin:8px auto; padding:30px 22px; border:6px solid #36464B; border-radius:48px; background:#101F25; color:#FFFFFF; display:flex; flex-direction:column; gap:10px; text-align:center; }
+.ex-watch strong { font:500 48px/1.1 system-ui,sans-serif; font-variant-numeric:tabular-nums; }
+.ex-watch button { border-radius:24px; background:#E5F3ED; color:#132E26; min-height:44px; }
+.ex-watch p { margin:0; }
+.ex-tv { background:#13232E; color:#FFFFFF; padding:20px; border-radius:8px; }
+.ex-tv-tiles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.ex-tv-tiles button { padding:6px; background:#2D4451; color:#FFFFFF; border:3px solid transparent; border-radius:6px; font-size:14px; }
+.ex-tv-tiles button.is-selected { border-color:#F5CE74; }
+.ex-tv-tiles button:focus-visible { outline:3px solid #FFFFFF; outline-offset:3px; }
+.ex-tv-art { display:grid; place-items:center; min-height:82px; font:48px/1 system-ui,sans-serif; margin-bottom:10px; }
+.ex-tv-art-0 { background:linear-gradient(150deg,#134839,#42776D); }
+.ex-tv-art-1 { background:repeating-linear-gradient(90deg,#453F4E 0 12px,#696174 12px 14px); }
+.ex-tv-art-2 { background:linear-gradient(#1E4C6B,#396C7D); }
+.ex-car-favourites { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:20px; }
+.ex-car-favourites button { min-height:64px; font-size:18px; }
+.ex-car form { display:grid; gap:12px; margin-block:20px; }
+.ex-car > small { display:block; margin-top:16px; }
+.ex-spatial { min-height:260px; padding:20px; display:grid; align-content:center; gap:12px; background:repeating-linear-gradient(0deg,#E0E7E4 0 31px,#BCCEC6 31px 32px); }
+.ex-spatial-content { background:#FFFFFF; border:1px solid #789287; padding:24px; border-radius:20px; }
+.ex-spatial-content > span { font-size:12px; }
+.ex-spatial-controls { padding:14px 20px; background:#253E35; color:#FFFFFF; border-radius:20px; }
+.ex-spatial.is-layered .ex-spatial-content { margin-left:20px; box-shadow:-10px 10px 0 #BACAC3; }
+.ex-spatial.is-layered .ex-spatial-controls { margin-right:20px; box-shadow:8px 8px 0 #BACAC3; }
+.ex-spatial + button { margin-top:16px; }
+@container (max-width:390px) { .ex-split { grid-template-columns:1fr; } .ex-tv-tiles { gap:6px; } .ex-car-favourites { grid-template-columns:1fr; } }
+@media (max-width:900px) { .ex-levels { gap:8px; } .ex-levels a { padding:14px; grid-template-columns:1fr; } .ex-levels a > span { grid-row:auto; } .ex-levels small { grid-column:auto; } }
+@media (max-width:720px) { .ex-labs, .ex-contexts { grid-template-columns:1fr; } .ex-levels { grid-template-columns:1fr; } .ex-levels a { grid-template-columns:28px 1fr; gap:4px 8px; } .ex-levels a > span { grid-row:1/3; } .ex-levels small { grid-column:2; } .ex-demo, .ex-context-demo { padding:14px; } .ex-tv { padding:12px; } }
+@media (prefers-reduced-motion:reduce) { .ex-inclusive.is-playing .ex-pulse { animation:none; } }
+@media (forced-colors:active) { .ex-demo, .ex-context-demo, .ex-watch, .ex-tv, .ex-project-detail, .ex-group, .ex-spatial-content, .ex-spatial-controls { background:Canvas; color:CanvasText; border:1px solid CanvasText; } .ex-lab button, .ex-context button { color:ButtonText; background:ButtonFace; border:1px solid ButtonText; } .ex-tv-tiles button.is-selected, .ex-project-list button[aria-pressed="true"] { border:3px solid Highlight; } .ex-pulse { background:CanvasText; } }
+
+.ex-watch button:focus-visible, .ex-tv button:focus-visible { outline-color:#FFFFFF; }

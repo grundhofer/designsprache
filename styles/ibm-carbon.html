@@ -1,0 +1,37 @@
+<style>
+.style-ibm-carbon { background:#F4F4F4; color:#161616; padding:24px; font:16px/1.5 "IBM Plex Sans",sans-serif; color-scheme:light; }
+.style-ibm-carbon * { box-sizing:border-box; }
+.style-ibm-carbon .window { border:1px solid #8D8D8D; border-radius:8px; overflow:hidden; }
+.style-ibm-carbon .body { display:grid; grid-template-columns:168px 1fr; min-height:342px; }
+.style-ibm-carbon .side { padding:20px 14px; border-right:1px solid #8D8D8D; background:#E0E0E0; }
+.style-ibm-carbon .side p { font-size:14px; margin:0 0 20px; }
+.style-ibm-carbon .current { background:#FFFFFF; border-left:3px solid #0F62FE; padding:10px; font-weight:600; }
+.style-ibm-carbon .content { padding:24px; min-width:0; }
+.style-ibm-carbon .head { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.style-ibm-carbon h2 { font:600 32px/1.2 "IBM Plex Sans",sans-serif; margin:0; }
+.style-ibm-carbon .count { font-size:16px; padding:2px 9px; background:#E0E0E0; border-radius:4px; }
+.style-ibm-carbon .toolbar { display:flex; gap:10px; padding:12px; border-bottom:1px solid #8D8D8D; background:#FFFFFF; }
+.style-ibm-carbon button { font:500 14px/1.4 "IBM Plex Sans",sans-serif; min-height:36px; padding:8px 14px; border:1px solid #8D8D8D; border-radius:0; background:#FFFFFF; color:#161616; }
+.style-ibm-carbon .primary { color:#FFFFFF; background:#0F62FE; border-color:#0F62FE; }
+.style-ibm-carbon input { display:block; width:100%; padding:10px 12px; border:1px solid #8D8D8D; border-bottom-color:#161616; border-radius:0; background:#FFFFFF; color:#161616; font:14px/1.5 "IBM Plex Sans",sans-serif; margin-bottom:20px; }
+.style-ibm-carbon ul { list-style:none; padding:0; margin:0; background:#FFFFFF; border:1px solid #8D8D8D; border-radius:8px; overflow:hidden; }
+.style-ibm-carbon li { display:grid; grid-template-columns:minmax(0,1fr) 90px 68px; align-items:center; gap:10px; min-height:64px; padding:12px; border-bottom:1px solid #8D8D8D; }
+.style-ibm-carbon li:last-child { border-bottom:0; }
+.style-ibm-carbon .name { font-weight:600; }
+.style-ibm-carbon .time, .style-ibm-carbon .status { font-size:14px; }
+.style-ibm-carbon .status::before { content:'• '; }
+.style-ibm-carbon .paused::before { content:'Ⅱ '; }
+.style-ibm-carbon .caption { font-size:12px; margin:14px 0 0; }
+.style-ibm-carbon { padding:24px; }
+.style-ibm-carbon .window { border:0; border-radius:0; }
+.style-ibm-carbon .product { background:#161616; color:#FFFFFF; padding:14px 20px; font-weight:600; }
+.style-ibm-carbon .body { display:block; min-height:0; }
+.style-ibm-carbon .content { padding:24px 20px; }
+.style-ibm-carbon .toolbar { padding:0; background:transparent; border:0; margin-left:auto; }
+.style-ibm-carbon button { text-align:left; min-height:48px; min-width:140px; border-radius:0; }
+.style-ibm-carbon input { margin:0; border:0; border-bottom:1px solid #8D8D8D; border-radius:0; background:#E0E0E0; }
+.style-ibm-carbon ul { border:0; border-radius:0; }
+.style-ibm-carbon li { min-height:48px; grid-template-columns:minmax(0,1fr) 120px 85px; }
+.style-ibm-carbon .columns { font-size:14px; font-weight:600; background:#E0E0E0; }
+</style>
+<div class="style-ibm-carbon"><div class="window"><div class="product">Arbeitsbereich</div><div class="body"><div class="content"><div class="head"><h2>Projekte</h2><span class="count">12</span><div class="toolbar"><button type="button" class="primary">Neues Projekt</button><button type="button">Importieren</button></div></div><input type="search" readonly placeholder="Suchen…" aria-label="Projekte durchsuchen"><ul><li class="columns"><span>Name</span><span>Geändert</span><span>Status</span></li><li><span class="name">Nexus</span><span class="time">vor 2 Std.</span><span class="status ">Aktiv</span></li><li><span class="name">Autowrite Studio</span><span class="time">gestern</span><span class="status ">Aktiv</span></li><li><span class="name">Balance Ally</span><span class="time">vor 4 Tagen</span><span class="status paused">Pausiert</span></li></ul></div></div></div><p class="caption">IBM / Carbon · eigener Web-Vergleich</p></div>

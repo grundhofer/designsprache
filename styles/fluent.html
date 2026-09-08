@@ -1,0 +1,26 @@
+<style>
+.style-fluent { background:#F3F3F3; color:#242424; padding:24px; font:16px/1.5 system-ui,sans-serif; color-scheme:light; }
+.style-fluent * { box-sizing:border-box; }
+.style-fluent .window { border:1px solid #D1D1D1; border-radius:8px; overflow:hidden; }
+.style-fluent .body { display:grid; grid-template-columns:168px 1fr; min-height:342px; }
+.style-fluent .side { padding:20px 14px; border-right:1px solid #D1D1D1; background:#EBEBEB; }
+.style-fluent .side p { font-size:14px; margin:0 0 20px; }
+.style-fluent .current { background:#FFFFFF; border-left:3px solid #0F6CBD; padding:10px; font-weight:600; }
+.style-fluent .content { padding:24px; min-width:0; }
+.style-fluent .head { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.style-fluent h2 { font:600 32px/1.2 system-ui,sans-serif; margin:0; }
+.style-fluent .count { font-size:16px; padding:2px 9px; background:#EBEBEB; border-radius:4px; }
+.style-fluent .toolbar { display:flex; gap:10px; padding:12px; border-bottom:1px solid #D1D1D1; background:#FFFFFF; }
+.style-fluent button { font:500 14px/1.4 system-ui,sans-serif; min-height:36px; padding:8px 14px; border:1px solid #D1D1D1; border-radius:4px; background:#FFFFFF; color:#242424; }
+.style-fluent .primary { color:#FFFFFF; background:#0F6CBD; border-color:#0F6CBD; }
+.style-fluent input { display:block; width:100%; padding:10px 12px; border:1px solid #D1D1D1; border-bottom-color:#242424; border-radius:4px; background:#FFFFFF; color:#242424; font:14px/1.5 system-ui,sans-serif; margin-bottom:20px; }
+.style-fluent ul { list-style:none; padding:0; margin:0; background:#FFFFFF; border:1px solid #D1D1D1; border-radius:8px; overflow:hidden; }
+.style-fluent li { display:grid; grid-template-columns:minmax(0,1fr) 90px 68px; align-items:center; gap:10px; min-height:64px; padding:12px; border-bottom:1px solid #D1D1D1; }
+.style-fluent li:last-child { border-bottom:0; }
+.style-fluent .name { font-weight:600; }
+.style-fluent .time, .style-fluent .status { font-size:14px; }
+.style-fluent .status::before { content:'• '; }
+.style-fluent .paused::before { content:'Ⅱ '; }
+.style-fluent .caption { font-size:12px; margin:14px 0 0; }
+</style>
+<div class="style-fluent"><div class="window"><div class="toolbar"><button type="button" class="primary">Neues Projekt</button><button type="button">Importieren</button></div><div class="body"><aside class="side"><p>Arbeitsbereich</p><div class="current">Projekte</div></aside><div class="content"><div class="head"><h2>Projekte</h2><span class="count">12</span></div><input type="search" readonly placeholder="Suchen…" aria-label="Projekte durchsuchen"><ul><li><span class="name">Nexus</span><span class="time">vor 2 Std.</span><span class="status ">Aktiv</span></li><li><span class="name">Autowrite Studio</span><span class="time">gestern</span><span class="status ">Aktiv</span></li><li><span class="name">Balance Ally</span><span class="time">vor 4 Tagen</span><span class="status paused">Pausiert</span></li></ul></div></div></div><p class="caption">Microsoft / Fluent · eigener Web-Vergleich</p></div>

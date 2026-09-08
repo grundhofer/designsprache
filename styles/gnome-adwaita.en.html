@@ -1,0 +1,34 @@
+<style>
+.style-gnome-adwaita { background:#F6F5F4; color:#2E3436; padding:24px; font:16px/1.5 system-ui,sans-serif; color-scheme:light; }
+.style-gnome-adwaita * { box-sizing:border-box; }
+.style-gnome-adwaita .window { border:1px solid #C0BFBC; border-radius:8px; overflow:hidden; }
+.style-gnome-adwaita .body { display:grid; grid-template-columns:168px 1fr; min-height:342px; }
+.style-gnome-adwaita .side { padding:20px 14px; border-right:1px solid #C0BFBC; background:#DEDDDA; }
+.style-gnome-adwaita .side p { font-size:14px; margin:0 0 20px; }
+.style-gnome-adwaita .current { background:#FFFFFF; border-left:3px solid #1C71D8; padding:10px; font-weight:600; }
+.style-gnome-adwaita .content { padding:24px; min-width:0; }
+.style-gnome-adwaita .head { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.style-gnome-adwaita h2 { font:600 32px/1.2 system-ui,sans-serif; margin:0; }
+.style-gnome-adwaita .count { font-size:16px; padding:2px 9px; background:#DEDDDA; border-radius:4px; }
+.style-gnome-adwaita .toolbar { display:flex; gap:10px; padding:12px; border-bottom:1px solid #C0BFBC; background:#FFFFFF; }
+.style-gnome-adwaita button { font:500 14px/1.4 system-ui,sans-serif; min-height:36px; padding:8px 14px; border:1px solid #C0BFBC; border-radius:12px; background:#FFFFFF; color:#2E3436; }
+.style-gnome-adwaita .primary { color:#FFFFFF; background:#1C71D8; border-color:#1C71D8; }
+.style-gnome-adwaita input { display:block; width:100%; padding:10px 12px; border:1px solid #C0BFBC; border-bottom-color:#2E3436; border-radius:12px; background:#FFFFFF; color:#2E3436; font:14px/1.5 system-ui,sans-serif; margin-bottom:20px; }
+.style-gnome-adwaita ul { list-style:none; padding:0; margin:0; background:#FFFFFF; border:1px solid #C0BFBC; border-radius:8px; overflow:hidden; }
+.style-gnome-adwaita li { display:grid; grid-template-columns:minmax(0,1fr) 90px 68px; align-items:center; gap:10px; min-height:64px; padding:12px; border-bottom:1px solid #C0BFBC; }
+.style-gnome-adwaita li:last-child { border-bottom:0; }
+.style-gnome-adwaita .name { font-weight:600; }
+.style-gnome-adwaita .time, .style-gnome-adwaita .status { font-size:14px; }
+.style-gnome-adwaita .status::before { content:'• '; }
+.style-gnome-adwaita .paused::before { content:'Ⅱ '; }
+.style-gnome-adwaita .caption { font-size:12px; margin:14px 0 0; }
+.style-gnome-adwaita .body { display:block; }
+.style-gnome-adwaita .toolbar { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; background:#F6F5F4; }
+.style-gnome-adwaita .toolbar h2 { font-size:17px; text-align:center; }
+.style-gnome-adwaita .toolbar .count { display:block; font-size:13px; background:transparent; text-align:center; }
+.style-gnome-adwaita .toolbar button { justify-self:start; border:0; background:transparent; }
+.style-gnome-adwaita .toolbar button:last-child { justify-self:end; }
+.style-gnome-adwaita .content { max-width:568px; margin:auto; width:100%; }
+.style-gnome-adwaita ul { border-radius:12px; }
+</style>
+<div class="style-gnome-adwaita"><div class="window"><div class="toolbar"><button type="button">＋ New project</button><div><h2>Projects</h2><span class="count">12</span></div><button type="button">↓ Import</button></div><div class="body"><div class="content"><input type="search" readonly placeholder="Search…" aria-label="Search projects"><ul><li><span class="name">Nexus</span><span class="time">2 hrs ago</span><span class="status ">Active</span></li><li><span class="name">Autowrite Studio</span><span class="time">yesterday</span><span class="status ">Active</span></li><li><span class="name">Balance Ally</span><span class="time">4 days ago</span><span class="status paused">Paused</span></li></ul></div></div></div><p class="caption">GNOME / Adwaita · authored web comparison</p></div>

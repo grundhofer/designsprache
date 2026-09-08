@@ -39,8 +39,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Finder and prompt regression tests
-        run: node --test tests/finder.test.cjs
+      - name: Finder, prompt and interaction regression tests
+        run: node --test tests/*.test.cjs
 
       # Zwei Eintraege duerfen nicht dieselbe Farbe unter anderem Hex fuehren.
       # Kalibrierung und Begruendung stehen im Kopf des Skripts.
@@ -69,10 +69,8 @@ jobs:
             f=$(grep -o 'class="fam-head"' "docs/$lang/index.html" | wc -l)
             test "$f" -eq "$F" || { echo "$lang: $f statt $F Familien"; exit 1; }
           done
-          # Kein Restdeutsch in der englischen Fassung (Eigennamen ausgenommen).
-          if grep -qE '>[^<]*\b(und|nicht|Oberfläche|Einträge|Haltbarkeit)\b' docs/en/index.html; then
-            echo "deutsche Textreste in docs/en/index.html"; exit 1
-          fi
+          # Sichtbare Sprachreste werden im HTML-Parser-Test geprüft;
+          # gemeinsame JS-Übersetzungen dürfen beide Sprachen enthalten.
           echo "$N Eintraege in $F Familien, beide Sprachen, alle Stylesheets vorhanden."
 
       - uses: actions/configure-pages@v5

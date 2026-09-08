@@ -1,0 +1,133 @@
+{
+  "slug": "ibm-carbon",
+  "name": "IBM / Carbon",
+  "family": "Plattformsprachen",
+  "aka": [
+    "IBM",
+    "ibm carbon"
+  ],
+  "palette": [
+    "#F4F4F4",
+    "#FFFFFF",
+    "#161616",
+    "#0F62FE",
+    "#8D8D8D",
+    "#E0E0E0"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 5
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [
+    "IBM Plex Sans"
+  ],
+  "era": "Zeitgenössisches Designsystem · eigene Web-Adaption",
+  "idea": "Ein strenges Raster und präzise Typografie machen umfangreiche Arbeitsabläufe überschaubar und Daten gut vergleichbar.",
+  "origin": "Carbon ist IBMs offenes Designsystem. Seine produktive Typografie unterstützt Aufgaben mit Formularen, Bedienelementen und hoher Informationsdichte. Expressive Typografie schafft Raum für redaktionelle Momente. Die Demo nutzt eine eigene kompakte Projektverwaltung mit IBM Plex Sans.",
+  "tip": "Ordne die Daten nach der tatsächlichen Aufgabe. Nutze kompakte Typografie für die Arbeit und größere Überschriften nur dort, wo sie Orientierung schaffen.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 4
+    },
+    "fits": [
+      "data",
+      "internal",
+      "dev-tool"
+    ],
+    "tone": [
+      "precise",
+      "formal",
+      "technical"
+    ],
+    "signature": "IBM Plex, rechteckige Aktionen und eine strukturierte Datentabelle."
+  },
+  "markers": [
+    "Demo: Dunkler Produktkopf über heller Arbeitsfläche.",
+    "Demo: IBM Plex Sans für Titel, Felder und Tabelle.",
+    "Demo: 0px Radien an Schaltflächen und Tabellenflächen.",
+    "Demo: Blauer Hauptbutton mit linksbündiger Beschriftung.",
+    "Demo: 48px minimale Zeilenhöhe der Desktop-Tabelle.",
+    "Demo: 16px Namen und 14px Metadaten.",
+    "Demo: Suchfeld direkt über der Datentabelle.",
+    "Demo: Grau hinterlegte Spaltenüberschriften.",
+    "Demo: Unterstrichene Feldkante und sichtbare Zeilengrenzen."
+  ],
+  "params": {
+    "radius": "Demo: 0; Abweichungen je Bauteil siehe Merkmale.",
+    "contrast": "Dunkler Text auf deckenden hellen Flächen; Fokus und Zustände haben eigene Rollen.",
+    "density": "Kompakte Tabelle; Desktop-Zeilen mindestens 48px, Namen 16px, Metadaten 14px.",
+    "depth": "Gruppierung durch Flächen und 1px Grenzen.",
+    "color": "Eigene Demo: #F4F4F4, #FFFFFF, #161616, #0F62FE, #8D8D8D, #E0E0E0",
+    "type": "Demo-Schrift: IBM Plex Sans",
+    "motion": "Unmittelbare Ansichtswechsel; keine animierten Übergänge in diesem Vergleich.",
+    "texture": "Glatte, deckende Flächen."
+  },
+  "examples": [
+    {
+      "name": "IBM Cloud console",
+      "what": "Carbon nennt die Cloud-Konsole als Ursprung seiner produktiven, platzsparenden Typografie."
+    },
+    {
+      "name": "Carbon: Data table",
+      "what": "Die offizielle Komponentenreferenz zeigt strukturierte Zeilen sowie Tabellenaktionen."
+    },
+    {
+      "name": "Carbon: Button",
+      "what": "Die offizielle Referenz unterscheidet Aktionshierarchien und mehrere Größen."
+    },
+    {
+      "name": "Carbon: Notification",
+      "what": "Die offizielle Referenz ordnet Rückmeldungen nach ihrem Ort und ihrer Dringlichkeit ein."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Carbon: Typography strategies",
+      "url": "https://carbondesignsystem.com/elements/typography/style-strategies/"
+    },
+    {
+      "title": "Carbon: Motion",
+      "url": "https://carbondesignsystem.com/elements/motion/overview/"
+    },
+    {
+      "title": "Carbon: Buttons",
+      "url": "https://carbondesignsystem.com/components/button/usage/"
+    },
+    {
+      "title": "Carbon: Data table",
+      "url": "https://carbondesignsystem.com/components/data-table/usage/"
+    },
+    {
+      "title": "Carbon: Notification",
+      "url": "https://carbondesignsystem.com/components/notification/usage/"
+    }
+  ],
+  "strengths": [
+    "Ein strenges Raster und präzise Typografie machen umfangreiche Arbeitsabläufe überschaubar und Daten gut vergleichbar.",
+    "Ein dokumentiertes System unterstützt konsistente Entscheidungen für Komponenten."
+  ],
+  "risks": [
+    "Hohe Dichte darf Feldbeschriftungen, Zeilenabstand und verständliche Fehlerhinweise nicht verdrängen.",
+    "Farben, Größen und Radien beschreiben diese Demo, keine vollständige Token-Spezifikation des Anbieters.",
+    "Die Web-Adaption bildet native Fensterverwaltung, Hilfsmittelintegration und Geräteeingabe nicht nach."
+  ],
+  "a11y": "Prüfe sichtbaren Tastaturfokus, Screenreader-Namen, 200% Textvergrößerung und Kontrast in jedem Zustand. Native Implementierungen sollen Systemfarben respektieren und Status textlich benennen. Die redaktionellen Kennzahlen sind kein Barrierefreiheitsnachweis.",
+  "longevity": "Stabile Hierarchie und Aufgabenstruktur überdauern einzelne Theme-Generationen. Prüfe bei der Umsetzung die aktuellen Plattformkomponenten.",
+  "verdict": "Ein strenges Raster und präzise Typografie machen umfangreiche Arbeitsabläufe überschaubar und Daten gut vergleichbar. Ordne die Daten nach der tatsächlichen Aufgabe. Nutze kompakte Typografie für die Arbeit und größere Überschriften nur dort, wo sie Orientierung schaffen.",
+  "platforms": {
+    "web": "Eigener HTML/CSS-Vergleich; im Produkt semantische Bedienelemente verwenden.",
+    "mobile": "Die Tabelle wird zur einspaltigen Liste mit beschrifteten Metadaten. Rechteckige Flächen und IBM Plex bleiben; Felder und Aktionen erhalten Touchgröße.",
+    "desktop": "Die breite Referenz zeigt die Aufgabenhierarchie des Systems. Native Anwendungen benötigen zusätzlich die Navigations- und Eingabekonventionen der Plattform."
+  }
+}

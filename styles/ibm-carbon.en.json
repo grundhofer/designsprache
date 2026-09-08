@@ -1,0 +1,133 @@
+{
+  "slug": "ibm-carbon",
+  "name": "IBM / Carbon",
+  "family": "Platform Languages",
+  "aka": [
+    "IBM",
+    "ibm carbon"
+  ],
+  "palette": [
+    "#F4F4F4",
+    "#FFFFFF",
+    "#161616",
+    "#0F62FE",
+    "#8D8D8D",
+    "#E0E0E0"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 5
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [
+    "IBM Plex Sans"
+  ],
+  "era": "Contemporary design system · authored web adaptation",
+  "idea": "A strict grid and precise typography make substantial workflows manageable and data easy to compare.",
+  "origin": "Carbon is IBM’s open design system. Its productive typography supports tasks with forms, controls and dense information. Expressive typography creates space for editorial moments. This demo uses an authored compact project workspace with IBM Plex Sans.",
+  "tip": "Organize data around the actual task. Use compact typography for work and larger headings where they establish orientation.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 4
+    },
+    "fits": [
+      "data",
+      "internal",
+      "dev-tool"
+    ],
+    "tone": [
+      "precise",
+      "formal",
+      "technical"
+    ],
+    "signature": "IBM Plex, rectangular actions and a structured data table."
+  },
+  "markers": [
+    "Demo: Dark product header above a light workspace.",
+    "Demo: IBM Plex Sans for headings, fields and table.",
+    "Demo: 0px radii on buttons and table surfaces.",
+    "Demo: Blue primary button with a left-aligned label.",
+    "Demo: 48px minimum row height in the desktop table.",
+    "Demo: 16px names and 14px metadata.",
+    "Demo: Search field immediately above the data table.",
+    "Demo: Gray column headers.",
+    "Demo: Underlined field edge and visible row boundaries."
+  ],
+  "params": {
+    "radius": "Demo: 0; see markers for component variations.",
+    "contrast": "Dark text on opaque light surfaces; focus and states are separate roles.",
+    "density": "Compact table; desktop rows at least 48px, names 16px, metadata 14px.",
+    "depth": "Grouping through surfaces and 1px boundaries.",
+    "color": "Authored demo: #F4F4F4, #FFFFFF, #161616, #0F62FE, #8D8D8D, #E0E0E0",
+    "type": "Demo font: IBM Plex Sans",
+    "motion": "Immediate view changes; no animated transitions in this comparison.",
+    "texture": "Smooth opaque surfaces."
+  },
+  "examples": [
+    {
+      "name": "IBM Cloud console",
+      "what": "Carbon identifies the Cloud console as the origin of its productive, space-efficient typography."
+    },
+    {
+      "name": "Carbon: Data table",
+      "what": "The official component reference shows structured rows and table actions."
+    },
+    {
+      "name": "Carbon: Button",
+      "what": "The official reference distinguishes action hierarchy and multiple sizes."
+    },
+    {
+      "name": "Carbon: Notification",
+      "what": "The official reference organizes feedback by placement and urgency."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Carbon: Typography strategies",
+      "url": "https://carbondesignsystem.com/elements/typography/style-strategies/"
+    },
+    {
+      "title": "Carbon: Motion",
+      "url": "https://carbondesignsystem.com/elements/motion/overview/"
+    },
+    {
+      "title": "Carbon: Buttons",
+      "url": "https://carbondesignsystem.com/components/button/usage/"
+    },
+    {
+      "title": "Carbon: Data table",
+      "url": "https://carbondesignsystem.com/components/data-table/usage/"
+    },
+    {
+      "title": "Carbon: Notification",
+      "url": "https://carbondesignsystem.com/components/notification/usage/"
+    }
+  ],
+  "strengths": [
+    "A strict grid and precise typography make substantial workflows manageable and data easy to compare.",
+    "A documented system supports consistent component decisions."
+  ],
+  "risks": [
+    "High density must not displace field labels, readable spacing or helpful error messages.",
+    "These colors, sizes and radii describe this demo, not a full vendor token specification.",
+    "The web adaptation does not reproduce native window management, assistive technology integration or device input."
+  ],
+  "a11y": "Test visible keyboard focus, screen-reader names, 200% text resizing and contrast in every state. Use system colors for native implementations and retain text labels for status. These editorial scores are not an accessibility certification.",
+  "longevity": "Stable hierarchy and task structure outlast individual theme generations. Check current platform components when implementing.",
+  "verdict": "A strict grid and precise typography make substantial workflows manageable and data easy to compare. Organize data around the actual task. Use compact typography for work and larger headings where they establish orientation.",
+  "platforms": {
+    "web": "Authored HTML/CSS comparison; use semantic controls in a product.",
+    "mobile": "The table becomes a single-column list with labeled metadata. Rectangular surfaces and IBM Plex remain; fields and actions grow to touch size.",
+    "desktop": "The broad reference shows the system’s task hierarchy. Actual native applications also need platform navigation and input conventions."
+  }
+}

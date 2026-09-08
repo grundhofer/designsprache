@@ -1,0 +1,135 @@
+{
+  "slug": "fluent",
+  "name": "Microsoft / Fluent",
+  "family": "Plattformsprachen",
+  "aka": [
+    "Microsoft",
+    "fluent"
+  ],
+  "palette": [
+    "#F3F3F3",
+    "#FFFFFF",
+    "#242424",
+    "#0F6CBD",
+    "#D1D1D1",
+    "#EBEBEB"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [],
+  "era": "Zeitgenössisches Designsystem · eigene Web-Adaption",
+  "idea": "Ruhige Materialebenen und eine klare Befehlsleiste halten Navigation, Inhalt und Aktionen auseinander.",
+  "origin": "Fluent ist Microsofts plattformübergreifende Designsprache. Fluent 2 beschreibt Solid, Mica, Acrylic und Smoke mit unterschiedlichen Aufgaben. Diese helle Web-Adaption nutzt deckende Flächen und eine getönte Seitenleiste; sie implementiert kein natives Mica.",
+  "tip": "Ordne zuerst Navigation, Inhalt und temporäre Ebenen. Wähle danach das Material und einen deckenden Fallback.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "internal",
+      "data",
+      "dev-tool"
+    ],
+    "tone": [
+      "precise",
+      "formal",
+      "calm"
+    ],
+    "signature": "Befehlsleiste, ruhige Navigation und getrennte Inhaltsflächen."
+  },
+  "markers": [
+    "Demo: 168px breite Navigationsspalte; der Inhalt erhält den übrigen Raum.",
+    "Demo: Horizontale Befehlsleiste oberhalb der Projektliste.",
+    "Demo: 4px Radien an Feldern und Schaltflächen.",
+    "Demo: 8px Radius an der gemeinsamen Inhaltsfläche.",
+    "Demo: 1px Konturen statt Schatten zwischen den Zeilen.",
+    "Demo: Blauer Auswahlstreifen in der Navigation.",
+    "Demo: 32px Titel, 16px Projekttext und 14px Metadaten.",
+    "Demo: Deckende weiße Lesefläche auf neutralem Grund.",
+    "Demo: Systemschrift; keine eingebettete Segoe-UI-Datei."
+  ],
+  "params": {
+    "radius": "Demo: 4px; Abweichungen je Bauteil siehe Merkmale.",
+    "contrast": "Dunkler Text auf deckenden hellen Flächen; Fokus und Zustände haben eigene Rollen.",
+    "density": "Kompakte Navigation, großzügigerer Inhalt; Desktop-Zeilen mindestens 64px.",
+    "depth": "Gruppierung durch Flächen und 1px Grenzen.",
+    "color": "Eigene Demo: #F3F3F3, #FFFFFF, #242424, #0F6CBD, #D1D1D1, #EBEBEB",
+    "type": "Demo-Schrift: system-ui",
+    "motion": "Unmittelbare Ansichtswechsel; keine animierten Übergänge in diesem Vergleich.",
+    "texture": "Glatte, deckende Flächen."
+  },
+  "examples": [
+    {
+      "name": "Microsoft Teams",
+      "what": "Microsoft zeigt Teams als Fluent-2-Anwendung mit vereinfachter Oberfläche."
+    },
+    {
+      "name": "Microsoft Outlook",
+      "what": "Microsofts Fallstudie verbindet E-Mail und weitere Aufgaben in einem anpassbaren Arbeitsbereich."
+    },
+    {
+      "name": "Fluent UI React: Toolbar",
+      "what": "Die offizielle Komponentenreferenz gruppiert häufige Aktionen und behandelt ihren Überlauf."
+    },
+    {
+      "name": "Fluent UI React: Dialog",
+      "what": "Die offizielle Dialogreferenz beschreibt modale Ebenen und die Rückgabe des Tastaturfokus."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Fluent 2: Materialien / Materials",
+      "url": "https://fluent2.microsoft.design/material"
+    },
+    {
+      "title": "Fluent 2: Designsystem / Design system",
+      "url": "https://fluent2.microsoft.design/"
+    },
+    {
+      "title": "Microsoft Teams",
+      "url": "https://microsoft.design/articles/designing-the-new-era-of-teams/"
+    },
+    {
+      "title": "Microsoft Outlook",
+      "url": "https://microsoft.design/articles/designing-a-new-outlook-experience/"
+    },
+    {
+      "title": "Fluent UI React: Toolbar",
+      "url": "https://fluent2.microsoft.design/components/web/react/core/toolbar/usage"
+    },
+    {
+      "title": "Fluent UI React: Dialog",
+      "url": "https://fluent2.microsoft.design/components/web/react/core/dialog/usage"
+    }
+  ],
+  "strengths": [
+    "Ruhige Materialebenen und eine klare Befehlsleiste halten Navigation, Inhalt und Aktionen auseinander.",
+    "Ein dokumentiertes System unterstützt konsistente Entscheidungen für Komponenten."
+  ],
+  "risks": [
+    "Eine durchgehend transparente Oberfläche verwischt die Rollen der Fluent-Materialien.",
+    "Farben, Größen und Radien beschreiben diese Demo, keine vollständige Token-Spezifikation des Anbieters.",
+    "Die Web-Adaption bildet native Fensterverwaltung, Hilfsmittelintegration und Geräteeingabe nicht nach."
+  ],
+  "a11y": "Prüfe sichtbaren Tastaturfokus, Screenreader-Namen, 200% Textvergrößerung und Kontrast in jedem Zustand. Native Implementierungen sollen Systemfarben respektieren und Status textlich benennen. Die redaktionellen Kennzahlen sind kein Barrierefreiheitsnachweis.",
+  "longevity": "Stabile Hierarchie und Aufgabenstruktur überdauern einzelne Theme-Generationen. Prüfe bei der Umsetzung die aktuellen Plattformkomponenten.",
+  "verdict": "Ruhige Materialebenen und eine klare Befehlsleiste halten Navigation, Inhalt und Aktionen auseinander. Ordne zuerst Navigation, Inhalt und temporäre Ebenen. Wähle danach das Material und einen deckenden Fallback.",
+  "platforms": {
+    "web": "Eigener HTML/CSS-Vergleich; im Produkt semantische Bedienelemente verwenden.",
+    "mobile": "Auf dem Smartphone entfällt die feste Seitenleiste. Inhaltsgruppen, kleine Radien und blaue Aktionshierarchie bleiben; die Aktionen wachsen auf Touchgröße. Mica wird nicht simuliert.",
+    "desktop": "Die breite Referenz zeigt die Aufgabenhierarchie des Systems. Native Anwendungen benötigen zusätzlich die Navigations- und Eingabekonventionen der Plattform."
+  }
+}

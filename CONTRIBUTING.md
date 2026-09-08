@@ -61,7 +61,7 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 
 #### Die Scoping-Regel
 
-33 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
+37 Stylesheets teilen sich eine Seite. Damit das funktioniert, gilt ohne Ausnahme:
 
 1. Genau **ein** `<style>`-Element, danach genau **ein** `<div class="style-<slug>">`.
 2. **Jeder** CSS-Selektor beginnt mit `.style-<slug>`. Kein `:root`, kein `html`, kein `body`,
@@ -184,7 +184,7 @@ How you arrange, weight and enrich that with style-typical elements is your desi
 that is where the style lives. A demo that is merely "the same box with a different radius"
 misses the point.
 
-**The scoping rule.** 33 stylesheets share one page. Exactly one `<style>` element followed by
+**The scoping rule.** 37 stylesheets share one page. Exactly one `<style>` element followed by
 exactly one `<div class="style-<slug>">`; **every** CSS selector starts with `.style-<slug>`
 (no `:root`, `html`, `body`, bare `*` or bare element selectors, not even inside `@media`);
 CSS variables only on `.style-<slug>`; `@keyframes` names prefixed with `<slug>-`. `build.py`
@@ -229,3 +229,21 @@ Beiträge stehen unter denselben Lizenzen wie das Projekt: [MIT](LICENSE) für C
 [CC BY 4.0](LICENSE-CONTENT.md) für Texte.
 Contributions are licensed under the same terms as the project: [MIT](LICENSE) for code,
 [CC BY 4.0](LICENSE-CONTENT.md) for text.
+
+## Prinzipien und Nutzungskontexte / Principles and contexts
+
+`explorer/catalog.py` enthält die zweisprachigen Texte und Verweise, `explorer/catalog.css`
+die Gestaltung und `explorer/catalog.js` die lokalen Zustandswechsel. Ein Kontext ist keine
+zusätzliche Stilfamilie: Er beschreibt Aufgabe, Eingabe, Einschränkungen und passende Prinzipien.
+Gerätebeispiele brauchen eigene Aufgaben und eine klare Beschreibung der Simulationsgrenzen.
+Verweise auf Stile müssen vorhandene Einträge nennen; Quellen müssen Primärquellen sein.
+
+Die interaktiven Beispiele speichern keine Daten dauerhaft. Navigation, Auswahl, Fehler und
+Rückwege müssen mit der Tastatur funktionieren. Textwerte werden als Text ausgegeben bzw.
+vor HTML-Ausgabe maskiert. Neue Zustandswechsel erhalten passende Regressionstests in
+`tests/explorer.test.cjs`; die CI führt `node --test tests/*.test.cjs` aus.
+
+Principles and contexts live in `explorer/` with bilingual copy and primary sources. Contexts
+describe tasks, input and constraints rather than adding style families. Give device examples
+appropriate tasks and explicit simulation limits. Keep state session-only, preserve keyboard
+access and recovery, escape user text, and test meaningful state transitions.

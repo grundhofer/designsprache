@@ -1,0 +1,135 @@
+{
+  "slug": "fluent",
+  "name": "Microsoft / Fluent",
+  "family": "Platform Languages",
+  "aka": [
+    "Microsoft",
+    "fluent"
+  ],
+  "palette": [
+    "#F3F3F3",
+    "#FFFFFF",
+    "#242424",
+    "#0F6CBD",
+    "#D1D1D1",
+    "#EBEBEB"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 4
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [],
+  "era": "Contemporary design system · authored web adaptation",
+  "idea": "Quiet material layers and a clear command bar distinguish navigation, content and actions.",
+  "origin": "Fluent is Microsoft’s cross-platform design language. Fluent 2 describes Solid, Mica, Acrylic and Smoke with different roles. This light web adaptation uses opaque surfaces and a tinted sidebar; it does not implement native Mica.",
+  "tip": "Map navigation, content and transient layers first. Then choose materials and an opaque fallback.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 5,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "internal",
+      "data",
+      "dev-tool"
+    ],
+    "tone": [
+      "precise",
+      "formal",
+      "calm"
+    ],
+    "signature": "Command bar, quiet navigation and distinct content surfaces."
+  },
+  "markers": [
+    "Demo: 168px navigation column; content uses the remaining space.",
+    "Demo: Horizontal command bar above the project list.",
+    "Demo: 4px field and button corners.",
+    "Demo: 8px radius on the shared content surface.",
+    "Demo: 1px outlines instead of shadows between rows.",
+    "Demo: Blue selection rail in the navigation.",
+    "Demo: 32px heading, 16px project text and 14px metadata.",
+    "Demo: Opaque white reading surface on a neutral ground.",
+    "Demo: System font; no embedded Segoe UI file."
+  ],
+  "params": {
+    "radius": "Demo: 4px; see markers for component variations.",
+    "contrast": "Dark text on opaque light surfaces; focus and states are separate roles.",
+    "density": "Compact navigation, roomier content; desktop rows at least 64px.",
+    "depth": "Grouping through surfaces and 1px boundaries.",
+    "color": "Authored demo: #F3F3F3, #FFFFFF, #242424, #0F6CBD, #D1D1D1, #EBEBEB",
+    "type": "Demo font: system-ui",
+    "motion": "Immediate view changes; no animated transitions in this comparison.",
+    "texture": "Smooth opaque surfaces."
+  },
+  "examples": [
+    {
+      "name": "Microsoft Teams",
+      "what": "Microsoft presents Teams as a Fluent 2 application with a simplified interface."
+    },
+    {
+      "name": "Microsoft Outlook",
+      "what": "Microsoft’s case study brings email and additional tasks together in a customizable workspace."
+    },
+    {
+      "name": "Fluent UI React: Toolbar",
+      "what": "The official component reference groups frequent actions and handles overflow."
+    },
+    {
+      "name": "Fluent UI React: Dialog",
+      "what": "The official dialog reference describes modal layers and restoring keyboard focus."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Materials",
+      "url": "https://fluent2.microsoft.design/material"
+    },
+    {
+      "title": "Design system",
+      "url": "https://fluent2.microsoft.design/"
+    },
+    {
+      "title": "Microsoft Teams",
+      "url": "https://microsoft.design/articles/designing-the-new-era-of-teams/"
+    },
+    {
+      "title": "Microsoft Outlook",
+      "url": "https://microsoft.design/articles/designing-a-new-outlook-experience/"
+    },
+    {
+      "title": "Fluent UI React: Toolbar",
+      "url": "https://fluent2.microsoft.design/components/web/react/core/toolbar/usage"
+    },
+    {
+      "title": "Fluent UI React: Dialog",
+      "url": "https://fluent2.microsoft.design/components/web/react/core/dialog/usage"
+    }
+  ],
+  "strengths": [
+    "Quiet material layers and a clear command bar distinguish navigation, content and actions.",
+    "A documented system supports consistent component decisions."
+  ],
+  "risks": [
+    "Translucency everywhere obscures the distinct roles of Fluent materials.",
+    "These colors, sizes and radii describe this demo, not a full vendor token specification.",
+    "The web adaptation does not reproduce native window management, assistive technology integration or device input."
+  ],
+  "a11y": "Test visible keyboard focus, screen-reader names, 200% text resizing and contrast in every state. Use system colors for native implementations and retain text labels for status. These editorial scores are not an accessibility certification.",
+  "longevity": "Stable hierarchy and task structure outlast individual theme generations. Check current platform components when implementing.",
+  "verdict": "Quiet material layers and a clear command bar distinguish navigation, content and actions. Map navigation, content and transient layers first. Then choose materials and an opaque fallback.",
+  "platforms": {
+    "web": "Authored HTML/CSS comparison; use semantic controls in a product.",
+    "mobile": "On smartphones the fixed sidebar disappears. Content groups, small radii and blue action hierarchy remain; controls grow to touch size. Mica is not simulated.",
+    "desktop": "The broad reference shows the system’s task hierarchy. Actual native applications also need platform navigation and input conventions."
+  }
+}

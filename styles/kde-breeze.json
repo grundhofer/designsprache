@@ -1,0 +1,141 @@
+{
+  "slug": "kde-breeze",
+  "name": "KDE / Breeze",
+  "family": "Plattformsprachen",
+  "aka": [
+    "KDE",
+    "kde breeze"
+  ],
+  "palette": [
+    "#EFF0F1",
+    "#FFFFFF",
+    "#232629",
+    "#176B9B",
+    "#A7AAAD",
+    "#DDEBF3"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 3,
+    "density": 5
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [
+    "Noto Sans"
+  ],
+  "era": "Zeitgenössisches Designsystem · eigene Web-Adaption",
+  "idea": "Eine einfache Ausgangsansicht führt zu leistungsfähigen Werkzeugen, ohne Orientierung und anpassbare Arbeitsbereiche aufzugeben.",
+  "origin": "Breeze ist eine visuelle Referenz des KDE-Desktops. Die KDE-Richtlinien verbinden einen einfachen Einstieg mit Funktionen für erfahrene Nutzer. Systemfarben und vertraute Komponenten haben Vorrang. Die Demo legt eine helle Beispielpalette fest; echte KDE-Anwendungen respektieren das gewählte Systemthema.",
+  "tip": "Beginne mit sinnvollen Vorgaben. Mache fortgeschrittene Funktionen auffindbar und gib Anpassungen einen Rückweg zur Ausgangslage.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 3,
+      "desktop": 5
+    },
+    "fits": [
+      "dev-tool",
+      "creative",
+      "internal"
+    ],
+    "tone": [
+      "precise",
+      "technical",
+      "calm"
+    ],
+    "signature": "Werkzeugleiste, Pfad und klare Spalten für einen anpassbaren Arbeitsbereich."
+  },
+  "markers": [
+    "Demo: Schmale Werkzeugleiste mit beschrifteten Aktionen.",
+    "Demo: Pfadleiste macht den aktuellen Bereich sichtbar.",
+    "Demo: 140px Seitenbereich für Orte und Navigation.",
+    "Demo: Projektname, Zeitpunkt und Status in festen Spalten.",
+    "Demo: 36px minimale Höhe der Desktop-Aktionen.",
+    "Demo: 3px Radien an Feldern und Tasten.",
+    "Demo: 1px Grenzen zwischen Werkzeug- und Inhaltsbereichen.",
+    "Demo: 16px Projekttext mit 14px Metadaten.",
+    "Demo: Noto Sans als eigene Web-Vergleichsschrift."
+  ],
+  "params": {
+    "radius": "Demo: 3px; Abweichungen je Bauteil siehe Merkmale.",
+    "contrast": "Dunkler Text auf deckenden hellen Flächen; Fokus und Zustände haben eigene Rollen.",
+    "density": "Werkzeughafte Dichte mit mindestens 48px hohen Desktop-Zeilen und 36px hohen Aktionen.",
+    "depth": "Gruppierung durch Flächen und 1px Grenzen.",
+    "color": "Eigene Demo: #EFF0F1, #FFFFFF, #232629, #176B9B, #A7AAAD, #DDEBF3",
+    "type": "Demo-Schrift: Noto Sans",
+    "motion": "Unmittelbare Ansichtswechsel; keine animierten Übergänge in diesem Vergleich.",
+    "texture": "Glatte, deckende Flächen."
+  },
+  "examples": [
+    {
+      "name": "Dolphin",
+      "what": "Dateiverwaltung mit mehreren Ansichten als Referenz für einen anpassbaren Arbeitsbereich."
+    },
+    {
+      "name": "Kate",
+      "what": "Textbearbeitung mit Werkzeugen für umfangreichere Arbeitsabläufe."
+    },
+    {
+      "name": "Okular",
+      "what": "Dokumentbetrachtung und Anmerkungen verbinden Lesen mit zusätzlichen Werkzeugen."
+    },
+    {
+      "name": "Gwenview",
+      "what": "Bildbetrachtung mit ergänzenden Bearbeitungsfunktionen."
+    }
+  ],
+  "sources": [
+    {
+      "title": "KDE: App design",
+      "url": "https://develop.kde.org/hig/kde_app_design/"
+    },
+    {
+      "title": "KDE: Simple by default",
+      "url": "https://develop.kde.org/hig/simple_by_default/"
+    },
+    {
+      "title": "KDE: Human Interface Guidelines",
+      "url": "https://develop.kde.org/hig/"
+    },
+    {
+      "title": "Dolphin",
+      "url": "https://apps.kde.org/dolphin/"
+    },
+    {
+      "title": "Kate",
+      "url": "https://apps.kde.org/kate/"
+    },
+    {
+      "title": "Okular",
+      "url": "https://apps.kde.org/okular/"
+    },
+    {
+      "title": "Gwenview",
+      "url": "https://apps.kde.org/gwenview/"
+    }
+  ],
+  "strengths": [
+    "Eine einfache Ausgangsansicht führt zu leistungsfähigen Werkzeugen, ohne Orientierung und anpassbare Arbeitsbereiche aufzugeben.",
+    "Ein dokumentiertes System unterstützt konsistente Entscheidungen für Komponenten."
+  ],
+  "risks": [
+    "Viele sichtbare Werkzeuge können den einfachen Einstieg überdecken; Expertenfunktionen brauchen eine klare Ordnung.",
+    "Farben, Größen und Radien beschreiben diese Demo, keine vollständige Token-Spezifikation des Anbieters.",
+    "Die Web-Adaption bildet native Fensterverwaltung, Hilfsmittelintegration und Geräteeingabe nicht nach."
+  ],
+  "a11y": "Prüfe sichtbaren Tastaturfokus, Screenreader-Namen, 200% Textvergrößerung und Kontrast in jedem Zustand. Native Implementierungen sollen Systemfarben respektieren und Status textlich benennen. Die redaktionellen Kennzahlen sind kein Barrierefreiheitsnachweis.",
+  "longevity": "Stabile Hierarchie und Aufgabenstruktur überdauern einzelne Theme-Generationen. Prüfe bei der Umsetzung die aktuellen Plattformkomponenten.",
+  "verdict": "Eine einfache Ausgangsansicht führt zu leistungsfähigen Werkzeugen, ohne Orientierung und anpassbare Arbeitsbereiche aufzugeben. Beginne mit sinnvollen Vorgaben. Mache fortgeschrittene Funktionen auffindbar und gib Anpassungen einen Rückweg zur Ausgangslage.",
+  "platforms": {
+    "web": "Eigener HTML/CSS-Vergleich; im Produkt semantische Bedienelemente verwenden.",
+    "mobile": "Die festen Spalten werden zu Namen mit darunterliegenden Metadaten. Werkzeugaktionen erhalten größere Trefferflächen; eine zusätzliche Seitenleiste entfällt. Touch-Adaption, keine verkleinerte Desktop-Oberfläche.",
+    "desktop": "Die breite Referenz zeigt die Aufgabenhierarchie des Systems. Native Anwendungen benötigen zusätzlich die Navigations- und Eingabekonventionen der Plattform."
+  }
+}

@@ -209,7 +209,7 @@ for (const lang of ['de', 'en']) {
     context.URL = URL; context.URLSearchParams = URLSearchParams;
     context.window = { location: { href: 'https://example.com/de/?view=mobile&screen=detail', search: '?view=mobile&screen=detail' },
       history: { replaceState(a, b, href) { context.window.location.href = href; } } };
-    vm.runInContext(section('  /* ---------- Mobile reference: catalog integration', '\n})();'), context);
+    vm.runInContext(section('  /* ---------- Mobile reference: catalog integration', '  /* ---------- Explorer: pure state'), context);
     assert.equal(context.mobileMode, true);
     assert.equal(context.mobileScreen, 'detail');
     assert.equal(intro.hidden, false);

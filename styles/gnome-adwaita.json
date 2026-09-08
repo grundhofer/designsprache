@@ -1,0 +1,138 @@
+{
+  "slug": "gnome-adwaita",
+  "name": "GNOME / Adwaita",
+  "family": "Plattformsprachen",
+  "aka": [
+    "GNOME",
+    "gnome adwaita"
+  ],
+  "palette": [
+    "#F6F5F4",
+    "#FFFFFF",
+    "#2E3436",
+    "#1C71D8",
+    "#C0BFBC",
+    "#DEDDDA"
+  ],
+  "scores": {
+    "longevity": 4,
+    "recognition": 3,
+    "effort": 2,
+    "density": 3
+  },
+  "combinesWith": [
+    "flat",
+    "swiss",
+    "data-dense"
+  ],
+  "googleFonts": [],
+  "era": "Zeitgenössisches Designsystem · eigene Web-Adaption",
+  "idea": "Ein fokussiertes Fenster bündelt wenige Hauptaktionen im Kopf und zusammengehörige Inhalte in einer ruhigen Liste.",
+  "origin": "Adwaita und libadwaita prägen die GNOME-Anwendungen. Die GNOME-Richtlinien verbinden eine überschaubare Aufgabe mit anpassungsfähigen Fenstern. Header Bars vereinen Fenstertitel und kontextbezogene Aktionen. Diese Demo ist eine eigene HTML-Adaption.",
+  "tip": "Bestimme eine klare Hauptaufgabe und halte nur ihre häufigsten Aktionen im Fensterkopf. Prüfe anschließend schmale Fenster.",
+  "finder": {
+    "mode": "both",
+    "a11y": 4,
+    "platform": {
+      "web": 3,
+      "mobile": 4,
+      "desktop": 5
+    },
+    "fits": [
+      "consumer",
+      "content",
+      "internal"
+    ],
+    "tone": [
+      "calm",
+      "precise"
+    ],
+    "signature": "Zentrierter Fenstertitel, wenige Hauptaktionen und eine eingefasste Liste."
+  },
+  "markers": [
+    "Demo: Fensterkopf mit drei Ausrichtungspunkten.",
+    "Demo: Zentrierter Titel mit der Projektzahl darunter.",
+    "Demo: Hauptaktionen links und rechts im Fensterkopf.",
+    "Demo: 520px maximale Breite für die innere Leseliste.",
+    "Demo: 12px Außenradius an der gemeinsamen Liste.",
+    "Demo: Weiße Zeilen mit internen Trennlinien.",
+    "Demo: Grauer Fenstergrund ohne dekorative Textur.",
+    "Demo: 16px Namen und 14px Zeitangaben.",
+    "Demo: Suchfeld mit sichtbarer Kontur über den Inhalten."
+  ],
+  "params": {
+    "radius": "Demo: 12px; Abweichungen je Bauteil siehe Merkmale.",
+    "contrast": "Dunkler Text auf deckenden hellen Flächen; Fokus und Zustände haben eigene Rollen.",
+    "density": "Begrenzte Lesebreite, wenige Aktionen und mindestens 64px hohe Desktop-Zeilen.",
+    "depth": "Gruppierung durch Flächen und 1px Grenzen.",
+    "color": "Eigene Demo: #F6F5F4, #FFFFFF, #2E3436, #1C71D8, #C0BFBC, #DEDDDA",
+    "type": "Demo-Schrift: system-ui",
+    "motion": "Unmittelbare Ansichtswechsel; keine animierten Übergänge in diesem Vergleich.",
+    "texture": "Glatte, deckende Flächen."
+  },
+  "examples": [
+    {
+      "name": "GNOME Files / Nautilus",
+      "what": "Raster, Liste und Suche zeigen verschiedene Zugänge zu denselben Dateien."
+    },
+    {
+      "name": "GNOME Text Editor",
+      "what": "Ein auf Textbearbeitung konzentriertes Hauptfenster mit Syntaxhervorhebung."
+    },
+    {
+      "name": "GNOME Clocks",
+      "what": "Eigene Ansichten für Weltzeit, Wecker, Stoppuhr und Timer."
+    },
+    {
+      "name": "GNOME Calendar",
+      "what": "Eine Kalenderanwendung als Referenz für zeitlich geordnete Inhalte."
+    }
+  ],
+  "sources": [
+    {
+      "title": "GNOME: Design Principles",
+      "url": "https://developer.gnome.org/hig/principles.html"
+    },
+    {
+      "title": "GNOME: Header Bars",
+      "url": "https://developer.gnome.org/hig/patterns/containers/header-bars.html"
+    },
+    {
+      "title": "GNOME: Boxed Lists",
+      "url": "https://developer.gnome.org/hig/patterns/containers/boxed-lists.html"
+    },
+    {
+      "title": "GNOME Files / Nautilus",
+      "url": "https://apps.gnome.org/Nautilus/"
+    },
+    {
+      "title": "GNOME Text Editor",
+      "url": "https://apps.gnome.org/TextEditor/"
+    },
+    {
+      "title": "GNOME Clocks",
+      "url": "https://apps.gnome.org/Clocks/"
+    },
+    {
+      "title": "GNOME Calendar",
+      "url": "https://apps.gnome.org/Calendar/"
+    }
+  ],
+  "strengths": [
+    "Ein fokussiertes Fenster bündelt wenige Hauptaktionen im Kopf und zusammengehörige Inhalte in einer ruhigen Liste.",
+    "Ein dokumentiertes System unterstützt konsistente Entscheidungen für Komponenten."
+  ],
+  "risks": [
+    "Ein minimalistischer Fensterkopf darf wichtige Aktionen nicht unauffindbar machen.",
+    "Farben, Größen und Radien beschreiben diese Demo, keine vollständige Token-Spezifikation des Anbieters.",
+    "Die Web-Adaption bildet native Fensterverwaltung, Hilfsmittelintegration und Geräteeingabe nicht nach."
+  ],
+  "a11y": "Prüfe sichtbaren Tastaturfokus, Screenreader-Namen, 200% Textvergrößerung und Kontrast in jedem Zustand. Native Implementierungen sollen Systemfarben respektieren und Status textlich benennen. Die redaktionellen Kennzahlen sind kein Barrierefreiheitsnachweis.",
+  "longevity": "Stabile Hierarchie und Aufgabenstruktur überdauern einzelne Theme-Generationen. Prüfe bei der Umsetzung die aktuellen Plattformkomponenten.",
+  "verdict": "Ein fokussiertes Fenster bündelt wenige Hauptaktionen im Kopf und zusammengehörige Inhalte in einer ruhigen Liste. Bestimme eine klare Hauptaufgabe und halte nur ihre häufigsten Aktionen im Fensterkopf. Prüfe anschließend schmale Fenster.",
+  "platforms": {
+    "web": "Eigener HTML/CSS-Vergleich; im Produkt semantische Bedienelemente verwenden.",
+    "mobile": "Die Liste wird zur einspaltigen, eingefassten Gruppe. Der Titel bleibt kompakt; Aktionen bleiben beschriftet. Das zeigt Anpassungsfähigkeit, keine native GNOME-Telefonoberfläche.",
+    "desktop": "Die breite Referenz zeigt die Aufgabenhierarchie des Systems. Native Anwendungen benötigen zusätzlich die Navigations- und Eingabekonventionen der Plattform."
+  }
+}

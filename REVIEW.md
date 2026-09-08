@@ -137,3 +137,28 @@ palette comparison across 528 pairs pass. Existing mobile tests now cover 198 co
 of style, language and screen. New checks verify platform-sensitive finder scores, mobile
 exports, family anchors and the derived count. Rendered browser and device testing of these
 new entries remains outstanding; the earlier browser results do not cover them.
+
+## Erweiterung: drei Ebenen, Prinzipien und Nutzungskontexte (2026-09-08)
+
+- Der Katalog trennt Stile/Designsprachen, Bedienprinzipien und Geräte/Nutzungskontexte in
+  drei direkt verlinkbare Ansichten. URL-Parameter, Sprachwechsel und Browser-Verlauf werden
+  synchronisiert. Die statischen Beschreibungen bleiben ohne JavaScript zugänglich.
+- Vier neue zweisprachige Einträge: Microsoft/Fluent, GNOME/Adwaita, KDE/Breeze und IBM/Carbon.
+  Insgesamt 37 Einträge in zehn Familien, jeweils mit Desktop- und Smartphone-Adaption,
+  Faktenblatt, Quellen und bestehendem Finder-/Prompt-Export.
+- Sechs interaktive Prinzipien: Hierarchie/Gruppierung, schrittweise Offenlegung,
+  Speichern/Fehler/erneuter Versuch/Rückgängig, Navigation, adaptive Bediengröße und
+  inklusive Darstellung (200% Text, Kontrast, lange Texte, reduzierte Bewegung).
+- Acht Kontexte: Web, Desktop, Smartphone, Tablet/Foldable, Smartwatch, TV, Auto und XR.
+  Kontextbezogene Aufgaben, Quellen und Verknüpfungen zu Stilen/Prinzipien sind enthalten.
+  Zustände bleiben lokal im Arbeitsspeicher. Uhr, Auto und XR werden ausdrücklich als
+  schematische Beispiele mit beschriebenen Grenzen dargestellt.
+- Validierung: Python-Build für beide Sprachen; 16 Python- und 40 Node-Tests bestanden.
+  Zustandsmaschinen, Event-Anbindung mit DOM-Testobjekten, Rückwege, Routing, Sprachlinks,
+  Maskierung von Texteingaben, vollständige Referenzen, gültige HTML-Verschachtelung,
+  eindeutige IDs, ein Hauptbereich/eine Hauptüberschrift und No-JS-Inhalte geprüft.
+  CI-Sanity für beide Sprachen bestanden. 666 Palettenpaare ohne neue Dublette.
+- Grenzen: keine visuelle Browserprüfung und keine Tests mit Screenreader oder realer
+  Smartwatch, Fernbedienung, Fahrzeug- oder XR-Hardware. Die automatisierten DOM-Tests
+  ersetzen keine Layout- oder Hilfsmittelprüfung. Es wird keine native Implementierung,
+  vollständige WCAG-Konformität oder Freigabe für den Fahrzeugeinsatz behauptet.

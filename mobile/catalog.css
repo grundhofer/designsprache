@@ -240,3 +240,20 @@
 @media (max-width:820px) { .k-bar { position:static; } .view-controls { gap:8px; } }
 @media (max-width:380px) { .m-app { padding-inline:12px; } .m-app .m-title { font-size:30px; }
   .m-app .m-count { font-size:24px; } .m-app.m-de-stijl { padding:0; } }
+
+/* Platform and product systems: each keeps its own structural signature. */
+.m-app.m-fluent .m-head { border-bottom:1px solid var(--m-rule); padding-bottom:16px; }
+.m-app.m-fluent .m-project { border-left:3px solid var(--m-accent); }
+.m-app.m-gnome-adwaita .m-head { justify-content:center; flex-direction:column; align-items:center; gap:4px; }
+.m-app.m-gnome-adwaita .m-title { font-size:26px; }
+.m-app.m-gnome-adwaita .m-count { font-size:16px; }
+.m-app.m-gnome-adwaita .m-list { gap:0; overflow:hidden; border:1px solid var(--m-rule); border-radius:12px; }
+.m-app.m-gnome-adwaita .m-project { border:0; border-radius:0; border-bottom:1px solid var(--m-rule); }
+.m-app.m-gnome-adwaita .m-list li:last-child .m-project { border-bottom:0; }
+.m-app.m-kde-breeze .m-top { border-bottom:1px solid var(--m-rule); margin-bottom:16px; }
+.m-app.m-kde-breeze .m-title { font-size:28px; }
+.m-app.m-ibm-carbon .m-top { background:var(--m-ink); color:var(--m-surface); padding:16px; margin:-22px -18px 22px; }
+.m-app.m-ibm-carbon .m-title { font-size:30px; font-weight:400; }
+.m-app.m-ibm-carbon .m-list { gap:0; }
+.m-app.m-ibm-carbon .m-project { border-bottom:1px solid var(--m-rule); }
+.m-app.m-ibm-carbon .m-primary, .m-app.m-ibm-carbon .m-secondary { text-align:left; }

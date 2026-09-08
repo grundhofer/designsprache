@@ -1,0 +1,32 @@
+<style>
+.style-kde-breeze { background:#EFF0F1; color:#232629; padding:24px; font:16px/1.5 "Noto Sans",sans-serif; color-scheme:light; }
+.style-kde-breeze * { box-sizing:border-box; }
+.style-kde-breeze .window { border:1px solid #A7AAAD; border-radius:8px; overflow:hidden; }
+.style-kde-breeze .body { display:grid; grid-template-columns:168px 1fr; min-height:342px; }
+.style-kde-breeze .side { padding:20px 14px; border-right:1px solid #A7AAAD; background:#DDEBF3; }
+.style-kde-breeze .side p { font-size:14px; margin:0 0 20px; }
+.style-kde-breeze .current { background:#FFFFFF; border-left:3px solid #176B9B; padding:10px; font-weight:600; }
+.style-kde-breeze .content { padding:24px; min-width:0; }
+.style-kde-breeze .head { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.style-kde-breeze h2 { font:600 32px/1.2 "Noto Sans",sans-serif; margin:0; }
+.style-kde-breeze .count { font-size:16px; padding:2px 9px; background:#DDEBF3; border-radius:4px; }
+.style-kde-breeze .toolbar { display:flex; gap:10px; padding:12px; border-bottom:1px solid #A7AAAD; background:#FFFFFF; }
+.style-kde-breeze button { font:500 14px/1.4 "Noto Sans",sans-serif; min-height:36px; padding:8px 14px; border:1px solid #A7AAAD; border-radius:3px; background:#FFFFFF; color:#232629; }
+.style-kde-breeze .primary { color:#FFFFFF; background:#176B9B; border-color:#176B9B; }
+.style-kde-breeze input { display:block; width:100%; padding:10px 12px; border:1px solid #A7AAAD; border-bottom-color:#232629; border-radius:3px; background:#FFFFFF; color:#232629; font:14px/1.5 "Noto Sans",sans-serif; margin-bottom:20px; }
+.style-kde-breeze ul { list-style:none; padding:0; margin:0; background:#FFFFFF; border:1px solid #A7AAAD; border-radius:8px; overflow:hidden; }
+.style-kde-breeze li { display:grid; grid-template-columns:minmax(0,1fr) 90px 68px; align-items:center; gap:10px; min-height:64px; padding:12px; border-bottom:1px solid #A7AAAD; }
+.style-kde-breeze li:last-child { border-bottom:0; }
+.style-kde-breeze .name { font-weight:600; }
+.style-kde-breeze .time, .style-kde-breeze .status { font-size:14px; }
+.style-kde-breeze .status::before { content:'• '; }
+.style-kde-breeze .paused::before { content:'Ⅱ '; }
+.style-kde-breeze .caption { font-size:12px; margin:14px 0 0; }
+.style-kde-breeze .body { grid-template-columns:140px 1fr; }
+.style-kde-breeze .content { padding:16px; }
+.style-kde-breeze .side { background:#EFF0F1; }
+.style-kde-breeze .path { background:#FFFFFF; border-bottom:1px solid #A7AAAD; padding:8px 16px; font-size:14px; }
+.style-kde-breeze .window, .style-kde-breeze ul { border-radius:0; }
+.style-kde-breeze li { min-height:48px; }
+</style>
+<div class="style-kde-breeze"><div class="window"><div class="toolbar"><button type="button" class="primary">New project</button><button type="button">Import</button></div><div class="path">Workspace / Projects</div><div class="body"><aside class="side"><p>Workspace</p><div class="current">Projects</div></aside><div class="content"><div class="head"><h2>Projects</h2><span class="count">12</span></div><input type="search" readonly placeholder="Search…" aria-label="Search projects"><ul><li><span class="name">Nexus</span><span class="time">2 hrs ago</span><span class="status ">Active</span></li><li><span class="name">Autowrite Studio</span><span class="time">yesterday</span><span class="status ">Active</span></li><li><span class="name">Balance Ally</span><span class="time">4 days ago</span><span class="status paused">Paused</span></li></ul></div></div></div><p class="caption">KDE / Breeze · authored web comparison</p></div>
