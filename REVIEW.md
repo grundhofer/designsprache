@@ -91,3 +91,25 @@ and layout stability have not been profiled. Further performance changes should 
 
 This report records validation before publication. Deployment status is tracked separately
 in the repository's GitHub Actions workflow.
+
+## Mobile reference extension — 2026-09-08
+
+Added explicit mobile adaptations for all 31 existing styles, in both languages. A shared
+Desktop/Smartphone switch controls gallery previews, the fact-sheet demo and finder results.
+The mobile screen selector compares the same list, project detail or creation form across
+styles. Mobile layouts reflow up to 390 px without the desktop scaling transform.
+
+The fact-sheet prototype supports navigation, search, creation and importing project names.
+It uses session-only state that resets on close, style/view change or reset. Gallery and
+finder previews remain inert. Mobile prompts append the style's adaptation note, base values
+and platform implementation guidance; the fact-sheet palette stays explicitly labeled as
+such. Platform references distinguish Material, Apple / Liquid Glass and Samsung One UI;
+the latter two are future catalog additions, not new entries in this release.
+
+Validation: 12 Python and 20 Node tests cover source inventory, bilingual data, generated
+scripts, all 186 mobile style/language/screen combinations, safe text rendering, creation,
+import, search, state isolation, view-control synchronization, language links, finder
+preview switching and mobile prompt exports. Build, palette and Pages sanity checks pass.
+The new mobile layouts have not received a rendered browser or real-device accessibility
+pass. Tests use lightweight DOM fixtures and do not establish visual or native-platform
+conformance. Mobile theme values are authored adaptations rather than vendor specifications.

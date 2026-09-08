@@ -33,6 +33,14 @@ Ein Stil besteht aus vier Dateien in `styles/`:
 Danach den Stil in `build.py` in `ORDER_DE` und `ORDER_EN` in die passende Familie eintragen
 und `python3 build.py` laufen lassen.
 
+Die Smartphone-Adaption gehört ebenfalls dazu: in `mobile/catalog.py` explizite Stilwerte
+unter `THEMES` und einen deutschen sowie englischen Anpassungshinweis unter `NOTES` ergänzen.
+Stilspezifische Layoutregeln stehen in `mobile/catalog.css`, alle Selektoren sind auf
+`.m-app` bzw. `.m-app.m-<slug>` begrenzt. Der Build verweigert fehlende mobile Einträge.
+Die Desktop-Faktenblattwerte bleiben Quellen für den Stil; mobile Abweichungen sind eigene,
+offen benannte Entwurfsentscheidungen. Die gemeinsame mobile Referenz und ihr Verhalten
+stehen in `mobile/catalog.js`; keine projektspezifischen Varianten der Referenztexte ergänzen.
+
 #### Die Referenz-UI
 
 Der ganze Sinn des Katalogs ist Vergleichbarkeit: Jede Demo zeigt **denselben Inhalt**. Ändere
@@ -159,6 +167,12 @@ They are arguable — please argue in an issue with reasoning rather than changi
 A style is four files in `styles/`: `<slug>.html`, `<slug>.json`, `<slug>.en.html`,
 `<slug>.en.json`. Then add the slug to `ORDER_DE` and `ORDER_EN` in `build.py` under the right
 family and run `python3 build.py`.
+
+Also add an explicit mobile theme to `THEMES` and German/English adaptation notes to `NOTES`
+in `mobile/catalog.py`. Style-specific layout rules live in `mobile/catalog.css`, scoped to
+`.m-app` or `.m-app.m-<slug>`. Missing mobile entries fail the build. Mobile deviations are
+authored design choices, distinct from the desktop fact-sheet values. The shared mobile
+reference and its behavior live in `mobile/catalog.js`; keep its reference copy consistent.
 
 **The reference UI never changes.** Every demo shows the same content: header "Projekte" plus
 counter "12"; three rows (Nexus · vor 2 Std. · Aktiv / Autowrite Studio · gestern · Aktiv /

@@ -12,6 +12,7 @@ import unittest
 from unittest.mock import patch
 
 import build
+from mobile import catalog as mobile
 from tools.catalog_checks import check_catalog, check_demo, check_fact_sheet
 
 spec = importlib.util.spec_from_file_location("palette_check", build.ROOT / "tools/palette-check.py")
@@ -30,6 +31,17 @@ class CatalogChecks(unittest.TestCase):
 
     def test_entire_catalog_satisfies_source_contract(self):
         self.assertEqual(check_catalog(build.ROOT, build.ORDER_DE, build.ORDER_EN, build.FONT_SPECS), [])
+
+    def test_mobile_adaptations_cover_catalog_and_fail_on_missing_entry(self):
+        for lang in ('de', 'en'):
+            css, script = mobile.assets(self.slugs, lang)
+            for slug in self.slugs:
+                self.assertIn('.m-app.m-' + slug, css)
+                self.assertIn(mobile.NOTES[slug][lang == 'en'], script)
+                font = mobile.THEMES[slug][-2]
+                self.assertTrue(font in self.fonts or font == 'Times New Roman', font)
+            with self.assertRaises(ValueError):
+                mobile.assets(self.slugs + ['future-style'], lang)
 
     def test_invalid_metadata_fails_with_field_name(self):
         for key, value in [("scores", {"longevity": True}), ("params", {}),

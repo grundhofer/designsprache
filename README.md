@@ -50,6 +50,36 @@ practical tip. About 4,000 characters, ready to paste.
 
 ---
 
+## Desktop und Smartphone / Desktop and smartphone
+
+**Desktop / Smartphone** schaltet alle 31 Vergleichsdemos gemeinsam um. Für das Smartphone
+gibt es drei Ansichten: **Projektliste, Projektdetail und neues Projekt**. Die mobilen
+Adaptionen haben eigene Layouts bis 390 px Breite, größere Bedienflächen und gestapelte
+Metadaten. Schrift, Flächen, Konturen und charakteristische Stilmittel bleiben erkennbar.
+
+Im Faktenblatt lässt sich der mobile Ablauf ausprobieren: Projekte öffnen, suchen, anlegen
+und Namen zeilenweise importieren. Änderungen bleiben ausschließlich im Arbeitsspeicher
+dieser Demo und werden beim Schließen, Stilwechsel oder Zurücksetzen verworfen. Die Kacheln
+und Finder-Vorschauen bleiben inaktiv. Der Prompt-Export ergänzt in der Smartphone-Ansicht
+die konkreten mobilen Anpassungen des gewählten Stils.
+
+**Desktop / Smartphone** switches all 31 comparisons together. The mobile reference has
+three screens: **project list, project detail and new project**. Open a fact sheet to try
+search, navigation, creation and a line-by-line name import. Demo changes live only in
+memory and reset on close, style change or reset. Mobile prompts include the selected
+style's adaptation notes. These are authored web prototypes, not native platform screenshots.
+
+Direkt zur mobilen Ansicht / Open the mobile view:
+[Deutsch](https://grundhofer.github.io/designsprache/de/?view=mobile),
+[English](https://grundhofer.github.io/designsprache/en/?view=mobile).
+
+Material ist bereits als Stil enthalten. Apple / Liquid Glass und Samsung One UI sind im
+mobilen Einführungstext als Plattformreferenzen verlinkt; eigene Einträge folgen separat.
+Material already has a catalog entry. Apple / Liquid Glass and Samsung One UI are linked
+as platform references in the mobile introduction; dedicated entries are a separate next step.
+
+---
+
 ## Aufbau / How it works
 
 Kein Framework. Ein Python-Skript ohne Abhängigkeiten baut aus den Quelldateien drei statische
@@ -62,6 +92,7 @@ styles/<slug>.json      Faktenblatt / fact sheet
 styles/<slug>.en.*      englische Fassung, CSS zeichengleich / English, byte-identical CSS
 landing.html            zweisprachige Eingangsseite / bilingual entry page
 build.py                Generator
+mobile/                 Mobile Layouts, Stilwerte, Übersetzungen und Demo-Verhalten
 tools/palette-check.py  Prüfwerkzeug / check tool
 tools/catalog_checks.py Quellen- und Sprachprüfung / source and language checks
 tests/                  Regressionstests / regression tests
@@ -98,8 +129,10 @@ Tests need no packages; Node is only needed for JavaScript regression tests, not
 (OKLab-ΔE unter 2, Neutrale ausgenommen) und läuft in der CI. Es findet Stilpaare, die man sonst
 für einen Stil hält. Runs in CI; finds pairs that would otherwise read as one style.
 
-Die Demos sind handgebautes HTML und CSS — keine Bilder, keine Skripte, keine Bibliotheken.
-The demos are hand-built HTML and CSS — no images, no scripts, no libraries.
+Die Desktop-Demos sind handgebautes HTML und CSS. Die mobilen Prototypen ergänzen einen
+gemeinsamen JavaScript-Controller; zusätzliche Bibliotheken oder Bilder sind nicht nötig.
+Desktop demos are hand-built HTML and CSS. Mobile prototypes add one shared JavaScript
+controller, with no additional libraries or images.
 
 Der neue Abschnitt **Vom Stil zur benutzbaren Oberfläche** beschreibt Rollen, Zustände,
 Textvergrößerung und Kontrastprüfung. Ausgewählte Faktenblätter verlinken Quellen direkt;

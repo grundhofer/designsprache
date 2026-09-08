@@ -21,6 +21,7 @@ for (const lang of ['de', 'en']) {
       DATA: data, LANG: lang, SITE: 'https://grundhofer.github.io/designsprache', ANS: answers, order,
       fiRes: { querySelectorAll: () => [] }, fiQuiz: {}, fiAgain: {}, FI: {},
       document: { getElementById: () => ({ focus() {} }) }, fitFinder() {}, setTimeout() {},
+      mountMobileResults() {},
     });
     vm.runInContext([
       section('  var FT = ', '  var ANS = '),
@@ -28,6 +29,7 @@ for (const lang of ['de', 'en']) {
       section('  function esc(s)', '  function open(i)'),
       section('  function rate(slug)', '  /* ---------- Fragebogen'),
       section('  function showResults()', '  fiRes.addEventListener'),
+      section('var MOBILE_DATA = ', '  /* ---------- Mobile reference: catalog integration'),
     ].join('\n'), context);
     return context;
   }
@@ -109,5 +111,111 @@ for (const lang of ['de', 'en']) {
       assert.ok(prompt.includes(`/designsprache/${lang}/`));
       assert.ok(!prompt.includes('undefined'));
     }
+  });
+
+  test(`${lang}: every style renders three mobile screens with intact reference data`, () => {
+    const context = finder({});
+    for (const slug of Object.keys(data)) {
+      for (const screen of ['list', 'detail', 'new']) {
+        const markup = context.mobileMarkup(slug, context.newMobileState(screen));
+        assert.ok(markup.includes(`m-${slug}`));
+        assert.ok(!markup.includes('undefined'));
+        assert.ok(!markup.includes('scale('));
+        if (screen === 'list') {
+          for (const name of ['Nexus', 'Autowrite Studio', 'Balance Ally']) assert.ok(markup.includes(name));
+          assert.ok(markup.includes('m-count">12'));
+        }
+        if (screen === 'new') assert.ok(markup.includes('name="name" required'));
+      }
+    }
+  });
+
+  test(`${lang}: mobile creation, import, search and reset preserve isolated demo state`, () => {
+    const context = finder({});
+    const state = context.newMobileState('new');
+    assert.equal(context.mobileAdd(state, ['   '], 'active', ''), false);
+    assert.equal(state.projects.length, 3);
+    assert.equal(context.mobileAdd(state, [' <img src=x onerror=alert(1)> '], 'paused', '<script>bad</script>'), true);
+    assert.equal(state.screen, 'detail');
+    assert.equal(state.projects[state.selected].status, 'paused');
+    const detail = context.mobileMarkup('swiss', state);
+    assert.ok(detail.includes('&lt;img'));
+    assert.ok(!detail.includes('<script>'));
+    assert.equal(context.mobileAdd(state, ['Atlas', '', 'Studio'], 'unexpected', ''), true);
+    assert.equal(state.screen, 'list');
+    assert.equal(state.projects.length, 6);
+    state.query = 'atlas';
+    assert.equal(context.mobileRows(state).count, 1);
+    state.query = 'no-such-project';
+    assert.equal(context.mobileRows(state).count, 0);
+    assert.equal(context.newMobileState().projects.length, 3);
+  });
+
+  test(`${lang}: mobile prompt adds the actual style adaptation only in mobile view`, () => {
+    const context = finder({});
+    for (const slug of Object.keys(data)) {
+      context.mobileMode = false;
+      assert.ok(!context.buildPrompt(slug).includes(context.MT.promptText));
+      context.mobileMode = true;
+      const prompt = context.buildPrompt(slug);
+      assert.ok(prompt.includes(context.MT.promptText));
+      assert.ok(prompt.includes(context.MOBILE_DATA[slug].note));
+    }
+  });
+
+  test(`${lang}: mobile view wiring synchronizes controls, finder, exports and language links`, () => {
+    const context = finder({});
+    const element = (dataset = {}) => ({
+      dataset, hidden: false, style: {}, children: [], attributes: {}, listeners: {},
+      setAttribute(key, value) { this.attributes[key] = value; },
+      addEventListener(type, callback) { this.listeners[type] = callback; },
+      appendChild(child) { this.children.push(child); }, focus() { this.focused = true; },
+    });
+    const previews = Object.keys(data).map(slug => element({ mobileSlug: slug }));
+    const views = ['desktop', 'mobile', 'desktop', 'mobile'].map(view => element({ view }));
+    const selects = [element(), element()], states = [element(), element()], intro = element();
+    const links = ['de', 'en'].map(locale => ({ href: `https://example.com/${locale}/` }));
+    const ids = Object.fromEntries(['mobile-sheet', 'mobile-help', 'mobile-note', 'mobile-reset', 'mobile-palette-label', 'mobile-values'].map(id => [id, element()]));
+    const resultHost = element(), resultFrame = element({ demo: 'swiss' });
+    resultFrame.querySelector = () => resultHost;
+    let removedPrompt = false;
+    const source = { firstElementChild: { cloneNode: () => ({ querySelectorAll: () => [] }) } };
+    context.document = {
+      getElementById: id => ids[id], documentElement: { dataset: {} },
+      querySelector: () => source,
+      querySelectorAll: selector => ({
+        '.mobile-preview': previews, '[data-view]': views, '[data-mobile-screen]': selects,
+        '.mobile-states, .mobile-intro': [...states, intro], '[data-view-controls]': [element()], '.tb-lang a': links,
+      })[selector] || [],
+    };
+    context.fiRes = { querySelectorAll: selector => selector === '.fi-frame' ? [resultFrame]
+      : [{ remove() { removedPrompt = true; } }] };
+    context.sHost = { parentElement: element() }; context.sCap = element(); context.cur = -1;
+    context.schedule = () => {};
+    context.URL = URL; context.URLSearchParams = URLSearchParams;
+    context.window = { location: { href: 'https://example.com/de/?view=mobile&screen=detail', search: '?view=mobile&screen=detail' },
+      history: { replaceState(a, b, href) { context.window.location.href = href; } } };
+    vm.runInContext(section('  /* ---------- Mobile reference: catalog integration', '\n})();'), context);
+    assert.equal(context.mobileMode, true);
+    assert.equal(context.mobileScreen, 'detail');
+    assert.equal(intro.hidden, false);
+    assert.ok(previews.every(p => p.innerHTML.startsWith('<div inert>') && p.innerHTML.includes('Nexus')));
+    assert.equal(resultHost.style.transform, 'none');
+    assert.ok(resultHost.innerHTML.includes('m-swiss'));
+    assert.ok(links.every(link => link.href.includes('view=mobile')));
+    assert.equal(removedPrompt, true);
+    views[0].listeners.click();
+    assert.equal(context.mobileMode, false);
+    assert.equal(intro.hidden, true);
+    assert.equal(resultHost.style.width, '');
+    assert.equal(resultHost.children.length, 1);
+    assert.ok(links.every(link => !link.href.includes('view=')));
+    assert.equal(views[2].attributes['aria-pressed'], 'true');
+    selects[0].value = 'new'; selects[0].listeners.change();
+    assert.equal(context.mobileMode, true);
+    assert.equal(selects[1].value, 'new');
+    assert.ok(context.window.location.href.includes('screen=new'));
+    context.setCatalogView('mobile', '<script>', false);
+    assert.equal(context.mobileScreen, 'list');
   });
 }

@@ -14,6 +14,7 @@ Build a bilingual catalog of UI styles. See README.md.
 import json, pathlib, re, html, shutil, sys
 
 from tools.catalog_checks import check_catalog
+from mobile import catalog as mobile_catalog
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
@@ -424,9 +425,10 @@ GUIDE = {
     "de": '''<section class="k-close wrap" aria-labelledby="guide-title">
   <span class="eyebrow">In der Praxis</span>
   <h2 id="guide-title">Vom Stil zur benutzbaren Oberfläche</h2>
-  <p>Die Demos sind feste, auf 780 px entworfene Vergleichsbilder aus HTML und CSS.
-    Ihre Eingabefelder und Schaltflächen sind absichtlich inaktiv. Ein fertiges Produkt
-    braucht zusätzlich Verhalten, Zustände und ein Layout für seine echten Inhalte.</p>
+  <p>Die Desktop-Demos sind auf 780 px entworfene Vergleichsbilder aus HTML und CSS.
+    Die Smartphone-Adaptionen fließen bis 390 px Breite und zeigen Liste, Detail und Formular.
+    In den Kacheln bleiben alle Bedienelemente inaktiv; im Faktenblatt lässt sich der mobile
+    Ablauf ausprobieren. Ein fertiges Produkt braucht zusätzlich seine echten Inhalte und Zustände.</p>
   <div class="close-grid">
     <div><h3>Eine Hauptstimme, klare Rollen</h3><p>Wähle einen Grundstil und höchstens
       einen ergänzenden Einfluss. Lege zuerst Rollen für Hintergrund, Text, Akzent, Rand
@@ -452,9 +454,10 @@ GUIDE = {
     "en": '''<section class="k-close wrap" aria-labelledby="guide-title">
   <span class="eyebrow">In practice</span>
   <h2 id="guide-title">From a style to a usable interface</h2>
-  <p>The demos are fixed comparisons designed at 780 px in HTML and CSS.
-    Their fields and buttons are deliberately inactive. A finished product also needs
-    behavior, states and a layout that accommodates its actual content.</p>
+  <p>The desktop demos are fixed comparisons designed at 780 px in HTML and CSS.
+    Smartphone adaptations reflow up to 390 px wide and show a list, detail and form.
+    Controls stay inactive in the cards; open a fact sheet to try the mobile flow.
+    A finished product also needs its actual content and states.</p>
   <div class="close-grid">
     <div><h3>One main voice, explicit roles</h3><p>Choose a base style and at most one
       supporting influence. Define roles for background, text, accent, border and focus
@@ -497,6 +500,7 @@ def build(lang="de", mode="site"):
     n = sum(len(s) for _, _, s in ORDER)
     assert n == N_ENTRIES, n
     check_scoping(sheets, [x for _, _, ss in ORDER for x in ss], suffix)
+    mobile_css, mobile_script = mobile_catalog.assets(data, lang)
 
     # ---------- Plates ----------
     idx, sections = 0, []
@@ -523,6 +527,7 @@ def build(lang="de", mode="site"):
   data-effort="{sc.get('effort',0)}" data-density="{sc.get('density',0)}" data-idx="{idx}"
   data-search="{esc(search_text)}">
   <div class="plate-frame" data-open><div class="demo-host" inert>{demos[slug]}</div></div>
+  <div class="mobile-preview" data-open data-mobile-slug="{esc(slug)}"><div inert></div></div>
   <div class="plate-meta">
     <div class="plate-line">
       <span class="ent">{idx:02d}</span>
@@ -586,6 +591,15 @@ def build(lang="de", mode="site"):
         chips=fam_chips,
         payload=payload,
         guide=GUIDE[lang],
+        mobile_css=mobile_css, mobile_script=mobile_script,
+        mobile_controls=mobile_catalog.controls(lang),
+        mobile_sheet_controls=mobile_catalog.controls(lang, sheet=True),
+        mobile_intro=mobile_catalog.intro(lang),
+        mobile_help=("Eigene mobile Adaption. Änderungen bleiben in dieser Demo und werden beim Schließen zurückgesetzt."
+                     if lang == "de" else "Authored mobile adaptation. Changes stay in this demo and reset when you close the entry."),
+        mobile_reset="Demo zurücksetzen" if lang == "de" else "Reset demo",
+        mobile_values="Basiswerte der mobilen Demo" if lang == "de" else "Mobile demo base values",
+        mobile_palette="Palette des Stil-Faktenblatts" if lang == "de" else "Fact-sheet palette",
         mx=metric_opts.replace('value="longevity"', 'value="longevity" selected'),
         my=metric_opts.replace('value="recognition"', 'value="recognition" selected'),
     )
@@ -1027,6 +1041,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   *, .demo-host *, .sheet-host * {{ animation-duration:.001ms !important;
     animation-iteration-count:1 !important; transition-duration:.001ms !important; }}
 }}
+{mobile_css}
 </style>
 
 {sheets}
@@ -1108,8 +1123,11 @@ tbody tr:hover {{ background:var(--surface-2); }}
     </div>
     <span id="tally" aria-live="polite">{n} von {n}</span>
     <button class="fi-open" type="button" id="fi-open">Stil finden</button>
+    {mobile_controls}
   </div>
 </nav>
+
+{mobile_intro}
 
 <main class="wrap" id="cat">{sections}
   <p class="empty" id="empty" hidden>Kein Eintrag passt zu dieser Auswahl.</p>
@@ -1217,8 +1235,17 @@ tbody tr:hover {{ background:var(--surface-2); }}
   </div></div>
   <div class="wrap sheet-body">
     <div class="sheet-left">
+      {mobile_sheet_controls}
       <div class="sheet-frame"><div class="sheet-host" id="s-host" inert></div></div>
+      <div class="mobile-sheet" id="mobile-sheet" hidden></div>
+      <div id="mobile-help" hidden>
+        <p class="mobile-note" id="mobile-note"></p>
+        <p class="mobile-note">{mobile_help}</p>
+        <details class="mobile-values"><summary>{mobile_values}</summary><pre id="mobile-values"></pre></details>
+        <button class="nav-b mobile-reset" type="button" id="mobile-reset">{mobile_reset}</button>
+      </div>
       <p class="k-cap" id="s-cap"></p>
+      <p class="mobile-note" id="mobile-palette-label" hidden>{mobile_palette}</p>
       <div class="swatches" id="s-pal"></div>
     </div>
     <div class="sheet-right" id="s-right"></div>
@@ -1436,6 +1463,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 
     prevB.disabled = i === 0;
     nextB.disabled = i === order.length - 1;
+    mountMobileSheet();
     sheet.hidden = false;
     if (!sheet.open) sheet.showModal();
     sName.focus();
@@ -1449,6 +1477,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
     sheet.hidden = true;
     document.body.style.overflow = FI.hidden ? "" : "hidden";
     sHost.textContent = "";
+    mobileState = null;
+    document.getElementById("mobile-sheet").textContent = "";
     if (lastFocus) {{ try {{ lastFocus.focus(); }} catch (e) {{}} }}
   }}
 
@@ -1472,7 +1502,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   }});
   document.addEventListener("keydown", function (e) {{
     if (sheet.hidden) return;
-    if (e.target.closest("input, textarea, select, pre")) return;
+    if (e.target.closest("input, textarea, select, pre, .m-app")) return;
     if (e.key === "ArrowLeft" && cur > 0) open(cur - 1);
     else if (e.key === "ArrowRight" && cur < order.length - 1) open(cur + 1);
   }});
@@ -1702,6 +1732,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
         ? "Die Demo beschreibt einen Stil. Übernimm bekannte Kontrast- oder Bedienprobleme nicht unverändert. Prüfe Tastatur, Fokus, lesbare Metadaten, schmale Ansichten, Textvergrößerung sowie Lade-, Leer- und Fehlerzustände. Begründe nötige Anpassungen an der Gestaltung."
         : "The demo describes a style. Adapt known contrast or usability problems before using it in a product. Check keyboard access, focus, readable metadata, narrow layouts, enlarged text, and loading, empty and error states. Explain necessary design adjustments.");
     if (d.tip) L.push("", "## " + FT.pTip, d.tip);
+    if (mobileMode) L.push(mobilePrompt(slug));
     L.push("", "---", FT.pSource + ": " + SITE + "/" + LANG + "/ — " + d.name);
     return L.join("\n");
   }}
@@ -1789,6 +1820,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       host.appendChild(cloneDemo(src.firstElementChild, "finder"));
     }});
     document.getElementById("fi-result-title").focus();
+    mountMobileResults();
     fitFinder();
     [60, 300].forEach(function (d) {{ setTimeout(fitFinder, d); }});
     FI.scrollTop = 0;
@@ -1866,6 +1898,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
   }}
 
   function fitFinder() {{
+    if (mobileMode) return;
     fiRes.querySelectorAll(".fi-frame").forEach(function (fr) {{
       var host = fr.querySelector(".fi-host");
       if (!host || !fr.clientWidth) return;
@@ -1900,6 +1933,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
   }});
   FI.addEventListener("cancel", function (e) {{ e.preventDefault(); closeFinder(); }});
   document.getElementById("fi-lede").textContent = FT.lede;
+
+{mobile_script}
 
 }})();
 </script>
