@@ -162,3 +162,23 @@ new entries remains outstanding; the earlier browser results do not cover them.
   Smartwatch, Fernbedienung, Fahrzeug- oder XR-Hardware. Die automatisierten DOM-Tests
   ersetzen keine Layout- oder Hilfsmittelprüfung. Es wird keine native Implementierung,
   vollständige WCAG-Konformität oder Freigabe für den Fahrzeugeinsatz behauptet.
+
+## Startseitensprache, README und Ebenenwechsel (2026-09-09)
+
+- Fehlerursache der leeren Seite: Der globale Selektor `[data-level]` erfasste nach der
+  Initialisierung auch das HTML-Wurzelelement. Beim Wechsel der Ebene wurde dadurch das
+  gesamte Dokument ausgeblendet. Die Auswahl ist jetzt auf direkte Ebenen im Hauptbereich
+  beschränkt; der Zustandsmarker am Dokument hat zusätzlich einen eigenen Namen.
+- Der verbesserte Regressionstest berücksichtigt das dynamische Wurzelattribut: Er schlägt
+  mit dem alten Code in beiden Sprachen fehl und besteht mit der Korrektur auch bei
+  wiederholten Wechseln zwischen allen drei Ebenen.
+- Die Startseite bestimmt ihre Sprache vor dem Rendern aus `?lang=de|en`, einer gespeicherten
+  manuellen Wahl oder der ersten unterstützten Browsersprache; Standard ist Englisch.
+  Der sichtbare Deutsch-/English-Schalter aktualisiert Texte, Dokumentensprache und Metadaten.
+  Gesperrter Browserspeicher verhindert das Umschalten nicht. Ohne JavaScript bleiben beide
+  Kataloglinks und Sprachfassungen zugänglich.
+- README.md ist eine gekürzte englische Einführung mit deutschem README-Link in der ersten
+  Zeile. README.de.md enthält die entsprechende deutsche Fassung und den Rückverweis.
+- Build, 16 Python-Tests, 47 Node-Tests und Palettenprüfung bestanden. Die neuen Prüfungen
+  decken Spracherkennung, Prioritäten, Umschalten, Speicherung und deren Ausfall ab.
+  Keine zusätzliche visuelle Browser- oder Hardwareprüfung durchgeführt.

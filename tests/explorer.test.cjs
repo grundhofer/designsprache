@@ -108,6 +108,7 @@ for (const lang of ['de', 'en']) {
       scrollIntoView() { this.scrolled=true; }
       closest() { return null; }
     }
+    const root=new Node();
     const panels=['styles','principles','contexts'].map(level=>new Node({level}));
     const nav=panels.map(panel=>new Node({levelLink:panel.dataset.level}));
     const links=['de','en'].map(locale=>({href:`https://example.com/${locale}/`}));
@@ -115,8 +116,9 @@ for (const lang of ['de', 'en']) {
     const byId=id=>{if(!ids.has(id))ids.set(id,new Node());return ids.get(id);};
     const query=selector=>{if(!selectors.has(selector))selectors.set(selector,new Node());return selectors.get(selector);};
     const demos=['web','desktop','smartphone','tablet','watch','tv','car','spatial'].map(id=>{const n=query(`[data-context-demo="${id}"]`);n.dataset.contextDemo=id;return n;});
-    c.document={documentElement:{dataset:{}},getElementById:byId,querySelector:query,querySelectorAll:selector=>({
-      '[data-level]':panels,'[data-level-link]':nav,'.tb-lang a':links,'[data-context-demo]':demos,'[data-style-link]':[],
+    c.document={documentElement:root,getElementById:byId,querySelector:query,querySelectorAll:selector=>({
+      '[data-level]':Object.hasOwn(root.dataset,'level')?[root,...panels]:panels,
+      '#experience > [data-level]':panels,'[data-level-link]':nav,'.tb-lang a':links,'[data-context-demo]':demos,'[data-style-link]':[],
     })[selector]||[]};
     const location=new URL('https://example.com/de/?level=principles&view=mobile&screen=detail#principle-feedback');
     c.window={location,addEventListener(){},history:{pushState(a,b,url){c.window.location=new URL(url);}}};
@@ -125,7 +127,7 @@ for (const lang of ['de', 'en']) {
     const timers=new Map();let timerId=0;
     c.setTimeout=callback=>{timers.set(++timerId,callback);return timerId;};c.clearTimeout=id=>timers.delete(id);
     vm.runInContext(script.slice(dom,end),c);
-    return {c,Node,panels,nav,links,ids,selectors,query,byId,timers};
+    return {c,Node,root,panels,nav,links,ids,selectors,query,byId,timers};
   }
   test(`${lang}: mounted explorer routes preserve language, view and screen; back closes overlays`, () => {
     const m=mount();
@@ -139,6 +141,14 @@ for (const lang of ['de', 'en']) {
     m.c.window.location=new URL('https://example.com/de/?level=principles');m.c.exRestoreRoute();
     assert.equal(m.c.sheet.hidden,true);assert.equal(m.c.FI.hidden,true);
     assert.deepEqual(m.panels.map(p=>p.hidden),[true,false,true]);
+  });
+  test(`${lang}: repeated level switches never hide the document root`, () => {
+    const m=mount();
+    for (const index of [2,1,0,1,2,0]) {
+      m.nav[index].listeners.click({button:0,preventDefault(){}});
+      assert.equal(m.root.hidden,false,'HTML root must stay visible');
+      assert.deepEqual(m.panels.map(p=>p.hidden),[0,1,2].map(i=>i!==index));
+    }
   });
   test(`${lang}: mounted feedback cancels pending save when reset and consumes failure once`, () => {
     const m=mount(), lab=m.query('[data-principle="feedback"]');lab.dataset.principle='feedback';

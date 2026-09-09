@@ -22,6 +22,67 @@
 <meta name="twitter:image" content="__SITE__/og.png">
 <link rel="icon" href="__ICON__">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+(function () {
+  "use strict";
+  var LANGUAGE_KEY = 'designsprache.language';
+  function supportedLanguage(value) {
+    return typeof value === 'string' && /^(de|en)(?:-|$)/i.test(value) ? value.slice(0,2).toLowerCase() : null;
+  }
+  function chooseLanguage(requested, saved, preferred) {
+    if (requested === 'de' || requested === 'en') return requested;
+    if (saved === 'de' || saved === 'en') return saved;
+    for (var language of preferred || []) {
+      var supported = supportedLanguage(language);
+      if (supported) return supported;
+    }
+    return 'en';
+  }
+  var saved = null;
+  try { saved = window.localStorage.getItem(LANGUAGE_KEY); } catch (error) { /* Storage may be unavailable. */ }
+  var requested = new URLSearchParams(window.location.search).get('lang');
+  var current = chooseLanguage(requested, saved, navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]);
+  // Set before the body is parsed so the initial render already uses the selected language.
+  document.documentElement.lang = current;
+  document.documentElement.dataset.language = current;
+  var copy = {
+    de: {title:'Designsprache — Stile, Prinzipien, Kontexte', description:'__N__ Stile und Designsprachen, sechs interaktive Bedienprinzipien und acht Nutzungskontexte.', image:'Dieselbe Projektliste in vier Stilen, daneben der Prompt-Export für KI-Agenten: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.'},
+    en: {title:'Designsprache — Styles, principles, contexts', description:'__N__ styles and design languages, six interactive principles and eight device contexts.', image:'The same project list in four styles alongside the prompt export for AI agents: Swiss, Bauhaus, neo-brutalism, dev-noir.'}
+  };
+  function setLanguage(language, remember) {
+    if (language !== 'de' && language !== 'en') return;
+    current = language;
+    document.documentElement.lang = language;
+    document.documentElement.dataset.language = language;
+    document.querySelectorAll('[data-language-switch]').forEach(function(button) {
+      button.setAttribute('aria-pressed',String(button.dataset.languageSwitch === language));
+    });
+    document.title = copy[language].title;
+    document.querySelector('meta[name="description"]').content = copy[language].description;
+    document.querySelector('meta[property="og:title"]').content = copy[language].title;
+    document.querySelector('meta[property="og:description"]').content = copy[language].description;
+    document.querySelector('meta[property="og:image:alt"]').content = copy[language].image;
+    if (remember) {
+      try { window.localStorage.setItem(LANGUAGE_KEY,language); } catch (error) { /* Switching works without persistence. */ }
+      var url = new URL(window.location.href); url.searchParams.set('lang',language);
+      try { window.history.replaceState(null,'',url.href); } catch (error) { /* Embedded or local preview. */ }
+    }
+  }
+  document.addEventListener('DOMContentLoaded',function() {
+    document.querySelector('.language-switch').hidden = false;
+    document.querySelectorAll('[data-language-switch]').forEach(function(button) {
+      button.addEventListener('click',function() { setLanguage(button.dataset.languageSwitch,true); });
+    });
+    // Choosing a catalog language in the no-script fallback also records an explicit choice when JS is available.
+    document.querySelectorAll('.door').forEach(function(link) {
+      link.addEventListener('click',function() {
+        try { window.localStorage.setItem(LANGUAGE_KEY,link.hreflang); } catch (error) { /* Optional preference. */ }
+      });
+    });
+    setLanguage(current,false);
+  });
+})();
+</script>
 <style>
 :root {
   --ground:#E9EBE6; --surface:#F5F7F2; --ink:#171A17; --ink-2:#565D58; --ink-3:#5C645D;
@@ -38,6 +99,15 @@
   }
 }
 * { box-sizing: border-box; }
+[hidden] { display:none !important; }
+:root[data-language="de"] [data-language-content="en"],
+:root[data-language="en"] [data-language-content="de"] { display:none; }
+.language-bar { display:flex; justify-content:flex-end; padding-top:24px; }
+.language-switch { display:flex; border:1px solid var(--rule); background:var(--surface); }
+.language-switch button { min-height:44px; padding:10px 18px; border:0; background:transparent;
+  color:var(--ink); font:500 14px var(--f-mono); cursor:pointer; }
+.language-switch button[aria-pressed="true"] { background:var(--accent); color:var(--accent-ink); }
+:root[data-language] .doors { max-width:520px; }
 body {
   margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body);
   font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
@@ -88,7 +158,7 @@ footer {
 .fl { display:flex; flex-wrap:wrap; gap:8px 22px; }
 footer a { color:var(--ink-3); text-underline-offset:3px; }
 footer a:hover { color:var(--accent); }
-a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 @media (prefers-reduced-motion: reduce) {
   .door { transition:none; }
   .door:hover { transform:none; }
@@ -96,24 +166,31 @@ a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 </style>
 </head>
 <body>
+<header class="wrap language-bar">
+  <div class="language-switch" role="group" aria-label="Sprache / Language" hidden>
+    <button type="button" lang="de" data-language-switch="de" aria-pressed="false">Deutsch</button>
+    <button type="button" lang="en" data-language-switch="en" aria-pressed="false">English</button>
+  </div>
+</header>
 <main><div class="wrap">
-  <span class="eyebrow">Referenzkatalog · Reference catalog</span>
-  <h1>Designsprache<em lang="en">Appearance. Interaction. Context.</em></h1>
+  <span class="eyebrow" lang="de" data-language-content="de">Referenzkatalog</span>
+  <span class="eyebrow" lang="en" data-language-content="en">Reference catalog</span>
+  <h1>Designsprache<em lang="de" data-language-content="de">Aussehen. Bedienung. Kontext.</em><em lang="en" data-language-content="en">Appearance. Interaction. Context.</em></h1>
 
-  <p class="lede" lang="de">Drei Ebenen für bessere Oberflächen: <strong>__N__ Stile und Designsprachen</strong>,
+  <p class="lede" lang="de" data-language-content="de">Drei Ebenen für bessere Oberflächen: <strong>__N__ Stile und Designsprachen</strong>,
     sechs interaktive Bedienprinzipien und acht Geräte- und Nutzungskontexte.
     Vergleiche Gestaltung, probiere Entscheidungen aus und entdecke die Unterschiede von Desktop bis Smartwatch.</p>
-  <p class="lede" lang="en">Three levels for better interfaces: <strong>__N__ styles and design languages</strong>,
+  <p class="lede" lang="en" data-language-content="en">Three levels for better interfaces: <strong>__N__ styles and design languages</strong>,
     six interactive principles and eight device contexts. Compare visual design, try decisions
     and explore differences from desktop to smartwatch.</p>
 
   <div class="doors">
-    <a class="door" href="de/" hreflang="de" lang="de">
+    <a class="door" href="de/" hreflang="de" lang="de" data-language-content="de">
       <i>Deutsch</i>
       <b>Zum Katalog</b>
       <span>Stile vergleichen · Prinzipien ausprobieren · Kontexte erkunden</span>
     </a>
-    <a class="door" href="en/" hreflang="en" lang="en">
+    <a class="door" href="en/" hreflang="en" lang="en" data-language-content="en">
       <i>English</i>
       <b>Open the catalog</b>
       <span>Compare styles · Try principles · Explore contexts</span>
@@ -121,15 +198,15 @@ a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
   </div>
 
   <p class="meta">
-    <span><b>__N__</b> Stile / styles</span>
-    <span><b>6</b> Prinzipien / principles</span>
-    <span><b>8</b> Kontexte / contexts</span>
+    <span><b>__N__</b> <span lang="de" data-language-content="de">Stile</span><span lang="en" data-language-content="en">styles</span></span>
+    <span><b>6</b> <span lang="de" data-language-content="de">Prinzipien</span><span lang="en" data-language-content="en">principles</span></span>
+    <span><b>8</b> <span lang="de" data-language-content="de">Kontexte</span><span lang="en" data-language-content="en">contexts</span></span>
   </p>
 </div></main>
 
 <footer><div class="wrap fl">
   <span>© Sebastian Grundhöfer</span>
-  <span>Code MIT · Texte / texts CC&nbsp;BY&nbsp;4.0</span>
+  <span>Code MIT · <span lang="de" data-language-content="de">Texte</span><span lang="en" data-language-content="en">texts</span> CC&nbsp;BY&nbsp;4.0</span>
   <a href="__REPO__" rel="noopener">GitHub</a>
 </div></footer>
 </body>

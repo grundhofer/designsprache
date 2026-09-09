@@ -78,12 +78,12 @@
   function exShowLevel(level, focus) {
     level=exLevel(level);
     if(level!=='styles') { if(!sheet.hidden)close(); if(!FI.hidden)closeFinder(); }
-    document.querySelectorAll('[data-level]').forEach(function(panel) {panel.hidden=panel.dataset.level!==level;});
+    document.querySelectorAll('#experience > [data-level]').forEach(function(panel) {panel.hidden=panel.dataset.level!==level;});
     document.querySelectorAll('[data-level-link]').forEach(function(link) {
       if(link.dataset.levelLink===level) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current');
       var url=new URL(window.location.href); url.searchParams.set('level',link.dataset.levelLink); url.hash=link.dataset.levelLink; link.href=url.href;
     });
-    document.documentElement.dataset.level=level;
+    document.documentElement.dataset.explorerLevel=level;
     exLanguageLinks(); schedule();
     if(focus) document.getElementById(level+'-title').focus();
   }
