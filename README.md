@@ -28,6 +28,8 @@ try interaction patterns, and explore how interfaces change from desktop to smar
 concrete design instructions for an AI coding agent. Open a fact sheet to try its mobile flow.
 
 The home page detects your preferred browser language and remembers manual language changes.
+**System / Light / Dark** follows your device setting or saves your choice across the site;
+reference demos retain their own colors.
 Demo data stays in memory. Device examples are schematic web prototypes; scores are editorial
 judgments, not accessibility certifications or platform approvals.
 
@@ -53,7 +55,7 @@ python3 tools/palette-check.py
 | Path | Contents |
 | --- | --- |
 | `styles/` | Bilingual fact sheets and scoped HTML/CSS demos |
-| `mobile/` | Mobile layouts and interactions |
+| `mobile/`, `viewer/` | Mobile interactions and shared viewer themes |
 | `explorer/` | Principles, device contexts and three-level navigation |
 | `landing.html`, `build.py` | Home page and dependency-free static generator |
 | `tools/`, `tests/` | Source, palette and behavior checks |

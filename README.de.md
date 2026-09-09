@@ -30,6 +30,8 @@ exportiert konkrete Gestaltungsanweisungen für einen KI-Coding-Agenten. Öffne 
 um seinen mobilen Ablauf auszuprobieren.
 
 Die Startseite erkennt deine bevorzugte Browsersprache und merkt sich manuelle Sprachwechsel.
+**System / Hell / Dunkel** folgt der Geräteeinstellung oder speichert deine Auswahl für alle Seiten;
+die Referenzdemos behalten ihre eigenen Farben.
 Demo-Daten bleiben im Arbeitsspeicher. Gerätebeispiele sind schematische Web-Prototypen;
 Kennzahlen sind redaktionelle Einschätzungen, keine Barrierefreiheitsnachweise oder Plattformfreigaben.
 
@@ -55,7 +57,7 @@ python3 tools/palette-check.py
 | Pfad | Inhalt |
 | --- | --- |
 | `styles/` | Zweisprachige Faktenblätter und isolierte HTML/CSS-Demos |
-| `mobile/` | Mobile Layouts und Interaktionen |
+| `mobile/`, `viewer/` | Mobile Interaktionen und gemeinsame Seitenthemes |
 | `explorer/` | Prinzipien, Nutzungskontexte und Navigation zwischen den Ebenen |
 | `landing.html`, `build.py` | Startseite und statischer Generator ohne Abhängigkeiten |
 | `tools/`, `tests/` | Quellen-, Paletten- und Funktionsprüfungen |

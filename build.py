@@ -16,6 +16,7 @@ import json, pathlib, re, html, shutil, sys
 from tools.catalog_checks import check_catalog
 from mobile import catalog as mobile_catalog
 from explorer import catalog as explorer_catalog
+from viewer import theme as viewer_theme
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
@@ -595,7 +596,7 @@ def build(lang="de", mode="site"):
     tpl = PAGE if lang == "de" else page_en()
     body = tpl.format(
         n=N_ENTRIES, nfam=N_FAMILIES, site=SITE_URL, lang=lang,
-        topbar="" if mode == "artifact" else TOPBAR[lang].format(repo=REPO_URL),
+        topbar="" if mode == "artifact" else TOPBAR[lang].format(repo=REPO_URL, theme_controls=viewer_theme.controls(lang)),
         fonts=font_links(),
         sheets="\n".join(f"<style>\n{s}\n</style>" for s in sheets),
         sections="".join(sections),
@@ -607,6 +608,7 @@ def build(lang="de", mode="site"):
         explorer_principles=explorer_catalog.principles(lang),
         explorer_contexts=explorer_catalog.contexts(lang, data),
         explorer_css=explorer_css, explorer_script=explorer_script,
+        theme_css=viewer_theme.css(),
         mobile_css=mobile_css, mobile_script=mobile_script,
         mobile_controls=mobile_catalog.controls(lang),
         mobile_sheet_controls=mobile_catalog.controls(lang, sheet=True),
@@ -636,35 +638,12 @@ PAGE = r'''<title>Stil-Katalog</title>
 <style>
 /* ============ Tokens ============ */
 :root {{
-  --ground:#E9EBE6; --surface:#F5F7F2; --surface-2:#FCFDFA;
-  --ink:#171A17; --ink-2:#565D58; --ink-3:#5C645D;
-  --rule:#C6CBC2; --rule-soft:#DCE0D8;
-  --accent:#1E4A45; --accent-ink:#FCFDFA; --accent-soft:#D9E5E1;
-  --brass:#8A6A2F;
-  --shadow:0 1px 2px rgba(23,26,23,.05), 0 8px 24px -12px rgba(23,26,23,.18);
   --maxw:1460px;
   --f-disp:"IBM Plex Sans Condensed", "Helvetica Neue", Arial, sans-serif;
   --f-body:"Newsreader", Georgia, "Times New Roman", serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }}
-@media (prefers-color-scheme: dark) {{
-  :root:not([data-theme="light"]) {{
-    --ground:#141614; --surface:#1B1E1B; --surface-2:#232722;
-    --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#9BA39A;
-    --rule:#333833; --rule-soft:#252A25;
-    --accent:#77BFB1; --accent-ink:#101413; --accent-soft:#20342F;
-    --brass:#C7A55F;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
-  }}
-}}
-:root[data-theme="dark"] {{
-  --ground:#141614; --surface:#1B1E1B; --surface-2:#232722;
-  --ink:#E7EAE4; --ink-2:#99A099; --ink-3:#9BA39A;
-  --rule:#333833; --rule-soft:#252A25;
-  --accent:#77BFB1; --accent-ink:#101413; --accent-soft:#20342F;
-  --brass:#C7A55F;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
-}}
+{theme_css}
 
 /* ============ Grundlagen ============ */
 [hidden] {{ display:none !important; }}
@@ -691,7 +670,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   letter-spacing:.03em; text-transform:uppercase; }}
 .tb-brand:hover {{ color:var(--accent); }}
 .tb-lang {{ margin-left:auto; display:flex; gap:3px; }}
-.tb-lang a {{ padding:3px 9px; color:var(--ink-3); text-decoration:none;
+.tb-lang a {{ display:inline-flex; align-items:center; min-height:44px; box-sizing:border-box; padding:3px 9px; color:var(--ink-3); text-decoration:none;
   border:1px solid var(--rule); border-radius:2px; }}
 .tb-lang a:hover {{ color:var(--ink); border-color:var(--ink-3); }}
 .tb-lang a[aria-current="page"] {{ color:var(--accent-ink); background:var(--accent);
@@ -1978,6 +1957,7 @@ TOPBAR = {
        '    <a href="../de/" hreflang="de" lang="de" aria-current="page">Deutsch</a>\n'
        '    <a href="../en/" hreflang="en" lang="en">English</a>\n'
        '  </nav>\n'
+       '  {theme_controls}\n'
        '  <a class="tb-repo" href="{repo}" rel="noopener">Quelltext auf GitHub</a>\n'
        '</div></div>',
  "en": '<div class="topbar"><div class="wrap topbar-in">\n'
@@ -1986,6 +1966,7 @@ TOPBAR = {
        '    <a href="../de/" hreflang="de" lang="de">Deutsch</a>\n'
        '    <a href="../en/" hreflang="en" lang="en" aria-current="page">English</a>\n'
        '  </nav>\n'
+       '  {theme_controls}\n'
        '  <a class="tb-repo" href="{repo}" rel="noopener">Source on GitHub</a>\n'
        '</div></div>',
 }
@@ -2014,6 +1995,7 @@ _HEAD_TPL = """<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{site}/og.png">
 <link rel="icon" href="{icon}">
+{theme_script}
 <style>
 html {{ color-scheme: light dark; }}
 body {{ margin: 0; font: 14px system-ui, sans-serif; }}
@@ -2026,14 +2008,14 @@ img {{ max-width: 100%; }}
 
 HEAD = {
  "de": _HEAD_TPL.format(
-   lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON,
+   lang="de", locale="de_DE", site=SITE_URL, icon=FAVICON, theme_script=viewer_theme.script(),
    imgalt="Dieselbe Projektliste in vier Stilen, daneben der Prompt-Export für KI-Agenten: Swiss, Bauhaus, Neo-Brutalismus, Dev-Noir.",
    title=f"Designsprache — {N_ENTRIES} Stile, Prinzipien und Nutzungskontexte",
    desc=(f"{N_ENTRIES} UI-Stilrichtungen, jede als gerendertes Beispiel derselben Referenzoberfläche. "
          "Mit Faktenblättern, sechs interaktiven Bedienprinzipien und acht Nutzungskontexten. Von Swiss über "
          "Skeuomorphismus und Glassmorphism bis Dev-Noir und Neo-Brutalismus.")),
  "en": _HEAD_TPL.format(
-   lang="en", locale="en_US", site=SITE_URL, icon=FAVICON,
+   lang="en", locale="en_US", site=SITE_URL, icon=FAVICON, theme_script=viewer_theme.script(),
    imgalt="The same project list in four styles, alongside the prompt export for AI agents: Swiss, Bauhaus, neo-brutalism, dev-noir.",
    title=f"Designsprache — {N_ENTRIES} styles, principles and contexts",
    desc=(f"{N_ENTRIES} UI style directions, each rendered as the very same reference interface. "
@@ -2125,6 +2107,9 @@ def build_landing():
     out.write_text(
         (src.replace("__SITE__", SITE_URL).replace("__REPO__", REPO_URL)
             .replace("__ICON__", FAVICON)
+            .replace("__THEME_SCRIPT__", viewer_theme.script())
+            .replace("__THEME_CSS__", viewer_theme.css())
+            .replace("__THEME_CONTROLS__", viewer_theme.controls())
             .replace("__N__", str(N_ENTRIES)).replace("__NFAM__", str(N_FAMILIES))),
         encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")

@@ -182,3 +182,23 @@ new entries remains outstanding; the earlier browser results do not cover them.
 - Build, 16 Python-Tests, 47 Node-Tests und Palettenprüfung bestanden. Die neuen Prüfungen
   decken Spracherkennung, Prioritäten, Umschalten, Speicherung und deren Ausfall ab.
   Keine zusätzliche visuelle Browser- oder Hardwareprüfung durchgeführt.
+
+## System / Hell / Dunkel (2026-09-09)
+
+- Gemeinsamer Darstellungsschalter neben der Sprachwahl auf Startseite und beiden Katalogseiten.
+  Standard ist System; CSS reagiert dabei unmittelbar auf Änderungen der Systemeinstellung.
+  Hell und Dunkel setzen eine manuelle Vorgabe. Die Auswahl wird vor dem ersten Rendern
+  eingelesen und bleibt über Seiten- und Sprachwechsel erhalten.
+- Offene Tabs und aus dem Browser-Verlauf wiederhergestellte Seiten synchronisieren die
+  Einstellung. Gesperrter Browserspeicher verhindert den Wechsel nicht. Ohne JavaScript
+  bleibt die automatische Anpassung per CSS erhalten.
+- Die gemeinsamen Farben und Bedienelemente liegen in `viewer/`. Der dunkle Seitenrahmen
+  hat hellere Oberflächen, deutlichere Trennlinien und stärkere Sekundärtexte. Die kleinen
+  goldfarbenen Überschriften im hellen Rahmen wurden für ausreichenden Kontrast abgedunkelt.
+  Die 37 Stilpaletten und ihre mobilen Adaptionen wurden nicht geändert.
+- Build, 17 Python-Tests, 52 Node-Tests und Palettenprüfung bestanden. Der neue Kontrasttest
+  prüft fünf Textrollen gegen drei Hintergrundrollen je Modus sowie die ausgewählte Aktion
+  auf mindestens 4,5:1. Tests decken Voreinstellungen, Sprach-/Seitenwechsel, gesperrten
+  Speicher, Tab-Synchronisierung und Browser-Cache-Wiederherstellung ab.
+- Keine zusätzliche visuelle Browser- oder Hilfsmittelprüfung. Die Prüfung der Farbpaare
+  ist kein Nachweis vollständiger WCAG-Konformität der Seite oder ihrer Referenzdemos.
