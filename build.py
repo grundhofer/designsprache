@@ -4,6 +4,9 @@
     python3 build.py            -> docs/index.html, docs/de/, docs/en/
     python3 build.py --artifact -> zusaetzlich stil-katalog.html (Fragment ohne <head>)
 
+Das Fragment laedt seine Schriften relativ aus fonts/ im Repo-Wurzelverzeichnis. Ohne diesen
+Ordner daneben, etwa als eigenstaendiges Artifact, zeigt es nur die Ersatzschriften der Stacks.
+
 Quelldateien je Stil:  <slug>.html  <slug>.json  <slug>.en.html  <slug>.en.json
 Die .html enthaelt genau ein <style>-Element und genau ein <div class="style-SLUG">.
 Jeder CSS-Selektor darin beginnt mit .style-SLUG, damit alle Stylesheets kollisionsfrei
@@ -12,18 +15,25 @@ auf einer Seite koexistieren. build.py prueft das und bricht sonst ab.
 Build a bilingual catalog of UI styles. See README.md.
 """
 import json, pathlib, re, html, shutil, sys
+from functools import lru_cache
+from urllib.parse import urlsplit
 
-from tools.catalog_checks import check_catalog
+from tools.catalog_checks import check_catalog, check_fonts
 from mobile import catalog as mobile_catalog
 from explorer import catalog as explorer_catalog
 from viewer import theme as viewer_theme
+from legal import page as legal_page
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "styles"
 DOCS = ROOT / "docs"
+FONTS = ROOT / "fonts"
 
 SITE_URL = "https://grundhofer.github.io/designsprache"
 REPO_URL = "https://github.com/grundhofer/designsprache"
+# Sister projects; every page footer links them in the page language (both have /de/ and /en/).
+SIBLINGS = [("Bildsprache", "https://grundhofer.github.io/bildsprache/"),
+            ("Farbsprache", "https://grundhofer.github.io/farbsprache/")]
 
 # Curated order: narrative, not alphabetical.
 ORDER_DE = [
@@ -156,16 +166,62 @@ CHROME_FONTS = [
     "IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400",
 ]
 
+# Startseite und Impressum: dieselben drei Familien in weniger Schnitten.
+HOME_FONTS = [
+    "IBM+Plex+Sans+Condensed:ital,wght@0,400;0,600;0,700;1,400",
+    "Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700",
+    "IBM+Plex+Mono:wght@400;500",
+]
 
-def font_links():
-    def link(specs):
-        return ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-                + "&".join("family=" + s for s in specs) + '&display=swap">')
-    out = [link(CHROME_FONTS)]
-    rest = [s for s in FONT_SPECS if not s.startswith(("IBM+Plex+Sans+Cond", "Newsreader", "IBM+Plex+Mono"))]
-    for i in range(0, len(rest), 8):          # split into blocks: one failed request does not take the rest down
-        out.append(link(rest[i:i + 8]))
-    return "\n".join(out)
+
+def catalog_fonts():
+    """Familienangaben der Katalogseiten: erst die eigenen drei Familien, dann die Stilschriften.
+
+    Die FONT_SPECS-Fassungen der drei Seitenfamilien wurden nie geladen; dabei bleibt es.
+    """
+    return CHROME_FONTS + [s for s in FONT_SPECS if not s.startswith(("IBM+Plex+Sans+Cond", "Newsreader", "IBM+Plex+Mono"))]
+
+
+@lru_cache(maxsize=None)
+def font_manifest():
+    return json.loads((FONTS / "fonts.json").read_text(encoding="utf-8"))
+
+
+def font_css(specs, display="swap", base=""):
+    """@font-face-Regeln aus fonts/fonts.json; die Dateipfade sind relativ zu base.
+
+    Die Schriften liefert die Seite selbst aus (fonts/, siehe CONTRIBUTING.md); keine Seite laedt
+    etwas von fremden Servern. Herkunft, sha256 und Lizenz jeder Datei stehen in fonts/fonts.json.
+    """
+    faces = font_manifest()["specs"]
+    out = []
+    for spec in dict.fromkeys(specs):
+        if spec not in faces:
+            sys.exit(f"fonts/fonts.json: keine Schnitte fuer {spec} (siehe CONTRIBUTING.md, Schriften)")
+        family = spec.split(":")[0].replace("+", " ")
+        for f in faces[spec]["faces"]:
+            fmt = "woff2" if f["file"].endswith(".woff2") else "truetype"
+            out.append(f"@font-face {{ font-family:'{family}'; font-style:{f['style']}; font-weight:{f['weight']};"
+                       + (f" font-stretch:{f['stretch']};" if "stretch" in f else "")
+                       + f" font-display:{display}; src:url({base}{f['file']}) format('{fmt}');"
+                       + f" unicode-range:{f['range']}; }}")
+    return "\n".join(out) + "\n"
+
+
+def publish_fonts():
+    """Kopiert Schriftdateien und Lizenztexte nach docs/fonts/ und schreibt je Seitenart ein Stylesheet."""
+    out = DOCS / "fonts"
+    shutil.rmtree(out, ignore_errors=True)
+    shutil.copytree(FONTS, out, ignore=shutil.ignore_patterns("fonts.json", ".DS_Store"))
+    (out / "catalog.css").write_text(font_css(catalog_fonts()), encoding="utf-8")
+    (out / "home.css").write_text(font_css(HOME_FONTS), encoding="utf-8")
+    size = sum(p.stat().st_size for p in out.rglob("*") if p.is_file())
+    print(f"  {out.relative_to(ROOT)}/  ({size / 1048576:.1f} MB, {len(font_manifest()['files'])} Schriftdateien)")
+
+
+def font_link(sheet, up):
+    """<link> auf docs/fonts/<sheet>.css; up fuehrt von der Seite zurueck nach docs/."""
+    return f'<link rel="stylesheet" href="{up}fonts/{sheet}.css">'
 
 
 N_ENTRIES = sum(len(x) for _, _, x in ORDER_DE)
@@ -368,13 +424,15 @@ L10N = [
         target platforms and existing components; Tauri reuses the web implementation."""),
  ("""Alle {n} Desktop-Stildemos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
+    stammen aus der Bibliothek von Google Fonts (von dieser Seite selbst ausgeliefert) oder dem
+    System-Stack. Stilnamen und Familien sind eine
     redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
     Demo-Entscheidungen; Werte sind keine unveränderlichen Produktvorgaben. Verlinkte Quellen
     belegen jeweils die benannte Aussage, nicht das gesamte Faktenblatt. Die vier Kennzahlen
     sind fachliche Einschätzungen, keine Messwerte.""",
   """All {n} desktop style demos are hand-built HTML and CSS — no images, no scripts, no libraries. Each shows
-    the same thirteen pieces of text. Type comes from Google Fonts or, where the style demands it, from the system stack;
+    the same thirteen pieces of text. Type comes from the Google Fonts library (served by this site itself) or, where the style demands it,
+    from the system stack;
     style names and families are editorial categories. Fact sheets describe both influences
     and concrete demo choices; their values are not permanent product specifications. Linked
     sources support the named topic, not the entire fact sheet. The four scores are
@@ -597,7 +655,11 @@ def build(lang="de", mode="site"):
     body = tpl.format(
         n=N_ENTRIES, nfam=N_FAMILIES, site=SITE_URL, lang=lang,
         topbar="" if mode == "artifact" else TOPBAR[lang].format(repo=REPO_URL, theme_controls=viewer_theme.controls(lang)),
-        fonts=font_links(),
+        footer="" if mode == "artifact" else site_footer(lang, "../"),
+        foot_css=FOOT_CSS,
+        # Das Fragment liegt neben fonts/ im Repo-Wurzelverzeichnis; die Website nutzt docs/fonts/catalog.css.
+        fonts=("<style>\n" + font_css(catalog_fonts(), base="fonts/") + "</style>") if mode == "artifact"
+              else font_link("catalog", "../"),
         sheets="\n".join(f"<style>\n{s}\n</style>" for s in sheets),
         sections="".join(sections),
         rows="".join(rows),
@@ -1038,6 +1100,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 }}
 {mobile_css}
 {explorer_css}
+{foot_css}
 </style>
 
 {sheets}
@@ -1199,7 +1262,8 @@ tbody tr:hover {{ background:var(--surface-2); }}
   </div>
   <p class="k-colophon">Alle {n} Desktop-Stildemos sind handgebautes HTML und CSS — keine Bilder, keine
     Skripte, keine Bibliotheken. Jede zeigt dieselben dreizehn Textbausteine. Die Schriften
-    stammen aus Google Fonts oder dem System-Stack. Stilnamen und Familien sind eine
+    stammen aus der Bibliothek von Google Fonts (von dieser Seite selbst ausgeliefert) oder dem
+    System-Stack. Stilnamen und Familien sind eine
     redaktionelle Einordnung. Die Faktenblätter unterscheiden Vorbilder und konkrete
     Demo-Entscheidungen; Werte sind keine unveränderlichen Produktvorgaben. Verlinkte Quellen
     belegen jeweils die benannte Aussage, nicht das gesamte Faktenblatt. Die vier Kennzahlen
@@ -1211,6 +1275,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
 {explorer_principles}
 {explorer_contexts}
 </main>
+{footer}
 
 <dialog class="k-finder" id="finder" aria-labelledby="fi-title" hidden>
   <div class="fi-bar"><div class="wrap fi-bar-in">
@@ -1971,6 +2036,32 @@ TOPBAR = {
        '</div></div>',
 }
 
+# Footer of the catalog and legal pages: legal notice and the sister projects in the page language.
+FOOT = {"de": "Schwesterprojekte:", "en": "Sister projects:"}
+FOOT_CSS = """/* ============ Fusszeile ============ */
+.site-foot { border-top:1px solid var(--rule); }
+/* padding-block, nicht die Kurzform: sonst faellt der horizontale Rand von .wrap weg. */
+.site-foot-in { display:flex; flex-wrap:wrap; gap:4px 22px; padding-block:16px 26px;
+  font-family:var(--f-mono); font-size:11.5px; line-height:24px; color:var(--ink-3); }
+.site-foot a { color:var(--ink-3); text-underline-offset:3px; }
+.site-foot a:hover { color:var(--accent); }
+.site-foot a[aria-current="page"] { color:var(--ink); }
+"""
+
+
+def sibling_links(lang):
+    return " · ".join(f'<a href="{url}{lang}/" hreflang="{lang}" rel="noopener">{name}</a>' for name, url in SIBLINGS)
+
+
+def site_footer(lang, up, current=False):
+    """up fuehrt von der Seite zurueck nach docs/; current markiert den Link auf der Impressumsseite selbst."""
+    here = ' aria-current="page"' if current else ""
+    return (f'<footer class="site-foot"><div class="wrap site-foot-in">\n'
+            f'  <a href="{up}{legal_page.PATH[lang]}"{here}>{legal_page.LINK[lang]}</a>\n'
+            f'  <span>{FOOT[lang]} {sibling_links(lang)}</span>\n'
+            f'</div></footer>')
+
+
 _HEAD_TPL = """<!doctype html>
 <html lang="{lang}">
 <head>
@@ -2104,9 +2195,17 @@ def build_landing():
     src = (ROOT / "landing.html").read_text(encoding="utf-8")
     out = DOCS / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
+    # Impressum und Schwesterprojekte je Sprache; das Skript der Seite blendet die andere Sprache aus.
+    foot = "\n  ".join(
+        [f'<a href="{legal_page.PATH[lang]}" hreflang="{lang}" lang="{lang}" data-language-content="{lang}">'
+         f'{legal_page.LINK[lang]}</a>' for lang in ("de", "en")]
+        + [f'<span lang="{lang}" data-language-content="{lang}">{FOOT[lang]} {sibling_links(lang)}</span>'
+           for lang in ("de", "en")])
     out.write_text(
         (src.replace("__SITE__", SITE_URL).replace("__REPO__", REPO_URL)
             .replace("__ICON__", FAVICON)
+            .replace("__FONTS__", font_link("home", ""))
+            .replace("__FOOT_LINKS__", foot)
             .replace("__THEME_SCRIPT__", viewer_theme.script())
             .replace("__THEME_CSS__", viewer_theme.css())
             .replace("__THEME_CONTROLS__", viewer_theme.controls())
@@ -2120,6 +2219,115 @@ def build_landing():
         print("  WARNUNG: og.png fehlt - Link-Vorschauen bleiben ohne Bild", file=sys.stderr)
     print(f"  {out.relative_to(ROOT)}  ({out.stat().st_size/1024:.0f} KB)")
 
+
+LEGAL_TPL = """<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta name="author" content="Sebastian Grundhöfer">
+<link rel="canonical" href="{site}/{path}">
+<link rel="alternate" hreflang="de" href="{site}/{path_de}">
+<link rel="alternate" hreflang="en" href="{site}/{path_en}">
+<link rel="icon" href="{icon}">
+{fonts}
+{theme_script}<style>
+:root {{
+  --f-disp:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}}
+{theme_css}
+{legal_css}
+{foot_css}
+</style>
+</head>
+<body>
+<header class="lg-top"><div class="wrap lg-top-in">
+  <a class="lg-brand" href="../">Designsprache</a>
+  <nav class="lg-lang" aria-label="Sprache / Language">
+    <a href="../../{path_de}" hreflang="de" lang="de"{cur_de}>Deutsch</a>
+    <a href="../../{path_en}" hreflang="en" lang="en"{cur_en}>English</a>
+  </nav>
+  {theme_controls}
+</div></header>
+<main class="wrap lg-main">
+{content}
+</main>
+{footer}
+</body>
+</html>
+"""
+
+
+def build_legal():
+    """Impressum (de) und Legal notice (en) aus legal/notice.json, je eine eigene Seite."""
+    for lang in ("de", "en"):
+        t, path = legal_page.COPY[lang], legal_page.PATH[lang]
+        up = "../" * path.count("/")
+        out = DOCS / path / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(LEGAL_TPL.format(
+            lang=lang, title=esc(t["title"]), desc=esc(t["desc"]), site=SITE_URL, path=path,
+            path_de=legal_page.PATH["de"], path_en=legal_page.PATH["en"], icon=FAVICON,
+            fonts=font_link("home", up), theme_script=viewer_theme.script(), theme_css=viewer_theme.css(),
+            legal_css=legal_page.css(), foot_css=FOOT_CSS, theme_controls=viewer_theme.controls(lang),
+            cur_de=' aria-current="page"' if lang == "de" else "", cur_en=' aria-current="page"' if lang == "en" else "",
+            content=legal_page.content(lang), footer=site_footer(lang, up, current=True)), encoding="utf-8")
+        print(f"  {out.relative_to(ROOT)}")
+
+
+# GitHub Pages liefert die 404 unter jedem fehlenden Pfad aus; deshalb nur absolute Pfade ab /designsprache/.
+NOT_FOUND_TPL = """<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 · Designsprache</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="{icon}">
+{fonts}
+{theme_script}<style>
+:root {{
+  --f-disp:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}}
+{theme_css}
+{legal_css}
+{foot_css}
+</style>
+</head>
+<body>
+<header class="lg-top"><div class="wrap lg-top-in">
+  <a class="lg-brand" href="{base}">Designsprache</a>
+</div></header>
+<main class="wrap lg-main">
+<h1>404</h1>
+<p lang="de">Diese Seite gibt es nicht. <a href="{base}de/" hreflang="de">Zum Katalog</a></p>
+<p lang="en">This page does not exist. <a href="{base}en/" hreflang="en">Open the catalog</a></p>
+</main>
+{footer}
+</body>
+</html>
+"""
+
+
+def build_not_found():
+    """Zweisprachige 404 mit Impressum und Schwesterprojekten in beiden Sprachen, wie die Startseite."""
+    base = urlsplit(SITE_URL).path + "/"
+    foot = "\n  ".join(
+        [f'<a href="{base}{legal_page.PATH[lang]}" hreflang="{lang}" lang="{lang}">{legal_page.LINK[lang]}</a>'
+         for lang in ("de", "en")]
+        + [f'<span lang="{lang}">{FOOT[lang]} {sibling_links(lang)}</span>' for lang in ("de", "en")])
+    out = DOCS / "404.html"
+    out.write_text(NOT_FOUND_TPL.format(
+        icon=FAVICON, fonts=font_link("home", base), theme_script=viewer_theme.script(), theme_css=viewer_theme.css(),
+        legal_css=legal_page.css(), foot_css=FOOT_CSS, base=base,
+        footer=f'<footer class="site-foot"><div class="wrap site-foot-in">\n  {foot}\n</div></footer>'), encoding="utf-8")
+    print(f"  {out.relative_to(ROOT)}")
 
 
 # ---------------------------------------------------------------------------
@@ -2158,8 +2366,8 @@ def build_og():
         fonts.update(d.get("googleFonts") or [])
     specs = [x for x in FONT_SPECS
              if x.split(":")[0].replace("+", " ") in fonts] + CHROME_FONTS
-    links = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-             + "&".join("family=" + x for x in dict.fromkeys(specs)) + '&display=block">')
+    # og.html liegt neben fonts/; display:block, damit der Screenshot nie eine Ersatzschrift zeigt.
+    links = "<style>\n" + font_css(specs, display="block", base="fonts/") + "</style>"
 
     # Der Prompt-Auszug stammt aus einem echten Faktenblatt, nicht aus einer Attrappe.
     card = json.loads((SRC / f"{OG_CARD}.json").read_text(encoding="utf-8"))
@@ -2248,12 +2456,16 @@ def build_og():
 
 if __name__ == "__main__":
     print("Stil-Katalog")
-    problems = check_catalog(ROOT, ORDER_DE, ORDER_EN, FONT_SPECS)
+    problems = (check_catalog(ROOT, ORDER_DE, ORDER_EN, FONT_SPECS)
+                + check_fonts(ROOT, catalog_fonts() + HOME_FONTS))
     if problems:
         sys.exit("\n".join(problems))
+    publish_fonts()
     build_landing()
     for _lang in ("de", "en"):
         build(_lang, "site")
+    build_legal()
+    build_not_found()
     if "--artifact" in sys.argv:
         build("de", "artifact")
     if "--og" in sys.argv:

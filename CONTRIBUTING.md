@@ -74,11 +74,12 @@ entsteht der Stil. Eine Demo, die nur „dieselbe Box mit anderem Radius" ist, v
 
 #### Weitere Regeln
 
-- **Keine externen Ressourcen** außer Google Fonts. Kein `<script>`, kein `<link>`, kein
+- **Keine externen Ressourcen.** Kein `<script>`, kein `<link>`, kein
   `@import`, keine Bild-URLs. Grafik aus Gradients, `box-shadow`, Borders, Inline-SVG als
   `data:`-URI, Unicode-Zeichen und CSS-Mustern.
-- **Schriften** nur aus Google Fonts oder System-Stacks, immer mit generischem Fallback.
-  Die verwendeten Familien gehören ins JSON-Feld `googleFonts`; `build.py` lädt sie zentral.
+- **Schriften** nur aus der Bibliothek von Google Fonts oder System-Stacks, immer mit generischem
+  Fallback. Die verwendeten Familien gehören ins JSON-Feld `googleFonts`; `build.py` liefert sie
+  zentral aus `fonts/` aus. Eine neue Familie braucht dort ihre Dateien (siehe Schriften).
 - **Selbstgenügsam**: `.style-<slug>` setzt eigene `background`, `color`, `font-family`,
   `line-height`, `box-sizing`, `color-scheme` und `min-height: 460px`. Die Demo erbt nichts
   von außen und sieht in hellem wie dunklem Viewer-Theme identisch aus.
@@ -133,6 +134,48 @@ und `combinesWith` bleiben unverändert; `family` kommt aus der Liste in `build.
 
 Bei Zeichenraster-Layouts (Monospace, ASCII-Rahmen, aufgefüllte Spalten) haben englische Wörter
 andere Längen — die Füllzeichen entsprechend nachzählen und anpassen, niemals das CSS ändern.
+
+### Schriften
+
+Die Seite liefert alle Schriften selbst aus; keine Seite lädt etwas von fremden Servern
+(`tests/test_fonts.py` prüft das). `fonts/fonts.json` nennt für jede Familienangabe aus
+`FONT_SPECS`, `CHROME_FONTS` und `HOME_FONTS` in `build.py` die Schnitte mit `unicode-range`,
+für jede Datei Quelle und sha256, die Abrufdaten und für jede Familie den Lizenztext in
+`fonts/licenses/` samt Begründung der Herkunft (`why`). `build.py` kopiert `fonts/` nach
+`docs/fonts/`, schreibt daraus `docs/fonts/catalog.css` und `home.css` und bricht ab, wenn eine
+Datei fehlt, ihre sha256 nicht stimmt, ein Lizenztext fehlt oder eine Release-Familie ein Zeichen
+der früheren Google-Bereiche nicht abdeckt.
+
+- `fonts/google/` enthält die Dateien, die Google Fonts für genau die früheren Anfragen
+  ausgeliefert hat, unverändert (CSS2-API, Abruf mit aktuellem Chrome als User-Agent, alle
+  `unicode-range`-Teilstücke). Pfade wie unter `fonts.gstatic.com/s/`.
+- `fonts/release/` enthält unveränderte Release-Dateien für Familien, deren Lizenz einen Reserved
+  Font Name trägt, der im Schriftnamen steckt (Plex, Lato, Orbitron, Istok, Cabin, Audiowide,
+  Press Start 2P, Share). Die Teilstücke von Google sind geänderte Fassungen, und die OFL erlaubt
+  den reservierten Namen ohne schriftliche Erlaubnis nur unveränderten Dateien; eine Absprache
+  zwischen Google und den Urhebern gilt nicht für Dritte (OFL-FAQ 2.6 und 2.12). IBM Plex kommt
+  aus den npm-Paketen von IBM, jeweils in der Fassung, die Googles Dateien gleicht (Plex Sans als
+  variable Fassung, Plex Sans Condensed 1.3, Plex Mono 2.004); die übrigen kommen aus
+  github.com/google/fonts (Lato 1.104 aus dem ersten Commit, weil Google Fonts weiter diese Fassung
+  ausliefert). Was gegen Googles Dateien geprüft ist und wo eine Familie abweicht, steht in `why`.
+- Unter `google` steht für jede Release-Familie je Schnitt die `unicode-range` der früheren
+  Google-Antwort. Die Schnitte decken sie zusammen ab, auch Zeichen, die erst der Browser aus
+  anderen Glyphen bildet (etwa den geschützten Bindestrich U+2011 aus U+2010). Fehlt ein Zeichen,
+  holt der Browser es aus einer anderen Schrift.
+
+Neue Familie: Hole die CSS2-Antwort für die neue Angabe mit einem aktuellen Browser als
+User-Agent, lade alle darin genannten woff2-Dateien unverändert nach `fonts/google/`, trage
+Angabe, Schnitte und Dateien mit sha256 in `fonts/fonts.json` ein und lege `OFL.txt` aus
+github.com/google/fonts als `fonts/licenses/OFL-<Familie>.txt` ab. Nennt die Lizenz einen
+Reserved Font Name, der im Schriftnamen vorkommt, nimm stattdessen unveränderte Release-Dateien
+und trage die Bereiche der CSS2-Antwort unter `google` ein; `build.py` verweigert sonst den Bau.
+
+### Impressum
+
+Die Angaben (Name, Anschrift, E-Mail, Umsatzsteuer-ID) stehen nur in `legal/notice.json`.
+`legal/page.py` baut daraus `de/impressum/` und `en/legal-notice/`; jede Seite verlinkt das
+Impressum in der Fußzeile, zusammen mit den Schwesterprojekten Bildsprache und Farbsprache
+(`SIBLINGS` in `build.py`).
 
 ### Prüfen vor dem Pull Request
 
@@ -190,7 +233,7 @@ exactly one `<div class="style-<slug>">`; **every** CSS selector starts with `.s
 CSS variables only on `.style-<slug>`; `@keyframes` names prefixed with `<slug>-`. `build.py`
 enforces this and fails the build on violation.
 
-**No external resources** except Google Fonts — no `<script>`, `<link>`, `@import` or image
+**No external resources** — no `<script>`, `<link>`, `@import` or image
 URLs. Graphics come from gradients, `box-shadow`, borders, inline SVG as `data:` URIs, Unicode
 characters and CSS patterns. The demo must be self-sufficient: set your own `background`,
 `color`, `font-family`, `line-height`, `box-sizing`, `color-scheme` and `min-height: 460px`,
@@ -217,6 +260,29 @@ HTTPS `url`; name the specific claim the source supports, translate titles, and 
 URLs identical between languages. Distinguish demo choices and editorial judgments from
 product specifications. The build validates the file inventory, reference content, metadata,
 references, and identical demo CSS across languages.
+
+**Fonts** come from the Google Fonts library or system stacks. The site serves them itself from
+`fonts/`; no page loads anything from another host. `fonts/fonts.json` lists the faces for every
+family spec in `build.py`, the source and sha256 of every file, the retrieval dates, and the
+license text in `fonts/licenses/` with the reason for each family's source (`why`).
+`fonts/google/` holds the files Google Fonts served for the former requests, unchanged. Families
+whose license reserves a name that is part of the font name (Plex, Lato, Orbitron, Istok, Cabin,
+Audiowide, Press Start 2P, Share) use unmodified release files from `fonts/release/` instead,
+because Google's subsets are modified versions and the OFL allows the reserved name only on
+unmodified files unless the authors grant written permission. IBM Plex comes from IBM's npm
+packages in the version that matches Google's files (Plex Sans as the variable version, Plex Sans
+Condensed 1.3, Plex Mono 2.004); `why` records what was compared with Google's files and where a
+family differs. For each release family, `google` holds the unicode-range of the former Google
+response per style; the faces cover it together, including characters the browser builds from
+other glyphs (such as the non-breaking hyphen U+2011 from U+2010), or the browser takes them from
+another font. To add a family, fetch the CSS2 response with a current browser user agent, store
+every woff2 file it lists unchanged in `fonts/google/`, add the spec, faces and files with sha256
+to `fonts/fonts.json`, and copy its `OFL.txt` from github.com/google/fonts to `fonts/licenses/`.
+The build fails on a missing file, a changed hash, a missing license, a reserved name on a Google
+subset, or a release family that misses part of its former Google ranges.
+
+The legal notice details live only in `legal/notice.json`; every page footer links the legal
+notice and the sister projects Bildsprache and Farbsprache.
 
 Also run `python3 -m unittest discover -s tests -v` and
 `node --test tests/finder.test.cjs` after building. The JavaScript tests require Node 22+

@@ -88,6 +88,7 @@ Editorial scores remain judgments rather than measured guarantees.
 The catalog intentionally loads all demos and many external Google Fonts. Its generated
 language pages are roughly 0.9 MB each before compression; actual font transfer, loading speed
 and layout stability have not been profiled. Further performance changes should follow measurement.
+Since 2026-10-12 the site serves these fonts itself; see the section of that date below.
 
 This report records validation before publication. Deployment status is tracked separately
 in the repository's GitHub Actions workflow.
@@ -202,3 +203,71 @@ new entries remains outstanding; the earlier browser results do not cover them.
   Speicher, Tab-Synchronisierung und Browser-Cache-Wiederherstellung ab.
 - Keine zusätzliche visuelle Browser- oder Hilfsmittelprüfung. Die Prüfung der Farbpaare
   ist kein Nachweis vollständiger WCAG-Konformität der Seite oder ihrer Referenzdemos.
+
+## Schriften lokal, Impressum, Schwesterprojekte (2026-10-12)
+
+- Keine Seite lädt mehr etwas von fonts.googleapis.com oder fonts.gstatic.com. Die Schriften
+  liegen in `fonts/` (457 Dateien, 15.520.441 Bytes: 346 woff2 von Google, 71 Release-Dateien,
+  39 OFL-Texte, `fonts.json`) und werden nach `docs/fonts/` kopiert; `docs/fonts/catalog.css`
+  und `home.css` enthalten die Schnitte und Achsenbereiche der früheren Anfragen, mit
+  `font-display:swap` wie bisher. Herkunft, Abrufdatum und sha256 jeder Datei stehen in
+  `fonts/fonts.json`; der Build prüft sie.
+- 29 Familien nutzen unverändert die Dateien, die Google Fonts ausgeliefert hat, mit denselben
+  `unicode-range`-Teilstücken. Zehn Familien, deren Lizenz einen Reserved Font Name im
+  Schriftnamen trägt, kommen als unveränderte Release-Dateien: IBM Plex aus den npm-Paketen von
+  IBM (`@ibm/plex-sans-variable` 0.2.0, `@ibm/plex-sans-condensed` 1.1.0, `@ibm/plex-mono` 1.1.0),
+  Lato 1.104, Orbitron, Istok Web, Cabin Sketch, Audiowide, Press Start 2P und Share Tech Mono als
+  TTF aus github.com/google/fonts.
+- Abgleich mit Googles Dateien (fontTools und HarfBuzz, je angefragtem Gewicht, alle Zeichen der
+  Google-Dateien, Paarabstände über ASCII, Umlaute und gängige Satzzeichen): Umrisse, Laufweiten
+  und Paarabstände sind gleich, mit diesen Ausnahmen. Plex Mono 2.004 (Google: 2.3) weicht beim
+  weichen Trennzeichen U+00AD ab (Laufweite 0 statt 600; in Chrome ist es in beiden Fällen
+  0 breit) und in den Umrissen von Ѳ ѳ Ҫ ҫ Ө ө. Die TTF-Dateien enthalten Hinting-Tabellen
+  (TrueType), Googles woff2 nicht. Eine erste Fassung nutzte IBMs statische Plex Sans 1.1.0, deren
+  Laufweiten bei 500 und 600 abwichen, sowie Plex Mono 2.5.0 (anderes Sternchen) und Plex Sans
+  Condensed 2.0.0 (Gravis nach Buchstaben als Kombinationszeichen); diese Fassungen sind ersetzt.
+- `unicode-range` der Release-Familien: Die Schnitte decken je Stil zusammen die Bereiche der
+  früheren Google-Antwort ab (in `fonts.json` unter `google`, vom Build geprüft). Eine erste
+  Fassung nannte nur die Zeichen in Googles Dateien; dadurch kam der geschützte Bindestrich
+  U+2011 (etwa in „Stil‑Katalog“), den Chrome vorher aus dem Bindestrich der Plex-Datei bildete,
+  aus einer Systemschrift. In Chrome kommen die Glyphen dieser Stellen wieder aus denselben
+  Schriften wie vor der Umstellung (`CSS.getPlatformFontsForNode`, gleiche Glyphenzahlen je
+  Schrift). Zeichen, die in Googles Bereich lagen, aber in Googles Datei fehlten, und die die
+  Release-Datei enthält (etwa ‡ und ‰, bei Istok Web auch Sonderleerzeichen und U+2010 bis
+  U+2012), zeigt die Seite jetzt aus der Familie statt aus einer Ersatzschrift. Auf den Seiten
+  kommt keines davon in diesen Schriften vor.
+- Neue Seiten `de/impressum/` und `en/legal-notice/`; Angaben nur in `legal/notice.json`, die
+  Tests lesen sie von dort. Jede ausgelieferte Seite verlinkt das Impressum und die
+  Schwesterprojekte Bildsprache und Farbsprache in der Seitensprache, die Startseite und die neue
+  zweisprachige `404.html` in beiden Sprachen. Die 404 nutzt absolute Pfade ab `/designsprache/`,
+  weil GitHub Pages sie unter jedem fehlenden Pfad ausliefert.
+- Build, 34 Python-Tests, 52 Node-Tests, Palettenprüfung und die Sanity-Schritte der CI bestanden
+  (Python 3.12, Node 22). Headless Chrome 154, je Startseite (de/en), Katalog (de/en, Ebenen
+  Prinzipien und Kontexte), Impressum (de/en) und 404 unter einem tiefen und einem flachen
+  fehlenden Pfad bei 390 und 1280 px, hell und dunkel: keine Anfrage an fremde Hosts, keine
+  fehlgeschlagene Anfrage, keine Konsolenfehler außer dem 404-Status der Fehlerseite selbst, kein
+  seitliches Scrollen, keine Schrift im Status `error`; auf den Katalogseiten sind alle 39
+  Familien geladen. Die Fußzeilenlinks führen zum Impressum der jeweiligen Sprache, auch von der
+  404 aus.
+- Bildvergleich gegen den unveränderten Stand mit Google Fonts (37 Demos je Katalogseite in DE
+  1280 px hell und EN 390 px dunkel, dazu sieben Bereiche des Seitenrahmens und die Startseite,
+  mit Vergleichsaufnahme des alten Stands gegen Rauschen): IBM Plex, auch die Demo IBM Carbon,
+  und alle übrigen Schriften sind pixelgleich oder weichen um höchstens 64 von 255 je Kanal ab,
+  fast nur in Verläufen und Schatten, die auch zwischen zwei Aufnahmen des alten Stands
+  schwanken. Sichtbar anders ist Press Start 2P in der Demo Pixel 8-Bit: Mit Googles Datei
+  fehlten in Chrome auf macOS einzelne Pixelreihen (in „NEUES PROJEKT“ und „IMPORTIEREN“ die
+  oberste, dazu Reihen im Titel), die TTF zeigt die Glyphen vollständig (154 bzw. 137 deutlich
+  abweichende Pixel; Umrisse und Laufweiten beider Dateien sind gleich). Das ist eine bewusste
+  Änderung; wer das alte Bild will, müsste Googles geänderte Datei ausliefern, was der Reserved
+  Font Name „Press Start 2P“ ohne Erlaubnis nicht zulässt. Erwartete Unterschiede: das geänderte
+  Kolophon und die neuen Fußzeilen.
+- Grenzen: Die TTF-Dateien (15 im Repo, zehn davon lädt der Katalog, 1.480.915 Bytes) sind
+  größer als Googles Teilstücke. Lokal gemessen (Chrome, Cache aus, Server ohne Kompression)
+  überträgt der Katalog 61 Schriftdateien mit 3.110.957 Bytes statt 60 mit 1.840.784 Bytes, dazu
+  `catalog.css` mit 240.718 Bytes (gzip -9: 38.576) statt 40.585 Bytes CSS von Google; die
+  Startseite 355.442 statt 328.158 Bytes Schriften plus `home.css` mit 15.836 Bytes. `docs/`
+  wächst von 2,3 auf 17,8 MB, davon 5,47 MB für alle 124 Teilstücke von Noto Sans JP, von denen
+  der Katalog sechs lädt. Ob GitHub Pages TTF und CSS komprimiert, ist nicht geprüft. Offen zur
+  Entscheidung: die TTF verlustfrei als WOFF2 verpacken (laut OFL-FAQ ohne Umbenennung zulässig,
+  aber eine eigene Verarbeitung) oder den Mehrverbrauch so hinnehmen. Geprüft ist nur Chrome auf
+  macOS; unter Windows kann das Hinting der TTF anders aussehen als Googles Dateien.

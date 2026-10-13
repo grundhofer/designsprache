@@ -60,6 +60,8 @@ python3 tools/palette-check.py
 | `mobile/`, `viewer/` | Mobile Interaktionen und gemeinsame Seitenthemes |
 | `explorer/` | Prinzipien, Nutzungskontexte und Navigation zwischen den Ebenen |
 | `landing.html`, `build.py` | Startseite und statischer Generator ohne Abhängigkeiten |
+| `fonts/` | Selbst ausgelieferte Schriften mit Lizenztexten und Herkunft (`fonts.json`) |
+| `legal/` | Angaben und Seite des Impressums (`notice.json`) |
 | `tools/`, `tests/` | Quellen-, Paletten- und Funktionsprüfungen |
 | `docs/` | Erzeugte Website; nicht eingecheckt |
 
@@ -70,6 +72,11 @@ GitHub Actions prüft die Änderungen und veröffentlicht `main` auf GitHub Page
 ## Lizenz
 
 Code: [MIT](LICENSE). Texte: [CC BY 4.0](LICENSE-CONTENT.md).
+Schriften in `fonts/`: SIL Open Font License 1.1; die Lizenztexte liegen in `fonts/licenses/`.
+Die Angaben des Impressums in `legal/notice.json` stehen unter keiner dieser Lizenzen.
 Produktnamen gehören ihren Inhabern. Die Demos sind eigenständige Interpretationen.
+
+Schwesterprojekte: [Bildsprache](https://github.com/grundhofer/bildsprache), Bildstile für KI-Bilder, und
+[Farbsprache](https://github.com/grundhofer/farbsprache), mit der du Farben wählst, prüfst und kopierst.
 
 © Sebastian Grundhöfer

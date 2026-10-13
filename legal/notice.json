@@ -1,0 +1,8 @@
+{
+ "_comment": "Angaben des Impressums (§ 5 DDG, § 18 Abs. 2 MStV), genau einmal im Repo. legal/page.py baut daraus docs/de/impressum/ und docs/en/legal-notice/. Die Anschrift bleibt in beiden Sprachen deutsch.",
+ "name": "Sebastian Grundhöfer",
+ "address": ["c/o Impressumservice Dein-Impressum", "Stettiner Str. 41", "35410 Hungen", "Deutschland"],
+ "email": "info@sebaro-ventures.de",
+ "vat_id": "DE356982540",
+ "responsible": "Sebastian Grundhöfer"
+}

@@ -1,5 +1,6 @@
 """Dependency-free source checks shared by the build and regression tests."""
 
+import hashlib
 import json
 import re
 from html.parser import HTMLParser
@@ -189,4 +190,103 @@ def check_catalog(root, order_de, order_en, font_specs):
                 errors.append(f"{slug}: source URLs differ between languages")
         if css.get((slug, "de")) != css.get((slug, "en")):
             errors.append(f"{slug}: demo CSS differs between languages")
+    return errors
+
+
+FONT_STYLES = {"normal", "italic"}
+UNICODE_RANGE = re.compile(r"U\+[0-9A-Fa-f]{1,6}(?:-[0-9A-Fa-f]{1,6})?(?:, U\+[0-9A-Fa-f]{1,6}(?:-[0-9A-Fa-f]{1,6})?)*")
+
+
+def reserved_font_names(license_text):
+    """Reserved Font Names declared in the copyright header of an OFL text (not in the license body)."""
+    head = license_text.split("This Font Software is licensed")[0]
+    found = re.findall(r"Reserved Font Names?:?\s*((?:[\"'][^\"']+[\"'](?:,\s*)?)+|\w+)", head)
+    return [name for item in found for name in (re.findall(r"[\"']([^\"']+)[\"']", item) or [item])]
+
+
+def unicode_ranges(value):
+    """Code points of a unicode-range value such as 'U+0000-00FF, U+0131'."""
+    points = set()
+    for part in str(value).replace(" ", "").split(","):
+        low, _, high = part[2:].partition("-")
+        points.update(range(int(low, 16), int(high or low, 16) + 1))
+    return points
+
+
+def check_fonts(root, specs):
+    """Validate the self-hosted fonts in fonts/ against fonts/fonts.json.
+
+    Every requested family spec needs faces, every file must match its recorded sha256, every family
+    ships its license text, and a family whose name contains a Reserved Font Name must not use a file
+    that Google subset (google/): the OFL allows that name only on unmodified release files. The faces
+    of a release family together cover the unicode-range Google declared for that style ("google"):
+    the browser only tries a family for characters in a declared range, so a gap would hand text such
+    as U+2011 to another font.
+    """
+    base = root / "fonts"
+    try:
+        manifest = json.loads((base / "fonts.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        return [f"fonts/fonts.json: {exc}"]
+    errors = []
+    files, families, faces = manifest.get("files", {}), manifest.get("families", {}), manifest.get("specs", {})
+    for rel, info in files.items():
+        path = base / rel
+        if not path.is_file():
+            errors.append(f"fonts/{rel}: missing")
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != info.get("sha256"):
+            errors.append(f"fonts/{rel}: sha256 differs from fonts.json")
+    for spec in dict.fromkeys(specs):
+        family = spec.split(":")[0].replace("+", " ")
+        entry = faces.get(spec)
+        if not isinstance(entry, dict) or not entry.get("faces"):
+            errors.append(f"fonts/fonts.json: no faces for {spec}")
+            continue
+        if family not in families:
+            errors.append(f"fonts/fonts.json: {family} has no license entry")
+        for face in entry["faces"]:
+            if face.get("file") not in files:
+                errors.append(f"{spec}: unlisted file {face.get('file')}")
+            if face.get("style") not in FONT_STYLES or not re.fullmatch(r"\d{3,4}(?: \d{3,4})?", str(face.get("weight"))):
+                errors.append(f"{spec}: invalid style or weight")
+            if not UNICODE_RANGE.fullmatch(str(face.get("range"))):
+                errors.append(f"{spec}: invalid unicode-range")
+        if families.get(family, {}).get("origin") == "release":
+            google = entry.get("google") or []
+            if not google:
+                errors.append(f"{spec}: release family without the former Google ranges (google)")
+            ranges = [str(x.get("range")) for x in google + entry["faces"]]
+            if not all(UNICODE_RANGE.fullmatch(r) for r in ranges):
+                errors.append(f"{spec}: invalid unicode-range")
+                continue
+            for old in google:
+                key = (old.get("style"), old.get("weight"), old.get("stretch"))
+                have = set().union(*(unicode_ranges(f["range"]) for f in entry["faces"]
+                                     if (f.get("style"), f.get("weight"), f.get("stretch")) == key))
+                missing = unicode_ranges(old["range"]) - have
+                if missing:
+                    errors.append(f"{spec} {key[0]} {key[1]}: unicode-range misses {len(missing)} characters "
+                                  f"of the former Google range, first U+{min(missing):04X}")
+    for family, info in families.items():
+        path = base / str(info.get("license"))
+        if not path.is_file():
+            errors.append(f"{family}: license text missing")
+            continue
+        text = path.read_bytes()
+        if hashlib.sha256(text).hexdigest() != info.get("license_sha256"):
+            errors.append(f"{family}: license sha256 differs from fonts.json")
+        names = reserved_font_names(text.decode("utf-8"))
+        if sorted(names) != sorted(info.get("reserved_font_names", [])):
+            errors.append(f"{family}: Reserved Font Names {names} differ from fonts.json")
+        if any(name.casefold() in family.casefold() for name in names):
+            subset = [face["file"] for spec, entry in faces.items() if spec.split(":")[0].replace("+", " ") == family
+                      for face in entry.get("faces", []) if str(face.get("file")).startswith("google/")]
+            if subset:
+                errors.append(f"{family}: Reserved Font Name {names}: ship unmodified release files, "
+                              f"not a subset by Google ({subset[0]})")
+    listed = set(files) | {str(info.get("license")) for info in families.values()} | {"fonts.json"}
+    for path in sorted(base.rglob("*")):
+        rel = path.relative_to(base).as_posix()
+        if path.is_file() and rel not in listed and path.name != ".DS_Store":
+            errors.append(f"fonts/{rel}: not listed in fonts.json")
     return errors

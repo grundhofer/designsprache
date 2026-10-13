@@ -58,6 +58,8 @@ python3 tools/palette-check.py
 | `mobile/`, `viewer/` | Mobile interactions and shared viewer themes |
 | `explorer/` | Principles, device contexts and three-level navigation |
 | `landing.html`, `build.py` | Home page and dependency-free static generator |
+| `fonts/` | Self-hosted fonts with their license texts and sources (`fonts.json`) |
+| `legal/` | Legal notice details (`notice.json`) and page |
 | `tools/`, `tests/` | Source, palette and behavior checks |
 | `docs/` | Generated site; not committed |
 
@@ -68,6 +70,11 @@ for validation scope and limitations.
 ## License
 
 Code: [MIT](LICENSE). Written content: [CC BY 4.0](LICENSE-CONTENT.md).
+Fonts in `fonts/`: SIL Open Font License 1.1; the license texts are in `fonts/licenses/`.
+The legal notice details in `legal/notice.json` are not covered by these licenses.
 Product names belong to their respective owners. Demos are independent interpretations.
+
+Sister projects: [Bildsprache](https://github.com/grundhofer/bildsprache), image styles for AI images, and
+[Farbsprache](https://github.com/grundhofer/farbsprache), which helps you choose, check and copy colors.
 
 © Sebastian Grundhöfer
