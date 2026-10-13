@@ -267,7 +267,9 @@ new entries remains outstanding; the earlier browser results do not cover them.
   `catalog.css` mit 240.718 Bytes (gzip -9: 38.576) statt 40.585 Bytes CSS von Google; die
   Startseite 355.442 statt 328.158 Bytes Schriften plus `home.css` mit 15.836 Bytes. `docs/`
   wächst von 2,3 auf 17,8 MB, davon 5,47 MB für alle 124 Teilstücke von Noto Sans JP, von denen
-  der Katalog sechs lädt. Ob GitHub Pages TTF und CSS komprimiert, ist nicht geprüft. Offen zur
+  der Katalog sechs lädt. Live auf GitHub Pages (2026-10-13, Chrome, Cache aus) kommen TTF und CSS
+  gzip-komprimiert (IstokWeb-Italic.ttf 218.124 → 88.706 Bytes, `catalog.css` 240.718 → 39.305 Bytes);
+  der Katalog überträgt dort 61 Schriftdateien mit 2.338.422 Bytes, rund 27 % mehr als vorher. Offen zur
   Entscheidung: die TTF verlustfrei als WOFF2 verpacken (laut OFL-FAQ ohne Umbenennung zulässig,
   aber eine eigene Verarbeitung) oder den Mehrverbrauch so hinnehmen. Geprüft ist nur Chrome auf
   macOS; unter Windows kann das Hinting der TTF anders aussehen als Googles Dateien.
