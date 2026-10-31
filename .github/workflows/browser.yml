@@ -1,0 +1,65 @@
+name: Browser regression check
+
+# Renders the generated site in headless Chromium (Playwright) and runs axe-core.
+# Development only: the packages live in tests/browser/ with their own lockfile;
+# the site build itself stays free of packages.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: browser-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+
+      - name: Build
+        run: python3 build.py
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tests/browser/package-lock.json
+
+      - name: Install test packages
+        working-directory: tests/browser
+        run: npm ci --no-fund --no-audit
+
+      - name: Install Chromium
+        working-directory: tests/browser
+        run: npx playwright install --with-deps chromium
+
+      # Serves docs/ with python3 -m http.server (see playwright.config.cjs).
+      - name: Browser checks
+        working-directory: tests/browser
+        run: npx playwright test
+
+      - name: Keep traces of failed checks
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: browser-test-results
+          path: tests/browser/test-results/
+          retention-days: 7

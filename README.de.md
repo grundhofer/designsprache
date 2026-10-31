@@ -52,6 +52,13 @@ node --test tests/*.test.cjs
 python3 tools/palette-check.py
 ```
 
+Die optionale Browserprüfung rendert die gebaute Seite in Headless-Chromium mit axe-core. Nur sie
+installiert Pakete, und nur in `tests/browser/`:
+
+```sh
+cd tests/browser && npm ci && npx playwright install chromium && npx playwright test
+```
+
 ## Projektaufbau
 
 | Pfad | Inhalt |
@@ -62,10 +69,10 @@ python3 tools/palette-check.py
 | `landing.html`, `build.py` | Startseite und statischer Generator ohne Abhängigkeiten |
 | `fonts/` | Selbst ausgelieferte Schriften mit Lizenztexten und Herkunft (`fonts.json`) |
 | `legal/` | Angaben und Seite des Impressums (`notice.json`) |
-| `tools/`, `tests/` | Quellen-, Paletten- und Funktionsprüfungen |
+| `tools/`, `tests/` | Quellen-, Paletten- und Funktionsprüfungen; `tests/browser/` rendert die Seite (Playwright, axe-core) |
 | `docs/` | Erzeugte Website; nicht eingecheckt |
 
-GitHub Actions prüft die Änderungen und veröffentlicht `main` auf GitHub Pages.
+GitHub Actions prüft die Änderungen und veröffentlicht `main` auf GitHub Pages; ein eigener Job fährt die Browserprüfung.
 [CONTRIBUTING.md](CONTRIBUTING.md) beschreibt die Inhalts- und CSS-Regeln;
 [REVIEW.md](REVIEW.md) dokumentiert Umfang und Grenzen der Prüfungen.
 
