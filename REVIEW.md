@@ -273,3 +273,62 @@ new entries remains outstanding; the earlier browser results do not cover them.
   Entscheidung: die TTF verlustfrei als WOFF2 verpacken (laut OFL-FAQ ohne Umbenennung zulässig,
   aber eine eigene Verarbeitung) oder den Mehrverbrauch so hinnehmen. Geprüft ist nur Chrome auf
   macOS; unter Windows kann das Hinting der TTF anders aussehen als Googles Dateien.
+
+## Browser-Regressionsprüfung (2026-10-31)
+
+Neu in `tests/browser/`: Playwright 1.63.0 mit Chromium 153 (headless) und axe-core 4.14.0,
+mit eigener `package.json` und Lockfile. Die Seite selbst bleibt ohne Pakete; `docs/` wird per
+`python3 -m http.server` ausgeliefert. Der eigene CI-Job `.github/workflows/browser.yml` fährt nur
+diese Prüfung (ubuntu-latest, Actions auf volle Commit-SHAs gepinnt). 84 Prüfungen, alle grün.
+
+- Seiten: Startseite, Katalog (Ebenen Stile, Prinzipien, Kontexte) und Impressum, je Deutsch
+  und Englisch, bei 390 und 1280 px, hell und dunkel (Systemeinstellung): kein seitliches
+  Scrollen, keine Anfrage an fremde Hosts (jede wird abgebrochen und als Fehler gezählt), keine
+  Konsolenfehler, Seitenfehler, fehlgeschlagenen Anfragen oder HTTP-Fehler, keine Schrift im Status
+  `error`. Die manuelle Wahl Dunkel übersteht Neuladen und Sprachwechsel; System folgt wieder dem Gerät.
+- axe (WCAG 2.0–2.2 A/AA und Best Practices) auf allen diesen Seiten sowie im geöffneten Finder
+  und im Datenblatt: nach den Korrekturen unten kein Verstoß irgendeiner Schwere. Jeder neue,
+  nicht in `tests/browser/support.cjs` mit Begründung dokumentierte Fund lässt die Prüfung
+  scheitern; die Liste ist leer.
+- Finder (beide Sprachen, 390 und 1280 px): erster Fokus auf „Schließen“; der Hintergrund ist
+  nicht fokussierbar und nicht im Barrierefreiheitsbaum. Tab läuft einmal durch alle Antworten
+  und kehrt zu „Schließen“ zurück, Shift-Tab von dort erreicht die letzte Antwort. Chromium
+  durchläuft dabei wie bei jedem nativen modalen Dialog einmal das Dokument (im echten Fenster die
+  Browserleiste) und den scrollbaren Dialog selbst; Fokus auf Hintergrundinhalt kommt nicht vor.
+  Escape schließt und gibt den Fokus an „Stil finden“ zurück. Antwort per Tastatur, fünf
+  Ergebnisse, Fokus auf der Ergebnisüberschrift.
+- Datenblatt aus den Ergebnissen: Fokus auf dem Titel, Escape schließt nur das Datenblatt, die
+  Ergebnisse bleiben, der Fokus kehrt zu „Eintrag öffnen“ zurück. Ebenso aus Tabellenzeile und
+  Galerie; Pfeiltasten blättern.
+- Sortierbare Köpfe (Haltbarkeit, Wiedererkennung, Aufwand): per Tab erreichbar, sichtbarer
+  Fokusrahmen (`:focus-visible`), Enter sortiert absteigend, Leertaste aufsteigend, `aria-sort`
+  stimmt, nur eine Spalte sortiert.
+- Zwischenablage: Mit Berechtigung landet „Als Prompt kopieren“ in der Zwischenablage (Text
+  zurückgelesen, beide Sprachen) und der Knopf meldet „Kopiert“. Ist sie gesperrt, erscheint
+  der Text markiert mit Hinweis. „Text anzeigen“ zeigt denselben Text.
+- Vergrößerter Text: Browser-Zoom 200 % (640 CSS-px bei Faktor 2) und 400 % (320 CSS-px,
+  WCAG 1.4.10) ohne seitliches Scrollen auf Startseite, allen Ebenen, im Finder und im
+  Datenblatt; ebenso mit den Abständen aus WCAG 1.4.12 bei 390 px.
+
+Behobene Fehler:
+
+- Finder-Ergebnisse unter 940 px: Die Rasterspalte nahm die Breite der unskalierten 780-px-Demo
+  an; Karten waren rund 830 px breit und der Dialog scrollte bei 320, 390 und 640 px seitlich.
+  `.fi-res` und `.fi-card-body` haben jetzt `grid-template-columns:minmax(0,1fr)`. Mit der alten
+  Regel schlagen die Prüfungen fehl.
+- axe-Hinweis `region` (mäßig) auf beiden Katalogseiten: Markenlink, Darstellungsschalter und
+  Quelltextlink lagen außerhalb jeder Landmark. Kopfleiste, Einleitung und Ebenennavigation stehen
+  jetzt in einem `<header class="site-head">`; die Einleitung ist ein `div` statt eines zweiten
+  `header`, damit es genau einen Banner gibt.
+- axe-Hinweis `heading-order` (mäßig) im Datenblatt: Auf den Titel (h2) folgten die
+  Abschnittsüberschriften als h4. Sie sind jetzt h3; die berechneten Stile sind unverändert.
+
+Offen:
+
+- Die Schriftgröße in den Browsereinstellungen (geprüft mit 32 statt 16 px) vergrößert den Text
+  nicht, weil das CSS in px setzt (Fließtext bleibt 16 px). Browser-Zoom wirkt und erfüllt
+  WCAG 1.4.4; eine Umstellung auf rem betrifft das ganze Seiten-CSS und ist eine eigene Entscheidung.
+- Nicht geprüft: Firefox, Safari und echte Geräte, Screenreader, die Smartphone-Ansicht in Galerie,
+  Finder und Datenblatt (nur die Seitenbreite 390 px), Bildvergleiche, Ladezeiten, Windows-Hinting
+  der TTF-Dateien. Die Zwischenablage ist mit erteilter und mit gesperrter Berechtigung im
+  Headless-Browser geprüft, nicht mit einer echten Rückfrage an die Nutzerin oder den Nutzer.

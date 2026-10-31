@@ -50,6 +50,13 @@ node --test tests/*.test.cjs
 python3 tools/palette-check.py
 ```
 
+The optional browser check renders the built site in headless Chromium with axe-core. It is the
+only part that installs packages, and only inside `tests/browser/`:
+
+```sh
+cd tests/browser && npm ci && npx playwright install chromium && npx playwright test
+```
+
 ## Project structure
 
 | Path | Contents |
@@ -60,10 +67,10 @@ python3 tools/palette-check.py
 | `landing.html`, `build.py` | Home page and dependency-free static generator |
 | `fonts/` | Self-hosted fonts with their license texts and sources (`fonts.json`) |
 | `legal/` | Legal notice details (`notice.json`) and page |
-| `tools/`, `tests/` | Source, palette and behavior checks |
+| `tools/`, `tests/` | Source, palette and behavior checks; `tests/browser/` renders the site (Playwright, axe-core) |
 | `docs/` | Generated site; not committed |
 
-GitHub Actions runs the checks and deploys `main` to GitHub Pages.
+GitHub Actions runs the checks and deploys `main` to GitHub Pages; a separate job runs the browser check.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for content and CSS rules, and [REVIEW.md](REVIEW.md)
 for validation scope and limitations.
 

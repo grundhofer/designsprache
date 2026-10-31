@@ -1,0 +1,14 @@
+{
+  "name": "designsprache-browser-tests",
+  "private": true,
+  "description": "Rendered browser regression checks for the generated site (Chromium, axe-core). Development only; the site build needs no packages.",
+  "license": "MIT",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.63.0",
+    "axe-core": "4.14.0"
+  }
+}
