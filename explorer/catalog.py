@@ -69,9 +69,9 @@ def header(lang, count):
             ('principles','02',t('Gestaltungs- & Bedienprinzipien','Design & interaction principles'),t('6 interaktive Beispiele · Wie funktioniert es?','6 interactive examples · How does it work?')),
             ('contexts','03',t('Geräte & Nutzungskontexte','Devices & contexts'),t('8 Kontexte · Wo und womit wird es benutzt?','8 contexts · Where and how is it used?'))]
     nav=''.join(f'<a href="?level={key}#{key}" data-level-link="{key}"><span>{num}</span><strong>{name}</strong><small>{desc}</small></a>' for key,num,name,desc in levels)
-    return f'''<header class="ex-intro wrap"><span class="eyebrow">{t('Drei Ebenen einer Oberfläche','Three levels of an interface')}</span>
+    return f'''<div class="ex-intro wrap"><span class="eyebrow">{t('Drei Ebenen einer Oberfläche','Three levels of an interface')}</span>
 <h1>{t('Aussehen. Bedienung. Kontext.','Appearance. Interaction. Context.')}</h1>
-<p>{t('Wähle eine Designsprache, prüfe ihre Bedienung und passe sie an die Nutzung an. Drei getrennte Entscheidungen, die zusammen eine brauchbare Oberfläche ergeben.','Choose a design language, examine its interaction and adapt it to its context. Three separate decisions that together make a usable interface.')}</p></header>
+<p>{t('Wähle eine Designsprache, prüfe ihre Bedienung und passe sie an die Nutzung an. Drei getrennte Entscheidungen, die zusammen eine brauchbare Oberfläche ergeben.','Choose a design language, examine its interaction and adapt it to its context. Three separate decisions that together make a usable interface.')}</p></div>
 <nav class="ex-levels wrap" aria-label="{t('Die drei Ebenen','The three levels')}">{nav}</nav>'''
 
 

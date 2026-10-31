@@ -893,7 +893,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
   padding:5px 6px; color:var(--ink-2); border-top:1px solid var(--rule-soft);
   background:var(--surface); }}
 .sheet-right > * + * {{ margin-top:26px; }}
-.blk h4 {{ font-family:var(--f-mono); font-size:10.5px; font-weight:500;
+.blk h3 {{ font-family:var(--f-mono); font-size:10.5px; font-weight:500;
   letter-spacing:.13em; text-transform:uppercase; color:var(--brass);
   padding-bottom:7px; border-bottom:1px solid var(--rule); margin-bottom:11px; }}
 .blk p {{ font-size:15.5px; line-height:1.62; }}
@@ -968,7 +968,8 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .fi-go button:disabled {{ opacity:.4; cursor:default; }}
 .fi-go span {{ font-family:var(--f-mono); font-size:11.5px; color:var(--ink-3); }}
 
-.fi-res {{ display:grid; gap:clamp(20px,2.5vw,34px); }}
+/* minmax(0,1fr): the unscaled 780 px demo must not set the column width on narrow screens. */
+.fi-res {{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(20px,2.5vw,34px); }}
 .fi-card {{ border:1px solid var(--rule); background:var(--surface); }}
 .fi-card-head {{ display:flex; align-items:baseline; gap:11px; padding:14px 16px 12px;
   flex-wrap:wrap; border-bottom:1px solid var(--rule-soft); }}
@@ -977,7 +978,7 @@ a {{ color:var(--accent); text-underline-offset:3px; }}
 .fi-card-head h3 {{ font-size:21px; flex:1 1 auto; min-width:0; }}
 .fi-score {{ font-family:var(--f-mono); font-size:12px; color:var(--ink-3);
   font-variant-numeric:tabular-nums; }}
-.fi-card-body {{ display:grid; gap:clamp(16px,2vw,28px); padding:16px; }}
+.fi-card-body {{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(16px,2vw,28px); padding:16px; }}
 @media (min-width:940px) {{ .fi-card-body {{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); }} }}
 .fi-frame {{ position:relative; overflow:hidden; border:1px solid var(--rule);
   background:var(--surface-2); }}
@@ -1105,8 +1106,10 @@ tbody tr:hover {{ background:var(--surface-2); }}
 
 {sheets}
 
+<header class="site-head">
 {topbar}
 {explorer_header}
+</header>
 <main id="experience">
 <section id="styles" data-level="styles" aria-labelledby="styles-title">
 <header class="mast">
@@ -1447,7 +1450,7 @@ tbody tr:hover {{ background:var(--surface-2); }}
       (items || []).map(function (x) {{ return "<li>" + esc(x) + "</li>"; }}).join("") + "</ul>";
   }}
   function blk(title, inner, cls) {{
-    return '<div class="blk ' + (cls ||"") + '"><h4>' + esc(title) + "</h4>" + inner + "</div>";
+    return '<div class="blk ' + (cls ||"") + '"><h3>' + esc(title) + "</h3>" + inner + "</div>";
   }}
 
   function cloneDemo(node, prefix) {{
